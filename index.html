@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OARTS · Need For Kola — custom forged wheels</title>
+  <meta name="description" content="OARTS kuje kola na míru. Vyber auto, design, rozměry i povrch v konfigurátoru a sleduj celou výrobu na fotkách a videích.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23111'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23ff4d1c' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23ff4d1c'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <svg class="logo__mark" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#111" stroke="#fff" stroke-opacity=".25"/><circle cx="20" cy="20" r="11" fill="none" stroke="#ff4d1c" stroke-width="3"/><path d="M20 9v6M20 25v6M9 20h6M25 20h6" stroke="#ff4d1c" stroke-width="3"/><circle cx="20" cy="20" r="3" fill="#fff"/></svg>
+      <span>OARTS<small>Need for kola</small></span>
+    </a>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav class="nav__links">
+      <a href="index.html#auta">Auta</a>
+      <a href="index.html#designy">Designy</a>
+      <a href="proces.html">Průběh zakázky</a>
+      <a href="index.html#kontakt">Kontakt</a>
+      <a class="btn btn--primary btn--sm" href="konfigurator.html"><span>Konfigurátor</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="speedlines"></div>
+  <div class="hero__glow"></div>
+  <div class="wrap">
+    <div>
+      <div class="hero__kicker"><span class="tag">Custom forged</span><span class="tag tag--cyan">Made to order</span></div>
+      <h1 class="hero__title">
+        <span class="line">Need</span>
+        <span class="line line--outline">For</span>
+        <span class="line line--accent">Kola</span>
+      </h1>
+      <p class="lead hero__sub">Kovaná kola přesně podle tebe. Vybereš auto, design, rozměry i povrch. My vykováme, vyfrézujeme, nalakujeme a celou dobu ti posíláme fotky a videa z výroby.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="konfigurator.html"><span>Spustit konfigurátor</span></a>
+        <a class="btn btn--ghost" href="proces.html"><span>Jak probíhá zakázka</span></a>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <div class="hero__ring"></div>
+      <div class="hero__ring hero__ring--2"></div>
+      <div class="hero__wheel" id="heroWheel"></div>
+      <div class="hero__tag hero__tag--tl" id="heroTag"></div>
+      <div class="hero__tag hero__tag--br"><b>6061-T6</b>kovaný hliník</div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span>Custom forged wheels</span><span>18" – 24"</span><span>1 / 2 / 3-dílná kola</span><span>Rozměry na míru</span><span>Foto + video z každé fáze</span><span>Technický výkres ke schválení</span><span>OARTS balení a štítek</span>
+    <span>Custom forged wheels</span><span>18" – 24"</span><span>1 / 2 / 3-dílná kola</span><span>Rozměry na míru</span><span>Foto + video z každé fáze</span><span>Technický výkres ke schválení</span><span>OARTS balení a štítek</span>
+  </div>
+</div>
+
+<!-- ============ STATISTIKY ============ -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><b>100<i>%</i></b><span>rozměry na míru</span></div>
+      <div class="stat"><b>7</b><span>fází s foto a video reportem</span></div>
+      <div class="stat"><b>18<i>–</i>24"</b><span>průměr kol</span></div>
+      <div class="stat"><b>1<i>·</i>2<i>·</i>3</b><span>dílná konstrukce</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUTA ============ -->
+<section class="section" id="auta">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <div><span class="eyebrow">Krok 1</span><h2>Vyber si stroj</h2></div>
+      <p>Sedm tříd vozů s přednastaveným fitmentem. Klikni na auto a konfigurátor rovnou nasadí správnou rozteč, středový otvor a doporučené rozměry.</p>
+    </div>
+    <div class="cars-grid" id="carsGrid"></div>
+  </div>
+</section>
+
+<!-- ============ DESIGNY ============ -->
+<section class="section section--alt" id="designy">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <div><span class="eyebrow">Krok 2</span><h2>Designy OARTS</h2></div>
+      <p>Dvanáct vzorů. Každý kujeme z bloku 6061-T6 a frézujeme přesně na tvůj rozměr, zális a barvu. Klikni a otevře se v konfigurátoru.</p>
+    </div>
+    <div class="designs-grid" id="designsGrid"></div>
+  </div>
+</section>
+
+<!-- ============ PROCES ============ -->
+<section class="section" id="proces">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <div><span class="eyebrow">Průběh zakázky</span><h2>Sedm fází. Nula překvapení.</h2></div>
+      <p>Od první konzultace po expedici víš, co se s tvými koly děje. Ke všemu posíláme fotky a videa.</p>
+    </div>
+    <div class="process">
+      <div class="step reveal"><div class="step__n">01</div><h3>Konzultace</h3>
+        <ul><li>Řekneš nám, pro jaké auto kola chceš.</li><li>Vybereš si design kola.</li><li>Určíme požadované rozměry (průměr, šířka, ET, PCD, CB).</li><li>Domluvíme cílovou váhu kol a další požadavky.</li></ul>
+        <div class="badges"><span class="tag tag--cyan">Konfigurátor</span></div></div>
+      <div class="step reveal" data-delay="1"><div class="step__n">02</div><h3>Návrh</h3>
+        <ul><li>Výrobce připraví technický výkres (Technical Drawing).</li><li>Vše zkontroluješ a schválíš před zahájením výroby.</li></ul>
+        <div class="badges"><span class="tag">Schválení výkresu</span></div></div>
+      <div class="step reveal" data-delay="2"><div class="step__n">03</div><h3>Výběr vzhledu</h3>
+        <ul><li>Barva.</li><li>Povrchová úprava (Gloss / Satin / Matte, chrom apod.).</li><li>Středové krytky.</li><li>Případně další individuální detaily.</li></ul></div>
+      <div class="step reveal"><div class="step__n">04</div><h3>Výroba</h3>
+        <ul><li>Po schválení začíná výroba.</li><li>Během výroby dostáváš fotografie a videa z jednotlivých fází (CNC obrábění, lakování apod.).</li></ul>
+        <div class="badges"><span class="tag tag--ok">Foto + video</span></div></div>
+      <div class="step reveal" data-delay="1"><div class="step__n">05</div><h3>Finální kontrola</h3>
+        <ul><li>Výrobce zašle fotografie hotových kol.</li><li>Ověříme finální parametry (rozměry, váha, barva).</li><li>Potvrdíš finální podobu.</li></ul>
+        <div class="badges"><span class="tag tag--ok">Foto + video</span></div></div>
+      <div class="step reveal" data-delay="2"><div class="step__n">06</div><h3>Balení</h3>
+        <ul><li>Kola jsou zabalena do OARTS balení.</li><li>Každá krabice obsahuje vlastní OARTS štítek s parametry konkrétního kola.</li></ul></div>
+      <div class="step step--wide reveal"><div><div class="step__n">07</div><h3>Expedice</h3>
+        <ul><li>Po finálním schválení jsou kola odeslána k tobě.</li><li>Ke všemu pošleme foto a video.</li></ul>
+        <div class="badges"><span class="tag tag--ok">Foto + video</span><span class="tag">Sledování zásilky</span></div></div>
+        <div><a class="btn btn--primary" href="proces.html"><span>Celý průběh zakázky krok za krokem</span></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ŠTÍTEK ============ -->
+<section class="section section--alt">
+  <div class="wrap">
+    <div class="label-wrap">
+      <div class="reveal">
+        <span class="eyebrow">OARTS balení</span>
+        <h2 style="margin:12px 0 18px">Každé kolo má svůj štítek</h2>
+        <p class="lead">Krabice nejsou anonymní. Každá nese OARTS štítek s parametry konkrétního kola: pozice na autě, rozměr, zális, rozteč, barva, povrch i váha. Přesně to, co jsi schválil v technickém výkresu.</p>
+        <a class="btn btn--cyan" href="konfigurator.html#step=5&car=gt&design=deep7"><span>Zobrazit v konfigurátoru</span></a>
+      </div>
+      <div class="reveal" data-delay="1" id="labelMock"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section class="section" id="kontakt">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <div><span class="eyebrow">Kontakt</span><h2>Pojďme to vykovat</h2></div>
+      <p>Nejrychlejší cesta je konfigurátor, poptávka z něj přijde s kompletní specifikací. Nebo nám napiš rovnou.</p>
+    </div>
+    <div class="contact">
+      <div class="contact__info reveal">
+        <dl>
+          <dt>E-mail</dt><dd><a data-email href="#"></a></dd>
+          <dt>Telefon</dt><dd><a data-phone href="#"></a></dd>
+          <dt>Odpověď</dt><dd>do 48 hodin, včetně prvního návrhu rozměrů</dd>
+          <dt>Výkres</dt><dd>technický výkres ke schválení před výrobou</dd>
+          <dt>Report</dt><dd>foto a video z každé fáze výroby</dd>
+        </dl>
+        <div style="margin-top:28px"><a class="btn btn--primary" href="konfigurator.html"><span>Radši si to naklikám</span></a></div>
+      </div>
+      <form class="form reveal" data-delay="1" id="contactForm">
+        <div class="form-row">
+          <div class="field"><label>Jméno</label><input name="name" type="text" required placeholder="Jméno a příjmení"></div>
+          <div class="field"><label>E-mail</label><input name="email" type="email" required placeholder="ty@email.cz"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Telefon</label><input name="phone" type="tel" placeholder="+420"></div>
+          <div class="field"><label>Vůz</label><input name="car" type="text" placeholder="např. Audi RS6 C8, 2021"></div>
+        </div>
+        <div class="field"><label>Zpráva</label><textarea name="msg" placeholder="Jaká kola máš v hlavě? Design, rozměr, barva, brzdy…"></textarea></div>
+        <button class="btn btn--primary" type="submit"><span>Odeslat poptávku</span></button>
+        <span class="muted" style="font-size:12px">Formulář otevře tvůj e-mailový klient s předvyplněnou zprávou.</span>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div>© <span data-year></span> OARTS · Custom forged wheels · Need for kola</div>
+    <nav><a href="konfigurator.html">Konfigurátor</a><a href="proces.html">Průběh zakázky</a><a href="index.html#designy">Designy</a><a href="index.html#kontakt">Kontakt</a></nav>
+  </div>
+</footer>
+
+<script src="js/wheels.js"></script>
+<script src="js/cars.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
