@@ -4,18 +4,29 @@
 (function () {
   'use strict';
   const O = window.OARTS;
-  O.EMAIL = 'info@oarts.cz';          /* <- kontaktní e-mail (poptávky) */
-  O.PHONE = '+420 777 000 000';       /* <- telefon */
+  O.EMAIL = 'info@oarts.cz';                                 /* <- kontaktní e-mail (poptávky) */
+  O.PHONE = '+420 777 000 000';                              /* <- telefon */
+  O.SITE_URL = 'https://majkpowa.github.io/NeedForKola/';   /* <- veřejná adresa webu (pro sdílené odkazy) */
 
   /* ---------- navigace ---------- */
   const nav = document.querySelector('.nav');
   const burger = document.querySelector('.burger');
-  if (burger) burger.addEventListener('click', () => nav.classList.toggle('open'));
+  const setOpen = open => {
+    if (!nav) return;
+    nav.classList.toggle('open', open);
+    if (burger) burger.setAttribute('aria-expanded', String(open));
+  };
+  if (burger) burger.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
   const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   document.querySelectorAll('.nav__links a').forEach(a => {
-    a.addEventListener('click', () => nav.classList.remove('open'));
-    const href = (a.getAttribute('href') || '').split('#')[0].toLowerCase();
-    if (href && href === here) a.classList.add('active');
+    a.addEventListener('click', () => setOpen(false));
+    const parts = (a.getAttribute('href') || '').toLowerCase().split('#');
+    const file = parts[0] || 'index.html', frag = parts[1];
+    /* aktivní je jen odkaz na aktuální stránku bez kotvy; kliknutí na něj neobnovuje stránku (a neztratí stav konfigurátoru) */
+    if (file === here && !frag) {
+      a.classList.add('active');
+      a.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    }
   });
 
   /* ---------- reveal při scrollu ---------- */
@@ -24,12 +35,7 @@
   }), { threshold: .12 });
   const observe = root => (root || document).querySelectorAll('.reveal').forEach(el => io.observe(el));
   observe();
-
-  /* ---------- pomocník: roztočení paprsků v hotovém SVG ---------- */
-  O.spin = (svg, dur) => svg.replace(
-    '<g class="spokes" transform="rotate(0)">',
-    `<g class="spokes"><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="${dur}s" repeatCount="indefinite"/>`
-  );
+  window.addEventListener('beforeprint', () => document.querySelectorAll('.reveal').forEach(el => el.classList.add('in')));
 
   /* ---------- OARTS štítek (SVG) ---------- */
   O.labelSVG = function (d) {
@@ -59,10 +65,11 @@
       ${qr}
       <text x="347" y="140" font-size="7" fill="#777" text-anchor="middle" letter-spacing="1">SCAN · SPEC SHEET</text>
       ${bars}
-      <text x="20" y="230" font-size="8" fill="#777" letter-spacing="2">${esc(d.order)} · ${esc(d.date)} · OARTS.CZ</text>
+      <text x="20" y="230" font-size="8" fill="#777" letter-spacing="2">${esc(d.order)} · ${esc(d.date)} · OARTS</text>
       <text x="382" y="230" font-size="8" fill="#111" font-weight="700" text-anchor="end" letter-spacing="2">MADE TO ORDER</text>
     </svg>`;
   };
+  O.spokesLabel = d => d.spokesLabel || `${d.spokes} paprsků`;
 
   /* ---------- hero kolo ---------- */
   const hero = document.getElementById('heroWheel');
@@ -79,7 +86,7 @@
     const tag = document.getElementById('heroTag');
     let i = 0;
     const draw = () => {
-      hero.innerHTML = O.spin(O.renderWheel(combos[i], 'hero' + i), 7);
+      hero.innerHTML = O.renderWheel(Object.assign({ spin: 7 }, combos[i]), 'hero' + i);
       if (tag) {
         const d = O.find(O.DESIGNS, combos[i].design);
         tag.innerHTML = `<b>${d.name}</b>Series ${d.series} · ${O.find(O.COLORS, combos[i].color).name} · ${O.find(O.FINISHES, combos[i].finish).name}`;
@@ -115,16 +122,17 @@
     dg.innerHTML = O.DESIGNS.map((d, i) => `<a class="design-card reveal" data-delay="${i % 3}" href="konfigurator.html?design=${d.id}&color=${cols[i]}&finish=${fins[i]}">
       <span class="series">SERIES ${d.series}</span>
       ${O.renderWheel({ design: d.id, color: cols[i], finish: fins[i], lip: d.pieces === 3 ? 'polished' : 'same' }, 'dg' + i)}
-      <b>${d.name}</b><span>${d.pieces === 3 ? '3-dílné' : 'monoblok'} · ${d.spokes} paprsků</span></a>`).join('');
+      <b>${d.name}</b><span>${d.pieces === 3 ? 'třídílné' : 'monoblok'} · ${O.spokesLabel(d)}</span></a>`).join('');
     observe(dg);
   }
 
   /* ---------- ukázkový štítek na homepage ---------- */
   const lm = document.getElementById('labelMock');
   if (lm) {
+    const iso = new Date().toISOString();
     lm.innerHTML = O.labelSVG({
-      order: 'OA-2409-117', model: 'Porsche 911 Carrera 4S (992)', design: 'DEEP 7 · Series C2', pos: 'FL – přední levé',
-      size: '21 × 9.0"', et: 50, pcd: '5x130', cb: '71.6', color: 'Gunmetal', finish: 'Gloss + leštěný límec', weight: '10.4 kg', date: '2026-09-02',
+      order: `OA-${iso.slice(2, 4)}${iso.slice(5, 7)}-117`, model: 'Porsche 911 Carrera 4S (992)', design: 'DEEP 7 · Series C2', pos: 'FL – přední levé',
+      size: '21 × 9,0"', et: 50, pcd: '5x130', cb: '71,6', color: 'Gunmetal', finish: 'Gloss + leštěný límec', weight: '10,4 kg', date: iso.slice(0, 10),
     });
   }
 
@@ -137,7 +145,7 @@
       const body = [
         `Jméno: ${f.get('name') || ''}`, `E-mail: ${f.get('email') || ''}`, `Telefon: ${f.get('phone') || ''}`,
         `Vůz: ${f.get('car') || ''}`, '', 'Zpráva:', f.get('msg') || '',
-      ].join('\n');
+      ].join('\r\n');
       location.href = `mailto:${O.EMAIL}?subject=${encodeURIComponent('Poptávka OARTS – ' + (f.get('car') || 'custom kola'))}&body=${encodeURIComponent(body)}`;
     });
   }

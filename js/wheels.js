@@ -45,14 +45,14 @@
     { id: 'deep7',    name: 'DEEP 7',    series: 'C2', style: 'concave',  spokes: 7,  base: 3500,  pieces: 1, desc: 'Hluboký konkáv s ostrou hranou. Vrhá stíny jako nůž.' },
     { id: 'yfork10',  name: 'Y-FORK 10', series: 'Y3', style: 'y',        spokes: 10, base: 4200,  pieces: 1, desc: 'Vidlicové paprsky. Lehká konstrukce s motorsport DNA.' },
     { id: 'twist9',   name: 'TWIST 9',   series: 'T4', style: 'twist',    spokes: 9,  base: 3900,  pieces: 1, desc: 'Směrové zakřivené paprsky. Levá a pravá strana zrcadlově.' },
-    { id: 'mesh30',   name: 'MESH 30',   series: 'X5', style: 'mesh',     spokes: 15, base: 5200,  pieces: 1, desc: 'Křížová mřížka. Ikona osmdesátek, znovu vykovaná.' },
+    { id: 'mesh30',   name: 'MESH 30',   series: 'X5', style: 'mesh',     spokes: 15, spokesLabel: '30 paprsků (15 křížů)', base: 5200,  pieces: 1, desc: 'Křížová mřížka. Ikona osmdesátek, znovu vykovaná.' },
     { id: 'split6',   name: 'SPLIT 6',   series: 'S6', style: 'split',    spokes: 6,  base: 3200,  pieces: 1, desc: 'Dvojité paprsky s mezerou. Šest párů čisté geometrie.' },
     { id: 'turbine8', name: 'TURBINE 8', series: 'R7', style: 'turbine',  spokes: 8,  base: 4800,  pieces: 1, desc: 'Lopatky turbíny. Vypadá rychle, i když stojí.' },
     { id: 'blade12',  name: 'BLADE 12',  series: 'B8', style: 'blade',    spokes: 12, base: 3600,  pieces: 1, desc: 'Dvanáct tenkých čepelí. Maximální průhled na brzdy.' },
     { id: 'star5',    name: 'STAR 5',    series: 'K9', style: 'star',     spokes: 5,  base: 2800,  pieces: 1, desc: 'Široké hvězdicové paprsky. Masivní a pevné.' },
     { id: 'concave9', name: 'CONCAVE 9', series: 'C2', style: 'concave',  spokes: 9,  base: 4100,  pieces: 1, desc: 'Devět konkávních paprsků. Hutný, sportovní profil.' },
     { id: 'dish3pc',  name: 'DISH 3PC',  series: 'D3', style: 'dish',     spokes: 5,  base: 9000,  pieces: 3, lipInner: 58, desc: 'Třídílné kolo s hlubokým leštěným límcem. Stance klasika.' },
-    { id: 'mesh3pc',  name: 'MESH 3PC',  series: 'D3', style: 'mesh',     spokes: 15, base: 11500, pieces: 3, lipInner: 60, desc: 'Třídílná mřížka s límcem. Retro na maximum.' },
+    { id: 'mesh3pc',  name: 'MESH 3PC',  series: 'D3', style: 'mesh',     spokes: 15, spokesLabel: '30 paprsků (15 křížů)', base: 11500, pieces: 3, lipInner: 60, desc: 'Třídílná mřížka s límcem. Retro na maximum.' },
   ];
 
   const COLORS = [
@@ -94,6 +94,7 @@
   ];
 
   const find = (list, id, fallback) => list.find(x => x.id === id) || list[fallback || 0];
+  const HEX = /^#[0-9a-f]{6}$/i;
 
   /* ---------- gradienty povrchů ---------- */
   function faceFill(id, color, finish) {
@@ -184,13 +185,18 @@
     id = id || 'w';
     rot = rot || 0;
     const design = find(DESIGNS, o.design);
-    const color = o.colorHex || find(COLORS, o.color).hex;
-    const finish = o.finish || 'gloss';
+    /* barva se do SVG dostane jen jako platný #rrggbb – nikdy syrový text z URL */
+    const color = HEX.test(o.colorHex || '') ? o.colorHex.toLowerCase() : find(COLORS, o.color).hex;
+    const finish = FINISHES.some(f => f.id === o.finish) ? o.finish : 'gloss';
     const lip = lipSpec(o.lip || 'same', color, finish);
     const lipInner = design.lipInner || 74;
-    const r0 = 22, r1 = lipInner - 1;
-    const bolts = o.bolts || 5;
+    /* špička paprsku má půlšířku tipX; r1 zkrátíme tak, aby ani roh špičky nepřesáhl otvor límce */
+    const tipX = { y: 19, mesh: 17, turbine: 15, star: 7, dish: 8 }[design.style] || 11;
+    const r0 = 22, r1 = Math.round((Math.sqrt(lipInner * lipInner - tipX * tipX) - 1) * 10) / 10;
+    const bolts = Math.min(8, Math.max(4, parseInt(o.bolts, 10) || 5));
     const mirror = o.mirror ? -1 : 1;
+    const spinDur = Number(o.spin) > 0 ? Number(o.spin) : 0;
+    const spinAnim = spinDur ? `<animateTransform attributeName="transform" type="rotate" from="${rot}" to="${rot + 360}" dur="${spinDur}s" repeatCount="indefinite"/>` : '';
 
     const defs = [
       faceFill(id + 'f', color, finish),
@@ -207,7 +213,7 @@
     for (let i = 0; i < 40; i++) {
       tread += `<rect x="-2.2" y="-101" width="4.4" height="6" rx="1" fill="#0b0b0c" transform="rotate(${i * 9})"/>`;
     }
-    const tire = `<circle r="100" fill="url(#${id}t)"/>${tread}<circle r="88" fill="none" stroke="#111" stroke-width="1.2"/><circle r="82" fill="none" stroke="#000" stroke-width="2" opacity=".6"/>`;
+    const tire = `<circle r="100" fill="url(#${id}t)"/><g class="tread">${spinAnim}${tread}</g><circle r="88" fill="none" stroke="#111" stroke-width="1.2"/><circle r="82" fill="none" stroke="#000" stroke-width="2" opacity=".6"/>`;
 
     /* límec + dutina + brzda */
     let pieces = '';
@@ -223,7 +229,9 @@
     for (let i = 0; i < 10; i++) {
       vents += `<rect x="-1.6" y="${-(lipInner - 12)}" width="3.2" height="14" rx="1.5" fill="#141417" transform="rotate(${i * 36 + 18})"/>`;
     }
-    const caliper = `<path d="${sector(38, lipInner - 8, 20, 62)}" fill="#c8141c"/><path d="${sector(40, lipInner - 10, 24, 58)}" fill="none" stroke="#7d0a10" stroke-width="1"/><path d="${sector(44, lipInner - 14, 30, 52)}" fill="#a10f16"/>`;
+    /* třmen se přizpůsobí hloubce límce (u 3-dílných kol je prstenec užší) */
+    const cOut = lipInner - 8, cIn = Math.min(38, cOut - 16);
+    const caliper = `<path d="${sector(cIn, cOut, 20, 62)}" fill="#c8141c"/><path d="${sector(cIn + 2, cOut - 2, 24, 58)}" fill="none" stroke="#7d0a10" stroke-width="1"/><path d="${sector(cIn + 6, cOut - 6, 30, 52)}" fill="#a10f16"/>`;
     const brake = `<circle r="${lipInner - 4}" fill="url(#${id}d)"/>${vents}<circle r="30" fill="#202024"/><circle r="${lipInner - 4}" fill="none" stroke="#111" stroke-width="1"/>${caliper}`;
 
     /* paprsky */
@@ -266,7 +274,8 @@
     const hl = HIGHLIGHT[finish] || 0;
     const highlight = hl ? `<g clip-path="url(#${id}c)"><ellipse cx="-34" cy="-40" rx="52" ry="24" transform="rotate(-42 -34 -40)" fill="url(#${id}h)" opacity="${hl}"/></g>` : '';
 
-    return `<g class="wheel"><defs>${defs}</defs>${tire}${lipSvg}${brake}<g class="spokes" transform="rotate(${rot})">${spokes}${hub}</g>${highlight}</g>`;
+    const spokesOpen = spinAnim ? `<g class="spokes">${spinAnim}` : `<g class="spokes" transform="rotate(${rot})">`;
+    return `<g class="wheel"><defs>${defs}</defs>${tire}${lipSvg}${brake}${spokesOpen}${spokes}${hub}</g>${highlight}</g>`;
   }
 
   function renderWheel(o, id, attrs) {
