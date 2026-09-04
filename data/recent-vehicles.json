@@ -1,0 +1,1605 @@
+[
+  {
+    "brand": "BMW",
+    "model": "X5",
+    "generation": "G65",
+    "name": "V · G65",
+    "from": 2026,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.press.bmwgroup.com/czech/article/detail/T0459006CS/nove-bmw-x5-startuje-na-cene-2-239-900-kc-objednavky-spusteny",
+    "sourceTitle": "Nové BMW X5 startuje na ceně 2 239 900 Kč. Objednávky spuštěny.",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "announced",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Výroba od srpna 2026; český trh od listopadu 2026.",
+    "notes": "Objednávky od 30. června 2026. K datu ověření není doloženo zahájení zákaznických dodávek. Kód G65 a pátá generace potvrzeny globální zprávou.",
+    "additionalSources": [
+      {
+        "url": "https://www.press.bmwgroup.com/usa/article/detail/T0458814EN_US/the-new-bmw-x5-and-ix5?language=en_US",
+        "title": "The New BMW X5 and iX5."
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "BMW",
+    "model": "iX",
+    "generation": "I20",
+    "name": "I · facelift 2025",
+    "from": 2025,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.press.bmwgroup.com/usa/article/detail/T0447721EN_US/the-new-bmw-ix?language=en_US",
+    "sourceTitle": "The new BMW iX.",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Výroba od března 2025.",
+    "notes": "V USA označeno modelovým rokem 2026, ale výroba modernizace začala v roce 2025.",
+    "replacesSourceNames": [
+      "iX (2025)"
+    ]
+  },
+  {
+    "brand": "BMW",
+    "model": "X3",
+    "generation": "G45",
+    "name": "IV · G45",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.press.bmwgroup.com/ireland/article/detail/T0443178EN/the-new-bmw-x3?language=en",
+    "sourceTitle": "The new BMW X3.",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "První evropské dodávky ve 4. čtvrtletí 2024.",
+    "replacesSourceNames": [
+      "X3 (2024)"
+    ]
+  },
+  {
+    "brand": "BMW",
+    "model": "řada 1",
+    "generation": "IV",
+    "name": "IV · pětidveřový hatchback",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "Hatchback 5 dveří"
+    ],
+    "sourceUrl": "https://www.press.bmwgroup.com/global/article/detail/T0442625EN/the-all-new-bmw-1-series",
+    "sourceTitle": "The all-new BMW 1 Series.",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Výroba od července 2024; trh od října 2024.",
+    "additionalSources": [
+      {
+        "url": "https://www.press.bmwgroup.com/global/article/detail/T0443483EN/bmw-1-series-production-launch-at-bmw-group-plant-leipzig",
+        "title": "BMW 1 Series production launch at BMW Group Plant Leipzig"
+      }
+    ],
+    "replacesSourceNames": [
+      "1 Series (2024)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Elroq",
+    "generation": "I",
+    "name": "I",
+    "from": 2025,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.skoda-storyboard.com/cs/tiskove-zpravy-archiv/skoda-auto-zahajila-vyrobu-sveho-nejdostupnejsiho-plne-elektrickeho-modelu-elroq/",
+    "sourceTitle": "Škoda Auto zahájila výrobu svého nejdostupnějšího plně elektrického modelu Elroq",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Sériová výroba od ledna 2025.",
+    "notes": "Premiéra a příjem objednávek již v říjnu 2024; výrobní ročníky od 2025. Aktualizace výbavy 2026 nevytváří samostatný facelift.",
+    "replacesSourceNames": [
+      "SKODA Elroq (2024)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Enyaq",
+    "generation": "I",
+    "name": "I · facelift 2025",
+    "from": 2025,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "SUV",
+      "SUV kupé"
+    ],
+    "sourceUrl": "https://www.skoda-storyboard.com/en/press-releases/skoda-auto-begins-production-of-the-new-enyaq-and-enyaq-coupe/",
+    "sourceTitle": "Škoda Auto begins production of the new Enyaq and Enyaq Coupé",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Výroba modernizovaného Enyaqu i Enyaqu Coupé od února 2025.",
+    "notes": "Modernizace Modern Solid; nadále první konstrukční generace. Změny výbavy modelového roku 2026 nejsou další facelift.",
+    "replacesSourceNames": [
+      "SKODA Enyaq Coupe (2025)",
+      "SKODA Enyaq (2025)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Kodiaq",
+    "generation": "II",
+    "name": "II",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.skoda-auto.sk/news/news-detail/skoda-auto-spusta-v-zavode-v-kvasinach-vyrobu-uplne-novej-generacie-modelu-kodiaq",
+    "sourceTitle": "Škoda Auto spúšťa v závode v Kvasinách výrobu úplne novej generácie modelu Kodiaq",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Sériová výroba od ledna 2024.",
+    "notes": "Premiéra proběhla v roce 2023. Pět a sedm sedadel nejsou samostatné karoserie.",
+    "replacesSourceNames": [
+      "SKODA Kodiaq (2023)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Superb",
+    "generation": "IV",
+    "name": "IV · Combi",
+    "from": 2023,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.skoda-storyboard.com/en/press-releases/skoda-launches-all-new-superb-production-in-bratislava/",
+    "sourceTitle": "Škoda launches all-new Superb production in Bratislava",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Sériová výroba Combi oznámena 1. prosince 2023.",
+    "notes": "Oddělený záznam karoserie: kombi se začalo vyrábět dříve než liftback.",
+    "replacesSourceNames": [
+      "SKODA Superb Combi / Scout (2023)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Superb",
+    "generation": "IV",
+    "name": "IV · Liftback",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "Liftback"
+    ],
+    "sourceUrl": "https://www.skoda-storyboard.com/en/press-releases/skoda-launches-all-new-superb-production-in-bratislava/",
+    "sourceTitle": "Škoda launches all-new Superb production in Bratislava",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Liftback ve výrobním programu od prvního pololetí 2024.",
+    "notes": "Zdroj z prosince 2023 uvádí zahájení této karoserie v prvním pololetí 2024; přesný měsíc není v tomto zdroji potvrzen.",
+    "replacesSourceNames": [
+      "SKODA Superb (2023)"
+    ]
+  },
+  {
+    "brand": "Hyundai",
+    "model": "Ioniq 9",
+    "generation": "I",
+    "name": "I",
+    "from": 2025,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.hyundai.com/worldwide/en/newsroom/detail/0000001026.html",
+    "sourceTitle": "Hyundai IONIQ 9 is Germany's Premium Car of the Year",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Německý trh od léta 2025.",
+    "notes": "Zdroj ze 14. října 2025 uvádí tři měsíce od německého uvedení; světová premiéra byla 20. listopadu 2024.",
+    "replacesSourceNames": [
+      "Ioniq 9 (2024)"
+    ]
+  },
+  {
+    "brand": "Hyundai",
+    "model": "Ioniq 6",
+    "generation": "I",
+    "name": "I · facelift 2025 / Evropa 2026",
+    "from": 2025,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "Sedan"
+    ],
+    "sourceUrl": "https://www.hyundai.com/worldwide/en/newsroom/detail/hyundai-motor-unveils-the-new-ioniq-6-and-ioniq-6-n-line-under-%E2%80%98pure-flow%2C-refined%E2%80%99-concept-0000000928",
+    "sourceTitle": "Hyundai Motor Unveils the new IONIQ 6 and IONIQ 6 N Line Under ‘Pure Flow, Refined’ Concept",
+    "confidence": "verified",
+    "market": "Jižní Korea / Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Korejský prodej od července 2025; evropské představení v lednu 2026.",
+    "notes": "Přesný první evropský měsíc dodání neověřen. V roce 2026 doložen český prodej faceliftu. Výrobní rok a modelový rok se neshodují automaticky.",
+    "additionalSources": [
+      {
+        "url": "https://www.hyundai.com/content/dam/hyundai/kr/ko/data/vehicles/price/en/ioniq6-price-en.pdf",
+        "title": "The new IONIQ 6 – Release Date: July 28, 2025"
+      },
+      {
+        "url": "https://www.hyundai.com/cz/modely/novy-ioniq-6.html",
+        "title": "Nový IONIQ 6 – Čistě elektrický manažerský sedan"
+      }
+    ],
+    "replacesSourceNames": [
+      "Ioniq 6 (2025)"
+    ]
+  },
+  {
+    "brand": "Kia",
+    "model": "EV3",
+    "generation": "I",
+    "name": "I",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.kia.com/it/tutto-su-kia/eventi-e-notizie/corporate/kia-ev3-elettrico-su-misura-arriva-in-concessionaria/",
+    "sourceTitle": "Kia EV3, l’elettrico su misura arriva in concessionaria",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Evropské uvedení 4. čtvrtletí 2024; italské uvedení 23.–24. listopadu.",
+    "replacesSourceNames": [
+      "EV3 (2024)"
+    ]
+  },
+  {
+    "brand": "Kia",
+    "model": "EV4",
+    "generation": "I",
+    "name": "I · Hatchback",
+    "from": 2025,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "Hatchback 5 dveří"
+    ],
+    "sourceUrl": "https://www.kia.com/ie/about-kia/news-and-events/kia-launches-ev-production-in-europe-with-the-ev4/",
+    "sourceTitle": "Kia launches EV production in Europe with the EV4",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Evropská sériová výroba zahájena v srpnu 2025.",
+    "notes": "Pětidveřová evropská karoserie vyráběná na Slovensku.",
+    "replacesSourceNames": [
+      "EV4 Hatchback (2025)"
+    ]
+  },
+  {
+    "brand": "Kia",
+    "model": "EV4",
+    "generation": "I",
+    "name": "I · Fastback (sedan)",
+    "from": 2025,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "Sedan"
+    ],
+    "sourceUrl": "https://press.kia.com/content/dam/kiapress/DE/Germany/pressemitteilungen/produkt/2025/25_07_23_ev4_bestellstart/PM_Kia_EV4_und_EV4%20Fastback_ab_sofort_bestellbar.pdf",
+    "sourceTitle": "Wegweisende E-Kompaktwagen: Kia EV4 und EV4 Fastback ab sofort bestellbar",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Sériový sedan a evropské objednávky v roce 2025.",
+    "notes": "Fastback má čtyři dveře, jde o sedan. Nepovažovat jej za pětidveřový liftback; výrobce to výslovně rozlišuje.",
+    "replacesSourceNames": [
+      "EV4 (2025)"
+    ]
+  },
+  {
+    "brand": "Polestar",
+    "model": "3",
+    "generation": "I",
+    "name": "I",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.polestar.com/us/news/polestar-3-hits-the-road-first-deliveries-to-customers/",
+    "sourceTitle": "Polestar 3 hits the road: First deliveries to customers",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "První zákaznická předání ve Švédsku v létě 2024.",
+    "notes": "Datum 07.05.2024 na americké stránce znamená 5. července 2024, nikoli 7. května.",
+    "replacesSourceNames": [
+      "3 (2022)"
+    ]
+  },
+  {
+    "brand": "Polestar",
+    "model": "4",
+    "generation": "I",
+    "name": "I · SUV Coupé",
+    "from": 2023,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV kupé"
+    ],
+    "sourceUrl": "https://investors.polestar.com/news-releases/news-release-details/polestar-delivers-first-customer-polestar-4-suv-coupes-europe",
+    "sourceTitle": "Polestar delivers first customer Polestar 4 SUV coupés in Europe",
+    "confidence": "verified",
+    "market": "Čína / Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Čínská výroba od roku 2023; první evropská předání 20. srpna 2024.",
+    "additionalSources": [
+      {
+        "url": "https://media.polestar.com/releases/477",
+        "title": "Polestar 4 is a new breed of SUV coupé"
+      }
+    ],
+    "replacesSourceNames": [
+      "4 (2023)"
+    ]
+  },
+  {
+    "brand": "Polestar",
+    "model": "4",
+    "generation": "I",
+    "name": "I · SUV (nová karoserie 2026)",
+    "from": 2026,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://investors.polestar.com/news-releases/news-release-details/polestar-expands-best-selling-model-line-new-polestar-4-suv-sale",
+    "sourceTitle": "Polestar expands best-selling model line-up – new Polestar 4 SUV on sale from 2 September",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "announced",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Prodej oznámen od 2. září 2026; dodávky plánovány na 4. čtvrtletí 2026.",
+    "notes": "Nová karoserie vedle SUV Coupé. K datu 4. září není v použitém zdroji potvrzeno zákaznické dodání; neoznačovat jako již dodávané.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Smart",
+    "model": "#5",
+    "generation": "I",
+    "name": "I",
+    "from": 2025,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://media.smart.com/de-DE/260877-mit-spannung-erwartet-smart-5-startet-in-deutschland-und-eroffnet-ein-neues-segment-fur-die-marke/",
+    "sourceTitle": "Mit Spannung erwartet: smart #5 startet in Deutschland und eröffnet ein neues Segment für die Marke",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Evropský prodej od dubna 2025.",
+    "notes": "Tento záznam vymezuje evropské provedení; premiéra globálního vozu v roce 2024 není evropský prodej.",
+    "replacesSourceNames": [
+      "5 (2024)"
+    ]
+  },
+  {
+    "brand": "Renault",
+    "model": "Symbioz",
+    "generation": "I",
+    "name": "I",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://media.renault.com/orders-open-for-renault-symbioz-in-france/",
+    "sourceTitle": "Orders open for Renault Symbioz in France",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Premiéra 2. května 2024; dodávky od začátku září 2024.",
+    "replacesSourceNames": [
+      "Symbioz (2024)"
+    ]
+  },
+  {
+    "brand": "Renault",
+    "model": "Rafale",
+    "generation": "I",
+    "name": "I",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV kupé"
+    ],
+    "sourceUrl": "https://media.renault.com/ouverture-des-commandes-de-rafale-e-tech-full-hybrid-en-france/?lang=fra",
+    "sourceTitle": "Ouverture des commandes de Rafale E-Tech full hybrid en France",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Objednávky a evropské uvedení v roce 2024.",
+    "notes": "Světová premiéra byla 18. června 2023; neztotožňovat s rokem zahájení prodeje.",
+    "replacesSourceNames": [
+      "Rafale (2023)"
+    ]
+  },
+  {
+    "brand": "Renault",
+    "model": "Scenic",
+    "generation": "V",
+    "name": "V · E-Tech electric",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://media.renault.com/nouveau-scenic-e-tech-electric-produit-en-france-est-disponible-a-la-commande-a-partir-de-39-900-euros-et-eligible-au-bonus-ecologique-2024/?lang=fra",
+    "sourceTitle": "Scenic E-Tech electric, produit en France est disponible à la commande à partir de 39 990 euros et éligible au bonus écologique 2024",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Objednávky od ledna 2024; dodávky od jara 2024.",
+    "notes": "Nová elektrická karoserie nahrazuje dřívější MPV. Výbavové aktualizace 2025 a 2026 nejsou samostatné facelifty.",
+    "replacesSourceNames": [
+      "Scenic (2023)"
+    ]
+  },
+  {
+    "brand": "Renault",
+    "model": "Captur",
+    "generation": "II",
+    "name": "II · facelift 2024",
+    "from": 2024,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://media.renault.com/new-renault-captur-the-b-segment-voiture-a-vivre/?lang=eng",
+    "sourceTitle": "New Renault Captur: The B-segment “voiture à vivre”",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Evropská nabídka od dubna 2024; první dodávky v létě 2024.",
+    "additionalSources": [
+      {
+        "url": "https://media.renault.com/ouverture-des-commandes-de-nouveau-captur-en-france/?lang=fra",
+        "title": "Ouverture des commandes de Nouveau Captur en France"
+      }
+    ],
+    "replacesSourceNames": [
+      "Captur (2024)"
+    ]
+  },
+  {
+    "brand": "Renault",
+    "model": "Austral",
+    "generation": "I",
+    "name": "I · facelift 2025",
+    "from": 2025,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://media.renault.com/renault-offre-encore-plus-de-valeur-client-sur-le-haut-de-gamme/?lang=fra",
+    "sourceTitle": "Ouverture des commandes des nouveaux Renault Austral et Espace : encore plus de valeur client sur le haut de gamme",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Objednávky od 8. dubna 2025; první dodávky před létem 2025.",
+    "replacesSourceNames": [
+      "Austral (2025)"
+    ]
+  },
+  {
+    "brand": "Renault",
+    "model": "Espace",
+    "generation": "VI",
+    "name": "VI · facelift 2025",
+    "from": 2025,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://media.renault.com/renault-offre-encore-plus-de-valeur-client-sur-le-haut-de-gamme/?lang=fra",
+    "sourceTitle": "Ouverture des commandes des nouveaux Renault Austral et Espace : encore plus de valeur client sur le haut de gamme",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Objednávky od 8. dubna 2025; první dodávky před létem 2025.",
+    "notes": "Pět nebo sedm sedadel v jedné karoserii SUV; nejsou to samostatné generace.",
+    "replacesSourceNames": [
+      "Espace (2025)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Tayron",
+    "generation": "II",
+    "name": "II · evropské provedení",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/press-releases/new-suv-from-wolfsburg-the-volkswagen-tayron-is-now-rolling-off-the-production-line-at-volkswagens-main-plant-18845",
+    "sourceTitle": "New SUV from Wolfsburg: the Volkswagen Tayron is now rolling off the production line at Volkswagen’s main plant",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Sériová výroba od listopadu 2024; evropský trh od března 2025.",
+    "notes": "První Tayron pro Evropu, ale modelové jméno má předchozí čínskou generaci.",
+    "additionalSources": [
+      {
+        "url": "https://www.volkswagen-newsroom.com/en/press-releases/market-launch-of-the-new-tayron-more-space-for-everyone-and-everything-19129",
+        "title": "Market launch of the new Tayron: more space for everyone and everything"
+      }
+    ],
+    "replacesSourceNames": [
+      "Tayron (2025)"
+    ]
+  },
+  {
+    "brand": "Audi",
+    "model": "A5",
+    "generation": "B10",
+    "name": "III · B10",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "Liftback",
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.audi.com/en/press-releases/the-new-audi-a5-models-modern-sportiness-meets-premium-proportions-16104",
+    "sourceTitle": "The new Audi A5 models: modern sportiness meets premium proportions",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Evropský trh od listopadu 2024.",
+    "notes": "Evropský Sedan má zadní výklopné dveře včetně okna, konstrukčně liftback; Avant je kombi. Nenabízet automaticky kupé ani kabriolet z předchozí generace.",
+    "replacesSourceNames": [
+      "A5 Sedan (2024)",
+      "A5 Avant (2024)"
+    ]
+  },
+  {
+    "brand": "Audi",
+    "model": "Q5",
+    "generation": "III",
+    "name": "III · SUV",
+    "from": 2025,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.audi.com/en/press-releases/the-new-audi-q5-suv-proven-concept-in-its-third-generation-16232?node=34915",
+    "sourceTitle": "The new Audi Q5 SUV: proven concept in its third generation",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Objednávky od září 2024; evropský trh 1. čtvrtletí 2025.",
+    "replacesSourceNames": [
+      "Q5 (2024)"
+    ]
+  },
+  {
+    "brand": "Audi",
+    "model": "Q5",
+    "generation": "III",
+    "name": "III · Sportback",
+    "from": 2025,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV kupé"
+    ],
+    "sourceUrl": "https://www.audi.com/en/press-releases/dynamic-and-versatile-the-second-generation-audi-q5-sportback-16405",
+    "sourceTitle": "Dynamic and versatile: the second-generation Audi Q5 Sportback",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Objednávky od prosince 2024; evropské uvedení v roce 2025.",
+    "notes": "Druhá generace karoserie Sportback, současně třetí rodina Q5. Nejde o čtvrtou generaci Q5.",
+    "additionalSources": [
+      {
+        "url": "https://prensa.audi.es/2025/03/03/audi-q5-suv-y-q5-sportback-la-nueva-generacion-de-un-superventas/",
+        "title": "Audi Q5 SUV y Q5 Sportback: la nueva generación de un superventas"
+      }
+    ],
+    "replacesSourceNames": [
+      "Q5 Sportback (2024)"
+    ]
+  },
+  {
+    "brand": "Audi",
+    "model": "Q6 e-tron",
+    "generation": "I",
+    "name": "I · SUV",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.audi.com/en/press-releases/experience-vorsprung-durch-technik-the-new-audi-q6-e-tron-15923",
+    "sourceTitle": "Experience Vorsprung durch Technik: the new Audi Q6 e-tron",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Objednávky od března 2024; dodávky od 3. čtvrtletí 2024.",
+    "replacesSourceNames": [
+      "Q6 (2024)"
+    ]
+  },
+  {
+    "brand": "Audi",
+    "model": "Q6 e-tron",
+    "generation": "I",
+    "name": "I · Sportback",
+    "from": 2025,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV kupé"
+    ],
+    "sourceUrl": "https://www.audi.com/en/press-releases/exciting-design-and-longest-range-in-the-model-family-the-new-audi-q6-sportback-e-tron-16295",
+    "sourceTitle": "Exciting design and longest range in the model family: the new Audi Q6 Sportback e-tron",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Objednávky na přelomu 2024/2025; uvedení karoserie v roce 2025.",
+    "replacesSourceNames": [
+      "Q6 Sportback (2024)"
+    ]
+  },
+  {
+    "brand": "BYD",
+    "model": "Seal U",
+    "generation": "I",
+    "name": "I · evropské provedení",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.byd.com/us/news-list/BYD-expands-European-portfolio-with-new-BYD-SEAL-U",
+    "sourceTitle": "BYD expands European portfolio with new BYD SEAL U: practical, spacious, comfortable, family-oriented and eco-conscious electric SUV",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Evropské dodávky od února 2024.",
+    "notes": "EV a DM-i jsou různé pohony; nejsou samostatná karoserie. Čínské související řady Song se nepřenášejí automaticky.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "BYD",
+    "model": "Tang",
+    "generation": "II",
+    "name": "II · evropský facelift 2024",
+    "from": 2024,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://media.byd.com/all-new-pure-electric-suv-byd-tang-advances-sustainable-goals-at-uefa-euro-2024tm/?lang=eng",
+    "sourceTitle": "All New Pure Electric SUV BYD TANG Advances Sustainable Goals at UEFA EURO 2024TM",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Evropské uvedení modernizace ve 3. čtvrtletí 2024.",
+    "notes": "Výrobce používá marketingové all new; vůz navazuje na druhou konstrukční generaci. Tento záznam označuje evropskou modernizaci, nikoli třetí konstrukční generaci.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "BYD",
+    "model": "Atto 3",
+    "generation": "I",
+    "name": "I · facelift 2025",
+    "from": 2025,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.byd.com/content/dam/byd-site/nl/pdfs/new-pricelist/Prijslijst_BYD_ATTO_3_MY25.pdf",
+    "sourceTitle": "Prijslijst BYD ATTO 3 MY25 per 18-04-2025 (01-06-2025)",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-04",
+    "startBasis": "Evropské provedení MY2025 doloženo ceníkem od dubna 2025.",
+    "notes": "Facelift výslovně potvrzen také oficiálním evropským ceníkem 2026.",
+    "additionalSources": [
+      {
+        "url": "https://www.byd.com/material/byd-site/fi/pdfs/042026/Pricelist%20PP_15.4.2026.pdf",
+        "title": "BYD Suositushinnasto 15.4.2026"
+      }
+    ],
+    "replacesSourceNames": [
+      "ATTO 3 (2025)"
+    ]
+  },
+  {
+    "brand": "Toyota",
+    "model": "Proace",
+    "generation": "I",
+    "name": "I",
+    "from": 2013,
+    "to": 2016,
+    "facelift": false,
+    "bodyStyles": [
+      "Dodávka"
+    ],
+    "sourceUrl": "https://media.toyota.co.uk/wp-content/uploads/sites/5/pdf/Proace-Gen1-archive-press-pack.pdf",
+    "sourceTitle": "Proace – first generation archive press pack",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "První generace uvedena ve Spojeném království v červenci 2013.",
+    "notes": "Rozsah první fáze ukončen rokem příchodu druhé generace; přechodové ročníky mohou obsahovat obě generace.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Toyota",
+    "model": "Proace",
+    "generation": "II",
+    "name": "II · Van / Combi",
+    "from": 2016,
+    "to": 2024,
+    "facelift": false,
+    "bodyStyles": [
+      "Dodávka",
+      "Dvojkabina",
+      "Minibus",
+      "Podvozek s kabinou",
+      "Prosklená dodávka"
+    ],
+    "sourceUrl": "https://media.toyota.co.uk/the-new-toyota-proace-van/",
+    "sourceTitle": "The New Toyota Proace Van",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Evropské představení v březnu 2016; britské uvedení v září 2016.",
+    "bodyVariants": [
+      "Dodávka Compact / Medium / Long",
+      "Prosklená a poloprosklená dodávka",
+      "Crew Cab",
+      "Combi",
+      "Platform Cab"
+    ],
+    "notes": "Zdroj rozlišuje skříňový, poloprosklený a prosklený vůz, dvojkabinu, Combi a podvozek. Uvedené délky a karoserie nejsou automaticky všechny vzájemně kombinovatelné.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Toyota",
+    "model": "Proace",
+    "generation": "II",
+    "name": "II · facelift 2024 · Van / Verso",
+    "from": 2024,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "Dodávka",
+      "Dvojkabina",
+      "MPV",
+      "Podvozek s kabinou"
+    ],
+    "sourceUrl": "https://newsroom.toyota.eu/toyota-proace-and-proace-city-raise-their-game-with-all-round-enhancements/",
+    "sourceTitle": "TOYOTA PROACE AND PROACE CITY RAISE THEIR GAME WITH ALL-ROUND ENHANCEMENTS",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Modernizované evropské provedení pro rok 2024.",
+    "bodyVariants": [
+      "Medium",
+      "Long",
+      "Crew Cab",
+      "Verso",
+      "Platform Cab"
+    ],
+    "notes": "Změněné čelo Proace a osobního Proace Verso. Proace City a Proace Max jsou samostatné příbuzné modely, jejich karoserie zde nejsou přiřazeny k Proace.",
+    "additionalSources": [
+      {
+        "url": "https://media.toyota.co.uk/toyota-introduces-the-2024-proace-and-proace-city-vans/",
+        "title": "Toyota introduces the 2024 Proace and Proace City vans"
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Volvo",
+    "model": "EX40",
+    "generation": "I",
+    "name": "I · přejmenovaný XC40 Recharge",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.volvocars.com/fr/media/press-releases/91BFCA2C37751EAA/",
+    "sourceTitle": "Volvo Cars fait évoluer ses modèles 100 % électriques et micro-hybrides et harmonise les noms de ses modèles pour plus de transparence",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Přejmenování a otevření evropských objednávek 20. února 2024.",
+    "notes": "EX40 pokračuje v konstrukční generaci elektrického XC40 Recharge. Změna názvu není samostatným faceliftem ani novou konstrukční generací.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Citroën",
+    "model": "C4 X",
+    "generation": "I",
+    "name": "I",
+    "from": 2022,
+    "to": 2025,
+    "facelift": false,
+    "bodyStyles": [
+      "Sedan"
+    ],
+    "sourceUrl": "https://www.media.stellantis.com/em-en/citroen/press/challenging-the-norm-new-citroen-all-electric-e-c4-x-and-c4-x-fuse-fastback-elegance-with-4-door-finesse-and-a-twist-of-suv-attitude",
+    "sourceTitle": "CHALLENGING THE NORM: NEW CITROËN ALL-ELECTRIC Ë-C4 X AND C4 X FUSE FASTBACK ELEGANCE WITH 4-DOOR FINESSE AND A TWIST OF SUV ATTITUDE",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Premiéra 29. června 2022; zahájení prodeje od podzimu 2022.",
+    "notes": "Čtyřdveřová karoserie se samostatným víkem zavazadlového prostoru. Označení fastback popisuje siluetu, nejde o pětidveřový liftback.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Citroën",
+    "model": "C4 X",
+    "generation": "I",
+    "name": "I · facelift 2025",
+    "from": 2025,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "Sedan"
+    ],
+    "sourceUrl": "https://www.media.stellantis.com/uk-en/citroen/press/citroen-announces-new-c4-c4-x-pricing-opening-of-orders",
+    "sourceTitle": "CITROËN ANNOUNCES NEW C4 & C4 X PRICING & OPENING OF ORDERS",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Premiéra na podzim 2024; první zákaznické dodávky od začátku 2025.",
+    "notes": "Modernizované čelo a další designové změny. Objednávky otevřeny v prosinci 2024; záznam používá rok prvních dodávek.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Citroën",
+    "model": "SpaceTourer",
+    "generation": "I",
+    "name": "I",
+    "from": 2016,
+    "to": 2024,
+    "facelift": false,
+    "bodyStyles": [
+      "MPV"
+    ],
+    "sourceUrl": "https://www.media.stellantis.com/uk-en/citroen/press/citroen-to-unveil-versatile-new-spacetourer-in-geneva",
+    "sourceTitle": "CITROËN TO UNVEIL VERSATILE NEW SPACETOURER IN GENEVA",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Uvedení první generace v roce 2016.",
+    "bodyVariants": [
+      "XS (4,60 m)",
+      "M (4,95 m)",
+      "XL (5,30 m)"
+    ],
+    "notes": "Tři délky karoserie, dva rozvory, až devět míst. Počty sedadel ani výbavy nevytvářejí další generace.",
+    "additionalSources": [
+      {
+        "url": "https://www.media.stellantis.com/uk-en/citroen/press/citroen-unveils-three-world-premieres-at-the-2016-paris-motor-show",
+        "title": "CITROËN UNVEILS THREE WORLD PREMIERES AT THE 2016 PARIS MOTOR SHOW"
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Citroën",
+    "model": "SpaceTourer",
+    "generation": "I",
+    "name": "I · facelift 2024",
+    "from": 2024,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "MPV"
+    ],
+    "sourceUrl": "https://www.media.stellantis.com/cz-cs/citroen/press/novy-citroen-spacetourer-pohodlny-obyvak-na-kolech-s-online-pripojenim-a-vyraznym-stylem",
+    "sourceTitle": "NOVÝ CITROEN SPACETOURER: POHODLNÝ OBÝVÁK NA KOLECH S ONLINE PŘIPOJENÍM A VÝRAZNÝM STYLEM",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Modernizace představena v lednu 2024; objednávky od března 2024.",
+    "bodyVariants": [
+      "M (4,98 m)",
+      "XL (5,33 m)"
+    ],
+    "notes": "Dvě délky modernizované karoserie; původní XS v doložené faceliftové nabídce není.",
+    "additionalSources": [
+      {
+        "url": "https://o.media.stellantis.com/uk-en/citroen/press/citroen-opens-orders-for-new-e-berlingo-and-new-e-spacetourer",
+        "title": "CITROËN OPENS ORDERS FOR NEW Ë-BERLINGO AND NEW Ë-SPACETOURER"
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Fiat",
+    "model": "Ducato",
+    "generation": "280",
+    "name": "I · typ 280",
+    "from": 1981,
+    "to": 1990,
+    "facelift": false,
+    "bodyStyles": [
+      "Dodávka",
+      "Minibus",
+      "Valník"
+    ],
+    "sourceUrl": "https://www.media.stellantis.com/de-de/fiat-professional/press/23-oktober-1981-die-geburtsstunde-des-fiat-ducato",
+    "sourceTitle": "23. Oktober 1981 – die Geburtsstunde des Fiat Ducato",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Výroba od 23. října 1981; německý prodej od 1982.",
+    "bodyVariants": [
+      "Kastenwagen",
+      "Kombi",
+      "Bus / Panorama",
+      "Pritsche"
+    ],
+    "notes": "Označení I/II/III zde sleduje konstrukční řady; Fiat ve výročních zprávách čísluje i modernizace jako další generace či série. Kódy a roky oddělují jednotlivé vzhledové fáze. Původní nabídka měla dvě výšky střechy a dva rozvory.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Fiat",
+    "model": "Ducato",
+    "generation": "290",
+    "name": "I · typ 290 · facelift 1990",
+    "from": 1990,
+    "to": 1994,
+    "facelift": true,
+    "bodyStyles": [
+      "Dodávka"
+    ],
+    "sourceUrl": "https://www.media.stellantis.com/de-de/fiat-professional/press/23-oktober-1981-die-geburtsstunde-des-fiat-ducato",
+    "sourceTitle": "23. Oktober 1981 – die Geburtsstunde des Fiat Ducato",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Výrobce uvádí typ 290 v období 1990–1994.",
+    "notes": "Označení I/II/III zde sleduje konstrukční řady; Fiat ve výročních zprávách čísluje i modernizace jako další generace či série. Kódy a roky oddělují jednotlivé vzhledové fáze. Zdroj obsahuje v následné větě rozpor 1994 versus nadpis období 1990–1994; používáme shodný rozsah německého nadpisu a anglické historie. Úplný výčet osobních a podvozkových variant této fáze není tímto záznamem ověřen.",
+    "additionalSources": [
+      {
+        "url": "https://www.media.stellantis.com/em-en/fiat-professional/press/the-legendary-ducato-was-born-on-october-23-1981",
+        "title": "The legendary Ducato was born on October 23, 1981"
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Fiat",
+    "model": "Ducato",
+    "generation": "230",
+    "name": "II · typ 230",
+    "from": 1994,
+    "to": 2002,
+    "facelift": false,
+    "bodyStyles": [
+      "Dodávka"
+    ],
+    "sourceUrl": "https://www.media.stellantis.com/de-de/fiat-professional/press/23-oktober-1981-die-geburtsstunde-des-fiat-ducato",
+    "sourceTitle": "23. Oktober 1981 – die Geburtsstunde des Fiat Ducato",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Nová konstrukční řada uvedena v roce 1994.",
+    "notes": "Označení I/II/III zde sleduje konstrukční řady; Fiat ve výročních zprávách čísluje i modernizace jako další generace či série. Kódy a roky oddělují jednotlivé vzhledové fáze. Tři výšky střechy doloženy zdrojem. Úplný historický výčet karoserií řady 230 nebyl tímto dodatkem ověřen.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Fiat",
+    "model": "Ducato",
+    "generation": "244",
+    "name": "II · typ 244 · facelift 2002",
+    "from": 2002,
+    "to": 2006,
+    "facelift": true,
+    "bodyStyles": [
+      "Dodávka",
+      "Minibus",
+      "Podvozek s kabinou"
+    ],
+    "sourceUrl": "https://www.media.stellantis.com/em-en/fiat-professional/press/new-fiat-ducato",
+    "sourceTitle": "NEW FIAT DUCATO",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Nový vzhled a interiér uvedeny v únoru 2002.",
+    "notes": "Označení I/II/III zde sleduje konstrukční řady; Fiat ve výročních zprávách čísluje i modernizace jako další generace či série. Kódy a roky oddělují jednotlivé vzhledové fáze. Zdroj rozlišuje přepravu zboží, osob, smíšenou přepravu a základy pro nástavby; čtyři rozvory a tři celkové výšky.",
+    "additionalSources": [
+      {
+        "url": "https://www.media.stellantis.com/de-de/fiat-professional/press/23-oktober-1981-die-geburtsstunde-des-fiat-ducato",
+        "title": "23. Oktober 1981 – die Geburtsstunde des Fiat Ducato"
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Fiat",
+    "model": "Ducato",
+    "generation": "250",
+    "name": "III · typ 250",
+    "from": 2006,
+    "to": 2014,
+    "facelift": false,
+    "bodyStyles": [
+      "Dodávka",
+      "Minibus",
+      "Valník",
+      "Valník s dvojkabinou",
+      "Podvozek s kabinou",
+      "Podvozek s dvojkabinou"
+    ],
+    "sourceUrl": "https://www.media.stellantis.com/uk-en/fiat-professional/press/new-fiat-ducato-on-sale-in-uk",
+    "sourceTitle": "NEW FIAT DUCATO ON SALE IN UK",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Nová konstrukční generace uvedena v roce 2006; britský prodej od 6. října.",
+    "notes": "Označení I/II/III zde sleduje konstrukční řady; Fiat ve výročních zprávách čísluje i modernizace jako další generace či série. Kódy a roky oddělují jednotlivé vzhledové fáze. Zdroj výslovně uvádí panel van, dropside truck, crew cab truck, chassis cab a devítimístný Combinato.",
+    "additionalSources": [
+      {
+        "url": "https://www.media.stellantis.com/de-de/fiat-professional/press/23-oktober-1981-die-geburtsstunde-des-fiat-ducato",
+        "title": "23. Oktober 1981 – die Geburtsstunde des Fiat Ducato"
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Fiat",
+    "model": "Ducato",
+    "generation": "250/290",
+    "name": "III · facelift 2014",
+    "from": 2014,
+    "to": 2021,
+    "facelift": true,
+    "bodyStyles": [
+      "Dodávka",
+      "Minibus",
+      "Valník",
+      "Valník s dvojkabinou",
+      "Podvozek s kabinou",
+      "Podvozek s dvojkabinou"
+    ],
+    "sourceUrl": "https://www.media.stellantis.com/uk-en/fiat-professional/press/the-2014-fiat-ducato-more-technology-more-efficiency-more-value",
+    "sourceTitle": "THE 2014 FIAT DUCATO: MORE TECHNOLOGY, MORE EFFICIENCY, MORE VALUE",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Modernizace uvedena v květnu 2014.",
+    "notes": "Označení I/II/III zde sleduje konstrukční řady; Fiat ve výročních zprávách čísluje i modernizace jako další generace či série. Kódy a roky oddělují jednotlivé vzhledové fáze. Nové čelo, světlomety, maska, nárazník a kapota; zachovaná základní konstrukce řady 250.",
+    "additionalSources": [
+      {
+        "url": "https://www.media.stellantis.com/uk-en/fiat-professional/press/2014-a-record-year-for-fiat-professional",
+        "title": "2014: A RECORD YEAR FOR FIAT PROFESSIONAL"
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Fiat",
+    "model": "Ducato",
+    "generation": "250/290",
+    "name": "III · facelift 2021",
+    "from": 2021,
+    "to": 2024,
+    "facelift": true,
+    "bodyStyles": [
+      "Dodávka",
+      "Podvozek s kabinou"
+    ],
+    "sourceUrl": "https://www.media.stellantis.com/uk-en/fiat-professional/press/fiat-professional-opens-orders-for-the-new-ducato",
+    "sourceTitle": "FIAT PROFESSIONAL OPENS ORDERS FOR THE NEW DUCATO",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Objednávky modernizovaného vozu otevřeny v květnu/červnu 2021.",
+    "notes": "Označení I/II/III zde sleduje konstrukční řady; Fiat ve výročních zprávách čísluje i modernizace jako další generace či série. Kódy a roky oddělují jednotlivé vzhledové fáze. Obnova vnějšího vzhledu včetně nové masky a loga, nový interiér. Tato fáze neobsahuje neověřené kombinace podvozků a nástaveb.",
+    "additionalSources": [
+      {
+        "url": "https://www.media.stellantis.com/em-en/fiat-professional/press/new-ducato-2021-a-development-in-technology-and-style-for-the-world-of-recreational-vehicles",
+        "title": "New Ducato 2021: a development in technology and style for the world of Recreational Vehicles"
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Fiat",
+    "model": "Ducato",
+    "generation": "250/290",
+    "name": "III · facelift 2024",
+    "from": 2024,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "Dodávka",
+      "Prosklená dodávka",
+      "Podvozek s kabinou"
+    ],
+    "sourceUrl": "https://www.media.stellantis.com/uk-en/fiat-professional/press/price-and-specification-announced-for-new-fiat-professional-lcv-range",
+    "sourceTitle": "Price and Specification announced for new FIAT Professional LCV range",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Model MY24; evropská nabídka a ceníky v březnu 2024.",
+    "bodyVariants": [
+      "Panel Van L2 / L3 / L4",
+      "Window Van L3 / L4",
+      "Chassis Cab"
+    ],
+    "notes": "Označení I/II/III zde sleduje konstrukční řady; Fiat ve výročních zprávách čísluje i modernizace jako další generace či série. Kódy a roky oddělují jednotlivé vzhledové fáze. Nová maska a nárazník modelu MY24. Délky L a výšky H závisí na konkrétní karoserii; nejde o všechny vzájemné kombinace. Window Van je doložená prosklená dodávka; tento zdroj nepotvrzuje počet sedadel ani hotový osobní minibus.",
+    "additionalSources": [
+      {
+        "url": "https://www.media.stellantis.com/uk-en/fiat-professional/press/fiat-professional-unveils-the-new-lineup-a-new-generation-at-work",
+        "title": "FIAT Professional unveils the new lineup: a new generation at work"
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "BYD",
+    "model": "Seal",
+    "generation": "I",
+    "name": "I · evropské provedení",
+    "from": 2023,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "Sedan"
+    ],
+    "sourceUrl": "https://www.byd.com/eu/news-list/BYD_Introduces_Two_New_Full-electric_Vehicles_in_Europe_BYD_DOLPHIN_and_BYD_SEAL",
+    "sourceTitle": "BYD Introduces Two New Full-electric Vehicles in Europe: BYD DOLPHIN and BYD SEAL",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Evropské uvedení od září 2023.",
+    "notes": "Tento záznam používá rok evropského uvedení. Neztotožňovat se starším zahájením čínského prodeje.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "BYD",
+    "model": "Han",
+    "generation": "I",
+    "name": "I · evropské provedení",
+    "from": 2022,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "Sedan"
+    ],
+    "sourceUrl": "https://www.byd.com/eu/news-list/BYD-Enters-Passenger-Car-Dealer-Partnership-with-Inchcape-for-Belgium-and-Luxembourg.html",
+    "sourceTitle": "BYD Enters Passenger Car Dealer Partnership with Inchcape for Belgium and Luxembourg",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Evropská prodejní síť od října 2022; první dodávky v posledním čtvrtletí 2022.",
+    "notes": "Evropské uvedení je pozdější než uvedení v Číně. Čínské následné facelifty nelze bez ověření přenášet na evropskou nabídku.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "BYD",
+    "model": "Tang",
+    "generation": "II",
+    "name": "II · evropské provedení před modernizací",
+    "from": 2021,
+    "to": 2024,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://media.byd.com/all-new-pure-electric-suv-byd-tang-advances-sustainable-goals-at-uefa-euro-2024tm/?lang=eng",
+    "sourceTitle": "All New Pure Electric SUV BYD TANG Advances Sustainable Goals at UEFA EURO 2024TM",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Evropský předchůdce modernizace 2024 byl uveden v roce 2021.",
+    "notes": "Sedmimístné SUV. Rok 2021 je evropské uvedení (Norsko), nikoli celosvětový vznik druhé konstrukční generace.",
+    "additionalSources": [
+      {
+        "url": "https://www.byd.com/eu/news-list/BYD-Enters-Passenger-Car-Dealer-Partnership-with-Inchcape-for-Belgium-and-Luxembourg.html",
+        "title": "BYD Enters Passenger Car Dealer Partnership with Inchcape for Belgium and Luxembourg"
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "MG",
+    "model": "Cyberster",
+    "generation": "I",
+    "name": "I · evropské provedení",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "Roadster"
+    ],
+    "sourceUrl": "https://news.mgmotor.eu/fr/press/mg-cyberster-ouverture-des-commandes-pour-le-premier-roadster-100-electrique-de-serie/",
+    "sourceTitle": "MG Cyberster : ouverture des commandes pour le premier roadster 100% électrique de série",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Francouzské objednávky od října 2024; první dodávky od poloviny listopadu 2024.",
+    "notes": "Dvoumístný elektrický roadster se skládací střechou. Rok je vymezen evropským uvedením; čínský prodej začal dříve.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Isuzu",
+    "model": "MU-X",
+    "generation": "I",
+    "name": "I",
+    "from": 2013,
+    "to": 2017,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.isuzuute.com.au/discover/history-timeline",
+    "sourceTitle": "Our History | Isuzu UTE Australia",
+    "confidence": "verified",
+    "market": "Austrálie / Asie",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "První generace: australský prodej od prosince 2013.",
+    "notes": "Sedmimístné rámové SUV. Australské období této původní vzhledové fáze končí modernizací 2017.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Isuzu",
+    "model": "MU-X",
+    "generation": "I",
+    "name": "I · facelift 2017",
+    "from": 2017,
+    "to": 2021,
+    "facelift": true,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.isuzuute.com.au/discover/news/say-hello-to-the-new-look-pumped-up-isuzu-mu-x",
+    "sourceTitle": "SAY HELLO TO THE NEW-LOOK “PUMPED UP” ISUZU MU-X",
+    "confidence": "verified",
+    "market": "Austrálie",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Modernizace australské nabídky oznámena 12. května 2017.",
+    "notes": "Nová maska, světlomety a upravený interiér. Druhá generace dorazila do Austrálie v roce 2021; v Thajsku již 2020.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Isuzu",
+    "model": "MU-X",
+    "generation": "II",
+    "name": "II",
+    "from": 2020,
+    "to": 2025,
+    "facelift": false,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.isuzu.co.jp/technical-journal/pdf/tj133_all.pdf",
+    "sourceTitle": "Development of New MU-X | Isuzu Technical Journal",
+    "confidence": "verified",
+    "market": "Thajsko / Austrálie",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Nová generace v thajském prodeji od listopadu 2020; Austrálie od 2021.",
+    "notes": "Generační změna po sedmi letech; sedmimístné rámové SUV. Zde uvedené období končí australskou modernizací 2025, nikoli potvrzeným globálním koncem výroby.",
+    "additionalSources": [
+      {
+        "url": "https://www.isuzuute.com.au/discover/history-timeline",
+        "title": "Our History | Isuzu UTE Australia"
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Isuzu",
+    "model": "MU-X",
+    "generation": "II",
+    "name": "II · facelift 2025 (Austrálie)",
+    "from": 2025,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "SUV"
+    ],
+    "sourceUrl": "https://www.isuzuute.com.au/discover/news/2025-isuzu-mu-x",
+    "sourceTitle": "Driven By Feedback, Designed For Adventure: The Updated 2025 MU-X",
+    "confidence": "verified",
+    "market": "Austrálie",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Australské objednávky a uvedení od 1. března 2025.",
+    "notes": "Výrobce výslovně označuje midlife facelift. Rok vymezuje australskou nabídku; dřívější asijské představení není tímto záznamem datováno.",
+    "additionalSources": [
+      {
+        "url": "https://www.isuzuute.com.au/discover/news/25my-mu-x-sales-record",
+        "title": "25MY MU-X SUV Sales Record"
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Isuzu",
+    "model": "D-Max",
+    "generation": "III",
+    "name": "III",
+    "from": 2019,
+    "to": 2024,
+    "facelift": false,
+    "bodyStyles": [
+      "Pick-up Single Cab",
+      "Pick-up Extra Cab",
+      "Pick-up Double Cab"
+    ],
+    "sourceUrl": "https://www.isuzu.co.jp/world/company/investor/financial/pdf/annual20e_all.pdf",
+    "sourceTitle": "ISUZU Annual Report 2020",
+    "confidence": "verified",
+    "market": "Thajsko / Austrálie",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Premiéra a thajské uvedení v říjnu 2019; Austrálie od srpna 2020.",
+    "bodyVariants": [
+      "Single Cab",
+      "Space Cab",
+      "Crew Cab"
+    ],
+    "notes": "Tři odlišné kabiny. Odlišné rozměry korby a kabiny nejsou sloučeny do jedné univerzální karoserie. Modelový rok 2021 se prodával již v roce 2020.",
+    "additionalSources": [
+      {
+        "url": "https://www.isuzuute.com.au/discover/news/the-all-new-d-max-has-been-revealed",
+        "title": "The All-New D-MAX Has Been Revealed"
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Isuzu",
+    "model": "D-Max",
+    "generation": "III",
+    "name": "III · facelift 2024 (Austrálie)",
+    "from": 2024,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "Pick-up Single Cab",
+      "Pick-up Extra Cab",
+      "Pick-up Double Cab"
+    ],
+    "sourceUrl": "https://www.isuzuute.com.au/discover/news/2024-isuzu-d-max-ute",
+    "sourceTitle": "2024 Isuzu D-MAX Ute: Features & Updates",
+    "confidence": "verified",
+    "market": "Austrálie",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Australský prodej modernizace od 1. května 2024.",
+    "bodyVariants": [
+      "Single Cab",
+      "Space Cab",
+      "Crew Cab"
+    ],
+    "notes": "Nová maska, nárazník, kapota a víko korby. Rok odpovídá australskému uvedení; globální premiéra proběhla dříve. Změny motorů v roce 2025 nejsou zde další facelift.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Ford",
+    "model": "Transit",
+    "generation": "V363",
+    "name": "V363 · velký Transit",
+    "from": 2014,
+    "to": 2019,
+    "facelift": false,
+    "bodyStyles": [
+      "Dodávka",
+      "Dvojkabina",
+      "Podvozek s kabinou",
+      "Podvozek s dvojkabinou",
+      "Minibus"
+    ],
+    "sourceUrl": "https://media.ford.com/content/fordmedia/feu/gb/en/news/2014/09/22/ford-reveals-extended-all-new-transit-line-up-at-hannover--compl.html",
+    "sourceTitle": "Ford Reveals Extended All-New Transit Line-up at Hannover; Completes Renewal of Commercial Vehicle Range for Europe",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "První evropské výrobní a zákaznické vozy na jaře 2014; rozšíření karoserií na podzim 2014.",
+    "bodyVariants": [
+      "Van",
+      "Double Cab-in-Van",
+      "Kombi",
+      "Kombi Van",
+      "Minibus",
+      "Chassis Cab",
+      "Chassis Double Cab"
+    ],
+    "notes": "Plnohodnotný velký dvoutunový Transit. Transit Custom, Connect a Courier jsou odlišné rodiny; tento záznam je nenahrazuje.",
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Ford",
+    "model": "Transit",
+    "generation": "V363",
+    "name": "V363 · facelift 2019",
+    "from": 2019,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "Dodávka",
+      "Dvojkabina",
+      "Podvozek s kabinou",
+      "Podvozek s dvojkabinou",
+      "Minibus"
+    ],
+    "sourceUrl": "https://media.ford.com/content/fordmedia/feu/en/news/2019/09/23/New-Ford-Transit-Van-Boosts-Productivity.html",
+    "sourceTitle": "New Ford Transit Van Boosts Productivity for Businesses with Enhanced Fuel Efficiency, Payload and Connectivity",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Modernizovaný evropský Transit v prodeji od poloviny roku 2019.",
+    "bodyVariants": [
+      "Van",
+      "Double Cab-in-Van",
+      "Kombi",
+      "Kombi Van",
+      "Minibus",
+      "Chassis Cab",
+      "Chassis Double Cab"
+    ],
+    "notes": "Nové čelo a hliníková kapota, přibližně 4 600 změněných součástí. Modernizace digitální a podvozkové techniky pro rok 2024 není doložena jako nová karoserie nebo další vnější facelift.",
+    "additionalSources": [
+      {
+        "url": "https://media.ford.com/content/fordmedia/feu/gb/en/news/2019/04/30/aerospace-tech-and-optimised-design-boost-payload-on-new-ford-tr.html",
+        "title": "Aerospace Tech and Optimised Design Boost Payload on New Ford Transit"
+      },
+      {
+        "url": "https://media.ford.com/content/fordmedia/feu/en/news/2023/07/18/ford-pro-boosts-productivity-with-new-digital-features-and-enhan.html",
+        "title": "Ford Pro Boosts Productivity with New Digital Features and Enhanced Technology Coming to Ford Transit in 2024"
+      }
+    ],
+    "replacesSourceNames": []
+  },
+  {
+    "brand": "Toyota",
+    "model": "Proace",
+    "generation": "II",
+    "name": "II · Verso",
+    "from": 2016,
+    "to": 2024,
+    "facelift": false,
+    "bodyStyles": [
+      "MPV"
+    ],
+    "sourceUrl": "https://media.toyota.co.uk/wp-content/uploads/sites/5/pdf/211214M-Proace-Verso-Press-Pack.pdf",
+    "sourceTitle": "Proace Verso – Press Pack and historical timeline",
+    "confidence": "verified",
+    "market": "Evropa",
+    "status": "launched",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Premiéra v březnu 2016; britský prodej od listopadu 2016.",
+    "bodyVariants": [
+      "Compact (britská nabídka 2016–2021)",
+      "Medium",
+      "Long"
+    ],
+    "notes": "Osobní MPV Verso je samostatně rozlišené od užitkového Combi a dodávky. Krátká karoserie Compact byla v Británii vypuštěna v srpnu 2021; toto datum není automaticky konec nabídky ve všech zemích.",
+    "additionalSources": [
+      {
+        "url": "https://media.toyota.co.uk/new-toyota-proace-verso/",
+        "title": "New Toyota Proace Verso"
+      }
+    ],
+    "replacesSourceNames": []
+  }
+]

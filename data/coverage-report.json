@@ -1,0 +1,14 @@
+{
+  "stats": {
+    "families": 401,
+    "familiesWithVariants": 401,
+    "variants": 2736,
+    "manufacturerRecords": 180,
+    "unresolvedBodies": 54,
+    "inferredEnds": 75,
+    "openEnds": 446
+  },
+  "missingFamilies": [],
+  "rejectedSourceRows": [],
+  "coverage": "All requested families; historical phases and bodies are not claimed exhaustive or independently verified."
+}

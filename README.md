@@ -1,54 +1,66 @@
-# OARTS · Need For Kola
+# Need For Wheels
 
-Statický web pro custom kovaná kola ve stylu Need For Speed. Bez build kroku, bez závislostí, bez obrázků: auta i kola jsou generovaná jako SVG přímo v prohlížeči.
+Statický web a konfigurátor kol bez build kroku. Fotorealistické rastrové podklady nahrazují původní SVG ilustrace. Interaktivní náhled používá skutečnou 3D geometrii a lokální Three.js r180.
 
-Živě: https://majkpowa.github.io/NeedForKola/
+## Spuštění
 
-## Spuštění lokálně
+Z kořene projektu:
 
-Stačí otevřít `index.html` v prohlížeči. Lokální server je potřeba jen proto, aby tlačítko „Kopírovat odkaz na konfiguraci“ vracelo webovou adresu místo cesty k souboru (z `file://` se místo toho použije veřejná adresa z `O.SITE_URL`):
-
-```bash
-python -m http.server 8080
+```powershell
+python -m http.server 8765 --bind 127.0.0.1
 ```
 
-nebo
+Otevřít http://127.0.0.1:8765/. Kvůli ES modulům a GLB modelu je nutné HTTP; samotné dvojkliknutí na HTML nestačí. Běhové knihovny a média jsou v projektu, bez závislosti na CDN. Fonty Google mají systémové náhrady.
 
-```bash
-npx serve .
+## Co obsahuje
+
+- Značka **Need For Wheels** na všech třech stránkách, studiový vzhled a responzivní rozložení.
+- 13 návrhových designů: otáčení, přiblížení, skutečný límec, konkáv, paprsky, střed a šrouby. Barvy, povrchy, krytky a šířka mění 3D geometrii či materiály.
+- Statické WebP miniatury vyrenderované z téže 3D geometrie, bez mnoha současných WebGL kontextů.
+- Úplný uživatelský seznam: **53 značek, 401 modelů**. Prohledávatelný katalog provedení, karoserií a ročníků do 2026, s odlišením katalogových a výrobcem doložených údajů. Každá z 401 rodin má doložené provedení.
+- BMW X5 E70 (2008) a G05 (2020): dvě odlišné ilustrační rastrové vizualizace. Jde o pevné rendery, barvy ani kola se v těchto dvou obrázcích dynamicky nemění.
+- Samostatný 3D showroom **Ferrari 458 Italia**, skutečný model s výměnou disků a barvy karoserie. Ukázkový vůz se nevydává za vozidlo vybrané v poptávce. Rozměry montáže jsou pouze ilustrační.
+- Originální fotografie, 2 videa a kompletní PDF katalog dodané uživatelem.
+- Zachované rozměry, doplňky, orientační cenový výpočet, souhrn, tisk, e-mailová poptávka a sdílení konfigurace.
+
+## Skutečný rozsah vizualizací
+
+**Projekt neobsahuje přesné 3D modely všech 401 vozů a jejich generací.** U vozů bez podkladu se ukáže tato informace a 3D vybraného disku. Jejich značka, model, rok a doplňující informace zůstávají v souhrnu. Databáze obsahuje přes 2 600 zdrojovaných provedení včetně doplnění z materiálů výrobců. Úplnost všech historických generací, faceliftů a karoserií zatím není ověřena; neurčené karoserie a otevřená období jsou označena. Přechodové roky vyžadují výběr konkrétního provedení. Přesné podklady dalších aut lze přidávat do datového registru a rozšířit loader modelů.
+
+Katalog OARTS obsahuje také litá a flow-forming kola. Webové návrhové designy nejsou vydávány za všechny položky katalogu. FORGED 10 je vizuální interpretace dodané předlohy, nikoli výrobní CAD. Kompatibilita, nosnost, hmotnost a cena se ověřují v technickém výkresu a závazné nabídce. Výchozí rozměry představují zadání k ověření, nikoli homologovaný fitment.
+
+## Soubory
+
+- `index.html`, `konfigurator.html`, `proces.html`: veřejné stránky.
+- `css/premium.css`: nový design, mobilní rozložení a 3D scéna.
+- `js/vehicles.js`: neměnný registr a průniky roku, provedení a karoserie.
+- `js/vehicle-data.js`, `data/vehicle-variants.json`: generovaná databáze pod ODbL 1.0; zdroje a doplnění v `data/`.
+- `js/catalog-browser.js`, `css/catalog.css`: vyhledávání, filtry, stránkování a konkrétní provedení na úvodní stránce.
+- `tools/build-vehicle-data.py`: reprodukovatelný import a audit pokrytí.
+- `js/showroom.js`: geometrie, materiály, glTF loader, orbit ovládání a správa WebGL.
+- `js/wheels.js`: návrhové designy, barevné kombinace, povrchy a příplatky.
+- `js/configurator.js`: stav, validace, URL, poptávka, souhrn a 3D integrace.
+- `assets/`: místní média, model, miniatury a knihovny včetně licenčních souborů.
+- `docs/vehicle-catalog.md`, `docs/media-sources.md`: zdroje a omezení podkladů.
+- `docs/image-prompts.md`: přesné prompty a výstupy vestavěného ImageGen.
+- `docs/3d-assets.md`: 3D API, provenience a licence.
+
+## Kontrola
+
+```powershell
+python tools/check_vehicle_bodies.py
+node tools/check-catalog.cjs
+node tools/check-catalog-browser.cjs
+node tools/check-vehicle-selection.cjs
+node --check js/configurator.js
 ```
 
-## Nasazení (GitHub Pages)
+Pro integrační test je potřeba Playwright a Chrome; proměnná `PLAYWRIGHT_MODULE` může ukazovat na sdílený balíček. Test používá lokální server na portu 8765 (`NFW_BASE_URL` ho může změnit). Snímky se ukládají do `docs/qa/`.
 
-Web se publikuje z větve `main`, složka `/` (kořen). Každý push na `main` spustí nový build, do minuty je změna živě. Soubor `.nojekyll` musí zůstat v kořeni, aby Pages neprocházely soubory Jekyllem.
+## Publikace a kontakty
 
-```bash
-git push origin main
-```
+GitHub Pages publikuje hlavní větev `main` z kořene projektu. Veřejná adresa je `https://majkpowa.github.io/NeedForKola/`; používá se také v canonical a jako nouzová adresa sdílení; obchodní název webu je Need For Wheels. Změna adresy vyžaduje samostatnou konfiguraci hostingu/repozitáře.
 
-Pokud se změní adresa webu (vlastní doména), uprav `O.SITE_URL` v `js/main.js` a odkazy `rel="canonical"` v hlavičkách všech tří HTML stránek.
+Kontakt `info@oarts.cz` a původní telefon jsou zachovány v `js/main.js`; před veřejným spuštěním ověřte jejich platnost a ceny. E-mailové formuláře pouze připraví zprávu v e-mailovém klientu, nepoužívají backend. Kontaktní jméno/e-mail/telefon se do sdílené URL neukládají; modelové a fitment poznámky ano.
 
-## Struktura
-
-| Soubor | Co dělá |
-| --- | --- |
-| `index.html` | Domovská stránka: hero, auta, designy, průběh zakázky, OARTS štítek, kontakt |
-| `konfigurator.html` | Konfigurátor v 5 krocích (auto, design, rozměry, vzhled, souhrn) |
-| `proces.html` | Detailní průběh zakázky v 7 fázích |
-| `css/style.css` | Celý vzhled webu i konfigurátoru |
-| `js/wheels.js` | Katalog designů, barev, povrchů a procedurální SVG renderer kol |
-| `js/cars.js` | Katalog tříd vozů (silueta, pozice kol, fitment) a renderer bočního pohledu |
-| `js/main.js` | Navigace, animace, hero kolo, galerie, generátor OARTS štítku, kontaktní formulář |
-| `js/configurator.js` | Stav konfigurátoru, validace hodnot z URL, cena, váha, souhrn, poptávka e-mailem, sdílení odkazu |
-
-## Co upravit před spuštěním naostro
-
-- **Kontakt**: e-mail a telefon jsou v `js/main.js` (`O.EMAIL`, `O.PHONE`). Poptávky se odesílají přes `mailto:`, takže není potřeba backend.
-- **Ceny**: základ, příplatky za průměr a šířku jsou ve funkci `price()` v `js/configurator.js`. Příplatky designů, povrchů, límců a krytek jsou v katalogu v `js/wheels.js`. Doplňky za sadu v poli `EXTRAS` v `js/configurator.js`.
-- **Fotky a videa**: na stránce `proces.html` jsou šrafovaná pole „Místo pro…“ připravená na reálné záběry z výroby.
-- **Designy**: přidání vzoru = nový záznam v `DESIGNS` v `js/wheels.js` (styl paprsku, počet paprsků, příplatek).
-- **Auta**: přidání třídy = nový záznam v `CARS` v `js/cars.js` (SVG cesty karoserie, pozice kol, výchozí fitment).
-
-## Sdílení konfigurace
-
-Konfigurátor ukládá celý stav do `#hash` v URL. Odkaz zkopírovaný tlačítkem „Kopírovat odkaz na konfiguraci“ otevře přesně stejnou sestavu. Všechny hodnoty z URL se při načtení validují proti katalogu a limitům, takže do stránky nikdy nepronikne cizí obsah. Z domovské stránky lze předvolit auto (`konfigurator.html?car=gt`) nebo design (`konfigurator.html?design=deep7`).
+**Licence modelu Ferrari:** autor a zdroj jsou zachovány, původní modelová licence nebyla ověřitelná (původní odkaz je nedostupný). Před komerční publikací je nutné licenci potvrdit nebo model nahradit licencovaným podkladem. Licence MIT knihovny Three.js sama o sobě není potvrzením licence cizího modelu. Podrobnosti v `docs/3d-assets.md`.

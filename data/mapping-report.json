@@ -1,0 +1,3020 @@
+{
+  "sourceRevision": "b4965631140fa82404359167621274601da69a5b",
+  "requestedFamilies": 401,
+  "mappedFamilies": 390,
+  "sourcePeriodsBeforeDeduplication": 2876,
+  "missingFamilies": [
+    {
+      "id": "toyota/proace",
+      "brand": "Toyota",
+      "model": "Proace",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "volvo/ex40",
+      "brand": "Volvo",
+      "model": "EX40",
+      "sourceModels": 0,
+      "sourcePeriods": 0,
+      "note": "Rebranding of XC40 Recharge requires a source-linked supplement; do not silently relabel combustion XC40 records."
+    },
+    {
+      "id": "citroen/c4-x",
+      "brand": "Citroën",
+      "model": "C4 X",
+      "sourceModels": 0,
+      "sourcePeriods": 0,
+      "note": "The source has ambiguous duplicated C4 records and no independently named C4 X. Do not duplicate C4 into this family."
+    },
+    {
+      "id": "citroen/spacetourer",
+      "brand": "Citroën",
+      "model": "SpaceTourer",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "fiat/ducato",
+      "brand": "Fiat",
+      "model": "Ducato",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "byd/seal",
+      "brand": "BYD",
+      "model": "Seal",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "byd/seal-u",
+      "brand": "BYD",
+      "model": "Seal U",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "byd/tang",
+      "brand": "BYD",
+      "model": "Tang",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "byd/han",
+      "brand": "BYD",
+      "model": "Han",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "mg/cyberster",
+      "brand": "MG",
+      "model": "Cyberster",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "isuzu/mu-x",
+      "brand": "Isuzu",
+      "model": "MU-X",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    }
+  ],
+  "notes": {
+    "mercedes-benz/glc": "Includes GLK, the directly preceding nameplate; source names retained.",
+    "mercedes-benz/gle": "Includes M-Class, the directly preceding nameplate; source names retained.",
+    "mercedes-benz/gls": "Includes GL-Class, the directly preceding nameplate; source names retained.",
+    "mercedes-benz/s": "Includes source S-Class predecessors and its historical CL coupe branch.",
+    "porsche/718-boxster": "718-designation cars only; source 718 is the Spyder body derivative. Pre-2016 Boxster is excluded.",
+    "porsche/718-cayman": "718-designation cars only; pre-2016 Cayman is excluded.",
+    "toyota/gr86": "GR86 only; earlier GT86 is a separately named predecessor, not silently relabelled.",
+    "toyota/gr-supra": "GR Supra only; prior Supra generations are not silently relabelled.",
+    "ford/focus": "The source incorrectly buckets international wagon/hatch/sedan records under Focus US. Individual generation names preserve the actual styles.",
+    "ford/transit": "Source contains only Connect/Custom samples; full-size Transit and many historical phases are missing.",
+    "ford/tourneo": "Source collapses multiple Tourneo derivatives into identical names; identification requires further curation.",
+    "citroen/c4-x": "The source has ambiguous duplicated C4 records and no independently named C4 X. Do not duplicate C4 into this family.",
+    "volvo/ex40": "Rebranding of XC40 Recharge requires a source-linked supplement; do not silently relabel combustion XC40 records.",
+    "mini/cooper": "Cooper family includes Hatch/Convertible/Classic and the Coupe/Roadster body branches; engine grades are not imported.",
+    "ssangyong-kgm/musso": "SsangYong Musso and Musso Sports are available; KGM Musso is missing in this seed.",
+    "cadillac/escalade": "Includes extended ESV, EXT pickup and electric long-wheelbase IQL; standard electric IQ absent as a separate source family.",
+    "isuzu/d-max": "The source stops at 2019. Current generation is absent and requires a sourced supplement.",
+    "bmw/rada-8": "Source 8 Series Gran body branch stops at 2022; its later phase is absent.",
+    "ferrari/f8-tributo": "Two source F8 records share identical labels and periods. Body identity is lost in this export; coupe and Spider must be independently verified.",
+    "ferrari/sf90": "Multiple source records share labels but may represent distinct bodies or derivatives. Do not infer body from record order."
+  },
+  "coverage": [
+    {
+      "id": "bmw/rada-1",
+      "brand": "BMW",
+      "model": "řada 1",
+      "sourceModels": 1,
+      "sourcePeriods": 16
+    },
+    {
+      "id": "bmw/rada-2",
+      "brand": "BMW",
+      "model": "řada 2",
+      "sourceModels": 4,
+      "sourcePeriods": 12
+    },
+    {
+      "id": "bmw/rada-3",
+      "brand": "BMW",
+      "model": "řada 3",
+      "sourceModels": 3,
+      "sourcePeriods": 38
+    },
+    {
+      "id": "bmw/rada-4",
+      "brand": "BMW",
+      "model": "řada 4",
+      "sourceModels": 2,
+      "sourcePeriods": 12
+    },
+    {
+      "id": "bmw/rada-5",
+      "brand": "BMW",
+      "model": "řada 5",
+      "sourceModels": 2,
+      "sourcePeriods": 23
+    },
+    {
+      "id": "bmw/rada-7",
+      "brand": "BMW",
+      "model": "řada 7",
+      "sourceModels": 1,
+      "sourcePeriods": 13
+    },
+    {
+      "id": "bmw/rada-8",
+      "brand": "BMW",
+      "model": "řada 8",
+      "sourceModels": 2,
+      "sourcePeriods": 6,
+      "note": "Source 8 Series Gran body branch stops at 2022; its later phase is absent."
+    },
+    {
+      "id": "bmw/x1",
+      "brand": "BMW",
+      "model": "X1",
+      "sourceModels": 1,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "bmw/x2",
+      "brand": "BMW",
+      "model": "X2",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "bmw/x3",
+      "brand": "BMW",
+      "model": "X3",
+      "sourceModels": 1,
+      "sourcePeriods": 7
+    },
+    {
+      "id": "bmw/x4",
+      "brand": "BMW",
+      "model": "X4",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "bmw/x5",
+      "brand": "BMW",
+      "model": "X5",
+      "sourceModels": 1,
+      "sourcePeriods": 7
+    },
+    {
+      "id": "bmw/x6",
+      "brand": "BMW",
+      "model": "X6",
+      "sourceModels": 1,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "bmw/x7",
+      "brand": "BMW",
+      "model": "X7",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "bmw/xm",
+      "brand": "BMW",
+      "model": "XM",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "bmw/z4",
+      "brand": "BMW",
+      "model": "Z4",
+      "sourceModels": 1,
+      "sourcePeriods": 8,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "bmw/i4",
+      "brand": "BMW",
+      "model": "i4",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "bmw/i5",
+      "brand": "BMW",
+      "model": "i5",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "bmw/i7",
+      "brand": "BMW",
+      "model": "i7",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "bmw/ix",
+      "brand": "BMW",
+      "model": "iX",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "mercedes-benz/a",
+      "brand": "Mercedes-Benz",
+      "model": "A",
+      "sourceModels": 3,
+      "sourcePeriods": 14,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "mercedes-benz/b",
+      "brand": "Mercedes-Benz",
+      "model": "B",
+      "sourceModels": 1,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "mercedes-benz/c",
+      "brand": "Mercedes-Benz",
+      "model": "C",
+      "sourceModels": 7,
+      "sourcePeriods": 33,
+      "ambiguousDuplicatePeriods": 3
+    },
+    {
+      "id": "mercedes-benz/e",
+      "brand": "Mercedes-Benz",
+      "model": "E",
+      "sourceModels": 5,
+      "sourcePeriods": 56,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "mercedes-benz/s",
+      "brand": "Mercedes-Benz",
+      "model": "S",
+      "sourceModels": 5,
+      "sourcePeriods": 47,
+      "ambiguousDuplicatePeriods": 2,
+      "note": "Includes source S-Class predecessors and its historical CL coupe branch."
+    },
+    {
+      "id": "mercedes-benz/cla",
+      "brand": "Mercedes-Benz",
+      "model": "CLA",
+      "sourceModels": 2,
+      "sourcePeriods": 9
+    },
+    {
+      "id": "mercedes-benz/cls",
+      "brand": "Mercedes-Benz",
+      "model": "CLS",
+      "sourceModels": 2,
+      "sourcePeriods": 9
+    },
+    {
+      "id": "mercedes-benz/cle",
+      "brand": "Mercedes-Benz",
+      "model": "CLE",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "mercedes-benz/gla",
+      "brand": "Mercedes-Benz",
+      "model": "GLA",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "mercedes-benz/glb",
+      "brand": "Mercedes-Benz",
+      "model": "GLB",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "mercedes-benz/glc",
+      "brand": "Mercedes-Benz",
+      "model": "GLC",
+      "sourceModels": 2,
+      "sourcePeriods": 9,
+      "note": "Includes GLK, the directly preceding nameplate; source names retained."
+    },
+    {
+      "id": "mercedes-benz/gle",
+      "brand": "Mercedes-Benz",
+      "model": "GLE",
+      "sourceModels": 2,
+      "sourcePeriods": 13,
+      "note": "Includes M-Class, the directly preceding nameplate; source names retained."
+    },
+    {
+      "id": "mercedes-benz/gls",
+      "brand": "Mercedes-Benz",
+      "model": "GLS",
+      "sourceModels": 3,
+      "sourcePeriods": 9,
+      "note": "Includes GL-Class, the directly preceding nameplate; source names retained."
+    },
+    {
+      "id": "mercedes-benz/g-class",
+      "brand": "Mercedes-Benz",
+      "model": "G-Class",
+      "sourceModels": 2,
+      "sourcePeriods": 19,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "mercedes-benz/sl",
+      "brand": "Mercedes-Benz",
+      "model": "SL",
+      "sourceModels": 2,
+      "sourcePeriods": 15
+    },
+    {
+      "id": "mercedes-benz/amg-gt",
+      "brand": "Mercedes-Benz",
+      "model": "AMG GT",
+      "sourceModels": 2,
+      "sourcePeriods": 26,
+      "ambiguousDuplicatePeriods": 5
+    },
+    {
+      "id": "mercedes-benz/eqe",
+      "brand": "Mercedes-Benz",
+      "model": "EQE",
+      "sourceModels": 2,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "mercedes-benz/eqs",
+      "brand": "Mercedes-Benz",
+      "model": "EQS",
+      "sourceModels": 2,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "mercedes-benz/v-class",
+      "brand": "Mercedes-Benz",
+      "model": "V-Class",
+      "sourceModels": 2,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "audi/a1",
+      "brand": "Audi",
+      "model": "A1",
+      "sourceModels": 1,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "audi/a3",
+      "brand": "Audi",
+      "model": "A3",
+      "sourceModels": 2,
+      "sourcePeriods": 24,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "audi/a4",
+      "brand": "Audi",
+      "model": "A4",
+      "sourceModels": 3,
+      "sourcePeriods": 22,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "audi/a5",
+      "brand": "Audi",
+      "model": "A5",
+      "sourceModels": 2,
+      "sourcePeriods": 11
+    },
+    {
+      "id": "audi/a6",
+      "brand": "Audi",
+      "model": "A6",
+      "sourceModels": 3,
+      "sourcePeriods": 23
+    },
+    {
+      "id": "audi/a7",
+      "brand": "Audi",
+      "model": "A7",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "audi/a8",
+      "brand": "Audi",
+      "model": "A8",
+      "sourceModels": 1,
+      "sourcePeriods": 11,
+      "ambiguousDuplicatePeriods": 3
+    },
+    {
+      "id": "audi/q2",
+      "brand": "Audi",
+      "model": "Q2",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "audi/q3",
+      "brand": "Audi",
+      "model": "Q3",
+      "sourceModels": 1,
+      "sourcePeriods": 7
+    },
+    {
+      "id": "audi/q4-e-tron",
+      "brand": "Audi",
+      "model": "Q4 e-tron",
+      "sourceModels": 2,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "audi/q5",
+      "brand": "Audi",
+      "model": "Q5",
+      "sourceModels": 1,
+      "sourcePeriods": 8
+    },
+    {
+      "id": "audi/q6-e-tron",
+      "brand": "Audi",
+      "model": "Q6 e-tron",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "audi/q7",
+      "brand": "Audi",
+      "model": "Q7",
+      "sourceModels": 1,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "audi/q8",
+      "brand": "Audi",
+      "model": "Q8",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "audi/tt",
+      "brand": "Audi",
+      "model": "TT",
+      "sourceModels": 1,
+      "sourcePeriods": 17,
+      "ambiguousDuplicatePeriods": 4
+    },
+    {
+      "id": "audi/r8",
+      "brand": "Audi",
+      "model": "R8",
+      "sourceModels": 1,
+      "sourcePeriods": 15,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "audi/e-tron-gt",
+      "brand": "Audi",
+      "model": "e-tron GT",
+      "sourceModels": 1,
+      "sourcePeriods": 3,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "volkswagen/polo",
+      "brand": "Volkswagen",
+      "model": "Polo",
+      "sourceModels": 2,
+      "sourcePeriods": 25
+    },
+    {
+      "id": "volkswagen/golf",
+      "brand": "Volkswagen",
+      "model": "Golf",
+      "sourceModels": 7,
+      "sourcePeriods": 41
+    },
+    {
+      "id": "volkswagen/passat",
+      "brand": "Volkswagen",
+      "model": "Passat",
+      "sourceModels": 3,
+      "sourcePeriods": 28,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "volkswagen/arteon",
+      "brand": "Volkswagen",
+      "model": "Arteon",
+      "sourceModels": 2,
+      "sourcePeriods": 6,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "volkswagen/t-cross",
+      "brand": "Volkswagen",
+      "model": "T-Cross",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "volkswagen/taigo",
+      "brand": "Volkswagen",
+      "model": "Taigo",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "volkswagen/t-roc",
+      "brand": "Volkswagen",
+      "model": "T-Roc",
+      "sourceModels": 1,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "volkswagen/tiguan",
+      "brand": "Volkswagen",
+      "model": "Tiguan",
+      "sourceModels": 2,
+      "sourcePeriods": 8
+    },
+    {
+      "id": "volkswagen/tayron",
+      "brand": "Volkswagen",
+      "model": "Tayron",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "volkswagen/touareg",
+      "brand": "Volkswagen",
+      "model": "Touareg",
+      "sourceModels": 1,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "volkswagen/touran",
+      "brand": "Volkswagen",
+      "model": "Touran",
+      "sourceModels": 1,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "volkswagen/caddy",
+      "brand": "Volkswagen",
+      "model": "Caddy",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "volkswagen/multivan",
+      "brand": "Volkswagen",
+      "model": "Multivan",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "volkswagen/id-3",
+      "brand": "Volkswagen",
+      "model": "ID.3",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "volkswagen/id-4",
+      "brand": "Volkswagen",
+      "model": "ID.4",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "volkswagen/id-5",
+      "brand": "Volkswagen",
+      "model": "ID.5",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "volkswagen/id-7",
+      "brand": "Volkswagen",
+      "model": "ID.7",
+      "sourceModels": 2,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "volkswagen/id-buzz",
+      "brand": "Volkswagen",
+      "model": "ID. Buzz",
+      "sourceModels": 1,
+      "sourcePeriods": 2,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "skoda/fabia",
+      "brand": "Škoda",
+      "model": "Fabia",
+      "sourceModels": 2,
+      "sourcePeriods": 10
+    },
+    {
+      "id": "skoda/scala",
+      "brand": "Škoda",
+      "model": "Scala",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "skoda/octavia",
+      "brand": "Škoda",
+      "model": "Octavia",
+      "sourceModels": 3,
+      "sourcePeriods": 19
+    },
+    {
+      "id": "skoda/superb",
+      "brand": "Škoda",
+      "model": "Superb",
+      "sourceModels": 2,
+      "sourcePeriods": 12
+    },
+    {
+      "id": "skoda/kamiq",
+      "brand": "Škoda",
+      "model": "Kamiq",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "skoda/karoq",
+      "brand": "Škoda",
+      "model": "Karoq",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "skoda/kodiaq",
+      "brand": "Škoda",
+      "model": "Kodiaq",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "skoda/elroq",
+      "brand": "Škoda",
+      "model": "Elroq",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "skoda/enyaq",
+      "brand": "Škoda",
+      "model": "Enyaq",
+      "sourceModels": 1,
+      "sourcePeriods": 5,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "porsche/718-boxster",
+      "brand": "Porsche",
+      "model": "718 Boxster",
+      "sourceModels": 2,
+      "sourcePeriods": 4,
+      "note": "718-designation cars only; source 718 is the Spyder body derivative. Pre-2016 Boxster is excluded."
+    },
+    {
+      "id": "porsche/718-cayman",
+      "brand": "Porsche",
+      "model": "718 Cayman",
+      "sourceModels": 1,
+      "sourcePeriods": 2,
+      "note": "718-designation cars only; pre-2016 Cayman is excluded."
+    },
+    {
+      "id": "porsche/911",
+      "brand": "Porsche",
+      "model": "911",
+      "sourceModels": 20,
+      "sourcePeriods": 135,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "porsche/panamera",
+      "brand": "Porsche",
+      "model": "Panamera",
+      "sourceModels": 3,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "porsche/macan",
+      "brand": "Porsche",
+      "model": "Macan",
+      "sourceModels": 2,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "porsche/cayenne",
+      "brand": "Porsche",
+      "model": "Cayenne",
+      "sourceModels": 2,
+      "sourcePeriods": 13,
+      "ambiguousDuplicatePeriods": 3
+    },
+    {
+      "id": "porsche/taycan",
+      "brand": "Porsche",
+      "model": "Taycan",
+      "sourceModels": 3,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "toyota/aygo-x",
+      "brand": "Toyota",
+      "model": "Aygo X",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "toyota/yaris",
+      "brand": "Toyota",
+      "model": "Yaris",
+      "sourceModels": 1,
+      "sourcePeriods": 20
+    },
+    {
+      "id": "toyota/corolla",
+      "brand": "Toyota",
+      "model": "Corolla",
+      "sourceModels": 1,
+      "sourcePeriods": 38,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "toyota/camry",
+      "brand": "Toyota",
+      "model": "Camry",
+      "sourceModels": 1,
+      "sourcePeriods": 15
+    },
+    {
+      "id": "toyota/c-hr",
+      "brand": "Toyota",
+      "model": "C-HR",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "toyota/yaris-cross",
+      "brand": "Toyota",
+      "model": "Yaris Cross",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "toyota/corolla-cross",
+      "brand": "Toyota",
+      "model": "Corolla Cross",
+      "sourceModels": 1,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "toyota/rav4",
+      "brand": "Toyota",
+      "model": "RAV4",
+      "sourceModels": 1,
+      "sourcePeriods": 11
+    },
+    {
+      "id": "toyota/highlander",
+      "brand": "Toyota",
+      "model": "Highlander",
+      "sourceModels": 1,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "toyota/land-cruiser",
+      "brand": "Toyota",
+      "model": "Land Cruiser",
+      "sourceModels": 2,
+      "sourcePeriods": 18,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "toyota/hilux",
+      "brand": "Toyota",
+      "model": "Hilux",
+      "sourceModels": 2,
+      "sourcePeriods": 13,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "toyota/gr86",
+      "brand": "Toyota",
+      "model": "GR86",
+      "sourceModels": 1,
+      "sourcePeriods": 1,
+      "note": "GR86 only; earlier GT86 is a separately named predecessor, not silently relabelled."
+    },
+    {
+      "id": "toyota/gr-supra",
+      "brand": "Toyota",
+      "model": "GR Supra",
+      "sourceModels": 1,
+      "sourcePeriods": 1,
+      "note": "GR Supra only; prior Supra generations are not silently relabelled."
+    },
+    {
+      "id": "toyota/proace",
+      "brand": "Toyota",
+      "model": "Proace",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "ford/fiesta",
+      "brand": "Ford",
+      "model": "Fiesta",
+      "sourceModels": 1,
+      "sourcePeriods": 23,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "ford/focus",
+      "brand": "Ford",
+      "model": "Focus",
+      "sourceModels": 2,
+      "sourcePeriods": 33,
+      "ambiguousDuplicatePeriods": 1,
+      "note": "The source incorrectly buckets international wagon/hatch/sedan records under Focus US. Individual generation names preserve the actual styles."
+    },
+    {
+      "id": "ford/mondeo",
+      "brand": "Ford",
+      "model": "Mondeo",
+      "sourceModels": 2,
+      "sourcePeriods": 23
+    },
+    {
+      "id": "ford/puma",
+      "brand": "Ford",
+      "model": "Puma",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "ford/kuga",
+      "brand": "Ford",
+      "model": "Kuga",
+      "sourceModels": 1,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "ford/mustang",
+      "brand": "Ford",
+      "model": "Mustang",
+      "sourceModels": 1,
+      "sourcePeriods": 29,
+      "ambiguousDuplicatePeriods": 3
+    },
+    {
+      "id": "ford/mustang-mach-e",
+      "brand": "Ford",
+      "model": "Mustang Mach-E",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "ford/explorer",
+      "brand": "Ford",
+      "model": "Explorer",
+      "sourceModels": 4,
+      "sourcePeriods": 10
+    },
+    {
+      "id": "ford/ranger",
+      "brand": "Ford",
+      "model": "Ranger",
+      "sourceModels": 3,
+      "sourcePeriods": 15,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "ford/bronco",
+      "brand": "Ford",
+      "model": "Bronco",
+      "sourceModels": 1,
+      "sourcePeriods": 9,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "ford/tourneo",
+      "brand": "Ford",
+      "model": "Tourneo",
+      "sourceModels": 2,
+      "sourcePeriods": 8,
+      "ambiguousDuplicatePeriods": 1,
+      "note": "Source collapses multiple Tourneo derivatives into identical names; identification requires further curation."
+    },
+    {
+      "id": "ford/transit",
+      "brand": "Ford",
+      "model": "Transit",
+      "sourceModels": 2,
+      "sourcePeriods": 2,
+      "note": "Source contains only Connect/Custom samples; full-size Transit and many historical phases are missing."
+    },
+    {
+      "id": "volvo/s60",
+      "brand": "Volvo",
+      "model": "S60",
+      "sourceModels": 2,
+      "sourcePeriods": 8
+    },
+    {
+      "id": "volvo/s90",
+      "brand": "Volvo",
+      "model": "S90",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "volvo/v60",
+      "brand": "Volvo",
+      "model": "V60",
+      "sourceModels": 2,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "volvo/v90",
+      "brand": "Volvo",
+      "model": "V90",
+      "sourceModels": 2,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "volvo/xc40",
+      "brand": "Volvo",
+      "model": "XC40",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "volvo/xc60",
+      "brand": "Volvo",
+      "model": "XC60",
+      "sourceModels": 1,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "volvo/xc90",
+      "brand": "Volvo",
+      "model": "XC90",
+      "sourceModels": 1,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "volvo/ex30",
+      "brand": "Volvo",
+      "model": "EX30",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "volvo/ex40",
+      "brand": "Volvo",
+      "model": "EX40",
+      "sourceModels": 0,
+      "sourcePeriods": 0,
+      "note": "Rebranding of XC40 Recharge requires a source-linked supplement; do not silently relabel combustion XC40 records."
+    },
+    {
+      "id": "volvo/ex90",
+      "brand": "Volvo",
+      "model": "EX90",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "land-rover-range-rover/defender",
+      "brand": "Land Rover / Range Rover",
+      "model": "Defender",
+      "sourceModels": 3,
+      "sourcePeriods": 10
+    },
+    {
+      "id": "land-rover-range-rover/discovery",
+      "brand": "Land Rover / Range Rover",
+      "model": "Discovery",
+      "sourceModels": 1,
+      "sourcePeriods": 10,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "land-rover-range-rover/discovery-sport",
+      "brand": "Land Rover / Range Rover",
+      "model": "Discovery Sport",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "land-rover-range-rover/range-rover",
+      "brand": "Land Rover / Range Rover",
+      "model": "Range Rover",
+      "sourceModels": 2,
+      "sourcePeriods": 11,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "land-rover-range-rover/range-rover-sport",
+      "brand": "Land Rover / Range Rover",
+      "model": "Range Rover Sport",
+      "sourceModels": 1,
+      "sourcePeriods": 7
+    },
+    {
+      "id": "land-rover-range-rover/velar",
+      "brand": "Land Rover / Range Rover",
+      "model": "Velar",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "land-rover-range-rover/evoque",
+      "brand": "Land Rover / Range Rover",
+      "model": "Evoque",
+      "sourceModels": 1,
+      "sourcePeriods": 7,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "jaguar/xe",
+      "brand": "Jaguar",
+      "model": "XE",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "jaguar/xf",
+      "brand": "Jaguar",
+      "model": "XF",
+      "sourceModels": 2,
+      "sourcePeriods": 8
+    },
+    {
+      "id": "jaguar/xj",
+      "brand": "Jaguar",
+      "model": "XJ",
+      "sourceModels": 1,
+      "sourcePeriods": 8
+    },
+    {
+      "id": "jaguar/f-type",
+      "brand": "Jaguar",
+      "model": "F-Type",
+      "sourceModels": 1,
+      "sourcePeriods": 7,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "jaguar/e-pace",
+      "brand": "Jaguar",
+      "model": "E-Pace",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "jaguar/f-pace",
+      "brand": "Jaguar",
+      "model": "F-Pace",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "jaguar/i-pace",
+      "brand": "Jaguar",
+      "model": "I-Pace",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "lexus/lbx",
+      "brand": "Lexus",
+      "model": "LBX",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "lexus/ux",
+      "brand": "Lexus",
+      "model": "UX",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "lexus/nx",
+      "brand": "Lexus",
+      "model": "NX",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "lexus/rx",
+      "brand": "Lexus",
+      "model": "RX",
+      "sourceModels": 1,
+      "sourcePeriods": 7
+    },
+    {
+      "id": "lexus/rz",
+      "brand": "Lexus",
+      "model": "RZ",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "lexus/es",
+      "brand": "Lexus",
+      "model": "ES",
+      "sourceModels": 1,
+      "sourcePeriods": 8
+    },
+    {
+      "id": "lexus/ls",
+      "brand": "Lexus",
+      "model": "LS",
+      "sourceModels": 1,
+      "sourcePeriods": 10
+    },
+    {
+      "id": "lexus/lc",
+      "brand": "Lexus",
+      "model": "LC",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "hyundai/i10",
+      "brand": "Hyundai",
+      "model": "i10",
+      "sourceModels": 1,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "hyundai/i20",
+      "brand": "Hyundai",
+      "model": "i20",
+      "sourceModels": 2,
+      "sourcePeriods": 8
+    },
+    {
+      "id": "hyundai/i30",
+      "brand": "Hyundai",
+      "model": "i30",
+      "sourceModels": 1,
+      "sourcePeriods": 16
+    },
+    {
+      "id": "hyundai/bayon",
+      "brand": "Hyundai",
+      "model": "Bayon",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "hyundai/kona",
+      "brand": "Hyundai",
+      "model": "Kona",
+      "sourceModels": 2,
+      "sourcePeriods": 8,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "hyundai/tucson",
+      "brand": "Hyundai",
+      "model": "Tucson",
+      "sourceModels": 1,
+      "sourcePeriods": 9,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "hyundai/santa-fe",
+      "brand": "Hyundai",
+      "model": "Santa Fe",
+      "sourceModels": 1,
+      "sourcePeriods": 11,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "hyundai/ioniq-5",
+      "brand": "Hyundai",
+      "model": "Ioniq 5",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "hyundai/ioniq-6",
+      "brand": "Hyundai",
+      "model": "Ioniq 6",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "hyundai/ioniq-9",
+      "brand": "Hyundai",
+      "model": "Ioniq 9",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "kia/picanto",
+      "brand": "Kia",
+      "model": "Picanto",
+      "sourceModels": 1,
+      "sourcePeriods": 9,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "kia/ceed",
+      "brand": "Kia",
+      "model": "Ceed",
+      "sourceModels": 3,
+      "sourcePeriods": 9
+    },
+    {
+      "id": "kia/proceed",
+      "brand": "Kia",
+      "model": "ProCeed",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "kia/xceed",
+      "brand": "Kia",
+      "model": "XCeed",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "kia/stonic",
+      "brand": "Kia",
+      "model": "Stonic",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "kia/niro",
+      "brand": "Kia",
+      "model": "Niro",
+      "sourceModels": 1,
+      "sourcePeriods": 4,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "kia/sportage",
+      "brand": "Kia",
+      "model": "Sportage",
+      "sourceModels": 1,
+      "sourcePeriods": 9
+    },
+    {
+      "id": "kia/sorento",
+      "brand": "Kia",
+      "model": "Sorento",
+      "sourceModels": 1,
+      "sourcePeriods": 7
+    },
+    {
+      "id": "kia/ev3",
+      "brand": "Kia",
+      "model": "EV3",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "kia/ev4",
+      "brand": "Kia",
+      "model": "EV4",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "kia/ev6",
+      "brand": "Kia",
+      "model": "EV6",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "kia/ev9",
+      "brand": "Kia",
+      "model": "EV9",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "peugeot/208",
+      "brand": "Peugeot",
+      "model": "208",
+      "sourceModels": 1,
+      "sourcePeriods": 7,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "peugeot/308",
+      "brand": "Peugeot",
+      "model": "308",
+      "sourceModels": 3,
+      "sourcePeriods": 19,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "peugeot/408",
+      "brand": "Peugeot",
+      "model": "408",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "peugeot/508",
+      "brand": "Peugeot",
+      "model": "508",
+      "sourceModels": 3,
+      "sourcePeriods": 12
+    },
+    {
+      "id": "peugeot/2008",
+      "brand": "Peugeot",
+      "model": "2008",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "peugeot/3008",
+      "brand": "Peugeot",
+      "model": "3008",
+      "sourceModels": 1,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "peugeot/5008",
+      "brand": "Peugeot",
+      "model": "5008",
+      "sourceModels": 1,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "peugeot/rifter",
+      "brand": "Peugeot",
+      "model": "Rifter",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "peugeot/traveller",
+      "brand": "Peugeot",
+      "model": "Traveller",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "renault/clio",
+      "brand": "Renault",
+      "model": "Clio",
+      "sourceModels": 1,
+      "sourcePeriods": 24,
+      "ambiguousDuplicatePeriods": 3
+    },
+    {
+      "id": "renault/captur",
+      "brand": "Renault",
+      "model": "Captur",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "renault/arkana",
+      "brand": "Renault",
+      "model": "Arkana",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "renault/megane",
+      "brand": "Renault",
+      "model": "Mégane",
+      "sourceModels": 2,
+      "sourcePeriods": 49,
+      "ambiguousDuplicatePeriods": 4
+    },
+    {
+      "id": "renault/symbioz",
+      "brand": "Renault",
+      "model": "Symbioz",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "renault/austral",
+      "brand": "Renault",
+      "model": "Austral",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "renault/espace",
+      "brand": "Renault",
+      "model": "Espace",
+      "sourceModels": 1,
+      "sourcePeriods": 12,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "renault/rafale",
+      "brand": "Renault",
+      "model": "Rafale",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "renault/scenic",
+      "brand": "Renault",
+      "model": "Scenic",
+      "sourceModels": 3,
+      "sourcePeriods": 14
+    },
+    {
+      "id": "renault/kangoo",
+      "brand": "Renault",
+      "model": "Kangoo",
+      "sourceModels": 2,
+      "sourcePeriods": 8
+    },
+    {
+      "id": "opel/corsa",
+      "brand": "Opel",
+      "model": "Corsa",
+      "sourceModels": 1,
+      "sourcePeriods": 17,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "opel/astra",
+      "brand": "Opel",
+      "model": "Astra",
+      "sourceModels": 5,
+      "sourcePeriods": 35
+    },
+    {
+      "id": "opel/mokka",
+      "brand": "Opel",
+      "model": "Mokka",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "opel/frontera",
+      "brand": "Opel",
+      "model": "Frontera",
+      "sourceModels": 1,
+      "sourcePeriods": 7,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "opel/grandland",
+      "brand": "Opel",
+      "model": "Grandland",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "opel/combo",
+      "brand": "Opel",
+      "model": "Combo",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "opel/zafira",
+      "brand": "Opel",
+      "model": "Zafira",
+      "sourceModels": 1,
+      "sourcePeriods": 9
+    },
+    {
+      "id": "seat/ibiza",
+      "brand": "SEAT",
+      "model": "Ibiza",
+      "sourceModels": 2,
+      "sourcePeriods": 17
+    },
+    {
+      "id": "seat/leon",
+      "brand": "SEAT",
+      "model": "Leon",
+      "sourceModels": 4,
+      "sourcePeriods": 10
+    },
+    {
+      "id": "seat/arona",
+      "brand": "SEAT",
+      "model": "Arona",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "seat/ateca",
+      "brand": "SEAT",
+      "model": "Ateca",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "seat/tarraco",
+      "brand": "SEAT",
+      "model": "Tarraco",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "cupra/leon",
+      "brand": "CUPRA",
+      "model": "Leon",
+      "sourceModels": 2,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "cupra/formentor",
+      "brand": "CUPRA",
+      "model": "Formentor",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "cupra/ateca",
+      "brand": "CUPRA",
+      "model": "Ateca",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "cupra/born",
+      "brand": "CUPRA",
+      "model": "Born",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "cupra/tavascan",
+      "brand": "CUPRA",
+      "model": "Tavascan",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "cupra/terramar",
+      "brand": "CUPRA",
+      "model": "Terramar",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "nissan/micra",
+      "brand": "Nissan",
+      "model": "Micra",
+      "sourceModels": 2,
+      "sourcePeriods": 20
+    },
+    {
+      "id": "nissan/juke",
+      "brand": "Nissan",
+      "model": "Juke",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "nissan/qashqai",
+      "brand": "Nissan",
+      "model": "Qashqai",
+      "sourceModels": 1,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "nissan/x-trail",
+      "brand": "Nissan",
+      "model": "X-Trail",
+      "sourceModels": 1,
+      "sourcePeriods": 7
+    },
+    {
+      "id": "nissan/ariya",
+      "brand": "Nissan",
+      "model": "Ariya",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "nissan/leaf",
+      "brand": "Nissan",
+      "model": "Leaf",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "nissan/gt-r",
+      "brand": "Nissan",
+      "model": "GT-R",
+      "sourceModels": 1,
+      "sourcePeriods": 13,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "nissan/navara",
+      "brand": "Nissan",
+      "model": "Navara",
+      "sourceModels": 1,
+      "sourcePeriods": 9
+    },
+    {
+      "id": "mazda/mazda2",
+      "brand": "Mazda",
+      "model": "Mazda2",
+      "sourceModels": 1,
+      "sourcePeriods": 7
+    },
+    {
+      "id": "mazda/mazda3",
+      "brand": "Mazda",
+      "model": "Mazda3",
+      "sourceModels": 1,
+      "sourcePeriods": 10
+    },
+    {
+      "id": "mazda/mazda6",
+      "brand": "Mazda",
+      "model": "Mazda6",
+      "sourceModels": 1,
+      "sourcePeriods": 14
+    },
+    {
+      "id": "mazda/cx-30",
+      "brand": "Mazda",
+      "model": "CX-30",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "mazda/cx-5",
+      "brand": "Mazda",
+      "model": "CX-5",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "mazda/cx-60",
+      "brand": "Mazda",
+      "model": "CX-60",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "mazda/cx-80",
+      "brand": "Mazda",
+      "model": "CX-80",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "mazda/mx-5",
+      "brand": "Mazda",
+      "model": "MX-5",
+      "sourceModels": 1,
+      "sourcePeriods": 8
+    },
+    {
+      "id": "mazda/mx-30",
+      "brand": "Mazda",
+      "model": "MX-30",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "honda/jazz",
+      "brand": "Honda",
+      "model": "Jazz",
+      "sourceModels": 2,
+      "sourcePeriods": 7
+    },
+    {
+      "id": "honda/civic",
+      "brand": "Honda",
+      "model": "Civic",
+      "sourceModels": 4,
+      "sourcePeriods": 56,
+      "ambiguousDuplicatePeriods": 7
+    },
+    {
+      "id": "honda/hr-v",
+      "brand": "Honda",
+      "model": "HR-V",
+      "sourceModels": 1,
+      "sourcePeriods": 9
+    },
+    {
+      "id": "honda/zr-v",
+      "brand": "Honda",
+      "model": "ZR-V",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "honda/cr-v",
+      "brand": "Honda",
+      "model": "CR-V",
+      "sourceModels": 1,
+      "sourcePeriods": 11
+    },
+    {
+      "id": "honda/e-ny1",
+      "brand": "Honda",
+      "model": "e:Ny1",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "honda/nsx",
+      "brand": "Honda",
+      "model": "NSX",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "citroen/c3",
+      "brand": "Citroën",
+      "model": "C3",
+      "sourceModels": 1,
+      "sourcePeriods": 8,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "citroen/c4",
+      "brand": "Citroën",
+      "model": "C4",
+      "sourceModels": 1,
+      "sourcePeriods": 10,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "citroen/c4-x",
+      "brand": "Citroën",
+      "model": "C4 X",
+      "sourceModels": 0,
+      "sourcePeriods": 0,
+      "note": "The source has ambiguous duplicated C4 records and no independently named C4 X. Do not duplicate C4 into this family."
+    },
+    {
+      "id": "citroen/c5-aircross",
+      "brand": "Citroën",
+      "model": "C5 Aircross",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "citroen/c5-x",
+      "brand": "Citroën",
+      "model": "C5 X",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "citroen/berlingo",
+      "brand": "Citroën",
+      "model": "Berlingo",
+      "sourceModels": 1,
+      "sourcePeriods": 8
+    },
+    {
+      "id": "citroen/spacetourer",
+      "brand": "Citroën",
+      "model": "SpaceTourer",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "dacia/sandero",
+      "brand": "Dacia",
+      "model": "Sandero",
+      "sourceModels": 2,
+      "sourcePeriods": 9
+    },
+    {
+      "id": "dacia/logan",
+      "brand": "Dacia",
+      "model": "Logan",
+      "sourceModels": 5,
+      "sourcePeriods": 12
+    },
+    {
+      "id": "dacia/jogger",
+      "brand": "Dacia",
+      "model": "Jogger",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "dacia/duster",
+      "brand": "Dacia",
+      "model": "Duster",
+      "sourceModels": 2,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "dacia/bigster",
+      "brand": "Dacia",
+      "model": "Bigster",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "dacia/spring",
+      "brand": "Dacia",
+      "model": "Spring",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "tesla/model-3",
+      "brand": "Tesla",
+      "model": "Model 3",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "tesla/model-y",
+      "brand": "Tesla",
+      "model": "Model Y",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "tesla/model-s",
+      "brand": "Tesla",
+      "model": "Model S",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "tesla/model-x",
+      "brand": "Tesla",
+      "model": "Model X",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "tesla/cybertruck",
+      "brand": "Tesla",
+      "model": "Cybertruck",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "jeep/avenger",
+      "brand": "Jeep",
+      "model": "Avenger",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "jeep/renegade",
+      "brand": "Jeep",
+      "model": "Renegade",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "jeep/compass",
+      "brand": "Jeep",
+      "model": "Compass",
+      "sourceModels": 1,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "jeep/cherokee",
+      "brand": "Jeep",
+      "model": "Cherokee",
+      "sourceModels": 2,
+      "sourcePeriods": 8
+    },
+    {
+      "id": "jeep/grand-cherokee",
+      "brand": "Jeep",
+      "model": "Grand Cherokee",
+      "sourceModels": 1,
+      "sourcePeriods": 12,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "jeep/wrangler",
+      "brand": "Jeep",
+      "model": "Wrangler",
+      "sourceModels": 2,
+      "sourcePeriods": 14,
+      "ambiguousDuplicatePeriods": 3
+    },
+    {
+      "id": "jeep/gladiator",
+      "brand": "Jeep",
+      "model": "Gladiator",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "alfa-romeo/giulia",
+      "brand": "Alfa Romeo",
+      "model": "Giulia",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "alfa-romeo/stelvio",
+      "brand": "Alfa Romeo",
+      "model": "Stelvio",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "alfa-romeo/tonale",
+      "brand": "Alfa Romeo",
+      "model": "Tonale",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "alfa-romeo/junior",
+      "brand": "Alfa Romeo",
+      "model": "Junior",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "alfa-romeo/4c",
+      "brand": "Alfa Romeo",
+      "model": "4C",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "fiat/500",
+      "brand": "Fiat",
+      "model": "500",
+      "sourceModels": 4,
+      "sourcePeriods": 13
+    },
+    {
+      "id": "fiat/500x",
+      "brand": "Fiat",
+      "model": "500X",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "fiat/500l",
+      "brand": "Fiat",
+      "model": "500L",
+      "sourceModels": 4,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "fiat/panda",
+      "brand": "Fiat",
+      "model": "Panda",
+      "sourceModels": 4,
+      "sourcePeriods": 10
+    },
+    {
+      "id": "fiat/tipo",
+      "brand": "Fiat",
+      "model": "Tipo",
+      "sourceModels": 3,
+      "sourcePeriods": 7
+    },
+    {
+      "id": "fiat/grande-panda",
+      "brand": "Fiat",
+      "model": "Grande Panda",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "fiat/600",
+      "brand": "Fiat",
+      "model": "600",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "fiat/doblo",
+      "brand": "Fiat",
+      "model": "Doblò",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "fiat/ducato",
+      "brand": "Fiat",
+      "model": "Ducato",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "suzuki/swift",
+      "brand": "Suzuki",
+      "model": "Swift",
+      "sourceModels": 1,
+      "sourcePeriods": 16,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "suzuki/ignis",
+      "brand": "Suzuki",
+      "model": "Ignis",
+      "sourceModels": 1,
+      "sourcePeriods": 6,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "suzuki/vitara",
+      "brand": "Suzuki",
+      "model": "Vitara",
+      "sourceModels": 2,
+      "sourcePeriods": 5,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "suzuki/s-cross",
+      "brand": "Suzuki",
+      "model": "S-Cross",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "suzuki/jimny",
+      "brand": "Suzuki",
+      "model": "Jimny",
+      "sourceModels": 1,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "suzuki/across",
+      "brand": "Suzuki",
+      "model": "Across",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "suzuki/swace",
+      "brand": "Suzuki",
+      "model": "Swace",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "mitsubishi/colt",
+      "brand": "Mitsubishi",
+      "model": "Colt",
+      "sourceModels": 2,
+      "sourcePeriods": 12,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "mitsubishi/asx",
+      "brand": "Mitsubishi",
+      "model": "ASX",
+      "sourceModels": 1,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "mitsubishi/eclipse-cross",
+      "brand": "Mitsubishi",
+      "model": "Eclipse Cross",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "mitsubishi/outlander",
+      "brand": "Mitsubishi",
+      "model": "Outlander",
+      "sourceModels": 1,
+      "sourcePeriods": 6,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "mitsubishi/l200",
+      "brand": "Mitsubishi",
+      "model": "L200",
+      "sourceModels": 1,
+      "sourcePeriods": 8,
+      "ambiguousDuplicatePeriods": 5
+    },
+    {
+      "id": "subaru/impreza",
+      "brand": "Subaru",
+      "model": "Impreza",
+      "sourceModels": 1,
+      "sourcePeriods": 14,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "subaru/crosstrek",
+      "brand": "Subaru",
+      "model": "Crosstrek",
+      "sourceModels": 2,
+      "sourcePeriods": 7,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "subaru/forester",
+      "brand": "Subaru",
+      "model": "Forester",
+      "sourceModels": 1,
+      "sourcePeriods": 10,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "subaru/outback",
+      "brand": "Subaru",
+      "model": "Outback",
+      "sourceModels": 1,
+      "sourcePeriods": 9
+    },
+    {
+      "id": "subaru/brz",
+      "brand": "Subaru",
+      "model": "BRZ",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "subaru/solterra",
+      "brand": "Subaru",
+      "model": "Solterra",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "mini/cooper",
+      "brand": "MINI",
+      "model": "Cooper",
+      "sourceModels": 5,
+      "sourcePeriods": 21,
+      "ambiguousDuplicatePeriods": 2,
+      "note": "Cooper family includes Hatch/Convertible/Classic and the Coupe/Roadster body branches; engine grades are not imported."
+    },
+    {
+      "id": "mini/aceman",
+      "brand": "MINI",
+      "model": "Aceman",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "mini/countryman",
+      "brand": "MINI",
+      "model": "Countryman",
+      "sourceModels": 1,
+      "sourcePeriods": 6,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "mini/clubman",
+      "brand": "MINI",
+      "model": "Clubman",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "maserati/grecale",
+      "brand": "Maserati",
+      "model": "Grecale",
+      "sourceModels": 1,
+      "sourcePeriods": 3,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "maserati/levante",
+      "brand": "Maserati",
+      "model": "Levante",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "maserati/ghibli",
+      "brand": "Maserati",
+      "model": "Ghibli",
+      "sourceModels": 1,
+      "sourcePeriods": 6,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "maserati/quattroporte",
+      "brand": "Maserati",
+      "model": "Quattroporte",
+      "sourceModels": 1,
+      "sourcePeriods": 9
+    },
+    {
+      "id": "maserati/granturismo",
+      "brand": "Maserati",
+      "model": "GranTurismo",
+      "sourceModels": 1,
+      "sourcePeriods": 7,
+      "ambiguousDuplicatePeriods": 2
+    },
+    {
+      "id": "maserati/grancabrio",
+      "brand": "Maserati",
+      "model": "GranCabrio",
+      "sourceModels": 1,
+      "sourcePeriods": 4,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "maserati/mc20",
+      "brand": "Maserati",
+      "model": "MC20",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "ferrari/roma",
+      "brand": "Ferrari",
+      "model": "Roma",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "ferrari/portofino",
+      "brand": "Ferrari",
+      "model": "Portofino",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "ferrari/296-gtb",
+      "brand": "Ferrari",
+      "model": "296 GTB",
+      "sourceModels": 2,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "ferrari/sf90",
+      "brand": "Ferrari",
+      "model": "SF90",
+      "sourceModels": 1,
+      "sourcePeriods": 4,
+      "ambiguousDuplicatePeriods": 1,
+      "note": "Multiple source records share labels but may represent distinct bodies or derivatives. Do not infer body from record order."
+    },
+    {
+      "id": "ferrari/12cilindri",
+      "brand": "Ferrari",
+      "model": "12Cilindri",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "ferrari/purosangue",
+      "brand": "Ferrari",
+      "model": "Purosangue",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "ferrari/f8-tributo",
+      "brand": "Ferrari",
+      "model": "F8 Tributo",
+      "sourceModels": 1,
+      "sourcePeriods": 2,
+      "ambiguousDuplicatePeriods": 1,
+      "note": "Two source F8 records share identical labels and periods. Body identity is lost in this export; coupe and Spider must be independently verified."
+    },
+    {
+      "id": "lamborghini/huracan",
+      "brand": "Lamborghini",
+      "model": "Huracán",
+      "sourceModels": 1,
+      "sourcePeriods": 12
+    },
+    {
+      "id": "lamborghini/temerario",
+      "brand": "Lamborghini",
+      "model": "Temerario",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "lamborghini/revuelto",
+      "brand": "Lamborghini",
+      "model": "Revuelto",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "lamborghini/urus",
+      "brand": "Lamborghini",
+      "model": "Urus",
+      "sourceModels": 1,
+      "sourcePeriods": 4,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "lamborghini/aventador",
+      "brand": "Lamborghini",
+      "model": "Aventador",
+      "sourceModels": 1,
+      "sourcePeriods": 10
+    },
+    {
+      "id": "bentley/continental-gt",
+      "brand": "Bentley",
+      "model": "Continental GT",
+      "sourceModels": 2,
+      "sourcePeriods": 20,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "bentley/flying-spur",
+      "brand": "Bentley",
+      "model": "Flying Spur",
+      "sourceModels": 2,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "bentley/bentayga",
+      "brand": "Bentley",
+      "model": "Bentayga",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "rolls-royce/ghost",
+      "brand": "Rolls-Royce",
+      "model": "Ghost",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "rolls-royce/phantom",
+      "brand": "Rolls-Royce",
+      "model": "Phantom",
+      "sourceModels": 1,
+      "sourcePeriods": 13,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "rolls-royce/cullinan",
+      "brand": "Rolls-Royce",
+      "model": "Cullinan",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "rolls-royce/spectre",
+      "brand": "Rolls-Royce",
+      "model": "Spectre",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "rolls-royce/wraith",
+      "brand": "Rolls-Royce",
+      "model": "Wraith",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "rolls-royce/dawn",
+      "brand": "Rolls-Royce",
+      "model": "Dawn",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "aston-martin/vantage",
+      "brand": "Aston Martin",
+      "model": "Vantage",
+      "sourceModels": 3,
+      "sourcePeriods": 18,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "aston-martin/db11",
+      "brand": "Aston Martin",
+      "model": "DB11",
+      "sourceModels": 2,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "aston-martin/db12",
+      "brand": "Aston Martin",
+      "model": "DB12",
+      "sourceModels": 2,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "aston-martin/dbs",
+      "brand": "Aston Martin",
+      "model": "DBS",
+      "sourceModels": 2,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "aston-martin/vanquish",
+      "brand": "Aston Martin",
+      "model": "Vanquish",
+      "sourceModels": 2,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "aston-martin/dbx",
+      "brand": "Aston Martin",
+      "model": "DBX",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "mclaren/artura",
+      "brand": "McLaren",
+      "model": "Artura",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "mclaren/gt",
+      "brand": "McLaren",
+      "model": "GT",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "mclaren/gts",
+      "brand": "McLaren",
+      "model": "GTS",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "mclaren/570s",
+      "brand": "McLaren",
+      "model": "570S",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "mclaren/600lt",
+      "brand": "McLaren",
+      "model": "600LT",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "mclaren/720s",
+      "brand": "McLaren",
+      "model": "720S",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "mclaren/750s",
+      "brand": "McLaren",
+      "model": "750S",
+      "sourceModels": 1,
+      "sourcePeriods": 2,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "mclaren/senna",
+      "brand": "McLaren",
+      "model": "Senna",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "chevrolet/spark",
+      "brand": "Chevrolet",
+      "model": "Spark",
+      "sourceModels": 2,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "chevrolet/cruze",
+      "brand": "Chevrolet",
+      "model": "Cruze",
+      "sourceModels": 1,
+      "sourcePeriods": 7
+    },
+    {
+      "id": "chevrolet/malibu",
+      "brand": "Chevrolet",
+      "model": "Malibu",
+      "sourceModels": 2,
+      "sourcePeriods": 10
+    },
+    {
+      "id": "chevrolet/camaro",
+      "brand": "Chevrolet",
+      "model": "Camaro",
+      "sourceModels": 1,
+      "sourcePeriods": 29,
+      "ambiguousDuplicatePeriods": 6
+    },
+    {
+      "id": "chevrolet/corvette",
+      "brand": "Chevrolet",
+      "model": "Corvette",
+      "sourceModels": 1,
+      "sourcePeriods": 23
+    },
+    {
+      "id": "chevrolet/tahoe",
+      "brand": "Chevrolet",
+      "model": "Tahoe",
+      "sourceModels": 1,
+      "sourcePeriods": 7,
+      "ambiguousDuplicatePeriods": 1
+    },
+    {
+      "id": "chevrolet/suburban",
+      "brand": "Chevrolet",
+      "model": "Suburban",
+      "sourceModels": 1,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "chevrolet/silverado",
+      "brand": "Chevrolet",
+      "model": "Silverado",
+      "sourceModels": 3,
+      "sourcePeriods": 23,
+      "ambiguousDuplicatePeriods": 13
+    },
+    {
+      "id": "dodge/challenger",
+      "brand": "Dodge",
+      "model": "Challenger",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "dodge/charger",
+      "brand": "Dodge",
+      "model": "Charger",
+      "sourceModels": 1,
+      "sourcePeriods": 11
+    },
+    {
+      "id": "dodge/durango",
+      "brand": "Dodge",
+      "model": "Durango",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "dodge/hornet",
+      "brand": "Dodge",
+      "model": "Hornet",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "ram/1500",
+      "brand": "RAM",
+      "model": "1500",
+      "sourceModels": 1,
+      "sourcePeriods": 12,
+      "ambiguousDuplicatePeriods": 4
+    },
+    {
+      "id": "ram/2500",
+      "brand": "RAM",
+      "model": "2500",
+      "sourceModels": 1,
+      "sourcePeriods": 6,
+      "ambiguousDuplicatePeriods": 4
+    },
+    {
+      "id": "ram/3500",
+      "brand": "RAM",
+      "model": "3500",
+      "sourceModels": 1,
+      "sourcePeriods": 6,
+      "ambiguousDuplicatePeriods": 4
+    },
+    {
+      "id": "cadillac/ct4",
+      "brand": "Cadillac",
+      "model": "CT4",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "cadillac/ct5",
+      "brand": "Cadillac",
+      "model": "CT5",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "cadillac/xt4",
+      "brand": "Cadillac",
+      "model": "XT4",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "cadillac/xt5",
+      "brand": "Cadillac",
+      "model": "XT5",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "cadillac/xt6",
+      "brand": "Cadillac",
+      "model": "XT6",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "cadillac/escalade",
+      "brand": "Cadillac",
+      "model": "Escalade",
+      "sourceModels": 4,
+      "sourcePeriods": 15,
+      "ambiguousDuplicatePeriods": 1,
+      "note": "Includes extended ESV, EXT pickup and electric long-wheelbase IQL; standard electric IQ absent as a separate source family."
+    },
+    {
+      "id": "cadillac/lyriq",
+      "brand": "Cadillac",
+      "model": "Lyriq",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "gmc/sierra",
+      "brand": "GMC",
+      "model": "Sierra",
+      "sourceModels": 3,
+      "sourcePeriods": 23,
+      "ambiguousDuplicatePeriods": 11
+    },
+    {
+      "id": "gmc/yukon",
+      "brand": "GMC",
+      "model": "Yukon",
+      "sourceModels": 2,
+      "sourcePeriods": 9
+    },
+    {
+      "id": "gmc/canyon",
+      "brand": "GMC",
+      "model": "Canyon",
+      "sourceModels": 2,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "gmc/hummer-ev",
+      "brand": "GMC",
+      "model": "Hummer EV",
+      "sourceModels": 2,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "genesis/g70",
+      "brand": "Genesis",
+      "model": "G70",
+      "sourceModels": 2,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "genesis/g80",
+      "brand": "Genesis",
+      "model": "G80",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "genesis/g90",
+      "brand": "Genesis",
+      "model": "G90",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "genesis/gv60",
+      "brand": "Genesis",
+      "model": "GV60",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "genesis/gv70",
+      "brand": "Genesis",
+      "model": "GV70",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "genesis/gv80",
+      "brand": "Genesis",
+      "model": "GV80",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "polestar/polestar-2",
+      "brand": "Polestar",
+      "model": "Polestar 2",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "polestar/3",
+      "brand": "Polestar",
+      "model": "3",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "polestar/4",
+      "brand": "Polestar",
+      "model": "4",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "byd/dolphin",
+      "brand": "BYD",
+      "model": "Dolphin",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "byd/atto-3",
+      "brand": "BYD",
+      "model": "Atto 3",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "byd/seal",
+      "brand": "BYD",
+      "model": "Seal",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "byd/seal-u",
+      "brand": "BYD",
+      "model": "Seal U",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "byd/tang",
+      "brand": "BYD",
+      "model": "Tang",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "byd/han",
+      "brand": "BYD",
+      "model": "Han",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "mg/mg3",
+      "brand": "MG",
+      "model": "MG3",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "mg/mg4",
+      "brand": "MG",
+      "model": "MG4",
+      "sourceModels": 1,
+      "sourcePeriods": 2
+    },
+    {
+      "id": "mg/mg5",
+      "brand": "MG",
+      "model": "MG5",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "mg/zs",
+      "brand": "MG",
+      "model": "ZS",
+      "sourceModels": 1,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "mg/hs",
+      "brand": "MG",
+      "model": "HS",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "mg/marvel-r",
+      "brand": "MG",
+      "model": "Marvel R",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "mg/cyberster",
+      "brand": "MG",
+      "model": "Cyberster",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    },
+    {
+      "id": "ds-automobiles/ds-3",
+      "brand": "DS Automobiles",
+      "model": "DS 3",
+      "sourceModels": 4,
+      "sourcePeriods": 7
+    },
+    {
+      "id": "ds-automobiles/ds-4",
+      "brand": "DS Automobiles",
+      "model": "DS 4",
+      "sourceModels": 2,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "ds-automobiles/ds-7",
+      "brand": "DS Automobiles",
+      "model": "DS 7",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "ds-automobiles/ds-9",
+      "brand": "DS Automobiles",
+      "model": "DS 9",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "lancia/ypsilon",
+      "brand": "Lancia",
+      "model": "Ypsilon",
+      "sourceModels": 1,
+      "sourcePeriods": 7
+    },
+    {
+      "id": "lancia/delta",
+      "brand": "Lancia",
+      "model": "Delta",
+      "sourceModels": 2,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "lancia/thema",
+      "brand": "Lancia",
+      "model": "Thema",
+      "sourceModels": 1,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "smart/fortwo",
+      "brand": "Smart",
+      "model": "Fortwo",
+      "sourceModels": 2,
+      "sourcePeriods": 13
+    },
+    {
+      "id": "smart/forfour",
+      "brand": "Smart",
+      "model": "Forfour",
+      "sourceModels": 1,
+      "sourcePeriods": 3
+    },
+    {
+      "id": "smart/1",
+      "brand": "Smart",
+      "model": "#1",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "smart/3",
+      "brand": "Smart",
+      "model": "#3",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "smart/5",
+      "brand": "Smart",
+      "model": "#5",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "ssangyong-kgm/tivoli",
+      "brand": "SsangYong/KGM",
+      "model": "Tivoli",
+      "sourceModels": 3,
+      "sourcePeriods": 4
+    },
+    {
+      "id": "ssangyong-kgm/korando",
+      "brand": "SsangYong/KGM",
+      "model": "Korando",
+      "sourceModels": 2,
+      "sourcePeriods": 6
+    },
+    {
+      "id": "ssangyong-kgm/torres",
+      "brand": "SsangYong/KGM",
+      "model": "Torres",
+      "sourceModels": 1,
+      "sourcePeriods": 1
+    },
+    {
+      "id": "ssangyong-kgm/rexton",
+      "brand": "SsangYong/KGM",
+      "model": "Rexton",
+      "sourceModels": 2,
+      "sourcePeriods": 5
+    },
+    {
+      "id": "ssangyong-kgm/musso",
+      "brand": "SsangYong/KGM",
+      "model": "Musso",
+      "sourceModels": 2,
+      "sourcePeriods": 3,
+      "note": "SsangYong Musso and Musso Sports are available; KGM Musso is missing in this seed."
+    },
+    {
+      "id": "isuzu/d-max",
+      "brand": "Isuzu",
+      "model": "D-Max",
+      "sourceModels": 1,
+      "sourcePeriods": 5,
+      "ambiguousDuplicatePeriods": 1,
+      "note": "The source stops at 2019. Current generation is absent and requires a sourced supplement."
+    },
+    {
+      "id": "isuzu/mu-x",
+      "brand": "Isuzu",
+      "model": "MU-X",
+      "sourceModels": 0,
+      "sourcePeriods": 0
+    }
+  ],
+  "scope": "Exact source-name crosswalk. Counts measure imported presence, not historical completeness or verification. Source body types and chassis/facelift metadata may be absent."
+}

@@ -1,0 +1,72 @@
+'use strict';
+const assert = require('node:assert/strict');
+const path = require('node:path');
+const fs = require('node:fs');
+const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
+const base = process.env.NFW_BASE_URL || 'http://127.0.0.1:8765';
+const output = path.resolve(__dirname, '../docs/qa');
+
+(async () => {
+  fs.mkdirSync(output, { recursive: true });
+  const browser = await chromium.launch({ channel: 'chrome', headless: true });
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto(base + '/index.html#auta', { waitUntil: 'networkidle' });
+  const catalog = page.locator('#vehicleCatalogue');
+  const search = page.locator('#catalogSearch');
+  const models = page.locator('.catalog-card');
+  assert.equal(await page.locator('#catalogBrand option').count(), 54);
+  assert.equal(await models.count(), 12);
+  assert.match(await page.locator('#catalogResultCount').innerText(), /401/);
+  assert.equal(await page.locator('#catalogYear option').nth(1).getAttribute('value'), '2026');
+  assert.ok(await page.locator('#catalogYear option').evaluateAll(options => options.every(option => !option.value || Number(option.value) <= 2026)));
+  await catalog.scrollIntoViewIfNeeded();
+  await catalog.screenshot({ path: path.join(output, 'catalog-desktop.png'), style: '.nav { visibility: hidden !important; }' });
+
+  await search.fill('skoda octavia');
+  await page.waitForFunction(() => document.querySelectorAll('.catalog-card').length === 1);
+  assert.match(await models.innerText(), /Octavia/);
+  await page.locator('.catalog-variants summary').click();
+  assert.ok(await page.locator('.catalog-variant').count() > 0);
+  const more = page.locator('[data-more-variants]');
+  if (await more.count()) { const before = await page.locator('.catalog-variant').count(); await more.click(); assert.ok(await page.locator('.catalog-variant').count() > before); }
+  const exactLink = await page.locator('.catalog-variant-select').first().getAttribute('href');
+  const params = Object.fromEntries(new URL(exactLink, base).searchParams);
+  assert.equal(params.brand, 'skoda'); assert.equal(params.model, 'octavia');
+  assert.ok(params.generation); assert.ok(params.body); assert.ok(Number(params.year) <= 2026);
+  assert.ok(await page.evaluate(params => window.NFWVehicles.getCandidates(params.brand, params.model, params.year).some(g => g.id === params.generation && g.body === params.body), params));
+  await page.reload({ waitUntil: 'networkidle' });
+  assert.equal(await search.inputValue(), 'skoda octavia'); assert.equal(await models.count(), 1);
+  await page.locator('#catalogReset').click();
+  assert.equal(await models.count(), 12);
+
+  await page.selectOption('#catalogBrand', 'bmw');
+  assert.match(await page.locator('#catalogResultCount').innerText(), /20 model/);
+  await page.getByRole('button', { name: 'Další stránka katalogu', exact: true }).click();
+  assert.equal(await models.count(), 8);
+  assert.match(await page.locator('#catalogResultCount').innerText(), /13–20/);
+  await page.selectOption('#catalogYear', '2026');
+  assert.ok(await models.count() > 0);
+  await page.locator('.catalog-variants summary').first().click();
+  const yearLinks = await page.locator('.catalog-variant-select').evaluateAll(links => links.map(link => new URL(link.href).searchParams.get('year')));
+  assert.ok(yearLinks.every(year => year === '2026'));
+  await search.fill('zzzz-not-a-model');
+  await page.locator('.catalog-empty').waitFor();
+  await page.locator('[data-catalog-clear]').click();
+  assert.equal(await models.count(), 12);
+
+  await page.goto(base + '/index.html?catalogBrand=skoda&catalogModel=Octavia#auta', { waitUntil: 'networkidle' });
+  assert.equal(await search.inputValue(), 'Octavia'); assert.equal(await models.count(), 1);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.locator('.catalog-variants summary').click();
+  await catalog.scrollIntoViewIfNeeded();
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'Mobile horizontal overflow');
+  await catalog.screenshot({ path: path.join(output, 'catalog-mobile.png'), style: '.nav { visibility: hidden !important; }' });
+  assert.equal(await catalog.locator('svg').count(), 0);
+  assert.equal(await catalog.locator('a[href="data/vehicle-variants.json"]').count(), 1);
+  assert.equal(await catalog.locator('a[href="https://opendatacommons.org/licenses/odbl/1-0/"]').count(), 1);
+  assert.deepEqual(errors, []);
+  await browser.close();
+  console.log('PASS catalogue: all 53/401, diacritic search, actual years through 2026, pagination, exact variant/body links, URL restore, empty/reset, mobile layout, source credits, no runtime errors.');
+})().catch(error => { console.error(error); process.exitCode = 1; });

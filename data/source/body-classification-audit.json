@@ -1,0 +1,491 @@
+{
+  "scope": "Requested families matched through data/model-crosswalk.json.",
+  "sourceRevision": "b4965631140fa82404359167621274601da69a5b",
+  "counts": {
+    "family-curation": 2077,
+    "source-name": 739,
+    "unresolved": 60
+  },
+  "unresolved": [
+    {
+      "brand": "citroen",
+      "model": "berlingo",
+      "sourceModel": "CITROEN Berlingo",
+      "generation": "CITROEN Berlingo (2023)",
+      "from": 2023,
+      "to": null
+    },
+    {
+      "brand": "citroen",
+      "model": "berlingo",
+      "sourceModel": "CITROEN Berlingo",
+      "generation": "CITROEN Berlingo (2018)",
+      "from": 2018,
+      "to": 2023
+    },
+    {
+      "brand": "citroen",
+      "model": "berlingo",
+      "sourceModel": "CITROEN Berlingo",
+      "generation": "CITROEN Berlingo (2015)",
+      "from": 2015,
+      "to": 2018
+    },
+    {
+      "brand": "citroen",
+      "model": "berlingo",
+      "sourceModel": "CITROEN Berlingo",
+      "generation": "CITROEN Berlingo (2012)",
+      "from": 2012,
+      "to": 2015
+    },
+    {
+      "brand": "citroen",
+      "model": "berlingo",
+      "sourceModel": "CITROEN Berlingo",
+      "generation": "CITROEN Berlingo (2008)",
+      "from": 2008,
+      "to": 2012
+    },
+    {
+      "brand": "citroen",
+      "model": "berlingo",
+      "sourceModel": "CITROEN Berlingo",
+      "generation": "CITROEN Berlingo (2006)",
+      "from": 2006,
+      "to": 2008
+    },
+    {
+      "brand": "citroen",
+      "model": "berlingo",
+      "sourceModel": "CITROEN Berlingo",
+      "generation": "CITROEN Berlingo (2002)",
+      "from": 2002,
+      "to": 2008
+    },
+    {
+      "brand": "citroen",
+      "model": "berlingo",
+      "sourceModel": "CITROEN Berlingo",
+      "generation": "CITROEN Berlingo (1996)",
+      "from": 1996,
+      "to": 2002
+    },
+    {
+      "brand": "dodge",
+      "model": "charger",
+      "sourceModel": "Charger",
+      "generation": "Charger (2024)",
+      "from": 2024,
+      "to": null
+    },
+    {
+      "brand": "dodge",
+      "model": "charger",
+      "sourceModel": "Charger",
+      "generation": "Charger (1981)",
+      "from": 1981,
+      "to": 1987
+    },
+    {
+      "brand": "dodge",
+      "model": "charger",
+      "sourceModel": "Charger",
+      "generation": "Charger (1974)",
+      "from": 1974,
+      "to": 1978
+    },
+    {
+      "brand": "dodge",
+      "model": "charger",
+      "sourceModel": "Charger",
+      "generation": "Charger (1971)",
+      "from": 1971,
+      "to": 1972
+    },
+    {
+      "brand": "dodge",
+      "model": "charger",
+      "sourceModel": "Charger",
+      "generation": "Charger (1969)",
+      "from": 1969,
+      "to": 1970
+    },
+    {
+      "brand": "dodge",
+      "model": "charger",
+      "sourceModel": "Charger",
+      "generation": "Charger (1969)",
+      "from": 1969,
+      "to": 1969
+    },
+    {
+      "brand": "dodge",
+      "model": "charger",
+      "sourceModel": "Charger",
+      "generation": "Charger (1968)",
+      "from": 1968,
+      "to": 1970
+    },
+    {
+      "brand": "dodge",
+      "model": "charger",
+      "sourceModel": "Charger",
+      "generation": "Charger (1966)",
+      "from": 1966,
+      "to": 1968
+    },
+    {
+      "brand": "fiat",
+      "model": "500",
+      "sourceModel": "500",
+      "generation": "500 (1972)",
+      "from": 1972,
+      "to": 1975
+    },
+    {
+      "brand": "fiat",
+      "model": "500",
+      "sourceModel": "500",
+      "generation": "500 (1968)",
+      "from": 1968,
+      "to": 1972
+    },
+    {
+      "brand": "fiat",
+      "model": "500",
+      "sourceModel": "500",
+      "generation": "500 (1965)",
+      "from": 1965,
+      "to": 1972
+    },
+    {
+      "brand": "fiat",
+      "model": "500",
+      "sourceModel": "500",
+      "generation": "500 (1960)",
+      "from": 1960,
+      "to": 1969
+    },
+    {
+      "brand": "fiat",
+      "model": "500",
+      "sourceModel": "500",
+      "generation": "500 (1957)",
+      "from": 1957,
+      "to": 1960
+    },
+    {
+      "brand": "fiat",
+      "model": "600",
+      "sourceModel": "600",
+      "generation": "600 (2005)",
+      "from": 2005,
+      "to": 2007
+    },
+    {
+      "brand": "fiat",
+      "model": "doblo",
+      "sourceModel": "Doblo",
+      "generation": "Doblo (2015)",
+      "from": 2015,
+      "to": 2022
+    },
+    {
+      "brand": "fiat",
+      "model": "doblo",
+      "sourceModel": "Doblo",
+      "generation": "Doblo (2010)",
+      "from": 2010,
+      "to": 2015
+    },
+    {
+      "brand": "fiat",
+      "model": "doblo",
+      "sourceModel": "Doblo",
+      "generation": "Doblo (2005)",
+      "from": 2005,
+      "to": 2010
+    },
+    {
+      "brand": "fiat",
+      "model": "doblo",
+      "sourceModel": "Doblo",
+      "generation": "Doblo (2001)",
+      "from": 2001,
+      "to": 2004
+    },
+    {
+      "brand": "ford",
+      "model": "transit",
+      "sourceModel": "Transit Custom",
+      "generation": "Transit Custom (2019)",
+      "from": 2019,
+      "to": 2023
+    },
+    {
+      "brand": "mg",
+      "model": "mg5",
+      "sourceModel": "MG 5",
+      "generation": "MG 5 (2021)",
+      "from": 2021,
+      "to": null
+    },
+    {
+      "brand": "opel",
+      "model": "combo",
+      "sourceModel": "Combo",
+      "generation": "Combo (2018)",
+      "from": 2018,
+      "to": 2023
+    },
+    {
+      "brand": "opel",
+      "model": "combo",
+      "sourceModel": "Combo",
+      "generation": "Combo (2011)",
+      "from": 2011,
+      "to": 2018
+    },
+    {
+      "brand": "opel",
+      "model": "combo",
+      "sourceModel": "Combo",
+      "generation": "Combo (2001)",
+      "from": 2001,
+      "to": 2011
+    },
+    {
+      "brand": "renault",
+      "model": "kangoo",
+      "sourceModel": "Grand Kangoo",
+      "generation": "Grand Kangoo (2023)",
+      "from": 2023,
+      "to": null
+    },
+    {
+      "brand": "renault",
+      "model": "kangoo",
+      "sourceModel": "Kangoo",
+      "generation": "Kangoo (2020)",
+      "from": 2020,
+      "to": null
+    },
+    {
+      "brand": "renault",
+      "model": "kangoo",
+      "sourceModel": "Kangoo",
+      "generation": "Kangoo (2008)",
+      "from": 2008,
+      "to": 2020
+    },
+    {
+      "brand": "renault",
+      "model": "kangoo",
+      "sourceModel": "Kangoo",
+      "generation": "Kangoo (2006)",
+      "from": 2006,
+      "to": 2013
+    },
+    {
+      "brand": "renault",
+      "model": "kangoo",
+      "sourceModel": "Kangoo",
+      "generation": "Kangoo (2005)",
+      "from": 2005,
+      "to": 2008
+    },
+    {
+      "brand": "renault",
+      "model": "kangoo",
+      "sourceModel": "Kangoo",
+      "generation": "Kangoo (2003)",
+      "from": 2003,
+      "to": 2005
+    },
+    {
+      "brand": "renault",
+      "model": "kangoo",
+      "sourceModel": "Kangoo",
+      "generation": "Kangoo (2001)",
+      "from": 2001,
+      "to": 2003
+    },
+    {
+      "brand": "renault",
+      "model": "kangoo",
+      "sourceModel": "Kangoo",
+      "generation": "Kangoo (1997)",
+      "from": 1997,
+      "to": 2003
+    },
+    {
+      "brand": "subaru",
+      "model": "impreza",
+      "sourceModel": "Impreza",
+      "generation": "Impreza (2020)",
+      "from": 2020,
+      "to": 2022
+    },
+    {
+      "brand": "subaru",
+      "model": "impreza",
+      "sourceModel": "Impreza",
+      "generation": "Impreza (2020)",
+      "from": 2020,
+      "to": null
+    },
+    {
+      "brand": "subaru",
+      "model": "impreza",
+      "sourceModel": "Impreza",
+      "generation": "Impreza (2016)",
+      "from": 2016,
+      "to": 2020
+    },
+    {
+      "brand": "subaru",
+      "model": "impreza",
+      "sourceModel": "Impreza",
+      "generation": "Impreza (2016)",
+      "from": 2016,
+      "to": 2022
+    },
+    {
+      "brand": "subaru",
+      "model": "impreza",
+      "sourceModel": "Impreza",
+      "generation": "Impreza (2012)",
+      "from": 2012,
+      "to": 2016
+    },
+    {
+      "brand": "subaru",
+      "model": "impreza",
+      "sourceModel": "Impreza",
+      "generation": "Impreza (2012)",
+      "from": 2012,
+      "to": 2016
+    },
+    {
+      "brand": "subaru",
+      "model": "impreza",
+      "sourceModel": "Impreza",
+      "generation": "Impreza (2007)",
+      "from": 2007,
+      "to": 2011
+    },
+    {
+      "brand": "subaru",
+      "model": "impreza",
+      "sourceModel": "Impreza",
+      "generation": "Impreza (2005)",
+      "from": 2005,
+      "to": 2007
+    },
+    {
+      "brand": "subaru",
+      "model": "impreza",
+      "sourceModel": "Impreza",
+      "generation": "Impreza (2005)",
+      "from": 2005,
+      "to": 2007
+    },
+    {
+      "brand": "subaru",
+      "model": "impreza",
+      "sourceModel": "Impreza",
+      "generation": "Impreza (2003)",
+      "from": 2003,
+      "to": 2005
+    },
+    {
+      "brand": "subaru",
+      "model": "impreza",
+      "sourceModel": "Impreza",
+      "generation": "Impreza (2000)",
+      "from": 2000,
+      "to": 2003
+    },
+    {
+      "brand": "subaru",
+      "model": "impreza",
+      "sourceModel": "Impreza",
+      "generation": "Impreza (1998)",
+      "from": 1998,
+      "to": 2000
+    },
+    {
+      "brand": "subaru",
+      "model": "impreza",
+      "sourceModel": "Impreza",
+      "generation": "Impreza (1993)",
+      "from": 1993,
+      "to": 1998
+    },
+    {
+      "brand": "toyota",
+      "model": "corolla",
+      "sourceModel": "Corolla",
+      "generation": "Corolla (2016)",
+      "from": 2016,
+      "to": 2018
+    },
+    {
+      "brand": "toyota",
+      "model": "corolla",
+      "sourceModel": "Corolla",
+      "generation": "Corolla (2014)",
+      "from": 2014,
+      "to": 2020
+    },
+    {
+      "brand": "toyota",
+      "model": "corolla",
+      "sourceModel": "Corolla",
+      "generation": "Corolla (US) (2018)",
+      "from": 2018,
+      "to": 2023
+    },
+    {
+      "brand": "toyota",
+      "model": "corolla",
+      "sourceModel": "Corolla",
+      "generation": "Corolla (US) (2013)",
+      "from": 2013,
+      "to": 2016
+    },
+    {
+      "brand": "toyota",
+      "model": "corolla",
+      "sourceModel": "Corolla",
+      "generation": "Corolla (US) (2013)",
+      "from": 2013,
+      "to": 2016
+    },
+    {
+      "brand": "volkswagen",
+      "model": "caddy",
+      "sourceModel": "Caddy",
+      "generation": "Caddy (2020)",
+      "from": 2020,
+      "to": 2025
+    },
+    {
+      "brand": "volkswagen",
+      "model": "caddy",
+      "sourceModel": "Caddy",
+      "generation": "Caddy (2010)",
+      "from": 2010,
+      "to": 2016
+    },
+    {
+      "brand": "volkswagen",
+      "model": "caddy",
+      "sourceModel": "Caddy",
+      "generation": "Caddy (2005)",
+      "from": 2005,
+      "to": 2010
+    }
+  ]
+}

@@ -2,23 +2,25 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/webp" href="assets/renders/apex10.webp">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Konfigurátor · OARTS Need For Kola</title>
-  <meta name="description" content="Nakonfiguruj si kovaná kola OARTS: auto, design, rozměry, barvu, povrch, límec i krytku. Cena a OARTS štítek v reálném čase.">
+  <title>Konfigurátor · Need For Wheels</title>
+  <meta name="description" content="Nakonfiguruj si kola Need For Wheels: auto, design, rozměry, barvu, povrch, límec i krytku. Cena a Need For Wheels štítek v reálném čase.">
   <link rel="canonical" href="https://majkpowa.github.io/NeedForKola/konfigurator.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23111'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23ff4d1c' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23ff4d1c'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/premium.css">
+<script type="importmap">{"imports":{"three":"./assets/vendor/three/three.module.js","three/addons/":"./assets/vendor/three/addons/"}}</script>
 </head>
 <body>
 
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="index.html">
-      <svg class="logo__mark" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="#111" stroke="#fff" stroke-opacity=".25"/><circle cx="20" cy="20" r="11" fill="none" stroke="#ff4d1c" stroke-width="3"/><path d="M20 9v6M20 25v6M9 20h6M25 20h6" stroke="#ff4d1c" stroke-width="3"/><circle cx="20" cy="20" r="3" fill="#fff"/></svg>
-      <span>OARTS<small>Need For Kola</small></span>
+      <span class="brand-monogram" aria-hidden="true">NW<span>↗</span></span>
+      <span>NEED FOR WHEELS<small>FORGED TO FIT YOU</small></span>
     </a>
     <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
     <nav class="nav__links" id="navLinks">
@@ -48,6 +50,8 @@
 
 <script src="js/wheels.js"></script>
 <script src="js/cars.js"></script>
+<script src="js/vehicle-data.js"></script>
+<script src="js/vehicles.js"></script>
 <script src="js/main.js"></script>
 <script src="js/configurator.js"></script>
 </body>

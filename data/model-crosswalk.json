@@ -1,0 +1,3105 @@
+{
+  "bmw/rada-1": [
+    {
+      "group": "bmw",
+      "model": "1 Series"
+    }
+  ],
+  "bmw/rada-2": [
+    {
+      "group": "bmw",
+      "model": "2 Series"
+    },
+    {
+      "group": "bmw",
+      "model": "2 Series Active Tourer"
+    },
+    {
+      "group": "bmw",
+      "model": "2 Series Gran"
+    },
+    {
+      "group": "bmw",
+      "model": "2 Series Gran Tourer"
+    }
+  ],
+  "bmw/rada-3": [
+    {
+      "group": "bmw",
+      "model": "3 Series"
+    },
+    {
+      "group": "bmw",
+      "model": "3 Series Compact"
+    },
+    {
+      "group": "bmw",
+      "model": "3 Series Gran Turismo"
+    }
+  ],
+  "bmw/rada-4": [
+    {
+      "group": "bmw",
+      "model": "4 Series"
+    },
+    {
+      "group": "bmw",
+      "model": "4 Series Gran"
+    }
+  ],
+  "bmw/rada-5": [
+    {
+      "group": "bmw",
+      "model": "5 Series"
+    },
+    {
+      "group": "bmw",
+      "model": "5 Series Gran Turismo"
+    }
+  ],
+  "bmw/rada-7": [
+    {
+      "group": "bmw",
+      "model": "7 Series"
+    }
+  ],
+  "bmw/rada-8": [
+    {
+      "group": "bmw",
+      "model": "8 Series"
+    },
+    {
+      "group": "bmw",
+      "model": "8 Series Gran"
+    }
+  ],
+  "bmw/x1": [
+    {
+      "group": "bmw",
+      "model": "X1"
+    }
+  ],
+  "bmw/x2": [
+    {
+      "group": "bmw",
+      "model": "X2"
+    }
+  ],
+  "bmw/x3": [
+    {
+      "group": "bmw",
+      "model": "X3"
+    }
+  ],
+  "bmw/x4": [
+    {
+      "group": "bmw",
+      "model": "X4"
+    }
+  ],
+  "bmw/x5": [
+    {
+      "group": "bmw",
+      "model": "X5"
+    }
+  ],
+  "bmw/x6": [
+    {
+      "group": "bmw",
+      "model": "X6"
+    }
+  ],
+  "bmw/x7": [
+    {
+      "group": "bmw",
+      "model": "X7"
+    }
+  ],
+  "bmw/xm": [
+    {
+      "group": "bmw",
+      "model": "XM"
+    }
+  ],
+  "bmw/z4": [
+    {
+      "group": "bmw",
+      "model": "Z4"
+    }
+  ],
+  "bmw/i4": [
+    {
+      "group": "bmw",
+      "model": "i4"
+    }
+  ],
+  "bmw/i5": [
+    {
+      "group": "bmw",
+      "model": "i5"
+    }
+  ],
+  "bmw/i7": [
+    {
+      "group": "bmw",
+      "model": "i7"
+    }
+  ],
+  "bmw/ix": [
+    {
+      "group": "bmw",
+      "model": "iX"
+    }
+  ],
+  "mercedes-benz/a": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ A-Class"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ A-Klasse"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ A-Klasse Saloon"
+    }
+  ],
+  "mercedes-benz/b": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ B-Klasse"
+    }
+  ],
+  "mercedes-benz/c": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ C-Class"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ C-Class EV"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ C-Klasse"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ C-Klasse All-Terrain"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ C-Klasse and predecessors"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ C-Klasse SportCoupe/CLC"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ C-Klasse T-Modell"
+    }
+  ],
+  "mercedes-benz/e": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ E-Class T-Modell All-Terrain"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ E-Klasse and predecessors"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ E-Klasse Cabriolet and predecessors"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ E-Klasse Coupe and predecessors"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ E-Klasse T-Modell"
+    }
+  ],
+  "mercedes-benz/s": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ S-Class"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ S-Class Maybach"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ S-Klasse"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ S-Klasse and predecessors"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ CL-Klasse and predecessors"
+    }
+  ],
+  "mercedes-benz/cla": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ CLA Klasse"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ CLA Shooting Brake"
+    }
+  ],
+  "mercedes-benz/cls": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ CLS-Klasse"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ CLS Shooting Brake"
+    }
+  ],
+  "mercedes-benz/cle": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ CLE"
+    }
+  ],
+  "mercedes-benz/gla": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ GLA"
+    }
+  ],
+  "mercedes-benz/glb": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ GLB"
+    }
+  ],
+  "mercedes-benz/glc": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ GLC Class"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ GLK-Klasse"
+    }
+  ],
+  "mercedes-benz/gle": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ GLE-Class"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ M-Klasse"
+    }
+  ],
+  "mercedes-benz/gls": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ GLS-Class"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ GL-Klasse"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ GLS Maybach"
+    }
+  ],
+  "mercedes-benz/g-class": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ G-Klasse"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ G-Klasse Kurz"
+    }
+  ],
+  "mercedes-benz/sl": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ SL-Klasse"
+    },
+    {
+      "group": "mercedes-amg",
+      "model": "SL-Class"
+    }
+  ],
+  "mercedes-benz/amg-gt": [
+    {
+      "group": "mercedes-amg",
+      "model": "GT"
+    },
+    {
+      "group": "mercedes-amg",
+      "model": "GT 4-DOOR"
+    }
+  ],
+  "mercedes-benz/eqe": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ EQE"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ EQE SUV"
+    }
+  ],
+  "mercedes-benz/eqs": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ EQS"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ EQS SUV"
+    }
+  ],
+  "mercedes-benz/v-class": [
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ V-Class and predecessors"
+    },
+    {
+      "group": "mercedes-benz",
+      "model": "MERCEDES BENZ VIANO"
+    }
+  ],
+  "audi/a1": [
+    {
+      "group": "audi",
+      "model": "A1"
+    }
+  ],
+  "audi/a3": [
+    {
+      "group": "audi",
+      "model": "A3"
+    },
+    {
+      "group": "audi",
+      "model": "A3 allstreet"
+    }
+  ],
+  "audi/a4": [
+    {
+      "group": "audi",
+      "model": "A4"
+    },
+    {
+      "group": "audi",
+      "model": "A4 Avant"
+    },
+    {
+      "group": "audi",
+      "model": "A4 Allroad"
+    }
+  ],
+  "audi/a5": [
+    {
+      "group": "audi",
+      "model": "A5"
+    },
+    {
+      "group": "audi",
+      "model": "A5 Avant"
+    }
+  ],
+  "audi/a6": [
+    {
+      "group": "audi",
+      "model": "A6"
+    },
+    {
+      "group": "audi",
+      "model": "A6 Avant"
+    },
+    {
+      "group": "audi",
+      "model": "Allroad"
+    }
+  ],
+  "audi/a7": [
+    {
+      "group": "audi",
+      "model": "A7"
+    }
+  ],
+  "audi/a8": [
+    {
+      "group": "audi",
+      "model": "A8"
+    }
+  ],
+  "audi/q2": [
+    {
+      "group": "audi",
+      "model": "Q2"
+    }
+  ],
+  "audi/q3": [
+    {
+      "group": "audi",
+      "model": "Q3"
+    }
+  ],
+  "audi/q4-e-tron": [
+    {
+      "group": "audi",
+      "model": "Q4 e-tron"
+    },
+    {
+      "group": "audi",
+      "model": "Q4"
+    }
+  ],
+  "audi/q5": [
+    {
+      "group": "audi",
+      "model": "Q5"
+    }
+  ],
+  "audi/q6-e-tron": [
+    {
+      "group": "audi",
+      "model": "Q6"
+    }
+  ],
+  "audi/q7": [
+    {
+      "group": "audi",
+      "model": "Q7"
+    }
+  ],
+  "audi/q8": [
+    {
+      "group": "audi",
+      "model": "Q8"
+    }
+  ],
+  "audi/tt": [
+    {
+      "group": "audi",
+      "model": "TT"
+    }
+  ],
+  "audi/r8": [
+    {
+      "group": "audi",
+      "model": "R8"
+    }
+  ],
+  "audi/e-tron-gt": [
+    {
+      "group": "audi",
+      "model": "e-tron GT"
+    }
+  ],
+  "volkswagen/polo": [
+    {
+      "group": "volkswagen",
+      "model": "Polo"
+    },
+    {
+      "group": "volkswagen",
+      "model": "Polo Variant"
+    }
+  ],
+  "volkswagen/golf": [
+    {
+      "group": "volkswagen",
+      "model": "Golf"
+    },
+    {
+      "group": "volkswagen",
+      "model": "Golf Variant"
+    },
+    {
+      "group": "volkswagen",
+      "model": "Golf Cabrio"
+    },
+    {
+      "group": "volkswagen",
+      "model": "Golf Alltrack"
+    },
+    {
+      "group": "volkswagen",
+      "model": "Golf Plus"
+    },
+    {
+      "group": "volkswagen",
+      "model": "Golf Sportsvan"
+    },
+    {
+      "group": "volkswagen",
+      "model": "e-Golf"
+    }
+  ],
+  "volkswagen/passat": [
+    {
+      "group": "volkswagen",
+      "model": "Passat"
+    },
+    {
+      "group": "volkswagen",
+      "model": "Passat Variant"
+    },
+    {
+      "group": "volkswagen",
+      "model": "Passat Alltrack"
+    }
+  ],
+  "volkswagen/arteon": [
+    {
+      "group": "volkswagen",
+      "model": "Arteon"
+    },
+    {
+      "group": "volkswagen",
+      "model": "Arteon Shooting Brake"
+    }
+  ],
+  "volkswagen/t-cross": [
+    {
+      "group": "volkswagen",
+      "model": "T-Cross"
+    }
+  ],
+  "volkswagen/taigo": [
+    {
+      "group": "volkswagen",
+      "model": "Taigo"
+    }
+  ],
+  "volkswagen/t-roc": [
+    {
+      "group": "volkswagen",
+      "model": "T-Roc"
+    }
+  ],
+  "volkswagen/tiguan": [
+    {
+      "group": "volkswagen",
+      "model": "Tiguan"
+    },
+    {
+      "group": "volkswagen",
+      "model": "Tiguan Allspace"
+    }
+  ],
+  "volkswagen/tayron": [
+    {
+      "group": "volkswagen",
+      "model": "Tayron"
+    }
+  ],
+  "volkswagen/touareg": [
+    {
+      "group": "volkswagen",
+      "model": "Touareg"
+    }
+  ],
+  "volkswagen/touran": [
+    {
+      "group": "volkswagen",
+      "model": "Touran"
+    }
+  ],
+  "volkswagen/caddy": [
+    {
+      "group": "volkswagen",
+      "model": "Caddy"
+    }
+  ],
+  "volkswagen/multivan": [
+    {
+      "group": "volkswagen",
+      "model": "Multivan"
+    }
+  ],
+  "volkswagen/id-3": [
+    {
+      "group": "volkswagen",
+      "model": "ID.3"
+    }
+  ],
+  "volkswagen/id-4": [
+    {
+      "group": "volkswagen",
+      "model": "ID.4"
+    }
+  ],
+  "volkswagen/id-5": [
+    {
+      "group": "volkswagen",
+      "model": "ID.5"
+    }
+  ],
+  "volkswagen/id-7": [
+    {
+      "group": "volkswagen",
+      "model": "ID.7"
+    },
+    {
+      "group": "volkswagen",
+      "model": "ID.7 Tourer"
+    }
+  ],
+  "volkswagen/id-buzz": [
+    {
+      "group": "volkswagen",
+      "model": "ID. Buzz"
+    }
+  ],
+  "skoda/fabia": [
+    {
+      "group": "skoda",
+      "model": "SKODA Fabia"
+    },
+    {
+      "group": "skoda",
+      "model": "SKODA Fabia Combi"
+    }
+  ],
+  "skoda/scala": [
+    {
+      "group": "skoda",
+      "model": "SKODA Scala"
+    }
+  ],
+  "skoda/octavia": [
+    {
+      "group": "skoda",
+      "model": "SKODA Octavia"
+    },
+    {
+      "group": "skoda",
+      "model": "SKODA Octavia Combi"
+    },
+    {
+      "group": "skoda",
+      "model": "SKODA Octavia Scout"
+    }
+  ],
+  "skoda/superb": [
+    {
+      "group": "skoda",
+      "model": "SKODA Superb"
+    },
+    {
+      "group": "skoda",
+      "model": "SKODA Superb Combi / Scout"
+    }
+  ],
+  "skoda/kamiq": [
+    {
+      "group": "skoda",
+      "model": "SKODA Kamiq"
+    }
+  ],
+  "skoda/karoq": [
+    {
+      "group": "skoda",
+      "model": "SKODA Karoq"
+    }
+  ],
+  "skoda/kodiaq": [
+    {
+      "group": "skoda",
+      "model": "SKODA Kodiaq"
+    }
+  ],
+  "skoda/elroq": [
+    {
+      "group": "skoda",
+      "model": "SKODA Elroq"
+    }
+  ],
+  "skoda/enyaq": [
+    {
+      "group": "skoda",
+      "model": "SKODA Enyaq"
+    }
+  ],
+  "porsche/718-boxster": [
+    {
+      "group": "porsche",
+      "model": "718 Boxster"
+    },
+    {
+      "group": "porsche",
+      "model": "718"
+    }
+  ],
+  "porsche/718-cayman": [
+    {
+      "group": "porsche",
+      "model": "718 Cayman"
+    }
+  ],
+  "porsche/911": [
+    {
+      "group": "porsche",
+      "model": "911 Carrera"
+    },
+    {
+      "group": "porsche",
+      "model": "911 Carrera 4"
+    },
+    {
+      "group": "porsche",
+      "model": "911 Carrera 4 GTS"
+    },
+    {
+      "group": "porsche",
+      "model": "911 Carrera 4S"
+    },
+    {
+      "group": "porsche",
+      "model": "911 Carrera GTS"
+    },
+    {
+      "group": "porsche",
+      "model": "911 Carrera RS"
+    },
+    {
+      "group": "porsche",
+      "model": "911 Carrera S"
+    },
+    {
+      "group": "porsche",
+      "model": "911 Carrera T"
+    },
+    {
+      "group": "porsche",
+      "model": "911 GT2"
+    },
+    {
+      "group": "porsche",
+      "model": "911 GT2 RS"
+    },
+    {
+      "group": "porsche",
+      "model": "911 GT3"
+    },
+    {
+      "group": "porsche",
+      "model": "911 GT3 RS"
+    },
+    {
+      "group": "porsche",
+      "model": "911 R"
+    },
+    {
+      "group": "porsche",
+      "model": "911 Sport Classic"
+    },
+    {
+      "group": "porsche",
+      "model": "911 Targa"
+    },
+    {
+      "group": "porsche",
+      "model": "911 Targa 4"
+    },
+    {
+      "group": "porsche",
+      "model": "911 Targa 4 GTS"
+    },
+    {
+      "group": "porsche",
+      "model": "911 Targa 4S"
+    },
+    {
+      "group": "porsche",
+      "model": "911 Turbo"
+    },
+    {
+      "group": "porsche",
+      "model": "911 Turbo S"
+    }
+  ],
+  "porsche/panamera": [
+    {
+      "group": "porsche",
+      "model": "Panamera"
+    },
+    {
+      "group": "porsche",
+      "model": "Panamera 4 Sport Turismo"
+    },
+    {
+      "group": "porsche",
+      "model": "Panamera Turbo Sport Turismo"
+    }
+  ],
+  "porsche/macan": [
+    {
+      "group": "porsche",
+      "model": "Macan"
+    },
+    {
+      "group": "porsche",
+      "model": "Macan 4 Electric"
+    }
+  ],
+  "porsche/cayenne": [
+    {
+      "group": "porsche",
+      "model": "Cayenne"
+    },
+    {
+      "group": "porsche",
+      "model": "Cayenne Electric"
+    }
+  ],
+  "porsche/taycan": [
+    {
+      "group": "porsche",
+      "model": "Taycan"
+    },
+    {
+      "group": "porsche",
+      "model": "Taycan Cross Turismo"
+    },
+    {
+      "group": "porsche",
+      "model": "Taycan Sport Turismo"
+    }
+  ],
+  "toyota/aygo-x": [
+    {
+      "group": "toyota",
+      "model": "Aygo X"
+    }
+  ],
+  "toyota/yaris": [
+    {
+      "group": "toyota",
+      "model": "Yaris"
+    }
+  ],
+  "toyota/corolla": [
+    {
+      "group": "toyota",
+      "model": "Corolla"
+    }
+  ],
+  "toyota/camry": [
+    {
+      "group": "toyota",
+      "model": "Camry"
+    }
+  ],
+  "toyota/c-hr": [
+    {
+      "group": "toyota",
+      "model": "C-HR"
+    }
+  ],
+  "toyota/yaris-cross": [
+    {
+      "group": "toyota",
+      "model": "Yaris Cross"
+    }
+  ],
+  "toyota/corolla-cross": [
+    {
+      "group": "toyota",
+      "model": "Corolla Cross"
+    }
+  ],
+  "toyota/rav4": [
+    {
+      "group": "toyota",
+      "model": "RAV4"
+    }
+  ],
+  "toyota/highlander": [
+    {
+      "group": "toyota",
+      "model": "Highlander / Kluger"
+    }
+  ],
+  "toyota/land-cruiser": [
+    {
+      "group": "toyota",
+      "model": "Land Cruiser / Prado"
+    },
+    {
+      "group": "toyota",
+      "model": "Land Cruiser V8 and predecessors"
+    }
+  ],
+  "toyota/hilux": [
+    {
+      "group": "toyota",
+      "model": "Hilux"
+    },
+    {
+      "group": "toyota",
+      "model": "Hilux Extra Cab"
+    }
+  ],
+  "toyota/gr86": [
+    {
+      "group": "toyota",
+      "model": "GR 86"
+    }
+  ],
+  "toyota/gr-supra": [
+    {
+      "group": "toyota",
+      "model": "GR Supra"
+    }
+  ],
+  "toyota/proace": [],
+  "ford/fiesta": [
+    {
+      "group": "ford",
+      "model": "Fiesta"
+    }
+  ],
+  "ford/focus": [
+    {
+      "group": "ford",
+      "model": "Focus US"
+    },
+    {
+      "group": "ford",
+      "model": "Focus CC"
+    }
+  ],
+  "ford/mondeo": [
+    {
+      "group": "ford",
+      "model": "Mondeo"
+    },
+    {
+      "group": "ford",
+      "model": "Contour/Mondeo"
+    }
+  ],
+  "ford/puma": [
+    {
+      "group": "ford",
+      "model": "Puma"
+    }
+  ],
+  "ford/kuga": [
+    {
+      "group": "ford",
+      "model": "Kuga"
+    }
+  ],
+  "ford/mustang": [
+    {
+      "group": "ford",
+      "model": "Mustang"
+    }
+  ],
+  "ford/mustang-mach-e": [
+    {
+      "group": "ford",
+      "model": "Mustang MACH-E"
+    }
+  ],
+  "ford/explorer": [
+    {
+      "group": "ford",
+      "model": "Explorer"
+    },
+    {
+      "group": "ford",
+      "model": "Explorer Electric"
+    },
+    {
+      "group": "ford",
+      "model": "Explorer Sport"
+    },
+    {
+      "group": "ford",
+      "model": "Explorer Sport Trac"
+    }
+  ],
+  "ford/ranger": [
+    {
+      "group": "ford",
+      "model": "Ranger"
+    },
+    {
+      "group": "ford",
+      "model": "Ranger Regular Cab"
+    },
+    {
+      "group": "ford",
+      "model": "Ranger Super Cab"
+    }
+  ],
+  "ford/bronco": [
+    {
+      "group": "ford",
+      "model": "Bronco"
+    }
+  ],
+  "ford/tourneo": [
+    {
+      "group": "ford",
+      "model": "Tourneo"
+    },
+    {
+      "group": "ford",
+      "model": "E-Tourneo"
+    }
+  ],
+  "ford/transit": [
+    {
+      "group": "ford",
+      "model": "Transit Connect"
+    },
+    {
+      "group": "ford",
+      "model": "Transit Custom"
+    }
+  ],
+  "volvo/s60": [
+    {
+      "group": "volvo",
+      "model": "S60"
+    },
+    {
+      "group": "volvo",
+      "model": "S60 Cross Country"
+    }
+  ],
+  "volvo/s90": [
+    {
+      "group": "volvo",
+      "model": "S90"
+    }
+  ],
+  "volvo/v60": [
+    {
+      "group": "volvo",
+      "model": "V60"
+    },
+    {
+      "group": "volvo",
+      "model": "V60 Cross Country"
+    }
+  ],
+  "volvo/v90": [
+    {
+      "group": "volvo",
+      "model": "V90"
+    },
+    {
+      "group": "volvo",
+      "model": "V90 Cross Country"
+    }
+  ],
+  "volvo/xc40": [
+    {
+      "group": "volvo",
+      "model": "XC40"
+    }
+  ],
+  "volvo/xc60": [
+    {
+      "group": "volvo",
+      "model": "XC60"
+    }
+  ],
+  "volvo/xc90": [
+    {
+      "group": "volvo",
+      "model": "XC90"
+    }
+  ],
+  "volvo/ex30": [
+    {
+      "group": "volvo",
+      "model": "EX30"
+    }
+  ],
+  "volvo/ex40": [],
+  "volvo/ex90": [
+    {
+      "group": "volvo",
+      "model": "EX90"
+    }
+  ],
+  "land-rover-range-rover/defender": [
+    {
+      "group": "land-rover",
+      "model": "Defender 90"
+    },
+    {
+      "group": "land-rover",
+      "model": "Defender 110"
+    },
+    {
+      "group": "land-rover",
+      "model": "Defender 130"
+    }
+  ],
+  "land-rover-range-rover/discovery": [
+    {
+      "group": "land-rover",
+      "model": "Discovery"
+    }
+  ],
+  "land-rover-range-rover/discovery-sport": [
+    {
+      "group": "land-rover",
+      "model": "Discovery Sport"
+    }
+  ],
+  "land-rover-range-rover/range-rover": [
+    {
+      "group": "land-rover",
+      "model": "Range Rover"
+    },
+    {
+      "group": "land-rover",
+      "model": "Range Rover L"
+    }
+  ],
+  "land-rover-range-rover/range-rover-sport": [
+    {
+      "group": "land-rover",
+      "model": "Range Rover Sport"
+    }
+  ],
+  "land-rover-range-rover/velar": [
+    {
+      "group": "land-rover",
+      "model": "Range Rover Velar"
+    }
+  ],
+  "land-rover-range-rover/evoque": [
+    {
+      "group": "land-rover",
+      "model": "Range Rover Evoque"
+    }
+  ],
+  "jaguar/xe": [
+    {
+      "group": "jaguar",
+      "model": "XE"
+    }
+  ],
+  "jaguar/xf": [
+    {
+      "group": "jaguar",
+      "model": "XF"
+    },
+    {
+      "group": "jaguar",
+      "model": "XF Sportbrake"
+    }
+  ],
+  "jaguar/xj": [
+    {
+      "group": "jaguar",
+      "model": "XJ"
+    }
+  ],
+  "jaguar/f-type": [
+    {
+      "group": "jaguar",
+      "model": "F-Type"
+    }
+  ],
+  "jaguar/e-pace": [
+    {
+      "group": "jaguar",
+      "model": "E-Pace"
+    }
+  ],
+  "jaguar/f-pace": [
+    {
+      "group": "jaguar",
+      "model": "F-Pace"
+    }
+  ],
+  "jaguar/i-pace": [
+    {
+      "group": "jaguar",
+      "model": "I-Pace"
+    }
+  ],
+  "lexus/lbx": [
+    {
+      "group": "lexus",
+      "model": "LBX"
+    }
+  ],
+  "lexus/ux": [
+    {
+      "group": "lexus",
+      "model": "UX"
+    }
+  ],
+  "lexus/nx": [
+    {
+      "group": "lexus",
+      "model": "NX"
+    }
+  ],
+  "lexus/rx": [
+    {
+      "group": "lexus",
+      "model": "RX"
+    }
+  ],
+  "lexus/rz": [
+    {
+      "group": "lexus",
+      "model": "RZ"
+    }
+  ],
+  "lexus/es": [
+    {
+      "group": "lexus",
+      "model": "ES"
+    }
+  ],
+  "lexus/ls": [
+    {
+      "group": "lexus",
+      "model": "LS"
+    }
+  ],
+  "lexus/lc": [
+    {
+      "group": "lexus",
+      "model": "LC"
+    }
+  ],
+  "hyundai/i10": [
+    {
+      "group": "hyundai",
+      "model": "i10"
+    }
+  ],
+  "hyundai/i20": [
+    {
+      "group": "hyundai",
+      "model": "i20"
+    },
+    {
+      "group": "hyundai",
+      "model": "i20 Active"
+    }
+  ],
+  "hyundai/i30": [
+    {
+      "group": "hyundai",
+      "model": "i30"
+    }
+  ],
+  "hyundai/bayon": [
+    {
+      "group": "hyundai",
+      "model": "Bayon"
+    }
+  ],
+  "hyundai/kona": [
+    {
+      "group": "hyundai",
+      "model": "Kona"
+    },
+    {
+      "group": "hyundai",
+      "model": "Kona Electric"
+    }
+  ],
+  "hyundai/tucson": [
+    {
+      "group": "hyundai",
+      "model": "ix35 / Tucson"
+    }
+  ],
+  "hyundai/santa-fe": [
+    {
+      "group": "hyundai",
+      "model": "Santa Fe"
+    }
+  ],
+  "hyundai/ioniq-5": [
+    {
+      "group": "hyundai",
+      "model": "Ioniq 5"
+    }
+  ],
+  "hyundai/ioniq-6": [
+    {
+      "group": "hyundai",
+      "model": "Ioniq 6"
+    }
+  ],
+  "hyundai/ioniq-9": [
+    {
+      "group": "hyundai",
+      "model": "Ioniq 9"
+    }
+  ],
+  "kia/picanto": [
+    {
+      "group": "kia",
+      "model": "Picanto"
+    }
+  ],
+  "kia/ceed": [
+    {
+      "group": "kia",
+      "model": "cee'd"
+    },
+    {
+      "group": "kia",
+      "model": "cee'd SW"
+    },
+    {
+      "group": "kia",
+      "model": "Ceed"
+    }
+  ],
+  "kia/proceed": [
+    {
+      "group": "kia",
+      "model": "Pro cee'd"
+    }
+  ],
+  "kia/xceed": [
+    {
+      "group": "kia",
+      "model": "XCeed"
+    }
+  ],
+  "kia/stonic": [
+    {
+      "group": "kia",
+      "model": "Stonic"
+    }
+  ],
+  "kia/niro": [
+    {
+      "group": "kia",
+      "model": "Niro"
+    }
+  ],
+  "kia/sportage": [
+    {
+      "group": "kia",
+      "model": "Sportage"
+    }
+  ],
+  "kia/sorento": [
+    {
+      "group": "kia",
+      "model": "Sorento"
+    }
+  ],
+  "kia/ev3": [
+    {
+      "group": "kia",
+      "model": "EV3"
+    }
+  ],
+  "kia/ev4": [
+    {
+      "group": "kia",
+      "model": "EV4"
+    }
+  ],
+  "kia/ev6": [
+    {
+      "group": "kia",
+      "model": "EV6"
+    }
+  ],
+  "kia/ev9": [
+    {
+      "group": "kia",
+      "model": "EV9"
+    }
+  ],
+  "peugeot/208": [
+    {
+      "group": "peugeot",
+      "model": "208"
+    }
+  ],
+  "peugeot/308": [
+    {
+      "group": "peugeot",
+      "model": "308"
+    },
+    {
+      "group": "peugeot",
+      "model": "308 SW"
+    },
+    {
+      "group": "peugeot",
+      "model": "308 CC"
+    }
+  ],
+  "peugeot/408": [
+    {
+      "group": "peugeot",
+      "model": "408"
+    }
+  ],
+  "peugeot/508": [
+    {
+      "group": "peugeot",
+      "model": "508"
+    },
+    {
+      "group": "peugeot",
+      "model": "508 SW"
+    },
+    {
+      "group": "peugeot",
+      "model": "508 RXH"
+    }
+  ],
+  "peugeot/2008": [
+    {
+      "group": "peugeot",
+      "model": "2008"
+    }
+  ],
+  "peugeot/3008": [
+    {
+      "group": "peugeot",
+      "model": "3008"
+    }
+  ],
+  "peugeot/5008": [
+    {
+      "group": "peugeot",
+      "model": "5008"
+    }
+  ],
+  "peugeot/rifter": [
+    {
+      "group": "peugeot",
+      "model": "RIFTER"
+    }
+  ],
+  "peugeot/traveller": [
+    {
+      "group": "peugeot",
+      "model": "Traveller"
+    }
+  ],
+  "renault/clio": [
+    {
+      "group": "renault",
+      "model": "Clio"
+    }
+  ],
+  "renault/captur": [
+    {
+      "group": "renault",
+      "model": "Captur"
+    }
+  ],
+  "renault/arkana": [
+    {
+      "group": "renault",
+      "model": "Arkana"
+    }
+  ],
+  "renault/megane": [
+    {
+      "group": "renault",
+      "model": "Megane"
+    },
+    {
+      "group": "renault",
+      "model": "Megane E-Tech"
+    }
+  ],
+  "renault/symbioz": [
+    {
+      "group": "renault",
+      "model": "Symbioz"
+    }
+  ],
+  "renault/austral": [
+    {
+      "group": "renault",
+      "model": "Austral"
+    }
+  ],
+  "renault/espace": [
+    {
+      "group": "renault",
+      "model": "Espace"
+    }
+  ],
+  "renault/rafale": [
+    {
+      "group": "renault",
+      "model": "Rafale"
+    }
+  ],
+  "renault/scenic": [
+    {
+      "group": "renault",
+      "model": "Scenic"
+    },
+    {
+      "group": "renault",
+      "model": "Grand Scenic"
+    },
+    {
+      "group": "renault",
+      "model": "SCENIC XMOD"
+    }
+  ],
+  "renault/kangoo": [
+    {
+      "group": "renault",
+      "model": "Kangoo"
+    },
+    {
+      "group": "renault",
+      "model": "Grand Kangoo"
+    }
+  ],
+  "opel/corsa": [
+    {
+      "group": "opel",
+      "model": "Corsa"
+    }
+  ],
+  "opel/astra": [
+    {
+      "group": "opel",
+      "model": "Astra"
+    },
+    {
+      "group": "opel",
+      "model": "Astra Caravan"
+    },
+    {
+      "group": "opel",
+      "model": "Astra GTC"
+    },
+    {
+      "group": "opel",
+      "model": "Astra Sports Tourer"
+    },
+    {
+      "group": "opel",
+      "model": "Astra Twin Top /"
+    }
+  ],
+  "opel/mokka": [
+    {
+      "group": "opel",
+      "model": "Mokka"
+    }
+  ],
+  "opel/frontera": [
+    {
+      "group": "opel",
+      "model": "Frontera"
+    }
+  ],
+  "opel/grandland": [
+    {
+      "group": "opel",
+      "model": "Grandland"
+    }
+  ],
+  "opel/combo": [
+    {
+      "group": "opel",
+      "model": "Combo"
+    }
+  ],
+  "opel/zafira": [
+    {
+      "group": "opel",
+      "model": "Zafira"
+    }
+  ],
+  "seat/ibiza": [
+    {
+      "group": "seat",
+      "model": "Ibiza"
+    },
+    {
+      "group": "seat",
+      "model": "Ibiza ST"
+    }
+  ],
+  "seat/leon": [
+    {
+      "group": "seat",
+      "model": "Leon"
+    },
+    {
+      "group": "seat",
+      "model": "Leon SC"
+    },
+    {
+      "group": "seat",
+      "model": "Leon ST"
+    },
+    {
+      "group": "seat",
+      "model": "Leon X-Perience"
+    }
+  ],
+  "seat/arona": [
+    {
+      "group": "seat",
+      "model": "Arona"
+    }
+  ],
+  "seat/ateca": [
+    {
+      "group": "seat",
+      "model": "Ateca"
+    }
+  ],
+  "seat/tarraco": [
+    {
+      "group": "seat",
+      "model": "Tarraco"
+    }
+  ],
+  "cupra/leon": [
+    {
+      "group": "cupra",
+      "model": "Leon"
+    },
+    {
+      "group": "cupra",
+      "model": "Leon Sportstourer"
+    }
+  ],
+  "cupra/formentor": [
+    {
+      "group": "cupra",
+      "model": "Formentor"
+    }
+  ],
+  "cupra/ateca": [
+    {
+      "group": "cupra",
+      "model": "Ateca"
+    }
+  ],
+  "cupra/born": [
+    {
+      "group": "cupra",
+      "model": "Born"
+    }
+  ],
+  "cupra/tavascan": [
+    {
+      "group": "cupra",
+      "model": "Tavascan"
+    }
+  ],
+  "cupra/terramar": [
+    {
+      "group": "cupra",
+      "model": "Terramar"
+    }
+  ],
+  "nissan/micra": [
+    {
+      "group": "nissan",
+      "model": "Micra"
+    },
+    {
+      "group": "nissan",
+      "model": "Micra C+C"
+    }
+  ],
+  "nissan/juke": [
+    {
+      "group": "nissan",
+      "model": "Juke"
+    }
+  ],
+  "nissan/qashqai": [
+    {
+      "group": "nissan",
+      "model": "Qashqai"
+    }
+  ],
+  "nissan/x-trail": [
+    {
+      "group": "nissan",
+      "model": "X-Trail"
+    }
+  ],
+  "nissan/ariya": [
+    {
+      "group": "nissan",
+      "model": "Ariya"
+    }
+  ],
+  "nissan/leaf": [
+    {
+      "group": "nissan",
+      "model": "Leaf"
+    }
+  ],
+  "nissan/gt-r": [
+    {
+      "group": "nissan",
+      "model": "GT-R"
+    }
+  ],
+  "nissan/navara": [
+    {
+      "group": "nissan",
+      "model": "Navara / Frontier"
+    }
+  ],
+  "mazda/mazda2": [
+    {
+      "group": "mazda",
+      "model": "2 / Demio"
+    }
+  ],
+  "mazda/mazda3": [
+    {
+      "group": "mazda",
+      "model": "3 / Axela"
+    }
+  ],
+  "mazda/mazda6": [
+    {
+      "group": "mazda",
+      "model": "6 / Atenza"
+    }
+  ],
+  "mazda/cx-30": [
+    {
+      "group": "mazda",
+      "model": "CX-30"
+    }
+  ],
+  "mazda/cx-5": [
+    {
+      "group": "mazda",
+      "model": "CX-5"
+    }
+  ],
+  "mazda/cx-60": [
+    {
+      "group": "mazda",
+      "model": "CX-60"
+    }
+  ],
+  "mazda/cx-80": [
+    {
+      "group": "mazda",
+      "model": "CX-80"
+    }
+  ],
+  "mazda/mx-5": [
+    {
+      "group": "mazda",
+      "model": "MX-5 / Miata"
+    }
+  ],
+  "mazda/mx-30": [
+    {
+      "group": "mazda",
+      "model": "MX-30"
+    }
+  ],
+  "honda/jazz": [
+    {
+      "group": "honda",
+      "model": "Jazz / City"
+    },
+    {
+      "group": "honda",
+      "model": "Jazz / Fit"
+    }
+  ],
+  "honda/civic": [
+    {
+      "group": "honda",
+      "model": "Civic"
+    },
+    {
+      "group": "honda",
+      "model": "Civic Aero Deck"
+    },
+    {
+      "group": "honda",
+      "model": "Civic Tourer"
+    },
+    {
+      "group": "honda",
+      "model": "Civic Shuttle"
+    }
+  ],
+  "honda/hr-v": [
+    {
+      "group": "honda",
+      "model": "HR-V"
+    }
+  ],
+  "honda/zr-v": [
+    {
+      "group": "honda",
+      "model": "ZR-V"
+    }
+  ],
+  "honda/cr-v": [
+    {
+      "group": "honda",
+      "model": "CR-V"
+    }
+  ],
+  "honda/e-ny1": [
+    {
+      "group": "honda",
+      "model": "e:Ny1"
+    }
+  ],
+  "honda/nsx": [
+    {
+      "group": "honda",
+      "model": "NSX"
+    }
+  ],
+  "citroen/c3": [
+    {
+      "group": "citroen",
+      "model": "CITROEN C3"
+    }
+  ],
+  "citroen/c4": [
+    {
+      "group": "citroen",
+      "model": "CITROEN C4"
+    }
+  ],
+  "citroen/c4-x": [],
+  "citroen/c5-aircross": [
+    {
+      "group": "citroen",
+      "model": "CITROEN C5 Aircross"
+    }
+  ],
+  "citroen/c5-x": [
+    {
+      "group": "citroen",
+      "model": "CITROEN C5 X"
+    }
+  ],
+  "citroen/berlingo": [
+    {
+      "group": "citroen",
+      "model": "CITROEN Berlingo"
+    }
+  ],
+  "citroen/spacetourer": [],
+  "dacia/sandero": [
+    {
+      "group": "dacia",
+      "model": "Sandero"
+    },
+    {
+      "group": "dacia",
+      "model": "Sandero Stepway"
+    }
+  ],
+  "dacia/logan": [
+    {
+      "group": "dacia",
+      "model": "Logan"
+    },
+    {
+      "group": "dacia",
+      "model": "Logan MCV"
+    },
+    {
+      "group": "dacia",
+      "model": "Logan MCV Stepway"
+    },
+    {
+      "group": "dacia",
+      "model": "Logan Pick-Up"
+    },
+    {
+      "group": "dacia",
+      "model": "Logan Van"
+    }
+  ],
+  "dacia/jogger": [
+    {
+      "group": "dacia",
+      "model": "JOGGER"
+    }
+  ],
+  "dacia/duster": [
+    {
+      "group": "dacia",
+      "model": "Duster"
+    },
+    {
+      "group": "dacia",
+      "model": "Duster Pick-Up"
+    }
+  ],
+  "dacia/bigster": [
+    {
+      "group": "dacia",
+      "model": "Bigster"
+    }
+  ],
+  "dacia/spring": [
+    {
+      "group": "dacia",
+      "model": "Spring"
+    }
+  ],
+  "tesla/model-3": [
+    {
+      "group": "tesla",
+      "model": "Model 3"
+    }
+  ],
+  "tesla/model-y": [
+    {
+      "group": "tesla",
+      "model": "Model Y"
+    }
+  ],
+  "tesla/model-s": [
+    {
+      "group": "tesla",
+      "model": "Model S"
+    }
+  ],
+  "tesla/model-x": [
+    {
+      "group": "tesla",
+      "model": "Model X"
+    }
+  ],
+  "tesla/cybertruck": [
+    {
+      "group": "tesla",
+      "model": "Cybertruck"
+    }
+  ],
+  "jeep/avenger": [
+    {
+      "group": "jeep",
+      "model": "Avenger"
+    }
+  ],
+  "jeep/renegade": [
+    {
+      "group": "jeep",
+      "model": "Renegade"
+    }
+  ],
+  "jeep/compass": [
+    {
+      "group": "jeep",
+      "model": "Compass"
+    }
+  ],
+  "jeep/cherokee": [
+    {
+      "group": "jeep",
+      "model": "Cherokee"
+    },
+    {
+      "group": "jeep",
+      "model": "Cherokee/Liberty"
+    }
+  ],
+  "jeep/grand-cherokee": [
+    {
+      "group": "jeep",
+      "model": "Grand Cherokee"
+    }
+  ],
+  "jeep/wrangler": [
+    {
+      "group": "jeep",
+      "model": "Wrangler"
+    },
+    {
+      "group": "jeep",
+      "model": "Wrangler Unlimited"
+    }
+  ],
+  "jeep/gladiator": [
+    {
+      "group": "jeep",
+      "model": "Gladiator"
+    }
+  ],
+  "alfa-romeo/giulia": [
+    {
+      "group": "alfa-romeo",
+      "model": "Giulia"
+    }
+  ],
+  "alfa-romeo/stelvio": [
+    {
+      "group": "alfa-romeo",
+      "model": "Stelvio"
+    }
+  ],
+  "alfa-romeo/tonale": [
+    {
+      "group": "alfa-romeo",
+      "model": "Tonale"
+    }
+  ],
+  "alfa-romeo/junior": [
+    {
+      "group": "alfa-romeo",
+      "model": "Junior"
+    }
+  ],
+  "alfa-romeo/4c": [
+    {
+      "group": "alfa-romeo",
+      "model": "4C"
+    }
+  ],
+  "fiat/500": [
+    {
+      "group": "fiat",
+      "model": "500"
+    },
+    {
+      "group": "fiat",
+      "model": "500e"
+    },
+    {
+      "group": "fiat",
+      "model": "500 3+1"
+    },
+    {
+      "group": "fiat",
+      "model": "500 K / Giardiniera"
+    }
+  ],
+  "fiat/500x": [
+    {
+      "group": "fiat",
+      "model": "500X"
+    }
+  ],
+  "fiat/500l": [
+    {
+      "group": "fiat",
+      "model": "500L"
+    },
+    {
+      "group": "fiat",
+      "model": "500L Living"
+    },
+    {
+      "group": "fiat",
+      "model": "500L Trekking"
+    },
+    {
+      "group": "fiat",
+      "model": "500L Urban"
+    }
+  ],
+  "fiat/panda": [
+    {
+      "group": "fiat",
+      "model": "Panda"
+    },
+    {
+      "group": "fiat",
+      "model": "Panda 4X4"
+    },
+    {
+      "group": "fiat",
+      "model": "Panda City Cross"
+    },
+    {
+      "group": "fiat",
+      "model": "Panda Cross"
+    }
+  ],
+  "fiat/tipo": [
+    {
+      "group": "fiat",
+      "model": "Tipo"
+    },
+    {
+      "group": "fiat",
+      "model": "Tipo Station"
+    },
+    {
+      "group": "fiat",
+      "model": "Tipo Cross"
+    }
+  ],
+  "fiat/grande-panda": [
+    {
+      "group": "fiat",
+      "model": "Grande Panda"
+    }
+  ],
+  "fiat/600": [
+    {
+      "group": "fiat",
+      "model": "600"
+    }
+  ],
+  "fiat/doblo": [
+    {
+      "group": "fiat",
+      "model": "Doblo"
+    }
+  ],
+  "fiat/ducato": [],
+  "suzuki/swift": [
+    {
+      "group": "suzuki",
+      "model": "Swift"
+    }
+  ],
+  "suzuki/ignis": [
+    {
+      "group": "suzuki",
+      "model": "Ignis"
+    }
+  ],
+  "suzuki/vitara": [
+    {
+      "group": "suzuki",
+      "model": "Vitara"
+    },
+    {
+      "group": "suzuki",
+      "model": "Escudo / Vitara"
+    }
+  ],
+  "suzuki/s-cross": [
+    {
+      "group": "suzuki",
+      "model": "S-Cross"
+    }
+  ],
+  "suzuki/jimny": [
+    {
+      "group": "suzuki",
+      "model": "Jimny"
+    }
+  ],
+  "suzuki/across": [
+    {
+      "group": "suzuki",
+      "model": "Across"
+    }
+  ],
+  "suzuki/swace": [
+    {
+      "group": "suzuki",
+      "model": "Swace"
+    }
+  ],
+  "mitsubishi/colt": [
+    {
+      "group": "mitsubishi",
+      "model": "Colt"
+    },
+    {
+      "group": "mitsubishi",
+      "model": "Colt CZC"
+    }
+  ],
+  "mitsubishi/asx": [
+    {
+      "group": "mitsubishi",
+      "model": "ASX / RVR / Outlander Sport"
+    }
+  ],
+  "mitsubishi/eclipse-cross": [
+    {
+      "group": "mitsubishi",
+      "model": "Eclipse Cross"
+    }
+  ],
+  "mitsubishi/outlander": [
+    {
+      "group": "mitsubishi",
+      "model": "Outlander / Airtrek"
+    }
+  ],
+  "mitsubishi/l200": [
+    {
+      "group": "mitsubishi",
+      "model": "L 200"
+    }
+  ],
+  "subaru/impreza": [
+    {
+      "group": "subaru",
+      "model": "Impreza"
+    }
+  ],
+  "subaru/crosstrek": [
+    {
+      "group": "subaru",
+      "model": "Crosstrek"
+    },
+    {
+      "group": "subaru",
+      "model": "XV"
+    }
+  ],
+  "subaru/forester": [
+    {
+      "group": "subaru",
+      "model": "Forester"
+    }
+  ],
+  "subaru/outback": [
+    {
+      "group": "subaru",
+      "model": "Outback"
+    }
+  ],
+  "subaru/brz": [
+    {
+      "group": "subaru",
+      "model": "BRZ"
+    }
+  ],
+  "subaru/solterra": [
+    {
+      "group": "subaru",
+      "model": "Solterra"
+    }
+  ],
+  "mini/cooper": [
+    {
+      "group": "mini",
+      "model": "Hatch"
+    },
+    {
+      "group": "mini",
+      "model": "Convertible"
+    },
+    {
+      "group": "mini",
+      "model": "Classic"
+    },
+    {
+      "group": "mini",
+      "model": "Coupe"
+    },
+    {
+      "group": "mini",
+      "model": "Roadster"
+    }
+  ],
+  "mini/aceman": [
+    {
+      "group": "mini",
+      "model": "Aceman"
+    }
+  ],
+  "mini/countryman": [
+    {
+      "group": "mini",
+      "model": "Countryman"
+    }
+  ],
+  "mini/clubman": [
+    {
+      "group": "mini",
+      "model": "Clubman"
+    }
+  ],
+  "maserati/grecale": [
+    {
+      "group": "maserati",
+      "model": "Grecale"
+    }
+  ],
+  "maserati/levante": [
+    {
+      "group": "maserati",
+      "model": "Levante"
+    }
+  ],
+  "maserati/ghibli": [
+    {
+      "group": "maserati",
+      "model": "Ghibli"
+    }
+  ],
+  "maserati/quattroporte": [
+    {
+      "group": "maserati",
+      "model": "Quattroporte"
+    }
+  ],
+  "maserati/granturismo": [
+    {
+      "group": "maserati",
+      "model": "GranTurismo"
+    }
+  ],
+  "maserati/grancabrio": [
+    {
+      "group": "maserati",
+      "model": "GranCabrio"
+    }
+  ],
+  "maserati/mc20": [
+    {
+      "group": "maserati",
+      "model": "MC20"
+    }
+  ],
+  "ferrari/roma": [
+    {
+      "group": "ferrari",
+      "model": "Roma"
+    }
+  ],
+  "ferrari/portofino": [
+    {
+      "group": "ferrari",
+      "model": "Portofino"
+    }
+  ],
+  "ferrari/296-gtb": [
+    {
+      "group": "ferrari",
+      "model": "296 GTB"
+    },
+    {
+      "group": "ferrari",
+      "model": "296 GTS"
+    }
+  ],
+  "ferrari/sf90": [
+    {
+      "group": "ferrari",
+      "model": "SF90"
+    }
+  ],
+  "ferrari/12cilindri": [
+    {
+      "group": "ferrari",
+      "model": "12Cilindri"
+    }
+  ],
+  "ferrari/purosangue": [
+    {
+      "group": "ferrari",
+      "model": "Purosangue"
+    }
+  ],
+  "ferrari/f8-tributo": [
+    {
+      "group": "ferrari",
+      "model": "F8"
+    }
+  ],
+  "lamborghini/huracan": [
+    {
+      "group": "lamborghini",
+      "model": "Huracan"
+    }
+  ],
+  "lamborghini/temerario": [
+    {
+      "group": "lamborghini",
+      "model": "Temerario"
+    }
+  ],
+  "lamborghini/revuelto": [
+    {
+      "group": "lamborghini",
+      "model": "Revuelto"
+    }
+  ],
+  "lamborghini/urus": [
+    {
+      "group": "lamborghini",
+      "model": "Urus"
+    }
+  ],
+  "lamborghini/aventador": [
+    {
+      "group": "lamborghini",
+      "model": "Aventador"
+    }
+  ],
+  "bentley/continental-gt": [
+    {
+      "group": "bentley",
+      "model": "Continental GT"
+    },
+    {
+      "group": "bentley",
+      "model": "Continental GTC"
+    }
+  ],
+  "bentley/flying-spur": [
+    {
+      "group": "bentley",
+      "model": "Flying Spur"
+    },
+    {
+      "group": "bentley",
+      "model": "Continental Flying Spur"
+    }
+  ],
+  "bentley/bentayga": [
+    {
+      "group": "bentley",
+      "model": "Bentayga"
+    }
+  ],
+  "rolls-royce/ghost": [
+    {
+      "group": "rolls-royce",
+      "model": "Ghost"
+    }
+  ],
+  "rolls-royce/phantom": [
+    {
+      "group": "rolls-royce",
+      "model": "Phantom"
+    }
+  ],
+  "rolls-royce/cullinan": [
+    {
+      "group": "rolls-royce",
+      "model": "Cullinan"
+    }
+  ],
+  "rolls-royce/spectre": [
+    {
+      "group": "rolls-royce",
+      "model": "Spectre"
+    }
+  ],
+  "rolls-royce/wraith": [
+    {
+      "group": "rolls-royce",
+      "model": "Wraith"
+    }
+  ],
+  "rolls-royce/dawn": [
+    {
+      "group": "rolls-royce",
+      "model": "Dawn"
+    }
+  ],
+  "aston-martin/vantage": [
+    {
+      "group": "aston-martin",
+      "model": "Vantage"
+    },
+    {
+      "group": "aston-martin",
+      "model": "V8 Vantage"
+    },
+    {
+      "group": "aston-martin",
+      "model": "V12 Vantage"
+    }
+  ],
+  "aston-martin/db11": [
+    {
+      "group": "aston-martin",
+      "model": "DB11"
+    },
+    {
+      "group": "aston-martin",
+      "model": "DB11 Volante"
+    }
+  ],
+  "aston-martin/db12": [
+    {
+      "group": "aston-martin",
+      "model": "DB12"
+    },
+    {
+      "group": "aston-martin",
+      "model": "DB12 Volante"
+    }
+  ],
+  "aston-martin/dbs": [
+    {
+      "group": "aston-martin",
+      "model": "DBS"
+    },
+    {
+      "group": "aston-martin",
+      "model": "DBS Volante"
+    }
+  ],
+  "aston-martin/vanquish": [
+    {
+      "group": "aston-martin",
+      "model": "Vanquish"
+    },
+    {
+      "group": "aston-martin",
+      "model": "Vanquish Volante"
+    }
+  ],
+  "aston-martin/dbx": [
+    {
+      "group": "aston-martin",
+      "model": "DBX"
+    }
+  ],
+  "mclaren/artura": [
+    {
+      "group": "mclaren",
+      "model": "Artura"
+    }
+  ],
+  "mclaren/gt": [
+    {
+      "group": "mclaren",
+      "model": "GT"
+    }
+  ],
+  "mclaren/gts": [
+    {
+      "group": "mclaren",
+      "model": "GTS"
+    }
+  ],
+  "mclaren/570s": [
+    {
+      "group": "mclaren",
+      "model": "570S"
+    }
+  ],
+  "mclaren/600lt": [
+    {
+      "group": "mclaren",
+      "model": "600LT"
+    }
+  ],
+  "mclaren/720s": [
+    {
+      "group": "mclaren",
+      "model": "720S"
+    }
+  ],
+  "mclaren/750s": [
+    {
+      "group": "mclaren",
+      "model": "750S"
+    }
+  ],
+  "mclaren/senna": [
+    {
+      "group": "mclaren",
+      "model": "Senna"
+    }
+  ],
+  "chevrolet/spark": [
+    {
+      "group": "chevrolet",
+      "model": "Matiz / Spark"
+    },
+    {
+      "group": "chevrolet",
+      "model": "Spark EV"
+    }
+  ],
+  "chevrolet/cruze": [
+    {
+      "group": "chevrolet",
+      "model": "Cruze"
+    }
+  ],
+  "chevrolet/malibu": [
+    {
+      "group": "chevrolet",
+      "model": "Malibu"
+    },
+    {
+      "group": "chevrolet",
+      "model": "Malibu Maxx"
+    }
+  ],
+  "chevrolet/camaro": [
+    {
+      "group": "chevrolet",
+      "model": "Camaro"
+    }
+  ],
+  "chevrolet/corvette": [
+    {
+      "group": "chevrolet",
+      "model": "Corvette"
+    }
+  ],
+  "chevrolet/tahoe": [
+    {
+      "group": "chevrolet",
+      "model": "Tahoe"
+    }
+  ],
+  "chevrolet/suburban": [
+    {
+      "group": "chevrolet",
+      "model": "Suburban"
+    }
+  ],
+  "chevrolet/silverado": [
+    {
+      "group": "chevrolet",
+      "model": "Silverado"
+    },
+    {
+      "group": "chevrolet",
+      "model": "Silverado 2500HD"
+    },
+    {
+      "group": "chevrolet",
+      "model": "Silverado 3500HD"
+    }
+  ],
+  "dodge/challenger": [
+    {
+      "group": "dodge",
+      "model": "Challenger"
+    }
+  ],
+  "dodge/charger": [
+    {
+      "group": "dodge",
+      "model": "Charger"
+    }
+  ],
+  "dodge/durango": [
+    {
+      "group": "dodge",
+      "model": "Durango"
+    }
+  ],
+  "dodge/hornet": [
+    {
+      "group": "dodge",
+      "model": "Hornet"
+    }
+  ],
+  "ram/1500": [
+    {
+      "group": "ram",
+      "model": "Trucks 1500"
+    }
+  ],
+  "ram/2500": [
+    {
+      "group": "ram",
+      "model": "Trucks 2500"
+    }
+  ],
+  "ram/3500": [
+    {
+      "group": "ram",
+      "model": "Trucks 3500"
+    }
+  ],
+  "cadillac/ct4": [
+    {
+      "group": "cadillac",
+      "model": "CT4"
+    }
+  ],
+  "cadillac/ct5": [
+    {
+      "group": "cadillac",
+      "model": "CT5"
+    }
+  ],
+  "cadillac/xt4": [
+    {
+      "group": "cadillac",
+      "model": "XT4"
+    }
+  ],
+  "cadillac/xt5": [
+    {
+      "group": "cadillac",
+      "model": "XT5"
+    }
+  ],
+  "cadillac/xt6": [
+    {
+      "group": "cadillac",
+      "model": "XT6"
+    }
+  ],
+  "cadillac/escalade": [
+    {
+      "group": "cadillac",
+      "model": "Escalade"
+    },
+    {
+      "group": "cadillac",
+      "model": "Escalade ESV"
+    },
+    {
+      "group": "cadillac",
+      "model": "Escalade EXT"
+    },
+    {
+      "group": "cadillac",
+      "model": "Escalade IQL"
+    }
+  ],
+  "cadillac/lyriq": [
+    {
+      "group": "cadillac",
+      "model": "Lyriq"
+    }
+  ],
+  "gmc/sierra": [
+    {
+      "group": "gmc",
+      "model": "Sierra"
+    },
+    {
+      "group": "gmc",
+      "model": "Sierra 2500HD"
+    },
+    {
+      "group": "gmc",
+      "model": "Sierra 3500HD"
+    }
+  ],
+  "gmc/yukon": [
+    {
+      "group": "gmc",
+      "model": "Yukon"
+    },
+    {
+      "group": "gmc",
+      "model": "Yukon XL"
+    }
+  ],
+  "gmc/canyon": [
+    {
+      "group": "gmc",
+      "model": "Canyon"
+    },
+    {
+      "group": "gmc",
+      "model": "Canyon Regular Cab"
+    }
+  ],
+  "gmc/hummer-ev": [
+    {
+      "group": "gmc",
+      "model": "Hummer EV"
+    },
+    {
+      "group": "gmc",
+      "model": "Hummer EV SUV"
+    }
+  ],
+  "genesis/g70": [
+    {
+      "group": "genesis",
+      "model": "G70"
+    },
+    {
+      "group": "genesis",
+      "model": "G70 Shooting Brake"
+    }
+  ],
+  "genesis/g80": [
+    {
+      "group": "genesis",
+      "model": "G80"
+    }
+  ],
+  "genesis/g90": [
+    {
+      "group": "genesis",
+      "model": "G90"
+    }
+  ],
+  "genesis/gv60": [
+    {
+      "group": "genesis",
+      "model": "GV60"
+    }
+  ],
+  "genesis/gv70": [
+    {
+      "group": "genesis",
+      "model": "GV70"
+    }
+  ],
+  "genesis/gv80": [
+    {
+      "group": "genesis",
+      "model": "GV80"
+    }
+  ],
+  "polestar/polestar-2": [
+    {
+      "group": "polestar",
+      "model": "2"
+    }
+  ],
+  "polestar/3": [
+    {
+      "group": "polestar",
+      "model": "3"
+    }
+  ],
+  "polestar/4": [
+    {
+      "group": "polestar",
+      "model": "4"
+    }
+  ],
+  "byd/dolphin": [
+    {
+      "group": "byd",
+      "model": "DOLPHIN"
+    }
+  ],
+  "byd/atto-3": [
+    {
+      "group": "byd",
+      "model": "ATTO 3"
+    }
+  ],
+  "byd/seal": [],
+  "byd/seal-u": [],
+  "byd/tang": [],
+  "byd/han": [],
+  "mg/mg3": [
+    {
+      "group": "mg",
+      "model": "MG 3"
+    }
+  ],
+  "mg/mg4": [
+    {
+      "group": "mg",
+      "model": "MG 4"
+    }
+  ],
+  "mg/mg5": [
+    {
+      "group": "mg",
+      "model": "MG 5"
+    }
+  ],
+  "mg/zs": [
+    {
+      "group": "mg",
+      "model": "ZS"
+    }
+  ],
+  "mg/hs": [
+    {
+      "group": "mg",
+      "model": "HS"
+    }
+  ],
+  "mg/marvel-r": [
+    {
+      "group": "mg",
+      "model": "Marvel R"
+    }
+  ],
+  "mg/cyberster": [],
+  "ds-automobiles/ds-3": [
+    {
+      "group": "ds",
+      "model": "AUTOMOBILES DS 3"
+    },
+    {
+      "group": "ds",
+      "model": "AUTOMOBILES DS 3 Cabrio"
+    },
+    {
+      "group": "ds",
+      "model": "AUTOMOBILES DS 3 Crossback"
+    },
+    {
+      "group": "citroen",
+      "model": "CITROEN DS3"
+    }
+  ],
+  "ds-automobiles/ds-4": [
+    {
+      "group": "ds",
+      "model": "AUTOMOBILES DS 4"
+    },
+    {
+      "group": "citroen",
+      "model": "CITROEN DS4"
+    }
+  ],
+  "ds-automobiles/ds-7": [
+    {
+      "group": "ds",
+      "model": "AUTOMOBILES DS 7"
+    }
+  ],
+  "ds-automobiles/ds-9": [
+    {
+      "group": "ds",
+      "model": "AUTOMOBILES DS 9"
+    }
+  ],
+  "lancia/ypsilon": [
+    {
+      "group": "lancia",
+      "model": "Ypsilon"
+    }
+  ],
+  "lancia/delta": [
+    {
+      "group": "lancia",
+      "model": "Delta"
+    },
+    {
+      "group": "lancia",
+      "model": "Delta HPE"
+    }
+  ],
+  "lancia/thema": [
+    {
+      "group": "lancia",
+      "model": "Thema"
+    }
+  ],
+  "smart/fortwo": [
+    {
+      "group": "smart",
+      "model": "fortwo"
+    },
+    {
+      "group": "smart",
+      "model": "fortwo Cabrio"
+    }
+  ],
+  "smart/forfour": [
+    {
+      "group": "smart",
+      "model": "forfour"
+    }
+  ],
+  "smart/1": [
+    {
+      "group": "smart",
+      "model": "1"
+    }
+  ],
+  "smart/3": [
+    {
+      "group": "smart",
+      "model": "3"
+    }
+  ],
+  "smart/5": [
+    {
+      "group": "smart",
+      "model": "5"
+    }
+  ],
+  "ssangyong-kgm/tivoli": [
+    {
+      "group": "ssangyong",
+      "model": "Tivoli"
+    },
+    {
+      "group": "kgm",
+      "model": "Tivoli"
+    },
+    {
+      "group": "ssangyong",
+      "model": "Tivoli XLV"
+    }
+  ],
+  "ssangyong-kgm/korando": [
+    {
+      "group": "ssangyong",
+      "model": "Korando"
+    },
+    {
+      "group": "kgm",
+      "model": "Korando"
+    }
+  ],
+  "ssangyong-kgm/torres": [
+    {
+      "group": "kgm",
+      "model": "Torres"
+    }
+  ],
+  "ssangyong-kgm/rexton": [
+    {
+      "group": "ssangyong",
+      "model": "Rexton"
+    },
+    {
+      "group": "kgm",
+      "model": "Rexton"
+    }
+  ],
+  "ssangyong-kgm/musso": [
+    {
+      "group": "ssangyong",
+      "model": "Musso"
+    },
+    {
+      "group": "ssangyong",
+      "model": "Musso Sports"
+    }
+  ],
+  "isuzu/d-max": [
+    {
+      "group": "isuzu",
+      "model": "Rodeo / D-Max"
+    }
+  ],
+  "isuzu/mu-x": []
+}

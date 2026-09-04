@@ -1,0 +1,2468 @@
+[
+  {
+    "brand": "BMW",
+    "model": "Z4",
+    "generation": "G29",
+    "name": "III · G29",
+    "from": 2018,
+    "to": 2022,
+    "facelift": false,
+    "bodyStyles": [
+      "Roadster"
+    ],
+    "sourceUrl": "https://www.press.bmwgroup.com/ireland/article/detail/T0285180EN/the-new-bmw-z4?language=en",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Výroba od 4. čtvrtletí 2018; dodávky od března 2019.",
+    "additionalSources": [
+      {
+        "url": "https://www.magna.com/docs/default-source/financial-disclosures/2019/q1/19-05-09---pr---magna-announces-first-quarter-2019-results.pdf?sfvrsn=1ffde3da_11",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://www.press.bmwgroup.com/global/article/detail/T0403900EN/pure-driving-pleasure-new-updates%3A-the-bmw-z4-for-model-year-2023",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://www.press.bmwgroup.com/global/article/detail/T0439268EN/the-bmw-z4-pure-impulse-edition",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "replacesSourceNames": [
+      "Z4 Roadster (2024)"
+    ]
+  },
+  {
+    "brand": "BMW",
+    "model": "Z4",
+    "generation": "G29",
+    "name": "III · G29 · facelift",
+    "from": 2022,
+    "to": 2026,
+    "facelift": true,
+    "bodyStyles": [
+      "Roadster"
+    ],
+    "sourceUrl": "https://www.press.bmwgroup.com/global/article/detail/T0403900EN/pure-driving-pleasure-new-updates%3A-the-bmw-z4-for-model-year-2023",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Modernizace uvedena v listopadu 2022 jako modelový rok 2023.",
+    "notes": "Výrobce oznámil ukončení výroby v březnu 2026.",
+    "additionalSources": [
+      {
+        "url": "https://www.press.bmwgroup.com/global/article/detail/T0453847EN/the-bmw-z4-final-edition-an-exclusive-take-on-the-iconic-roadster?showMedia=photo",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://www.press.bmwgroup.com/global/article/detail/T0439268EN/the-bmw-z4-pure-impulse-edition",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "replacesSourceNames": [
+      "Z4 Roadster (2024)"
+    ]
+  },
+  {
+    "brand": "BMW",
+    "model": "řada 3",
+    "generation": "G20",
+    "name": "VII · G20 Sedan",
+    "from": 2018,
+    "to": 2022,
+    "facelift": false,
+    "bodyStyles": [
+      "Sedan"
+    ],
+    "sourceUrl": "https://www.press.bmwgroup.com/global/photo/compilation/T0285128EN/the-all-new-bmw-3-series-sedan?language=en",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Výroba doložena v listopadu 2018; prodejní uvedení 2019.",
+    "additionalSources": [
+      {
+        "url": "https://www.press.bmwgroup.com/global/article/detail/T0388273EN/the-new-bmw-3-series-sedan-and-the-new-bmw-3-series-touring",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "replacesSourceNames": [
+      "3 Series Sedan (2018)",
+      "3 Series Sedan (2022)",
+      "3 Series Sedan (2024)",
+      "3 Series Touring (2019)",
+      "3 Series Touring (2022)",
+      "3 Series Touring (2024)"
+    ]
+  },
+  {
+    "brand": "BMW",
+    "model": "řada 3",
+    "generation": "G21",
+    "name": "VII · G21 Touring",
+    "from": 2019,
+    "to": 2022,
+    "facelift": false,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.press.bmwgroup.com/czech/article/detail/T0296929CS/nov%C3%A9-bmw-%C5%99ady-3-touring?language=cs",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Uvedení na trh 28. září 2019.",
+    "additionalSources": [
+      {
+        "url": "https://www.press.bmwgroup.com/global/article/detail/T0388273EN/the-new-bmw-3-series-sedan-and-the-new-bmw-3-series-touring",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "replacesSourceNames": [
+      "3 Series Sedan (2018)",
+      "3 Series Sedan (2022)",
+      "3 Series Sedan (2024)",
+      "3 Series Touring (2019)",
+      "3 Series Touring (2022)",
+      "3 Series Touring (2024)"
+    ]
+  },
+  {
+    "brand": "BMW",
+    "model": "řada 3",
+    "generation": "G20",
+    "name": "VII · G20 Sedan · facelift",
+    "from": 2022,
+    "to": 2024,
+    "facelift": true,
+    "bodyStyles": [
+      "Sedan"
+    ],
+    "sourceUrl": "https://www.press.bmwgroup.com/global/article/detail/T0388273EN/the-new-bmw-3-series-sedan-and-the-new-bmw-3-series-touring",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Modernizace od července 2022.",
+    "additionalSources": [
+      {
+        "url": "https://www.press.bmwgroup.com/global/article/detail/T0442333EN/the-new-bmw-3-series-sedan-the-new-bmw-3-series-touring",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "replacesSourceNames": [
+      "3 Series Sedan (2018)",
+      "3 Series Sedan (2022)",
+      "3 Series Sedan (2024)",
+      "3 Series Touring (2019)",
+      "3 Series Touring (2022)",
+      "3 Series Touring (2024)"
+    ]
+  },
+  {
+    "brand": "BMW",
+    "model": "řada 3",
+    "generation": "G20",
+    "name": "VII · G20 Sedan · modernizace 2024",
+    "from": 2024,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "Sedan"
+    ],
+    "sourceUrl": "https://www.press.bmwgroup.com/global/article/detail/T0442333EN/the-new-bmw-3-series-sedan-the-new-bmw-3-series-touring",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Výrobní změna od července 2024.",
+    "notes": "Další modernizace stejné generace po faceliftu 2022.",
+    "replacesSourceNames": [
+      "3 Series Sedan (2018)",
+      "3 Series Sedan (2022)",
+      "3 Series Sedan (2024)",
+      "3 Series Touring (2019)",
+      "3 Series Touring (2022)",
+      "3 Series Touring (2024)"
+    ]
+  },
+  {
+    "brand": "BMW",
+    "model": "řada 3",
+    "generation": "G21",
+    "name": "VII · G21 Touring · facelift",
+    "from": 2022,
+    "to": 2024,
+    "facelift": true,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.press.bmwgroup.com/global/article/detail/T0388273EN/the-new-bmw-3-series-sedan-and-the-new-bmw-3-series-touring",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Modernizace od července 2022.",
+    "additionalSources": [
+      {
+        "url": "https://www.press.bmwgroup.com/global/article/detail/T0442333EN/the-new-bmw-3-series-sedan-the-new-bmw-3-series-touring",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "replacesSourceNames": [
+      "3 Series Sedan (2018)",
+      "3 Series Sedan (2022)",
+      "3 Series Sedan (2024)",
+      "3 Series Touring (2019)",
+      "3 Series Touring (2022)",
+      "3 Series Touring (2024)"
+    ]
+  },
+  {
+    "brand": "BMW",
+    "model": "řada 3",
+    "generation": "G21",
+    "name": "VII · G21 Touring · modernizace 2024",
+    "from": 2024,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.press.bmwgroup.com/global/article/detail/T0442333EN/the-new-bmw-3-series-sedan-the-new-bmw-3-series-touring",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Výrobní změna od července 2024.",
+    "notes": "Další modernizace stejné generace po faceliftu 2022.",
+    "replacesSourceNames": [
+      "3 Series Sedan (2018)",
+      "3 Series Sedan (2022)",
+      "3 Series Sedan (2024)",
+      "3 Series Touring (2019)",
+      "3 Series Touring (2022)",
+      "3 Series Touring (2024)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia",
+    "generation": "I",
+    "name": "I",
+    "from": 1996,
+    "to": 2000,
+    "facelift": false,
+    "bodyStyles": [
+      "Liftback"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2024/05/Octavia_History_a6eedf18.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-releases/skoda-octavia-1996-2010-a-magnificent-fourteen-year-career/",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://www.skoda-storyboard.com/cs/skoda-svet-cs/skoda-octavia-combi-25-let-novodobe-kariery/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Roky modelových fází podle historické časové osy výrobce; roky přechodu se překrývají.",
+    "replacesSourceNames": [
+      "SKODA Octavia (1997)",
+      "SKODA Octavia (2004)",
+      "SKODA Octavia (2008)",
+      "SKODA Octavia (2013)",
+      "SKODA Octavia (2017)",
+      "SKODA Octavia (2019)",
+      "SKODA Octavia (2024)",
+      "SKODA Octavia Combi (1997)",
+      "SKODA Octavia Combi (2004)",
+      "SKODA Octavia Combi (2008)",
+      "SKODA Octavia Combi (2013)",
+      "SKODA Octavia Combi (2017)",
+      "SKODA Octavia Combi (2019)",
+      "SKODA Octavia Combi (2024)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia",
+    "generation": "I",
+    "name": "I",
+    "from": 1998,
+    "to": 2000,
+    "facelift": false,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2024/05/Octavia_History_a6eedf18.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-releases/skoda-octavia-1996-2010-a-magnificent-fourteen-year-career/",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://www.skoda-storyboard.com/cs/skoda-svet-cs/skoda-octavia-combi-25-let-novodobe-kariery/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Roky modelových fází podle historické časové osy výrobce; roky přechodu se překrývají.",
+    "replacesSourceNames": [
+      "SKODA Octavia (1997)",
+      "SKODA Octavia (2004)",
+      "SKODA Octavia (2008)",
+      "SKODA Octavia (2013)",
+      "SKODA Octavia (2017)",
+      "SKODA Octavia (2019)",
+      "SKODA Octavia (2024)",
+      "SKODA Octavia Combi (1997)",
+      "SKODA Octavia Combi (2004)",
+      "SKODA Octavia Combi (2008)",
+      "SKODA Octavia Combi (2013)",
+      "SKODA Octavia Combi (2017)",
+      "SKODA Octavia Combi (2019)",
+      "SKODA Octavia Combi (2024)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia",
+    "generation": "I",
+    "name": "I · facelift",
+    "from": 2000,
+    "to": 2010,
+    "facelift": true,
+    "bodyStyles": [
+      "Liftback",
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2024/05/Octavia_History_a6eedf18.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-releases/skoda-octavia-1996-2010-a-magnificent-fourteen-year-career/",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://www.skoda-storyboard.com/cs/skoda-svet-cs/skoda-octavia-combi-25-let-novodobe-kariery/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Roky modelových fází podle historické časové osy výrobce; roky přechodu se překrývají.",
+    "replacesSourceNames": [
+      "SKODA Octavia (1997)",
+      "SKODA Octavia (2004)",
+      "SKODA Octavia (2008)",
+      "SKODA Octavia (2013)",
+      "SKODA Octavia (2017)",
+      "SKODA Octavia (2019)",
+      "SKODA Octavia (2024)",
+      "SKODA Octavia Combi (1997)",
+      "SKODA Octavia Combi (2004)",
+      "SKODA Octavia Combi (2008)",
+      "SKODA Octavia Combi (2013)",
+      "SKODA Octavia Combi (2017)",
+      "SKODA Octavia Combi (2019)",
+      "SKODA Octavia Combi (2024)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia",
+    "generation": "II",
+    "name": "II",
+    "from": 2004,
+    "to": 2008,
+    "facelift": false,
+    "bodyStyles": [
+      "Liftback",
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2024/05/Octavia_History_a6eedf18.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-auto.cz/novinky/novinky-detail/2026-08-27-skoda-octavia-slavi-30-let-tri-dekady-ikonickeho-modelu",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://www.skoda-storyboard.com/cs/skoda-svet-cs/skoda-octavia-combi-25-let-novodobe-kariery/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Roky modelových fází podle historické časové osy výrobce; roky přechodu se překrývají.",
+    "replacesSourceNames": [
+      "SKODA Octavia (1997)",
+      "SKODA Octavia (2004)",
+      "SKODA Octavia (2008)",
+      "SKODA Octavia (2013)",
+      "SKODA Octavia (2017)",
+      "SKODA Octavia (2019)",
+      "SKODA Octavia (2024)",
+      "SKODA Octavia Combi (1997)",
+      "SKODA Octavia Combi (2004)",
+      "SKODA Octavia Combi (2008)",
+      "SKODA Octavia Combi (2013)",
+      "SKODA Octavia Combi (2017)",
+      "SKODA Octavia Combi (2019)",
+      "SKODA Octavia Combi (2024)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia",
+    "generation": "II",
+    "name": "II · facelift",
+    "from": 2008,
+    "to": 2013,
+    "facelift": true,
+    "bodyStyles": [
+      "Liftback",
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2024/05/Octavia_History_a6eedf18.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-auto.cz/novinky/novinky-detail/2026-08-27-skoda-octavia-slavi-30-let-tri-dekady-ikonickeho-modelu",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://www.skoda-storyboard.com/cs/skoda-svet-cs/skoda-octavia-combi-25-let-novodobe-kariery/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Roky modelových fází podle historické časové osy výrobce; roky přechodu se překrývají.",
+    "replacesSourceNames": [
+      "SKODA Octavia (1997)",
+      "SKODA Octavia (2004)",
+      "SKODA Octavia (2008)",
+      "SKODA Octavia (2013)",
+      "SKODA Octavia (2017)",
+      "SKODA Octavia (2019)",
+      "SKODA Octavia (2024)",
+      "SKODA Octavia Combi (1997)",
+      "SKODA Octavia Combi (2004)",
+      "SKODA Octavia Combi (2008)",
+      "SKODA Octavia Combi (2013)",
+      "SKODA Octavia Combi (2017)",
+      "SKODA Octavia Combi (2019)",
+      "SKODA Octavia Combi (2024)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia",
+    "generation": "III",
+    "name": "III",
+    "from": 2012,
+    "to": 2017,
+    "facelift": false,
+    "bodyStyles": [
+      "Liftback"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2024/05/Octavia_History_a6eedf18.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-auto.cz/novinky/novinky-detail/2026-08-27-skoda-octavia-slavi-30-let-tri-dekady-ikonickeho-modelu",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://www.skoda-storyboard.com/cs/skoda-svet-cs/skoda-octavia-combi-25-let-novodobe-kariery/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Roky modelových fází podle historické časové osy výrobce; roky přechodu se překrývají.",
+    "replacesSourceNames": [
+      "SKODA Octavia (1997)",
+      "SKODA Octavia (2004)",
+      "SKODA Octavia (2008)",
+      "SKODA Octavia (2013)",
+      "SKODA Octavia (2017)",
+      "SKODA Octavia (2019)",
+      "SKODA Octavia (2024)",
+      "SKODA Octavia Combi (1997)",
+      "SKODA Octavia Combi (2004)",
+      "SKODA Octavia Combi (2008)",
+      "SKODA Octavia Combi (2013)",
+      "SKODA Octavia Combi (2017)",
+      "SKODA Octavia Combi (2019)",
+      "SKODA Octavia Combi (2024)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia",
+    "generation": "III",
+    "name": "III",
+    "from": 2013,
+    "to": 2017,
+    "facelift": false,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2024/05/Octavia_History_a6eedf18.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-auto.cz/novinky/novinky-detail/2026-08-27-skoda-octavia-slavi-30-let-tri-dekady-ikonickeho-modelu",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://www.skoda-storyboard.com/cs/skoda-svet-cs/skoda-octavia-combi-25-let-novodobe-kariery/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Roky modelových fází podle historické časové osy výrobce; roky přechodu se překrývají.",
+    "replacesSourceNames": [
+      "SKODA Octavia (1997)",
+      "SKODA Octavia (2004)",
+      "SKODA Octavia (2008)",
+      "SKODA Octavia (2013)",
+      "SKODA Octavia (2017)",
+      "SKODA Octavia (2019)",
+      "SKODA Octavia (2024)",
+      "SKODA Octavia Combi (1997)",
+      "SKODA Octavia Combi (2004)",
+      "SKODA Octavia Combi (2008)",
+      "SKODA Octavia Combi (2013)",
+      "SKODA Octavia Combi (2017)",
+      "SKODA Octavia Combi (2019)",
+      "SKODA Octavia Combi (2024)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia",
+    "generation": "III",
+    "name": "III · facelift",
+    "from": 2017,
+    "to": 2020,
+    "facelift": true,
+    "bodyStyles": [
+      "Liftback",
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2024/05/Octavia_History_a6eedf18.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-auto.cz/novinky/novinky-detail/2026-08-27-skoda-octavia-slavi-30-let-tri-dekady-ikonickeho-modelu",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://www.skoda-storyboard.com/cs/skoda-svet-cs/skoda-octavia-combi-25-let-novodobe-kariery/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Roky modelových fází podle historické časové osy výrobce; roky přechodu se překrývají.",
+    "replacesSourceNames": [
+      "SKODA Octavia (1997)",
+      "SKODA Octavia (2004)",
+      "SKODA Octavia (2008)",
+      "SKODA Octavia (2013)",
+      "SKODA Octavia (2017)",
+      "SKODA Octavia (2019)",
+      "SKODA Octavia (2024)",
+      "SKODA Octavia Combi (1997)",
+      "SKODA Octavia Combi (2004)",
+      "SKODA Octavia Combi (2008)",
+      "SKODA Octavia Combi (2013)",
+      "SKODA Octavia Combi (2017)",
+      "SKODA Octavia Combi (2019)",
+      "SKODA Octavia Combi (2024)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia",
+    "generation": "IV",
+    "name": "IV",
+    "from": 2019,
+    "to": 2024,
+    "facelift": false,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2024/05/Octavia_History_a6eedf18.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-auto.cz/novinky/novinky-detail/2026-08-27-skoda-octavia-slavi-30-let-tri-dekady-ikonickeho-modelu",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://www.skoda-storyboard.com/cs/skoda-svet-cs/skoda-octavia-combi-25-let-novodobe-kariery/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Roky modelových fází podle historické časové osy výrobce; roky přechodu se překrývají.",
+    "replacesSourceNames": [
+      "SKODA Octavia (1997)",
+      "SKODA Octavia (2004)",
+      "SKODA Octavia (2008)",
+      "SKODA Octavia (2013)",
+      "SKODA Octavia (2017)",
+      "SKODA Octavia (2019)",
+      "SKODA Octavia (2024)",
+      "SKODA Octavia Combi (1997)",
+      "SKODA Octavia Combi (2004)",
+      "SKODA Octavia Combi (2008)",
+      "SKODA Octavia Combi (2013)",
+      "SKODA Octavia Combi (2017)",
+      "SKODA Octavia Combi (2019)",
+      "SKODA Octavia Combi (2024)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia",
+    "generation": "IV",
+    "name": "IV · facelift",
+    "from": 2024,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "Liftback",
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2024/05/Octavia_History_a6eedf18.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-auto.cz/novinky/novinky-detail/2026-08-27-skoda-octavia-slavi-30-let-tri-dekady-ikonickeho-modelu",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://www.skoda-storyboard.com/cs/skoda-svet-cs/skoda-octavia-combi-25-let-novodobe-kariery/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Roky modelových fází podle historické časové osy výrobce; roky přechodu se překrývají.",
+    "replacesSourceNames": [
+      "SKODA Octavia (1997)",
+      "SKODA Octavia (2004)",
+      "SKODA Octavia (2008)",
+      "SKODA Octavia (2013)",
+      "SKODA Octavia (2017)",
+      "SKODA Octavia (2019)",
+      "SKODA Octavia (2024)",
+      "SKODA Octavia Combi (1997)",
+      "SKODA Octavia Combi (2004)",
+      "SKODA Octavia Combi (2008)",
+      "SKODA Octavia Combi (2013)",
+      "SKODA Octavia Combi (2017)",
+      "SKODA Octavia Combi (2019)",
+      "SKODA Octavia Combi (2024)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Octavia",
+    "generation": "IV",
+    "name": "IV · liftback",
+    "from": 2020,
+    "to": 2024,
+    "facelift": false,
+    "bodyStyles": [
+      "Liftback"
+    ],
+    "sourceUrl": "https://www.skoda-storyboard.com/cs/tiskove-zpravy-archiv/skoda-zacina-v-cr-prodavat-model-skoda-octavia-v-atraktivnim-provedeni-liftback/",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "České objednávky liftbacku od ledna 2020; premiéra obou karoserií v listopadu 2019.",
+    "additionalSources": [
+      {
+        "url": "https://cdn.skoda-storyboard.com/2024/05/Octavia_History_a6eedf18.pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "replacesSourceNames": [
+      "SKODA Octavia (1997)",
+      "SKODA Octavia (2004)",
+      "SKODA Octavia (2008)",
+      "SKODA Octavia (2013)",
+      "SKODA Octavia (2017)",
+      "SKODA Octavia (2019)",
+      "SKODA Octavia (2024)",
+      "SKODA Octavia Combi (1997)",
+      "SKODA Octavia Combi (2004)",
+      "SKODA Octavia Combi (2008)",
+      "SKODA Octavia Combi (2013)",
+      "SKODA Octavia Combi (2017)",
+      "SKODA Octavia Combi (2019)",
+      "SKODA Octavia Combi (2024)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Fabia",
+    "generation": "I",
+    "name": "I",
+    "from": 1999,
+    "to": 2004,
+    "facelift": false,
+    "bodyStyles": [
+      "Hatchback"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2021/04/SKODA_FABIA_History.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-releases/five-million-fabias-skoda-autos-entry-level-model-reaches-major-milestone/",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2020/09/200919-20_Years_SKODA_FABIA_COMBI.pdf",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2021/09/210916-SKODA-FABIA-dnes-oficialne-vstupuje-na-cesky-trh..pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle časové osy výrobce.",
+    "replacesSourceNames": [
+      "SKODA Fabia (2000)",
+      "SKODA Fabia (2007)",
+      "SKODA Fabia (2014)",
+      "SKODA Fabia (2018)",
+      "SKODA Fabia (2021)",
+      "SKODA Fabia Combi (2000)",
+      "SKODA Fabia Combi (2008)",
+      "SKODA Fabia Combi (2014)",
+      "SKODA Fabia Combi (2018)",
+      "SKODA Fabia Sedan (2001)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Fabia",
+    "generation": "I",
+    "name": "I",
+    "from": 2000,
+    "to": 2004,
+    "facelift": false,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2021/04/SKODA_FABIA_History.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-releases/five-million-fabias-skoda-autos-entry-level-model-reaches-major-milestone/",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2020/09/200919-20_Years_SKODA_FABIA_COMBI.pdf",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2021/09/210916-SKODA-FABIA-dnes-oficialne-vstupuje-na-cesky-trh..pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle časové osy výrobce.",
+    "replacesSourceNames": [
+      "SKODA Fabia (2000)",
+      "SKODA Fabia (2007)",
+      "SKODA Fabia (2014)",
+      "SKODA Fabia (2018)",
+      "SKODA Fabia (2021)",
+      "SKODA Fabia Combi (2000)",
+      "SKODA Fabia Combi (2008)",
+      "SKODA Fabia Combi (2014)",
+      "SKODA Fabia Combi (2018)",
+      "SKODA Fabia Sedan (2001)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Fabia",
+    "generation": "I",
+    "name": "I · facelift",
+    "from": 2004,
+    "to": 2007,
+    "facelift": true,
+    "bodyStyles": [
+      "Hatchback",
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2021/04/SKODA_FABIA_History.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-releases/five-million-fabias-skoda-autos-entry-level-model-reaches-major-milestone/",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2020/09/200919-20_Years_SKODA_FABIA_COMBI.pdf",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2021/09/210916-SKODA-FABIA-dnes-oficialne-vstupuje-na-cesky-trh..pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle časové osy výrobce.",
+    "replacesSourceNames": [
+      "SKODA Fabia (2000)",
+      "SKODA Fabia (2007)",
+      "SKODA Fabia (2014)",
+      "SKODA Fabia (2018)",
+      "SKODA Fabia (2021)",
+      "SKODA Fabia Combi (2000)",
+      "SKODA Fabia Combi (2008)",
+      "SKODA Fabia Combi (2014)",
+      "SKODA Fabia Combi (2018)",
+      "SKODA Fabia Sedan (2001)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Fabia",
+    "generation": "II",
+    "name": "II",
+    "from": 2007,
+    "to": 2010,
+    "facelift": false,
+    "bodyStyles": [
+      "Hatchback",
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2021/04/SKODA_FABIA_History.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-releases/five-million-fabias-skoda-autos-entry-level-model-reaches-major-milestone/",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2020/09/200919-20_Years_SKODA_FABIA_COMBI.pdf",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2021/09/210916-SKODA-FABIA-dnes-oficialne-vstupuje-na-cesky-trh..pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle časové osy výrobce.",
+    "replacesSourceNames": [
+      "SKODA Fabia (2000)",
+      "SKODA Fabia (2007)",
+      "SKODA Fabia (2014)",
+      "SKODA Fabia (2018)",
+      "SKODA Fabia (2021)",
+      "SKODA Fabia Combi (2000)",
+      "SKODA Fabia Combi (2008)",
+      "SKODA Fabia Combi (2014)",
+      "SKODA Fabia Combi (2018)",
+      "SKODA Fabia Sedan (2001)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Fabia",
+    "generation": "II",
+    "name": "II · facelift",
+    "from": 2010,
+    "to": 2014,
+    "facelift": true,
+    "bodyStyles": [
+      "Hatchback",
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2021/04/SKODA_FABIA_History.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-releases/five-million-fabias-skoda-autos-entry-level-model-reaches-major-milestone/",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2020/09/200919-20_Years_SKODA_FABIA_COMBI.pdf",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2021/09/210916-SKODA-FABIA-dnes-oficialne-vstupuje-na-cesky-trh..pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle časové osy výrobce.",
+    "replacesSourceNames": [
+      "SKODA Fabia (2000)",
+      "SKODA Fabia (2007)",
+      "SKODA Fabia (2014)",
+      "SKODA Fabia (2018)",
+      "SKODA Fabia (2021)",
+      "SKODA Fabia Combi (2000)",
+      "SKODA Fabia Combi (2008)",
+      "SKODA Fabia Combi (2014)",
+      "SKODA Fabia Combi (2018)",
+      "SKODA Fabia Sedan (2001)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Fabia",
+    "generation": "III",
+    "name": "III",
+    "from": 2014,
+    "to": 2018,
+    "facelift": false,
+    "bodyStyles": [
+      "Hatchback",
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2021/04/SKODA_FABIA_History.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-releases/five-million-fabias-skoda-autos-entry-level-model-reaches-major-milestone/",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2020/09/200919-20_Years_SKODA_FABIA_COMBI.pdf",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2016/05/skoda-annual-report-2014.pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle časové osy výrobce; Fabia III Combi ve výrobě od prosince 2014, prodej od 2015.",
+    "replacesSourceNames": [
+      "SKODA Fabia (2000)",
+      "SKODA Fabia (2007)",
+      "SKODA Fabia (2014)",
+      "SKODA Fabia (2018)",
+      "SKODA Fabia (2021)",
+      "SKODA Fabia Combi (2000)",
+      "SKODA Fabia Combi (2008)",
+      "SKODA Fabia Combi (2014)",
+      "SKODA Fabia Combi (2018)",
+      "SKODA Fabia Sedan (2001)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Fabia",
+    "generation": "III",
+    "name": "III · facelift",
+    "from": 2018,
+    "to": 2021,
+    "facelift": true,
+    "bodyStyles": [
+      "Hatchback"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2021/04/SKODA_FABIA_History.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-releases/five-million-fabias-skoda-autos-entry-level-model-reaches-major-milestone/",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2020/09/200919-20_Years_SKODA_FABIA_COMBI.pdf",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2016/05/skoda-annual-report-2014.pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle časové osy výrobce; Fabia III Combi ve výrobě od prosince 2014, prodej od 2015.",
+    "replacesSourceNames": [
+      "SKODA Fabia (2000)",
+      "SKODA Fabia (2007)",
+      "SKODA Fabia (2014)",
+      "SKODA Fabia (2018)",
+      "SKODA Fabia (2021)",
+      "SKODA Fabia Combi (2000)",
+      "SKODA Fabia Combi (2008)",
+      "SKODA Fabia Combi (2014)",
+      "SKODA Fabia Combi (2018)",
+      "SKODA Fabia Sedan (2001)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Fabia",
+    "generation": "III",
+    "name": "III · facelift",
+    "from": 2018,
+    "to": 2022,
+    "facelift": true,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2021/04/SKODA_FABIA_History.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-releases/five-million-fabias-skoda-autos-entry-level-model-reaches-major-milestone/",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2020/09/200919-20_Years_SKODA_FABIA_COMBI.pdf",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2016/05/skoda-annual-report-2014.pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle časové osy výrobce; Fabia III Combi ve výrobě od prosince 2014, prodej od 2015.",
+    "replacesSourceNames": [
+      "SKODA Fabia (2000)",
+      "SKODA Fabia (2007)",
+      "SKODA Fabia (2014)",
+      "SKODA Fabia (2018)",
+      "SKODA Fabia (2021)",
+      "SKODA Fabia Combi (2000)",
+      "SKODA Fabia Combi (2008)",
+      "SKODA Fabia Combi (2014)",
+      "SKODA Fabia Combi (2018)",
+      "SKODA Fabia Sedan (2001)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Fabia",
+    "generation": "IV",
+    "name": "IV",
+    "from": 2021,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "Hatchback"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2021/04/SKODA_FABIA_History.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-releases/five-million-fabias-skoda-autos-entry-level-model-reaches-major-milestone/",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2020/09/200919-20_Years_SKODA_FABIA_COMBI.pdf",
+        "title": "Historie a modelové změny výrobce"
+      },
+      {
+        "url": "https://cdn.skoda-storyboard.com/2021/09/210916-SKODA-FABIA-dnes-oficialne-vstupuje-na-cesky-trh..pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle časové osy výrobce.",
+    "replacesSourceNames": [
+      "SKODA Fabia (2000)",
+      "SKODA Fabia (2007)",
+      "SKODA Fabia (2014)",
+      "SKODA Fabia (2018)",
+      "SKODA Fabia (2021)",
+      "SKODA Fabia Combi (2000)",
+      "SKODA Fabia Combi (2008)",
+      "SKODA Fabia Combi (2014)",
+      "SKODA Fabia Combi (2018)",
+      "SKODA Fabia Sedan (2001)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Fabia",
+    "generation": "I",
+    "name": "I · Sedan",
+    "from": 2001,
+    "to": 2008,
+    "facelift": null,
+    "bodyStyles": [
+      "Sedan"
+    ],
+    "sourceUrl": "https://www.skoda-storyboard.com/en/press-releases/five-million-fabias-skoda-autos-entry-level-model-reaches-major-milestone/",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "notes": "Výroba sedanu skončila v březnu 2008. Tento záznam ověřuje karoserii a celkové období, nikoliv samostatná data faceliftů sedanu.",
+    "additionalSources": [
+      {
+        "url": "https://cdn.skoda-storyboard.com/2020/09/skoda-auto-annual-report-2008-SK.pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "replacesSourceNames": [
+      "SKODA Fabia (2000)",
+      "SKODA Fabia (2007)",
+      "SKODA Fabia (2014)",
+      "SKODA Fabia (2018)",
+      "SKODA Fabia (2021)",
+      "SKODA Fabia Combi (2000)",
+      "SKODA Fabia Combi (2008)",
+      "SKODA Fabia Combi (2014)",
+      "SKODA Fabia Combi (2018)",
+      "SKODA Fabia Sedan (2001)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Superb",
+    "generation": "I",
+    "name": "I",
+    "from": 2001,
+    "to": 2006,
+    "facelift": false,
+    "bodyStyles": [
+      "Sedan"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2023/10/Skoda_Superb_History_14928d05.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-kits/the-all-skoda-superb-press-kit-2/history-tracing-the-skoda-superb-from-its-1930s-origins-through-generations-of-innovation/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle historické časové osy výrobce.",
+    "replacesSourceNames": [
+      "SKODA Superb (2002)",
+      "SKODA Superb (2006)",
+      "SKODA Superb (2008)",
+      "SKODA Superb (2013)",
+      "SKODA Superb (2015)",
+      "SKODA Superb (2019)",
+      "SKODA Superb (2023)",
+      "SKODA Superb Combi / Scout (2009)",
+      "SKODA Superb Combi / Scout (2013)",
+      "SKODA Superb Combi / Scout (2015)",
+      "SKODA Superb Combi / Scout (2019)",
+      "SKODA Superb Combi / Scout (2023)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Superb",
+    "generation": "I",
+    "name": "I · facelift",
+    "from": 2006,
+    "to": 2008,
+    "facelift": true,
+    "bodyStyles": [
+      "Sedan"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2023/10/Skoda_Superb_History_14928d05.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-kits/the-all-skoda-superb-press-kit-2/history-tracing-the-skoda-superb-from-its-1930s-origins-through-generations-of-innovation/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle historické časové osy výrobce.",
+    "replacesSourceNames": [
+      "SKODA Superb (2002)",
+      "SKODA Superb (2006)",
+      "SKODA Superb (2008)",
+      "SKODA Superb (2013)",
+      "SKODA Superb (2015)",
+      "SKODA Superb (2019)",
+      "SKODA Superb (2023)",
+      "SKODA Superb Combi / Scout (2009)",
+      "SKODA Superb Combi / Scout (2013)",
+      "SKODA Superb Combi / Scout (2015)",
+      "SKODA Superb Combi / Scout (2019)",
+      "SKODA Superb Combi / Scout (2023)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Superb",
+    "generation": "II",
+    "name": "II",
+    "from": 2008,
+    "to": 2013,
+    "facelift": false,
+    "bodyStyles": [
+      "Liftback"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2023/10/Skoda_Superb_History_14928d05.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-kits/the-all-skoda-superb-press-kit-2/history-tracing-the-skoda-superb-from-its-1930s-origins-through-generations-of-innovation/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle historické časové osy výrobce.",
+    "replacesSourceNames": [
+      "SKODA Superb (2002)",
+      "SKODA Superb (2006)",
+      "SKODA Superb (2008)",
+      "SKODA Superb (2013)",
+      "SKODA Superb (2015)",
+      "SKODA Superb (2019)",
+      "SKODA Superb (2023)",
+      "SKODA Superb Combi / Scout (2009)",
+      "SKODA Superb Combi / Scout (2013)",
+      "SKODA Superb Combi / Scout (2015)",
+      "SKODA Superb Combi / Scout (2019)",
+      "SKODA Superb Combi / Scout (2023)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Superb",
+    "generation": "II",
+    "name": "II",
+    "from": 2009,
+    "to": 2013,
+    "facelift": false,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2023/10/Skoda_Superb_History_14928d05.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-kits/the-all-skoda-superb-press-kit-2/history-tracing-the-skoda-superb-from-its-1930s-origins-through-generations-of-innovation/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle historické časové osy výrobce.",
+    "replacesSourceNames": [
+      "SKODA Superb (2002)",
+      "SKODA Superb (2006)",
+      "SKODA Superb (2008)",
+      "SKODA Superb (2013)",
+      "SKODA Superb (2015)",
+      "SKODA Superb (2019)",
+      "SKODA Superb (2023)",
+      "SKODA Superb Combi / Scout (2009)",
+      "SKODA Superb Combi / Scout (2013)",
+      "SKODA Superb Combi / Scout (2015)",
+      "SKODA Superb Combi / Scout (2019)",
+      "SKODA Superb Combi / Scout (2023)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Superb",
+    "generation": "II",
+    "name": "II · facelift",
+    "from": 2013,
+    "to": 2015,
+    "facelift": true,
+    "bodyStyles": [
+      "Liftback",
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2023/10/Skoda_Superb_History_14928d05.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-kits/the-all-skoda-superb-press-kit-2/history-tracing-the-skoda-superb-from-its-1930s-origins-through-generations-of-innovation/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle historické časové osy výrobce.",
+    "replacesSourceNames": [
+      "SKODA Superb (2002)",
+      "SKODA Superb (2006)",
+      "SKODA Superb (2008)",
+      "SKODA Superb (2013)",
+      "SKODA Superb (2015)",
+      "SKODA Superb (2019)",
+      "SKODA Superb (2023)",
+      "SKODA Superb Combi / Scout (2009)",
+      "SKODA Superb Combi / Scout (2013)",
+      "SKODA Superb Combi / Scout (2015)",
+      "SKODA Superb Combi / Scout (2019)",
+      "SKODA Superb Combi / Scout (2023)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Superb",
+    "generation": "III",
+    "name": "III",
+    "from": 2015,
+    "to": 2019,
+    "facelift": false,
+    "bodyStyles": [
+      "Liftback",
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2023/10/Skoda_Superb_History_14928d05.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-kits/the-all-skoda-superb-press-kit-2/history-tracing-the-skoda-superb-from-its-1930s-origins-through-generations-of-innovation/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle historické časové osy výrobce.",
+    "replacesSourceNames": [
+      "SKODA Superb (2002)",
+      "SKODA Superb (2006)",
+      "SKODA Superb (2008)",
+      "SKODA Superb (2013)",
+      "SKODA Superb (2015)",
+      "SKODA Superb (2019)",
+      "SKODA Superb (2023)",
+      "SKODA Superb Combi / Scout (2009)",
+      "SKODA Superb Combi / Scout (2013)",
+      "SKODA Superb Combi / Scout (2015)",
+      "SKODA Superb Combi / Scout (2019)",
+      "SKODA Superb Combi / Scout (2023)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Superb",
+    "generation": "III",
+    "name": "III · facelift",
+    "from": 2019,
+    "to": 2023,
+    "facelift": true,
+    "bodyStyles": [
+      "Liftback",
+      "Kombi"
+    ],
+    "sourceUrl": "https://cdn.skoda-storyboard.com/2023/10/Skoda_Superb_History_14928d05.pdf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-kits/the-all-skoda-superb-press-kit-2/history-tracing-the-skoda-superb-from-its-1930s-origins-through-generations-of-innovation/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "startBasis": "Modelové fáze podle historické časové osy výrobce.",
+    "replacesSourceNames": [
+      "SKODA Superb (2002)",
+      "SKODA Superb (2006)",
+      "SKODA Superb (2008)",
+      "SKODA Superb (2013)",
+      "SKODA Superb (2015)",
+      "SKODA Superb (2019)",
+      "SKODA Superb (2023)",
+      "SKODA Superb Combi / Scout (2009)",
+      "SKODA Superb Combi / Scout (2013)",
+      "SKODA Superb Combi / Scout (2015)",
+      "SKODA Superb Combi / Scout (2019)",
+      "SKODA Superb Combi / Scout (2023)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Superb",
+    "generation": "IV",
+    "name": "IV · Combi",
+    "from": 2023,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.skoda-storyboard.com/en/press-releases/skoda-launches-all-new-superb-production-in-bratislava/",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Výroba od prosince 2023; české dodávky od dubna 2024.",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/cs/tiskove-zpravy-archiv/nova-skoda-superb-ma-cesky-cenik/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "replacesSourceNames": [
+      "SKODA Superb (2002)",
+      "SKODA Superb (2006)",
+      "SKODA Superb (2008)",
+      "SKODA Superb (2013)",
+      "SKODA Superb (2015)",
+      "SKODA Superb (2019)",
+      "SKODA Superb (2023)",
+      "SKODA Superb Combi / Scout (2009)",
+      "SKODA Superb Combi / Scout (2013)",
+      "SKODA Superb Combi / Scout (2015)",
+      "SKODA Superb Combi / Scout (2019)",
+      "SKODA Superb Combi / Scout (2023)"
+    ]
+  },
+  {
+    "brand": "Škoda",
+    "model": "Superb",
+    "generation": "IV",
+    "name": "IV · liftback",
+    "from": 2024,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "Liftback"
+    ],
+    "sourceUrl": "https://www.skoda-storyboard.com/cs/tiskove-zpravy-archiv/nova-skoda-superb-ma-cesky-cenik/",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Výroba a české dodávky v roce 2024; světová premiéra proběhla v roce 2023.",
+    "additionalSources": [
+      {
+        "url": "https://www.skoda-storyboard.com/en/press-releases/skoda-launches-all-new-superb-production-in-bratislava/",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "replacesSourceNames": [
+      "SKODA Superb (2002)",
+      "SKODA Superb (2006)",
+      "SKODA Superb (2008)",
+      "SKODA Superb (2013)",
+      "SKODA Superb (2015)",
+      "SKODA Superb (2019)",
+      "SKODA Superb (2023)",
+      "SKODA Superb Combi / Scout (2009)",
+      "SKODA Superb Combi / Scout (2013)",
+      "SKODA Superb Combi / Scout (2015)",
+      "SKODA Superb Combi / Scout (2019)",
+      "SKODA Superb Combi / Scout (2023)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "I",
+    "name": "I",
+    "from": 1974,
+    "to": 1983,
+    "facelift": null,
+    "bodyStyles": [
+      "Hatchback 5 dveří"
+    ],
+    "sourceUrl": "https://www.volkswagen.at/service-zubehoer/ueber-dein-auto/vorgaengermodelle/golf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.volkswagen.de/idhub/content/dam/onehub_pkw/importers/de/geschaeftskunden/sonderzielgruppen/rettungsfahrzeuge/downloads/rettungsdatenblaetter/volkswagen_rettungsdatenblaetter_modelluebersicht_02-2020.pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "notes": "Historická generace; drobné průběžné modernizace nejsou tímto záznamem prohlášeny za kompletně rozlišené.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "II",
+    "name": "II",
+    "from": 1983,
+    "to": 1991,
+    "facelift": null,
+    "bodyStyles": [
+      "Hatchback 5 dveří"
+    ],
+    "sourceUrl": "https://www.volkswagen.at/service-zubehoer/ueber-dein-auto/vorgaengermodelle/golf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.volkswagen.de/idhub/content/dam/onehub_pkw/importers/de/geschaeftskunden/sonderzielgruppen/rettungsfahrzeuge/downloads/rettungsdatenblaetter/volkswagen_rettungsdatenblaetter_modelluebersicht_02-2020.pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "notes": "Historická generace; drobné průběžné modernizace nejsou tímto záznamem prohlášeny za kompletně rozlišené.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "III",
+    "name": "III",
+    "from": 1991,
+    "to": 1997,
+    "facelift": null,
+    "bodyStyles": [
+      "Hatchback 5 dveří"
+    ],
+    "sourceUrl": "https://www.volkswagen.at/service-zubehoer/ueber-dein-auto/vorgaengermodelle/golf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.volkswagen.de/idhub/content/dam/onehub_pkw/importers/de/geschaeftskunden/sonderzielgruppen/rettungsfahrzeuge/downloads/rettungsdatenblaetter/volkswagen_rettungsdatenblaetter_modelluebersicht_02-2020.pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "notes": "Historická generace; drobné průběžné modernizace nejsou tímto záznamem prohlášeny za kompletně rozlišené.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "IV",
+    "name": "IV",
+    "from": 1997,
+    "to": 2003,
+    "facelift": null,
+    "bodyStyles": [
+      "Hatchback 5 dveří"
+    ],
+    "sourceUrl": "https://www.volkswagen.at/service-zubehoer/ueber-dein-auto/vorgaengermodelle/golf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.volkswagen.de/idhub/content/dam/onehub_pkw/importers/de/geschaeftskunden/sonderzielgruppen/rettungsfahrzeuge/downloads/rettungsdatenblaetter/volkswagen_rettungsdatenblaetter_modelluebersicht_02-2020.pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "notes": "Historická generace; drobné průběžné modernizace nejsou tímto záznamem prohlášeny za kompletně rozlišené.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "V",
+    "name": "V",
+    "from": 2003,
+    "to": 2008,
+    "facelift": null,
+    "bodyStyles": [
+      "Hatchback 5 dveří"
+    ],
+    "sourceUrl": "https://www.volkswagen.at/service-zubehoer/ueber-dein-auto/vorgaengermodelle/golf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.volkswagen.de/idhub/content/dam/onehub_pkw/importers/de/geschaeftskunden/sonderzielgruppen/rettungsfahrzeuge/downloads/rettungsdatenblaetter/volkswagen_rettungsdatenblaetter_modelluebersicht_02-2020.pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "notes": "Historická generace; drobné průběžné modernizace nejsou tímto záznamem prohlášeny za kompletně rozlišené.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "VI",
+    "name": "VI",
+    "from": 2008,
+    "to": 2012,
+    "facelift": null,
+    "bodyStyles": [
+      "Hatchback 5 dveří"
+    ],
+    "sourceUrl": "https://www.volkswagen.at/service-zubehoer/ueber-dein-auto/vorgaengermodelle/golf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.volkswagen.de/idhub/content/dam/onehub_pkw/importers/de/geschaeftskunden/sonderzielgruppen/rettungsfahrzeuge/downloads/rettungsdatenblaetter/volkswagen_rettungsdatenblaetter_modelluebersicht_02-2020.pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "notes": "Historická generace; drobné průběžné modernizace nejsou tímto záznamem prohlášeny za kompletně rozlišené.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "VII",
+    "name": "VII",
+    "from": 2012,
+    "to": 2017,
+    "facelift": null,
+    "bodyStyles": [
+      "Hatchback 5 dveří"
+    ],
+    "sourceUrl": "https://www.volkswagen.at/service-zubehoer/ueber-dein-auto/vorgaengermodelle/golf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.volkswagen.de/idhub/content/dam/onehub_pkw/importers/de/geschaeftskunden/sonderzielgruppen/rettungsfahrzeuge/downloads/rettungsdatenblaetter/volkswagen_rettungsdatenblaetter_modelluebersicht_02-2020.pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "notes": "Historická generace; drobné průběžné modernizace nejsou tímto záznamem prohlášeny za kompletně rozlišené.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "VIII",
+    "name": "VIII",
+    "from": 2019,
+    "to": 2024,
+    "facelift": null,
+    "bodyStyles": [
+      "Hatchback 5 dveří"
+    ],
+    "sourceUrl": "https://www.volkswagen.at/service-zubehoer/ueber-dein-auto/vorgaengermodelle/golf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.volkswagen.de/idhub/content/dam/onehub_pkw/importers/de/geschaeftskunden/sonderzielgruppen/rettungsfahrzeuge/downloads/rettungsdatenblaetter/volkswagen_rettungsdatenblaetter_modelluebersicht_02-2020.pdf",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "notes": "Historická generace; drobné průběžné modernizace nejsou tímto záznamem prohlášeny za kompletně rozlišené.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "VII",
+    "name": "VII · facelift",
+    "from": 2017,
+    "to": 2019,
+    "facelift": true,
+    "bodyStyles": [
+      "Hatchback 5 dveří"
+    ],
+    "sourceUrl": "https://www.volkswagen.at/service-zubehoer/ueber-dein-auto/vorgaengermodelle/golf",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Evropské uvedení modernizace 2017; premiéra v listopadu 2016.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "I",
+    "name": "I · Cabriolet",
+    "from": 1979,
+    "to": 1993,
+    "facelift": null,
+    "bodyStyles": [
+      "Kabriolet"
+    ],
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/images/topics/model-archive-golf-34",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "notes": "Samostatné výrobní období karoserie podle archivu Volkswagen; vnitřní facelifty nejsou tímto záznamem odděleny.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "VI",
+    "name": "VI · Cabriolet",
+    "from": 2011,
+    "to": 2016,
+    "facelift": null,
+    "bodyStyles": [
+      "Kabriolet"
+    ],
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/images/topics/model-archive-golf-34",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "notes": "Samostatné výrobní období karoserie podle archivu Volkswagen; vnitřní facelifty nejsou tímto záznamem odděleny.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "III",
+    "name": "III · Variant",
+    "from": 1993,
+    "to": 1999,
+    "facelift": null,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/images/topics/model-archive-golf-34",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "notes": "Samostatné výrobní období karoserie podle archivu Volkswagen; vnitřní facelifty nejsou tímto záznamem odděleny.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "IV",
+    "name": "IV · Variant",
+    "from": 1999,
+    "to": 2006,
+    "facelift": null,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/images/topics/model-archive-golf-34",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "notes": "Samostatné výrobní období karoserie podle archivu Volkswagen; vnitřní facelifty nejsou tímto záznamem odděleny.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "V",
+    "name": "V · Variant",
+    "from": 2007,
+    "to": 2009,
+    "facelift": null,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/images/topics/model-archive-golf-34",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "notes": "Samostatné výrobní období karoserie podle archivu Volkswagen; vnitřní facelifty nejsou tímto záznamem odděleny.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "VI",
+    "name": "VI · Variant",
+    "from": 2009,
+    "to": 2013,
+    "facelift": null,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/images/topics/model-archive-golf-34",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "notes": "Samostatné výrobní období karoserie podle archivu Volkswagen; vnitřní facelifty nejsou tímto záznamem odděleny.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "III",
+    "name": "III · Cabriolet",
+    "from": 1993,
+    "to": 1998,
+    "facelift": false,
+    "bodyStyles": [
+      "Kabriolet"
+    ],
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/golf-3-4-cabriolet-19932002-19491",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "III / IV",
+    "name": "IV · Cabriolet (facelift III)",
+    "from": 1998,
+    "to": 2002,
+    "facelift": true,
+    "bodyStyles": [
+      "Kabriolet"
+    ],
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/golf-3-4-cabriolet-19932002-19491",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "notes": "Cabriolet IV je podle výrobce rozsáhlou modernizací karoserie Cabriolet III.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "VII",
+    "name": "VII · Variant",
+    "from": 2013,
+    "to": 2017,
+    "facelift": false,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/golf-7-variant-20132020-20041",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "VII",
+    "name": "VII · Variant · facelift",
+    "from": 2017,
+    "to": 2020,
+    "facelift": true,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/golf-7-variant-20132020-20041",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "VIII",
+    "name": "VIII · Variant",
+    "from": 2020,
+    "to": 2024,
+    "facelift": false,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/press-releases/more-space-more-golf-world-premiere-of-the-new-golf-variant-and-golf-alltrack-6369",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "additionalSources": [
+      {
+        "url": "https://www.volkswagen-newsroom.com/en/press-releases/world-premiere-to-mark-the-50th-anniversary-the-new-golf-is-more-attractive-intelligent-and-efficient-than-ever-before-18083",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Golf",
+    "generation": "VIII",
+    "name": "VIII · facelift",
+    "from": 2024,
+    "to": null,
+    "facelift": true,
+    "bodyStyles": [
+      "Hatchback 5 dveří",
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/press-releases/world-premiere-to-mark-the-50th-anniversary-the-new-golf-is-more-attractive-intelligent-and-efficient-than-ever-before-18083",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Modernizace představena v lednu 2024; výroba hatchbacku od dubna 2024.",
+    "replacesSourceNames": [
+      "Golf 5 Doors (1974)",
+      "Golf 5 Doors (1983)",
+      "Golf 5 Doors (1992)",
+      "Golf 5 Doors (1997)",
+      "Golf 5 Doors (2003)",
+      "Golf 5 Doors (2008)",
+      "Golf 5 Doors (2012)",
+      "Golf 5 Doors (2017)",
+      "Golf 5 Doors (2019)",
+      "Golf 5 Doors (2024)",
+      "Golf Variant (1993)",
+      "Golf Variant (1999)",
+      "Golf Variant (2007)",
+      "Golf Variant (2009)",
+      "Golf Variant (2013)",
+      "Golf Variant (2017)",
+      "Golf Variant (2020)",
+      "Golf Variant (2024)",
+      "Golf Cabrio (1993)",
+      "Golf Cabrio (1998)",
+      "Golf Cabrio (2011)",
+      "Golf Cabrio (2015)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Passat",
+    "generation": "B8",
+    "name": "B8 · Variant",
+    "from": 2014,
+    "to": 2019,
+    "facelift": false,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.volkswagen.at/service-zubehoer/ueber-dein-auto/vorgaengermodelle/passat",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "replacesSourceNames": [
+      "Passat Variant (2014)",
+      "Passat Variant (2019)",
+      "Passat Variant (2023)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Passat",
+    "generation": "B8",
+    "name": "B8 · Variant · facelift",
+    "from": 2019,
+    "to": 2024,
+    "facelift": true,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.volkswagen.at/service-zubehoer/ueber-dein-auto/vorgaengermodelle/passat",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "notes": "Poslední Passat Variant z Emdenu vyroben 1. března 2024; regionální katalog uvádí modelové období do 2023.",
+    "additionalSources": [
+      {
+        "url": "https://www.volkswagen-newsroom.com/de/pressemitteilungen/letzter-passat-aus-emden-erfolgsgeschichte-wird-vollelektrisch-fortgesetzt-18291",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "replacesSourceNames": [
+      "Passat Variant (2014)",
+      "Passat Variant (2019)",
+      "Passat Variant (2023)"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Passat",
+    "generation": "B9",
+    "name": "IX · B9 · Variant",
+    "from": 2023,
+    "to": null,
+    "facelift": false,
+    "bodyStyles": [
+      "Kombi"
+    ],
+    "sourceUrl": "https://www.volkswagen-newsroom.com/en/press-releases/configurator-open-pre-sales-of-the-all-new-passat-have-now-started-17924",
+    "confidence": "verified",
+    "market": "Evropa",
+    "verifiedOn": "2026-09-05",
+    "startBasis": "Objednávky od listopadu 2023; první dodávky v 1. čtvrtletí 2024.",
+    "additionalSources": [
+      {
+        "url": "https://www.volkswagen.de/de/besitzer-und-service/ueber-ihr-auto/vorgaengermodelle/mittelklasse/passat-b8.html",
+        "title": "Historie a modelové změny výrobce"
+      }
+    ],
+    "replacesSourceNames": [
+      "Passat Variant (2014)",
+      "Passat Variant (2019)",
+      "Passat Variant (2023)"
+    ]
+  }
+]
