@@ -14,7 +14,9 @@ Otevřít http://127.0.0.1:8765/. Kvůli ES modulům a GLB modelu je nutné HTTP
 
 ## Co obsahuje
 
-- Značka **Need For Wheels** na všech třech stránkách, studiový vzhled a responzivní rozložení.
+- Značka **Need For Wheels** na všech třech stránkách, studiový vzhled, zaoblené karty/tlačítka a responzivní rozložení.
+- Loga všech 53 automobilek v přístupném vyhledávacím dialogu katalogu i konfigurátoru; lokální PNG, zdroje v `docs/brand-logos.md`.
+- Tříscénový úvodní carousel, posuvná kolekce 13 kol, návazné odkazy mezi sekcemi a CTA do konfigurátoru. Automatika se pozastaví při hoveru/fokusu, mimo obrazovku a při omezeném pohybu; má ruční ovládání i pauzu.
 - 13 návrhových designů: otáčení, přiblížení, skutečný límec, konkáv, paprsky, střed a šrouby. Barvy, povrchy, krytky a šířka mění 3D geometrii či materiály.
 - Statické WebP miniatury vyrenderované z téže 3D geometrie, bez mnoha současných WebGL kontextů.
 - Úplný uživatelský seznam: **53 značek, 401 modelů**. Prohledávatelný katalog provedení, karoserií a ročníků do 2026, s odlišením katalogových a výrobcem doložených údajů. Každá z 401 rodin má doložené provedení.
@@ -35,6 +37,8 @@ Katalog OARTS obsahuje také litá a flow-forming kola. Webové návrhové desig
 - `css/premium.css`: nový design, mobilní rozložení a 3D scéna.
 - `js/vehicles.js`: neměnný registr a průniky roku, provedení a karoserie.
 - `js/vehicle-data.js`, `data/vehicle-variants.json`: generovaná databáze pod ODbL 1.0; zdroje a doplnění v `data/`.
+- `js/landing.js`, `css/luxury.css`: úvodní carousel, posuvná kolekce, průběh čtení, navazující CTA a zaoblené povrchy.
+- `js/brand-picker.js`, `js/brand-logos.js`, `css/brand-picker.css`: lokální loga a přístupný výběr značek.
 - `js/catalog-browser.js`, `css/catalog.css`: vyhledávání, filtry, stránkování a konkrétní provedení na úvodní stránce.
 - `tools/build-vehicle-data.py`: reprodukovatelný import a audit pokrytí.
 - `js/showroom.js`: geometrie, materiály, glTF loader, orbit ovládání a správa WebGL.
@@ -51,6 +55,8 @@ Katalog OARTS obsahuje také litá a flow-forming kola. Webové návrhové desig
 python tools/check_vehicle_bodies.py
 node tools/check-catalog.cjs
 node tools/check-catalog-browser.cjs
+node tools/check-brand-picker.cjs
+node tools/check-landing.cjs
 node tools/check-vehicle-selection.cjs
 node --check js/configurator.js
 ```

@@ -8,7 +8,7 @@
   const normalise = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
   const num = value => Number(value).toLocaleString('cs-CZ');
   const through = Math.min(Number(V.verifiedThrough || V.through || 2026), 2026);
-  const pageSize = 12;
+  const pageSize = 6;
   const models = V.brands.flatMap(brand => brand.models.map(model => ({
     brand, model, key: brand.id + '/' + model.id,
     variants: (model.variants || model.generations || []).filter(g => Number.isInteger(g.from) && g.from <= through && Number.isInteger(g.to) && g.to >= g.from),
@@ -29,7 +29,7 @@
     </div>
     <div class="catalog-filters" role="search" aria-label="Vyhledávání vozů">
       <label class="catalog-search"><span>Hledat vůz</span><input id="catalogSearch" type="search" maxlength="80" autocomplete="off" placeholder="Např. BMW X5, Octavia, Model Y…" value="${esc(state.search)}" aria-controls="catalogResults"></label>
-      <label><span>Značka</span><select id="catalogBrand" aria-controls="catalogResults"><option value="">Všechny značky</option>${V.brands.map(b => `<option value="${esc(b.id)}" ${state.brand === b.id ? 'selected' : ''}>${esc(b.name)}</option>`).join('')}</select></label>
+      <div class="catalog-brand-field"><label for="catalogBrand">Značka</label><select id="catalogBrand" aria-controls="catalogResults"><option value="">Všechny značky</option>${V.brands.map(b => `<option value="${esc(b.id)}" ${state.brand === b.id ? 'selected' : ''}>${esc(b.name)}</option>`).join('')}</select></div>
       <label><span>Rok výroby</span><select id="catalogYear" aria-controls="catalogResults"><option value="">Všechny roky</option></select></label>
     </div>
     <div class="catalog-result-bar"><p id="catalogResultCount" role="status" aria-live="polite" aria-atomic="true"></p><button id="catalogReset" type="button" hidden>Zrušit filtry <span aria-hidden="true">×</span></button></div>
@@ -41,6 +41,7 @@
   const searchInput = root.querySelector('#catalogSearch');
   const yearInput = root.querySelector('#catalogYear');
   const resultContainer = root.querySelector('#catalogResults');
+  const brandPicker = window.NFWBrandPicker?.enhance(brandInput, { label: 'Značka v katalogu' });
   const termsMatch = item => !state.search.trim() || normalise(state.search).split(' ').every(term => item.search.includes(term) || item.search.replace(/ /g, '').includes(term));
   const prefiltered = () => models.filter(item => (!state.brand || item.brand.id === state.brand) && termsMatch(item));
   const inYear = g => !state.year || (Number(state.year) >= g.from && Number(state.year) <= Math.min(g.to, through));
@@ -96,10 +97,11 @@
     const bodies = [...new Set(variants.filter(g => g.body && g.body !== 'unknown').map(g => g.bodyName || g.body))];
     const years = variants.length ? `${Math.min(...variants.map(g => g.from))}–${Math.min(through, Math.max(...variants.map(g => g.to)))}` : 'Varianty doplňujeme';
     const firstRows = variants.slice(0, 6).map(g => variantRow(item, g)).join('');
-    return `<article class="catalog-card" data-catalog-key="${esc(item.key)}"><div class="catalog-card-top"><span>${esc(item.brand.name)}</span><small>${state.year || years}</small></div><h4>${esc(item.model.name)}</h4><p class="catalog-card-bodies">${bodies.length ? esc(bodies.slice(0, 3).join(' / ')) + (bodies.length > 3 ? ` <span>+${bodies.length - 3}</span>` : '') : 'Výběr konkrétního vozu'}</p>${variants.length ? `<details class="catalog-variants"><summary><span>Generace a karoserie <b>${num(variants.length)}</b></span><i aria-hidden="true">+</i></summary><ol class="catalog-variant-list">${firstRows}</ol>${variants.length > 6 ? `<button class="catalog-more-variants" type="button" data-more-variants="${esc(item.key)}">Zobrazit zbývající varianty (${num(variants.length - 6)}) <span aria-hidden="true">↓</span></button>` : ''}</details>` : `<div class="catalog-card-missing"><span>Detailní podklady ještě doplňujeme.</span><a href="${esc(linkFor(item))}">Vybrat model <span aria-hidden="true">↗</span></a></div>`}</article>`;
+    return `<article class="catalog-card" data-catalog-key="${esc(item.key)}"><div class="catalog-card-top"><span class="catalog-card-brand">${window.NFWBrandPicker?.logo(item.brand.id) || ''}<span>${esc(item.brand.name)}</span></span><small>${state.year || years}</small></div><h4>${esc(item.model.name)}</h4><p class="catalog-card-bodies">${bodies.length ? esc(bodies.slice(0, 3).join(' / ')) + (bodies.length > 3 ? ` <span>+${bodies.length - 3}</span>` : '') : 'Výběr konkrétního vozu'}</p>${variants.length ? `<details class="catalog-variants"><summary><span>Generace a karoserie <b>${num(variants.length)}</b></span><i aria-hidden="true">+</i></summary><ol class="catalog-variant-list">${firstRows}</ol>${variants.length > 6 ? `<button class="catalog-more-variants" type="button" data-more-variants="${esc(item.key)}">Zobrazit zbývající varianty (${num(variants.length - 6)}) <span aria-hidden="true">↓</span></button>` : ''}</details>` : `<div class="catalog-card-missing"><span>Detailní podklady ještě doplňujeme.</span><a href="${esc(linkFor(item))}">Vybrat model <span aria-hidden="true">↗</span></a></div>`}</article>`;
   }
 
   function render({ years = false, persist = true } = {}) {
+    brandPicker?.sync();
     const baseItems = prefiltered();
     if (years) updateYears(baseItems);
     const items = baseItems.filter(item => !state.year || item.variants.some(inYear));

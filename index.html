@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/premium.css">
   <link rel="stylesheet" href="css/catalog.css">
+<link rel="stylesheet" href="css/brand-picker.css">
+<link rel="stylesheet" href="css/luxury.css">
 <script type="importmap">{"imports":{"three":"./assets/vendor/three/three.module.js","three/addons/":"./assets/vendor/three/addons/"}}</script>
 </head>
 <body>
@@ -35,23 +37,38 @@
 </header>
 
 <main>
-<section class="studio-hero">
-  <img class="studio-hero__image" src="assets/images/wheel-hero.webp" alt="Bronzový kovaný disk s deseti štíhlými paprsky ve studiovém osvětlení" fetchpriority="high" width="1672" height="941">
-  <div class="studio-hero__shade"></div>
-  <div class="wrap studio-hero__content">
-    <div class="studio-kicker"><span class="status-dot"></span> CUSTOM FORGED WHEELS <span class="edition">EST. FOR YOUR DRIVE</span></div>
-    <h1>TVOJE AUTO.<br>TVŮJ <span>PODPIS.</span></h1>
-    <p>Kola, která změní všechno.<br>Tvůj design. Tvůj rozměr. Do posledního detailu.</p>
-    <div class="hero__cta"><a class="btn btn--primary" href="konfigurator.html"><span>Navrhnout moje kola <b aria-hidden="true">↗</b></span></a><a class="text-link" href="#designy">Prohlédnout kolekci <span aria-hidden="true">↓</span></a></div>
-  </div>
-  <div class="wrap hero-caption"><span><i>01 /</i> FORGED 10 <small>BRONZE · GLOSS · MONOBLOCK</small></span><span class="hero-caption__right">NAVRŽENO PRO TVŮJ VŮZ<br><small>Od prvního náčrtu po poslední detail.</small></span></div>
+<div class="reading-progress" aria-hidden="true"><span></span></div>
+<section class="studio-hero hero-carousel" id="uvod" aria-roledescription="karusel" aria-label="Inspirace pro tvoje kola">
+  <article class="hero-slide" data-hero-slide aria-roledescription="snímek" aria-label="1 ze 3: Tvůj podpis">
+    <img class="hero-slide__image hero-slide__image--wheel" src="assets/images/wheel-hero.webp" alt="Bronzové desetipaprskové kolo v měkkém studiovém světle" fetchpriority="high" width="1672" height="941">
+    <div class="hero-slide__shade"></div>
+    <div class="wrap hero-copy"><span class="hero-eyebrow"><i></i> KOLA NA MÍRU. CHARAKTER PO TVÉM.</span><h1>TVOJE AUTO.<br>TVŮJ <span>PODPIS.</span></h1><p>Někdy stačí jediný detail.<br>A z auta, které znáš, se stane auto, za kterým se otočíš.</p><div class="hero__cta"><a class="btn btn--primary" href="konfigurator.html"><span>Navrhnout moje kola <b aria-hidden="true">↗</b></span></a><a class="hero-explore" href="#designy">Objevit kolekci <span aria-hidden="true">↓</span></a></div><small class="hero-assurance">Začni návrhem ve 3D. Detaily doladíme společně.</small></div>
+    <span class="hero-product-tag"><i>THE SIGNATURE</i><b>FORGED 10</b><small>BRONZE / GLOSS</small></span>
+  </article>
+  <article class="hero-slide" data-hero-slide aria-roledescription="snímek" aria-label="2 ze 3: Charakter tvého vozu" hidden>
+    <img class="hero-slide__image hero-slide__image--car" src="assets/cars/bmw-x5-g05.webp" alt="Ilustrační render BMW X5 G05 na bronzových kolech" loading="lazy" width="1672" height="941">
+    <div class="hero-slide__shade"></div>
+    <div class="wrap hero-copy"><span class="hero-eyebrow"><i></i> TVOJE ZNAČKA. NOVÝ CHARAKTER.</span><h2>ZNÁŠ SVÉ AUTO.<br>TEĎ HO <span>OBJEV.</span></h2><p>Jiný design. Jiný výraz.<br>Najdi svůj model a začni tvořit jeho další podobu.</p><div class="hero__cta"><a class="btn btn--primary" href="#vehicleCatalogue"><span>Najít moje auto <b aria-hidden="true">↗</b></span></a><a class="hero-explore" href="#auta">Prohlédnout inspiraci <span aria-hidden="true">↓</span></a></div><small class="hero-assurance">53 značek · 401 modelů · výběr podle roku a karoserie</small></div>
+    <span class="hero-product-tag"><i>THE PERSPECTIVE</i><b>BMW X5 / G05</b><small>ILUSTRAČNÍ RENDER</small></span>
+  </article>
+  <article class="hero-slide" data-hero-slide aria-roledescription="snímek" aria-label="3 ze 3: Skutečné detaily" hidden>
+    <img class="hero-slide__image hero-slide__image--detail" src="assets/reference/bronze-wheel-angle-right.jpg" alt="Skutečný bronzový disk: detail paprsků a hlubokého límce" loading="lazy" width="1702" height="1276">
+    <div class="hero-slide__shade"></div>
+    <div class="wrap hero-copy"><span class="hero-eyebrow"><i></i> ZBLÍZKA TO DÁVÁ SMYSL.</span><h2>KRÁSA JE<br>V <span>DETAILU.</span></h2><p>Hloubka profilu. Odlesk kovu. Každý paprsek.<br>Podívej se na skutečná kola z každého úhlu.</p><div class="hero__cta"><a class="btn btn--primary" href="#detaily"><span>Chci vidět víc <b aria-hidden="true">↓</b></span></a><a class="hero-explore" href="konfigurator.html">Vytvořit vlastní návrh <span aria-hidden="true">↗</span></a></div><small class="hero-assurance">Skutečné fotografie a video dodaného designu.</small></div>
+    <span class="hero-product-tag"><i>THE CRAFT</i><b>ŽÁDNÝ DETAIL NAVÍC.</b><small>FOTOGRAFIE SKUTEČNÉHO KOLA</small></span>
+  </article>
+  <div class="wrap hero-controls"><a class="hero-scroll" href="#designy"><span class="scroll-orbit" aria-hidden="true">↓</span><span>To nejlepší je v detailech.<small>Pokračuj níž a objev ty svoje.</small></span></a><div class="hero-pagination"><span class="hero-current" aria-hidden="true">01 <i>/ 03</i></span><div class="hero-dots" aria-label="Vybrat snímek"><button type="button" data-hero-to="0" aria-label="Snímek 1: Tvůj podpis" aria-current="true"></button><button type="button" data-hero-to="1" aria-label="Snímek 2: Charakter tvého vozu" aria-current="false"></button><button type="button" data-hero-to="2" aria-label="Snímek 3: Skutečné detaily" aria-current="false"></button></div><button class="round-control" type="button" data-hero-prev aria-label="Předchozí snímek">←</button><button class="round-control" type="button" data-hero-next aria-label="Další snímek">→</button><button class="round-control hero-pause" type="button" data-hero-pause aria-label="Pozastavit prezentaci">Ⅱ</button></div></div>
+  <span class="visually-hidden" id="heroStatus" role="status" aria-live="polite"></span>
 </section>
-<div class="brand-strip"><div class="wrap"><span>KOVANÁ KOLA NA MÍRU</span><span>3D KONFIGURÁTOR</span><span>INDIVIDUÁLNÍ POVRCHY</span><span>FOTO & VIDEO ZAKÁZKY</span></div></div>
+<section class="brand-ribbon" aria-label="Značky vozů"><div class="wrap"><div class="brand-ribbon__intro"><span>VYTVOŘENO PRO TVŮJ VŮZ</span><p>Tvoje značka.<br><b>Tvůj příběh.</b></p></div><div class="brand-ribbon__logos" id="brandRibbonLogos"></div><a class="brand-ribbon__all" href="#vehicleCatalogue">Všech 53 značek <span aria-hidden="true">↗</span></a></div></section>
+<div class="wrap promise-strip"><div><b>13</b><span>designů kol<small>Od čistých linií po výrazný konkáv.</small></span></div><div><b>360°</b><span>tvého návrhu<small>Prohlédni si kolo ze všech stran.</small></span></div><div><b>01</b><span>tvoje představa<small>Design, rozměry i povrch po tvém.</small></span></div></div>
 
 <section class="section collection-intro" id="designy"><div class="wrap">
-  <div class="section__head reveal"><div><span class="eyebrow">01 / Kolekce</span><h2>CHARAKTER<br>V KAŽDÉM PAPRSKU.</h2></div><div><p>Od čistého pětipaprsku po hluboký konkáv. Vyber si design a dolaď ho ve 3D až po barvu krytky.</p><a class="text-link" href="assets/reference/oarts-catalog.pdf" target="_blank" rel="noopener">Otevřít katalog OARTS <span>↗</span></a></div></div>
+  <div class="section__head reveal"><div><span class="eyebrow">01 / Kolekce</span><h2>CHARAKTER<br>V KAŽDÉM PAPRSKU.</h2></div><div><p>První dojem patří designu. Ten druhý detailům. Prohlédni si kolekci a svůj favorit dolaď ve 3D až po barvu krytky.</p><a class="text-link" href="assets/reference/oarts-catalog.pdf" target="_blank" rel="noopener">Otevřít katalog OARTS <span>↗</span></a></div></div>
   <div class="featured-wheel reveal"><div class="featured-wheel__visual" id="featureWheel"><img src="assets/reference/bronze-wheel-pair.jpg" alt="Skutečná bronzová kola z dodaných podkladů" loading="lazy"></div><div class="featured-wheel__detail"><span class="eyebrow">Signature design</span><h3>FORGED 10</h3><p>Štíhlé paprsky. Hluboký profil. Bronzový lesk, který vynikne z každého úhlu.</p><dl><dt>Konstrukce</dt><dd>Monoblok</dd><dt>Design</dt><dd>10 paprsků</dd><dt>Vzorový povrch</dt><dd>Bronze / Gloss</dd></dl><button type="button" class="btn btn--ghost" data-launch-wheel="featureWheel"><span>Prohlédnout ve 3D ↗</span></button><a class="text-link" href="konfigurator.html?design=apex10&view=wheel">Upravit pro můj vůz →</a></div></div>
-  <div class="designs-grid" id="designsGrid"></div>
+  <div class="collection-toolbar"><div><span class="eyebrow">Najdi svůj styl</span><p>Jeden pohled nestačí. <span>Posuň se k dalšímu designu.</span></p></div><div class="collection-navigation"><span id="collectionPosition" aria-live="polite">01 / 13</span><button class="round-control" type="button" data-design-prev aria-label="Předchozí designy" aria-controls="designsGrid">←</button><button class="round-control" type="button" data-design-next aria-label="Další designy" aria-controls="designsGrid">→</button></div></div>
+  <div class="designs-grid design-carousel" id="designsGrid" tabindex="0" role="region" aria-label="Kolekce 13 designů kol"></div>
+  <a class="chapter-link reveal" href="#auta"><span><small>DALŠÍ KROK / TVOJE AUTO</small><b>Design tě zaujal. A co tvoje auto?</b></span><i aria-hidden="true">↓</i></a>
 </div></section>
 
 <section class="section section--alt" id="auta"><div class="wrap">
@@ -63,15 +80,16 @@
   <section class="vehicle-catalogue" id="vehicleCatalogue" aria-labelledby="catalogTitle"><noscript>Pro vyhledávání značek, generací a karoserií zapni JavaScript. <a href="data/vehicle-variants.json">Stáhnout katalog vozů</a></noscript></section>
 </div></section>
 
-<section class="section" id="detaily"><div class="wrap">
+<section class="section detail-chapter" id="detaily"><div class="wrap">
   <div class="section__head reveal"><div><span class="eyebrow">03 / Zblízka</span><h2>DETAIL DĚLÁ<br>ROZDÍL.</h2></div><p>Skutečná kola, skutečný povrch. Prohlédni si fotografie a video dodaného bronzového designu.</p></div>
   <div class="reference-grid"><img src="assets/reference/bronze-wheel-front.jpg" alt="Čelní detail skutečného bronzového disku" loading="lazy"><video controls playsinline preload="metadata" poster="assets/reference/bronze-wheel-angle-left.jpg" aria-label="Video bronzového disku"><source src="assets/video/bronze-wheel-landscape.mp4" type="video/mp4">Tvůj prohlížeč nepodporuje video.</video><img src="assets/reference/bronze-wheel-angle-right.jpg" alt="Detail hloubky a povrchu disku" loading="lazy"></div>
+  <a class="chapter-link reveal" href="#proces"><span><small>OD NÁVRHU K HOTOVÝM KOLŮM</small><b>Jak vzniknou ta tvoje? Nahlédni do výroby.</b></span><i aria-hidden="true">↓</i></a>
 </div></section>
 <section class="section" id="proces">
   <div class="wrap">
     <div class="section__head reveal">
-      <div><span class="eyebrow">Průběh zakázky</span><h2>Sedm fází. Nula překvapení.</h2></div>
-      <p>Od první konzultace po expedici víš, co se s tvými koly děje. Ke všemu posíláme fotky a videa.</p>
+      <div><span class="eyebrow">Průběh zakázky</span><h2>TVŮJ NÁVRH.<br>JASNÁ CESTA K VÝSLEDKU.</h2></div>
+      <p>Od první představy až po rozbalení. Návrh i technický výkres schvaluješ před výrobou. Další průběh sleduješ na fotkách a videích.</p>
     </div>
     <div class="process">
       <div class="step reveal"><div class="step__n">01</div><h3>Konzultace</h3>
@@ -89,7 +107,7 @@
         <ul><li>Výrobce zašle fotografie hotových kol.</li><li>Ověříme finální parametry (rozměry, váha, barva).</li><li>Potvrdíš finální podobu.</li></ul>
         <div class="badges"><span class="tag tag--ok">Foto + video</span></div></div>
       <div class="step reveal" data-delay="2"><div class="step__n">06</div><h3>Balení</h3>
-        <ul><li>Kola jsou zabalena do ochranné balení.</li><li>Každá krabice obsahuje vlastní Need For Wheels štítek s parametry konkrétního kola.</li></ul></div>
+        <ul><li>Kola jsou zabalena do ochranného balení.</li><li>Každá krabice obsahuje vlastní Need For Wheels štítek s parametry konkrétního kola.</li></ul></div>
       <div class="step step--wide reveal"><div><div class="step__n">07</div><h3>Expedice</h3>
         <ul><li>Po finálním schválení jsou kola odeslána k tobě.</li><li>Dostaneš foto a video zabalené zásilky.</li></ul>
         <div class="badges"><span class="tag tag--ok">Foto + video</span></div></div>
@@ -113,11 +131,12 @@
   </div>
 </section>
 
+<section class="invitation-section"><div class="wrap"><div class="invitation-card reveal"><div><span class="eyebrow">TEĎ JE ŘADA NA TOBĚ</span><h2>UŽ JE VIDÍŠ<br>NA <span>SVÉM AUTĚ?</span></h2><p>Dej své představě tvar. Vyber design, prohlédni si povrch ve 3D a pošli nám svůj návrh.</p><a class="btn btn--primary" href="konfigurator.html"><span>Začít vlastní návrh <b aria-hidden="true">↗</b></span></a><small>Konfigurace je první krok. Finální rozměry a nabídku doladíme společně.</small></div><img src="assets/renders/apex10.webp" alt="Prostorový návrh bronzového desetipaprskového kola" loading="lazy" width="400" height="400"></div></div></section>
 <!-- ============ KONTAKT ============ -->
 <section class="section" id="kontakt">
   <div class="wrap">
     <div class="section__head reveal">
-      <div><span class="eyebrow">Kontakt</span><h2>Pojďme to vykovat</h2></div>
+      <div><span class="eyebrow">Kontakt</span><h2>PROBEREME<br>TVŮJ NÁPAD.</h2></div>
       <p>Nejrychlejší cesta je konfigurátor – poptávka z něj přijde s kompletní specifikací. Nebo nám napiš rovnou.</p>
     </div>
     <div class="contact">
@@ -129,7 +148,7 @@
           <dt>Výkres</dt><dd>technický výkres ke schválení před výrobou</dd>
           <dt>Report</dt><dd>foto a video z každé fáze výroby</dd>
         </dl>
-        <div style="margin-top:28px"><a class="btn btn--primary" href="konfigurator.html"><span>Radši si to naklikám</span></a></div>
+        <div style="margin-top:28px"><a class="btn btn--primary" href="konfigurator.html"><span>Nejdřív vyzkoušet 3D</span></a></div>
       </div>
       <form class="form reveal" data-delay="1" id="contactForm">
         <div class="form-row">
@@ -141,7 +160,7 @@
           <label class="field"><span>Vůz</span><input name="car" type="text" maxlength="80" placeholder="např. Audi RS 6 C8, 2021"></label>
         </div>
         <label class="field"><span>Zpráva</span><textarea name="msg" maxlength="600" placeholder="Jaká kola máš v hlavě? Design, rozměr, barva, brzdy…"></textarea></label>
-        <button class="btn btn--primary" type="submit"><span>Odeslat poptávku</span></button>
+        <button class="btn btn--primary" type="submit"><span>Připravit poptávku</span></button>
         <span class="muted" style="font-size:12px">Formulář otevře tvůj e-mailový klient s předvyplněnou zprávou.</span>
       </form>
     </div>
@@ -149,6 +168,7 @@
 </section>
 
 </main>
+<div class="discovery-dock" id="discoveryDock" hidden><div><span>TVŮJ DALŠÍ DETAIL</span><b>Kola, která budou tvoje.</b></div><a class="btn btn--primary" href="konfigurator.html"><span>Otevřít konfigurátor <b aria-hidden="true">↗</b></span></a></div>
 <footer class="footer">
   <div class="wrap">
     <div>© <span data-year></span> Need For Wheels · Custom forged wheels</div>
@@ -160,7 +180,10 @@
 <script src="js/cars.js"></script>
 <script src="js/vehicle-data.js"></script>
 <script src="js/vehicles.js"></script>
+<script src="js/brand-logos.js"></script>
+<script src="js/brand-picker.js"></script>
 <script src="js/main.js"></script>
 <script src="js/catalog-browser.js"></script>
+<script src="js/landing.js"></script>
 </body>
 </html>

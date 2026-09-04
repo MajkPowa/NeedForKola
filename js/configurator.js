@@ -226,9 +226,13 @@
   }
 
   /* ---------- render: panel ---------- */
+  let brandPicker = null;
   function renderPanel() {
     const b = $('#panelBody');
+    brandPicker?.destroy();
+    brandPicker = null;
     b.innerHTML = [panelCar, panelDesign, panelSize, panelLook, panelSummary][S.step - 1]();
+    if (S.step === 1) brandPicker = window.NFWBrandPicker?.enhance($('#vehicleBrand'), { label: 'Značka vozu' }) || null;
     b.scrollTop = 0;
     renderFoot();
   }
@@ -242,7 +246,7 @@
     const endNote = !g ? '' : g.endBasis === 'inferred' ? 'Hranice období je odvozená z následujícího provedení; přechodový rok se může překrývat.' : g.endBasis === 'open' ? 'Zdroj neuvádí konec období. Katalog je omezen rokem 2026; dostupnost daného ročníku je potřeba ověřit.' : 'V přechodových letech se mohou období překrývat.';
     return `<div class="panel-kicker">01 / TVŮJ VŮZ</div><h2>Začni svým autem.</h2><p class="sub">${V.brandCount} značek · ${V.modelCount} modelů · ročníky do ${V.through}. Generace, facelifty a karoserie se ukládají s konfigurací.</p>
       <div class="vehicle-fields">
-      <label class="field"><span>Značka</span><select id="vehicleBrand" aria-label="Značka">${V.brands.map(b=>`<option value="${esc(b.id)}" ${S.brand===b.id?'selected':''}>${esc(b.name)}</option>`).join('')}</select></label>
+      <div class="field nfw-brand-field"><label for="vehicleBrand">Značka</label><select id="vehicleBrand" aria-label="Značka">${V.brands.map(b=>`<option value="${esc(b.id)}" ${S.brand===b.id?'selected':''}>${esc(b.name)}</option>`).join('')}</select></div>
       <label class="field"><span>Model</span><select id="vehicleModel" aria-label="Model">${selectedBrand().models.map(m=>`<option value="${esc(m.id)}" ${S.model===m.id?'selected':''}>${esc(m.name)}</option>`).join('')}</select></label>
       <label class="field"><span>Rok vozu</span><select id="vehicleYear" aria-label="Rok výroby">${!years.includes(S.year)?`<option value="${S.year}" selected>${S.year ? S.year+' · mimo doložená období' : 'Vyber rok'}</option>`:''}${years.map(y=>`<option value="${y}" ${S.year===y?'selected':''}>${y}</option>`).join('')}</select></label>
       <label class="field"><span>Karoserie</span><select id="vehicleBody" aria-label="Karoserie" ${!bodies.length?'disabled':''}>${bodies.length!==1 || !S.body?'<option value="">Vyber karoserii</option>':''}${bodies.map(b=>`<option value="${esc(b.id)}" ${S.body===b.id?'selected':''}>${esc(b.name)}</option>`).join('')}</select></label>
@@ -496,7 +500,9 @@
       if(t.id==='vehicleGeneration')S.generation=t.value;
       if(t.id==='vehicleBrand' || t.id==='vehicleModel'){const years=V.getYears(S.brand,S.model);if(!years.includes(S.year))S.year=years[0] || 0;}
       syncGeneration(); update({head:true});
-      document.getElementById(t.id)?.focus(); return;
+      if (t.id === 'vehicleBrand' && brandPicker) brandPicker.trigger.focus();
+      else document.getElementById(t.id)?.focus();
+      return;
     }
     if (t.id === 'spinToggle') { S.spin = t.checked; renderStageView(); return; }
     if (t.id === 'stagToggle') { S.stag = t.checked; if (!S.stag) { S.wr = S.wf; S.etr = S.etf; } update({ stage: false }); return; }
@@ -508,6 +514,7 @@
     if (t.dataset.set === 'cb') { t.value = S.cb; }
   });
   document.addEventListener('keydown', e => {
+    if (e.target.closest('.nfw-brand-dialog')) return;
     if (e.target.matches('input, textarea, select')) return;
     if (e.target.closest('.webgl-view')) return;
     if (e.key === 'ArrowRight' && S.step < 5) goStep(S.step + 1);
