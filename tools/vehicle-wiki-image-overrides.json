@@ -1,0 +1,192 @@
+{
+  "bmw/i5": {
+    "file": "File:BMW i5 1X7A1824.jpg",
+    "article": "BMW 5 Series (G60)",
+    "label": "BMW i5 G60"
+  },
+  "bmw/i7": {
+    "file": "File:BMW i7 xDrive60 1X7A7104.jpg",
+    "article": "BMW 7 Series (G70)",
+    "label": "BMW i7 G70"
+  },
+  "mercedes-benz/v-class": {
+    "file": "File:2023_Mercedes-Benz_V-Class_300d_(W447)_IMG_9812.jpg",
+    "article": "Mercedes-Benz Vito",
+    "label": "Mercedes-Benz V-Class W447"
+  },
+  "volkswagen/id-5": {
+    "file": "File:Volkswagen_ID.5_Leonberg_2022_1X7A0459.jpg",
+    "article": "Volkswagen ID.4",
+    "label": "Volkswagen ID.5"
+  },
+  "porsche/718-boxster": {
+    "file": "File:2018 Porsche 718 Boxster S S-A 2.5 Front.jpg",
+    "article": "Porsche 718 Boxster and Cayman (982)",
+    "label": "Porsche 718 Boxster, 982"
+  },
+  "porsche/718-cayman": {
+    "file": "File:2018 Porsche 718 Cayman S S-A 2.5 Front.jpg",
+    "article": "Porsche 718 Boxster and Cayman (982)",
+    "label": "Porsche 718 Cayman, 982"
+  },
+  "toyota/proace": {
+    "file": "File:2024_Toyota_ProAce_IMG_9986.jpg",
+    "article": "Citroën Jumpy",
+    "label": "Toyota Proace, facelift 2024"
+  },
+  "ford/tourneo": {
+    "file": "File:Ford_Tourneo_Custom_2.0_EcoBlue_AWD_Active_(II)_–_f_05072025.jpg",
+    "article": "Ford Transit Custom",
+    "label": "Ford Tourneo Custom, generace II"
+  },
+  "volvo/ex40": {
+    "file": "File:2024 Volvo EX40 Ultra Twin Motor Black Edition.jpg",
+    "article": "Volvo XC40",
+    "label": "Volvo EX40 Ultra Twin Motor Black Edition (2024)"
+  },
+  "kia/proceed": {
+    "file": "File:2022 Kia Proceed GT-Line ISG facelift 1.5.jpg",
+    "article": "Kia Ceed",
+    "label": "Kia ProCeed, facelift 2022"
+  },
+  "kia/xceed": {
+    "file": "File:Kia XCeed (2022) 1X7A6475.jpg",
+    "article": "Kia Ceed",
+    "label": "Kia XCeed, facelift 2022"
+  },
+  "peugeot/rifter": {
+    "file": "File:2024_Peugeot_Rifter_IMG_9556.jpg",
+    "article": "Citroën Berlingo",
+    "label": "Peugeot Rifter, facelift 2024"
+  },
+  "peugeot/traveller": {
+    "file": "File:Peugeot_Traveller_L2_BlueHDi_95_Active_–_Frontansicht,_3._Juni_2017,_Düsseldorf.jpg",
+    "article": "Citroën Jumpy",
+    "label": "Peugeot Traveller"
+  },
+  "cupra/leon": {
+    "file": "File:Cupra_Leon_Mk4_IMG_0036.jpg",
+    "article": "SEAT León",
+    "label": "Cupra Leon, generace IV"
+  },
+  "cupra/ateca": {
+    "file": "File:Cupra_Ateca_Facelift_IMG_3666.jpg",
+    "article": "SEAT Ateca",
+    "label": "Cupra Ateca, facelift"
+  },
+  "honda/e-ny1": {
+    "file": "File:Honda_e-Ny1_–_f_18042025.jpg",
+    "article": "Honda HR-V (third generation)",
+    "label": "Honda e:Ny1"
+  },
+  "citroen/c4-x": {
+    "file": "File:Citroën_e-C4_X_Automesse_Ludwigsburg_2023_1X7A0016.jpg",
+    "article": "Citroën C4",
+    "label": "Citroën ë-C4 X"
+  },
+  "citroen/spacetourer": {
+    "file": "File:2024_Citroën_Spacetourer_IMG_1314.jpg",
+    "article": "Citroën Jumpy",
+    "label": "Citroën SpaceTourer, facelift 2024"
+  },
+  "suzuki/s-cross": {
+    "file": "File:2017 Suzuki SX4 S-Cross (Indonesia) front view.jpg",
+    "article": "Suzuki SX4",
+    "label": "Suzuki SX4 S-Cross, facelift 2017"
+  },
+  "suzuki/across": {
+    "file": "File:2020_Suzuki_Across_E-Four_2.5.jpg",
+    "article": "Toyota RAV4",
+    "label": "Suzuki Across, 2020"
+  },
+  "suzuki/swace": {
+    "file": "File:2023_Suzuki_Swace_1X7A7186.jpg",
+    "article": "Toyota Corolla (E210)",
+    "label": "Suzuki Swace, facelift 2023"
+  },
+  "subaru/brz": {
+    "file": "File:Subaru_BRZ_(ZD8)_Auto_Zuerich_2023_1X7A1254.jpg",
+    "article": "Toyota 86",
+    "label": "Subaru BRZ, ZD8"
+  },
+  "subaru/solterra": {
+    "file": "File:2026_Subaru_Solterra_Premium,_front_left,_03-15-2026.jpg",
+    "article": "Toyota bZ4X",
+    "label": "Subaru Solterra, facelift 2026"
+  },
+  "maserati/grancabrio": {
+    "file": "File:Maserati GranCabrio Trofeo, Motortreff Bella Italia 2024, Munich (P1190427).jpg",
+    "article": "Maserati GranTurismo",
+    "label": "Maserati GranCabrio Trofeo, 2024"
+  },
+  "mclaren/gts": {
+    "file": "File:McLaren GTS, Frankfurt am Main (P1032579).jpg",
+    "article": "McLaren GT",
+    "label": "McLaren GTS"
+  },
+  "mclaren/600lt": {
+    "file": "File:600LT Orange.jpg",
+    "article": "McLaren 570S",
+    "label": "McLaren 600LT"
+  },
+  "mclaren/750s": {
+    "file": "File:2023 McLaren 750S 1.jpg",
+    "article": "McLaren 720S",
+    "label": "McLaren 750S, 2023"
+  },
+  "ram/1500": {
+    "file": "File:2025 Ram 1500.jpg",
+    "article": "Ram pickup",
+    "label": "Ram 1500, 2025"
+  },
+  "ram/2500": {
+    "file": "File:26 Ram 2500 Power Wagon.jpg",
+    "article": "Ram pickup",
+    "label": "Ram 2500 Power Wagon, 2026"
+  },
+  "ram/3500": {
+    "file": "File:25 Ram 3500 Laramie.jpg",
+    "article": "Ram pickup",
+    "label": "Ram 3500 Laramie, 2025"
+  },
+  "gmc/sierra": {
+    "file": "File:2024_GMC_Sierra_Elevation_Crew_Cab_in_Summit_White,_front_left.jpg",
+    "article": "Chevrolet Silverado",
+    "label": "GMC Sierra 1500, 2024"
+  },
+  "gmc/yukon": {
+    "file": "File:2021_GMC_Yukon_Denali_in_Hunter_Metallic,_front_left.jpg",
+    "article": "Chevrolet Tahoe",
+    "label": "GMC Yukon Denali, 2021"
+  },
+  "gmc/canyon": {
+    "file": "File:2023_GMC_Canyon_AT4,_front_8.26.23.jpg",
+    "article": "Chevrolet Colorado",
+    "label": "GMC Canyon AT4, 2023"
+  },
+  "byd/seal-u": {
+    "file": "File:BYD_Seal_U_IAA_2023_1X7A0034.jpg",
+    "article": "BYD Song Plus",
+    "label": "BYD Seal U"
+  },
+  "mg/marvel-r": {
+    "file": "File:MG_Marvel_R_1X7A0401.jpg",
+    "article": "Roewe Marvel X",
+    "label": "MG Marvel R"
+  },
+  "alfa-romeo/giulia": {
+    "file": "File:Alfa Romeo Giulia (2023) IMG 8312.jpg",
+    "article": "Alfa Romeo Giulia (2015)",
+    "label": "Alfa Romeo Giulia, facelift 2023"
+  },
+  "jeep/gladiator": {
+    "file": "File:Jeep Gladiator (JT) IMG 3988.jpg",
+    "article": "Jeep Gladiator (JT)",
+    "label": "Jeep Gladiator (JT)"
+  },
+  "honda/jazz": {
+    "file": "File:2020 Honda Jazz SE i-MMD CVT 1.5 Front.jpg",
+    "article": "Honda Fit",
+    "label": "Honda Jazz, generace IV (2020)"
+  }
+}

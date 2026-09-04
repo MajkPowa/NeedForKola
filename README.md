@@ -20,6 +20,7 @@ Otevřít http://127.0.0.1:8765/. Kvůli ES modulům a GLB modelu je nutné HTTP
 - 13 návrhových designů: otáčení, přiblížení, skutečný límec, konkáv, paprsky, střed a šrouby. Barvy, povrchy, krytky a šířka mění 3D geometrii či materiály.
 - Statické WebP miniatury vyrenderované z téže 3D geometrie, bez mnoha současných WebGL kontextů.
 - Úplný uživatelský seznam: **53 značek, 401 modelů**. Prohledávatelný katalog provedení, karoserií a ročníků do 2026, s odlišením katalogových a výrobcem doložených údajů. Každá z 401 rodin má doložené provedení.
+- Lokální fotografie modelových řad v katalogu i režimu „Můj vůz“, s autorem, zdrojem a licencí. Samostatné explicitní mapování fotografií vybraných generací BMW X5 a Škody Octavia rozlišuje také fázi a karoserii.
 - BMW X5 E70 (2008) a G05 (2020): dvě odlišné ilustrační rastrové vizualizace. Jde o pevné rendery, barvy ani kola se v těchto dvou obrázcích dynamicky nemění.
 - Samostatný 3D showroom **Ferrari 458 Italia**, skutečný model s výměnou disků a barvy karoserie. Ukázkový vůz se nevydává za vozidlo vybrané v poptávce. Rozměry montáže jsou pouze ilustrační.
 - Originální fotografie, 2 videa a kompletní PDF katalog dodané uživatelem.
@@ -27,7 +28,7 @@ Otevřít http://127.0.0.1:8765/. Kvůli ES modulům a GLB modelu je nutné HTTP
 
 ## Skutečný rozsah vizualizací
 
-**Projekt neobsahuje přesné 3D modely všech 401 vozů a jejich generací.** U vozů bez podkladu se ukáže tato informace a 3D vybraného disku. Jejich značka, model, rok a doplňující informace zůstávají v souhrnu. Databáze obsahuje přes 2 600 zdrojovaných provedení včetně doplnění z materiálů výrobců. Úplnost všech historických generací, faceliftů a karoserií zatím není ověřena; neurčené karoserie a otevřená období jsou označena. Přechodové roky vyžadují výběr konkrétního provedení. Přesné podklady dalších aut lze přidávat do datového registru a rozšířit loader modelů.
+**Fotografie modelové řady není přesným 3D modelem ani dokladem vybrané generace.** Režim „Můj vůz“ přednostně ukazuje výslovně přiřazený podklad pro generaci, fázi a karoserii; jinak zobrazuje označenou referenci modelové řady. Barva a kola na fotografii zůstávají pevné. Vybraný rok a provedení jsou nezávisle uložené v souhrnu. Přechodové roky stále vyžadují upřesnění provedení. Databáze obsahuje 2 736 zdrojovaných provedení včetně doplnění z materiálů výrobců. Úplnost všech historických generací, faceliftů a karoserií zatím není ověřena; neurčené karoserie a otevřená období jsou označena. Zdroj fotografie a její licence jsou oddělené od licence databáze a 3D geometrie; podrobnosti v `docs/vehicle-visuals.md`.
 
 Katalog OARTS obsahuje také litá a flow-forming kola. Webové návrhové designy nejsou vydávány za všechny položky katalogu. FORGED 10 je vizuální interpretace dodané předlohy, nikoli výrobní CAD. Kompatibilita, nosnost, hmotnost a cena se ověřují v technickém výkresu a závazné nabídce. Výchozí rozměry představují zadání k ověření, nikoli homologovaný fitment.
 
@@ -40,6 +41,9 @@ Katalog OARTS obsahuje také litá a flow-forming kola. Webové návrhové desig
 - `js/landing.js`, `css/luxury.css`: úvodní carousel, posuvná kolekce, průběh čtení, navazující CTA a zaoblené povrchy.
 - `js/brand-picker.js`, `js/brand-logos.js`, `css/brand-picker.css`: lokální loga a přístupný výběr značek.
 - `js/catalog-browser.js`, `css/catalog.css`: vyhledávání, filtry, stránkování a konkrétní provedení na úvodní stránce.
+- `js/vehicle-visuals.js`, `css/vehicle-visuals.css`: fotografie, rozlišení modelové reference a konkrétního provedení, citace a načítání podkladů.
+- `data/vehicle-visuals.json`, `data/vehicle-visual-variants.json`: mapování fotografií s původem a jednotlivými licencemi; lokální média v `assets/vehicles/`.
+- `tools/build-vehicle-visuals.py`, `tools/build-vehicle-visual-variants.py`: obnova fotografií z explicitních Wikimedia identit a kontrola licencí.
 - `tools/build-vehicle-data.py`: reprodukovatelný import a audit pokrytí.
 - `js/showroom.js`: geometrie, materiály, glTF loader, orbit ovládání a správa WebGL.
 - `js/wheels.js`: návrhové designy, barevné kombinace, povrchy a příplatky.
@@ -58,6 +62,7 @@ node tools/check-catalog-browser.cjs
 node tools/check-brand-picker.cjs
 node tools/check-landing.cjs
 node tools/check-vehicle-selection.cjs
+node tools/check-vehicle-visuals.cjs
 node --check js/configurator.js
 ```
 
