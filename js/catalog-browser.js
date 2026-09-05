@@ -112,7 +112,7 @@
       if (slot.dataset.visualState !== stateKey) {
         slot.dataset.visualState = stateKey;
         slot.innerHTML = visual && !failedImages.has(visual.src)
-          ? `<figure class="catalog-vehicle-photo"><div class="catalog-vehicle-photo__frame"><img src="${esc(visual.thumb)}" alt="${esc(visual.alt)}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async" data-vehicle-photo="${esc(visual.src)}" data-visual-match="model"></div><figcaption><b>Reference modelové řady</b><span>${esc(visual.depicted.label || visual.title)}</span>${visuals.creditHTML(visual)}</figcaption></figure>`
+          ? `<figure class="catalog-vehicle-photo"><div class="catalog-vehicle-photo__frame"><img src="${esc(visuals.imageURL(visual, true))}" alt="${esc(visual.alt)}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async" data-vehicle-photo="${esc(visual.src)}" data-visual-match="model"></div><figcaption><b>Reference modelové řady</b><span>${esc(visual.depicted.label || visual.title)}</span>${visuals.creditHTML(visual)}</figcaption></figure>`
           : `<div class="catalog-photo-placeholder${stateKey === 'unavailable' ? ' is-unavailable' : ''}"${stateKey === 'pending' ? ' role="status"' : ''}>${stateKey === 'pending' ? 'Načítám fotografii modelu…' : 'Fotografie nyní není dostupná. Model i jeho provedení můžeš dál vybrat.'}</div>`;
       }
       for (const target of card.querySelectorAll('[data-variant-photo]')) {
@@ -123,7 +123,7 @@
         if (target.dataset.visualState === key) continue;
         target.dataset.visualState = key;
         target.innerHTML = photo && !failedImages.has(photo.src)
-          ? `<figure><img src="${esc(photo.thumb)}" alt="${esc(photo.alt)}" width="${photo.width}" height="${photo.height}" loading="lazy" decoding="async" data-vehicle-photo="${esc(photo.src)}" data-visual-match="variant"><figcaption><b>${photo.kind === 'render' ? 'Ilustrační render provedení' : 'Fotografie provedení'}</b>${esc(photo.depicted.label || photo.title)}${visuals.creditHTML(photo)}</figcaption></figure>` : '';
+          ? `<figure><img src="${esc(visuals.imageURL(photo, true))}" alt="${esc(photo.alt)}" width="${photo.width}" height="${photo.height}" loading="lazy" decoding="async" data-vehicle-photo="${esc(photo.src)}" data-visual-match="variant"><figcaption><b>${photo.kind === 'render' ? 'Ilustrační render provedení' : 'Fotografie provedení'}</b>${esc(photo.depicted.label || photo.title)}${visuals.creditHTML(photo)}</figcaption></figure>` : '';
       }
     }
   }

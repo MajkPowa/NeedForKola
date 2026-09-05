@@ -1,0 +1,785 @@
+{
+  "assets/vehicles/volkswagen--id-buzz.webp": {
+    "wheels": [
+      {
+        "cx": 0.4473958,
+        "cy": 0.7793834,
+        "rx": 0.0651042,
+        "ry": 0.1435453,
+        "rotation": 0.17
+      },
+      {
+        "cx": 0.9041667,
+        "cy": 0.7023121,
+        "rx": 0.034375,
+        "ry": 0.1165703,
+        "rotation": 0.02
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/skoda--kamiq.webp": {
+    "wheels": [
+      {
+        "cx": 0.5380208,
+        "cy": 0.7877095,
+        "rx": 0.0458333,
+        "ry": 0.1359404,
+        "rotation": 0.05
+      },
+      {
+        "cx": 0.9166667,
+        "cy": 0.622905,
+        "rx": 0.0307292,
+        "ry": 0.1182495,
+        "rotation": 0.03
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/porsche--taycan.webp": {
+    "wheels": [
+      {
+        "cx": 0.090625,
+        "cy": 0.6086957,
+        "rx": 0.0348958,
+        "ry": 0.1521739,
+        "rotation": -0.08
+      },
+      {
+        "cx": 0.4864583,
+        "cy": 0.7379227,
+        "rx": 0.0473958,
+        "ry": 0.1859903,
+        "rotation": -0.085
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/bmw--x2.webp": {
+    "wheels": [
+      {
+        "cx": 0.4651042,
+        "cy": 0.7796443,
+        "rx": 0.046875,
+        "ry": 0.1284585,
+        "rotation": 0.17
+      },
+      {
+        "cx": 0.892247,
+        "cy": 0.654724,
+        "rx": 0.0295,
+        "ry": 0.101861,
+        "rotation": -0.028385
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/bmw--x6.webp": {
+    "wheels": [
+      {
+        "cx": 0.6661458,
+        "cy": 0.7484326,
+        "rx": 0.0328125,
+        "ry": 0.1363636,
+        "rotation": 0.065
+      },
+      {
+        "cx": 0.9322917,
+        "cy": 0.5681818,
+        "rx": 0.0177083,
+        "ry": 0.1003135,
+        "rotation": 0.06
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/mercedes-benz--b.webp": {
+    "wheels": [
+      {
+        "cx": 0.573554,
+        "cy": 0.764516,
+        "rx": 0.037958,
+        "ry": 0.127253,
+        "rotation": 0.07516
+      },
+      {
+        "cx": 0.9197917,
+        "cy": 0.6172945,
+        "rx": 0.0244792,
+        "ry": 0.1001712,
+        "rotation": 0.12
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/mercedes-benz--cle.webp": {
+    "wheels": [
+      {
+        "cx": 0.097827,
+        "cy": 0.579905,
+        "rx": 0.023677,
+        "ry": 0.11473,
+        "rotation": -0.029373
+      },
+      {
+        "cx": 0.465625,
+        "cy": 0.7349896,
+        "rx": 0.046875,
+        "ry": 0.1614907,
+        "rotation": -0.17
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/mercedes-benz--gle.webp": {
+    "wheels": [
+      {
+        "cx": 0.5119792,
+        "cy": 0.7480989,
+        "rx": 0.0458333,
+        "ry": 0.1406844,
+        "rotation": 0.15
+      },
+      {
+        "cx": 0.895214,
+        "cy": 0.59837,
+        "rx": 0.024721,
+        "ry": 0.102689,
+        "rotation": 0.028377
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/mercedes-benz--g-class.webp": {
+    "wheels": [
+      {
+        "cx": 0.2036458,
+        "cy": 0.7648148,
+        "rx": 0.0291667,
+        "ry": 0.0814815,
+        "rotation": -0.13
+      },
+      {
+        "cx": 0.5729167,
+        "cy": 0.7648148,
+        "rx": 0.034375,
+        "ry": 0.0888889,
+        "rotation": -0.2
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/mercedes-benz--eqs.webp": {
+    "wheels": [
+      {
+        "cx": 0.5666667,
+        "cy": 0.751434,
+        "rx": 0.0375,
+        "ry": 0.1529637,
+        "rotation": 0.05
+      },
+      {
+        "cx": 0.912021,
+        "cy": 0.62319,
+        "rx": 0.025558,
+        "ry": 0.122257,
+        "rotation": -0.028328
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/audi--a4.webp": {
+    "wheels": [
+      {
+        "cx": 0.5838542,
+        "cy": 0.764,
+        "rx": 0.0390625,
+        "ry": 0.153,
+        "rotation": 0.055
+      },
+      {
+        "cx": 0.9265625,
+        "cy": 0.61,
+        "rx": 0.021875,
+        "ry": 0.112,
+        "rotation": 0
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/audi--a7.webp": {
+    "wheels": [
+      {
+        "cx": 0.6260417,
+        "cy": 0.7416226,
+        "rx": 0.0395833,
+        "ry": 0.1552028,
+        "rotation": 0.12
+      },
+      {
+        "cx": 0.928413,
+        "cy": 0.5026,
+        "rx": 0.017101,
+        "ry": 0.101626,
+        "rotation": 0.028328
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/audi--q4-e-tron.webp": {
+    "wheels": [
+      {
+        "cx": 0.090258,
+        "cy": 0.622867,
+        "rx": 0.031941,
+        "ry": 0.113792,
+        "rotation": 0.028328
+      },
+      {
+        "cx": 0.4880208,
+        "cy": 0.7614943,
+        "rx": 0.046875,
+        "ry": 0.1436782,
+        "rotation": -0.07
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/audi--r8.webp": {
+    "wheels": [
+      {
+        "cx": 0.091407,
+        "cy": 0.602709,
+        "rx": 0.037227,
+        "ry": 0.152652,
+        "rotation": -0.028328
+      },
+      {
+        "cx": 0.5197917,
+        "cy": 0.7393484,
+        "rx": 0.0520833,
+        "ry": 0.1854637,
+        "rotation": -0.095
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/volkswagen--polo.webp": {
+    "wheels": [
+      {
+        "cx": 0.541284,
+        "cy": 0.767057,
+        "rx": 0.042823,
+        "ry": 0.144958,
+        "rotation": 0.028231
+      },
+      {
+        "cx": 0.9182292,
+        "cy": 0.6086957,
+        "rx": 0.0260417,
+        "ry": 0.1020794,
+        "rotation": 0.02
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/volkswagen--golf.webp": {
+    "wheels": [
+      {
+        "cx": 0.5375,
+        "cy": 0.7795918,
+        "rx": 0.0427083,
+        "ry": 0.144898,
+        "rotation": 0.05
+      },
+      {
+        "cx": 0.91752,
+        "cy": 0.651283,
+        "rx": 0.029964,
+        "ry": 0.117142,
+        "rotation": 0.028328
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/volkswagen--t-roc.webp": {
+    "wheels": [
+      {
+        "cx": 0.53479,
+        "cy": 0.769003,
+        "rx": 0.045566,
+        "ry": 0.15167,
+        "rotation": -0.0283
+      },
+      {
+        "cx": 0.9208333,
+        "cy": 0.625969,
+        "rx": 0.0286458,
+        "ry": 0.1094961,
+        "rotation": 0.08
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/volkswagen--multivan.webp": {
+    "wheels": [
+      {
+        "cx": 0.097591,
+        "cy": 0.662724,
+        "rx": 0.028113,
+        "ry": 0.093435,
+        "rotation": -0.028328
+      },
+      {
+        "cx": 0.5348958,
+        "cy": 0.8119002,
+        "rx": 0.0401042,
+        "ry": 0.1122841,
+        "rotation": -0.055
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/skoda--octavia.webp": {
+    "wheels": [
+      {
+        "cx": 0.565625,
+        "cy": 0.7352362,
+        "rx": 0.06875,
+        "ry": 0.1555118,
+        "rotation": 0.07,
+        "clip": [
+          [
+            0.546875,
+            0.5314961
+          ],
+          [
+            0.6666667,
+            0.5314961
+          ],
+          [
+            0.6666667,
+            0.9645669
+          ],
+          [
+            0.4791667,
+            0.9645669
+          ],
+          [
+            0.4854167,
+            0.8307087
+          ],
+          [
+            0.5041667,
+            0.8090551
+          ],
+          [
+            0.5145833,
+            0.7893701
+          ],
+          [
+            0.5197917,
+            0.746063
+          ],
+          [
+            0.5260417,
+            0.6909449
+          ],
+          [
+            0.5364583,
+            0.6181102
+          ]
+        ]
+      },
+      {
+        "cx": 0.910998,
+        "cy": 0.63714,
+        "rx": 0.023995,
+        "ry": 0.11759,
+        "rotation": 0.055104
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged. Front rim visibility is clipped along the original bumper edge."
+  },
+  "assets/vehicles/skoda--kodiaq.webp": {
+    "wheels": [
+      {
+        "cx": 0.121875,
+        "cy": 0.688,
+        "rx": 0.0333333,
+        "ry": 0.112,
+        "rotation": -0.055
+      },
+      {
+        "cx": 0.5390625,
+        "cy": 0.772,
+        "rx": 0.0463542,
+        "ry": 0.132,
+        "rotation": -0.1
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/porsche--718-boxster.webp": {
+    "wheels": [
+      {
+        "cx": 0.509427,
+        "cy": 0.724756,
+        "rx": 0.051096,
+        "ry": 0.1544,
+        "rotation": 0.128006
+      },
+      {
+        "cx": 0.9046875,
+        "cy": 0.6258503,
+        "rx": 0.0317708,
+        "ry": 0.1326531,
+        "rotation": 0.08
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/toyota--aygo-x.webp": {
+    "wheels": [
+      {
+        "cx": 0.5322917,
+        "cy": 0.7806452,
+        "rx": 0.0494792,
+        "ry": 0.1330645,
+        "rotation": 0.17
+      },
+      {
+        "cx": 0.914739,
+        "cy": 0.613257,
+        "rx": 0.029988,
+        "ry": 0.103725,
+        "rotation": 0.028328
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/toyota--yaris.webp": {
+    "wheels": [
+      {
+        "cx": 0.591325,
+        "cy": 0.78287,
+        "rx": 0.044316,
+        "ry": 0.132763,
+        "rotation": 0.028328
+      },
+      {
+        "cx": 0.9260417,
+        "cy": 0.5525424,
+        "rx": 0.0192708,
+        "ry": 0.0881356,
+        "rotation": 0.075
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/toyota--camry.webp": {
+    "wheels": [
+      {
+        "cx": 0.119307,
+        "cy": 0.675088,
+        "rx": 0.031151,
+        "ry": 0.122348,
+        "rotation": 0.027912
+      },
+      {
+        "cx": 0.5411458,
+        "cy": 0.7356459,
+        "rx": 0.0505208,
+        "ry": 0.138756,
+        "rotation": -0.045
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/toyota--corolla-cross.webp": {
+    "wheels": [
+      {
+        "cx": 0.466957,
+        "cy": 0.767019,
+        "rx": 0.057896,
+        "ry": 0.132105,
+        "rotation": 0.09253
+      },
+      {
+        "cx": 0.9083333,
+        "cy": 0.6658333,
+        "rx": 0.0348958,
+        "ry": 0.095,
+        "rotation": 0.015
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/toyota--rav4.webp": {
+    "wheels": [
+      {
+        "cx": 0.4703125,
+        "cy": 0.7817391,
+        "rx": 0.0526042,
+        "ry": 0.1243478,
+        "rotation": 0.17
+      },
+      {
+        "cx": 0.902382,
+        "cy": 0.65514,
+        "rx": 0.034762,
+        "ry": 0.102193,
+        "rotation": 0.028328
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/toyota--land-cruiser.webp": {
+    "wheels": [
+      {
+        "cx": 0.5135417,
+        "cy": 0.7425926,
+        "rx": 0.0604167,
+        "ry": 0.1342593,
+        "rotation": -0.02
+      },
+      {
+        "cx": 0.880792,
+        "cy": 0.682441,
+        "rx": 0.02832,
+        "ry": 0.112474,
+        "rotation": 0.028328
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/toyota--gr86.webp": {
+    "wheels": [
+      {
+        "cx": 0.04947,
+        "cy": 0.53252,
+        "rx": 0.020934,
+        "ry": 0.103337,
+        "rotation": -0.028328
+      },
+      {
+        "cx": 0.35625,
+        "cy": 0.7214397,
+        "rx": 0.0395833,
+        "ry": 0.143975,
+        "rotation": -0.15
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/toyota--proace.webp": {
+    "wheels": [
+      {
+        "cx": 0.5265625,
+        "cy": 0.799308,
+        "rx": 0.034375,
+        "ry": 0.1064014,
+        "rotation": 0.1
+      },
+      {
+        "cx": 0.913425,
+        "cy": 0.678147,
+        "rx": 0.021475,
+        "ry": 0.079955,
+        "rotation": 0.028328
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/ford--puma.webp": {
+    "wheels": [
+      {
+        "cx": 0.544281,
+        "cy": 0.789034,
+        "rx": 0.046267,
+        "ry": 0.14279,
+        "rotation": 0.028328
+      },
+      {
+        "cx": 0.9104167,
+        "cy": 0.6385768,
+        "rx": 0.0265625,
+        "ry": 0.1067416,
+        "rotation": 0.1
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/ford--kuga.webp": {
+    "wheels": [
+      {
+        "cx": 0.553125,
+        "cy": 0.7805344,
+        "rx": 0.0421875,
+        "ry": 0.139313,
+        "rotation": 0.15
+      },
+      {
+        "cx": 0.910917,
+        "cy": 0.640282,
+        "rx": 0.025532,
+        "ry": 0.103251,
+        "rotation": 0.028328
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/ford--mustang.webp": {
+    "wheels": [
+      {
+        "cx": 0.0791667,
+        "cy": 0.5435644,
+        "rx": 0.0229167,
+        "ry": 0.1128713,
+        "rotation": -0.13
+      },
+      {
+        "cx": 0.436901,
+        "cy": 0.74182,
+        "rx": 0.047971,
+        "ry": 0.155761,
+        "rotation": -0.028328
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/ford--mustang-mach-e.webp": {
+    "wheels": [
+      {
+        "cx": 0.086138,
+        "cy": 0.661174,
+        "rx": 0.031759,
+        "ry": 0.12478,
+        "rotation": 0.028328
+      },
+      {
+        "cx": 0.4973958,
+        "cy": 0.7650215,
+        "rx": 0.0447917,
+        "ry": 0.1480687,
+        "rotation": 0
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/ford--ranger.webp": {
+    "wheels": [
+      {
+        "cx": 0.5067708,
+        "cy": 0.7730627,
+        "rx": 0.0411458,
+        "ry": 0.1337638,
+        "rotation": 0.075
+      },
+      {
+        "cx": 0.887558,
+        "cy": 0.626162,
+        "rx": 0.02466,
+        "ry": 0.107619,
+        "rotation": 0.028328
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/ford--bronco.webp": {
+    "wheels": [
+      {
+        "cx": 0.078441,
+        "cy": 0.654257,
+        "rx": 0.023997,
+        "ry": 0.084944,
+        "rotation": -0.028328
+      },
+      {
+        "cx": 0.440625,
+        "cy": 0.7722309,
+        "rx": 0.0395833,
+        "ry": 0.1131045,
+        "rotation": -0.06
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/volvo--v60.webp": {
+    "wheels": [
+      {
+        "cx": 0.0796875,
+        "cy": 0.5527831,
+        "rx": 0.025,
+        "ry": 0.1170825,
+        "rotation": -0.11
+      },
+      {
+        "cx": 0.4572917,
+        "cy": 0.7552783,
+        "rx": 0.0510417,
+        "ry": 0.1669866,
+        "rotation": -0.095
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/volvo--xc60.webp": {
+    "wheels": [
+      {
+        "cx": 0.5640625,
+        "cy": 0.7554348,
+        "rx": 0.0375,
+        "ry": 0.1476449,
+        "rotation": 0.15
+      },
+      {
+        "cx": 0.9151042,
+        "cy": 0.571558,
+        "rx": 0.0208333,
+        "ry": 0.1005435,
+        "rotation": 0.13
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/volvo--ex40.webp": {
+    "wheels": [
+      {
+        "cx": 0.66875,
+        "cy": 0.7256944,
+        "rx": 0.0395833,
+        "ry": 0.1333333,
+        "rotation": 0
+      },
+      {
+        "cx": 0.9244792,
+        "cy": 0.4986111,
+        "rx": 0.0161458,
+        "ry": 0.0875,
+        "rotation": -0.08
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  },
+  "assets/vehicles/land-rover-range-rover--defender.webp": {
+    "wheels": [
+      {
+        "cx": 0.1520833,
+        "cy": 0.5841121,
+        "rx": 0.0151042,
+        "ry": 0.067757,
+        "rotation": -0.1
+      },
+      {
+        "cx": 0.4,
+        "cy": 0.7663551,
+        "rx": 0.025,
+        "ry": 0.1020249,
+        "rotation": -0.13
+      }
+    ],
+    "note": "Manual rim perimeter measured against source-pixel grid; replaces metal face only and leaves tyre unchanged."
+  }
+}

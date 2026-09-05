@@ -1,0 +1,572 @@
+{
+  "assets/vehicles/mazda--mx-5.webp": {
+    "wheels": [
+      {
+        "cx": 0.07604166666666666,
+        "cy": 0.7117750439367311,
+        "rx": 0.026041666666666668,
+        "ry": 0.1195079086115993,
+        "rotation": -0.04
+      },
+      {
+        "cx": 0.35,
+        "cy": 0.7451669595782073,
+        "rx": 0.035416666666666666,
+        "ry": 0.14235500878734622,
+        "rotation": -0.025
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/lamborghini--huracan.webp": {
+    "wheels": [
+      {
+        "cx": 0.06041666666666667,
+        "cy": 0.44294003868471954,
+        "rx": 0.020833333333333332,
+        "ry": 0.1276595744680851,
+        "rotation": -0.035
+      },
+      {
+        "cx": 0.31979166666666664,
+        "cy": 0.6750483558994197,
+        "rx": 0.035416666666666666,
+        "ry": 0.18181818181818182,
+        "rotation": -0.05
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/lamborghini--temerario.webp": {
+    "wheels": [
+      {
+        "cx": 0.5916666666666667,
+        "cy": 0.6986607142857143,
+        "rx": 0.04583333333333333,
+        "ry": 0.18526785714285715,
+        "rotation": 0.1
+      },
+      {
+        "cx": 0.93125,
+        "cy": 0.5245535714285714,
+        "rx": 0.035416666666666666,
+        "ry": 0.14732142857142858,
+        "rotation": 0.065
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/maserati--levante.webp": {
+    "wheels": [
+      {
+        "cx": 0.06041666666666667,
+        "cy": 0.6015325670498084,
+        "rx": 0.028125,
+        "ry": 0.12260536398467432,
+        "rotation": -0.02
+      },
+      {
+        "cx": 0.45208333333333334,
+        "cy": 0.7375478927203065,
+        "rx": 0.05625,
+        "ry": 0.17049808429118773,
+        "rotation": -0.065
+      }
+    ],
+    "note": "Full-resolution manual rim boundary and perspective review."
+  },
+  "assets/vehicles/maserati--ghibli.webp": {
+    "wheels": [
+      {
+        "cx": 0.10208333333333333,
+        "cy": 0.6272321428571429,
+        "rx": 0.03229166666666667,
+        "ry": 0.13169642857142858,
+        "rotation": -0.015
+      },
+      {
+        "cx": 0.5166666666666667,
+        "cy": 0.7589285714285714,
+        "rx": 0.046875,
+        "ry": 0.16294642857142858,
+        "rotation": -0.06
+      }
+    ],
+    "note": "Full-resolution manual rim boundary and perspective review."
+  },
+  "assets/vehicles/maserati--quattroporte.webp": {
+    "wheels": [
+      {
+        "cx": 0.5010416666666667,
+        "cy": 0.7477064220183486,
+        "rx": 0.051041666666666666,
+        "ry": 0.17889908256880735,
+        "rotation": 0.07
+      },
+      {
+        "cx": 0.9114583333333334,
+        "cy": 0.6353211009174312,
+        "rx": 0.028125,
+        "ry": 0.13073394495412843,
+        "rotation": 0.095
+      }
+    ],
+    "note": "Full-resolution manual rim boundary and perspective review."
+  },
+  "assets/vehicles/maserati--grecale.webp": {
+    "wheels": [
+      {
+        "cx": 0.5645833333333333,
+        "cy": 0.7718696397941681,
+        "rx": 0.042708333333333334,
+        "ry": 0.13379073756432247,
+        "rotation": 0.07
+      },
+      {
+        "cx": 0.9145833333333333,
+        "cy": 0.5883361921097771,
+        "rx": 0.027083333333333334,
+        "ry": 0.10120068610634649,
+        "rotation": 0.065
+      }
+    ],
+    "note": "Full-resolution manual rim boundary and perspective review."
+  },
+  "assets/vehicles/maserati--granturismo.webp": {
+    "wheels": [
+      {
+        "cx": 0.07916666666666666,
+        "cy": 0.5518672199170125,
+        "rx": 0.03229166666666667,
+        "ry": 0.12655601659751037,
+        "rotation": -0.08
+      },
+      {
+        "cx": 0.484375,
+        "cy": 0.7385892116182573,
+        "rx": 0.052083333333333336,
+        "ry": 0.16182572614107885,
+        "rotation": -0.09
+      }
+    ],
+    "note": "Full-resolution manual rim boundary and perspective review."
+  },
+  "assets/vehicles/maserati--grancabrio.webp": {
+    "wheels": [
+      {
+        "cx": 0.10833333333333334,
+        "cy": 0.4013888888888889,
+        "rx": 0.010416666666666666,
+        "ry": 0.075,
+        "rotation": -0.095
+      },
+      {
+        "cx": 0.2875,
+        "cy": 0.6430555555555556,
+        "rx": 0.028125,
+        "ry": 0.12916666666666668,
+        "rotation": -0.125
+      }
+    ],
+    "note": "Full-resolution manual rim boundary and perspective review."
+  },
+  "assets/vehicles/maserati--mc20.webp": {
+    "wheels": [
+      {
+        "cx": 0.5229166666666667,
+        "cy": 0.7241962774957699,
+        "rx": 0.053125,
+        "ry": 0.1353637901861252,
+        "rotation": 0.22
+      },
+      {
+        "cx": 0.9229166666666667,
+        "cy": 0.5380710659898477,
+        "rx": 0.030208333333333334,
+        "ry": 0.09475465313028765,
+        "rotation": 0.18
+      }
+    ],
+    "note": "Full-resolution manual rim boundary and perspective review."
+  },
+  "assets/vehicles/tesla--cybertruck.webp": {
+    "wheels": [
+      {
+        "cx": 0.3729166666666667,
+        "cy": 0.7697715289982425,
+        "rx": 0.052083333333333336,
+        "ry": 0.11423550087873462,
+        "rotation": 0.23
+      },
+      {
+        "cx": 0.8729166666666667,
+        "cy": 0.6502636203866432,
+        "rx": 0.03229166666666667,
+        "ry": 0.08787346221441125,
+        "rotation": 0.14
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/jeep--renegade.webp": {
+    "wheels": [
+      {
+        "cx": 0.528125,
+        "cy": 0.7710622710622711,
+        "rx": 0.04479166666666667,
+        "ry": 0.13003663003663005,
+        "rotation": 0.09
+      },
+      {
+        "cx": 0.9104166666666667,
+        "cy": 0.6391941391941391,
+        "rx": 0.028125,
+        "ry": 0.10073260073260074,
+        "rotation": 0.05
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/jeep--compass.webp": {
+    "wheels": [
+      {
+        "cx": 0.1,
+        "cy": 0.698905109489051,
+        "rx": 0.03333333333333333,
+        "ry": 0.11678832116788321,
+        "rotation": -0.015
+      },
+      {
+        "cx": 0.48541666666666666,
+        "cy": 0.7554744525547445,
+        "rx": 0.04479166666666667,
+        "ry": 0.12773722627737227,
+        "rotation": -0.03
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/jeep--grand-cherokee.webp": {
+    "wheels": [
+      {
+        "cx": 0.5145833333333333,
+        "cy": 0.7521222410865874,
+        "rx": 0.05520833333333333,
+        "ry": 0.14431239388794567,
+        "rotation": 0.12
+      },
+      {
+        "cx": 0.9239583333333333,
+        "cy": 0.5959252971137521,
+        "rx": 0.029166666666666667,
+        "ry": 0.1035653650254669,
+        "rotation": 0.07
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/jeep--wrangler.webp": {
+    "wheels": [
+      {
+        "cx": 0.50625,
+        "cy": 0.7590132827324478,
+        "rx": 0.041666666666666664,
+        "ry": 0.127134724857685,
+        "rotation": -0.015
+      },
+      {
+        "cx": 0.903125,
+        "cy": 0.6925996204933587,
+        "rx": 0.028125,
+        "ry": 0.10246679316888045,
+        "rotation": 0.02
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/jeep--gladiator.webp": {
+    "wheels": [
+      {
+        "cx": 0.41041666666666665,
+        "cy": 0.7693877551020408,
+        "rx": 0.040625,
+        "ry": 0.11428571428571428,
+        "rotation": 0.2
+      },
+      {
+        "cx": 0.871875,
+        "cy": 0.6346938775510204,
+        "rx": 0.023958333333333335,
+        "ry": 0.0836734693877551,
+        "rotation": 0.08
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/alfa-romeo--junior.webp": {
+    "wheels": [
+      {
+        "cx": 0.5510416666666667,
+        "cy": 0.770940170940171,
+        "rx": 0.041666666666666664,
+        "ry": 0.13162393162393163,
+        "rotation": 0.05
+      },
+      {
+        "cx": 0.9145833333333333,
+        "cy": 0.6239316239316239,
+        "rx": 0.029166666666666667,
+        "ry": 0.10427350427350428,
+        "rotation": 0.035
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/fiat--panda.webp": {
+    "wheels": [
+      {
+        "cx": 0.09895833333333333,
+        "cy": 0.6748251748251748,
+        "rx": 0.030208333333333334,
+        "ry": 0.08741258741258741,
+        "rotation": -0.04
+      },
+      {
+        "cx": 0.509375,
+        "cy": 0.8024475524475524,
+        "rx": 0.046875,
+        "ry": 0.10664335664335664,
+        "rotation": -0.035
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/suzuki--vitara.webp": {
+    "wheels": [
+      {
+        "cx": 0.10833333333333334,
+        "cy": 0.7366255144032922,
+        "rx": 0.035416666666666666,
+        "ry": 0.12139917695473251,
+        "rotation": -0.02
+      },
+      {
+        "cx": 0.5208333333333334,
+        "cy": 0.7633744855967078,
+        "rx": 0.041666666666666664,
+        "ry": 0.1337448559670782,
+        "rotation": -0.06
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/suzuki--swace.webp": {
+    "wheels": [
+      {
+        "cx": 0.06875,
+        "cy": 0.5665529010238908,
+        "rx": 0.016666666666666666,
+        "ry": 0.09556313993174062,
+        "rotation": -0.015
+      },
+      {
+        "cx": 0.32708333333333334,
+        "cy": 0.7764505119453925,
+        "rx": 0.028125,
+        "ry": 0.13310580204778158,
+        "rotation": -0.065
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/mitsubishi--asx.webp": {
+    "wheels": [
+      {
+        "cx": 0.08333333333333333,
+        "cy": 0.6544117647058824,
+        "rx": 0.027083333333333334,
+        "ry": 0.10661764705882353,
+        "rotation": -0.045
+      },
+      {
+        "cx": 0.4552083333333333,
+        "cy": 0.7683823529411765,
+        "rx": 0.04479166666666667,
+        "ry": 0.12683823529411764,
+        "rotation": -0.1
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/mitsubishi--outlander.webp": {
+    "wheels": [
+      {
+        "cx": 0.09895833333333333,
+        "cy": 0.6340640809443507,
+        "rx": 0.029166666666666667,
+        "ry": 0.10286677908937605,
+        "rotation": -0.02
+      },
+      {
+        "cx": 0.46458333333333335,
+        "cy": 0.760539629005059,
+        "rx": 0.046875,
+        "ry": 0.13322091062394603,
+        "rotation": -0.04
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/mitsubishi--l200.webp": {
+    "wheels": [
+      {
+        "cx": 0.13645833333333332,
+        "cy": 0.6653919694072657,
+        "rx": 0.025,
+        "ry": 0.09751434034416825,
+        "rotation": -0.04
+      },
+      {
+        "cx": 0.5291666666666667,
+        "cy": 0.7418738049713193,
+        "rx": 0.040625,
+        "ry": 0.11854684512428298,
+        "rotation": -0.05
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/subaru--impreza.webp": {
+    "wheels": [
+      {
+        "cx": 0.07604166666666666,
+        "cy": 0.6061776061776062,
+        "rx": 0.027083333333333334,
+        "ry": 0.10617760617760617,
+        "rotation": -0.02
+      },
+      {
+        "cx": 0.44895833333333335,
+        "cy": 0.7837837837837838,
+        "rx": 0.041666666666666664,
+        "ry": 0.13513513513513514,
+        "rotation": -0.09
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/subaru--outback.webp": {
+    "wheels": [
+      {
+        "cx": 0.4875,
+        "cy": 0.677570093457944,
+        "rx": 0.03958333333333333,
+        "ry": 0.08878504672897196,
+        "rotation": 0.005
+      },
+      {
+        "cx": 0.884375,
+        "cy": 0.6573208722741433,
+        "rx": 0.029166666666666667,
+        "ry": 0.0794392523364486,
+        "rotation": 0.015
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/mini--cooper.webp": {
+    "wheels": [
+      {
+        "cx": 0.06770833333333333,
+        "cy": 0.6025408348457351,
+        "rx": 0.027083333333333334,
+        "ry": 0.10707803992740472,
+        "rotation": -0.04
+      },
+      {
+        "cx": 0.45,
+        "cy": 0.7749546279491834,
+        "rx": 0.04583333333333333,
+        "ry": 0.14337568058076225,
+        "rotation": -0.105
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/ferrari--roma.webp": {
+    "wheels": [
+      {
+        "cx": 0.06354166666666666,
+        "cy": 0.5551724137931034,
+        "rx": 0.029166666666666667,
+        "ry": 0.10517241379310345,
+        "rotation": -0.07
+      },
+      {
+        "cx": 0.4583333333333333,
+        "cy": 0.7155172413793104,
+        "rx": 0.05,
+        "ry": 0.13620689655172413,
+        "rotation": -0.09
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/ferrari--portofino.webp": {
+    "wheels": [
+      {
+        "cx": 0.090625,
+        "cy": 0.5746102449888641,
+        "rx": 0.03333333333333333,
+        "ry": 0.1358574610244989,
+        "rotation": -0.07
+      },
+      {
+        "cx": 0.49583333333333335,
+        "cy": 0.7505567928730512,
+        "rx": 0.051041666666666666,
+        "ry": 0.17371937639198218,
+        "rotation": -0.09
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/ferrari--12cilindri.webp": {
+    "wheels": [
+      {
+        "cx": 0.6052083333333333,
+        "cy": 0.6935483870967742,
+        "rx": 0.051041666666666666,
+        "ry": 0.15161290322580645,
+        "rotation": 0.12
+      },
+      {
+        "cx": 0.9427083333333334,
+        "cy": 0.4645161290322581,
+        "rx": 0.022916666666666665,
+        "ry": 0.09516129032258064,
+        "rotation": 0.14
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  },
+  "assets/vehicles/ferrari--purosangue.webp": {
+    "wheels": [
+      {
+        "cx": 0.5885416666666666,
+        "cy": 0.7149532710280374,
+        "rx": 0.041666666666666664,
+        "ry": 0.13707165109034267,
+        "rotation": 0.09
+      },
+      {
+        "cx": 0.9270833333333334,
+        "cy": 0.5638629283489096,
+        "rx": 0.025,
+        "ry": 0.1059190031152648,
+        "rotation": 0.045
+      }
+    ],
+    "note": "Manual rim boundary review against full-resolution original; excludes tyres and background vehicles."
+  }
+}

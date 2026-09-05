@@ -1,0 +1,31 @@
+.stage-vehicle-frame > .vehicle-wheel-overlay {
+  position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
+  pointer-events:none;
+}
+.vehicle-wheel-overlay[hidden], .wheel-photo-retry[hidden] { display:none; }
+.wheel-photo-toolbar {
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  flex-shrink:0; padding:0 4px; min-height:34px;
+}
+.wheel-photo-status {
+  font:500 11px/1.5 var(--body,sans-serif); color:#d9bd97;
+}
+.wheel-photo-compare, .wheel-photo-retry {
+  flex-shrink:0; border:1px solid #c9ab7d55; border-radius:999px;
+  padding:9px 15px; background:#20251d; color:#e7d2b3;
+  font:500 11px/1.35 var(--body,sans-serif); cursor:pointer;
+  transition:background .2s, border-color .2s;
+}
+.wheel-photo-compare:hover, .wheel-photo-retry:hover { background:#303729; border-color:#c9ab7d; }
+.wheel-photo-compare[aria-pressed="true"] { background:#d7b589; color:#172015; }
+.wheel-photo-compare:disabled { opacity:.4; cursor:wait; }
+.wheel-photo-compare:focus-visible, .wheel-photo-retry:focus-visible { outline:2px solid #e6bf8e; outline-offset:3px; }
+.stage-view.has-vehicle-photo { gap:12px; }
+.stage-foot .vehicle-wheel-colours { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; }
+.vehicle-wheel-colours .text-link { font-size:11px; white-space:nowrap; }
+@media(max-width:520px) {
+  .wheel-photo-toolbar { gap:8px; padding:0 1px; }
+  .wheel-photo-status { font-size:10px; }
+  .wheel-photo-compare, .wheel-photo-retry { padding:8px 11px; font-size:10px; }
+  .vehicle-wheel-colours { flex-wrap:wrap; }
+}

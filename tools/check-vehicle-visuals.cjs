@@ -118,7 +118,7 @@ async function browserChecks() {
     assert.equal(await page.locator('.vehicle-render').getAttribute('data-visual-match'), 'model');
     assert.match(await page.locator('.preview-caption').innerText(), /Reference modelové řady/i);
     assert.match(await page.locator('.preview-caption').innerText(), /nemusí odpovídat vybranému roku/);
-    assert.ok(!(await page.locator('#stageHead h1').innerText()).includes('×'), 'Photograph title does not imply that selected wheels were composited onto it');
+    assert.ok(!(await page.locator('#stageHead h1').innerText()).includes('×'), 'Photograph title keeps the selected vehicle readable');
     await page.locator('#stageView').screenshot({ path: path.join(root, 'docs/qa/vehicle-photo-config.png') });
     await page.getByRole('button', { name: '3D kolo', exact: true }).click();
     await page.locator('.webgl-view canvas').waitFor();
@@ -166,7 +166,7 @@ async function browserChecks() {
 
     const broken = await browser.newPage({ reducedMotion: 'reduce' });
     broken.on('pageerror', error => errors.push(error.message));
-    await broken.route('**/assets/vehicles/tesla--model-y.webp', route => route.abort());
+    await broken.route('**/assets/vehicles/tesla--model-y.webp*', route => route.abort());
     await broken.goto(base + '/konfigurator.html?brand=tesla&model=model-y&year=2020&view=car', { waitUntil: 'networkidle' });
     await broken.locator('.webgl-view canvas').waitFor();
     assert.equal(await broken.locator('.vehicle-render').count(), 0, 'Broken photo falls back to actual selected wheel instead of the wrong car');

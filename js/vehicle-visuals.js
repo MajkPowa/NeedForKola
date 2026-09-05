@@ -32,6 +32,7 @@
       kind: record.kind, match, title: text(record.title), alt: text(record.alt) || text(record.title),
       depicted: Object.freeze({ label: text(depiction.label) || text(record.title), body: text(depiction.body), from: Number.isInteger(depiction.from) ? depiction.from : null, to: Number.isInteger(depiction.to) ? depiction.to : null }),
       sourceUrl: sourceURL(record.sourceUrl), articleUrl: sourceURL(record.articleUrl),
+      sourceSha1: /^[a-z0-9]{31,40}$/i.test(record.sourceSha1 || '') ? record.sourceSha1 : '',
       author: text(record.author), license: text(record.license), licenseUrl: sourceURL(record.licenseUrl),
       width: Number.isInteger(record.width) && record.width > 0 ? record.width : 1200,
       height: Number.isInteger(record.height) && record.height > 0 ? record.height : 800
@@ -72,6 +73,10 @@
     if (source) parts.push(`<a href="${esc(source)}" target="_blank" rel="noopener">Zdroj fotografie ↗</a>`);
     if (visual.license) parts.push(license ? `<a href="${esc(license)}" target="_blank" rel="noopener">${esc(visual.license)}</a>` : `<span>${esc(visual.license)}</span>`);
     return parts.length ? `<span class="vehicle-visual-credit">${parts.join('<span aria-hidden="true"> · </span>')}</span>` : '';
+  }
+  function imageURL(visual, thumbnail = false) {
+    const src = assetURL(thumbnail ? visual?.thumb : visual?.src);
+    return src && visual.sourceSha1 ? src + '?v=' + visual.sourceSha1.slice(0, 12) : src;
   }
 
   const scriptURL = document.currentScript?.src || new URL('js/vehicle-visuals.js', document.baseURI).href;
@@ -117,7 +122,7 @@
   }
   global.NFWVehicleVisuals = Object.freeze({
     get ready() { return pending; },
-    getModel, resolve, creditHTML, retryFailedData,
+    getModel, resolve, creditHTML, imageURL, retryFailedData,
     get isReady() { return loaded; },
     get modelCount() { return models.size; },
     get variantCount() { return variants.size; }

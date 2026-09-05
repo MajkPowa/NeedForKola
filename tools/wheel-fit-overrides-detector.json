@@ -1,0 +1,1302 @@
+{
+  "assets/vehicles/bmw--z4.webp": {
+    "wheels": [
+      {
+        "cx": 0.078125,
+        "cy": 0.45753899480069327,
+        "rx": 0.020833333333333332,
+        "ry": 0.09878682842287695,
+        "rotation": -0.1
+      },
+      {
+        "cx": 0.3697916666666667,
+        "cy": 0.7036395147313691,
+        "rx": 0.05,
+        "ry": 0.1611785095320624,
+        "rotation": -0.13
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/bmw--i7.webp": {
+    "wheels": [
+      {
+        "cx": 0.5916666666666667,
+        "cy": 0.7440239043824701,
+        "rx": 0.04479166666666667,
+        "ry": 0.16135458167330677,
+        "rotation": 0.15
+      },
+      {
+        "cx": 0.9354166666666667,
+        "cy": 0.5278884462151394,
+        "rx": 0.01875,
+        "ry": 0.10557768924302789,
+        "rotation": 0.08
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/mercedes-benz--eqe.webp": {
+    "wheels": [
+      {
+        "cx": 0.5322916666666667,
+        "cy": 0.7556935817805382,
+        "rx": 0.04479166666666667,
+        "ry": 0.16149068322981366,
+        "rotation": 0.055
+      },
+      {
+        "cx": 0.9145833333333333,
+        "cy": 0.6438923395445134,
+        "rx": 0.027083333333333334,
+        "ry": 0.13043478260869565,
+        "rotation": 0
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/volkswagen--caddy.webp": {
+    "wheels": [
+      {
+        "cx": 0.55625,
+        "cy": 0.7838283828382838,
+        "rx": 0.0390625,
+        "ry": 0.10891089108910891,
+        "rotation": 0.1
+      },
+      {
+        "cx": 0.9041666666666667,
+        "cy": 0.6452145214521452,
+        "rx": 0.017708333333333333,
+        "ry": 0.07590759075907591,
+        "rotation": 0.045
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/toyota--gr-supra.webp": {
+    "wheels": [
+      {
+        "cx": 0.44583333333333336,
+        "cy": 0.7117903930131004,
+        "rx": 0.078125,
+        "ry": 0.17248908296943233,
+        "rotation": 0
+      },
+      {
+        "cx": 0.9104166666666667,
+        "cy": 0.5807860262008734,
+        "rx": 0.03333333333333333,
+        "ry": 0.13100436681222707,
+        "rotation": 0.13
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/volvo--s60.webp": {
+    "wheels": [
+      {
+        "cx": 0.06041666666666667,
+        "cy": 0.5878504672897197,
+        "rx": 0.020833333333333332,
+        "ry": 0.10841121495327102,
+        "rotation": -0.07
+      },
+      {
+        "cx": 0.4,
+        "cy": 0.7570093457943925,
+        "rx": 0.042708333333333334,
+        "ry": 0.15514018691588785,
+        "rotation": -0.055
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/lexus--lbx.webp": {
+    "wheels": [
+      {
+        "cx": 0.078125,
+        "cy": 0.6388415672913118,
+        "rx": 0.029166666666666667,
+        "ry": 0.10221465076660988,
+        "rotation": -0.15
+      },
+      {
+        "cx": 0.4979166666666667,
+        "cy": 0.768313458262351,
+        "rx": 0.05625,
+        "ry": 0.12947189097103917,
+        "rotation": -0.15
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/opel--corsa.webp": {
+    "wheels": [
+      {
+        "cx": 0.07447916666666667,
+        "cy": 0.5767284991568297,
+        "rx": 0.022916666666666665,
+        "ry": 0.09780775716694773,
+        "rotation": -0.11
+      },
+      {
+        "cx": 0.40208333333333335,
+        "cy": 0.7664418212478921,
+        "rx": 0.04479166666666667,
+        "ry": 0.1315345699831366,
+        "rotation": -0.115
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/opel--mokka.webp": {
+    "wheels": [
+      {
+        "cx": 0.5072916666666667,
+        "cy": 0.7807486631016043,
+        "rx": 0.044270833333333336,
+        "ry": 0.12121212121212122,
+        "rotation": 0.1
+      },
+      {
+        "cx": 0.909375,
+        "cy": 0.64349376114082,
+        "rx": 0.030208333333333334,
+        "ry": 0.10695187165775401,
+        "rotation": 0.06
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/opel--frontera.webp": {
+    "wheels": [
+      {
+        "cx": 0.5395833333333333,
+        "cy": 0.7801047120418848,
+        "rx": 0.041666666666666664,
+        "ry": 0.1256544502617801,
+        "rotation": 0.075
+      },
+      {
+        "cx": 0.9151041666666667,
+        "cy": 0.6518324607329843,
+        "rx": 0.026041666666666668,
+        "ry": 0.10296684118673648,
+        "rotation": 0.025
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/cupra--tavascan.webp": {
+    "wheels": [
+      {
+        "cx": 0.509375,
+        "cy": 0.7530864197530864,
+        "rx": 0.057291666666666664,
+        "ry": 0.16049382716049382,
+        "rotation": 0.08
+      },
+      {
+        "cx": 0.9135416666666667,
+        "cy": 0.6419753086419753,
+        "rx": 0.03229166666666667,
+        "ry": 0.12962962962962962,
+        "rotation": 0.05
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/fiat--grande-panda.webp": {
+    "wheels": [
+      {
+        "cx": 0.490625,
+        "cy": 0.7702205882352942,
+        "rx": 0.052083333333333336,
+        "ry": 0.13602941176470587,
+        "rotation": 0.1
+      },
+      {
+        "cx": 0.9177083333333333,
+        "cy": 0.6286764705882353,
+        "rx": 0.03125,
+        "ry": 0.10294117647058823,
+        "rotation": 0.02
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/rolls-royce--phantom.webp": {
+    "wheels": [
+      {
+        "cx": 0.5739583333333333,
+        "cy": 0.7422303473491774,
+        "rx": 0.04791666666666667,
+        "ry": 0.1663619744058501,
+        "rotation": 0.16
+      },
+      {
+        "cx": 0.9291666666666667,
+        "cy": 0.5082266910420475,
+        "rx": 0.017708333333333333,
+        "ry": 0.10054844606946983,
+        "rotation": 0.075
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/rolls-royce--cullinan.webp": {
+    "wheels": [
+      {
+        "cx": 0.653125,
+        "cy": 0.7462437395659433,
+        "rx": 0.0375,
+        "ry": 0.15692821368948248,
+        "rotation": 0.1
+      },
+      {
+        "cx": 0.921875,
+        "cy": 0.5709515859766278,
+        "rx": 0.016458333333333335,
+        "ry": 0.10517529215358931,
+        "rotation": 0.065
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/mclaren--600lt.webp": {
+    "wheels": [
+      {
+        "cx": 0.5833333333333334,
+        "cy": 0.6453125,
+        "rx": 0.057291666666666664,
+        "ry": 0.140625,
+        "rotation": 0.2
+      },
+      {
+        "cx": 0.9229166666666667,
+        "cy": 0.45625,
+        "rx": 0.020833333333333332,
+        "ry": 0.0953125,
+        "rotation": 0.11
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/ram--2500.webp": {
+    "wheels": [
+      {
+        "cx": 0.4427083333333333,
+        "cy": 0.7166666666666667,
+        "rx": 0.042708333333333334,
+        "ry": 0.07083333333333333,
+        "rotation": 0.28
+      },
+      {
+        "cx": 0.8427083333333333,
+        "cy": 0.5944444444444444,
+        "rx": 0.017708333333333333,
+        "ry": 0.044444444444444446,
+        "rotation": 0.08
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/mazda--mazda2.webp": {
+    "wheels": [
+      {
+        "cx": 0.058333333333333334,
+        "cy": 0.585,
+        "rx": 0.020833333333333332,
+        "ry": 0.09833333333333333,
+        "rotation": -0.13
+      },
+      {
+        "cx": 0.365625,
+        "cy": 0.775,
+        "rx": 0.03229166666666667,
+        "ry": 0.13166666666666665,
+        "rotation": -0.08
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/mazda--mazda6.webp": {
+    "wheels": [
+      {
+        "cx": 0.11041666666666666,
+        "cy": 0.6757990867579908,
+        "rx": 0.034375,
+        "ry": 0.13013698630136986,
+        "rotation": 0
+      },
+      {
+        "cx": 0.5010416666666667,
+        "cy": 0.7442922374429224,
+        "rx": 0.042708333333333334,
+        "ry": 0.15296803652968036,
+        "rotation": -0.04
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/mazda--cx-60.webp": {
+    "wheels": [
+      {
+        "cx": 0.10416666666666667,
+        "cy": 0.6352941176470588,
+        "rx": 0.030208333333333334,
+        "ry": 0.11176470588235295,
+        "rotation": -0.08
+      },
+      {
+        "cx": 0.5270833333333333,
+        "cy": 0.7627450980392156,
+        "rx": 0.05,
+        "ry": 0.1411764705882353,
+        "rotation": -0.06
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/honda--nsx.webp": {
+    "wheels": [
+      {
+        "cx": 0.69375,
+        "cy": 0.6708333333333333,
+        "rx": 0.022916666666666665,
+        "ry": 0.07361111111111111,
+        "rotation": 0.12
+      },
+      {
+        "cx": 0.9109375,
+        "cy": 0.5847222222222223,
+        "rx": 0.014583333333333334,
+        "ry": 0.058333333333333334,
+        "rotation": 0.06
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/citroen--c3.webp": {
+    "wheels": [
+      {
+        "cx": 0.5333333333333333,
+        "cy": 0.7873462214411248,
+        "rx": 0.04479166666666667,
+        "ry": 0.13181019332161686,
+        "rotation": 0.07
+      },
+      {
+        "cx": 0.925,
+        "cy": 0.6608084358523726,
+        "rx": 0.029166666666666667,
+        "ry": 0.10369068541300527,
+        "rotation": 0.03
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/citroen--c5-aircross.webp": {
+    "wheels": [
+      {
+        "cx": 0.075,
+        "cy": 0.6472602739726028,
+        "rx": 0.027083333333333334,
+        "ry": 0.1113013698630137,
+        "rotation": 0.01
+      },
+      {
+        "cx": 0.425,
+        "cy": 0.7791095890410958,
+        "rx": 0.040625,
+        "ry": 0.13527397260273974,
+        "rotation": -0.075
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/citroen--spacetourer.webp": {
+    "wheels": [
+      {
+        "cx": 0.08645833333333333,
+        "cy": 0.6412884333821376,
+        "rx": 0.0125,
+        "ry": 0.07759882869692533,
+        "rotation": 0.005
+      },
+      {
+        "cx": 0.3,
+        "cy": 0.7898975109809663,
+        "rx": 0.020833333333333332,
+        "ry": 0.11420204978038068,
+        "rotation": -0.04
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/dacia--logan.webp": {
+    "wheels": [
+      {
+        "cx": 0.5645833333333333,
+        "cy": 0.7614068441064639,
+        "rx": 0.0375,
+        "ry": 0.1359315589353612,
+        "rotation": 0.016
+      },
+      {
+        "cx": 0.909375,
+        "cy": 0.6682509505703422,
+        "rx": 0.022916666666666665,
+        "ry": 0.10266159695817491,
+        "rotation": 0.02
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/dacia--duster.webp": {
+    "wheels": [
+      {
+        "cx": 0.53125,
+        "cy": 0.7607573149741824,
+        "rx": 0.04479166666666667,
+        "ry": 0.12048192771084337,
+        "rotation": 0.055
+      },
+      {
+        "cx": 0.9072916666666667,
+        "cy": 0.6247848537005164,
+        "rx": 0.023958333333333335,
+        "ry": 0.08950086058519793,
+        "rotation": 0.02
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/dacia--spring.webp": {
+    "wheels": [
+      {
+        "cx": 0.08645833333333333,
+        "cy": 0.7150259067357513,
+        "rx": 0.028125,
+        "ry": 0.09326424870466321,
+        "rotation": -0.02
+      },
+      {
+        "cx": 0.4979166666666667,
+        "cy": 0.7979274611398963,
+        "rx": 0.03958333333333333,
+        "ry": 0.11053540587219343,
+        "rotation": -0.03
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/land-rover-range-rover--range-rover-sport.webp": {
+    "wheels": [
+      {
+        "cx": 0.084375,
+        "cy": 0.5766550522648084,
+        "rx": 0.028125,
+        "ry": 0.10278745644599303,
+        "rotation": -0.08
+      },
+      {
+        "cx": 0.48854166666666665,
+        "cy": 0.7700348432055749,
+        "rx": 0.04791666666666667,
+        "ry": 0.13588850174216027,
+        "rotation": -0.08
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/land-rover-range-rover--evoque.webp": {
+    "wheels": [
+      {
+        "cx": 0.08333333333333333,
+        "cy": 0.6576923076923077,
+        "rx": 0.029166666666666667,
+        "ry": 0.11538461538461539,
+        "rotation": -0.055
+      },
+      {
+        "cx": 0.4739583333333333,
+        "cy": 0.7673076923076924,
+        "rx": 0.04375,
+        "ry": 0.13846153846153847,
+        "rotation": -0.06
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/jaguar--xf.webp": {
+    "wheels": [
+      {
+        "cx": 0.40520833333333334,
+        "cy": 0.7228381374722838,
+        "rx": 0.05625,
+        "ry": 0.15077605321507762,
+        "rotation": 0.01
+      },
+      {
+        "cx": 0.9052083333333333,
+        "cy": 0.656319290465632,
+        "rx": 0.03333333333333333,
+        "ry": 0.12416851441241686,
+        "rotation": 0.03
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/jaguar--e-pace.webp": {
+    "wheels": [
+      {
+        "cx": 0.5208333333333334,
+        "cy": 0.758095238095238,
+        "rx": 0.04895833333333333,
+        "ry": 0.13714285714285715,
+        "rotation": 0.055
+      },
+      {
+        "cx": 0.9104166666666667,
+        "cy": 0.6209523809523809,
+        "rx": 0.029166666666666667,
+        "ry": 0.11047619047619048,
+        "rotation": 0.02
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/lexus--rz.webp": {
+    "wheels": [
+      {
+        "cx": 0.5869791666666667,
+        "cy": 0.76007326007326,
+        "rx": 0.0375,
+        "ry": 0.13736263736263737,
+        "rotation": 0.06
+      },
+      {
+        "cx": 0.9302083333333333,
+        "cy": 0.6098901098901099,
+        "rx": 0.021875,
+        "ry": 0.1043956043956044,
+        "rotation": 0.035
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/hyundai--i30.webp": {
+    "wheels": [
+      {
+        "cx": 0.09281249999999999,
+        "cy": 0.6635610766045549,
+        "rx": 0.03302083333333333,
+        "ry": 0.11511387163561076,
+        "rotation": -0.028328
+      },
+      {
+        "cx": 0.5125,
+        "cy": 0.7743271221532091,
+        "rx": 0.04583333333333333,
+        "ry": 0.13250517598343686,
+        "rotation": -0.025
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/hyundai--bayon.webp": {
+    "wheels": [
+      {
+        "cx": 0.5364583333333334,
+        "cy": 0.7717013888888888,
+        "rx": 0.046875,
+        "ry": 0.13020833333333334,
+        "rotation": 0.12
+      },
+      {
+        "cx": 0.9229166666666667,
+        "cy": 0.5607638888888888,
+        "rx": 0.023958333333333335,
+        "ry": 0.09375,
+        "rotation": 0.075
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/hyundai--tucson.webp": {
+    "wheels": [
+      {
+        "cx": 0.09489583333333333,
+        "cy": 0.6201941747572816,
+        "rx": 0.0271875,
+        "ry": 0.1,
+        "rotation": -0.028328
+      },
+      {
+        "cx": 0.47604166666666664,
+        "cy": 0.7553398058252427,
+        "rx": 0.03958333333333333,
+        "ry": 0.1262135922330097,
+        "rotation": -0.065
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/hyundai--ioniq-5.webp": {
+    "wheels": [
+      {
+        "cx": 0.5,
+        "cy": 0.7439024390243902,
+        "rx": 0.04895833333333333,
+        "ry": 0.1524390243902439,
+        "rotation": 0.055
+      },
+      {
+        "cx": 0.9072916666666667,
+        "cy": 0.6077235772357723,
+        "rx": 0.026041666666666668,
+        "ry": 0.11178861788617886,
+        "rotation": 0.035
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/kia--proceed.webp": {
+    "wheels": [
+      {
+        "cx": 0.07739583333333333,
+        "cy": 0.5235401459854014,
+        "rx": 0.022187500000000002,
+        "ry": 0.0937956204379562,
+        "rotation": -0.028328
+      },
+      {
+        "cx": 0.453125,
+        "cy": 0.7627737226277372,
+        "rx": 0.04583333333333333,
+        "ry": 0.13686131386861314,
+        "rotation": -0.07
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/kia--xceed.webp": {
+    "wheels": [
+      {
+        "cx": 0.0828125,
+        "cy": 0.632295719844358,
+        "rx": 0.030208333333333334,
+        "ry": 0.11284046692607004,
+        "rotation": -0.06
+      },
+      {
+        "cx": 0.48541666666666666,
+        "cy": 0.7801556420233463,
+        "rx": 0.04583333333333333,
+        "ry": 0.13618677042801555,
+        "rotation": -0.1
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/kia--stonic.webp": {
+    "wheels": [
+      {
+        "cx": 0.08177083333333333,
+        "cy": 0.6550308008213552,
+        "rx": 0.029166666666666667,
+        "ry": 0.11293634496919917,
+        "rotation": -0.04
+      },
+      {
+        "cx": 0.48802083333333335,
+        "cy": 0.7817248459958932,
+        "rx": 0.04520833333333333,
+        "ry": 0.14887063655030802,
+        "rotation": -0.111539
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/kia--niro.webp": {
+    "wheels": [
+      {
+        "cx": 0.56875,
+        "cy": 0.7838312829525483,
+        "rx": 0.040625,
+        "ry": 0.13181019332161686,
+        "rotation": 0.075
+      },
+      {
+        "cx": 0.9197916666666667,
+        "cy": 0.5869947275922671,
+        "rx": 0.027083333333333334,
+        "ry": 0.10017574692442882,
+        "rotation": 0.05
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/kia--sorento.webp": {
+    "wheels": [
+      {
+        "cx": 0.5786458333333333,
+        "cy": 0.7544802867383512,
+        "rx": 0.046875,
+        "ry": 0.14516129032258066,
+        "rotation": 0.05
+      },
+      {
+        "cx": 0.9197916666666667,
+        "cy": 0.6308243727598566,
+        "rx": 0.026041666666666668,
+        "ry": 0.1111111111111111,
+        "rotation": 0.02
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/kia--ev3.webp": {
+    "wheels": [
+      {
+        "cx": 0.07083333333333333,
+        "cy": 0.5765124555160143,
+        "rx": 0.025,
+        "ry": 0.10498220640569395,
+        "rotation": -0.04
+      },
+      {
+        "cx": 0.4427083333333333,
+        "cy": 0.7669039145907474,
+        "rx": 0.04583333333333333,
+        "ry": 0.14768683274021352,
+        "rotation": -0.075
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/kia--ev4.webp": {
+    "wheels": [
+      {
+        "cx": 0.0671875,
+        "cy": 0.5772646536412078,
+        "rx": 0.025,
+        "ry": 0.11190053285968028,
+        "rotation": -0.06
+      },
+      {
+        "cx": 0.4275,
+        "cy": 0.7644760213143872,
+        "rx": 0.04635416666666667,
+        "ry": 0.14422735346358792,
+        "rotation": -0.120841
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/kia--ev6.webp": {
+    "wheels": [
+      {
+        "cx": 0.09895833333333333,
+        "cy": 0.6351648351648351,
+        "rx": 0.03229166666666667,
+        "ry": 0.12527472527472527,
+        "rotation": -0.03
+      },
+      {
+        "cx": 0.546875,
+        "cy": 0.7494505494505495,
+        "rx": 0.05416666666666667,
+        "ry": 0.15824175824175823,
+        "rotation": -0.07
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/kia--ev9.webp": {
+    "wheels": [
+      {
+        "cx": 0.5385416666666667,
+        "cy": 0.7666068222621185,
+        "rx": 0.040625,
+        "ry": 0.1310592459605027,
+        "rotation": 0.04
+      },
+      {
+        "cx": 0.9229166666666667,
+        "cy": 0.6086175942549371,
+        "rx": 0.023958333333333335,
+        "ry": 0.10053859964093358,
+        "rotation": 0.025
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/peugeot--308.webp": {
+    "wheels": [
+      {
+        "cx": 0.603125,
+        "cy": 0.7126213592233009,
+        "rx": 0.06145833333333333,
+        "ry": 0.15145631067961166,
+        "rotation": 0,
+        "clip": [
+          [
+            0.575,
+            0.5436893203883495
+          ],
+          [
+            0.5708333333333333,
+            0.5805825242718446
+          ],
+          [
+            0.5635416666666667,
+            0.6194174757281553
+          ],
+          [
+            0.5583333333333333,
+            0.6699029126213593
+          ],
+          [
+            0.5541666666666667,
+            0.7184466019417476
+          ],
+          [
+            0.55,
+            0.7669902912621359
+          ],
+          [
+            0.5447916666666667,
+            0.7922330097087379
+          ],
+          [
+            0.5,
+            0.7922330097087379
+          ],
+          [
+            0.5,
+            0.970873786407767
+          ],
+          [
+            0.7291666666666666,
+            0.970873786407767
+          ],
+          [
+            0.7291666666666666,
+            0.5436893203883495
+          ]
+        ]
+      },
+      {
+        "cx": 0.9177083333333333,
+        "cy": 0.6233009708737864,
+        "rx": 0.020833333333333332,
+        "ry": 0.12233009708737864,
+        "rotation": 0.04
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered. A normalized visible-region polygon preserves the blue front bumper over the partially occluded rim."
+  },
+  "assets/vehicles/peugeot--408.webp": {
+    "wheels": [
+      {
+        "cx": 0.4996875,
+        "cy": 0.7460580912863071,
+        "rx": 0.045000000000000005,
+        "ry": 0.14585062240663899,
+        "rotation": 0.028328
+      },
+      {
+        "cx": 0.8947916666666667,
+        "cy": 0.5912863070539419,
+        "rx": 0.025,
+        "ry": 0.0995850622406639,
+        "rotation": 0.035
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/peugeot--2008.webp": {
+    "wheels": [
+      {
+        "cx": 0.46979166666666666,
+        "cy": 0.7158469945355191,
+        "rx": 0.04375,
+        "ry": 0.1111111111111111,
+        "rotation": 0.02
+      },
+      {
+        "cx": 0.8992708333333332,
+        "cy": 0.585792349726776,
+        "rx": 0.030000000000000002,
+        "ry": 0.08797814207650273,
+        "rotation": -0.014975
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/peugeot--3008.webp": {
+    "wheels": [
+      {
+        "cx": 0.07291666666666667,
+        "cy": 0.6095076400679117,
+        "rx": 0.021875,
+        "ry": 0.11035653650254669,
+        "rotation": -0.05
+      },
+      {
+        "cx": 0.38229166666666664,
+        "cy": 0.765704584040747,
+        "rx": 0.03854166666666667,
+        "ry": 0.13582342954159593,
+        "rotation": -0.05
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/peugeot--rifter.webp": {
+    "wheels": [
+      {
+        "cx": 0.06614583333333333,
+        "cy": 0.6084262701363073,
+        "rx": 0.0067708333333333336,
+        "ry": 0.07558859975216853,
+        "rotation": 0
+      },
+      {
+        "cx": 0.215625,
+        "cy": 0.8004956629491945,
+        "rx": 0.013541666666666667,
+        "ry": 0.1090458488228005,
+        "rotation": -0.05
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/renault--clio.webp": {
+    "wheels": [
+      {
+        "cx": 0.5802083333333333,
+        "cy": 0.7509157509157509,
+        "rx": 0.0375,
+        "ry": 0.13003663003663005,
+        "rotation": 0.025
+      },
+      {
+        "cx": 0.9333333333333333,
+        "cy": 0.6336996336996337,
+        "rx": 0.025,
+        "ry": 0.10256410256410256,
+        "rotation": 0.03
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/renault--captur.webp": {
+    "wheels": [
+      {
+        "cx": 0.07291666666666667,
+        "cy": 0.6261510128913443,
+        "rx": 0.030208333333333334,
+        "ry": 0.1141804788213628,
+        "rotation": -0.04
+      },
+      {
+        "cx": 0.46875,
+        "cy": 0.7679558011049724,
+        "rx": 0.04895833333333333,
+        "ry": 0.13996316758747698,
+        "rotation": -0.045
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/renault--megane.webp": {
+    "wheels": [
+      {
+        "cx": 0.09052083333333334,
+        "cy": 0.6818181818181818,
+        "rx": 0.030208333333333334,
+        "ry": 0.11712473572938689,
+        "rotation": -0.026459
+      },
+      {
+        "cx": 0.47708333333333336,
+        "cy": 0.7780126849894292,
+        "rx": 0.03229166666666667,
+        "ry": 0.13742071881606766,
+        "rotation": -0.06
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/renault--symbioz.webp": {
+    "wheels": [
+      {
+        "cx": 0.53125,
+        "cy": 0.7766143106457243,
+        "rx": 0.04791666666666667,
+        "ry": 0.13787085514834205,
+        "rotation": 0.055
+      },
+      {
+        "cx": 0.9072916666666667,
+        "cy": 0.5881326352530541,
+        "rx": 0.030208333333333334,
+        "ry": 0.1099476439790576,
+        "rotation": 0.03
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/renault--austral.webp": {
+    "wheels": [
+      {
+        "cx": 0.6114583333333333,
+        "cy": 0.7515625,
+        "rx": 0.0375,
+        "ry": 0.1171875,
+        "rotation": 0.06
+      },
+      {
+        "cx": 0.921875,
+        "cy": 0.65,
+        "rx": 0.021875,
+        "ry": 0.09375,
+        "rotation": 0.055
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/renault--espace.webp": {
+    "wheels": [
+      {
+        "cx": 0.09479166666666666,
+        "cy": 0.6319018404907976,
+        "rx": 0.03125,
+        "ry": 0.11247443762781185,
+        "rotation": -0.02
+      },
+      {
+        "cx": 0.4979166666666667,
+        "cy": 0.7709611451942741,
+        "rx": 0.04479166666666667,
+        "ry": 0.13701431492842536,
+        "rotation": -0.025
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/renault--rafale.webp": {
+    "wheels": [
+      {
+        "cx": 0.109375,
+        "cy": 0.6053169734151329,
+        "rx": 0.03229166666666667,
+        "ry": 0.12065439672801637,
+        "rotation": -0.105
+      },
+      {
+        "cx": 0.5,
+        "cy": 0.7484662576687117,
+        "rx": 0.05625,
+        "ry": 0.1574642126789366,
+        "rotation": -0.044309
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/renault--scenic.webp": {
+    "wheels": [
+      {
+        "cx": 0.09010416666666667,
+        "cy": 0.5609756097560976,
+        "rx": 0.023958333333333335,
+        "ry": 0.09930313588850175,
+        "rotation": -0.08
+      },
+      {
+        "cx": 0.45,
+        "cy": 0.7682926829268293,
+        "rx": 0.046875,
+        "ry": 0.14285714285714285,
+        "rotation": -0.105
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/opel--astra.webp": {
+    "wheels": [
+      {
+        "cx": 0.5166666666666667,
+        "cy": 0.75,
+        "rx": 0.04791666666666667,
+        "ry": 0.14549180327868852,
+        "rotation": 0.08
+      },
+      {
+        "cx": 0.9001041666666667,
+        "cy": 0.6065573770491803,
+        "rx": 0.02802083333333333,
+        "ry": 0.11065573770491803,
+        "rotation": 0.028328
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/seat--ateca.webp": {
+    "wheels": [
+      {
+        "cx": 0.475,
+        "cy": 0.7761506276150628,
+        "rx": 0.05520833333333333,
+        "ry": 0.1506276150627615,
+        "rotation": 0.025
+      },
+      {
+        "cx": 0.903125,
+        "cy": 0.700836820083682,
+        "rx": 0.035416666666666666,
+        "ry": 0.12761506276150628,
+        "rotation": 0.015
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/seat--tarraco.webp": {
+    "wheels": [
+      {
+        "cx": 0.1278125,
+        "cy": 0.7010660980810235,
+        "rx": 0.03229166666666667,
+        "ry": 0.11982942430703625,
+        "rotation": -0.028328
+      },
+      {
+        "cx": 0.54375,
+        "cy": 0.767590618336887,
+        "rx": 0.04479166666666667,
+        "ry": 0.13219616204690832,
+        "rotation": -0.025
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/cupra--leon.webp": {
+    "wheels": [
+      {
+        "cx": 0.5197916666666667,
+        "cy": 0.766260162601626,
+        "rx": 0.04791666666666667,
+        "ry": 0.15447154471544716,
+        "rotation": 0
+      },
+      {
+        "cx": 0.9114583333333334,
+        "cy": 0.6646341463414634,
+        "rx": 0.03333333333333333,
+        "ry": 0.13008130081300814,
+        "rotation": 0.045
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/cupra--formentor.webp": {
+    "wheels": [
+      {
+        "cx": 0.53125,
+        "cy": 0.7692307692307693,
+        "rx": 0.041666666666666664,
+        "ry": 0.14038461538461539,
+        "rotation": 0.04
+      },
+      {
+        "cx": 0.9145833333333333,
+        "cy": 0.6326923076923077,
+        "rx": 0.029166666666666667,
+        "ry": 0.11346153846153846,
+        "rotation": 0.06
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/nissan--micra.webp": {
+    "wheels": [
+      {
+        "cx": 0.0696875,
+        "cy": 0.6887070376432078,
+        "rx": 0.034895833333333334,
+        "ry": 0.09770867430441899,
+        "rotation": -0.028328
+      },
+      {
+        "cx": 0.4979166666666667,
+        "cy": 0.7708674304418985,
+        "rx": 0.046875,
+        "ry": 0.11129296235679215,
+        "rotation": -0.04
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/nissan--qashqai.webp": {
+    "wheels": [
+      {
+        "cx": 0.08020833333333334,
+        "cy": 0.6086956521739131,
+        "rx": 0.027083333333333334,
+        "ry": 0.10434782608695652,
+        "rotation": -0.025
+      },
+      {
+        "cx": 0.4583333333333333,
+        "cy": 0.7739130434782608,
+        "rx": 0.04583333333333333,
+        "ry": 0.12521739130434784,
+        "rotation": -0.05
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/nissan--gt-r.webp": {
+    "wheels": [
+      {
+        "cx": 0.08447916666666666,
+        "cy": 0.6865671641791045,
+        "rx": 0.03729166666666666,
+        "ry": 0.1828358208955224,
+        "rotation": 0.028328
+      },
+      {
+        "cx": 0.45416666666666666,
+        "cy": 0.7338308457711443,
+        "rx": 0.042708333333333334,
+        "ry": 0.19154228855721392,
+        "rotation": 0.105
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  },
+  "assets/vehicles/nissan--navara.webp": {
+    "wheels": [
+      {
+        "cx": 0.4979166666666667,
+        "cy": 0.7522281639928698,
+        "rx": 0.04895833333333333,
+        "ry": 0.13012477718360071,
+        "rotation": 0.16
+      },
+      {
+        "cx": 0.8864583333333333,
+        "cy": 0.5793226381461676,
+        "rx": 0.019270833333333334,
+        "ry": 0.08377896613190731,
+        "rotation": 0.04
+      }
+    ],
+    "note": "Both visible rim boundaries measured against source-pixel grid and visually checked with the production bronze apex10 composite; tyre sidewalls and background vehicles remain uncovered."
+  }
+}

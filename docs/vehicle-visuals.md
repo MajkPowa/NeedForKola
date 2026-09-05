@@ -6,7 +6,7 @@ The 2026-09-05 build contains **401 photographs for all 401 requested model fami
 
 ## Meaning of a model photograph
 
-Every record here has `kind: "photo"` and `match: "model"`. A model photograph identifies that model family; it is **not** automatically the selected production year, facelift, body style, engine, or wheel configuration. The actual depicted vehicle is described in `depicted.label`. The interface must disclose model-level matching and use a separately verified variant image when one exists. Photographs retain their original wheels. These photographs are not rotatable 3D models or wheel fitment simulations.
+Every record here has `kind: "photo"` and `match: "model"`. A model photograph identifies that model family; it is **not** automatically the selected production year, facelift, body style, engine, or wheel configuration. The actual depicted vehicle is described in `depicted.label`. The interface discloses model-level matching and uses a separately verified variant image when one exists. Original assets retain their factory wheels. In the configurator, a separate canvas projects the selected wheel design over their rim faces; the comparison button reveals the original. Photographs are not rotatable 3D car models or a physical fitment simulation.
 
 The model-to-article crosswalk is curated in `tools/vehicle-wiki-titles.json`. Shared articles and rebadged vehicles need an explicitly identified image from `tools/vehicle-wiki-image-overrides.json`; blindly taking the lead photograph of a redirect would show the wrong badge or body. For example, the Subaru BRZ and Toyota GR86 share a Wikipedia article, while GMC Sierra and Chevrolet Silverado are documented together. Their selected photos remain different and explicitly identified. The EX40 record uses an explicitly labelled Volvo EX40 photograph instead of the XC40 article's combustion-model lead photo.
 
@@ -20,7 +20,7 @@ The UI displays the photographer, a link to the exact Commons source file, and a
 
 ## Image processing and delivery
 
-- Original frame and proportions are preserved. No artificial background removal, recolouring, AI generation or replacement of visible parts is performed.
+- Original asset frames and proportions are preserved, without background removal, recolouring, AI generation or destructive replacement of visible parts. The configurator's reversible wheel overlay is documented in [wheel-photo-preview.md](wheel-photo-preview.md).
 - Orientation is normalised from EXIF, images are limited to 960 pixels wide, and a local WebP copy is encoded at quality 84.
 - `processing` on each record declares this conversion. Source versions and attribution remain available through the manifest.
 - All images used by the site are local under `assets/vehicles/`. The browser does not call Wikipedia, Commons, an image CDN or a search service at runtime.

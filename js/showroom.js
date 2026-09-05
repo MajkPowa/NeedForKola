@@ -411,5 +411,140 @@ export function renderThumbnail(input = {}) {
   thumbnailQueue = job.catch(() => {}); return job;
 }
 
-window.NFWShowroom = { mount, createWheel, renderThumbnail, disposeThumbnails, version: '1.0.0', threeVersion: THREE.REVISION };
+// A separate transparent renderer supplies actual wheel geometry for photo fitting.
+// Cached snapshots are independent of this GPU context and must be treated as read-only.
+const FACE_CACHE_LIMIT = 30, FACE_IDLE_MS = 10000;
+const faceCache = new Map();
+let faceQueue = Promise.resolve(), faceStudio = null, faceIdleTimer;
+
+function faceOptions(input) {
+  const opts = options({ ...input, color: hex(input.colorHex, hex(input.color, '#967044')), autoRotate: false });
+  return {
+    design: opts.design, color: opts.color, finish: opts.finish,
+    lip: ['same', 'polished', 'chrome', 'machined', 'black'].includes(opts.lip) ? opts.lip : 'same',
+    cap: ['none', 'same', 'body', 'silver', 'black', 'carbon'].includes(opts.cap) ? opts.cap : 'black',
+    diameter: opts.diameter, width: opts.width, bolts: Math.round(opts.bolts), mirror: Boolean(input.mirror),
+    size: Math.round(clamp(input.size, 256, 512, 512)),
+    yaw: Number(clamp(input.yaw, -1.2, 1.2, 0).toFixed(4)),
+    pitch: Number(clamp(input.pitch, -.8, .8, 0).toFixed(4))
+  };
+}
+
+function createFaceStudio() {
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, premultipliedAlpha: true, preserveDrawingBuffer: true, powerPreference: 'low-power' });
+  renderer.setPixelRatio(1);
+  renderer.setClearColor(0x000000, 0);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.12;
+  renderer.shadowMap.enabled = false;
+  const scene = new THREE.Scene();
+  const camera = new THREE.OrthographicCamera(-1.052, 1.052, 1.052, -1.052, .01, 15);
+  camera.position.set(0, 0, 5); camera.lookAt(0, 0, 0);
+  const pmrem = new THREE.PMREMGenerator(renderer), room = new RoomEnvironment();
+  const environment = pmrem.fromScene(room, .055);
+  scene.environment = environment.texture; scene.environmentIntensity = 1.05;
+  room.dispose(); pmrem.dispose();
+  const key = new THREE.DirectionalLight('#fff6e8', 2.1); key.position.set(-3, 6, 5); scene.add(key);
+  const fill = new THREE.DirectionalLight('#bacbdf', 1.25); fill.position.set(4, 1, 4); scene.add(fill);
+  return { renderer, scene, camera, environment };
+}
+
+function addFaceBrakes(group, face) {
+  // This black backing is drawn first, without writing depth. Its projection follows
+  // the outer rim exactly, so the original photograph's spokes never shine through.
+  // The 0.004-unit black perimeter is only a rim edge, not an added tyre.
+  const backing = mesh(new THREE.CircleGeometry(1.032, 192), new THREE.MeshBasicMaterial({ color: '#090c0e', side: THREE.DoubleSide, depthTest: false, depthWrite: false, toneMapped: false }), group);
+  backing.position.z = face; backing.renderOrder = -100;
+  const brake = new THREE.MeshStandardMaterial({ color: '#23282c', roughness: .75, metalness: .7, envMapIntensity: .3 });
+  const rotor = mesh(new THREE.CylinderGeometry(.79, .79, .045, 160), brake, group);
+  rotor.rotation.x = Math.PI / 2; rotor.position.z = -.2;
+  const hat = mesh(new THREE.CylinderGeometry(.3, .3, .034, 96), new THREE.MeshStandardMaterial({ color: '#1b2127', metalness: .5, roughness: .6 }), group);
+  hat.rotation.x = Math.PI / 2; hat.position.z = -.164;
+  const grooves = new THREE.MeshStandardMaterial({ color: '#434a50', metalness: .55, roughness: .79, envMapIntensity: .25 });
+  for (const radius of [.48, .55, .62, .69, .765]) {
+    const ring = mesh(new THREE.TorusGeometry(radius, .0016, 6, 160), grooves, group);
+    ring.position.z = -.176;
+  }
+  const holes = new THREE.InstancedMesh(new THREE.CircleGeometry(.013, 12), new THREE.MeshBasicMaterial({ color: '#11161a', toneMapped: false }), 48);
+  const dummy = new THREE.Object3D();
+  for (let i = 0; i < 48; i++) {
+    const angle = i * TAU / 24 + (i >= 24 ? .075 : 0), radius = i >= 24 ? .69 : .59;
+    dummy.position.set(Math.cos(angle) * radius, Math.sin(angle) * radius, -.1748);
+    dummy.updateMatrix(); holes.setMatrixAt(i, dummy.matrix);
+  }
+  group.add(holes);
+}
+
+/** Release only the temporary face renderer; existing wheel/car showrooms are untouched. */
+export function disposeWheelFaces({ clearCache = false } = {}) {
+  clearTimeout(faceIdleTimer); faceIdleTimer = null;
+  if (faceStudio) {
+    const studio = faceStudio; faceStudio = null;
+    disposeObject(studio.scene); studio.environment.dispose();
+    studio.renderer.dispose(); studio.renderer.forceContextLoss(); studio.renderer.domElement.remove();
+  }
+  // Do not resize cached canvases: callers may still be displaying their snapshots.
+  if (clearCache) faceCache.clear();
+}
+
+/**
+ * Return a PNG and independent 2D canvas of a centred, transparent-background wheel.
+ * yaw/pitch are radians. For the default straight-on face, `radius` is the outer rim
+ * radius in pixels; use centerX/centerY and radius when fitting an ellipse on a photo.
+ */
+export function renderWheelFace(input = {}) {
+  const opts = faceOptions(input), cacheKey = JSON.stringify(opts);
+  const job = faceQueue.then(() => {
+    clearTimeout(faceIdleTimer);
+    if (faceCache.has(cacheKey)) {
+      const cached = faceCache.get(cacheKey);
+      faceCache.delete(cacheKey); faceCache.set(cacheKey, cached);
+      if (faceStudio) faceIdleTimer = setTimeout(disposeWheelFaces, FACE_IDLE_MS);
+      return cached;
+    }
+    let assembly;
+    try {
+      faceStudio ||= createFaceStudio();
+      const { renderer, scene, camera } = faceStudio;
+      if (renderer.getContext().isContextLost()) throw new Error('Kontext 3D náhledu kola není dostupný.');
+      assembly = new THREE.Group();
+      const wheel = createWheel(opts), face = presets[opts.design].bolts ? .23 : .33;
+      addFaceBrakes(wheel, face);
+      // Pitch/yaw pivot about the rim face, preserving the centre of its ellipse.
+      wheel.position.z = -face; assembly.add(wheel);
+      assembly.rotation.set(opts.pitch, opts.yaw, 0, 'YXZ');
+      scene.add(assembly); assembly.updateMatrixWorld(true);
+      let extent = 1.052;
+      if (opts.yaw || opts.pitch) {
+        const box = new THREE.Box3().setFromObject(assembly);
+        extent = Math.max(extent, Math.abs(box.min.x) + .02, Math.abs(box.max.x) + .02, Math.abs(box.min.y) + .02, Math.abs(box.max.y) + .02);
+      }
+      camera.left = camera.bottom = -extent; camera.right = camera.top = extent;
+      camera.updateProjectionMatrix(); renderer.setSize(opts.size, opts.size, false);
+      renderer.render(scene, camera);
+      if (renderer.getContext().isContextLost()) throw new Error('3D náhled kola se nepodařilo dokončit.');
+      const canvas = document.createElement('canvas'); canvas.width = canvas.height = opts.size;
+      const context = canvas.getContext('2d');
+      if (!context) throw new Error('Rastrový náhled kola není dostupný.');
+      context.drawImage(renderer.domElement, 0, 0);
+      const snapshot = Object.freeze({
+        canvas, src: canvas.toDataURL('image/png'), width: opts.size, height: opts.size,
+        centerX: opts.size / 2, centerY: opts.size / 2, radius: opts.size * 1.032 / (2 * extent),
+        yaw: opts.yaw, pitch: opts.pitch, options: Object.freeze({ ...opts })
+      });
+      faceCache.set(cacheKey, snapshot);
+      while (faceCache.size > FACE_CACHE_LIMIT) faceCache.delete(faceCache.keys().next().value);
+      assembly.removeFromParent(); disposeObject(assembly); assembly = null;
+      faceIdleTimer = setTimeout(disposeWheelFaces, FACE_IDLE_MS);
+      return snapshot;
+    } catch (error) {
+      if (assembly) { assembly.removeFromParent(); disposeObject(assembly); }
+      disposeWheelFaces(); throw error;
+    }
+  });
+  faceQueue = job.catch(() => {}); return job;
+}
+
+window.NFWShowroom = { mount, createWheel, renderThumbnail, disposeThumbnails, renderWheelFace, disposeWheelFaces, version: '1.1.0', threeVersion: THREE.REVISION };
 window.dispatchEvent(new CustomEvent('nfw:showroom-ready'));
