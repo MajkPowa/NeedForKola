@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "id": "tesla-model-3-2018",
+  "src": "assets/models/tesla-model-3-2018.glb",
+  "label": "Tesla Model 3 2018",
+  "modelKey": "tesla/model-3",
+  "generation": "1. generace, před faceliftem",
+  "body": "Sedan",
+  "sourceYear": 2018,
+  "coordinateSystem": {
+    "units": "metres",
+    "up": "+Y",
+    "forward": "-X",
+    "groundY": 0,
+    "origin": "geometric X/Z center",
+    "wheelAnchorFace": "+Z outward"
+  },
+  "wheels": [
+    {
+      "id": "front-left",
+      "anchor": "NFW_WHEEL_FRONT_LEFT",
+      "position": [
+        -1.559988,
+        0.339223,
+        0.965083
+      ],
+      "rimRadius": 0.260529,
+      "widthInches": 10,
+      "diameterInches": 20,
+      "side": "left"
+    },
+    {
+      "id": "front-right",
+      "anchor": "NFW_WHEEL_FRONT_RIGHT",
+      "position": [
+        -1.559988,
+        0.339223,
+        -0.964617
+      ],
+      "rimRadius": 0.260529,
+      "widthInches": 10,
+      "diameterInches": 20,
+      "side": "right"
+    },
+    {
+      "id": "rear-left",
+      "anchor": "NFW_WHEEL_REAR_LEFT",
+      "position": [
+        1.300717,
+        0.339225,
+        0.967594
+      ],
+      "rimRadius": 0.265237,
+      "widthInches": 10,
+      "diameterInches": 20,
+      "side": "left"
+    },
+    {
+      "id": "rear-right",
+      "anchor": "NFW_WHEEL_REAR_RIGHT",
+      "position": [
+        1.300717,
+        0.339225,
+        -0.967128
+      ],
+      "rimRadius": 0.265237,
+      "widthInches": 10,
+      "diameterInches": 20,
+      "side": "right"
+    }
+  ],
+  "paintMaterials": [
+    "primary"
+  ],
+  "source": {
+    "title": "Tesla 2018 Model 3",
+    "author": "Ameer Studio",
+    "authorUrl": "https://sketchfab.com/uchiha.321abc",
+    "url": "https://sketchfab.com/3d-models/tesla-2018-model-3-5ef9b845aaf44203b6d04e2c677e444f",
+    "download": "https://github.com/tomfanhm/tesla/tree/main/public/gltf/tesla",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "verifiedAt": "2026-09-05"
+  },
+  "changes": [
+    "Uniformly scaled to 4.695 m length; normalized axes and ground",
+    "Removed original rims, center caps and associated rim fittings; kept tyres and brake meshes",
+    "Added four independent wheel anchors",
+    "Adjusted exterior paint to metallic clearcoat",
+    "Deduplicated and Draco-compressed geometry without polygon simplification"
+  ],
+  "notes": [
+    "Artist-authored model, not manufacturer CAD or certified fitment data. Mesh proportions and wheel sizes are approximate.",
+    "Represents original 2018 exterior; must not represent the 2024 Highland facelift."
+  ],
+  "removedSourceNodes": [
+    "wheels_wheels.0_0",
+    "wheels_wheels.1_0",
+    "wheels_movsteer_1.0.1_0",
+    "wheels_wheels.6_0",
+    "wheels.001_wheels.0_0",
+    "wheels.001_wheels.1_0",
+    "wheels.001_movsteer_1.0.1_0",
+    "wheels.001_wheels.6_0"
+  ],
+  "bytes": 3767860
+}

@@ -1,12 +1,20 @@
 # Configured wheels on vehicle photographs
 
-The **Můj vůz** view combines the licensed vehicle photograph with a transparent canvas of the configured wheels. It covers the 401 model-family photos, 27 explicitly matched variant photos and two existing BMW X5 renders. Model-family references retain their existing label; fitting a wheel does not turn a reference photograph into an exact generation match.
+For cars without a registered 360° mesh, **Můj vůz** combines the licensed vehicle photograph with a transparent canvas of the configured wheels. Cars with a matching mesh use the true 3D studio by default; their static reference is under **Fotografie**. The photographic preview covers 401 model-family photos, 27 explicitly matched variant photos and two BMW X5 renders. Model-family references retain their label; fitting a wheel does not turn a reference photograph into an exact generation match.
 
 `js/showroom.js` exports `renderWheelFace()`. It renders the same bevelled Three.js wheel geometry used by the interactive studio, including all 13 designs, metal finishes, colours, caps, lips and bolts. There is no SVG, external image-generation service or machine-learning model in the browser. A separate temporary WebGL context produces independent raster snapshots; a serial queue and 30-entry LRU cache bound resource use. Idle rendering resources are released after ten seconds.
 
 `js/wheel-fit-preview.js` loads `data/wheel-fitments.json` only when needed. Each photo has full-image dimensions, the original source hash and normalized rim ellipses (`cx`, `cy`, `rx`, `ry`, clockwise `rotation` in radians). An optional `clip` polygon of 3–32 full-image normalized `[x, y]` points restricts a wheel to its visible area where a foreground object occludes it. The original photograph and tyres are retained. New wheel faces have opaque brake backing to mask factory spokes, are projected into the photographed ellipses and receive a narrow contact shadow. Canvas and image use identical full-frame containment, including on mobile. Superseded asynchronous work cannot overwrite the current car or configuration. The comparison button shows the original immediately.
 
 This is a visualisation of the wheel's appearance. It does not simulate wheel diameter, tyre selection, track width, offset, suspension travel or physical clearance. The selected dimensions remain in the quotation and must be confirmed for the vehicle. The photograph's paint remains unchanged.
+
+## Depth and projection
+
+Each wheel may provide explicit `yaw` and `pitch` in radians, including an explicit zero. Without angles, `wheelPhotoAngles()` uses a conservative tilt only when two well-separated wheels and a clear apparent-size difference provide a perspective cue. Ambiguous side-on photographs keep a frontal projection. An inferred yaw is capped at 0.65 radians; pitch is never inferred. This is an appearance estimate, not a recovered camera calibration.
+
+Each visible wheel gets its own render from the concave geometry. `renderWheelFace()` returns `rimBasis` in raster pixels, so `paintWheelFaces()` can map the projected front plane into the original calibrated ellipse without compressing it twice. The deeper hub and spoke sides retain their visible parallax. Explicit foreground KEEP polygons remain in full-photo coordinates. The painter accepts either one legacy snapshot or a snapshot array.
+
+Directional shadows now fall from the spokes onto the rotor and inner surfaces. Fill lighting and inner-barrel reflections are restrained to avoid a uniformly lit sticker appearance. Cache keys include tilt. This improves a static photographic composition; rotating the complete car still requires a real model as documented in [3D assets](3d-assets.md).
 
 ## Sources and adaptation credits
 

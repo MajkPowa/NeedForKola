@@ -148,7 +148,7 @@ async function browserChecks() {
     let release;
     const gate = new Promise(resolve => { release = resolve; });
     await delayed.route('**/data/vehicle-visual*.json*', async route => { await gate; await route.continue(); });
-    await delayed.goto(base + '/konfigurator.html?brand=bmw&model=x5&year=2020&view=car', { waitUntil: 'domcontentloaded' });
+    await delayed.goto(base + '/konfigurator.html?brand=bmw&model=x5&year=2020&view=photo', { waitUntil: 'domcontentloaded' });
     await delayed.locator('#vehicleBrand').waitFor({ state: 'attached' });
     await delayed.selectOption('#vehicleBrand', 'tesla');
     await delayed.selectOption('#vehicleModel', 'model-y');

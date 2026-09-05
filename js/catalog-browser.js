@@ -17,12 +17,13 @@
     search: normalise(brand.name + ' ' + model.name)
   })));
   const totalVariants = models.reduce((count, item) => count + item.variants.length, 0);
-  const state = { brand: '', search: '', year: '', page: 1 };
+  const state = { brand: '', search: '', year: '', page: 1, only3d: false };
   const query = new URLSearchParams(location.search);
   if (V.brands.some(b => b.id === query.get('catalogBrand'))) state.brand = query.get('catalogBrand');
   state.search = (query.get('catalogSearch') || query.get('catalogModel') || '').slice(0, 80);
   if (/^\d{4}$/.test(query.get('catalogYear') || '') && Number(query.get('catalogYear')) <= through) state.year = query.get('catalogYear');
   state.page = Math.max(1, Number.parseInt(query.get('catalogPage'), 10) || 1);
+  state.only3d = query.get('catalog360') === '1';
 
   root.innerHTML = `
     <div class="catalog-heading">
@@ -33,6 +34,7 @@
       <label class="catalog-search"><span>Hledat vůz</span><input id="catalogSearch" type="search" maxlength="80" autocomplete="off" placeholder="Např. BMW X5, Octavia, Model Y…" value="${esc(state.search)}" aria-controls="catalogResults"></label>
       <div class="catalog-brand-field"><label for="catalogBrand">Značka</label><select id="catalogBrand" aria-controls="catalogResults"><option value="">Všechny značky</option>${V.brands.map(b => `<option value="${esc(b.id)}" ${state.brand === b.id ? 'selected' : ''}>${esc(b.name)}</option>`).join('')}</select></div>
       <label><span>Rok výroby</span><select id="catalogYear" aria-controls="catalogResults"><option value="">Všechny roky</option></select></label>
+      <label class="catalog-studio-filter"><input id="catalog360" type="checkbox" ${state.only3d ? 'checked' : ''} aria-controls="catalogResults"><span><b>Jen vozy s 360° modelem</b><small>Skutečné 3D auto s výměnou kol</small></span><i aria-hidden="true">360°</i></label>
     </div>
     <div class="catalog-result-bar"><p id="catalogResultCount" role="status" aria-live="polite" aria-atomic="true"></p><button id="catalogReset" type="button" hidden>Zrušit filtry <span aria-hidden="true">×</span></button></div>
     <div class="catalog-models" id="catalogResults"></div>
@@ -42,11 +44,24 @@
   const brandInput = root.querySelector('#catalogBrand');
   const searchInput = root.querySelector('#catalogSearch');
   const yearInput = root.querySelector('#catalogYear');
+  const studioInput = root.querySelector('#catalog360');
   const resultContainer = root.querySelector('#catalogResults');
   const brandPicker = window.NFWBrandPicker?.enhance(brandInput, { label: 'Značka v katalogu' });
   const termsMatch = item => !state.search.trim() || normalise(state.search).split(' ').every(term => item.search.includes(term) || item.search.replace(/ /g, '').includes(term));
   const prefiltered = () => models.filter(item => (!state.brand || item.brand.id === state.brand) && termsMatch(item));
   const inYear = g => !state.year || (Number(state.year) >= g.from && Number(state.year) <= Math.min(g.to, through));
+
+  function studioFor(item, variant) {
+    if (!inYear(variant)) return null;
+    const registry = window.NFWVehicleModels;
+    const candidate = registry?.models.find(asset => asset.brand === item.brand.id && asset.model === item.model.id &&
+      asset.generations.includes(variant.id) && asset.body === variant.body && asset.from <= variant.to && asset.to >= variant.from);
+    if (!candidate) return null;
+    const year = state.year ? Number(state.year) : Math.min(variant.to, candidate.to, through);
+    return registry.resolve({ brand: item.brand.id, model: item.model.id, generation: variant.id, body: variant.body, year });
+  }
+
+  const visibleVariants = item => item.variants.filter(g => inYear(g) && (!state.only3d || studioFor(item, g)));
 
   function updateYears(items) {
     const years = new Set();
@@ -61,16 +76,16 @@
   function saveFilters() {
     const url = new URL(location.href);
     url.searchParams.delete('catalogModel');
-    for (const [key, value] of [['catalogBrand', state.brand], ['catalogSearch', state.search], ['catalogYear', state.year], ['catalogPage', state.page > 1 ? String(state.page) : '']]) {
+    for (const [key, value] of [['catalogBrand', state.brand], ['catalogSearch', state.search], ['catalogYear', state.year], ['catalogPage', state.page > 1 ? String(state.page) : ''], ['catalog360', state.only3d ? '1' : '']]) {
       if (value) url.searchParams.set(key, value); else url.searchParams.delete(key);
     }
     history.replaceState(null, '', url.pathname + url.search + url.hash);
   }
 
-  function linkFor(item, variant) {
+  function linkFor(item, variant, studio) {
     const params = new URLSearchParams({ brand: item.brand.id, model: item.model.id });
     if (variant) {
-      const year = state.year && inYear(variant) ? Number(state.year) : Math.min(variant.to, through);
+      const year = state.year && inYear(variant) ? Number(state.year) : Math.min(variant.to, studio?.to || through, through);
       params.set('year', year);
       params.set('generation', variant.id);
       if (variant.body) params.set('body', variant.body);
@@ -85,21 +100,25 @@
   }
 
   function variantRow(item, g) {
+    const studio = studioFor(item, g);
     const status = g.status === 'announced' ? '<span class="catalog-variant-status">Oznámeno</span>' : '';
     const facelift = g.facelift === true ? '<span>Facelift</span>' : '';
     const body = g.bodyName || 'Karoserie neuvedena';
     const exactSource = typeof g.source === 'string' && /^https:\/\//i.test(g.source) ? g.source : '';
     const source = exactSource ? `<a class="catalog-variant-source" href="${esc(exactSource)}" target="_blank" rel="noopener" aria-label="Zdroj pro ${esc(g.name)}">${g.confidence === 'verified' ? 'Zdroj výrobce' : 'Zdroj záznamu'} ↗</a>` : '';
     const endNote = g.endBasis === 'open' ? 'Konec výroby neuveden' : g.endBasis === 'inferred' ? 'Období mezi katalogovými změnami' : '';
-    return `<li class="catalog-variant"><span class="catalog-variant-period">${period(g)}</span><div class="catalog-variant-visual" data-variant-photo="${esc(g.id)}"></div><div class="catalog-variant-content"><b>${esc(g.name)}</b><div class="catalog-variant-meta"><span>${esc(body)}</span>${facelift}${status}</div>${endNote ? `<small>${endNote}</small>` : ''}${source}</div><a class="catalog-variant-select" href="${esc(linkFor(item, g))}" aria-label="Vybrat ${esc(item.brand.name + ' ' + item.model.name + ', ' + g.name + ', ' + body)}"><span>Vybrat</span><i aria-hidden="true">↗</i></a></li>`;
+    return `<li class="catalog-variant${studio ? ' catalog-variant--studio' : ''}"><span class="catalog-variant-period">${period(g)}</span><div class="catalog-variant-visual" data-variant-photo="${esc(g.id)}"></div><div class="catalog-variant-content"><b>${esc(g.name)}</b><div class="catalog-variant-meta"><span>${esc(body)}</span>${facelift}${status}</div>${studio ? '<span class="catalog-studio-badge">Skutečný 3D vůz · 360°</span>' : ''}${endNote ? `<small>${endNote}</small>` : ''}${source}</div><a class="catalog-variant-select" href="${esc(linkFor(item, g, studio))}" aria-label="${studio ? 'Prozkoumat ve 360°' : 'Vybrat'} ${esc(item.brand.name + ' ' + item.model.name + ', ' + g.name + ', ' + body)}"><span>${studio ? '360° studio' : 'Vybrat'}</span><i aria-hidden="true">↗</i></a></li>`;
   }
 
   function modelCard(item) {
-    const variants = item.variants.filter(inYear).slice().sort((a, b) => b.from - a.from || b.to - a.to || a.name.localeCompare(b.name, 'cs'));
+    const variants = visibleVariants(item).slice().sort((a, b) => b.from - a.from || b.to - a.to || a.name.localeCompare(b.name, 'cs'));
+    const studioVariant = variants.find(g => studioFor(item, g));
+    const studio = studioVariant && studioFor(item, studioVariant);
+    const studioLink = studio ? `<a class="catalog-studio-link" href="${esc(linkFor(item, studioVariant, studio))}"><span><b>${esc(studio.name)} · 360°</b><small>${esc(studio.edition)} · skutečný 3D vůz</small></span><i aria-hidden="true">↗</i></a>` : '';
     const bodies = [...new Set(variants.filter(g => g.body && g.body !== 'unknown').map(g => g.bodyName || g.body))];
     const years = variants.length ? `${Math.min(...variants.map(g => g.from))}–${Math.min(through, Math.max(...variants.map(g => g.to)))}` : 'Varianty doplňujeme';
     const firstRows = variants.slice(0, 6).map(g => variantRow(item, g)).join('');
-    return `<article class="catalog-card" data-catalog-key="${esc(item.key)}"><div class="catalog-card-top"><span class="catalog-card-brand">${window.NFWBrandPicker?.logo(item.brand.id) || ''}<span>${esc(item.brand.name)}</span></span><small>${state.year || years}</small></div><div class="catalog-model-visual" data-model-photo></div><h4>${esc(item.model.name)}</h4><p class="catalog-card-bodies">${bodies.length ? esc(bodies.slice(0, 3).join(' / ')) + (bodies.length > 3 ? ` <span>+${bodies.length - 3}</span>` : '') : 'Výběr konkrétního vozu'}</p>${variants.length ? `<details class="catalog-variants"><summary><span>Generace a karoserie <b>${num(variants.length)}</b></span><i aria-hidden="true">+</i></summary><ol class="catalog-variant-list">${firstRows}</ol>${variants.length > 6 ? `<button class="catalog-more-variants" type="button" data-more-variants="${esc(item.key)}">Zobrazit zbývající varianty (${num(variants.length - 6)}) <span aria-hidden="true">↓</span></button>` : ''}</details>` : `<div class="catalog-card-missing"><span>Detailní podklady ještě doplňujeme.</span><a href="${esc(linkFor(item))}">Vybrat model <span aria-hidden="true">↗</span></a></div>`}</article>`;
+    return `<article class="catalog-card" data-catalog-key="${esc(item.key)}"><div class="catalog-card-top"><span class="catalog-card-brand">${window.NFWBrandPicker?.logo(item.brand.id) || ''}<span>${esc(item.brand.name)}</span></span><small>${state.year || years}</small></div><div class="catalog-model-visual" data-model-photo></div><h4>${esc(item.model.name)}</h4><p class="catalog-card-bodies">${bodies.length ? esc(bodies.slice(0, 3).join(' / ')) + (bodies.length > 3 ? ` <span>+${bodies.length - 3}</span>` : '') : 'Výběr konkrétního vozu'}</p>${studioLink}${variants.length ? `<details class="catalog-variants" ${state.only3d ? 'open' : ''}><summary><span>Generace a karoserie <b>${num(variants.length)}</b></span><i aria-hidden="true">+</i></summary><ol class="catalog-variant-list">${firstRows}</ol>${variants.length > 6 ? `<button class="catalog-more-variants" type="button" data-more-variants="${esc(item.key)}">Zobrazit zbývající varianty (${num(variants.length - 6)}) <span aria-hidden="true">↓</span></button>` : ''}</details>` : `<div class="catalog-card-missing"><span>Detailní podklady ještě doplňujeme.</span><a href="${esc(linkFor(item))}">Vybrat model <span aria-hidden="true">↗</span></a></div>`}</article>`;
   }
 
   function hydrateVisuals() {
@@ -132,21 +151,22 @@
     brandPicker?.sync();
     const baseItems = prefiltered();
     if (years) updateYears(baseItems);
-    const items = baseItems.filter(item => !state.year || item.variants.some(inYear));
+    const items = baseItems.filter(item => state.only3d ? visibleVariants(item).length : (!state.year || item.variants.some(inYear)));
     const pages = Math.max(1, Math.ceil(items.length / pageSize));
     state.page = Math.min(Math.max(1, state.page), pages);
     const start = (state.page - 1) * pageSize;
-    resultContainer.innerHTML = items.length ? items.slice(start, start + pageSize).map(modelCard).join('') : `<div class="catalog-empty"><span aria-hidden="true">⌕</span><h4>Tenhle vůz jsme nenašli.</h4><p>Zkus jiný název nebo zruš filtr značky a roku.</p><button type="button" data-catalog-clear>Zobrazit celý katalog →</button></div>`;
+    resultContainer.innerHTML = items.length ? items.slice(start, start + pageSize).map(modelCard).join('') : `<div class="catalog-empty"><span aria-hidden="true">⌕</span><h4>${state.only3d ? 'Pro tento výběr zatím 360° model nemáme.' : 'Tenhle vůz jsme nenašli.'}</h4><p>${state.only3d ? 'Vypni filtr 360° a prohlédni si katalogové podklady k vybranému vozu.' : 'Zkus jiný název nebo zruš filtr značky a roku.'}</p>${state.only3d ? '<button type="button" data-catalog-all-views>Zobrazit i ostatní vozy →</button>' : '<button type="button" data-catalog-clear>Zobrazit celý katalog →</button>'}</div>`;
     hydrateVisuals();
     root.querySelector('#catalogResultCount').innerHTML = items.length ? (items.length === 1 ? '<b>1</b> model' : `<b>${num(start + 1)}–${num(Math.min(start + pageSize, items.length))}</b> z ${num(items.length)} modelů`) + (state.year ? ` <span>· rok ${state.year}</span>` : '') : 'Žádný odpovídající model';
-    root.querySelector('#catalogReset').hidden = !state.brand && !state.search && !state.year;
+    root.querySelector('#catalogReset').hidden = !state.brand && !state.search && !state.year && !state.only3d;
     root.querySelector('#catalogPagination').innerHTML = pages > 1 ? `<button type="button" data-catalog-page="${state.page - 1}" ${state.page === 1 ? 'disabled' : ''} aria-label="Předchozí stránka katalogu"><span aria-hidden="true">←</span> Předchozí</button><span>Strana <b>${state.page}</b> / ${pages}</span><button type="button" data-catalog-page="${state.page + 1}" ${state.page === pages ? 'disabled' : ''} aria-label="Další stránka katalogu">Další <span aria-hidden="true">→</span></button>` : '';
     if (persist) saveFilters();
   }
 
   function clear() {
-    Object.assign(state, { brand: '', search: '', year: '', page: 1 });
+    Object.assign(state, { brand: '', search: '', year: '', page: 1, only3d: false });
     brandInput.value = ''; searchInput.value = '';
+    studioInput.checked = false;
     render({ years: true });
     searchInput.focus({ preventScroll: true });
   }
@@ -159,10 +179,12 @@
   });
   brandInput.addEventListener('change', () => { state.brand = brandInput.value; state.page = 1; render({ years: true }); });
   yearInput.addEventListener('change', () => { state.year = yearInput.value; state.page = 1; render(); });
+  studioInput.addEventListener('change', () => { state.only3d = studioInput.checked; state.page = 1; render(); });
   root.addEventListener('click', event => {
     const target = event.target.closest('button');
     if (!target) return;
     if (target.id === 'catalogReset' || target.hasAttribute('data-catalog-clear')) { clear(); return; }
+    if (target.hasAttribute('data-catalog-all-views')) { state.only3d = false; studioInput.checked = false; state.page = 1; render(); studioInput.focus({ preventScroll: true }); return; }
     if (target.hasAttribute('data-catalog-page')) {
       state.page = Number(target.dataset.catalogPage); render();
       root.querySelector('.catalog-result-bar').scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
@@ -172,7 +194,7 @@
     if (target.hasAttribute('data-more-variants')) {
       const item = models.find(item => item.key === target.dataset.moreVariants);
       if (!item) return;
-      const remaining = item.variants.filter(inYear).slice().sort((a, b) => b.from - a.from || b.to - a.to || a.name.localeCompare(b.name, 'cs')).slice(6);
+      const remaining = visibleVariants(item).slice().sort((a, b) => b.from - a.from || b.to - a.to || a.name.localeCompare(b.name, 'cs')).slice(6);
       const list = target.closest('.catalog-variants').querySelector('ol');
       const previousCount = list.children.length;
       list.insertAdjacentHTML('beforeend', remaining.map(g => variantRow(item, g)).join(''));

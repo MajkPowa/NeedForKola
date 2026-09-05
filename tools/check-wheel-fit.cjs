@@ -9,8 +9,8 @@ const base = (process.env.NFW_BASE_URL || 'http://127.0.0.1:8765').replace(/\/$/
 const readJSON = filename => JSON.parse(fs.readFileSync(path.join(root, filename), 'utf8').replace(/^\uFEFF/, ''));
 const inventory = readJSON('data/wheel-photo-inventory.json');
 const manifest = readJSON('data/wheel-fitments.json');
-const configURL = base + '/konfigurator.html?brand=bmw&model=x5&year=2020&generation=g05&body=suv&view=car';
-const moduleURL = base + '/js/wheel-fit-preview.js?v=20260905-wheel-fit';
+const configURL = base + '/konfigurator.html?brand=bmw&model=x5&year=2020&generation=g05&body=suv&view=photo';
+const moduleURL = base + '/js/wheel-fit-preview.js?v=20260905-360';
 const ready = (page, design, color) => page.waitForFunction(({ design, color }) => {
   const canvas = document.querySelector('.vehicle-wheel-overlay');
   return canvas?.dataset.ready === 'true' && !canvas.hidden &&
@@ -202,7 +202,7 @@ async function mainUI(browser, errors) {
   await page.getByRole('button', { name: '3D kolo', exact: true }).click();
   await page.locator('.webgl-view canvas').waitFor();
   assert.equal(await page.locator('.vehicle-wheel-overlay,.wheel-photo-toolbar').count(), 0, 'Photo controller is disposed when switching into actual 3D');
-  await page.getByRole('button', { name: 'Můj vůz', exact: true }).click();
+  await page.getByRole('button', { name: 'Fotografie', exact: true }).click();
   await ready(page, 'mono5', silver);
   assert.equal(await page.locator('.vehicle-wheel-overlay').count(), 1);
   assert.equal(await page.locator('.wheel-photo-toolbar').count(), 1);

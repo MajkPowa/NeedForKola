@@ -3,9 +3,9 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import './vehicle-models.js?v=20260905-360';
 
 // All wheel surfaces below are real, chamfered 3D geometry. No SVG or flat wheel images.
-const MODEL_URL = new URL('../assets/models/ferrari-458-italia.glb', import.meta.url).href;
 const DRACO_URL = new URL('../assets/vendor/draco/', import.meta.url).href;
 const active = new WeakMap();
 const TAU = Math.PI * 2;
@@ -220,8 +220,12 @@ function contactShadow() {
 
 export async function mount(container, input = {}) {
   if (!(container instanceof Element)) throw new TypeError('3D showroom potřebuje platný kontejner.');
+  if (input.signal?.aborted) throw new DOMException('Náhled byl zrušen.', 'AbortError');
   active.get(container)?.dispose();
   let opts = options(input), disposed = false, model = null, carModel = null, generation = 0;
+  let asset = null, modelMetadata = null, paintMaterials = [], installedWheels = [];
+  let loadAbort = null, parsing = null;
+  const registeredAsset = () => window.NFWVehicleModels.get(opts.vehicleAsset?.id || opts.vehicleAsset || window.NFWVehicleModels.defaultModel.id);
   let renderer;
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(input.background || '#151718');
@@ -237,7 +241,7 @@ export async function mount(container, input = {}) {
     status.textContent = '3D náhled není na tomto zařízení dostupný. Prohlédněte si fotografie produktu.';
     input.onError?.(error); throw error;
   }
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, input.thumbnail ? 1 : 1.75));
+  renderer.setPixelRatio(input.thumbnail ? 1 : Math.min(2, Math.max(opts.mode === 'car' ? 1.5 : 1, window.devicePixelRatio || 1)));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1;
   renderer.shadowMap.enabled = !input.thumbnail; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -249,7 +253,7 @@ export async function mount(container, input = {}) {
   scene.environmentIntensity = 1.05; room.dispose(); pmrem.dispose();
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true; controls.dampingFactor = .075; controls.enablePan = false;
-  controls.minPolarAngle = .13; controls.maxPolarAngle = Math.PI * .53;
+  controls.minPolarAngle = .13; controls.maxPolarAngle = Math.PI * .49;
   controls.rotateSpeed = .65; controls.zoomSpeed = .75;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   controls.autoRotate = opts.autoRotate && !reduced.matches; controls.autoRotateSpeed = .55;
@@ -257,11 +261,12 @@ export async function mount(container, input = {}) {
   reduced.addEventListener('change', motionChange);
   const key = new THREE.DirectionalLight('#fff6e8', 2.1); key.position.set(-3, 6, 5); key.castShadow = !input.thumbnail;
   key.shadow.mapSize.set(2048, 2048); key.shadow.camera.left = key.shadow.camera.bottom = -4;
-  key.shadow.camera.right = key.shadow.camera.top = 4; key.shadow.normalBias = .022; key.shadow.bias = -.0001;
+  key.shadow.camera.right = key.shadow.camera.top = 4; key.shadow.normalBias = .006; key.shadow.bias = -.00003;
+  key.shadow.camera.near = .5; key.shadow.camera.far = 18;
   scene.add(key);
   const fill = new THREE.DirectionalLight('#bacbdf', 1.5); fill.position.set(4, 3, -4); scene.add(fill);
   // A charcoal cyclorama and soft contact shadow keep the studio free of hard sun shadows.
-  const floor = mesh(new THREE.PlaneGeometry(80, 80), new THREE.MeshBasicMaterial({ color: '#111714', toneMapped: false }), scene);
+  const floor = mesh(new THREE.PlaneGeometry(80, 80), new THREE.MeshStandardMaterial({ color: '#0a0d11', roughness: .78, metalness: 0, envMapIntensity: .05 }), scene);
   floor.rotation.x = -Math.PI / 2; floor.castShadow = false; floor.position.y = -.015;
   const shadow = mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: contactShadow(), transparent: true, depthWrite: false, opacity: .85 }), scene);
   shadow.rotation.x = -Math.PI / 2; shadow.position.y = -.009; shadow.castShadow = shadow.receiveShadow = false;
@@ -297,7 +302,11 @@ export async function mount(container, input = {}) {
   renderer.domElement.addEventListener('keydown', onKey);
   renderer.domElement.addEventListener('dblclick', resetCamera);
   function resetCamera() {
-    if (opts.mode === 'car') { camera.position.set(4.9, 2.0, -5.8); controls.target.set(0, .65, .1); controls.minDistance = 3.6; controls.maxDistance = 11; }
+    if (opts.mode === 'car') {
+      const view = (asset || registeredAsset())?.camera;
+      camera.position.fromArray(view?.position || [-5.8, 2.65, 6.1]); controls.target.fromArray(view?.target || [0, .85, 0]);
+      controls.minDistance = view?.minDistance || 3; controls.maxDistance = view?.maxDistance || 12;
+    }
     else { camera.position.set(2.2, 1.6, 4.4); controls.target.set(0, 1.02, -.08); controls.minDistance = 2.6; controls.maxDistance = 7; }
     fitScale = Math.max(1, (opts.mode === 'car' ? 1.25 : .85) / camera.aspect);
     camera.position.sub(controls.target).multiplyScalar(fitScale).add(controls.target);
@@ -306,40 +315,76 @@ export async function mount(container, input = {}) {
   }
   function changeWheelsOnCar() {
     if (!carModel) return;
-    carModel.getObjectByName('nfw-wheels')?.removeFromParent();
-    const old = carModel.userData.nfwWheels;
-    if (old) disposeObject(old);
-    const wheels = new THREE.Group(); wheels.name = 'nfw-wheels';
-    for (const name of ['wheel_fl', 'wheel_fr', 'wheel_rl', 'wheel_rr']) {
-      const original = carModel.getObjectByName(name); if (!original) continue;
-      // Keep the original tyre and brake. Replace alloy, rim, centre and nuts only.
-      original.children.forEach(child => { if (!/tire|brake/i.test(child.name)) child.visible = false; });
-      const side = name.endsWith('l') ? -1 : 1;
-      const rear = name.includes('_r');
-      const wheel = createWheel({ ...opts, width: rear ? 10 : 9, diameter: 20 });
-      wheel.scale.setScalar(.274); wheel.rotation.y = side * Math.PI / 2;
-      wheel.position.copy(original.position); wheel.position.x += side * (rear ? .043 : .032);
-      wheels.add(wheel);
+    installedWheels.forEach(wheel => { wheel.removeFromParent(); disposeObject(wheel); }); installedWheels = [];
+    for (const binding of modelMetadata.wheels) {
+      const anchor = carModel.getObjectByName(binding.anchor);
+      if (!anchor) throw new Error(`Chybí montážní bod ${binding.anchor}`);
+      // Anchors are measured in the source model, +Z outwards at the outer rim plane.
+      // Keep its tyres and brakes. Order dimensions are not a physical fitment simulation.
+      const scale = binding.rimRadius / 1.032;
+      const wheel = createWheel({ ...opts, width: binding.widthInches || 10, diameter: binding.diameterInches || 21,
+        mirror: binding.side === 'right' ? !opts.mirror : opts.mirror });
+      wheel.scale.setScalar(scale); wheel.position.z = -(presets[opts.design].bolts ? .23 : .33) * scale;
+      wheel.name = `NFW_mounted_${binding.id}`;
+      anchor.add(wheel); installedWheels.push(wheel);
     }
-    carModel.userData.nfwWheels = wheels; carModel.add(wheels);
-    const body = carModel.getObjectByName('body'); if (body) body.material.color.set(opts.bodyColor);
+    paintMaterials.forEach(material => material.color.set(opts.bodyColor));
   }
   async function build(modeChanged = false) {
     const token = ++generation;
+    loadAbort?.abort(); loadAbort = new AbortController();
+    const signal = loadAbort.signal;
     if (model) { model.removeFromParent(); disposeObject(model); model = null; carModel = null; }
+    installedWheels = []; paintMaterials = [];
     status.style.display = 'grid';
     if (opts.mode === 'car') {
-      status.textContent = 'Načítám Ferrari 458 Italia…';
+      asset = registeredAsset();
+      status.textContent = `Načítám ${asset?.name || '3D vůz'}…`;
       try {
-        const gltf = await loader.loadAsync(MODEL_URL);
+        if (!asset) throw new Error('Tento 3D model není v registru.');
+        const metadataResponse = await fetch(new URL('../' + asset.metadata, import.meta.url), { signal });
+        if (!metadataResponse.ok) throw new Error('Metadata modelu nejsou dostupná.');
+        const metadata = await metadataResponse.json();
+        if (disposed || generation !== token) return;
+        const bindings = metadata.wheels;
+        if (metadata.schemaVersion !== 1 || metadata.id !== asset.id || metadata.src !== asset.src ||
+          !Array.isArray(bindings) || bindings.length !== 4 ||
+          new Set(bindings.map(w => w?.anchor)).size !== 4 || new Set(bindings.map(w => w?.id)).size !== 4 ||
+          !bindings.every(w => typeof w.anchor === 'string' && w.anchor && typeof w.id === 'string' && w.id &&
+            Number.isFinite(w.rimRadius) && w.rimRadius >= .15 && w.rimRadius <= .4 &&
+            Number.isFinite(w.widthInches) && w.widthInches >= 5 && w.widthInches <= 16 &&
+            Number.isFinite(w.diameterInches) && w.diameterInches >= 12 && w.diameterInches <= 30 &&
+            ['left', 'right'].includes(w.side)) ||
+          !Array.isArray(metadata.paintMaterials) || !metadata.paintMaterials.length ||
+          !metadata.paintMaterials.every(name => typeof name === 'string' && name)) {
+          throw new Error('Neplatná identita nebo montážní body modelu.');
+        }
+        const modelURL = new URL('../' + asset.src, import.meta.url);
+        const response = await fetch(modelURL, { signal });
+        if (!response.ok) throw new Error('Model vozu není dostupný.');
+        const bytes = await response.arrayBuffer();
+        if (disposed || generation !== token) return;
+        const parseJob = loader.parseAsync(bytes, new URL('.', modelURL).href); parsing = parseJob;
+        const gltf = await parseJob.finally(() => { if (parsing === parseJob) parsing = null; });
         if (disposed || generation !== token) { disposeObject(gltf.scene); return; }
-        carModel = gltf.scene; model = carModel;
-        carModel.traverse(item => { if (item.isMesh) { item.castShadow = item.receiveShadow = true; if (item.material) item.material.envMapIntensity = 1.1; } });
-        const body = carModel.getObjectByName('body');
-        if (body) { body.material.dispose(); body.material = new THREE.MeshPhysicalMaterial({ color: opts.bodyColor, metalness: .82, roughness: .26, clearcoat: 1, clearcoatRoughness: .09 }); }
-        const glass = carModel.getObjectByName('glass');
-        if (glass) { glass.material.dispose(); glass.material = new THREE.MeshPhysicalMaterial({ color: '#19222a', metalness: .05, roughness: .08, transparent: true, opacity: .64, depthWrite: false, side: THREE.DoubleSide }); }
-        changeWheelsOnCar(); scene.add(carModel); shadow.scale.set(3, 5.4, 1);
+        carModel = gltf.scene; model = carModel; modelMetadata = metadata;
+        carModel.traverse(item => {
+          if (!item.isMesh) return;
+          item.castShadow = item.receiveShadow = true;
+          for (const material of Array.isArray(item.material) ? item.material : [item.material]) {
+            material.envMapIntensity = 1.1;
+            if (metadata.paintMaterials?.includes(material.name) && !paintMaterials.includes(material)) {
+              material.metalness = .7; material.roughness = .24;
+              if ('clearcoat' in material) { material.clearcoat = 1; material.clearcoatRoughness = .12; }
+              paintMaterials.push(material);
+            }
+          }
+        });
+        // Add before wheel installation so any malformed asset is disposed on failure.
+        scene.add(carModel); changeWheelsOnCar();
+        const bounds = new THREE.Box3().setFromObject(carModel), size = bounds.getSize(new THREE.Vector3());
+        shadow.scale.set(size.x * 1.18, size.z * 1.3, 1);
+        container.dataset.vehicleAsset = asset.id; container.dataset.mountedWheels = installedWheels.length;
       } catch (error) {
         if (disposed || generation !== token) return;
         controller.dispose();
@@ -348,6 +393,7 @@ export async function mount(container, input = {}) {
         input.onError?.(error); throw error;
       }
     } else {
+      asset = null; modelMetadata = null; delete container.dataset.vehicleAsset; delete container.dataset.mountedWheels;
       model = createWheel(opts); model.position.y = 1.033; scene.add(model); shadow.scale.set(3.6, 2.2, 1);
     }
     if (disposed || generation !== token) return;
@@ -360,29 +406,51 @@ export async function mount(container, input = {}) {
     async update(patch = {}) {
       if (disposed) return;
       const previous = opts; opts = options({ ...opts, ...patch }); motionChange();
-      if (previous.mode !== opts.mode || !model) await build(previous.mode !== opts.mode);
-      else if (opts.mode === 'car') { changeWheelsOnCar(); render(); }
-      else { const old = model; model = createWheel(opts); model.position.y = 1.033; scene.add(model); old.removeFromParent(); disposeObject(old); render(); }
+      const changed = previous.mode !== opts.mode || (opts.mode === 'car' && asset?.id !== registeredAsset()?.id);
+      const wheelChanged = ['design','color','finish','lip','cap','mirror','bolts', ...(opts.mode === 'wheel' ? ['width','diameter'] : [])].some(key => previous[key] !== opts[key]);
+      if (changed || !model) await build(changed);
+      else if (opts.mode === 'car') {
+        if (wheelChanged) changeWheelsOnCar();
+        else paintMaterials.forEach(material => material.color.set(opts.bodyColor));
+        render();
+      }
+      else if (wheelChanged) { const old = model; model = createWheel(opts); model.position.y = 1.033; scene.add(model); old.removeFromParent(); disposeObject(old); render(); }
       return controller;
     },
     reset: resetCamera,
+    setView(preset) {
+      if (disposed) return;
+      const views = { front: [-8, 1.6, 0], side: [0, 1.55, 8], rear: [8, 1.7, 0], detail: [-2.55, .68, 2.8] };
+      if (preset === 'perspective') { resetCamera(); return; }
+      if (opts.mode !== 'car' || !views[preset]) return;
+      controls.target.fromArray(preset === 'detail' ? [-1.35, .5, .7] : asset.camera.target);
+      camera.position.fromArray(views[preset]);
+      camera.position.sub(controls.target).multiplyScalar(fitScale).add(controls.target); controls.update(); render();
+    },
+    get view() { return { assetId: asset?.id || null, mountedWheels: installedWheels.length, camera: camera.position.toArray(), target: controls.target.toArray() }; },
     capture(type = 'image/webp', quality = .92) { render(); return renderer.domElement.toDataURL(type, quality); },
     dispose() {
       if (disposed) return; disposed = true; generation++;
+      loadAbort?.abort(); input.signal?.removeEventListener('abort', cancelMount);
       renderer.setAnimationLoop(null); observer.disconnect(); intersection.disconnect(); controls.dispose();
       reduced.removeEventListener('change', motionChange);
       renderer.domElement.removeEventListener('webglcontextlost', onContextLost); renderer.domElement.removeEventListener('keydown', onKey);
       renderer.domElement.removeEventListener('dblclick', resetCamera);
-      draco.dispose(); disposeObject(scene); environment.dispose(); renderer.dispose(); renderer.forceContextLoss();
+      // Finish an in-flight CPU decode, then release workers; the WebGL context is released now.
+      if (parsing) parsing.then(() => draco.dispose(), () => draco.dispose()); else draco.dispose();
+      disposeObject(scene); environment.dispose(); renderer.dispose(); renderer.forceContextLoss();
       renderer.domElement.remove(); status.remove(); if (active.get(container) === controller) active.delete(container);
+      delete container.dataset.vehicleAsset; delete container.dataset.mountedWheels;
     },
   };
+  const cancelMount = () => controller.dispose();
+  input.signal?.addEventListener('abort', cancelMount, { once: true });
   active.set(container, controller); resetCamera(); resize();
   let last = 0;
   renderer.setAnimationLoop(time => {
     if (disposed || !visible || document.hidden || input.thumbnail) return;
     const delta = Math.min((time - last) / 1000 || .016, .05); last = time;
-    controls.update(delta); render();
+    if (controls.update(delta)) render();
   });
   await build(); return controller;
 }
@@ -436,17 +504,23 @@ function createFaceStudio() {
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.12;
-  renderer.shadowMap.enabled = false;
+  renderer.toneMappingExposure = 1.04;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   const scene = new THREE.Scene();
   const camera = new THREE.OrthographicCamera(-1.052, 1.052, 1.052, -1.052, .01, 15);
   camera.position.set(0, 0, 5); camera.lookAt(0, 0, 0);
   const pmrem = new THREE.PMREMGenerator(renderer), room = new RoomEnvironment();
   const environment = pmrem.fromScene(room, .055);
-  scene.environment = environment.texture; scene.environmentIntensity = 1.05;
+  scene.environment = environment.texture; scene.environmentIntensity = .68;
   room.dispose(); pmrem.dispose();
-  const key = new THREE.DirectionalLight('#fff6e8', 2.1); key.position.set(-3, 6, 5); scene.add(key);
-  const fill = new THREE.DirectionalLight('#bacbdf', 1.25); fill.position.set(4, 1, 4); scene.add(fill);
+  // A side-biased key reveals the spoke dishes; restrained fill preserves depth.
+  const key = new THREE.DirectionalLight('#fff8ee', 3.1); key.position.set(-3.5, 4.8, 4);
+  key.castShadow = true; key.shadow.mapSize.set(1024, 1024);
+  Object.assign(key.shadow.camera, { left: -1.65, right: 1.65, top: 1.65, bottom: -1.65, near: .1, far: 14 });
+  key.shadow.normalBias = .002; key.shadow.bias = -.00006; scene.add(key);
+  const fill = new THREE.DirectionalLight('#cad8e7', .42); fill.position.set(4, .5, 2.5); scene.add(fill);
+  const edge = new THREE.DirectionalLight('#ffffff', .7); edge.position.set(3, 4, -3); scene.add(edge);
   return { renderer, scene, camera, environment };
 }
 
@@ -456,7 +530,9 @@ function addFaceBrakes(group, face) {
   // The 0.004-unit black perimeter is only a rim edge, not an added tyre.
   const backing = mesh(new THREE.CircleGeometry(1.032, 192), new THREE.MeshBasicMaterial({ color: '#090c0e', side: THREE.DoubleSide, depthTest: false, depthWrite: false, toneMapped: false }), group);
   backing.position.z = face; backing.renderOrder = -100;
-  const brake = new THREE.MeshStandardMaterial({ color: '#23282c', roughness: .75, metalness: .7, envMapIntensity: .3 });
+  // This compositing seal must never cast a solid-disc shadow onto the real brake.
+  backing.castShadow = backing.receiveShadow = false;
+  const brake = new THREE.MeshStandardMaterial({ color: '#52585d', roughness: .49, metalness: .76, envMapIntensity: .48 });
   const rotor = mesh(new THREE.CylinderGeometry(.79, .79, .045, 160), brake, group);
   rotor.rotation.x = Math.PI / 2; rotor.position.z = -.2;
   const hat = mesh(new THREE.CylinderGeometry(.3, .3, .034, 96), new THREE.MeshStandardMaterial({ color: '#1b2127', metalness: .5, roughness: .6 }), group);
@@ -464,7 +540,7 @@ function addFaceBrakes(group, face) {
   const grooves = new THREE.MeshStandardMaterial({ color: '#434a50', metalness: .55, roughness: .79, envMapIntensity: .25 });
   for (const radius of [.48, .55, .62, .69, .765]) {
     const ring = mesh(new THREE.TorusGeometry(radius, .0016, 6, 160), grooves, group);
-    ring.position.z = -.176;
+    ring.position.z = -.176; ring.castShadow = false;
   }
   const holes = new THREE.InstancedMesh(new THREE.CircleGeometry(.013, 12), new THREE.MeshBasicMaterial({ color: '#11161a', toneMapped: false }), 48);
   const dummy = new THREE.Object3D();
@@ -481,6 +557,7 @@ export function disposeWheelFaces({ clearCache = false } = {}) {
   clearTimeout(faceIdleTimer); faceIdleTimer = null;
   if (faceStudio) {
     const studio = faceStudio; faceStudio = null;
+    studio.scene.traverse(object => { object.shadow?.map?.dispose(); object.shadow?.mapPass?.dispose(); });
     disposeObject(studio.scene); studio.environment.dispose();
     studio.renderer.dispose(); studio.renderer.forceContextLoss(); studio.renderer.domElement.remove();
   }
@@ -491,7 +568,9 @@ export function disposeWheelFaces({ clearCache = false } = {}) {
 /**
  * Return a PNG and independent 2D canvas of a centred, transparent-background wheel.
  * yaw/pitch are radians. For the default straight-on face, `radius` is the outer rim
- * radius in pixels; use centerX/centerY and radius when fitting an ellipse on a photo.
+ * radius in pixels. `rimBasis` is the projected front-plane circle basis [a,b,c,d]
+ * in raster coordinates (x right, y down), with the rim-face centre as origin.
+ * Fit that basis to the target ellipse to preserve parallax without foreshortening twice.
  */
 export function renderWheelFace(input = {}) {
   const opts = faceOptions(input), cacheKey = JSON.stringify(opts);
@@ -510,6 +589,13 @@ export function renderWheelFace(input = {}) {
       if (renderer.getContext().isContextLost()) throw new Error('Kontext 3D náhledu kola není dostupný.');
       assembly = new THREE.Group();
       const wheel = createWheel(opts), face = presets[opts.design].bolts ? .23 : .33;
+      // The recessed barrel receives less open-room reflection than the exposed
+      // machined face. Keep it a rougher, shaded cavity instead of a bright bowl.
+      const barrel = wheel.children.find(item => item.geometry?.type === 'LatheGeometry');
+      if (barrel?.material) {
+        barrel.material.envMapIntensity *= .38;
+        barrel.material.roughness = Math.max(.46, barrel.material.roughness);
+      }
       addFaceBrakes(wheel, face);
       // Pitch/yaw pivot about the rim face, preserving the centre of its ellipse.
       wheel.position.z = -face; assembly.add(wheel);
@@ -528,9 +614,11 @@ export function renderWheelFace(input = {}) {
       const context = canvas.getContext('2d');
       if (!context) throw new Error('Rastrový náhled kola není dostupný.');
       context.drawImage(renderer.domElement, 0, 0);
+      const radius = opts.size * 1.032 / (2 * extent), rotation = assembly.matrixWorld.elements;
+      const rimBasis = Object.freeze([radius * rotation[0], -radius * rotation[1], -radius * rotation[4], radius * rotation[5]]);
       const snapshot = Object.freeze({
         canvas, src: canvas.toDataURL('image/png'), width: opts.size, height: opts.size,
-        centerX: opts.size / 2, centerY: opts.size / 2, radius: opts.size * 1.032 / (2 * extent),
+        centerX: opts.size / 2, centerY: opts.size / 2, radius, rimBasis,
         yaw: opts.yaw, pitch: opts.pitch, options: Object.freeze({ ...opts })
       });
       faceCache.set(cacheKey, snapshot);
@@ -546,5 +634,5 @@ export function renderWheelFace(input = {}) {
   faceQueue = job.catch(() => {}); return job;
 }
 
-window.NFWShowroom = { mount, createWheel, renderThumbnail, disposeThumbnails, renderWheelFace, disposeWheelFaces, version: '1.1.0', threeVersion: THREE.REVISION };
+window.NFWShowroom = { mount, createWheel, renderThumbnail, disposeThumbnails, renderWheelFace, disposeWheelFaces, version: '1.2.0', threeVersion: THREE.REVISION };
 window.dispatchEvent(new CustomEvent('nfw:showroom-ready'));

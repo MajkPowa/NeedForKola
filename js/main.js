@@ -39,7 +39,7 @@
     const container=document.getElementById(button.dataset.launchWheel);
     button.disabled=true;
     const fallback=container.innerHTML;
-    try{await import('./showroom.js?v=20260905-wheel-fit');container.replaceChildren();await window.NFWShowroom.mount(container,{mode:'wheel',design:'apex10',color:'#9a6d3a',finish:'gloss',diameter:20,width:9.5,autoRotate:!matchMedia('(prefers-reduced-motion: reduce)').matches});button.hidden=true;}
+    try{await import('./showroom.js?v=20260905-360');container.replaceChildren();await window.NFWShowroom.mount(container,{mode:'wheel',design:'apex10',color:'#9a6d3a',finish:'gloss',diameter:20,width:9.5,autoRotate:!matchMedia('(prefers-reduced-motion: reduce)').matches});button.hidden=true;}
     catch{container.innerHTML=fallback;button.disabled=false;button.textContent='3D se nepodařilo načíst · zkusit znovu';}
   }));
 })();

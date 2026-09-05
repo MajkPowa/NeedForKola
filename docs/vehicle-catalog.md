@@ -37,7 +37,7 @@ Import nerozlišuje spolehlivě trhy ani modelový rok od výroby. Doplnění m�
 
 Pouze BMW X5 E70 a G05 před faceliftem mají konkrétní rastrové rendery `assets/cars/bmw-x5-e70.webp` a `assets/cars/bmw-x5-g05.webp`. E53, E53 facelift 2003, E70 LCI, F15, G05 LCI a G65 se s nimi nezaměňují. [BMW doložení modernizace z roku 2003](https://www.press.bmwgroup.com/usa/article/detail/T0020641EN_US/the-new-bmw-x5).
 
-U ostatních vozů „Můj vůz“ vysvětluje chybějící podklad a zobrazí 3D vybraného kola. Ferrari 458 Italia showroom se nevydává za vůz z katalogu. Původ a omezení 3D podkladů viz `docs/3d-assets.md`.
+V katalogu jsou nyní vizuální podklady všech 401 modelových řad. Režim „Můj vůz“ u přesně odpovídajícího registrovaného modelu otevře skutečné 360° auto, u ostatních fotografický náhled s novými koly. Dostupné 3D vozy lze najít filtrem „Jen vozy s 360° modelem“. Ukázkové BMW studio je samostatně označené a nemění vybraný vůz v objednávce. Původ, přesné pokrytí a omezení viz `docs/3d-assets.md`.
 
 ## Obnova a kontrola
 

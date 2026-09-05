@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "bmw-x5-g05",
+  "name": "BMW X5 G05 (2018)",
+  "src": "assets/models/bmw-x5-g05.glb",
+  "units": "metres",
+  "upAxis": "+Y",
+  "frontAxis": "-X",
+  "bounds": {
+    "min": [
+      -2.4670389556884764,
+      0.0,
+      -1.1211777266113283
+    ],
+    "max": [
+      2.4670389556884764,
+      1.7361169964721679,
+      1.1211777266113283
+    ]
+  },
+  "dimensions": {
+    "length": 4.934077911376953,
+    "height": 1.7361169964721679,
+    "widthIncludingMirrors": 2.2423554532226566
+  },
+  "wheels": [
+    {
+      "id": "f_l",
+      "anchor": "WheelMount_F_L",
+      "rimRadius": 0.2676,
+      "widthInches": 9.5,
+      "diameterInches": 21,
+      "side": "left",
+      "position": [
+        -1.5807837103271485,
+        0.3745858383178711,
+        0.9308800000000002
+      ],
+      "outward": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "tireRadius": 0.3752
+    },
+    {
+      "id": "f_r",
+      "anchor": "WheelMount_F_R",
+      "rimRadius": 0.2676,
+      "widthInches": 9.5,
+      "diameterInches": 21,
+      "side": "right",
+      "position": [
+        -1.5807837103271485,
+        0.3745858383178711,
+        -0.9308800000000002
+      ],
+      "outward": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "tireRadius": 0.3752
+    },
+    {
+      "id": "b_l",
+      "anchor": "WheelMount_B_L",
+      "rimRadius": 0.2676,
+      "widthInches": 9.5,
+      "diameterInches": 21,
+      "side": "left",
+      "position": [
+        1.4153461896728519,
+        0.3745858383178711,
+        0.93152
+      ],
+      "outward": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "tireRadius": 0.3752
+    },
+    {
+      "id": "b_r",
+      "anchor": "WheelMount_B_R",
+      "rimRadius": 0.2676,
+      "widthInches": 9.5,
+      "diameterInches": 21,
+      "side": "right",
+      "position": [
+        1.4153461896728519,
+        0.3745858383178711,
+        -0.93152
+      ],
+      "outward": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "tireRadius": 0.3752
+    }
+  ],
+  "paintMaterials": [
+    "M_E_common_Paint"
+  ],
+  "fixedTireDiameterInches": 21,
+  "notes": [
+    "Exact BMW X5 G05 2018 pre-facelift body; not E70, F15 or G05 LCI.",
+    "Each anchor has unit world scale; its origin is the outside rim face and local +Z points outwards.",
+    "Original tyres and brakes are preserved. Stock rim, mounting screws, connector and wheel badges removed.",
+    "9.5-inch width is a visual barrel approximation from source geometry, not a fitment specification."
+  ],
+  "source": {
+    "title": "Digital 3D assets of BMW vehicles — BMW X5 2018 (G05)",
+    "author": "BMW Car IT GmbH and contributors",
+    "url": "https://github.com/bmwcarit/digital-car-3d",
+    "commit": "6261f53b5ac63c6686039d106fbbbfb693339d72",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseFile": "assets/models/bmw-x5-g05.LICENSE.txt",
+    "changes": "Ramses scene rebuilt as glTF with original mirrored instances; source centimetres converted to metres; materials adapted to standard PBR; stock rims removed; four wheel anchors added; Draco compressed."
+  },
+  "geometry": {
+    "triangles": 427717,
+    "compressedBytes": 5473652,
+    "compression": "KHR_draco_mesh_compression",
+    "sha256": "27031127a745cba0b83f51bb69523357b3614cb5befc240930f3cb8eb5d5030d"
+  }
+}

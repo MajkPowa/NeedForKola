@@ -1,69 +1,79 @@
 # Need For Wheels: 3D assets and integration
 
-## Renderer
+The browser renderer uses local, pinned Three.js r180 / 0.180.0 and Draco. It creates actual concave wheel geometry; it does not use SVG wheel illustrations. Serve the site over HTTP(S).
 
-`js/showroom.js` is a browser ES module, implemented with a local, pinned Three.js **r180 / 0.180.0**. It does not depend on a CDN or SVG wheel illustrations. Serve the project over HTTP(S); glTF loading and ES modules do not work from a `file:` URL.
+## Available vehicles
 
-Add this import map before the module script:
+| Asset | Depicted vehicle | Licence |
+|---|---|---|
+| `assets/models/bmw-x5-g05.glb` (5.47 MB) | BMW X5 G05 2018, before facelift; catalogue G05 2018–2023 only | BMW Car IT GmbH and contributors, CC BY 4.0 |
+| `assets/models/tesla-model-3-2018.glb` (3.77 MB) | Tesla Model 3 2018; restricted to the documented year | Ameer Studio, CC BY 4.0 |
 
-```html
-<script type="importmap">
-{"imports":{"three":"./assets/vendor/three/three.module.js","three/addons/":"./assets/vendor/three/addons/"}}
-</script>
-<script type="module" src="js/showroom.js"></script>
-```
+See [BMW source, conversion and mounts](bmw-x5-g05-model.md) and [Tesla source, licence and conversion](../assets/models/tesla-model-3-2018-LICENSE.md). Author, source, licence and modifications are linked below each interactive vehicle.
 
-The module exposes `window.NFWShowroom` and emits `nfw:showroom-ready`. Its functions can also be imported as ES module exports.
+`js/vehicle-models.js` keeps mesh availability separate from catalogue coverage. Its resolver requires matching brand, model, year, generation and body. It never substitutes a later facelift or another body. The configurator opens a matching mesh automatically under **Můj vůz**, with **Fotografie** as an alternative. Other cars keep their photographic preview; the separate demonstration studio is explicitly BMW X5 and preserves the selected order vehicle.
+
+There are currently **two registered 3D assets**, not 3D coverage for all 401 model families / 2,736 variants. The catalogue's **Jen vozy s 360° modelem** filter is generated from the registry and preserves the other filters. Further generations require appropriately licensed meshes and measured wheel anchors. One photograph cannot provide this mode.
+
+The former Ferrari 458 example asset has been retired from the public distribution. Its third-party model licence could not be verified; the Three.js software MIT licence was not treated as a model licence.
+
+## Renderer API
+
+Use the import map in `konfigurator.html`, then import `js/showroom.js`. The module also exposes `window.NFWShowroom` and emits `nfw:showroom-ready`.
 
 ```js
+const request = new AbortController();
 const studio = await NFWShowroom.mount(element, {
-  mode: 'wheel', // 'car' is specifically Ferrari 458 Italia
-  design: 'apex10', color: '#967044', finish: 'satin',
-  width: 10, diameter: 20, autoRotate: true,
+  mode: 'car', vehicleAsset: 'bmw-x5-g05', // or mode: 'wheel'
+  design: 'apex10', color: '#967044', finish: 'gloss',
+  width: 10, diameter: 21, autoRotate: true,
   bodyColor: '#303f4b', lip: 'same', cap: 'black',
-  onReady: controller => {}, onError: error => {},
+  signal: request.signal,
 });
 await studio.update({ design: 'mono5', color: '#34373b' });
+studio.setView('detail'); // perspective, front, side, rear, detail
 studio.reset();
 const dataURL = studio.capture('image/webp', .92);
 studio.dispose();
 ```
 
-Give the container an explicit height or aspect ratio. `mount` disposes any previous instance on the same element. `update` preserves the camera unless changing between wheel/car mode. ResizeObserver, visibility pausing, keyboard orbit/zoom, pointer orbit/zoom, reduced motion and context cleanup are included. The renderer reports failures with a visible Czech status and `onError`.
+Give the container an explicit height. The renderer supports pointer orbit, scroll/pinch zoom, arrow-key orbit/zoom, double-click reset, reduced motion and responsive framing. There are no azimuth limits, so the camera can orbit a full 360°. Fullscreen and view buttons are provided by the configurator.
 
-`renderThumbnail(options)` produces a WebP data URL of actual rendered geometry. Calls are serialized and share one temporary renderer, released 2.5 seconds after the last render. `disposeThumbnails()` releases it immediately. The function can be used to generate and save static catalogue thumbnails at build time.
+Updates preserve the camera unless switching modes or registered models. Unchanged wheel geometry is retained for paint/rotation updates. Static scenes render on demand; rotation/damping render while the view changes. An AbortSignal releases an abandoned pending renderer immediately and cancels its downloads. A CPU decode already running finishes only to dispose its scene and workers.
 
-## Wheel geometry
+## Model contract
 
-Original procedural geometry written for this project: turned barrel profile, bead seats, rolled outer lip, chamfered concave spokes, drilled bolt seats, hub/cap with raster canvas label, valve stem and optional multipiece fasteners. `apex10` uses ten slim spokes guided by the supplied bronze wheel photographs. It is a visual interpretation, **not** the manufacturer's CAD or a certified dimensional model.
+Both assets use metres, Y up, front along −X, ground Y=0 and centred X/Z. Four empty nodes have unit world scale, origin at the outer rim face and local +Z outward. The original rims are removed; tyres, brakes and interiors remain.
 
-Other supported design IDs: `mono5`, `deep7`, `yfork10`, `twist9`, `mesh30`, `split6`, `turbine8`, `blade12`, `star5`, `concave9`, `dish3pc`, `mesh3pc`. These are differentiated procedural concepts. PBR finish options: `gloss`, `satin`, `matte`, `brushed`, `chrome`. Width/diameter controls change barrel proportions in standalone mode.
+Descriptors in `data/*-model.json` include asset identity, four unique wheel bindings, provenance and exact paint material names. Before loading the GLB the renderer validates identity, unique mounts and finite positive dimensions. NFW wheels attach in each anchor's local coordinate system, preserving source transforms.
 
-Studio rendering uses a locally generated RoomEnvironment/PMREM, ACES tone mapping, antialiasing, physically based metal/clearcoat, dynamic self-shadowing and soft contact grounding on a dark charcoal floor. It is interactive realtime rendering, not offline ray tracing. Pointer orbit, scroll/pinch zoom, arrow-key orbit/zoom and double-click reset are supported; mobile aspect changes adapt framing while preserving the view direction.
+Each mounted rim uses `scale = rimRadius / 1.032`, moving its outer face to the anchor origin. Mounted size follows the source tyres (BMW 21″, Tesla approximately 20″). Order diameter, width and offsets remain specifications to verify, rather than a physical fitment simulation. Design, colour, finish, lip and cap change the actual geometry/materials at all four corners. Body colour changes only registered paint materials. Source textures are retained.
 
-## Ferrari 458 Italia
+## Wheels and photographic previews
 
-- File: `assets/models/ferrari-458-italia.glb` (original bytes, 1,681,572 bytes).
-- Source: [Three.js r180 Ferrari GLB](https://github.com/mrdoob/three.js/blob/r180/examples/models/gltf/ferrari.glb).
-- Author attribution: **vicent091036**, as given by the [official car example](https://github.com/mrdoob/three.js/blob/r180/examples/webgl_materials_car.html).
-- Original author listing: [Ferrari 458 Italia on Sketchfab](https://sketchfab.com/models/57bf6cc56931426e87494f554df1dab6).
-- Original introduction: [Three.js commit ab20118](https://github.com/mrdoob/three.js/commit/ab20118c1251c1d9fd739c2e90cb9ea08a61ff51).
-- Related `ferrari-ao.png` is downloaded unchanged from the same pinned Three.js example directory (currently unused; procedural contact shadow is used).
+The original procedural wheel geometry includes a turned barrel, bead seats, rolled lip, bevelled concave spokes, drilled bolt seats, hub/cap, valve stem and optional multipiece fasteners. `apex10` follows the supplied bronze-wheel photographs. It is a visual interpretation, not manufacturer CAD or a certified dimensional model.
 
-The supplied asset is used **only under its Ferrari 458 Italia identity**. It must not be presented as a BMW, another Ferrari, or another vehicle selected in the catalogue. Keep an author/source credit beside or below the showroom.
+All 13 design IDs are supported: apex10, mono5, deep7, yfork10, twist9, mesh30, split6, turbine8, blade12, star5, concave9, dish3pc, mesh3pc. PBR finishes: gloss, satin, matte, brushed, chrome. Width/diameter change barrel proportions in standalone mode.
 
-Runtime changes: paint/glass materials and procedural NFW replacement alloy wheels. The original tyres and brakes remain. Wheel positions are taken from the actual model's four wheel nodes. Mounted alloys use fixed visually matched proportions corresponding to the demonstration assembly (20-inch option, 9 front / 10 rear in procedural settings). Changes in selected order dimensions do not certify tyre clearance, offsets, hub bore, bolt pattern, chassis fitment or physical interchangeability; the car view is an appearance demonstration.
+The studio uses RoomEnvironment/PMREM reflections, ACES, antialiasing, metal/clearcoat, self-shadowing and a receiving floor with soft contact grounding. This is realtime rendering, not offline ray tracing.
 
-**Model-specific license remains unverified.** The original Sketchfab listing and API returned unavailable/404 during verification on 2026-09-04. The GLB contains no embedded copyright/license field and its introduction commit contains no license statement. The Three.js software MIT license must not be represented as proof of the third-party model's license. The source and author are preserved here for local review; obtain the model's actual permission/license or replace it with a verified licensed vehicle asset before commercial publication.
+Photographic previews remain static. Each visible rim gets an individually rendered concave wheel at a conservatively inferred angle when the photo supplies sufficient perspective evidence. Explicit angles take precedence. A projected rim-plane basis preserves the calibrated ellipse without a second flattening transform. Shadows and rear-facing surfaces add depth. All 430 photo sources / 860 calibrated rim positions and foreground masks remain intact. See [photo preview documentation](wheel-photo-preview.md).
 
-## Third-party software notices
+`renderThumbnail` and `renderWheelFace` serialize work, cache results and release idle renderers. Catalogue thumbnails in `assets/renders` remain reference Bronze / Gloss images; interactive colours appear in the studio.
 
-- Three.js r180 and bundled addons: MIT, [upstream license](https://github.com/mrdoob/three.js/blob/r180/LICENSE), preserved in `assets/vendor/three/LICENSE`.
-- Google Draco decoding binaries bundled with Three.js r180: Apache-2.0, [upstream Draco license](https://github.com/google/draco/blob/1.5.7/LICENSE), preserved in `assets/vendor/draco/LICENSE`; upstream decoder readme preserved beside it.
-- Source for all vendored Three.js files and decoder distribution: `https://raw.githubusercontent.com/mrdoob/three.js/r180/`.
+## Third-party software
+
+- Three.js r180 and addons: MIT, preserved in `assets/vendor/three/LICENSE`.
+- Google Draco 1.5.7 decoder: Apache-2.0, preserved in `assets/vendor/draco/LICENSE`.
+- Vendor source: https://raw.githubusercontent.com/mrdoob/three.js/r180/
 
 ## Verification
 
-Headless Chrome with software WebGL2 successfully rendered both modes, loaded local Draco/WASM and the 1.6 MB GLB, and replaced all four rim assemblies. Final `apex10` wheel render: 38,800 triangles; Ferrari scene with replacements: 470,576 triangles. Syntax check passed. All 13 designs rendered to valid WebP images; wheel → car → wheel switching and body/material updates completed without page errors. An intentionally aborted GLB request produced the visible Czech error and left zero renderer canvases, verifying cleanup. Mobile sizing, arrow-key orbit and double-click reset were exercised. Visual screenshots are retained in `docs/qa/`.
+Run the static server and set PLAYWRIGHT_MODULE if Playwright is not on the default module path.
 
-`assets/renders/<design-id>.webp` contains 13 baked 400 × 400 catalogue thumbnails (roughly 18–25 KB each), generated from the final geometry through the shared renderer with Bronze `#9a6d3a`, gloss finish. These thumbnails show that reference finish; interactive colour changes occur in the 3D showroom.
+- `node tools/check-vehicle-studio.cjs`: strict identity/descriptor checks, two GLBs/eight mounts, actual four-wheel geometry and material changes, full camera orbit, presets, fullscreen, mobile, load failure/retry and stale requests.
+- `node tools/check-studio-cancellation.cjs`: pending WebGL cancellation and invalid descriptor rejection.
+- `node tools/check-wheel-projection.cjs`: angled geometry, projection basis, ellipse/foreground clipping and direction.
+- Existing `check-wheel-face.cjs`, `check-wheel-fit.cjs`, `check-vehicle-visuals.cjs`, `check-ui.cjs` and `check-catalog.cjs` cover the surrounding flows.
+
+Representative screenshots are retained in `docs/qa/`.

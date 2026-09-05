@@ -2,13 +2,14 @@
  * Coordinates belong to the full, uncropped local photograph, not the viewport.
  * Original photographs and tyres are preserved; only the rim faces are covered.
  */
-import { renderWheelFace } from './showroom.js?v=20260905-wheel-fit';
+import { renderWheelFace } from './showroom.js?v=20260905-360';
 
 const manifestURL = new URL('../data/wheel-fitments.json?v=20260905-wheel-fit', import.meta.url);
 let manifestPromise;
 const validClip = points => points === undefined || (Array.isArray(points) && points.length >= 3 && points.length <= 32 &&
   points.every(point => Array.isArray(point) && point.length === 2 &&
     point.every(value => Number.isFinite(value) && value >= 0 && value <= 1)));
+const validAngle = (value, limit) => value === undefined || (Number.isFinite(value) && Math.abs(value) <= limit);
 
 export function validPlacement(photo) {
   return photo && Number.isFinite(photo.width) && photo.width > 0 &&
@@ -16,7 +17,33 @@ export function validPlacement(photo) {
     Array.isArray(photo.wheels) && photo.wheels.length > 0 && photo.wheels.length <= 4 &&
     photo.wheels.every(w => w && typeof w === 'object' && [w.cx, w.cy, w.rx, w.ry, w.rotation ?? 0].every(Number.isFinite) &&
       w.cx > 0 && w.cx < 1 && w.cy > 0 && w.cy < 1 &&
-      w.rx > 0 && w.rx < .3 && w.ry > 0 && w.ry < .5 && validClip(w.clip));
+      w.rx > 0 && w.rx < .3 && w.ry > 0 && w.ry < .5 && validClip(w.clip) &&
+      validAngle(w.yaw, 1.2) && validAngle(w.pitch, .8));
+}
+
+/** Conservative orientation for this photographed rim, never a movable car camera. */
+export function wheelPhotoAngles(placement, index) {
+  const wheel = placement.wheels[index];
+  let yaw = wheel.yaw, pitch = wheel.pitch ?? 0;
+  if (yaw === undefined) {
+    yaw = 0;
+    // A circular ellipse alone cannot determine which way the wheel faces.
+    // Only use perspective foreshortening when a separated pair clearly has a
+    // near/far wheel. Similar-size, side-on and ambiguous views remain frontal.
+    if (placement.wheels.length === 2) {
+      const pair = placement.wheels;
+      const radii = pair.map(item => item.ry * placement.height);
+      const near = radii[0] >= radii[1] ? 0 : 1, far = 1 - near;
+      const separation = Math.abs(pair[0].cx - pair[1].cx);
+      const ratio = radii[near] / radii[far];
+      if (separation > .22 && ratio > 1.2 && ratio < 2.8) {
+        const aspect = Math.min(1, wheel.rx * placement.width / (wheel.ry * placement.height));
+        const tilt = Math.min(.65, Math.acos(aspect) * .65);
+        yaw = Math.sign(pair[far].cx - pair[near].cx) * tilt;
+      }
+    }
+  }
+  return { yaw: Number(yaw.toFixed(4)), pitch: Number(pitch.toFixed(4)) };
 }
 
 export function loadWheelFitments(retry = false) {
@@ -37,7 +64,14 @@ export function paintWheelFaces(canvas, placement, face, input = {}) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = 'high';
-  for (const wheel of placement.wheels) {
+  for (let index = 0; index < placement.wheels.length; index++) {
+    const wheel = placement.wheels[index];
+    const rendered = Array.isArray(face) ? face[index] : face;
+    if (!rendered?.canvas) throw new Error('Rendered wheel face missing');
+    const basis = rendered.rimBasis || [rendered.radius, 0, 0, rendered.radius];
+    if (!Array.isArray(basis) || basis.length !== 4 || !basis.every(Number.isFinite)) throw new Error('Invalid rim projection');
+    const [a, b, c, d] = basis, determinant = a * d - b * c;
+    if (Math.abs(determinant) < 1) throw new Error('Degenerate rim projection');
     const rx = wheel.rx * canvas.width, ry = wheel.ry * canvas.height;
     ctx.save();
     if (wheel.clip) {
@@ -52,20 +86,25 @@ export function paintWheelFaces(canvas, placement, face, input = {}) {
     }
     ctx.translate(wheel.cx * canvas.width, wheel.cy * canvas.height);
     ctx.rotate(wheel.rotation || 0);
-    ctx.scale(rx / face.radius, ry / face.radius);
+    ctx.scale(rx, ry);
     // Hide factory spokes behind the new geometry, while retaining the tyre.
     ctx.beginPath();
-    ctx.arc(0, 0, face.radius, 0, Math.PI * 2);
+    ctx.arc(0, 0, 1, 0, Math.PI * 2);
     ctx.clip();
     ctx.fillStyle = '#18191a';
-    ctx.fillRect(-face.radius, -face.radius, face.radius * 2, face.radius * 2);
-    ctx.drawImage(face.canvas, -face.centerX, -face.centerY);
+    ctx.fillRect(-1, -1, 2, 2);
+    ctx.save();
+    // Target ellipse E × inverse(projected rim basis B). Depth-dependent offsets
+    // stay visible, while the front lip maps back to the calibrated exact ellipse.
+    ctx.transform(d / determinant, -b / determinant, -c / determinant, a / determinant, 0, 0);
+    ctx.drawImage(rendered.canvas, -rendered.centerX, -rendered.centerY);
+    ctx.restore();
     // A narrow contact shadow seats the metal lip inside the existing tyre.
-    const shade = ctx.createRadialGradient(0, 0, face.radius * .9, 0, 0, face.radius);
+    const shade = ctx.createRadialGradient(0, 0, .94, 0, 0, 1);
     shade.addColorStop(0, 'rgba(0,0,0,0)');
-    shade.addColorStop(1, 'rgba(0,0,0,.28)');
+    shade.addColorStop(1, 'rgba(0,0,0,.18)');
     ctx.fillStyle = shade;
-    ctx.fillRect(-face.radius, -face.radius, face.radius * 2, face.radius * 2);
+    ctx.fillRect(-1, -1, 2, 2);
     ctx.restore();
   }
 }
@@ -121,7 +160,11 @@ export function mountWheelPhoto(frame, visual, initial = {}) {
           (placement.sourceSha1 && visual.sourceSha1 && placement.sourceSha1 !== visual.sourceSha1)) {
         throw new Error('No matching rim placement for this photograph');
       }
-      const face = await renderWheelFace({ ...input, size: 512 });
+      const faces = [];
+      for (let index = 0; index < placement.wheels.length; index++) {
+        if (disposed || token !== revision) return;
+        faces.push(await renderWheelFace({ ...input, ...wheelPhotoAngles(placement, index), size: 512 }));
+      }
       if (disposed || token !== revision) return;
       if (!photo.complete) await new Promise((resolve, reject) => {
         photo.addEventListener('load', resolve, { once: true });
@@ -129,7 +172,7 @@ export function mountWheelPhoto(frame, visual, initial = {}) {
       });
       if (!photo.naturalWidth) throw new Error('Vehicle photograph failed');
       if (disposed || token !== revision) return;
-      paintWheelFaces(canvas, placement, face, input);
+      paintWheelFaces(canvas, placement, faces, input);
       lastSignature = signature(input);
       renderedLabel = input.label || input.design || 'Need For Wheels';
       canvas.dataset.design = input.design;

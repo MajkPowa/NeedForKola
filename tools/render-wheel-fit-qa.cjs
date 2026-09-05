@@ -56,10 +56,9 @@ const writeURL = (filename, dataURL) => fs.writeFileSync(filename, Buffer.from(d
     await page.route('**/nfw-wheel-fit-qa.html', route => route.fulfill({ contentType: 'text/html', body: `<!doctype html><meta charset="utf-8"><script type="importmap">${importMap}</script>` }));
     await page.goto(base + '/nfw-wheel-fit-qa.html');
     await page.evaluate(async ({ base, faceOptions }) => {
-      const showroom = await import(base + '/js/showroom.js?v=20260905-wheel-fit');
-      const painter = await import(base + '/js/wheel-fit-preview.js?v=20260905-wheel-fit');
-      const face = await showroom.renderWheelFace(faceOptions);
-      window.qa = { face, painter, faceOptions };
+      const showroom = await import(base + '/js/showroom.js?v=20260905-360');
+      const painter = await import(base + '/js/wheel-fit-preview.js?v=20260905-360');
+      window.qa = { showroom, painter, faceOptions };
       window.qa.loadImage = async src => {
         const img = new Image(); img.src = src;
         await img.decode(); return img;
@@ -109,7 +108,11 @@ const writeURL = (filename, dataURL) => fs.writeFileSync(filename, Buffer.from(d
         if (photo.placement) {
           if (!window.qa.painter.validPlacement(photo.placement)) throw new Error('Invalid placement: ' + photo.id);
           if (photo.placement.width !== photo.width || photo.placement.height !== photo.height) throw new Error('Fit dimensions stale: ' + photo.id);
-          window.qa.painter.paintWheelFaces(overlay, photo.placement, window.qa.face, window.qa.faceOptions);
+          const faces = [];
+          for (let index = 0; index < photo.placement.wheels.length; index++) {
+            faces.push(await window.qa.showroom.renderWheelFace({ ...window.qa.faceOptions, ...window.qa.painter.wheelPhotoAngles(photo.placement, index) }));
+          }
+          window.qa.painter.paintWheelFaces(overlay, photo.placement, faces, window.qa.faceOptions);
         }
         const composite = document.createElement('canvas'); composite.width = photo.width; composite.height = photo.height;
         const ctx = composite.getContext('2d'); ctx.drawImage(image, 0, 0); ctx.drawImage(overlay, 0, 0);
