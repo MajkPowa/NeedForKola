@@ -45,7 +45,7 @@
         publishedAt: '2026-09-06',
         readMinutes: 3,
         cover: {
-          src: 'assets/images/wheel-hero-oarts.webp',
+          src: 'assets/images/wheel-hero-oarts-logo.webp',
           alt: 'Desetipaprskový bronzový disk OARTS ve studiovém světle',
           caption: 'Studiový vizuál bronzového desetipaprskového designu. Odstín a odlesky ovlivňuje osvětlení.'
         },

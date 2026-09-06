@@ -1,5 +1,5 @@
 'use strict';
-// Rebuild the silver catalogue from the same 3D geometry used by the live configurator.
+// Rebuild silver and legacy bronze previews from the live 3D geometry and supplied cap logo.
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -23,13 +23,16 @@ const destination = path.join(root, 'assets/renders/silver');
     await page.goto(base + '/__silver_renderer__');
     await page.addScriptTag({ url: base + '/js/wheels.js' });
     await page.evaluate(async url => { await import(url); }, base + '/js/showroom.js?v=silver-render-source');
+    assert.equal(await page.evaluate(() => window.NFWShowroom.capLogoReady), true, 'The supplied logo must load before rebuilding product assets');
     const designs = await page.evaluate(() => window.NFW.DESIGNS.map(({ id, name }) => ({ id, name })));
     assert.equal(designs.length, 13);
     const hashes = new Set();
-    const jobs = [...designs.map(d => ({ ...d, file: d.id, size: 600 })), { id: 'apex10', name: 'FORGED 10', file: 'apex10-feature', size: 900 }];
+    const silver = { colour: '#b9bcc2', transparent: true, folder: 'silver' };
+    const jobs = [...designs.map(d => ({ ...silver, ...d, file: d.id, size: 600 })), { ...silver, id: 'apex10', name: 'FORGED 10', file: 'apex10-feature', size: 900 },
+      ...designs.map(d => ({ ...d, file: d.id, size: 400, colour: '#9a6d3a', transparent: false, folder: '' }))];
     for (const job of jobs) {
-      const output = await page.evaluate(async ({ id, size }) => {
-        const data = await window.NFWShowroom.renderThumbnail({ design: id, color: '#b9bcc2', finish: 'gloss', lip: 'same', cap: 'black', diameter: 20, width: 9.5, size, transparent: true, shadows: true, quality: .97 });
+      const output = await page.evaluate(async ({ id, size, colour, transparent }) => {
+        const data = await window.NFWShowroom.renderThumbnail({ design: id, color: colour, finish: 'gloss', lip: 'same', cap: 'black', diameter: 20, width: 9.5, size, transparent, shadows: true, quality: .97 });
         const image = new Image(); image.src = data; await image.decode();
         const canvas = document.createElement('canvas'); canvas.width = canvas.height = size;
         const ctx = canvas.getContext('2d'); ctx.drawImage(image, 0, 0);
@@ -45,13 +48,13 @@ const destination = path.join(root, 'assets/renders/silver');
         return { data, width: image.naturalWidth, height: image.naturalHeight, corners, occupied, bright, grey };
       }, job);
       assert.equal(output.width, job.size); assert.equal(output.height, job.size);
-      assert.deepEqual(output.corners, [0, 0, 0, 0], job.file + ': transparent background');
+      assert.deepEqual(output.corners, Array(4).fill(job.transparent ? 0 : 255), job.file + ': expected background alpha');
       assert.ok(output.occupied > job.size * job.size * .12, job.file + ': complete 3D wheel is present');
-      assert.ok(output.bright > 100 && output.grey / output.bright > .8, job.file + ': bright neutral silver, not bronze');
+      if (job.folder === 'silver') assert.ok(output.bright > 100 && output.grey / output.bright > .8, job.file + ': bright neutral silver, not bronze');
       const bytes = Buffer.from(output.data.split(',')[1], 'base64');
-      if (job.file === job.id) hashes.add(crypto.createHash('sha256').update(bytes).digest('hex'));
-      fs.writeFileSync(path.join(destination, job.file + '.webp'), bytes);
-      console.log(`${job.file}: ${job.size} px, ${Math.round(bytes.length / 1024)} KB, ${(100 * output.grey / output.bright).toFixed(1)}% neutral highlights`);
+      if (job.folder === 'silver' && job.file === job.id) hashes.add(crypto.createHash('sha256').update(bytes).digest('hex'));
+      fs.writeFileSync(path.join(root, 'assets/renders', job.folder, job.file + '.webp'), bytes);
+      console.log(`${job.folder || 'bronze'}/${job.file}: ${job.size} px, ${Math.round(bytes.length / 1024)} KB`);
     }
     assert.equal(hashes.size, 13, 'Every design has its own geometry/render');
     // The new export options must not change the established 400 px opaque API.
@@ -63,8 +66,19 @@ const destination = path.join(root, 'assets/renders/silver');
       return { width: image.width, alpha: ctx.getImageData(0, 0, 1, 1).data[3] };
     });
     assert.deepEqual(legacy, { width: 400, alpha: 255 });
+    const capVariants = await page.evaluate(() => ['black','carbon','silver','body','none'].map(cap => {
+      const wheel = window.NFWShowroom.createWheel({ cap, color: '#b9bcc2' });
+      const badge = wheel.getObjectByName('Oarts_cap_logo');
+      const result = { cap, branded: Boolean(badge), source: badge?.material.map.userData.logoSource || null };
+      const geometries = new Set(), materials = new Set(), textures = new Set();
+      wheel.traverse(mesh => { if (mesh.geometry) geometries.add(mesh.geometry); for (const material of Array.isArray(mesh.material) ? mesh.material : mesh.material ? [mesh.material] : []) materials.add(material); });
+      materials.forEach(material => { Object.values(material).forEach(value => { if (value?.isTexture) textures.add(value); }); material.dispose(); });
+      textures.forEach(texture => texture.dispose()); geometries.forEach(geometry => geometry.dispose());
+      return result;
+    }));
+    assert.ok(capVariants.every(row => row.cap === 'none' ? !row.branded : row.branded && row.source === 'reference'), 'All fitted cap variants carry the supplied logo; none stays open');
     await page.evaluate(() => window.NFWShowroom.disposeThumbnails());
     assert.deepEqual(errors, []);
-    console.log('PASS: 13 distinct silver 3D renders, 900 px feature, transparent corners, neutral highlights, legacy API, no page errors.');
+    console.log('PASS: 13 silver and 13 bronze 3D renders, 900 px feature, supplied logo on all caps, correct alpha, neutral silver, legacy API, no page errors.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

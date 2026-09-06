@@ -85,19 +85,99 @@ function beveled(shape, depth = .065, bevelSize = .009) {
   return new THREE.ExtrudeGeometry(shape, { depth, steps: 1, bevelEnabled: true, bevelSegments: 3, bevelSize, bevelThickness: bevelSize, curveSegments: 32 });
 }
 
-function capTexture(carbon = false) {
-  const canvas = document.createElement('canvas'); canvas.width = canvas.height = 256;
-  const ctx = canvas.getContext('2d'); ctx.fillStyle = '#0b0d0f'; ctx.fillRect(0, 0, 256, 256);
-  if (carbon) {
-    for (let y = 0; y < 256; y += 16) for (let x = 0; x < 256; x += 16) {
-      const vertical = (x / 16 + y / 16) % 2 === 0;
-      for (let i = 0; i < 8; i++) { ctx.fillStyle = i % 3 === 0 ? '#41444a' : '#23262c'; ctx.fillRect(x + (vertical ? i * 2 : 0), y + (vertical ? 0 : i * 2), vertical ? 1 : 16, vertical ? 16 : 1); }
+// The logo is a raster reconstruction from the supplied cap photograph.
+// Loading is shared and optional: a missing brand image must never disable the 3D viewer.
+const CAP_LOGO_URL = new URL('../assets/brand/oarts-logo.png?v=20260906-reference', import.meta.url).href;
+const liveCapTextures = new Set();
+let capLogo = null, capLogoPromise = null, capLogoRevision = 0;
+
+export function ensureCapLogo({ retry = false } = {}) {
+  if (capLogo) return Promise.resolve(true);
+  if (capLogoPromise && !retry) return capLogoPromise;
+  capLogoPromise = new Promise(resolve => {
+    const image = new Image();
+    let settled = false;
+    const finish = (loaded, keepListening = false) => {
+      if (!keepListening) image.onload = image.onerror = null;
+      if (loaded) {
+        capLogoRevision++;
+        liveCapTextures.forEach(record => { try { record.draw(); record.texture.needsUpdate = true; } catch { /* An optional badge must not block model loading. */ } });
+      }
+      window.dispatchEvent(new CustomEvent('nfw:cap-logo-ready', { detail: { loaded } }));
+      if (!settled) { settled = true; clearTimeout(timer); resolve(loaded); }
+    };
+    // Start the wheel with a fallback on slow connections, then upgrade it in place.
+    const timer = setTimeout(() => finish(false, true), 3000);
+    image.onerror = () => finish(false);
+    image.onload = () => {
+      try {
+        const canvas = document.createElement('canvas'); canvas.width = image.naturalWidth; canvas.height = image.naturalHeight;
+        const ctx = canvas.getContext('2d'); ctx.drawImage(image, 0, 0);
+        const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+        let left = canvas.width, top = canvas.height, right = -1, bottom = -1;
+        for (let y = 0; y < canvas.height; y++) for (let x = 0; x < canvas.width; x++) {
+          if (pixels[(y * canvas.width + x) * 4 + 3] <= 12) continue;
+          left = Math.min(left, x); right = Math.max(right, x); top = Math.min(top, y); bottom = Math.max(bottom, y);
+        }
+        if (right < left || bottom < top) { finish(false); return; }
+        capLogo = { image, x: left, y: top, width: right - left + 1, height: bottom - top + 1 };
+        finish(true);
+      } catch { finish(false); }
+    };
+    image.src = CAP_LOGO_URL;
+  });
+  return capLogoPromise;
+}
+
+function waitForCapLogo(signal) {
+  if (!signal) return ensureCapLogo();
+  if (signal.aborted) return Promise.reject(new DOMException('Náhled byl zrušen.', 'AbortError'));
+  return new Promise((resolve, reject) => {
+    const cancel = () => { signal.removeEventListener('abort', cancel); reject(new DOMException('Náhled byl zrušen.', 'AbortError')); };
+    signal.addEventListener('abort', cancel, { once: true });
+    ensureCapLogo().then(loaded => { signal.removeEventListener('abort', cancel); resolve(loaded); });
+  });
+}
+
+function capTexture(opts) {
+  const canvas = document.createElement('canvas'); canvas.width = canvas.height = 512;
+  const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace; texture.anisotropy = 8;
+  const carbon = opts.cap === 'carbon', black = carbon || opts.cap === 'black';
+  const colour = parseInt(opts.color.slice(1), 16);
+  const lightBody = (((colour >> 16) & 255) * .2126 + ((colour >> 8) & 255) * .7152 + (colour & 255) * .0722) > 145;
+  const darkInk = opts.cap === 'silver' || (['same', 'body'].includes(opts.cap) && lightBody);
+  const draw = () => {
+    const ctx = canvas.getContext('2d'); ctx.setTransform(2, 0, 0, 2, 0, 0); ctx.clearRect(0, 0, 256, 256);
+    if (black) { ctx.fillStyle = '#0b0d0f'; ctx.fillRect(0, 0, 256, 256); }
+    if (carbon) {
+      for (let y = 0; y < 256; y += 16) for (let x = 0; x < 256; x += 16) {
+        const vertical = (x / 16 + y / 16) % 2 === 0;
+        for (let i = 0; i < 8; i++) { ctx.fillStyle = i % 3 === 0 ? '#41444a' : '#23262c'; ctx.fillRect(x + (vertical ? i * 2 : 0), y + (vertical ? 0 : i * 2), vertical ? 1 : 16, vertical ? 16 : 1); }
+      }
     }
-  }
-  ctx.strokeStyle = '#a4a19b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(128, 128, 115, 0, TAU); ctx.stroke();
-  // A typographic brand name, not a reconstruction of an official logo asset.
-  ctx.fillStyle = '#f0f0ee'; ctx.textAlign = 'center'; ctx.font = 'italic 900 50px Arial'; ctx.fillText('OARTS', 126, 145);
-  const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace; return texture;
+    if (capLogo) {
+      const layer = document.createElement('canvas'); layer.width = layer.height = 512;
+      const ink = layer.getContext('2d'); ink.scale(2, 2);
+      const scale = Math.min(210 / capLogo.width, 116 / capLogo.height);
+      const w = capLogo.width * scale, h = capLogo.height * scale;
+      ink.drawImage(capLogo.image, capLogo.x, capLogo.y, capLogo.width, capLogo.height, (256 - w) / 2, (256 - h) / 2, w, h);
+      // Preserve the exact letter and star silhouette on light-coloured cap materials.
+      if (darkInk) { ink.globalCompositeOperation = 'source-in'; ink.fillStyle = '#1b1e20'; ink.fillRect(0, 0, 256, 256); }
+      ctx.drawImage(layer, 0, 0, 256, 256);
+    } else {
+      // A modest fallback, not an alternative uppercase logo.
+      ctx.fillStyle = darkInk ? '#1b1e20' : '#e7e7e3'; ctx.textAlign = 'left'; ctx.font = 'italic 500 66px Georgia, "Times New Roman", serif';
+      const word = 'oarts', width = ctx.measureText(word).width, start = (256 - width) / 2;
+      ctx.fillText(word, start, 140);
+      const x = start + ctx.measureText('o').width + ctx.measureText('a').width * .42, y = 165;
+      ctx.beginPath(); ctx.moveTo(x, y - 11); ctx.lineTo(x + 3, y - 3); ctx.lineTo(x + 10, y); ctx.lineTo(x + 3, y + 3);
+      ctx.lineTo(x, y + 11); ctx.lineTo(x - 3, y + 3); ctx.lineTo(x - 10, y); ctx.lineTo(x - 3, y - 3); ctx.closePath(); ctx.fill();
+    }
+    texture.userData.logoSource = capLogo ? 'reference' : 'fallback';
+  };
+  const record = { texture, draw }; liveCapTextures.add(record);
+  texture.addEventListener('dispose', () => liveCapTextures.delete(record));
+  draw(); void ensureCapLogo(); return texture;
 }
 
 /** One 2.06-unit diameter wheel, with its face looking down +Z and its centre at the origin. */
@@ -177,10 +257,9 @@ export function createWheel(input = {}) {
     const capMat = ['same', 'body'].includes(opts.cap) ? material : opts.cap === 'silver' ? polished : dark;
     const cap = mesh(new THREE.CylinderGeometry(.102, .106, .05, 96), capMat, group);
     cap.rotation.x = Math.PI / 2; cap.position.z = centre + .073;
-    if (['black', 'carbon'].includes(opts.cap)) {
-      const badgeMat = new THREE.MeshStandardMaterial({ map: capTexture(opts.cap === 'carbon'), roughness: .29, metalness: .3 });
-      const badge = mesh(new THREE.CircleGeometry(.092, 96), badgeMat, group); badge.position.z = centre + .1;
-    }
+    const badgeMat = new THREE.MeshStandardMaterial({ map: capTexture(opts), transparent: true, depthWrite: false, roughness: .29, metalness: .3 });
+    const badge = mesh(new THREE.CircleGeometry(.092, 96), badgeMat, group); badge.position.z = centre + .1;
+    badge.name = 'Oarts_cap_logo'; badge.castShadow = false;
     const capRing = mesh(new THREE.TorusGeometry(.099, .003, 12, 96), polished, group); capRing.position.z = centre + .101;
   }
 
@@ -221,6 +300,8 @@ function contactShadow() {
 
 export async function mount(container, input = {}) {
   if (!(container instanceof Element)) throw new TypeError('3D showroom potřebuje platný kontejner.');
+  if (input.signal?.aborted) throw new DOMException('Náhled byl zrušen.', 'AbortError');
+  await waitForCapLogo(input.signal);
   if (input.signal?.aborted) throw new DOMException('Náhled byl zrušen.', 'AbortError');
   active.get(container)?.dispose();
   let opts = options(input), disposed = false, model = null, carModel = null, generation = 0;
@@ -290,6 +371,8 @@ export async function mount(container, input = {}) {
   };
   const observer = new ResizeObserver(resize); observer.observe(container);
   const render = () => { if (!disposed) renderer.render(scene, camera); };
+  const capLogoLoaded = event => { if (event.detail?.loaded) render(); };
+  window.addEventListener('nfw:cap-logo-ready', capLogoLoaded);
   const onContextLost = event => { event.preventDefault(); status.style.display = 'grid'; status.textContent = '3D náhled byl pozastaven. Obnovte stránku pro opětovné načtení.'; input.onError?.(new Error('WebGL context lost')); };
   renderer.domElement.addEventListener('webglcontextlost', onContextLost);
   const onKey = event => {
@@ -436,6 +519,7 @@ export async function mount(container, input = {}) {
       if (disposed) return; disposed = true; generation++;
       loadAbort?.abort(); input.signal?.removeEventListener('abort', cancelMount);
       renderer.setAnimationLoop(null); observer.disconnect(); intersection.disconnect(); controls.dispose();
+      window.removeEventListener('nfw:cap-logo-ready', capLogoLoaded);
       reduced.removeEventListener('change', motionChange);
       renderer.domElement.removeEventListener('webglcontextlost', onContextLost); renderer.domElement.removeEventListener('keydown', onKey);
       renderer.domElement.removeEventListener('dblclick', resetCamera);
@@ -468,6 +552,7 @@ function disposeThumbnails() {
 /** Rasterize a wheel in the shared studio. Existing calls keep their opaque 400 px output. */
 export function renderThumbnail(input = {}) {
   const job = thumbnailQueue.then(async () => {
+    await ensureCapLogo();
     clearTimeout(thumbnailIdleTimer);
     try {
       const size = Math.round(clamp(input.size, 128, 1600, 400));
@@ -582,8 +667,10 @@ export function disposeWheelFaces({ clearCache = false } = {}) {
  * Fit that basis to the target ellipse to preserve parallax without foreshortening twice.
  */
 export function renderWheelFace(input = {}) {
-  const opts = faceOptions(input), cacheKey = JSON.stringify(opts);
-  const job = faceQueue.then(() => {
+  const opts = faceOptions(input);
+  const job = faceQueue.then(async () => {
+    await ensureCapLogo();
+    const cacheKey = JSON.stringify([capLogoRevision, opts]);
     clearTimeout(faceIdleTimer);
     if (faceCache.has(cacheKey)) {
       const cached = faceCache.get(cacheKey);
@@ -643,5 +730,5 @@ export function renderWheelFace(input = {}) {
   faceQueue = job.catch(() => {}); return job;
 }
 
-window.NFWShowroom = { mount, createWheel, renderThumbnail, disposeThumbnails, renderWheelFace, disposeWheelFaces, version: '1.2.0', threeVersion: THREE.REVISION };
+window.NFWShowroom = { mount, createWheel, renderThumbnail, disposeThumbnails, renderWheelFace, disposeWheelFaces, ensureCapLogo, get capLogoReady() { return ensureCapLogo(); }, version: '1.3.0', threeVersion: THREE.REVISION };
 window.dispatchEvent(new CustomEvent('nfw:showroom-ready'));

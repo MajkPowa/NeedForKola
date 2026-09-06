@@ -65,3 +65,12 @@ Galerie začíná bez zákaznických fotografií. Její úvod je označen jako p
 Nezávislé browser QA: úvod, konfigurátor a průběh zakázky při šířkách 390, 960, 1200 a 1440 px bez chyb JavaScriptu, chybějících fotografií nebo horizontálního přesahu. Galerie byla testována s izolovanými daty mimo produkční katalog: dvě fotografie, přepínání šipkami, návrat na první snímek, Escape, zavření a návrat fokusu. HTML v textových polích zůstává textem. Odpověď 404 zobrazí hlášku a umožní přejít na další dostupný snímek. Všech 176 lokálních referencí z pěti HTML stránek existuje; navigační cíle vracejí HTTP 200.
 
 Blog QA: PASS, exit 0, bez chyb JavaScriptu. Ověřeny oba články, témata, hledání bez diakritiky, prázdné výsledky, sdílení odkazu, obsah článku, související čtení a mobilní menu. Chybějící, neplatný, nadměrně dlouhý nebo duplicitní slug zobrazí stav nenalezeného článku. HTML v obsahu zůstává textem; javascriptové URL se nevykreslí. Navigace, skripty, styly i obrázky byly ověřeny pod podsložkou `/NeedForKola/`.
+
+## Logo podle fotografie krytky — 2026-09-06
+
+- Všech 11 značek na pěti stránkách používá dodané malé patkové „oarts“ s hvězdou pod a, rekonstruované do PNG. Alfa kanál ověřen: RGBA, 2135 × 736, rozsah 0–255. Původní název Need For Wheels zůstává.
+- Kontrola pěti stránek při 390, 960 a 1440 px: PASS 15/15, bez přetékání, chyb JavaScriptu a chyb načítání loga. Ověřen poměr stran, alternativní text a čitelnost v hlavičce i patičce.
+- Generátor `tools/render-silver-thumbnails.cjs`: PASS. Přegenerováno 13 stříbrných, 13 bronzových a jeden velký 900px náhled s novým logem. Black/carbon mají stříbrné logo; světlé krytky používají tmavou siluetu téhož loga. Varianta bez krytky zůstává otevřená.
+- `check-wheel-face.cjs` a `check-studio-cancellation.cjs`: PASS. Selhání PNG s 404 nevypne 3D; synchronní `createWheel` zůstává podporován. Čekání na značku uvolní po třech sekundách náhled s náhradním patkovým textem a hvězdou. Pozdější úspěšné načtení aktualizuje existující textury i neanimovaný náhled bez vytvoření nového canvasu; ověřeno změnou framebufferu bez vynuceného renderování.
+- Hero byl vizuálně porovnán s předlohou; finální varianta má malé kurzivní patkové písmo a hvězdu vlevo pod a. Původní široká scéna a bronzový disk jsou zachované.
+- Závěrečný browser průchod skutečné homepage bez náhradních médií při 390 a 1440 px: všech 49 obrázků načteno, včetně nového hero 1672 × 941, blogového coveru a všech 13 designů. Žádné chyby HTTP/JavaScriptu ani horizontální přesah.

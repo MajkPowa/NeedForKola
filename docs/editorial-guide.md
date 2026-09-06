@@ -101,4 +101,4 @@ Součásti implementace: `blog.html`, `clanek.html`, `js/editorial-data.js`, `js
 
 Přesný profil Oarts zatím není doložený. V [js/oarts.js](https://github.com/MajkPowa/NeedForKola/edit/main/js/oarts.js) je proto `instagramUrl` prázdný. Po doplnění skutečné adresy ve tvaru `https://www.instagram.com/vas_profil/` se v patičkách automaticky zobrazí Instagram s ikonou. Nevkládej adresu jiného účtu ani odkaz na vyhledávání. Odkaz otevře nové okno.
 
-OARTS je nyní typografický nápis v hlavičkách, patičkách a na krytkách. Dodané fotografie ani katalog neobsahovaly finální logo; jeho přesnou grafiku bude potřeba nahradit podle vašeho podkladu. Původ a prompt úpravy úvodního renderu jsou zaznamenány v [media-sources.md](media-sources.md).
+Logo nyní vychází z dodané fotografie černé krytky: malé patkové „oarts“ se stříbrným povrchem a čtyřcípou hvězdou pod písmenem a. Soubor `assets/brand/oarts-logo.png` používají hlavičky, patičky i prostorové krytky. Je to digitální rekonstrukce fotografie; pokud později dostanete původní grafický soubor značky, může tento podklad nahradit. Původ a prompty úprav jsou zaznamenány v [media-sources.md](media-sources.md).

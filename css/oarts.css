@@ -1,10 +1,12 @@
 /* Oarts identity and real-project chapter. */
 .logo small.brand-endorsement{display:flex;align-items:center;gap:7px;letter-spacing:.12em;font:9px var(--body);color:#a5a79f;margin-top:5px}
-.oarts-wordmark{font-family:Arial,sans-serif;font-style:italic;font-weight:900;letter-spacing:-.06em;line-height:1;color:#f6f4ed}
-.brand-endorsement .oarts-wordmark{font-size:15px;letter-spacing:-.045em}
+.oarts-wordmark{display:inline-flex;align-items:center;flex-shrink:0;width:136px;line-height:1}
+.oarts-wordmark>img{display:block;width:100%;height:auto;object-fit:contain}
+.brand-endorsement .oarts-wordmark{width:65px}
 .oarts-signature{display:flex;align-items:center;gap:17px;margin-top:26px;padding-top:18px;border-top:1px solid #ffffff20;max-width:345px}
 .oarts-signature>.oarts-wordmark{font-size:34px}.oarts-signature>span:last-child{font-size:10px;color:#bbb7ad;line-height:1.6;border-left:1px solid #ffffff25;padding-left:17px}
 .hero-copy .oarts-signature{margin-top:22px;max-width:none;border-top:0;padding-top:0}.hero-copy .oarts-signature>.oarts-wordmark{font-size:27px}
+.hero-copy .oarts-signature>.oarts-wordmark{width:116px}
 .featured-wheel--silver .featured-wheel__visual{background:radial-gradient(ellipse at 52% 42%,#373b39,#171d1a 65%,#111512)}
 .featured-wheel--silver .featured-wheel__visual>img{width:100%;height:100%;max-height:560px;object-fit:contain;mix-blend-mode:normal;mask-image:none;padding:18px}
 .design-carousel .wheel-thumb,.invitation-card>img{mix-blend-mode:normal;mask-image:none}
@@ -30,8 +32,10 @@
 .project-lightbox__controls{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:12px}.project-lightbox__caption{font:12px/1.6 var(--body);color:#c3c7bd;text-align:center;margin:0;flex:1}.project-lightbox__controls .round-control{flex-shrink:0}
 .project-card button:focus-visible,.project-lightbox button:focus-visible{outline:2px solid #e6bd85;outline-offset:-4px}
 .oarts-footer-brand{display:flex;align-items:center;gap:18px}.oarts-footer-brand>.oarts-wordmark{font-size:38px}.oarts-footer-brand>div{border-left:1px solid #ffffff25;padding-left:18px;font-size:11px;line-height:1.9;color:#929c8c}
+.oarts-footer-brand>.oarts-wordmark{width:145px}
 .footer>.wrap{flex-wrap:wrap;gap:25px}.footer nav{flex-wrap:wrap;gap:18px}.oarts-social{display:inline-flex;align-items:center;gap:9px}.instagram-mark{display:inline-block;width:18px;height:18px;border:1.7px solid currentColor;border-radius:5px;position:relative;flex-shrink:0}.instagram-mark:before{content:'';position:absolute;left:4px;top:4px;width:7px;height:7px;border:1.5px solid currentColor;border-radius:50%}.instagram-mark:after{content:'';position:absolute;right:2px;top:2px;width:3px;height:3px;border-radius:50%;background:currentColor}
 @media(min-width:1101px){.nav__links{gap:22px}.nav__links>a:not(.btn){font-size:12px}}
 @media(max-width:1100px) and (min-width:901px){.nav .burger{display:flex}.nav__links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;padding:24px;background:#0c110ff7;flex-direction:column;align-items:stretch}.nav.open .nav__links{display:flex}.nav__links>a{padding:12px}.nav.open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}.nav.open .burger span:nth-child(2){opacity:0}.nav.open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}}
 @media(max-width:680px){.projects-empty,.projects-grid{grid-template-columns:1fr}.projects-empty{border-radius:23px}.projects-empty__visual{min-height:260px}.projects-empty__copy{padding:30px 25px}.projects-empty h3{font-size:41px}.projects-empty p{font-size:13px}.oarts-footer-brand>.oarts-wordmark{font-size:32px}.oarts-footer-brand>div{font-size:10px}.footer nav{gap:16px}.hero-copy .oarts-signature{margin-top:16px;gap:12px}.hero-copy .oarts-signature>.oarts-wordmark{font-size:24px}.hero-copy .oarts-signature>span:last-child{font-size:8px;padding-left:12px}.project-card__copy{padding:23px}.logo small.brand-endorsement{font-size:8px}.brand-endorsement .oarts-wordmark{font-size:13px}}
 @media(prefers-reduced-motion:reduce){.project-card__photo>img{transition:none}.project-card__photo:hover>img{transform:none}}
+@media(max-width:680px){.brand-endorsement .oarts-wordmark{width:60px}.hero-copy .oarts-signature>.oarts-wordmark{width:100px}.oarts-signature>.oarts-wordmark{width:122px}.oarts-footer-brand>.oarts-wordmark{width:128px}}

@@ -63,7 +63,7 @@
     // Thumbnails show a known finish; the live studio renders the full configuration.
     const requested = String(opts.color || opts.colorHex || '').toLowerCase();
     const bronze = requested === 'bronze' || requested === '#9a6d3a';
-    const src = `assets/renders/${bronze ? '' : 'silver/'}${d.id}.webp`;
+    const src = `assets/renders/${bronze ? '' : 'silver/'}${d.id}.webp?v=20260906-oarts-logo`;
     const colour = bronze ? 'Bronze' : 'Hyper Silver';
     return `<img class="wheel-thumb" src="${src}" alt="${escape(d.name)} — 3D náhled designu disku v povrchu ${colour}" loading="lazy" width="${bronze ? 400 : 600}" height="${bronze ? 400 : 600}">`;
   };
