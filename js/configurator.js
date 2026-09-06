@@ -292,7 +292,7 @@
     const g = generation(), list = candidates(), years = V.getYears(S.brand, S.model);
     const bodies = V.getBodies(S.brand, S.model, S.year);
     const model = selectedModel();
-    const sourceNote = !g ? 'Zvol karoserii a konkrétní provedení.' : g.confidence === 'verified'
+    const sourceNote = !g ? S.year ? 'Zvol karoserii a konkrétní provedení.' : 'Doplň rok výroby a potom vyber provedení svého vozu.' : g.confidence === 'verified'
       ? 'Provedení doplněné z podkladů výrobce.' : 'Katalogové provedení. Kód generace a označení faceliftu nemusí být ve zdroji uvedené.';
     const endNote = !g ? '' : g.endBasis === 'inferred' ? 'Hranice období je odvozená z následujícího provedení; přechodový rok se může překrývat.' : g.endBasis === 'open' ? 'Zdroj neuvádí konec období. Katalog je omezen rokem 2026; dostupnost daného ročníku je potřeba ověřit.' : 'V přechodových letech se mohou období překrývat.';
     return `<div class="panel-kicker">01 / TVŮJ VŮZ</div><h2>Začni svým autem.</h2><p class="sub">${V.brandCount} značek · ${V.modelCount} modelů · ročníky do ${V.through}. Generace, facelifty a karoserie se ukládají s konfigurací.</p>
@@ -303,7 +303,7 @@
       <label class="field"><span>Karoserie</span><select id="vehicleBody" aria-label="Karoserie" ${!bodies.length?'disabled':''}>${bodies.length!==1 || !S.body?'<option value="">Vyber karoserii</option>':''}${bodies.map(b=>`<option value="${esc(b.id)}" ${S.body===b.id?'selected':''}>${esc(b.name)}</option>`).join('')}</select></label>
       <label class="field vehicle-fields__wide"><span>Generace / provedení ${list.length>1?'· upřesni variantu':''}</span><select id="vehicleGeneration" aria-label="Generace" ${!S.body || !list.length?'disabled':''}>${list.length!==1 || !S.body || !S.generation?'<option value="">Vyber provedení</option>':''}${S.body?list.map(g=>`<option value="${esc(g.id)}" ${S.generation===g.id?'selected':''}>${esc(g.name)} · ${V.periodLabel(g)}${g.status==='announced'?' · oznámeno':''}</option>`).join(''):''}</select></label>
       </div>
-      ${!years.includes(S.year)?'<div class="note vehicle-warning" role="status">Pro tento rok nemáme doložené provedení. Vyber dostupný ročník nebo chybějící variantu uveď do poznámky.</div>':''}
+      ${!S.year?'<div class="note" role="status">Model je vybraný. Doplň rok výroby a upřesni karoserii svého vozu.</div>':!years.includes(S.year)?'<div class="note vehicle-warning" role="status">Pro tento rok nemáme doložené provedení. Vyber dostupný ročník nebo chybějící variantu uveď do poznámky.</div>':''}
       <div class="generation-info"><small>${g ? g.confidence==='verified'?'PODKLADY VÝROBCE':'KATALOGOVÝ ZÁZNAM' : 'VÝBĚR PROVEDENÍ'}</small><b>${g?esc(g.name)+' · '+esc(g.bodyName):'Upřesni svůj vůz'}</b><span>${sourceNote}</span>${g?.status==='announced'?`<span class="vehicle-warning">Oznámené provedení · ${esc(g.startBasis || 'Dodávky jsou plánované.')}</span>`:''}</div>
       ${g?`<details class="vehicle-source"><summary>Období a zdroj údajů</summary><p>${V.periodLabel(g)} · ${esc(g.market)}. ${endNote}</p>${g.startBasis?`<p>${esc(g.startBasis)}</p>`:''}${g.notes?`<p>${esc(g.notes)}</p>`:''}${g.bodyVariants?.length?`<p>Další provedení řady ve zdroji: ${g.bodyVariants.map(esc).join(', ')}. Kombinaci s karoserií upřesni v poznámce.</p>`:''}<a href="${esc(g.source)}" target="_blank" rel="noopener">${esc(g.sourceTitle)} ↗</a>${g.additionalSources?.length?g.additionalSources.map(source=>`<br><a href="${esc(source.url)}" target="_blank" rel="noopener">${esc(source.title)} ↗</a>`).join(''):''}</details>`:''}
       <a class="text-link vehicle-catalog-link" href="index.html?catalogBrand=${encodeURIComponent(S.brand)}&catalogModel=${encodeURIComponent(model.name)}#auta">Prohlédnout katalog modelu (${model.variants.length} provedení) ↗</a>
@@ -562,6 +562,7 @@
   document.addEventListener('change', e => {
     const t = e.target;
     if (['vehicleBrand','vehicleModel','vehicleYear','vehicleBody','vehicleGeneration'].includes(t.id)) {
+      if (S.view === 'showroom') S.view = 'car';
       if(t.id==='vehicleBrand'){S.brand=t.value;S.model=selectedBrand().models[0].id;S.body='';S.generation='';S.carDetail='';}
       if(t.id==='vehicleModel'){S.model=t.value;S.body='';S.generation='';S.carDetail='';}
       if(t.id==='vehicleYear'){S.year=Number(t.value);S.generation='';}

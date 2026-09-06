@@ -46,6 +46,18 @@
   const yearInput = root.querySelector('#catalogYear');
   const studioInput = root.querySelector('#catalog360');
   const resultContainer = root.querySelector('#catalogResults');
+  // Capture the original destinations once; never inherit an old configured URL.
+  const configureLinks = [...document.querySelectorAll('a[href]')].flatMap(anchor => {
+    const href = anchor.getAttribute('href'), url = new URL(href, location.href);
+    const hash = new URLSearchParams(url.hash.slice(1));
+    if (url.origin !== location.origin || url.pathname !== new URL('konfigurator.html', location.href).pathname ||
+      ['brand','model','car'].some(key => url.searchParams.has(key) || hash.has(key))) return [];
+    anchor.dataset.configureVehicle = '';
+    return [{ anchor, href }];
+  });
+  const dock = document.getElementById('discoveryDock');
+  const dockLabel = dock?.querySelector('div > span'), dockTitle = dock?.querySelector('div > b');
+  const dockDefaults = { label: dockLabel?.textContent, title: dockTitle?.textContent };
   const brandPicker = window.NFWBrandPicker?.enhance(brandInput, { label: 'Značka v katalogu' });
   const termsMatch = item => !state.search.trim() || normalise(state.search).split(' ').every(term => item.search.includes(term) || item.search.replace(/ /g, '').includes(term));
   const prefiltered = () => models.filter(item => (!state.brand || item.brand.id === state.brand) && termsMatch(item));
@@ -62,6 +74,44 @@
   }
 
   const visibleVariants = item => item.variants.filter(g => inYear(g) && (!state.only3d || studioFor(item, g)));
+
+  function modelSelection(item) {
+    const variants = visibleVariants(item);
+    // The 360 filter explicitly narrows to the registered vehicle shown in the catalogue.
+    if (state.only3d && variants.length === 1) return new URL(linkFor(item, variants[0], studioFor(item, variants[0])), location.href).searchParams;
+    const params = new URLSearchParams({ brand: item.brand.id, model: item.model.id, year: state.year || '0', generation: '', body: '', view: 'car' });
+    if (state.year) {
+      const bodies = [...new Set(variants.map(g => g.body).filter(body => body && body !== 'unknown'))];
+      if (bodies.length === 1) params.set('body', bodies[0]);
+      if (variants.length === 1 && bodies.length === 1) params.set('generation', variants[0].id);
+    }
+    return params;
+  }
+
+  function updateConfigureLinks(items) {
+    const term = normalise(state.search).replace(/ /g, '');
+    const exact = term ? items.filter(item => [item.model.name, item.brand.name + ' ' + item.model.name]
+      .some(name => normalise(name).replace(/ /g, '') === term)) : [];
+    const selected = items.length === 1 ? items[0] : exact.length === 1 ? exact[0] : null;
+    const hasFilter = Boolean(state.search.trim() || state.brand || state.year || state.only3d);
+    for (const { anchor, href } of configureLinks) {
+      anchor.dataset.catalogVehicle = selected?.key || '';
+      anchor.dataset.catalogChoose = hasFilter && !selected ? 'true' : 'false';
+      if (!hasFilter) { anchor.setAttribute('href', href); continue; }
+      if (!selected) { anchor.setAttribute('href', '#vehicleCatalogue'); continue; }
+      const target = new URL(href, location.href), params = modelSelection(selected);
+      const originalView = target.searchParams.get('view');
+      target.hash = '';
+      for (const [key, value] of params) target.searchParams.set(key, value);
+      // A design's detail view is intentional; ordinary CTAs open the selected car.
+      if (originalView === 'wheel') target.searchParams.set('view', 'wheel');
+      anchor.setAttribute('href', 'konfigurator.html?' + target.searchParams);
+    }
+    if (dockLabel) dockLabel.textContent = selected ? 'VYBRANÝ VŮZ' : hasFilter ? 'TVŮJ VŮZ' : dockDefaults.label;
+    if (dockTitle) dockTitle.textContent = selected ? `${selected.brand.name} ${selected.model.name}${state.year ? ' · ' + state.year : ''}` : hasFilter ? (items.length ? 'Vyber model z výsledků.' : 'Upřesni hledaný model.') : dockDefaults.title;
+    const dockAction = dock?.querySelector('a > span');
+    if (dockAction) dockAction.innerHTML = `${hasFilter && !selected ? 'Vybrat model' : 'Otevřít konfigurátor'} <b aria-hidden="true">↗</b>`;
+  }
 
   function updateYears(items) {
     const years = new Set();
@@ -118,7 +168,7 @@
     const bodies = [...new Set(variants.filter(g => g.body && g.body !== 'unknown').map(g => g.bodyName || g.body))];
     const years = variants.length ? `${Math.min(...variants.map(g => g.from))}–${Math.min(through, Math.max(...variants.map(g => g.to)))}` : 'Varianty doplňujeme';
     const firstRows = variants.slice(0, 6).map(g => variantRow(item, g)).join('');
-    return `<article class="catalog-card" data-catalog-key="${esc(item.key)}"><div class="catalog-card-top"><span class="catalog-card-brand">${window.NFWBrandPicker?.logo(item.brand.id) || ''}<span>${esc(item.brand.name)}</span></span><small>${state.year || years}</small></div><div class="catalog-model-visual" data-model-photo></div><h4>${esc(item.model.name)}</h4><p class="catalog-card-bodies">${bodies.length ? esc(bodies.slice(0, 3).join(' / ')) + (bodies.length > 3 ? ` <span>+${bodies.length - 3}</span>` : '') : 'Výběr konkrétního vozu'}</p>${studioLink}${variants.length ? `<details class="catalog-variants" ${state.only3d ? 'open' : ''}><summary><span>Generace a karoserie <b>${num(variants.length)}</b></span><i aria-hidden="true">+</i></summary><ol class="catalog-variant-list">${firstRows}</ol>${variants.length > 6 ? `<button class="catalog-more-variants" type="button" data-more-variants="${esc(item.key)}">Zobrazit zbývající varianty (${num(variants.length - 6)}) <span aria-hidden="true">↓</span></button>` : ''}</details>` : `<div class="catalog-card-missing"><span>Detailní podklady ještě doplňujeme.</span><a href="${esc(linkFor(item))}">Vybrat model <span aria-hidden="true">↗</span></a></div>`}</article>`;
+    return `<article class="catalog-card" data-catalog-key="${esc(item.key)}"><div class="catalog-card-top"><span class="catalog-card-brand">${window.NFWBrandPicker?.logo(item.brand.id) || ''}<span>${esc(item.brand.name)}</span></span><small>${state.year || years}</small></div><div class="catalog-model-visual" data-model-photo></div><h4>${esc(item.model.name)}</h4><p class="catalog-card-bodies">${bodies.length ? esc(bodies.slice(0, 3).join(' / ')) + (bodies.length > 3 ? ` <span>+${bodies.length - 3}</span>` : '') : 'Výběr konkrétního vozu'}</p><a class="catalog-model-configure" href="konfigurator.html?${esc(modelSelection(item).toString())}">Konfigurovat ${esc(item.model.name)} <span aria-hidden="true">↗</span></a>${studioLink}${variants.length ? `<details class="catalog-variants" ${state.only3d ? 'open' : ''}><summary><span>Generace a karoserie <b>${num(variants.length)}</b></span><i aria-hidden="true">+</i></summary><ol class="catalog-variant-list">${firstRows}</ol>${variants.length > 6 ? `<button class="catalog-more-variants" type="button" data-more-variants="${esc(item.key)}">Zobrazit zbývající varianty (${num(variants.length - 6)}) <span aria-hidden="true">↓</span></button>` : ''}</details>` : `<div class="catalog-card-missing"><span>Detailní podklady ještě doplňujeme.</span><a href="${esc(linkFor(item))}">Vybrat model <span aria-hidden="true">↗</span></a></div>`}</article>`;
   }
 
   function hydrateVisuals() {
@@ -152,6 +202,7 @@
     const baseItems = prefiltered();
     if (years) updateYears(baseItems);
     const items = baseItems.filter(item => state.only3d ? visibleVariants(item).length : (!state.year || item.variants.some(inYear)));
+    updateConfigureLinks(items);
     const pages = Math.max(1, Math.ceil(items.length / pageSize));
     state.page = Math.min(Math.max(1, state.page), pages);
     const start = (state.page - 1) * pageSize;
@@ -175,11 +226,23 @@
   searchInput.addEventListener('input', () => {
     clearTimeout(searchTimer);
     state.search = searchInput.value; state.page = 1;
+    updateConfigureLinks(prefiltered().filter(item => visibleVariants(item).length));
     searchTimer = setTimeout(() => render({ years: true }), 120);
   });
   brandInput.addEventListener('change', () => { state.brand = brandInput.value; state.page = 1; render({ years: true }); });
   yearInput.addEventListener('change', () => { state.year = yearInput.value; state.page = 1; render(); });
   studioInput.addEventListener('change', () => { state.only3d = studioInput.checked; state.page = 1; render(); });
+  document.addEventListener('click', event => {
+    const anchor = event.target.closest('a[data-configure-vehicle]');
+    if (!anchor) return;
+    // Flush a just-typed query before the link's default navigation, even inside the debounce window.
+    clearTimeout(searchTimer); render({ years: true });
+    if (anchor.dataset.catalogChoose === 'true') {
+      event.preventDefault();
+      root.scrollIntoView({ block: 'start', behavior: 'instant' });
+      searchInput.focus({ preventScroll: true });
+    }
+  }, true);
   root.addEventListener('click', event => {
     const target = event.target.closest('button');
     if (!target) return;

@@ -1,6 +1,12 @@
 # Ověření Need For Wheels
 
-Aktualizováno 5. 9. 2026. Ověření probíhá v Chrome přes lokální HTTP server; desktop 1440 × 1000, mobil 390 × 844 a kontrola fotografických náhledů také při šířce 768 px. WebGL testy používají softwarový renderer SwiftShader; výsledky nejsou měřením FPS na běžném zařízení.
+Aktualizováno 6. 9. 2026. Ověření probíhá v Chrome přes lokální HTTP server; desktop 1440 × 1000, mobil 390 × 844 a kontrola fotografických náhledů také při šířce 768 px. WebGL testy používají softwarový renderer SwiftShader; výsledky nejsou měřením FPS na běžném zařízení.
+
+## Přenos vyhledaného vozu do konfigurátoru
+
+`node tools/check-catalog-handoff.cjs` ověřuje skutečné kliknutí na „Otevřít konfigurátor“ po zadání modelu, předvolbu značky/modelu/roku, obnovení katalogových filtrů z URL a mobilní rozložení. Jednoznačné provedení se přenáší; nevybraný rok ani nejednoznačná generace/karoserie se nedoplňují odhadem. Test zahrnuje přesný název Corolla vedle Corolla Cross, nulové a vícečetné výsledky, reset a kliknutí před dokončením debounce vyhledávání. Změna modelu uvnitř ukázkového showroomu přepne náhled na skutečně vybraný vůz. Výsledek: PASS, bez JavaScriptových chyb.
+
+Nezávislá kontrola potvrdila přenos pro všech 22 obecných a designových CTA a zachování 5 explicitních odkazů na ukázkové vozy/výrobní příklad. `check-catalog-browser.cjs` po této změně také prošel.
 
 ## Rozsah dat a skutečného 360° zobrazení
 
