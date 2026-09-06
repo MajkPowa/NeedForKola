@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "builtOn": "2026-09-05",
+  "builtOn": "2026-09-06",
   "variants": {
     "bmw/x5/e53": {
       "id": "variant-bmw-x5-e53",
@@ -757,7 +757,37 @@
       "processing": "Resized to at most 960 pixels wide and encoded as WebP; full frame retained.",
       "evidenceUrl": "https://en.wikipedia.org/wiki/%C5%A0koda_Octavia",
       "evidenceNote": "Explicit photograph selected from the model generation article/gallery; phase and body reviewed individually. Trim and wheels may differ."
+    },
+    "bmw/rada-5/v-1b3b3ef6ba08": {
+      "id": "variant-bmw-rada-5-v-1b3b3ef6ba08",
+      "src": "assets/vehicles/variants/bmw--rada-5--v-1b3b3ef6ba08.webp",
+      "thumb": "assets/vehicles/variants/bmw--rada-5--v-1b3b3ef6ba08.webp",
+      "kind": "photo",
+      "match": "variant",
+      "title": "BMW řady 5 Touring G31 · před faceliftem (2017–2020)",
+      "alt": "Stříbrné BMW řady 5 Touring G31 před faceliftem, kombi v předním tříčtvrtečním pohledu.",
+      "depicted": {
+        "label": "BMW řady 5 Touring G31 · před faceliftem (2017–2020)",
+        "body": "wagon",
+        "from": 2017,
+        "to": 2020
+      },
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_5_Series_G31_(front).jpg",
+      "articleUrl": "https://en.wikipedia.org/wiki/BMW_5_Series_(G30)",
+      "author": "User3204",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 960,
+      "height": 626,
+      "sourceFile": "File:BMW 5 Series G31 (front).jpg",
+      "sourceSha1": "01128f403d9bd7da54595f1a9016adc8809bc1e1",
+      "sourceDescription": "A BMW 5 Series G31 in Helsinki, Finland",
+      "processing": "Resized to at most 960 pixels wide and encoded as WebP; full frame retained.",
+      "evidenceUrl": "https://www.press.bmwgroup.com/global/article/detail/T0267496EN/the-new-bmw-5-series-touring",
+      "evidenceNote": "Commons identifies the pictured car as G31; the photograph was taken on 14 August 2018 and uploaded in October 2018. The long roof, rear quarter windows and tailgate establish Touring/wagon body. BMW launched G31 Touring in June 2017; the facelift launched in July 2020. This exact catalogue phase represents 2017–2020 before facelift, not the separate 2020–2024 Touring or any sedan. Trim and factory wheels may differ.",
+      "phaseEvidenceUrl": "https://www.press.bmwgroup.com/global/article/detail/T0308529EN/the-new-bmw-5-series?showMedia=video",
+      "sourceDate": "2018-08-14"
     }
   },
-  "scope": "Only explicit generation, phase and body matches. Unmapped variants must use a labelled model-family reference."
+  "scope": "Only explicit generation, phase and body matches. Unmapped selected vehicles remain unavailable; model-family references are used only for catalogue browsing."
 }

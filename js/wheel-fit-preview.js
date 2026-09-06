@@ -2,9 +2,9 @@
  * Coordinates belong to the full, uncropped local photograph, not the viewport.
  * Original photographs and tyres are preserved; only the rim faces are covered.
  */
-import { renderWheelFace } from './showroom.js?v=20260906-silver-stock';
+import { renderWheelFace } from './showroom.js?v=20260906-exact-vehicle';
 
-const manifestURL = new URL('../data/wheel-fitments.json?v=20260905-wheel-fit', import.meta.url);
+const manifestURL = new URL('../data/wheel-fitments.json?v=20260906-exact-vehicle', import.meta.url);
 let manifestPromise;
 const validClip = points => points === undefined || (Array.isArray(points) && points.length >= 3 && points.length <= 32 &&
   points.every(point => Array.isArray(point) && point.length === 2 &&
@@ -19,6 +19,30 @@ export function validPlacement(photo) {
       w.cx > 0 && w.cx < 1 && w.cy > 0 && w.cy < 1 &&
       w.rx > 0 && w.rx < .3 && w.ry > 0 && w.ry < .5 && validClip(w.clip) &&
       validAngle(w.yaw, 1.2) && validAngle(w.pitch, .8));
+}
+
+/** Geometry alone does not establish that a photo is the selected vehicle. */
+export function assessWheelPhoto(placement, visual) {
+  if (visual?.match !== 'variant' || visual.kind !== 'photo') return { allowed: false, reason: 'vehicle-identity' };
+  if (!validPlacement(placement)) return { allowed: false, reason: 'missing-placement' };
+  if (placement.width !== visual.width || placement.height !== visual.height ||
+      !placement.sourceSha1 || !visual.sourceSha1 || placement.sourceSha1 !== visual.sourceSha1) {
+    return { allowed: false, reason: 'source-identity' };
+  }
+  // An automatic detector's confidence is not a quality approval. The review
+  // applies to this exact photograph, and any outstanding wheel review wins.
+  const manual = placement.status === 'manually-reviewed';
+  if ((!manual && placement.status !== 'visually-reviewed') || placement.reviewRequired === true ||
+      placement.wheels.some(wheel => wheel.reviewRequired === true || (!manual && wheel.reviewRequired !== false))) {
+    return { allowed: false, reason: 'unreviewed-placement' };
+  }
+  if (placement.wheels.some(wheel => {
+    const rx = wheel.rx * placement.width, ry = wheel.ry * placement.height;
+    // Tiny or edge-on rims do not retain enough source detail for a trustworthy
+    // result, even when their centre can be detected. Keep the original instead.
+    return rx < 12 || ry < 24 || rx / ry < .28 || rx / ry > 1.15;
+  })) return { allowed: false, reason: 'unsupported-view' };
+  return { allowed: true, reason: 'reviewed-variant-photo' };
 }
 
 /** Conservative orientation for this photographed rim, never a movable car camera. */
@@ -100,9 +124,9 @@ export function paintWheelFaces(canvas, placement, face, input = {}) {
     ctx.drawImage(rendered.canvas, -rendered.centerX, -rendered.centerY);
     ctx.restore();
     // A narrow contact shadow seats the metal lip inside the existing tyre.
-    const shade = ctx.createRadialGradient(0, 0, .94, 0, 0, 1);
+    const shade = ctx.createRadialGradient(0, 0, .92, 0, 0, 1);
     shade.addColorStop(0, 'rgba(0,0,0,0)');
-    shade.addColorStop(1, 'rgba(0,0,0,.18)');
+    shade.addColorStop(1, 'rgba(0,0,0,.28)');
     ctx.fillStyle = shade;
     ctx.fillRect(-1, -1, 2, 2);
     ctx.restore();
@@ -139,6 +163,7 @@ export function mountWheelPhoto(frame, visual, initial = {}) {
   let disposed = false, revision = 0, timer = null, showOriginal = false, options = initial;
   let lastSignature = '', renderedLabel = '', loading = false;
   const sourceAlt = photo.alt;
+  const sourceLabel = visual.kind === 'photo' ? 'Původní fotografie' : 'Ilustrační render';
 
   function showState() {
     canvas.hidden = showOriginal || !lastSignature;
@@ -146,9 +171,9 @@ export function mountWheelPhoto(frame, visual, initial = {}) {
     compare.setAttribute('aria-pressed', String(showOriginal));
     compare.textContent = showOriginal ? 'Zobrazit nová kola' : 'Původní kola';
     status.textContent = loading ? 'Připravuji nová kola…' :
-      showOriginal ? 'Původní náhled · původní kola' : renderedLabel;
-    photo.alt = !showOriginal && lastSignature ? `${sourceAlt}. Osazeno návrhem kol ${renderedLabel}.` : sourceAlt;
-    canvas.setAttribute('aria-label', `Návrh kol ${renderedLabel} na vybraném voze`);
+      showOriginal ? 'Původní fotografie · původní kola' : `Vizualizace kol: Need For Wheels · ${renderedLabel}`;
+    photo.alt = !showOriginal && lastSignature ? `${sourceAlt}. Vizualizace kol ${renderedLabel}; montáž slouží k porovnání designu.` : sourceAlt;
+    canvas.setAttribute('aria-label', `Vizualizace designu kol ${renderedLabel} na fotografii vozu`);
   }
 
   async function render(token, input, reload = false) {
@@ -156,10 +181,8 @@ export function mountWheelPhoto(frame, visual, initial = {}) {
       const data = await loadWheelFitments(reload);
       if (disposed || token !== revision) return;
       const placement = data[visual.src];
-      if (!validPlacement(placement) || placement.width !== visual.width || placement.height !== visual.height ||
-          (placement.sourceSha1 && visual.sourceSha1 && placement.sourceSha1 !== visual.sourceSha1)) {
-        throw new Error('No matching rim placement for this photograph');
-      }
+      const assessment = assessWheelPhoto(placement, visual);
+      if (!assessment.allowed) throw Object.assign(new Error('Photograph is not approved for wheel fitting'), { unsupported: assessment.reason });
       const faces = [];
       for (let index = 0; index < placement.wheels.length; index++) {
         if (disposed || token !== revision) return;
@@ -179,6 +202,7 @@ export function mountWheelPhoto(frame, visual, initial = {}) {
       canvas.dataset.color = input.colorHex || input.color;
       canvas.dataset.wheelCount = String(placement.wheels.length);
       canvas.dataset.ready = 'true';
+      delete frame.dataset.wheelUnavailable;
       loading = false;
       compare.disabled = false;
       retry.hidden = true;
@@ -190,10 +214,15 @@ export function mountWheelPhoto(frame, visual, initial = {}) {
       canvas.hidden = true;
       canvas.dataset.ready = 'false';
       frame.dataset.wheelView = 'unavailable';
+      frame.dataset.wheelUnavailable = error.unsupported || 'load-error';
       photo.alt = sourceAlt;
-      status.textContent = 'Náhled nových kol se nepodařilo načíst. Zobrazuje se originální fotografie.';
+      status.textContent = error.unsupported
+        ? `${sourceLabel} · přesné osazení kol pro tento snímek není ověřené. Design kola si prohlédněte ve 3D.`
+        : `Náhled nových kol se nepodařilo načíst. ${sourceLabel} zůstává beze změny.`;
       compare.disabled = true;
-      retry.hidden = false;
+      // A changed source may simply need fresh metadata. Retrying never bypasses
+      // the assessment, and cannot approve an unreviewed/unsupported photograph.
+      retry.hidden = Boolean(error.unsupported && !['source-identity', 'missing-placement'].includes(error.unsupported));
     }
   }
 

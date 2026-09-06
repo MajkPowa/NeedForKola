@@ -13169,13 +13169,44 @@
       "photoId": "legacy-render-bmw-x5-g05",
       "localSha256": "50830a64ba64bfa3760f8e6338d71e6654b726be387bb801e9a62103745eebaf",
       "status": "visually-reviewed"
+    },
+    "assets/vehicles/variants/bmw--rada-5--v-1b3b3ef6ba08.webp": {
+      "sourceSha1": "01128f403d9bd7da54595f1a9016adc8809bc1e1",
+      "width": 960,
+      "height": 626,
+      "wheels": [
+        {
+          "cx": 0.485712,
+          "cy": 0.7485594,
+          "rx": 0.044309,
+          "ry": 0.1173551,
+          "rotation": -0.349395,
+          "method": "manual-metal-rim-outline",
+          "reviewRequired": false
+        },
+        {
+          "cx": 0.0881377,
+          "cy": 0.4894144,
+          "rx": 0.0201385,
+          "ry": 0.0730983,
+          "rotation": -0.1599729,
+          "method": "manual-metal-rim-outline",
+          "reviewRequired": false
+        }
+      ],
+      "photoId": "variant-bmw-rada-5-v-1b3b3ef6ba08",
+      "localSha256": "071918aa1a0581f0d703388256a285b56e3135a2cd7841daf6f037f0f0920a06",
+      "status": "manually-reviewed",
+      "reviewRequired": false,
+      "reviewedOn": "2026-09-06",
+      "reviewNote": "Both visible metal rim boundaries calibrated from enlarged source pixels; ellipse fitting uses manually selected metal-lip points, not tyre or spoke boundaries. Front and rear diagnostic outline images verified independently. Actual production WebGL bronze-wheel composite reviewed after calibration; original spokes are covered and tyre sidewalls retained."
     }
   },
   "review": {
-    "reviewedOn": "2026-09-05",
-    "photos": 430,
-    "wheels": 860,
-    "manualCorrections": 198,
+    "reviewedOn": "2026-09-06",
+    "photos": 431,
+    "wheels": 862,
+    "manualCorrections": 199,
     "method": "All source photographs reviewed as production WebGL wheel composites; manual rim and foreground-occlusion corrections verified."
   }
 }

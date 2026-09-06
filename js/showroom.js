@@ -599,7 +599,7 @@ function createFaceStudio() {
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.04;
+  renderer.toneMappingExposure = .86;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   const scene = new THREE.Scene();
@@ -607,15 +607,15 @@ function createFaceStudio() {
   camera.position.set(0, 0, 5); camera.lookAt(0, 0, 0);
   const pmrem = new THREE.PMREMGenerator(renderer), room = new RoomEnvironment();
   const environment = pmrem.fromScene(room, .055);
-  scene.environment = environment.texture; scene.environmentIntensity = .68;
+  scene.environment = environment.texture; scene.environmentIntensity = .52;
   room.dispose(); pmrem.dispose();
   // A side-biased key reveals the spoke dishes; restrained fill preserves depth.
-  const key = new THREE.DirectionalLight('#fff8ee', 3.1); key.position.set(-3.5, 4.8, 4);
+  const key = new THREE.DirectionalLight('#fffdf7', 3.5); key.position.set(-4.5, 5.5, 2.8);
   key.castShadow = true; key.shadow.mapSize.set(1024, 1024);
   Object.assign(key.shadow.camera, { left: -1.65, right: 1.65, top: 1.65, bottom: -1.65, near: .1, far: 14 });
   key.shadow.normalBias = .002; key.shadow.bias = -.00006; scene.add(key);
-  const fill = new THREE.DirectionalLight('#cad8e7', .42); fill.position.set(4, .5, 2.5); scene.add(fill);
-  const edge = new THREE.DirectionalLight('#ffffff', .7); edge.position.set(3, 4, -3); scene.add(edge);
+  const fill = new THREE.DirectionalLight('#e0e2e3', .2); fill.position.set(4, .5, 2.5); scene.add(fill);
+  const edge = new THREE.DirectionalLight('#ffffff', .8); edge.position.set(3, 4, -3); scene.add(edge);
   return { renderer, scene, camera, environment };
 }
 
@@ -627,12 +627,14 @@ function addFaceBrakes(group, face) {
   backing.position.z = face; backing.renderOrder = -100;
   // This compositing seal must never cast a solid-disc shadow onto the real brake.
   backing.castShadow = backing.receiveShadow = false;
-  const brake = new THREE.MeshStandardMaterial({ color: '#52585d', roughness: .49, metalness: .76, envMapIntensity: .48 });
+  // The brake is deliberately neutral: this is a wheel-design illustration, not a
+  // claim that the photographed vehicle has these particular brake components.
+  const brake = new THREE.MeshStandardMaterial({ color: '#55544f', roughness: .68, metalness: .65, envMapIntensity: .28 });
   const rotor = mesh(new THREE.CylinderGeometry(.79, .79, .045, 160), brake, group);
   rotor.rotation.x = Math.PI / 2; rotor.position.z = -.2;
-  const hat = mesh(new THREE.CylinderGeometry(.3, .3, .034, 96), new THREE.MeshStandardMaterial({ color: '#1b2127', metalness: .5, roughness: .6 }), group);
+  const hat = mesh(new THREE.CylinderGeometry(.3, .3, .034, 96), new THREE.MeshStandardMaterial({ color: '#171816', metalness: .5, roughness: .6, envMapIntensity: .2 }), group);
   hat.rotation.x = Math.PI / 2; hat.position.z = -.164;
-  const grooves = new THREE.MeshStandardMaterial({ color: '#434a50', metalness: .55, roughness: .79, envMapIntensity: .25 });
+  const grooves = new THREE.MeshStandardMaterial({ color: '#242623', metalness: .55, roughness: .79, envMapIntensity: .12 });
   for (const radius of [.48, .55, .62, .69, .765]) {
     const ring = mesh(new THREE.TorusGeometry(radius, .0016, 6, 160), grooves, group);
     ring.position.z = -.176; ring.castShadow = false;
@@ -690,8 +692,34 @@ export function renderWheelFace(input = {}) {
       // machined face. Keep it a rougher, shaded cavity instead of a bright bowl.
       const barrel = wheel.children.find(item => item.geometry?.type === 'LatheGeometry');
       if (barrel?.material) {
-        barrel.material.envMapIntensity *= .38;
-        barrel.material.roughness = Math.max(.46, barrel.material.roughness);
+        barrel.material.color.multiplyScalar(.22);
+        barrel.material.envMapIntensity *= .22;
+        barrel.material.roughness = Math.max(.58, barrel.material.roughness);
+      }
+      // The exposed lip sees the sky, but recessed spoke roots and bevel sides
+      // receive less light inside the wheel well. This affects only this temporary
+      // photo wheel, never the editable studio or its selected material colour.
+      const occludedMaterials = new Map();
+      for (const part of wheel.children) {
+        if (part.geometry?.type !== 'ExtrudeGeometry') continue;
+        const positions = part.geometry.attributes.position, normals = part.geometry.attributes.normal;
+        const colours = new Float32Array(positions.count * 3);
+        for (let index = 0; index < positions.count; index++) {
+          const depth = THREE.MathUtils.smoothstep(positions.getZ(index) + part.position.z, -.08, face);
+          const front = THREE.MathUtils.smoothstep(Math.abs(normals.getZ(index)), .25, .96);
+          const ambientOcclusion = (.66 + depth * .34) * (.72 + front * .28);
+          colours.fill(ambientOcclusion, index * 3, index * 3 + 3);
+        }
+        part.geometry.setAttribute('color', new THREE.BufferAttribute(colours, 3));
+        // The original material also belongs to lips and seats without a colour
+        // attribute. Only these extruded faces use the ambient-occlusion variant.
+        const originalMaterial = part.material;
+        if (!occludedMaterials.has(originalMaterial)) {
+          const material = originalMaterial.clone();
+          material.vertexColors = true;
+          occludedMaterials.set(originalMaterial, material);
+        }
+        part.material = occludedMaterials.get(originalMaterial);
       }
       addFaceBrakes(wheel, face);
       // Pitch/yaw pivot about the rim face, preserving the centre of its ellipse.

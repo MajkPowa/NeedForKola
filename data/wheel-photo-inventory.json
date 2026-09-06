@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "builtOn": "2026-09-05",
+  "builtOn": "2026-09-06",
   "coordinateSystem": "normalized-image",
   "coordinateDescription": "Full source image, x left-to-right and y top-to-bottom, each in [0,1]; outside letterbox excluded.",
   "counts": {
     "model-photo": 401,
-    "variant-photo": 27,
+    "variant-photo": 28,
     "legacy-render": 2
   },
-  "total": 430,
+  "total": 431,
   "reviewScope": "Rim-face visibility only. Approximate manual centers are not a calibrated replacement ellipse or a certified wheel fitment.",
   "replacementRequired": [],
   "photos": [
@@ -10845,6 +10845,36 @@
         "width": 900,
         "height": 507
       }
+    },
+    {
+      "id": "variant-bmw-rada-5-v-1b3b3ef6ba08",
+      "key": "bmw/rada-5/v-1b3b3ef6ba08",
+      "kind": "variant-photo",
+      "source": "data/vehicle-visual-variants.json",
+      "src": "assets/vehicles/variants/bmw--rada-5--v-1b3b3ef6ba08.webp",
+      "label": "Stříbrné BMW řady 5 Touring G31 před faceliftem, kombi v předním tříčtvrtečním pohledu.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:BMW_5_Series_G31_(front).jpg",
+      "sourceFile": "File:BMW 5 Series G31 (front).jpg",
+      "sourceSha1": "01128f403d9bd7da54595f1a9016adc8809bc1e1",
+      "width": 960,
+      "height": 626,
+      "localSha256": "071918aa1a0581f0d703388256a285b56e3135a2cd7841daf6f037f0f0920a06",
+      "wheelVisibility": "visible",
+      "wheelCenters": [
+        [
+          0.485712,
+          0.7485594
+        ],
+        [
+          0.0881377,
+          0.4894144
+        ]
+      ],
+      "reviewNote": "Two visible metal rim faces. Both replacement ellipses manually calibrated from enlarged source pixels; see matching record in data/wheel-fitments.json. No tyre boundary used as the disk outline.",
+      "reviewedOn": "2026-09-06",
+      "status": "manually-reviewed",
+      "reviewRequired": false,
+      "qaSheet": "tools/.cache-wheel-fit/g31-composite/sheets/composites-108.jpg"
     }
   ]
 }

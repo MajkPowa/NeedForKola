@@ -9,8 +9,9 @@ const base = (process.env.NFW_BASE_URL || 'http://127.0.0.1:8765').replace(/\/$/
 const readJSON = filename => JSON.parse(fs.readFileSync(path.join(root, filename), 'utf8').replace(/^\uFEFF/, ''));
 const inventory = readJSON('data/wheel-photo-inventory.json');
 const manifest = readJSON('data/wheel-fitments.json');
-const configURL = base + '/konfigurator.html?brand=bmw&model=x5&year=2020&generation=g05&body=suv&view=photo';
-const moduleURL = base + '/js/wheel-fit-preview.js?v=20260905-360';
+const exactVisual = readJSON('data/vehicle-visual-variants.json').variants['bmw/x5/g05'];
+const configURL = base + '/konfigurator.html?brand=bmw&model=x5&year=2020&generation=g05&body=suv&view=photo&color=bronze';
+const moduleURL = base + '/js/wheel-fit-preview.js?v=20260906-exact-vehicle';
 const ready = (page, design, color) => page.waitForFunction(({ design, color }) => {
   const canvas = document.querySelector('.vehicle-wheel-overlay');
   return canvas?.dataset.ready === 'true' && !canvas.hidden &&
@@ -19,11 +20,11 @@ const ready = (page, design, color) => page.waitForFunction(({ design, color }) 
 }, { design, color });
 
 function schemaChecks() {
-  assert.equal(inventory.total, 430);
+  assert.equal(inventory.total, inventory.photos.length);
   assert.equal(manifest.schemaVersion, 1);
   assert.equal(manifest.coordinateSystem, 'normalized-image');
   assert.equal(manifest.rotationUnit, 'radians');
-  assert.deepEqual(Object.keys(manifest.photos).sort(), inventory.photos.map(photo => photo.src).sort(), 'Every one of the 430 exact source images has wheel placements');
+  assert.deepEqual(Object.keys(manifest.photos).sort(), inventory.photos.map(photo => photo.src).sort(), 'Every inventoried source image has wheel placements');
   let wheelCount = 0;
   for (const photo of inventory.photos) {
     const placement = manifest.photos[photo.src];
@@ -44,7 +45,7 @@ function schemaChecks() {
       wheelCount++;
     }
   }
-  console.log(`PASS placement data: 430 source identities/dimensions/local hashes, ${wheelCount} finite normalized rim ellipses. Geometric appearance is reviewed separately.`);
+  console.log(`PASS placement data: ${inventory.total} source identities/dimensions/local hashes, ${wheelCount} finite normalized rim ellipses. Geometric appearance is reviewed separately.`);
 }
 
 async function clipping(browser, errors) {
@@ -94,6 +95,51 @@ async function clipping(browser, errors) {
   assert.equal(result.secondWheelAlpha, 255, 'A visibility polygon does not leak into subsequent wheels');
   console.log('PASS occlusion: normalized polygon validation, real rotated wheel pixels clipped in photo coordinates, visible pixels unchanged, context restored between wheels.');
   await page.close();
+}
+
+async function qualityGate(browser, errors) {
+  const page = await browser.newPage();
+  page.on('pageerror', error => errors.push(error.message));
+  const importMap = JSON.stringify({ imports: { three: base + '/assets/vendor/three/three.module.js', 'three/addons/': base + '/assets/vendor/three/addons/' } });
+  await page.route('**/nfw-wheel-quality-test.html', route => route.fulfill({ contentType: 'text/html', body: `<!doctype html><script type="importmap">${importMap}</script><figure><img></figure>` }));
+  await page.goto(base + '/nfw-wheel-quality-test.html');
+  const result = await page.evaluate(async ({ moduleURL, visual, placement }) => {
+    const { assessWheelPhoto, mountWheelPhoto } = await import(moduleURL);
+    const check = (p = placement, v = visual) => assessWheelPhoto(p, v);
+    const changedWheel = patch => ({ ...placement, wheels: placement.wheels.map((wheel, i) => i ? wheel : { ...wheel, ...patch }) });
+    const decisions = {
+      reviewedExact: check(),
+      modelReference: check(placement, { ...visual, match: 'model' }),
+      syntheticRender: check(placement, { ...visual, kind: 'render' }),
+      missingSourceHash: check(placement, { ...visual, sourceSha1: '' }),
+      changedSource: check({ ...placement, sourceSha1: 'another-source' }),
+      changedDimensions: check({ ...placement, width: placement.width + 1 }),
+      detectorOnly: check({ ...placement, status: 'auto-detected' }),
+      reviewOutstanding: check(changedWheel({ reviewRequired: true })),
+      manualWithOutstandingReview: check({ ...changedWheel({ reviewRequired: true }), status: 'manually-reviewed' }),
+      tinyRim: check(changedWheel({ rx: .004 })),
+      edgeOn: check(changedWheel({ rx: placement.wheels[0].ry * placement.height / placement.width * .2 }))
+    };
+    const img = document.querySelector('img'); img.src = visual.src; img.alt = 'Unmodified source photograph'; await img.decode();
+    const controller = mountWheelPhoto(document.querySelector('figure'), { ...visual, match: 'model' }, { design: 'apex10', colorHex: '#b9bcc2' });
+    await new Promise(resolve => {
+      const timer = setInterval(() => { if (document.querySelector('figure').dataset.wheelView === 'unavailable') { clearInterval(timer); resolve(); } }, 20);
+    });
+    const modelUI = { hidden: document.querySelector('canvas').hidden, compareDisabled: document.querySelector('.wheel-photo-compare').disabled,
+      retryHidden: document.querySelector('.wheel-photo-retry').hidden, text: document.querySelector('.wheel-photo-status').textContent, alt: img.alt };
+    controller.dispose();
+    return { decisions, modelUI };
+  }, { moduleURL, visual: exactVisual, placement: manifest.photos[exactVisual.src] });
+  assert.equal(result.decisions.reviewedExact.allowed, true);
+  for (const [key, decision] of Object.entries(result.decisions)) if (key !== 'reviewedExact') assert.equal(decision.allowed, false, key + ' must retain the original photo');
+  assert.equal(result.modelUI.hidden, true);
+  assert.equal(result.modelUI.compareDisabled, true);
+  assert.equal(result.modelUI.retryHidden, true);
+  assert.equal(result.modelUI.alt, 'Unmodified source photograph');
+  assert.match(result.modelUI.text, /Původní fotografie.*není ověřené.*3D/);
+  assert.ok(!result.modelUI.text.includes('Vizualizace kol:'), 'An unchanged photo must not claim to be a composite');
+  await page.close();
+  console.log('PASS quality gate: exact reviewed photo accepted; model/render/hash/dimension/review/edge-on failures retain the original with honest 3D guidance.');
 }
 
 async function savePixels(page, name) {
@@ -231,10 +277,10 @@ async function delayedUI(browser, errors) {
   await page.locator('.webgl-view canvas').waitFor();
   assert.equal(await page.locator('.vehicle-wheel-overlay,.wheel-photo-toolbar').count(), 0, 'Late photo renders cannot replace the subsequently selected 3D mode');
   await page.getByRole('button', { name: 'Můj vůz', exact: true }).click();
-  await ready(page, 'deep7', silver);
-  assert.match(await page.locator('.vehicle-render').getAttribute('src'), /tesla--model-y/);
-  assert.equal(await page.locator('.vehicle-wheel-overlay').count(), 1);
-  assert.equal(await page.locator('.wheel-photo-toolbar').count(), 1);
+  await page.locator('#stageView.is-wheel-reference .webgl-view canvas').waitFor();
+  assert.equal(await page.locator('.vehicle-render,.vehicle-wheel-overlay,.wheel-photo-toolbar').count(), 0, 'The selected Tesla has no exact photo and must retain standalone 3D wheels');
+  assert.equal(await page.locator('#vehicleModel').count(), 0, 'Design step remains selected');
+  assert.match(page.url(), /model=model-y/);
   assert.ok(requests >= 1);
   await page.close();
 }
@@ -252,7 +298,7 @@ async function pendingRevision(browser, errors) {
   const importMap = JSON.stringify({ imports: { three: base + '/assets/vendor/three/three.module.js', 'three/addons/': base + '/assets/vendor/three/addons/' } });
   await page.route('**/nfw-wheel-fit-test.html', route => route.fulfill({ contentType: 'text/html', body: `<!doctype html><script type="importmap">${importMap}</script><figure id="frame"><img></figure>` }));
   await page.goto(base + '/nfw-wheel-fit-test.html');
-  const visual = inventory.photos.find(photo => photo.src === 'assets/vehicles/tesla--model-y.webp');
+  const visual = exactVisual;
   await page.evaluate(async ({ moduleURL, visual }) => {
     window.__wheelFit = await import(moduleURL);
     const img = document.querySelector('img'); img.src = visual.src; await img.decode();
@@ -290,10 +336,10 @@ async function recovery(browser, errors, mismatch) {
     if (requests > 1) return route.fulfill({ json: manifest });
     if (!mismatch) return route.fulfill({ status: 503, body: 'Temporarily unavailable' });
     const bad = structuredClone(manifest);
-    bad.photos['assets/vehicles/tesla--model-y.webp'].sourceSha1 = 'different-photograph';
+    bad.photos[exactVisual.src].sourceSha1 = 'different-photograph';
     return route.fulfill({ json: bad });
   });
-  await page.goto(base + '/konfigurator.html?brand=tesla&model=model-y&year=2020&view=car', { waitUntil: 'networkidle' });
+  await page.goto(configURL, { waitUntil: 'networkidle' });
   await page.locator('.wheel-photo-retry').waitFor({ state: 'visible' });
   assert.equal(await page.locator('.vehicle-wheel-overlay').isVisible(), false);
   assert.equal(await page.locator('.wheel-photo-compare').isDisabled(), true);
@@ -302,7 +348,7 @@ async function recovery(browser, errors, mismatch) {
   await page.locator('.wheel-photo-retry').click();
   await ready(page, 'apex10');
   assert.equal(requests, 2, 'Retry makes a fresh metadata request after failure/mismatch');
-  assert.equal(await page.locator('#vehicleModel').inputValue(), 'model-y');
+  assert.equal(await page.locator('#vehicleModel').inputValue(), 'x5');
   assert.equal(await page.locator('.wheel-photo-retry').isVisible(), false);
   await page.close();
 }
@@ -316,6 +362,8 @@ async function recovery(browser, errors, mismatch) {
   try {
     await clipping(browser, errors);
     if (process.argv.includes('--clip-only')) { assert.deepEqual(errors, []); return; }
+    await qualityGate(browser, errors);
+    if (process.argv.includes('--quality-only')) { assert.deepEqual(errors, []); return; }
     await mainUI(browser, errors);
     await delayedUI(browser, errors);
     await pendingRevision(browser, errors);

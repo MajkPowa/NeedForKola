@@ -108,10 +108,12 @@ console.log('PASS exact identity/year/body boundaries, 2 licensed GLBs and 8 dis
     await page.goto(url({...selections[0],year:2008,generation:'e70'}));
     await page.locator('.vehicle-render').waitFor();
     assert.equal(await page.locator('[data-vehicle-asset]').count(),0,'E70 must not receive G05 geometry');
-    await page.locator('[data-view="showroom"]').first().click();await ready('bmw-x5-g05');
-    assert.match(await page.locator('#stageHead').innerText(),/ukázkový vůz/i);
-    assert.equal(new URLSearchParams(new URL(page.url()).hash.slice(1)).get('generation'),'e70','Demo preserves chosen vehicle');
-    console.log('PASS unavailable generation stays photo; demo identity remains explicit');
+    assert.equal(await page.locator('[data-view="showroom"]').count(),0,'No different vehicle is offered as the selected car');
+    await page.goto(url({...selections[0],year:2008,generation:'e70',view:'showroom'}));
+    await page.locator('.vehicle-render').waitFor();
+    assert.equal(await page.locator('[data-vehicle-asset]').count(),0,'Legacy showroom URL must not swap E70 for G05');
+    assert.equal(new URLSearchParams(new URL(page.url()).hash.slice(1)).get('generation'),'e70');
+    console.log('PASS unavailable 3D generation stays an exact photo, including legacy showroom links');
 
     await page.route('**/assets/models/bmw-x5-g05.glb',r=>r.abort());
     await page.goto(url(selections[0]));await page.reload();await page.locator('[data-retry-3d]').waitFor();

@@ -116,6 +116,8 @@
     if (conflict) S.generation = '';
     syncGeneration(!conflict && !(src.has('generation') && !src.get('generation')));
     if (['car','photo','wheel','showroom'].includes(src.get('view'))) S.view = src.get('view');
+    // Old showroom links must never substitute a different car for the selection.
+    if (S.view === 'showroom') S.view = 'car';
     if (has(O.CARS, src.get('car'))) { S.car = src.get('car'); applyCarDefaults(car()); }
     if (has(O.DESIGNS, src.get('design'))) { S.design = src.get('design'); if (src === p) S.step = 2; }
     if (has(O.COLORS, src.get('color'))) S.color = src.get('color');
@@ -151,7 +153,12 @@
     if (S.extras.length) h.set('x', S.extras.join(','));
     if (S.carDetail) h.set('carDetail', S.carDetail);
     if (S.note) h.set('note', S.note);
-    history.replaceState(null, '', '#' + h.toString());
+    const url = new URL(location.href);
+    // Share one canonical vehicle state; obsolete entry-link values must not
+    // keep advertising BMW in the query after selecting another vehicle.
+    [...KEYS, 'stag', 'x', 'carDetail', 'note'].forEach(key => url.searchParams.delete(key));
+    url.hash = h.toString();
+    history.replaceState(null, '', url.pathname + url.search + url.hash);
   }
   /* z file:// by se sdílel lokální soubor – použijeme veřejnou adresu webu */
   const shareURL = () => location.protocol === 'file:' ? O.SITE_URL + 'konfigurator.html' + location.hash : location.href;
@@ -167,18 +174,18 @@
 
   /* ---------- render: scéna ---------- */
   const selected3D = () => models3D?.resolve(S) || null;
-  const stageAsset = () => S.view === 'showroom' ? selected3D() || models3D?.defaultModel : S.view === 'car' ? selected3D() : null;
+  const stageAsset = () => S.view === 'car' ? selected3D() : null;
   const isPhotoView = () => S.view === 'photo' || (S.view === 'car' && !selected3D());
   function stageTitle() {
     const asset = stageAsset();
-    const heading = S.view === 'showroom' && !selected3D() ? asset.name : vehicleName();
-    const subtitle = asset ? `360° studio · ${S.view === 'showroom' && !selected3D() ? 'ukázkový vůz' : 'tvůj vůz ve 3D'}` : `Konfigurátor · krok ${S.step} / 5`;
+    const heading = vehicleName();
+    const subtitle = asset ? '360° studio · tvůj vůz ve 3D' : `Konfigurátor · krok ${S.step} / 5`;
     return `<small>${subtitle}</small>${esc(heading)}${isPhotoView() ? '' : ' <span class="accent">×</span> ' + esc(design().name)}`;
   }
   let showroomModule, wheelPhotoModule, viewer, photoViewer, pendingViewerAbort, viewerKey = '', renderToken = 0;
   const failedVisuals = new Set();
-  const loadShowroom = () => showroomModule || (showroomModule = import('./showroom.js?v=20260906-silver-stock').catch(e => { showroomModule = null; throw e; }));
-  const loadWheelPhoto = () => wheelPhotoModule || (wheelPhotoModule = import('./wheel-fit-preview.js?v=20260906-silver-stock').catch(e => { wheelPhotoModule = null; throw e; }));
+  const loadShowroom = () => showroomModule || (showroomModule = import('./showroom.js?v=20260906-exact-vehicle').catch(e => { showroomModule = null; throw e; }));
+  const loadWheelPhoto = () => wheelPhotoModule || (wheelPhotoModule = import('./wheel-fit-preview.js?v=20260906-exact-vehicle').catch(e => { wheelPhotoModule = null; throw e; }));
   const previewOptions = mode => ({ mode, vehicleAsset: stageAsset()?.id, design: S.design, color: colorHex(), colorHex: colorHex(), finish: S.finish, lip: S.lip, cap: S.cap, diameter: S.d, width: S.wf, autoRotate: S.spin, bodyColor: bodyHex(), mirror: S.side === 'L', bolts: parseInt(S.pcd,10) || 5 });
   const photoOptions = () => ({ ...previewOptions('wheel'), label: `${design().name} · ${colorName()}` });
   async function renderWheelFallback(container, token, module) {
@@ -202,8 +209,8 @@
     } catch { /* Keep the usable, accurately labelled stored design preview. */ }
   }
   function renderStage() {
-    const tabs = [['car', 'Můj vůz'], ['wheel', '3D kolo'], selected3D() ? ['photo', 'Fotografie'] : ['showroom', '360° studio']];
-    const activeTab = (S.view === 'showroom' && selected3D()) || (S.view === 'photo' && !selected3D()) ? 'car' : S.view;
+    const tabs = [['car', 'Můj vůz'], ['wheel', '3D kolo'], ...(selected3D() ? [['photo', 'Fotografie']] : [])];
+    const activeTab = S.view === 'photo' && !selected3D() ? 'car' : S.view;
     $('#stageHead').innerHTML = `<h1>${stageTitle()}</h1><div class="stage-controls"><div class="seg" aria-label="Typ náhledu">${tabs.map(([id,label])=>`<button type="button" class="${activeTab===id?'active':''}" data-view="${id}" aria-pressed="${activeTab===id}"><span>${label}</span></button>`).join('')}</div>${!isPhotoView()?`<label class="toggle"><input type="checkbox" id="spinToggle" ${S.spin?'checked':''}> Rotace</label>`:''}</div>`;
     renderStageView(); renderStageFoot();
   }
@@ -221,11 +228,12 @@
       v.innerHTML = '<figure class="stage-vehicle-frame"><div class="viewer-loading" role="status">Načítám fotografii vozu…</div></figure><div class="preview-caption"><b>Tvůj vůz je vybraný</b><span>Připravuji dostupný vizuální podklad.</span></div>';
       return;
     }
-    let visual = isPhotoView() ? visuals?.resolve(S) || null : null;
-    if (visual && failedVisuals.has(visual.src)) visual = visuals.getModel(S.brand, S.model);
+    let visual = isPhotoView() ? visuals?.resolve(S, { allowModelFallback: false }) || null : null;
     if (visual && failedVisuals.has(visual.src)) visual = null;
     const mode = asset ? 'car' : 'wheel';
     const key = visual ? 'image:' + visual.id : asset ? '3d:' + asset.id : mode;
+    v.classList.toggle('is-wheel-reference', !asset && !visual && isPhotoView());
+    v.closest('.cfg-stage')?.classList.toggle('has-wheel-reference', !asset && !visual && isPhotoView());
     v.classList.toggle('has-vehicle-3d', Boolean(asset));
     v.closest('.cfg-stage')?.classList.toggle('has-vehicle-3d', Boolean(asset));
     v.classList.toggle('has-vehicle-photo', Boolean(visual));
@@ -280,11 +288,16 @@
   function updatePreviewCaption(v, visual) {
     const caption=v.querySelector('.preview-caption'); if(!caption)return;
     const asset = stageAsset();
-    if(asset)caption.innerHTML=`<b>${esc(asset.name)} <span class="studio-badge">360°</span></b><span>Tažením prozkoumej každý úhel. Přibliž si kola i jejich konkávní profil.</span><details class="studio-credit"><summary>O modelu a náhledu</summary><p>${esc(asset.edition)}. ${S.view === 'showroom' && !selected3D() ? 'Ukázkové auto; tvůj vybraný vůz zůstává v konfiguraci. ' : ''}Vzorová velikost kol podle 3D podkladu. Rozměry a kompatibilitu ověříme před výrobou.</p><p>Model: <a href="${esc(asset.source)}" target="_blank" rel="noopener">${esc(asset.author)}</a> · <a href="${esc(asset.licenseURL)}" target="_blank" rel="noopener">${esc(asset.license)}</a>. Úpravy: materiály a kola Need For Wheels.</p></details>`;
-    else if(visual)caption.innerHTML=`<b>${visual.match === 'model' ? 'Reference modelové řady' : visual.kind === 'render' ? 'Ilustrační render vybraného provedení' : 'Fotografie vybraného provedení'}</b><span class="vehicle-visual-description">Na obrázku: ${esc(visual.depicted.label || visual.title)}</span><span>Vybraný design, barvu a povrch kol uvidíš přímo na voze. ${visual.match === 'model' ? 'Fotografie představuje modelovou řadu; nemusí odpovídat vybranému roku, generaci ani karoserii. ' : ''}Vizualizace vzhledu; skutečné rozměry ověříme pro tvůj vůz.</span>${visuals.creditHTML(visual)}<span class="vehicle-visual-credit">Úprava: vizualizace kol Need For Wheels${visual.kind === 'photo' && visual.license ? ' · pod licencí původní fotografie' : ''}.</span>${!selected3D() ? '<div class="studio-availability"><span>360° model tohoto provedení zatím není dostupný.</span><button type="button" data-view="showroom">Prohlédnout BMW X5 ve 360° ↗</button></div>' : ''}`;
-    else if(isPhotoView())caption.innerHTML=`<b>${esc(vehicleName())}</b><span>Fotografie nyní není dostupná. Zobrazuje se 3D návrh kola; vybraný vůz zůstává uložený v konfiguraci.</span><button class="visual-retry" type="button" data-retry-visual>Zkusit fotografii znovu</button>`;
-    else caption.innerHTML='<b>360° STUDIO <span class="live-dot"></span></b><span>Tažením otáčej · kolečkem přibližuj · dvojklikem obnov pohled</span>';
+    if(asset)caption.innerHTML=`<b>${esc(asset.name)} <span class="studio-badge">360°</span></b><span>Tažením prozkoumej každý úhel. Přibliž si kola i jejich konkávní profil.</span><details class="studio-credit"><summary>O modelu a náhledu</summary><p>${esc(asset.edition)}. Vzorová velikost kol podle 3D podkladu. Rozměry a kompatibilitu ověříme před výrobou.</p><p>Model: <a href="${esc(asset.source)}" target="_blank" rel="noopener">${esc(asset.author)}</a> · <a href="${esc(asset.licenseURL)}" target="_blank" rel="noopener">${esc(asset.license)}</a>. Úpravy: materiály a kola Need For Wheels.</p></details>`;
+    else if(visual)caption.innerHTML=`<b>${visual.kind === 'render' ? 'Ilustrační render vybraného provedení' : 'Fotografie vybraného provedení'}</b><span class="vehicle-visual-description">${esc(visual.depicted.label || visual.title)}</span><span>Fotografie odpovídá vybranému provedení. Dostupný náhled nových kol najdeš u fotografie; detail designu můžeš vždy otáčet ve 3D.</span>${visuals.creditHTML(visual)}${!selected3D() ? '<div class="studio-availability"><span>360° model tohoto provedení zatím nemáme.</span><button type="button" data-view="wheel">Prohlédnout vybraná kola ve 3D ↗</button></div>' : ''}`;
+    else if(isPhotoView()) {
+      const incomplete = !S.year || !S.body || !S.generation;
+      const available = visuals?.resolve(S, { allowModelFallback: false });
+      const loadFailed = Boolean(available && failedVisuals.has(available.src)) || Boolean(visuals?.errors?.length);
+      caption.innerHTML=`<b>${incomplete ? 'Upřesni provedení svého vozu' : loadFailed ? 'Fotografii se nepodařilo načíst' : 'Náhled tohoto provedení připravujeme'}</b><span>${incomplete ? 'Vyber rok, karoserii a generaci. Zatím si můžeš prohlédnout navržené kolo.' : loadFailed ? 'Zobrazuje se samostatný návrh kola. Zkus podklady znovu načíst; vybraný vůz zůstává uložený.' : 'Pro zvolený rok, generaci a karoserii zatím nemáme dostupný ověřený podklad. Zobrazuje se samostatné 3D kolo; tvůj vůz zůstává uložený.'}</span>${loadFailed ? '<button class="visual-retry" type="button" data-retry-visual>Obnovit vizuální podklady</button>' : ''}`;
+    } else caption.innerHTML='<b>3D NÁVRH KOLA <span class="live-dot"></span></b><span>Tažením otáčej · kolečkem přibližuj · dvojklikem obnov pohled</span>';
   }
+
   function renderStageFoot() {
     const sw = stageAsset() ? `<div class="studio-palette"><div><span>Kola</span><div class="swatches">${O.COLORS.map(c => `<button type="button" class="swatch ${S.color === c.id ? 'active' : ''}" style="background:${c.hex}" title="${esc(c.name)}" aria-label="Kolo ${esc(c.name)}" data-set="color" data-val="${c.id}"></button>`).join('')}</div></div><div><span>Karoserie</span><div class="swatches">${O.BODY_COLORS.map(c => `<button type="button" class="swatch ${S.bodyColor === c.id ? 'active' : ''}" style="background:${c.hex}" title="${esc(c.name)}" aria-label="Karoserie ${esc(c.name)}" data-set="bodyColor" data-val="${c.id}"></button>`).join('')}</div></div></div>` : isPhotoView()
       ? `<div class="vehicle-wheel-colours"><div class="swatches">${O.COLORS.map(c => `<button type="button" class="swatch ${S.color === c.id ? 'active' : ''}" style="background:${c.hex}" title="${esc(c.name)}" aria-label="Kolo ${esc(c.name)}" data-set="color" data-val="${c.id}"></button>`).join('')}</div><button class="text-link" type="button" data-view="wheel">Detail kola ve 3D →</button></div>`
@@ -514,7 +527,7 @@
     const step = e.target.closest('[data-step]');
     if (step) return goStep(Number(step.dataset.step));
     const view = e.target.closest('[data-view]');
-    if (view) { S.view = view.dataset.view; writeURL(); renderStage(); return; }
+    if (view) { S.view = ['car', 'photo', 'wheel'].includes(view.dataset.view) ? view.dataset.view : 'car'; writeURL(); renderStage(); return; }
     if (e.target.closest('[data-studio-fullscreen]')) {
       if (document.fullscreenElement) document.exitFullscreen();
       else $('#stageView').requestFullscreen?.().catch(() => {});

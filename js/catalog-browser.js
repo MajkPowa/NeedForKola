@@ -175,14 +175,19 @@
     for (const card of resultContainer.querySelectorAll('[data-catalog-key]')) {
       const item = models.find(model => model.key === card.dataset.catalogKey);
       if (!item) continue;
-      const visual = visuals?.getModel(item.brand.id, item.model.id);
+      const choices = visibleVariants(item);
+      const chosen = state.year && choices.length === 1 ? choices[0] : null;
+      // A year-filtered result must not advertise a photo of another generation.
+      const visual = state.year
+        ? chosen && visuals?.resolve({ brand: item.brand.id, model: item.model.id, year: Number(state.year), generation: chosen.id, body: chosen.body }, { allowModelFallback: false })
+        : visuals?.getModel(item.brand.id, item.model.id);
       const slot = card.querySelector('[data-model-photo]');
       const stateKey = visual && !failedImages.has(visual.src) ? visual.id : visuals?.isReady ? 'unavailable' : 'pending';
       if (slot.dataset.visualState !== stateKey) {
         slot.dataset.visualState = stateKey;
         slot.innerHTML = visual && !failedImages.has(visual.src)
-          ? `<figure class="catalog-vehicle-photo"><div class="catalog-vehicle-photo__frame"><img src="${esc(visuals.imageURL(visual, true))}" alt="${esc(visual.alt)}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async" data-vehicle-photo="${esc(visual.src)}" data-visual-match="model"></div><figcaption><b>Reference modelové řady</b><span>${esc(visual.depicted.label || visual.title)}</span>${visuals.creditHTML(visual)}</figcaption></figure>`
-          : `<div class="catalog-photo-placeholder${stateKey === 'unavailable' ? ' is-unavailable' : ''}"${stateKey === 'pending' ? ' role="status"' : ''}>${stateKey === 'pending' ? 'Načítám fotografii modelu…' : 'Fotografie nyní není dostupná. Model i jeho provedení můžeš dál vybrat.'}</div>`;
+          ? `<figure class="catalog-vehicle-photo"><div class="catalog-vehicle-photo__frame"><img src="${esc(visuals.imageURL(visual, true))}" alt="${esc(visual.alt)}" width="${visual.width}" height="${visual.height}" loading="lazy" decoding="async" data-vehicle-photo="${esc(visual.src)}" data-visual-match="${visual.match}"></div><figcaption><b>${visual.match === 'model' ? 'Reference modelové řady · vyber rok a karoserii' : 'Vybrané provedení'}</b><span>${esc(visual.depicted.label || visual.title)}</span>${visuals.creditHTML(visual)}</figcaption></figure>`
+          : `<div class="catalog-photo-placeholder${stateKey === 'unavailable' ? ' is-unavailable' : ''}"${stateKey === 'pending' ? ' role="status"' : ''}>${stateKey === 'pending' ? 'Načítám fotografii modelu…' : state.year ? 'Vyber konkrétní generaci a karoserii níže. Zobrazíme pouze odpovídající podklad.' : 'Fotografie nyní není dostupná. Model i jeho provedení můžeš dál vybrat.'}</div>`;
       }
       for (const target of card.querySelectorAll('[data-variant-photo]')) {
         const variant = item.variants.find(g => g.id === target.dataset.variantPhoto);

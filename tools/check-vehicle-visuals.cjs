@@ -35,6 +35,8 @@ async function unitChecks() {
   const { api, status } = await loadVisuals();
   assert.deepEqual([...status.errors], []);
   assert.equal(api.modelCount, 401, 'Every requested family has its own model photograph');
+  assert.deepEqual([...api.errors], []);
+  assert.ok(Object.isFrozen(api.errors), 'Load errors are read-only snapshots');
   for (const brand of V.brands) for (const model of brand.models) {
     const image = api.getModel(brand.id, model.id);
     assert.ok(image, brand.id + '/' + model.id);
@@ -48,15 +50,29 @@ async function unitChecks() {
       assert.ok(fs.statSync(asset).size > 100, src);
     }
     assert.ok(Object.isFrozen(image) && Object.isFrozen(image.depicted));
+    const family = { brand: brand.id, model: model.id };
+    assert.equal(api.resolve(family), null, 'Family photographs are never an implicit selected-vehicle preview');
+    assert.equal(api.resolve(family, { allowModelFallback: true }).id, image.id, 'Catalogue browsing explicitly opts into its family reference');
+    for (const partial of [{ year: 2020 }, { body: 'wagon' }, { generation: model.variants[0]?.id || 'missing' }]) {
+      assert.equal(api.resolve({ ...family, ...partial }), null);
+      assert.equal(api.resolve({ ...family, ...partial }, { allowModelFallback: true }), null, 'Opt-in family browsing cannot override a selected year, body or generation');
+    }
   }
   assert.equal(api.getModel('unknown', 'x5'), null);
   assert.equal(api.resolve({ brand: 'audi', model: 'x5', year: 2020, generation: 'g05', body: 'suv' }), null);
   const x5 = { brand: 'bmw', model: 'x5', year: 2020, generation: 'g05', body: 'suv' };
-  assert.equal(api.resolve(x5).src, 'assets/cars/bmw-x5-g05.webp', 'Existing exact illustrative render takes precedence');
-  for (const mismatch of [{ year: 2008 }, { body: 'wagon' }, { generation: '' }, { year: 2027 }, { year: 'wrong' }]) {
+  assert.equal(api.resolve(x5).src, variantData.variants['bmw/x5/g05'].src, 'Reviewed G05 photograph takes precedence over the legacy illustration');
+  assert.equal(api.resolve(x5).kind, 'photo');
+  const e70 = { ...x5, year: 2008, generation: 'e70' };
+  assert.equal(api.resolve(e70).src, variantData.variants['bmw/x5/e70'].src, 'Reviewed E70 photograph takes precedence over the legacy illustration');
+  assert.equal(api.resolve(e70).kind, 'photo');
+  for (const mismatch of [{ year: 2008 }, { body: 'wagon' }, { body: 'unknown' }, { generation: '' }, { year: 2027 }, { year: 'wrong' }, { year: [2020] }]) {
     assert.equal(api.resolve({ ...x5, ...mismatch }, { allowModelFallback: false }), null);
-    assert.equal(api.resolve({ ...x5, ...mismatch }).match, 'model');
+    assert.equal(api.resolve({ ...x5, ...mismatch }), null);
+    assert.equal(api.resolve({ ...x5, ...mismatch }, { allowModelFallback: true }), null);
   }
+  assert.equal(api.resolve({ ...x5, year: 2023, generation: '' }), null, 'A transition year never guesses which facelift is pictured');
+  assert.equal(api.resolve({ ...x5, year: '2020' }).src, api.resolve(x5).src, 'An explicit numeric year from a select remains supported');
   for (const [key, value] of Object.entries(variantData.variants)) {
     const [brand, model, generation] = key.split('/');
     const g = V.getGenerations(brand, model).find(candidate => candidate.id === generation);
@@ -76,6 +92,35 @@ async function unitChecks() {
   assert.equal(synthetic.api.resolve(selection, { allowModelFallback: false }).id, 'test-exact');
   assert.equal(synthetic.api.resolve({ ...selection, year: specimen.from }, { allowModelFallback: false }), null, 'Image year bounds are stricter than variant bounds');
   assert.equal(synthetic.api.resolve({ ...selection, year: specimen.to }, { allowModelFallback: false }), null);
+  const touring = V.getCandidates('bmw', 'rada-5', 2019, 'wagon').find(g => g.id === 'v-1b3b3ef6ba08');
+  assert.ok(touring, 'The reported BMW 5 Series 2019 Touring exists in the catalogue');
+  const touringKey = 'bmw/rada-5/' + touring.id;
+  const touringSelection = { brand: 'bmw', model: 'rada-5', year: 2019, body: 'wagon', generation: touring.id };
+  assert.equal(api.resolve(touringSelection)?.src, 'assets/vehicles/variants/bmw--rada-5--v-1b3b3ef6ba08.webp', 'The real 2019 G31 Touring uses its reviewed wagon photograph');
+  for (const candidate of V.getGenerations('bmw', 'rada-5').filter(g => g.body === 'sedan' || (g.body === 'wagon' && g.from === 2020))) {
+    assert.equal(api.resolve({ ...touringSelection, generation: candidate.id }), null, 'Sedan and facelift variant IDs cannot stand in for the 2019 wagon');
+  }
+  const modelOnly = await loadVisuals(data, { schemaVersion: 1, variants: {} });
+  assert.equal(modelOnly.api.resolve(x5).src, 'assets/cars/bmw-x5-g05.webp', 'The correctly matched legacy illustration remains available when no exact photo exists');
+  assert.equal(modelOnly.api.resolve(x5).kind, 'render');
+  assert.equal(modelOnly.api.resolve(touringSelection), null, '2019 Touring must not show the latest 5 Series sedan family photograph');
+  assert.equal(modelOnly.api.resolve(touringSelection, { allowModelFallback: true }), null);
+  const touringPhoto = { ...data.models['bmw/rada-5'], id: 'test-g31-photo', match: 'variant', depicted: { label: 'BMW G31 Touring', generation: touring.id, body: 'wagon', from: 2017, to: 2020 } };
+  const mappedTouring = await loadVisuals(data, { schemaVersion: 1, variants: { [touringKey]: touringPhoto } });
+  assert.equal(mappedTouring.api.resolve(touringSelection)?.id, touringPhoto.id, 'An explicitly mapped G31 wagon photograph resolves');
+  for (const mismatch of [{ body: 'sedan' }, { year: 2024 }, { generation: '' }, { generation: 'g60' }, { model: 'rada-3' }, { brand: 'audi', model: 'a6' }]) {
+    assert.equal(mappedTouring.api.resolve({ ...touringSelection, ...mismatch }, { allowModelFallback: true }), null, 'A mapped photograph cannot cross year, body, generation or model boundaries');
+  }
+  for (const mismatch of [{ body: 'sedan' }, { from: 2023, to: 2026 }, { from: 2016 }, { to: 2021 }, { generation: 'g60' }]) {
+    const wrongDepiction = await loadVisuals(data, { schemaVersion: 1, variants: { [touringKey]: { ...touringPhoto, depicted: { ...touringPhoto.depicted, ...mismatch } } } });
+    assert.equal(wrongDepiction.api.resolve(touringSelection), null, 'Contradictory visual metadata must be rejected at load time');
+  }
+  for (const [brand, model, year, body] of [['audi', 'a4', 2019, 'wagon'], ['skoda', 'superb', 2019, 'wagon'], ['tesla', 'model-y', 2020, 'suv']]) {
+    assert.equal(api.resolve({ brand, model, year, body }, { allowModelFallback: true }), null, 'Year/body alone never infer a generation, even when only one candidate exists');
+    const candidate = V.getCandidates(brand, model, year, body)[0];
+    assert.ok(candidate);
+    assert.equal(modelOnly.api.resolve({ brand, model, year, body, generation: candidate.id }), null, 'Other model families also stay unavailable when no exact depiction is mapped');
+  }
   const malicious = await loadVisuals({ schemaVersion: 1, models: { 'bmw/x5': { ...data.models['bmw/x5'], src: 'javascript:alert(1)' } } }, { schemaVersion: 1, variants: { [key]: { ...exact, depicted: { label: 'Missing evidence' } } } });
   assert.equal(malicious.api.getModel('bmw', 'x5'), null);
   assert.equal(malicious.api.resolve(selection, { allowModelFallback: false }), null, 'Missing explicit body/year evidence cannot be exact');
@@ -84,15 +129,22 @@ async function unitChecks() {
   assert.ok(credit.includes('&lt;img'));
   const unavailable = await loadVisuals(data, variantData, true);
   assert.equal(unavailable.status.errors.length, 1);
+  assert.equal(unavailable.api.errors.length, 1, 'Completed failed loads still expose their error for the retry UI');
+  assert.ok(Object.isFrozen(unavailable.api.errors));
   assert.equal(unavailable.api.getModel('bmw', 'x5'), null);
-  assert.equal(unavailable.api.resolve(x5).match, 'variant', 'Built-in exact render survives an unavailable model catalogue');
-  console.log(`PASS visual data: 401 model photos, ${api.variantCount} mapped variants, local assets/credits, strict body/year selection, frozen metadata, safe URLs and fetch failure.`);
+  assert.equal(unavailable.api.resolve(x5).match, 'variant', 'Exact variant data survives an unavailable family catalogue');
+  assert.equal(unavailable.api.resolve(x5).kind, 'photo');
+  console.log(`PASS visual data: 401 opt-in family references, ${api.variantCount} mapped variants, strict generation/body/year, BMW 2019 Touring regression, cross-model isolation, local assets/credits, safe URLs and fetch failure.`);
 }
 
 async function browserChecks() {
   const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
   const browser = await chromium.launch({ channel: 'chrome', headless: true, args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
   const errors = [];
+  const shots = path.join(root, 'tools/.cache-wheel-fit/vehicle-visuals-strict-qa');
+  fs.mkdirSync(shots, { recursive: true });
+  const touringURL = base + '/konfigurator.html?brand=bmw&model=rada-5&year=2019&body=wagon&generation=v-1b3b3ef6ba08&view=car';
+  const touringImage = 'bmw--rada-5--v-1b3b3ef6ba08.webp';
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
     page.on('pageerror', error => errors.push(error.message));
@@ -107,7 +159,7 @@ async function browserChecks() {
     assert.ok(contentWidth > 200, 'Exact variant photo must not push its name into the narrow year column');
     await page.locator('.catalog-model-visual img').scrollIntoViewIfNeeded();
     await page.waitForFunction(() => document.querySelector('.catalog-model-visual img').naturalWidth > 0);
-    await page.locator('.catalog-card').screenshot({ path: path.join(root, 'docs/qa/vehicle-photo-catalog.png'), style: '.nav,.discovery-dock{visibility:hidden!important}' });
+    await page.locator('.catalog-card').screenshot({ path: path.join(shots, 'vehicle-photo-catalog.png'), style: '.nav,.discovery-dock{visibility:hidden!important}' });
 
     await page.goto(base + '/konfigurator.html?brand=bmw&model=x5&year=2008&view=car', { waitUntil: 'networkidle' });
     await page.waitForFunction(() => document.querySelector('.vehicle-render')?.naturalWidth > 0);
@@ -115,16 +167,30 @@ async function browserChecks() {
     assert.match(await page.locator('.vehicle-render').getAttribute('src'), /e70/);
     await page.selectOption('#vehicleYear', '2023');
     assert.equal(await page.locator('#vehicleGeneration').inputValue(), '');
-    assert.equal(await page.locator('.vehicle-render').getAttribute('data-visual-match'), 'model');
-    assert.match(await page.locator('.preview-caption').innerText(), /Reference modelové řady/i);
-    assert.match(await page.locator('.preview-caption').innerText(), /nemusí odpovídat vybranému roku/);
+    await page.locator('.is-wheel-reference .webgl-view canvas').waitFor();
+    assert.equal(await page.locator('.vehicle-render').count(), 0, 'An ambiguous facelift year never displays a family reference');
+    assert.match(await page.locator('.preview-caption').innerText(), /Upřesni provedení svého vozu/);
     assert.ok(!(await page.locator('#stageHead h1').innerText()).includes('×'), 'Photograph title keeps the selected vehicle readable');
-    await page.locator('#stageView').screenshot({ path: path.join(root, 'docs/qa/vehicle-photo-config.png') });
+    await page.locator('#stageView').screenshot({ path: path.join(shots, 'vehicle-photo-unavailable.png') });
     await page.getByRole('button', { name: '3D kolo', exact: true }).click();
     await page.locator('.webgl-view canvas').waitFor();
     assert.equal(await page.locator('.vehicle-render').count(), 0);
     await page.getByRole('button', { name: 'Můj vůz', exact: true }).click();
-    assert.equal(await page.locator('.webgl-view canvas').count(), 0);
+    await page.locator('.is-wheel-reference .webgl-view canvas').waitFor();
+    assert.equal(await page.locator('.vehicle-render').count(), 0, 'Returning to the selected vehicle retains the honest unavailable state');
+
+    await page.goto(touringURL, { waitUntil: 'networkidle' });
+    await page.waitForFunction(() => document.querySelector('.vehicle-render')?.naturalWidth > 0);
+    assert.ok((await page.locator('.vehicle-render').getAttribute('src')).includes(touringImage), 'The reported 2019 BMW Touring shows the reviewed G31 wagon');
+    assert.equal(await page.locator('.vehicle-render').getAttribute('data-visual-match'), 'variant');
+    assert.match(await page.locator('.preview-caption').innerText(), /G31/);
+    await page.selectOption('#vehicleBody', 'sedan');
+    await page.locator('.is-wheel-reference .webgl-view canvas').waitFor();
+    assert.equal(await page.locator('.vehicle-render').count(), 0, 'The G31 wagon photo cannot remain after selecting sedan');
+    await page.selectOption('#vehicleBody', 'wagon');
+    await page.waitForFunction(() => document.querySelector('.vehicle-render')?.naturalWidth > 0);
+    assert.ok((await page.locator('.vehicle-render').getAttribute('src')).includes(touringImage));
+    await page.locator('#stageView').screenshot({ path: path.join(shots, 'vehicle-photo-config.png') });
     for (const width of [390, 768, 1440]) {
       await page.setViewportSize({ width, height: 844 });
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'Mobile photo keeps full frame without horizontal overflow');
@@ -140,7 +206,7 @@ async function browserChecks() {
     }
     await page.locator('.vehicle-visual-description').evaluate((element, value) => { element.textContent = value; }, actualDescription);
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.locator('#stageView').screenshot({ path: path.join(root, 'docs/qa/vehicle-photo-config-mobile.png') });
+    await page.locator('#stageView').screenshot({ path: path.join(shots, 'vehicle-photo-config-mobile.png') });
 
     // Hold both metadata requests while the user changes model and view.
     const delayed = await browser.newPage({ viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' });
@@ -160,31 +226,42 @@ async function browserChecks() {
     await delayed.getByRole('button', { name: 'Můj vůz', exact: true }).click();
     assert.equal(await delayed.locator('#vehicleBrand').inputValue(), 'tesla');
     assert.equal(await delayed.locator('#vehicleModel').inputValue(), 'model-y');
-    assert.match(await delayed.locator('.vehicle-render').getAttribute('src'), /tesla--model-y/);
-    assert.equal(await delayed.locator('.vehicle-render').getAttribute('data-visual-match'), 'model');
+    await delayed.locator('.is-wheel-reference .webgl-view canvas').waitFor();
+    assert.equal(await delayed.locator('.vehicle-render').count(), 0, 'Unmapped Tesla remains unavailable after delayed metadata completes');
+    assert.equal(await delayed.locator('[data-vehicle-asset]').count(), 0, 'Another model cannot silently become a BMW demo');
     await delayed.close();
 
     const broken = await browser.newPage({ reducedMotion: 'reduce' });
     broken.on('pageerror', error => errors.push(error.message));
-    await broken.route('**/assets/vehicles/tesla--model-y.webp*', route => route.abort());
-    await broken.goto(base + '/konfigurator.html?brand=tesla&model=model-y&year=2020&view=car', { waitUntil: 'networkidle' });
-    await broken.locator('.webgl-view canvas').waitFor();
+    let imageRequests = 0;
+    await broken.route('**/assets/vehicles/variants/' + touringImage + '*', route => ++imageRequests === 1 ? route.abort() : route.continue());
+    await broken.goto(touringURL, { waitUntil: 'networkidle' });
+    await broken.locator('.is-wheel-reference .webgl-view canvas').waitFor();
     assert.equal(await broken.locator('.vehicle-render').count(), 0, 'Broken photo falls back to actual selected wheel instead of the wrong car');
-    assert.match(await broken.locator('.preview-caption').innerText(), /Fotografie nyní není dostupná/);
-    assert.equal(await broken.locator('#vehicleModel').inputValue(), 'model-y');
+    assert.match(await broken.locator('.preview-caption').innerText(), /Fotografii se nepodařilo načíst/);
+    assert.equal(await broken.locator('#vehicleModel').inputValue(), 'rada-5');
+    await broken.locator('[data-retry-visual]').click();
+    await broken.waitForFunction(() => document.querySelector('.vehicle-render')?.naturalWidth > 0);
+    assert.equal(imageRequests, 2, 'Retry reloads the failed exact photo');
+    assert.ok((await broken.locator('.vehicle-render').getAttribute('src')).includes(touringImage));
+    assert.equal(await broken.locator('.vehicle-render').getAttribute('data-visual-match'), 'variant');
     await broken.close();
 
     const retry = await browser.newPage({ reducedMotion: 'reduce' });
     retry.on('pageerror', error => errors.push(error.message));
     let manifestRequests = 0;
-    await retry.route('**/data/vehicle-visuals.json*', route => ++manifestRequests === 1 ? route.fulfill({ status: 503, body: 'Temporarily unavailable' }) : route.continue());
-    await retry.goto(base + '/konfigurator.html?brand=tesla&model=model-y&year=2020&view=car', { waitUntil: 'networkidle' });
-    await retry.locator('.webgl-view canvas').waitFor();
+    await retry.route('**/data/vehicle-visual-variants.json*', route => ++manifestRequests === 1 ? route.fulfill({ status: 503, body: 'Temporarily unavailable' }) : route.continue());
+    await retry.goto(touringURL, { waitUntil: 'networkidle' });
+    await retry.locator('.is-wheel-reference .webgl-view canvas').waitFor();
+    assert.equal(await retry.locator('.vehicle-render').count(), 0, 'A successful model manifest does not replace a failed exact-variant manifest');
+    assert.equal(await retry.evaluate(() => NFWVehicleVisuals.errors.length), 1);
     await retry.locator('[data-retry-visual]').click();
     await retry.waitForFunction(() => document.querySelector('.vehicle-render')?.naturalWidth > 0);
     assert.equal(manifestRequests, 2, 'Retry must fetch a previously failed manifest again');
-    assert.equal(await retry.locator('.vehicle-render').getAttribute('data-visual-match'), 'model');
-    assert.equal(await retry.locator('#vehicleModel').inputValue(), 'model-y');
+    assert.equal(await retry.locator('.vehicle-render').getAttribute('data-visual-match'), 'variant');
+    assert.ok((await retry.locator('.vehicle-render').getAttribute('src')).includes(touringImage));
+    assert.equal(await retry.locator('#vehicleModel').inputValue(), 'rada-5');
+    assert.equal(await retry.evaluate(() => NFWVehicleVisuals.errors.length), 0, 'Successful retry clears the load error');
     await retry.close();
     assert.deepEqual(errors, []);
     console.log('PASS visual UI: labels/credits, exact variant layout, transition ambiguity, wheel/photo switching, mobile caption bounds, delayed-fetch safety, broken image fallback and 503-to-200 manifest retry.');

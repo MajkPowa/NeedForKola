@@ -21,16 +21,19 @@
     const brand = V?.getBrand(brandId), model = V?.getModel(brandId, modelId);
     return brand && model ? { brand, model, key: brand.id + '/' + model.id } : null;
   }
-  function sanitise(record, match, key) {
+  function sanitise(record, match, key, variant) {
     if (!record || record.match !== match || !['photo', 'render'].includes(record.kind)) return null;
     const src = assetURL(record.src);
     if (!src) return null;
     const depiction = record.depicted || {};
-    if (match === 'variant' && (!text(depiction.body) || !Number.isInteger(depiction.from) || !Number.isInteger(depiction.to) || depiction.to < depiction.from)) return null;
+    if (match === 'variant' && (!variant || !text(depiction.body) || depiction.body === 'unknown'
+      || depiction.body !== variant.body || !Number.isInteger(depiction.from) || !Number.isInteger(depiction.to)
+      || depiction.to < depiction.from || depiction.from < variant.from || depiction.to > variant.to
+      || (text(depiction.generation) && depiction.generation !== variant.id))) return null;
     return Object.freeze({
       id: text(record.id) || key, src, thumb: assetURL(record.thumb) || src,
       kind: record.kind, match, title: text(record.title), alt: text(record.alt) || text(record.title),
-      depicted: Object.freeze({ label: text(depiction.label) || text(record.title), body: text(depiction.body), from: Number.isInteger(depiction.from) ? depiction.from : null, to: Number.isInteger(depiction.to) ? depiction.to : null }),
+      depicted: Object.freeze({ label: text(depiction.label) || text(record.title), generation: variant?.id || '', body: text(depiction.body), from: Number.isInteger(depiction.from) ? depiction.from : null, to: Number.isInteger(depiction.to) ? depiction.to : null }),
       sourceUrl: sourceURL(record.sourceUrl), articleUrl: sourceURL(record.articleUrl),
       sourceSha1: /^[a-z0-9]{31,40}$/i.test(record.sourceSha1 || '') ? record.sourceSha1 : '',
       author: text(record.author), license: text(record.license), licenseUrl: sourceURL(record.licenseUrl),
@@ -39,31 +42,42 @@
     });
   }
   function getModel(brandId, modelId) {
+    // Explicit family reference for catalogue browsing, never a selected vehicle preview.
     const item = family(brandId, modelId);
     return item ? models.get(item.key) || null : null;
   }
-  function resolve(selection = {}, { allowModelFallback = true } = {}) {
-    const item = family(selection.brand, selection.model);
+  function resolve(selection = {}, { allowModelFallback = false } = {}) {
+    const item = family(selection?.brand, selection?.model);
     if (!item) return null;
+    const hasVariantSelection = ['year', 'body', 'generation'].some(key => selection[key] != null && String(selection[key]).trim() !== '');
+    // A family photograph is opt-in and only safe when browsing a family without
+    // a selected year, generation or body. The option cannot bypass a mismatch.
+    if (!hasVariantSelection) return allowModelFallback === true ? models.get(item.key) || null : null;
     const year = Number(selection.year);
     const body = text(selection.body), generation = text(selection.generation);
     // Never infer an exact image from a model name, a year alone or an ambiguous choice.
-    const g = body && generation && Number.isInteger(year)
-      ? V.getCandidates(item.brand.id, item.model.id, year, body).find(candidate => candidate.id === generation && candidate.body === body)
-      : null;
+    const validYear = (typeof selection.year === 'number' || typeof selection.year === 'string')
+      && /^\d{4}$/.test(String(selection.year).trim()) && Number.isInteger(year);
+    const candidates = body && body !== 'unknown' && generation && validYear
+      ? V.getCandidates(item.brand.id, item.model.id, year, body).filter(candidate => candidate.id === generation && candidate.body === body)
+      : [];
+    const g = candidates.length === 1 ? candidates[0] : null;
     if (g) {
+      const exact = variants.get(item.key + '/' + g.id);
+      const matchesExact = exact && exact.depicted.generation === g.id && exact.depicted.body === body && year >= exact.depicted.from && year <= exact.depicted.to;
+      // Prefer the reviewed photograph over a legacy generated illustration.
+      if (matchesExact && exact.kind === 'photo') return exact;
       const legacyAsset = assetURL(g.asset);
       if (legacyAsset) return Object.freeze({
         id: 'render:' + item.key + '/' + g.id, src: legacyAsset, thumb: legacyAsset,
         kind: 'render', match: 'variant', title: item.brand.name + ' ' + item.model.name + ' · ' + g.name,
         alt: 'Ilustrační render ' + item.brand.name + ' ' + item.model.name + ' · ' + g.name,
-        depicted: Object.freeze({ label: item.brand.name + ' ' + item.model.name + ' · ' + g.name + ' · ' + g.bodyName, body: g.body, from: g.from, to: g.to }),
+        depicted: Object.freeze({ label: item.brand.name + ' ' + item.model.name + ' · ' + g.name + ' · ' + g.bodyName, generation: g.id, body: g.body, from: g.from, to: g.to }),
         sourceUrl: '', articleUrl: '', author: 'Need For Wheels', license: 'Vlastní ilustrační render', licenseUrl: '', width: 1672, height: 941
       });
-      const exact = variants.get(item.key + '/' + g.id);
-      if (exact && exact.depicted.body === body && year >= exact.depicted.from && year <= exact.depicted.to) return exact;
+      if (matchesExact) return exact;
     }
-    return allowModelFallback ? models.get(item.key) || null : null;
+    return null;
   }
   function creditHTML(visual) {
     if (!visual) return '';
@@ -94,8 +108,9 @@
         const [brandId, modelId, variantId, extra] = key.split('/');
         const item = family(brandId, modelId);
         if (!item || item.key !== brandId + '/' + modelId || extra) continue;
-        if (field === 'models' ? Boolean(variantId) : !item.model.variants.some(g => g.id === variantId)) continue;
-        const record = sanitise(value, field === 'models' ? 'model' : 'variant', key);
+        const variant = variantId && item.model.variants.find(g => g.id === variantId);
+        if (field === 'models' ? Boolean(variantId) : !variant) continue;
+        const record = sanitise(value, field === 'models' ? 'model' : 'variant', key, variant);
         if (record) target.set(key, record);
       }
       loadErrors.delete(filename);
@@ -123,6 +138,7 @@
   global.NFWVehicleVisuals = Object.freeze({
     get ready() { return pending; },
     getModel, resolve, creditHTML, imageURL, retryFailedData,
+    get errors() { return Object.freeze([...loadErrors.values()]); },
     get isReady() { return loaded; },
     get modelCount() { return models.size; },
     get variantCount() { return variants.size; }
