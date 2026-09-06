@@ -32,7 +32,7 @@
     step: 1, view: 'car', spin: !matchMedia('(prefers-reduced-motion: reduce)').matches, side: 'R',
     brand: 'bmw', model: 'x5', year: 2020, generation: 'g05', body: 'suv',
     car: 'suv', bodyColor: 'white', carDetail: '',
-    design: 'apex10', color: 'bronze', colorHex: '#ff4d1c', finish: 'gloss', lip: 'same', cap: 'black',
+    design: 'apex10', color: 'silver', colorHex: '#b9bcc2', finish: 'gloss', lip: 'same', cap: 'black',
     d: 21, stag: true, wf: 9, wr: 11.5, etf: 50, etr: 62, pcd: '5x130', cb: 71.6, weight: 10.5,
     extras: [], note: '', name: '', email: '', phone: '',
   };
@@ -177,10 +177,30 @@
   }
   let showroomModule, wheelPhotoModule, viewer, photoViewer, pendingViewerAbort, viewerKey = '', renderToken = 0;
   const failedVisuals = new Set();
-  const loadShowroom = () => showroomModule || (showroomModule = import('./showroom.js?v=20260906-oarts-logo').catch(e => { showroomModule = null; throw e; }));
-  const loadWheelPhoto = () => wheelPhotoModule || (wheelPhotoModule = import('./wheel-fit-preview.js?v=20260906-oarts-logo').catch(e => { wheelPhotoModule = null; throw e; }));
+  const loadShowroom = () => showroomModule || (showroomModule = import('./showroom.js?v=20260906-silver-stock').catch(e => { showroomModule = null; throw e; }));
+  const loadWheelPhoto = () => wheelPhotoModule || (wheelPhotoModule = import('./wheel-fit-preview.js?v=20260906-silver-stock').catch(e => { wheelPhotoModule = null; throw e; }));
   const previewOptions = mode => ({ mode, vehicleAsset: stageAsset()?.id, design: S.design, color: colorHex(), colorHex: colorHex(), finish: S.finish, lip: S.lip, cap: S.cap, diameter: S.d, width: S.wf, autoRotate: S.spin, bodyColor: bodyHex(), mirror: S.side === 'L', bolts: parseInt(S.pcd,10) || 5 });
   const photoOptions = () => ({ ...previewOptions('wheel'), label: `${design().name} · ${colorName()}` });
+  async function renderWheelFallback(container, token, module) {
+    const selected = { name: design().name, colourName: colorName(), colour: colorHex(), options: previewOptions('wheel') };
+    const matchingColour = ['#b9bcc2', '#9a6d3a'].includes(selected.colour.toLowerCase());
+    const message = matchingColour
+      ? '3D náhled se nepodařilo načíst. Zobrazuje se uložený render vybraného designu a barvy.'
+      : '3D náhled se nepodařilo načíst. Náhled designu je ve stříbrné; vybraný odstín zůstává uložený v konfiguraci.';
+    container.innerHTML = `<div class="viewer-fallback" data-wheel-design="${esc(S.design)}" data-wheel-colour="${esc(selected.colour)}">${O.renderWheel(wheelOpts())}<p><b>${esc(selected.name)} · ${esc(selected.colourName)}</b><br><span data-fallback-message>${message}</span></p><button class="btn btn--ghost" type="button" data-retry-3d>Zkusit znovu</button></div>`;
+    // A missing car asset can still have a working GPU. Render the selected wheel
+    // independently; a total WebGL failure keeps the explicitly labelled stored image.
+    if (!module?.renderThumbnail) return;
+    try {
+      const src = await module.renderThumbnail({ ...selected.options, size: 600, transparent: true, shadows: true, quality: .95 });
+      if (token !== renderToken || !container.isConnected) return;
+      const image = container.querySelector('.viewer-fallback img');
+      if (!image) return;
+      image.src = src; image.alt = `${selected.name} — render vybraného kola, ${selected.colourName}`;
+      image.width = image.height = 600;
+      container.querySelector('[data-fallback-message]').textContent = 'Interaktivní náhled se nepodařilo načíst. Zobrazuje se render tvého vybraného kola.';
+    } catch { /* Keep the usable, accurately labelled stored design preview. */ }
+  }
   function renderStage() {
     const tabs = [['car', 'Můj vůz'], ['wheel', '3D kolo'], selected3D() ? ['photo', 'Fotografie'] : ['showroom', '360° studio']];
     const activeTab = (S.view === 'showroom' && selected3D()) || (S.view === 'photo' && !selected3D()) ? 'car' : S.view;
@@ -245,15 +265,16 @@
     updatePreviewCaption(v,visual);
     const container = v.querySelector('.webgl-view');
     const request = new AbortController(); pendingViewerAbort = request;
+    let module;
     try {
-      await loadShowroom(); if(token!==renderToken)return;
-      const result = await window.NFWShowroom.mount(container, { ...previewOptions(mode), signal: request.signal });
+      module = await loadShowroom(); if(token!==renderToken)return;
+      const result = await module.mount(container, { ...previewOptions(mode), signal: request.signal });
       if(token!==renderToken){result?.dispose();return;}
       viewer=result;
       container.querySelector('.viewer-loading')?.remove();
     } catch(error) {
       if(token!==renderToken)return;
-      container.innerHTML='<div class="viewer-fallback"><img src="assets/reference/bronze-wheel-pair.jpg" alt="Fotografie referenčního bronzového kola"><p>3D náhled se nepodařilo načíst. Zobrazuje se fotografie referenčního kola.</p><button class="btn btn--ghost" type="button" data-retry-3d>Zkusit znovu</button></div>';
+      await renderWheelFallback(container, token, module);
     }
   }
   function updatePreviewCaption(v, visual) {

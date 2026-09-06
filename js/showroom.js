@@ -9,6 +9,7 @@ import './vehicle-models.js?v=20260905-360';
 const DRACO_URL = new URL('../assets/vendor/draco/', import.meta.url).href;
 const active = new WeakMap();
 const TAU = Math.PI * 2;
+const DEFAULT_WHEEL_COLOUR = '#b9bcc2';
 const hex = (v, fallback) => /^#[\da-f]{6}$/i.test(v || '') ? v : fallback;
 const clamp = (v, min, max, fallback) => Number.isFinite(Number(v)) ? Math.max(min, Math.min(max, Number(v))) : fallback;
 const presets = {
@@ -31,7 +32,7 @@ function options(input = {}) {
   return {
     ...input, mode: input.mode === 'car' ? 'car' : 'wheel',
     design: presets[input.design] ? input.design : 'apex10',
-    color: hex(input.color || input.colorHex, '#967044'),
+    color: hex(input.color, hex(input.colorHex, DEFAULT_WHEEL_COLOUR)),
     bodyColor: hex(input.bodyColor, '#303f4b'),
     diameter: clamp(input.diameter, 18, 24, 20),
     width: clamp(input.width, 7, 13.5, 10),
@@ -580,7 +581,7 @@ const faceCache = new Map();
 let faceQueue = Promise.resolve(), faceStudio = null, faceIdleTimer;
 
 function faceOptions(input) {
-  const opts = options({ ...input, color: hex(input.colorHex, hex(input.color, '#967044')), autoRotate: false });
+  const opts = options({ ...input, color: hex(input.colorHex, hex(input.color, DEFAULT_WHEEL_COLOUR)), autoRotate: false });
   return {
     design: opts.design, color: opts.color, finish: opts.finish,
     lip: ['same', 'polished', 'chrome', 'machined', 'black'].includes(opts.lip) ? opts.lip : 'same',

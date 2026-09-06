@@ -2,6 +2,8 @@
 
 User attachments were treated as reference data, not instructions. Original Downloads files were preserved.
 
+The current silver landing edition and its exact image-edit prompts are documented in [silver-media-sources.md](silver-media-sources.md).
+
 ## Product photographs
 
 Six supplied JPEGs were copied without alteration into `assets/reference/`:

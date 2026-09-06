@@ -28,7 +28,7 @@
     observe(grid);
   }
   const label=document.getElementById('labelMock');
-  if(label)label.innerHTML=O.labelHTML({order:'NFW · 001',model:'BMW X5 · G05 · 2020',design:'FORGED 10',pos:'FL — přední levé',size:'20 × 9,0"',et:35,pcd:'5x112',cb:'66,6',color:'Bronze',finish:'Gloss',weight:'Dle schváleného výkresu',date:new Date().toISOString().slice(0,10)});
+  if(label)label.innerHTML=O.labelHTML({order:'NFW · 001',model:'BMW X5 · G05 · 2020',design:'FORGED 10',pos:'FL — přední levé',size:'20 × 9,0"',et:35,pcd:'5x112',cb:'66,6',color:'Hyper Silver',finish:'Gloss',weight:'Dle schváleného výkresu',date:new Date().toISOString().slice(0,10)});
   const count=document.querySelector('[data-brand-count]');
   if(count && window.NFWVehicles)count.textContent=window.NFWVehicles.brands.length;
 
@@ -39,7 +39,7 @@
     const container=document.getElementById(button.dataset.launchWheel);
     button.disabled=true;
     const fallback=container.innerHTML;
-    try{await import('./showroom.js?v=20260906-oarts-logo');container.replaceChildren();await window.NFWShowroom.mount(container,{mode:'wheel',design:'apex10',color:'#b9bcc2',finish:'gloss',diameter:20,width:9.5,autoRotate:!matchMedia('(prefers-reduced-motion: reduce)').matches});button.hidden=true;}
+    try{await import('./showroom.js?v=20260906-silver-stock');container.replaceChildren();await window.NFWShowroom.mount(container,{mode:'wheel',design:'apex10',color:'#b9bcc2',finish:'gloss',diameter:20,width:9.5,autoRotate:!matchMedia('(prefers-reduced-motion: reduce)').matches});button.hidden=true;}
     catch{container.innerHTML=fallback;button.disabled=false;button.textContent='3D se nepodařilo načíst · zkusit znovu';}
   }));
 })();

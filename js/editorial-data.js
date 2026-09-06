@@ -40,14 +40,14 @@
       {
         slug: 'jak-vybrat-design-a-povrch-disku',
         title: 'Design a povrch disků: najdi svůj vlastní styl.',
-        excerpt: 'Čisté paprsky, výrazný konkáv, bronz nebo grafit. Jednoduchý postup, jak vybírat tak, aby celek dával smysl.',
+        excerpt: 'Čisté paprsky, výrazný konkáv, stříbro nebo grafit. Jednoduchý postup, jak vybírat tak, aby celek dával smysl.',
         category: 'Design & povrch',
         publishedAt: '2026-09-06',
         readMinutes: 3,
         cover: {
-          src: 'assets/images/wheel-hero-oarts-logo.webp',
-          alt: 'Desetipaprskový bronzový disk OARTS ve studiovém světle',
-          caption: 'Studiový vizuál bronzového desetipaprskového designu. Odstín a odlesky ovlivňuje osvětlení.'
+          src: 'assets/images/wheel-hero-oarts-silver.webp',
+          alt: 'Stříbrný desetipaprskový disk Oarts ve studiovém světle',
+          caption: 'Ilustrační studiový render stříbrného desetipaprskového designu. Odstín a odlesky ovlivňuje osvětlení.'
         },
         body: [
           { type: 'paragraph', text: 'Nejlepší začátek není dlouhý seznam barev. Vyber si jednu představu: má kolo s autem klidně splynout, nebo být první věcí, které si všimneš? Tuhle odpověď si nech jako vodítko pro všechny další detaily.' },

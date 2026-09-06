@@ -81,7 +81,12 @@ const wait = milliseconds => new Promise(resolve => setTimeout(resolve, millisec
     assert.equal(await activeIndex(page), 1);
     assert.equal(await page.locator('[data-hero-to="1"]').getAttribute('aria-current'), 'true');
     assert.match(await page.locator('#heroStatus').innerText(), /2 ze 3/);
-    assert.equal(await page.locator('[data-hero-slide]:visible .btn').getAttribute('href'), '#vehicleCatalogue');
+    const bmwStudioURL = new URL(await page.locator('[data-hero-slide]:visible .btn').getAttribute('href'), page.url());
+    assert.equal(bmwStudioURL.origin, new URL(page.url()).origin);
+    assert.ok(bmwStudioURL.pathname.endsWith('/konfigurator.html'), 'BMW hero opens the configurator');
+    for (const [key, value] of Object.entries({ brand: 'bmw', model: 'x5', year: '2020', generation: 'g05', body: 'suv', view: 'car' })) {
+      assert.equal(bmwStudioURL.searchParams.get(key), value, `BMW studio preserves explicit ${key}`);
+    }
     await page.locator('[data-hero-prev]').click();
     assert.equal(await activeIndex(page), 0);
     await page.locator('[data-hero-to="2"]').click();
@@ -101,6 +106,15 @@ const wait = milliseconds => new Promise(resolve => setTimeout(resolve, millisec
     await page.clock.resume();
     console.log('PASS landing controls: three slides, arrows/dots/wrap/keyboard/status and no autoplay with reduced motion.');
 
+    const stockSection = page.locator('#skladem');
+    assert.equal(await stockSection.count(), 1, 'The stock link has one destination section');
+    const stockLink = page.locator('[data-hero-slide]:visible a[href="#skladem"]');
+    assert.equal(await stockLink.count(), 1, 'The first hero links directly to stock wheels');
+    await stockLink.click();
+    assert.equal(new URL(page.url()).hash, '#skladem');
+    assert.equal(await stockSection.isVisible(), true);
+    console.log('PASS stock discovery: hero link opens the existing stock section.');
+
     const track = page.locator('#designsGrid');
     const collectionNext = page.locator('[data-design-next]');
     const collectionPrev = page.locator('[data-design-prev]');
@@ -108,6 +122,8 @@ const wait = milliseconds => new Promise(resolve => setTimeout(resolve, millisec
     const designIds = await track.locator('a.design-card').evaluateAll(links => links.map(link => new URL(link.href).searchParams.get('design')));
     assert.equal(new Set(designIds).size, 13);
     assert.ok(designIds.every(Boolean), 'Every design links to its own configurator');
+    const designColours = await track.locator('a.design-card').evaluateAll(links => links.map(link => new URL(link.href).searchParams.get('color')));
+    assert.ok(designColours.every(colour => colour === 'silver'), 'All 13 design links open the silver finish');
     await track.scrollIntoViewIfNeeded();
     assert.equal(await collectionPrev.isDisabled(), true);
     assert.equal(await collectionNext.isDisabled(), false);
@@ -129,7 +145,7 @@ const wait = milliseconds => new Promise(resolve => setTimeout(resolve, millisec
       return lastRect.right <= trackRect.right + 2 && lastRect.left >= trackRect.left;
     });
     assert.ok(lastCardVisible, 'The last design is reachable inside the collection');
-    console.log('PASS collection: all 13 exact links, horizontal arrows/keyboard and reachable last design.');
+    console.log('PASS collection: all 13 exact silver links, horizontal arrows/keyboard and reachable last design.');
 
     await page.selectOption('#catalogBrand', 'skoda');
     await page.locator('#catalogSearch').fill('Octavia');

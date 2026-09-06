@@ -2,6 +2,8 @@
 
 Obsah se upravuje v jediném souboru: [js/editorial-data.js na GitHubu](https://github.com/MajkPowa/NeedForKola/blob/main/js/editorial-data.js). Blog i úvodní stránka si z něj vezmou nové články automaticky. Galerie používá pole `projects` v témže souboru.
 
+Skladové sady mají vlastní datový soubor; jejich rozměry, cenu a dostupné množství upravíš podle [návodu pro skladová kola](stock-guide.md).
+
 Úpravy může uložit účet s právem zápisu do repozitáře **MajkPowa/NeedForKola**. Web nemá vlastní administraci ani přihlašování. Změna se zveřejní po uložení do větve `main` a dokončení nasazení GitHub Pages.
 
 ## Upravit existující článek
