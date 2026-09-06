@@ -86,6 +86,10 @@ const shots = path.join(__dirname, '../docs/qa');
   const summary = await page.locator('.spec').first().innerText();
   for (const text of ['Octavia', 'RS, generace IV', 'MESH 3PC', 'Bez krytky', 'Větší brzdy']) assert.ok(summary.includes(text), text);
   await page.screenshot({ path: path.join(shots, 'summary-desktop.png') });
+  // Contact details are deliberately kept out of the shareable URL. After a
+  // reload the new enquiry validation asks for them again before opening mail.
+  await page.locator('[data-set=name]').fill('Test User');
+  await page.locator('[data-set=email]').fill('test@example.test');
   await page.locator('#sendMail').evaluate(el => el.addEventListener('click', event => event.preventDefault()));
   await page.locator('#sendMail').click();
   assert.match(decodeURIComponent(await page.locator('#sendMail').getAttribute('href')), /Need For Wheels.*Octavia/s);

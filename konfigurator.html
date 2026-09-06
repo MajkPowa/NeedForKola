@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="theme-color" content="#090c10">
   <link rel="icon" type="image/webp" href="assets/renders/silver/apex10.webp?v=20260906-oarts-logo">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Konfigurátor · Need For Wheels</title>
   <meta name="description" content="Nakonfiguruj si kola Need For Wheels: auto, design, rozměry, barvu, povrch, límec i krytku. Cena a Need For Wheels štítek v reálném čase.">
   <link rel="canonical" href="https://majkpowa.github.io/NeedForKola/konfigurator.html">
@@ -20,8 +20,10 @@
 <link rel="stylesheet" href="css/wheel-fit-preview.css?v=20260906-platinum">
 <link rel="stylesheet" href="css/vehicle-studio.css?v=20260906-platinum">
 <script type="importmap">{"imports":{"three":"./assets/vendor/three/three.module.js","three/addons/":"./assets/vendor/three/addons/"}}</script>
+<link rel="stylesheet" href="css/mobile-navigation.css?v=20260906-mobile-flow">
+<link rel="stylesheet" href="css/mobile-flow.css?v=20260906-mobile-flow">
 </head>
-<body>
+<body class="configurator-page">
 
 <header class="nav">
   <div class="wrap">
@@ -31,7 +33,7 @@
     </a>
     <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
     <nav class="nav__links" id="navLinks">
-      <a href="index.html#auta">Auta</a>
+      <a href="index.html#vehicleCatalogue">Auta</a>
       <a href="index.html#designy">Designy</a>
       <a href="index.html#skladem">Skladem</a><a href="index.html#realizace">Realizace</a><a href="blog.html">Blog</a>
       <a href="proces.html">Průběh zakázky</a>
@@ -43,6 +45,7 @@
 
 <main class="cfg">
   <aside class="cfg-steps" id="stepsRail" aria-label="Kroky konfigurátoru"></aside>
+  <div class="mobile-flow-intro" id="mobileFlowIntro" tabindex="-1"></div>
 
   <section class="cfg-stage">
     <div class="stage-head" id="stageHead"></div>
@@ -55,6 +58,7 @@
     <div class="panel-foot" id="panelFoot"></div>
   </aside>
 </main>
+<div id="flowAnnouncement" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
 
 <script src="js/wheels.js?v=20260906-oarts-logo"></script>
 <script src="js/cars.js"></script>
@@ -64,8 +68,9 @@
 <script src="js/vehicle-models.js?v=20260905-360"></script>
 <script src="js/brand-logos.js"></script>
 <script src="js/brand-picker.js"></script>
-<script src="js/main.js?v=20260906-exact-vehicle"></script>
-<script src="js/configurator.js?v=20260906-exact-vehicle"></script>
+<script src="js/navigation.js?v=20260906-mobile-flow"></script>
+<script src="js/main.js?v=20260906-mobile-flow"></script>
+<script src="js/configurator.js?v=20260906-mobile-flow"></script>
 <script src="js/oarts.js?v=20260906-oarts"></script>
 </body>
 </html>

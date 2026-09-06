@@ -165,6 +165,9 @@ const wait = milliseconds => new Promise(resolve => setTimeout(resolve, millisec
     console.log('PASS discovery links: eight real logos and brand choice clears old model/year filters.');
 
     const dock = page.locator('#discoveryDock');
+    // The mobile dock intentionally yields to focused form controls. These
+    // visibility checks cover browsing sections after leaving the form.
+    await page.evaluate(() => document.activeElement?.blur());
     for (const width of [390, 768, 1440]) {
       await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
       await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));

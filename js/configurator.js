@@ -24,6 +24,39 @@
     { id: 'ceramic',  name: 'Keramická ochrana',        desc: 'Ochranná vrstva proti solím a prachu',                       price: 2900 },
   ];
   const STEPS = ['Auto', 'Design', 'Rozměry', 'Vzhled', 'Souhrn'];
+  const MOBILE = matchMedia('(max-width: 900px)');
+  const FLOW = [
+    ['Vyber svoje auto.', 'Zvol značku, model a rok. Potom pokračuj k designu.'],
+    ['Najdi svůj design.', 'Klepni na kolo. Vybraný návrh uvidíš v náhledu.'],
+    ['Jak velká kola?', 'Vyber průměr. Další rozměry můžeme doladit společně.'],
+    ['Dolaď barvu a povrch.', 'Porovnej odstíny. Límec, krytku a doplňky najdeš níže.'],
+    ['Tvůj návrh je připravený.', 'Zkontroluj výběr a pokračuj ke kontaktu.']
+  ];
+  const detailState = new Map();
+  let guidingFrame = 0;
+  const announce = message => { $('#flowAnnouncement').textContent = message; };
+  const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const detailsHTML = (id, title, content) => `<details class="flow-details" data-flow-detail="${id}" ${detailState.get(id) ?? !MOBILE.matches ? 'open' : ''}><summary>${title}<span aria-hidden="true">＋</span></summary><div class="flow-details__body">${content}</div></details>`;
+  function revealFlow(target, { focus = true, block = 'start' } = {}) {
+    if (!MOBILE.matches || !target) return;
+    cancelAnimationFrame(guidingFrame);
+    guidingFrame = requestAnimationFrame(() => {
+      if (!target.isConnected) return;
+      if (focus) target.focus({ preventScroll: true });
+      const nav = $('.nav').getBoundingClientRect().height;
+      const rect = (target.id === 'mobileFlowIntro' ? $('.cfg') : target).getBoundingClientRect();
+      const footer = $('#panelFoot').getBoundingClientRect().height;
+      const visibleBottom = (window.visualViewport?.height || innerHeight) - (document.body.classList.contains('flow-keyboard-open') ? 0 : footer) - 16;
+      if (block === 'nearest' && rect.top >= nav + 16 && rect.bottom <= visibleBottom) return;
+      window.scrollTo({ top: Math.max(0, scrollY + rect.top - nav - 16), behavior: reducedMotion() ? 'instant' : 'smooth' });
+    });
+  }
+  function renderFlowIntro() {
+    $('.cfg').dataset.currentStep = S.step;
+    const [title, instruction] = FLOW[S.step - 1];
+    $('#mobileFlowIntro').innerHTML = `<small class="mobile-flow-step">Krok ${S.step} z ${STEPS.length} · ${STEPS[S.step - 1]}</small><strong class="mobile-flow-title">${title}</strong><p class="mobile-flow-copy">${instruction}</p>`;
+    $('#mobileFlowIntro').setAttribute('aria-label', `Krok ${S.step} z 5. ${title} ${instruction}`);
+  }
   const DIAMS = [18, 19, 20, 21, 22, 23, 24];
   const LIMITS = { d: [18, 24], wf: [7, 13.5], wr: [7, 13.5], etf: [-15, 75], etr: [-15, 75], cb: [50, 120], weight: [7, 16] };
 
@@ -116,8 +149,12 @@
     if (conflict) S.generation = '';
     syncGeneration(!conflict && !(src.has('generation') && !src.get('generation')));
     if (['car','photo','wheel','showroom'].includes(src.get('view'))) S.view = src.get('view');
+    else if (MOBILE.matches) S.view = 'wheel';
     // Old showroom links must never substitute a different car for the selection.
     if (S.view === 'showroom') S.view = 'car';
+    // Entry links still select the exact car; the mobile journey starts with
+    // the wheel. Explicit shared hash states retain their chosen photo view.
+    if (MOBILE.matches && src === p) S.view = 'wheel';
     if (has(O.CARS, src.get('car'))) { S.car = src.get('car'); applyCarDefaults(car()); }
     if (has(O.DESIGNS, src.get('design'))) { S.design = src.get('design'); if (src === p) S.step = 2; }
     if (has(O.COLORS, src.get('color'))) S.color = src.get('color');
@@ -165,10 +202,11 @@
 
   /* ---------- render: kroky ---------- */
   function renderSteps() {
+    renderFlowIntro();
     $('#stepsRail').innerHTML = STEPS.map((t, i) => {
       const n = i + 1;
       const cls = n === S.step ? 'active' : n < S.step ? 'done' : '';
-      return `<button class="cfg-step ${cls}" type="button" data-step="${n}" aria-current="${n === S.step ? 'step' : 'false'}"><b><span>${n < S.step ? '✓' : n}</span></b><span class="t">${t}</span></button>`;
+      return `<button class="cfg-step ${cls}" type="button" data-step="${n}" aria-label="Krok ${n} z 5: ${t}" aria-current="${n === S.step ? 'step' : 'false'}"><b><span>${n < S.step ? '✓' : n}</span></b><span class="t">${t}</span></button>`;
     }).join('');
   }
 
@@ -295,7 +333,7 @@
       const available = visuals?.resolve(S, { allowModelFallback: false });
       const loadFailed = Boolean(available && failedVisuals.has(available.src)) || Boolean(visuals?.errors?.length);
       caption.innerHTML=`<b>${incomplete ? 'Upřesni provedení svého vozu' : loadFailed ? 'Fotografii se nepodařilo načíst' : 'Náhled tohoto provedení připravujeme'}</b><span>${incomplete ? 'Vyber rok, karoserii a generaci. Zatím si můžeš prohlédnout navržené kolo.' : loadFailed ? 'Zobrazuje se samostatný návrh kola. Zkus podklady znovu načíst; vybraný vůz zůstává uložený.' : 'Pro zvolený rok, generaci a karoserii zatím nemáme dostupný ověřený podklad. Zobrazuje se samostatné 3D kolo; tvůj vůz zůstává uložený.'}</span>${loadFailed ? '<button class="visual-retry" type="button" data-retry-visual>Obnovit vizuální podklady</button>' : ''}`;
-    } else caption.innerHTML='<b>3D NÁVRH KOLA <span class="live-dot"></span></b><span>Tažením otáčej · kolečkem přibližuj · dvojklikem obnov pohled</span>';
+    } else caption.innerHTML=`<b>3D NÁVRH KOLA <span class="live-dot"></span></b><span>${MOBILE.matches ? 'Tažením otáčej · dvěma prsty přibližuj' : 'Tažením otáčej · kolečkem přibližuj · dvojklikem obnov pohled'}</span>`;
   }
 
   function renderStageFoot() {
@@ -312,13 +350,23 @@
 
   /* ---------- render: panel ---------- */
   let brandPicker = null;
-  function renderPanel() {
+  let enquiryReady = false;
+  function renderPanel({ reset = false } = {}) {
     const b = $('#panelBody');
+    b.querySelectorAll('[data-flow-detail]').forEach(el => detailState.set(el.dataset.flowDetail, el.open));
+    const active = b.contains(document.activeElement) ? document.activeElement : null;
+    const focusKey = active?.id ? '#' + CSS.escape(active.id) : active?.dataset.set ? `[data-set="${active.dataset.set}"]${active.dataset.val ? `[data-val="${active.dataset.val}"]` : ''}` : null;
+    const oldScroll = b.scrollTop;
     brandPicker?.destroy();
     brandPicker = null;
     b.innerHTML = [panelCar, panelDesign, panelSize, panelLook, panelSummary][S.step - 1]();
+    const heading = b.querySelector('h2');
+    heading.id = 'flowHeading'; heading.tabIndex = -1;
+    b.setAttribute('aria-labelledby', 'flowHeading');
+    b.querySelectorAll('button[data-set][data-val]').forEach(button => button.setAttribute('aria-pressed', String(button.classList.contains('active'))));
     if (S.step === 1) brandPicker = window.NFWBrandPicker?.enhance($('#vehicleBrand'), { label: 'Značka vozu' }) || null;
-    b.scrollTop = 0;
+    b.scrollTop = reset ? 0 : oldScroll;
+    if (!reset && focusKey) b.querySelector(focusKey)?.focus({ preventScroll: true });
     renderFoot();
   }
 
@@ -339,10 +387,10 @@
       </div>
       ${!S.year?'<div class="note" role="status">Model je vybraný. Doplň rok výroby a upřesni karoserii svého vozu.</div>':!years.includes(S.year)?'<div class="note vehicle-warning" role="status">Pro tento rok nemáme doložené provedení. Vyber dostupný ročník nebo chybějící variantu uveď do poznámky.</div>':''}
       <div class="generation-info"><small>${g ? g.confidence==='verified'?'PODKLADY VÝROBCE':'KATALOGOVÝ ZÁZNAM' : 'VÝBĚR PROVEDENÍ'}</small><b>${g?esc(g.name)+' · '+esc(g.bodyName):'Upřesni svůj vůz'}</b><span>${sourceNote}</span>${g?.status==='announced'?`<span class="vehicle-warning">Oznámené provedení · ${esc(g.startBasis || 'Dodávky jsou plánované.')}</span>`:''}</div>
-      ${g?`<details class="vehicle-source"><summary>Období a zdroj údajů</summary><p>${V.periodLabel(g)} · ${esc(g.market)}. ${endNote}</p>${g.startBasis?`<p>${esc(g.startBasis)}</p>`:''}${g.notes?`<p>${esc(g.notes)}</p>`:''}${g.bodyVariants?.length?`<p>Další provedení řady ve zdroji: ${g.bodyVariants.map(esc).join(', ')}. Kombinaci s karoserií upřesni v poznámce.</p>`:''}<a href="${esc(g.source)}" target="_blank" rel="noopener">${esc(g.sourceTitle)} ↗</a>${g.additionalSources?.length?g.additionalSources.map(source=>`<br><a href="${esc(source.url)}" target="_blank" rel="noopener">${esc(source.title)} ↗</a>`).join(''):''}</details>`:''}
+      ${detailsHTML('vehicle-info', 'Podrobnosti a upřesnění vozu', `${g?`<details class="vehicle-source"><summary>Období a zdroj údajů</summary><p>${V.periodLabel(g)} · ${esc(g.market)}. ${endNote}</p>${g.startBasis?`<p>${esc(g.startBasis)}</p>`:''}${g.notes?`<p>${esc(g.notes)}</p>`:''}${g.bodyVariants?.length?`<p>Další provedení řady ve zdroji: ${g.bodyVariants.map(esc).join(', ')}. Kombinaci s karoserií upřesni v poznámce.</p>`:''}<a href="${esc(g.source)}" target="_blank" rel="noopener">${esc(g.sourceTitle)} ↗</a>${g.additionalSources?.length?g.additionalSources.map(source=>`<br><a href="${esc(source.url)}" target="_blank" rel="noopener">${esc(source.title)} ↗</a>`).join(''):''}</details>`:''}
       <a class="text-link vehicle-catalog-link" href="index.html?catalogBrand=${encodeURIComponent(S.brand)}&catalogModel=${encodeURIComponent(model.name)}#auta">Prohlédnout katalog modelu (${model.variants.length} provedení) ↗</a>
       <label class="field"><span>Upřesnění vozu <em>volitelné</em></span><input type="text" data-set="carDetail" data-type="text" maxlength="80" value="${esc(S.carDetail)}" placeholder="např. kód generace, větší brzdy, chybějící varianta"></label>
-      <div class="note">Katalog zahrnuje doložená provedení, historické údaje nemusí být úplné. Rozměry kol a přesnou kompatibilitu ověříme před výrobou.</div>`;
+      <div class="note">Katalog zahrnuje doložená provedení, historické údaje nemusí být úplné. Rozměry kol a přesnou kompatibilitu ověříme před výrobou.</div>`)} `;
   }
 
   function panelDesign() {
@@ -362,6 +410,8 @@
     return `<h2>03 · Rozměry</h2><p class="sub">Navrhni rozměry pro ${esc(vehicleName())}. Jde o zadání k ověření, nikoli potvrzenou kompatibilitu.</p>
       <h4>Průměr <em>${S.d}"</em></h4>
       <div class="chips">${DIAMS.map(v => chip(v, 'd', false)).join('')}</div>
+      <p class="flow-guidance">Nevíš přesné rozměry? Stačí zvolit průměr a pokračovat. Šířku, ET a rozteč spolu ověříme před výrobou.</p>
+      ${detailsHTML('dimensions', 'Šířka, ET a další rozměry', `
       <h4>Rozdílné šířky vpředu a vzadu <label class="toggle"><input type="checkbox" id="stagToggle" ${S.stag ? 'checked' : ''}> ${S.stag ? 'Staggered' : 'Square'}</label></h4>
       <h4>Šířka <em>${nf(S.wf)}" ${S.stag ? '/ ' + nf(S.wr) + '"' : ''}</em></h4>
       <div class="${S.stag ? 'two' : ''}">
@@ -383,7 +433,7 @@
       <div class="range"><input type="range" min="7" max="16" step="0.1" value="${S.weight}" data-set="weight" data-type="num" data-live="1" aria-label="Cílová váha kola"><output>${nf(S.weight)} kg</output></div>
       <p class="hint muted" style="font-size:12px;margin:6px 0 0">Odhad pro tuto konfiguraci: ~${nf(weightEst())} kg. Nižší cíl znamená více frézování a tenčí profily – potvrdíme ho v technickém výkresu.</p>
       <h4>Poznámka k fitmentu</h4>
-      <div class="field"><textarea data-set="note" data-type="text" maxlength="300" aria-label="Poznámka k fitmentu" placeholder="Brzdy (např. PCCB, šestipístové), sražení, podběhy, rozšíření, adaptéry…">${esc(S.note)}</textarea></div>`;
+      <div class="field"><textarea data-set="note" data-type="text" maxlength="300" aria-label="Poznámka k fitmentu" placeholder="Brzdy (např. PCCB, šestipístové), sražení, podběhy, rozšíření, adaptéry…">${esc(S.note)}</textarea></div>`)} `;
   }
 
   function panelLook() {
@@ -394,12 +444,12 @@
       <p class="hint muted" style="font-size:12px;margin:4px 0 0">Vlastní odstín? Klikni na duhový kruh nebo nám v poznámce napiš kód RAL.</p>
       <h4>Povrchová úprava</h4>
       <div class="opt-list">${O.FINISHES.map(f => `<button type="button" class="opt ${S.finish === f.id ? 'active' : ''}" data-set="finish" data-val="${f.id}" style="grid-template-columns:1fr auto"><div><b>${f.name}</b><span>${f.desc}</span></div><span class="p">${f.price ? '+' + kc(f.price) + ' / kolo' : 'v ceně'}</span></button>`).join('')}</div>
-      <h4>Límec</h4>
+      ${detailsHTML('finishing', 'Límec, krytka a doplňky', `<h4>Límec</h4>
       <div class="chips">${O.LIPS.map(l => `<button type="button" class="chip ${S.lip === l.id ? 'active' : ''}" data-set="lip" data-val="${l.id}"><span>${l.name}${l.price ? ' · +' + kc(l.price) : ''}</span></button>`).join('')}</div>
       <h4>Středová krytka</h4>
       <div class="chips">${O.CAPS.map(c => `<button type="button" class="chip ${S.cap === c.id ? 'active' : ''}" data-set="cap" data-val="${c.id}"><span>${esc(c.name)}${c.price ? ' · +' + kc(c.price) : ''}</span></button>`).join('')}</div>
       <h4>Individuální doplňky <em>za sadu</em></h4>
-      <div class="opt-list">${EXTRAS.map(x => `<label class="check"><input type="checkbox" data-extra="${x.id}" ${S.extras.includes(x.id) ? 'checked' : ''}><div><b>${x.name}</b><span>${x.desc}</span></div><span class="p">+${kc(x.price)}</span></label>`).join('')}</div>`;
+      <div class="opt-list">${EXTRAS.map(x => `<label class="check"><input type="checkbox" data-extra="${x.id}" ${S.extras.includes(x.id) ? 'checked' : ''}><div><b>${x.name}</b><span>${x.desc}</span></div><span class="p">+${kc(x.price)}</span></label>`).join('')}</div>`)} `;
   }
 
   function panelSummary() {
@@ -413,6 +463,13 @@
     });
     const extras = S.extras.map(id => EXTRAS.find(e => e.id === id)).filter(Boolean);
     return `<h2>05 · Souhrn</h2><p class="sub">Zkontroluj konfiguraci. Po odeslání proběhne konzultace, výrobce připraví technický výkres ke schválení a teprve pak začíná výroba.</p>
+      <div class="flow-summary-overview">${[
+        [1, 'Tvůj vůz', `${selectedBrand().name} ${selectedModel().name} · ${S.year || 'rok neurčen'}${generation() ? ' · ' + generation().bodyName : ''}`],
+        [2, 'Design', d.name],
+        [3, 'Rozměr', `${S.d}\" · ${nf(S.wf)}${S.stag ? ' / ' + nf(S.wr) : ''}\"`],
+        [4, 'Vzhled', `${colorName()} · ${O.find(O.FINISHES,S.finish).name}`]
+      ].map(([step,label,value])=>`<button type="button" class="flow-summary-edit" data-step="${step}" aria-label="Upravit ${label.toLowerCase()}"><span><small>${label}</small><b>${esc(value)}</b></span><span>Upravit ↗</span></button>`).join('')}</div>
+      ${detailsHTML('summary-spec', 'Úplná specifikace a rozpis ceny', `
       <table class="spec">
         <tr><th>Vůz</th><td>${esc(vehicleName())}${S.carDetail ? '<br><span class="muted">' + esc(S.carDetail) + '</span>' : ''}</td></tr>
         <tr><th>Design</th><td>${esc(d.name)} · Series ${d.series} · ${d.pieces === 3 ? 'třídílné' : 'monoblok'}${directional() ? ' · ' + (S.side === 'L' ? 'zrcadlová sada L/P' : 'zrcadlová sada L/P') : ''}</td></tr>
@@ -441,32 +498,36 @@
         ${p.extras ? `<tr><th>Doplňky</th><td class="r">+${kc(p.extras)}</td></tr>` : ''}
         <tr class="total"><th>Celkem</th><td class="r">${kc(p.total)}</td></tr>
       </table>
-      <div class="note note--warn" style="margin-top:10px">Cena je orientační, bez DPH a dopravy. Závaznou nabídku potvrdíme společně s technickým výkresem.</div>
-      <h4>Kontakt na tebe</h4>
+      <div class="note note--warn" style="margin-top:10px">Cena je orientační, bez DPH a dopravy. Závaznou nabídku potvrdíme společně s technickým výkresem.</div>`)}
+      <section class="flow-enquiry" id="enquiryForm" aria-labelledby="enquiryTitle">
+      <h4 id="enquiryTitle" tabindex="-1">Kam se ti ozveme?</h4>
+      <p class="flow-guidance">Doplň kontakt. Připravíme e-mail s celým návrhem, který odešleš ze své pošty.</p>
       <div class="form">
-        <label class="field"><span>Jméno</span><input type="text" data-set="name" data-type="text" maxlength="80" value="${esc(S.name)}" placeholder="Jméno a příjmení" autocomplete="name"></label>
+        <label class="field"><span>Jméno</span><input type="text" data-set="name" data-type="text" maxlength="80" value="${esc(S.name)}" placeholder="Jméno a příjmení" autocomplete="name" required></label>
         <div class="form-row">
-          <label class="field"><span>E-mail</span><input type="email" data-set="email" data-type="text" maxlength="80" value="${esc(S.email)}" placeholder="ty@email.cz" autocomplete="email"></label>
+          <label class="field"><span>E-mail</span><input type="email" data-set="email" data-type="text" maxlength="80" value="${esc(S.email)}" placeholder="ty@email.cz" autocomplete="email" required></label>
           <label class="field"><span>Telefon</span><input type="tel" data-set="phone" data-type="text" maxlength="30" value="${esc(S.phone)}" placeholder="+420" autocomplete="tel"></label>
         </div>
       </div>
       <div class="actions">
-        <a class="btn btn--primary" id="sendMail" href="#"><span>Odeslat poptávku e-mailem</span></a>
+        <a class="btn btn--primary" id="sendMail" href="#"><span>Připravit poptávku e-mailem →</span></a>
+      </div></section>
+      ${detailsHTML('sharing', 'Sdílet nebo uložit návrh', `<div class="actions">
         <button class="btn" type="button" id="copySpec"><span>Kopírovat specifikaci</span></button>
         <button class="btn btn--ghost" type="button" id="shareLink"><span>Kopírovat odkaz na konfiguraci</span></button>
         <button class="btn btn--ghost" type="button" id="printSpec"><span>Uložit jako PDF / tisk</span></button>
         <div class="copied" id="copiedMsg" aria-live="polite"></div>
-      </div>`;
+      </div>`)} `;
   }
 
   function renderFoot() {
     const p = price();
     $('#panelFoot').innerHTML = `
-      <div class="price"><div><small>Orientační cena · sada 4 kol · bez DPH</small><b>${kc(p.total)}</b></div><div class="per">${kc(p.perWheel)} / kolo<br>~${nf(weightEst())} kg / kolo</div></div>
+      <div class="mobile-flow-status"><button type="button" data-flow-preview aria-label="Zobrazit náhled vybraného kola ${esc(design().name)}">${O.renderWheel(wheelOpts())}<span>${esc(design().name)}<small>Náhled ↑</small></span></button><div class="price"><div><small>Orientačně · 4 kola · bez DPH</small><b>${kc(p.total)}</b></div><div class="per">${kc(p.perWheel)} / kolo<br>~${nf(weightEst())} kg / kolo</div></div></div>
       <div class="panel-nav">
-        <button class="btn btn--ghost" type="button" id="prevStep" ${S.step === 1 ? 'disabled' : ''}><span>← Zpět</span></button>
-        ${S.step < 5 ? `<button class="btn btn--primary" type="button" id="nextStep"><span>${STEPS[S.step]} →</span></button>` : `<a class="btn btn--primary" id="sendMail2" href="#"><span>Odeslat poptávku</span></a>`}
-      </div>`;
+        <button class="btn btn--ghost" type="button" id="prevStep" data-prev ${S.step === 1 ? 'disabled' : ''}><span>← Zpět</span></button>
+        ${S.step < 5 ? `<button class="btn btn--primary" type="button" id="nextStep" data-next><span>Pokračovat →</span></button>` : `<a class="btn btn--primary" id="sendMail2" data-flow-enquiry href="#enquiryForm"><span>${MOBILE.matches && !enquiryReady ? 'Zadat kontakt →' : 'Připravit e-mail →'}</span></a>`}
+      </div><div class="flow-next-hint">${S.step < 5 ? `Dále: ${STEPS[S.step]}` : 'Nezávazná poptávka · návrh zůstane uložený v odkazu'}</div>`;
   }
 
   /* ---------- specifikace jako text ---------- */
@@ -516,18 +577,46 @@
     if (opts.head) renderStage();
   }
   function goStep(n) {
+    if (!Number.isFinite(n)) return;
     S.step = Math.min(5, Math.max(1, Math.round(n)));
+    enquiryReady = false;
+    if (MOBILE.matches) S.view = 'wheel';
     writeURL();
-    renderSteps(); renderStage(); renderPanel();
-    if (window.innerWidth <= 900) window.scrollTo({ top: 0, behavior: 'smooth' });
+    renderSteps(); renderStage(); renderPanel({ reset: true });
+    announce(`Krok ${S.step} z 5. ${FLOW[S.step - 1].join(' ')}`);
+    if (MOBILE.matches) revealFlow($('#mobileFlowIntro'));
+    else $('#flowHeading').focus({ preventScroll: true });
+  }
+
+  function guideVehicle(id) {
+    if (!MOBILE.matches) return;
+    const next = id === 'vehicleBrand' ? $('#vehicleModel') : id === 'vehicleModel' ? $('#vehicleYear')
+      : id === 'vehicleYear' && (!S.body || V.getBodies(S.brand,S.model,S.year).length > 1) ? $('#vehicleBody')
+      : !S.generation && !$('#vehicleGeneration')?.disabled ? $('#vehicleGeneration') : $('#nextStep');
+    const prompts = { vehicleModel: 'Teď vyber model.', vehicleYear: 'Pokračuj rokem výroby.', vehicleBody: 'Vyber karoserii svého vozu.', vehicleGeneration: 'Upřesni generaci a provedení.' };
+    announce(prompts[next?.id] || 'Výběr vozu zůstává uložený. Pokračuj k designu.');
+    if (next?.id === 'nextStep') next.focus({ preventScroll: true });
+    else revealFlow(next, { block: 'nearest' });
+  }
+
+  function showEnquiry() {
+    enquiryReady = true;
+    renderFoot();
+    announce('Doplň jméno a e-mail. Potom připravíme poptávku ve tvé poštovní aplikaci.');
+    revealFlow($('#enquiryTitle'));
   }
 
   /* ---------- události (delegace) ---------- */
   document.addEventListener('click', e => {
+    if (e.target.closest('[data-flow-preview]')) {
+      S.view = 'wheel'; writeURL(); renderStage();
+      announce(`Náhled ${design().name}. ${colorName()}.`);
+      return revealFlow($('#mobileFlowIntro'));
+    }
     const step = e.target.closest('[data-step]');
     if (step) return goStep(Number(step.dataset.step));
     const view = e.target.closest('[data-view]');
-    if (view) { S.view = ['car', 'photo', 'wheel'].includes(view.dataset.view) ? view.dataset.view : 'car'; writeURL(); renderStage(); return; }
+    if (view) { S.view = ['car', 'photo', 'wheel'].includes(view.dataset.view) ? view.dataset.view : 'car'; writeURL(); renderStage(); $('#stageHead').querySelector(`[data-view="${S.view}"]`)?.focus({preventScroll:true}); return; }
     if (e.target.closest('[data-studio-fullscreen]')) {
       if (document.fullscreenElement) document.exitFullscreen();
       else $('#stageView').requestFullscreen?.().catch(() => {});
@@ -555,7 +644,15 @@
     if (e.target.closest('#shareLink')) { e.preventDefault(); return copy(shareURL(), 'Odkaz zkopírován. Pošli ho kamarádovi nebo nám.'); }
     if (e.target.closest('#printSpec')) { e.preventDefault(); return window.print(); }
     const mail = e.target.closest('#sendMail, #sendMail2');
-    if (mail) { mail.href = mailtoHref(); if (S.step !== 5) { e.preventDefault(); goStep(5); } return; }
+    if (mail) {
+      if (S.step !== 5) { e.preventDefault(); goStep(5); return; }
+      if (mail.id === 'sendMail2' && MOBILE.matches && !enquiryReady) { e.preventDefault(); showEnquiry(); return; }
+      const invalid = [...$('#enquiryForm').querySelectorAll('input[required]')].find(input=>!input.checkValidity());
+      if (invalid) { e.preventDefault(); enquiryReady = true; renderFoot(); invalid.reportValidity(); revealFlow(invalid, {block:'nearest'}); return; }
+      mail.href = mailtoHref();
+      announce('Poptávka se otevře ve tvé poštovní aplikaci.');
+      return;
+    }
 
     const set = e.target.closest('[data-set][data-val]');
     if (set) {
@@ -565,6 +662,8 @@
       S[key] = val;
       if (key === 'car') applyCarDefaults(car());
       update({ head: key === 'car' || key === 'design' });
+      if (key === 'design') announce(`Vybráno ${design().name}. Prohlédni si náhled nebo pokračuj k rozměrům.`);
+      else if (key === 'color' || key === 'finish') announce(`${colorName()}, ${O.find(O.FINISHES,S.finish).name}. Náhled je aktualizovaný.`);
     }
   });
 
@@ -604,8 +703,9 @@
       if(t.id==='vehicleGeneration')S.generation=t.value;
       if(t.id==='vehicleBrand' || t.id==='vehicleModel'){const years=V.getYears(S.brand,S.model);if(!years.includes(S.year))S.year=years[0] || 0;}
       syncGeneration(); update({head:true});
-      if (t.id === 'vehicleBrand' && brandPicker) brandPicker.trigger.focus();
-      else document.getElementById(t.id)?.focus();
+      if (MOBILE.matches) guideVehicle(t.id);
+      else if (t.id === 'vehicleBrand' && brandPicker) brandPicker.trigger.focus({preventScroll:true});
+      else document.getElementById(t.id)?.focus({preventScroll:true});
       return;
     }
     if (t.id === 'spinToggle') { S.spin = t.checked; renderStageView(); return; }
@@ -621,8 +721,42 @@
     if (e.target.closest('.nfw-brand-dialog')) return;
     if (e.target.matches('input, textarea, select')) return;
     if (e.target.closest('.webgl-view')) return;
-    if (e.key === 'ArrowRight' && S.step < 5) goStep(S.step + 1);
-    if (e.key === 'ArrowLeft' && S.step > 1) goStep(S.step - 1);
+    if (!e.target.closest('#stepsRail, .panel-nav')) return;
+    if (e.key === 'ArrowRight' && S.step < 5) { e.preventDefault(); goStep(S.step + 1); }
+    if (e.key === 'ArrowLeft' && S.step > 1) { e.preventDefault(); goStep(S.step - 1); }
+  });
+
+  // Keep the footer clear of the software keyboard, without moving the page
+  // when someone compares colours, rotates a wheel or opens a native select.
+  let viewportBaseline = { width: innerWidth, height: window.visualViewport?.height || innerHeight };
+  const syncKeyboard = () => {
+    const active = document.activeElement;
+    const typing = active?.matches('input[type="text"],input[type="email"],input[type="tel"],input[type="number"],textarea');
+    const viewport = window.visualViewport;
+    const height = viewport?.height || innerHeight;
+    if (!typing || Math.abs(innerWidth - viewportBaseline.width) > 80) viewportBaseline = {width:innerWidth,height};
+    const open = MOBILE.matches && typing && height < viewportBaseline.height - 120;
+    document.body.classList.toggle('flow-keyboard-open', Boolean(open));
+    if (open) revealFlow(active, {focus:false,block:'nearest'});
+  };
+  window.visualViewport?.addEventListener('resize', syncKeyboard);
+  document.addEventListener('focusin', event => {
+    syncKeyboard();
+    if (MOBILE.matches && event.target.closest('#panelBody') && event.target.matches('input:not([type="range"]):not([type="checkbox"]):not([type="color"]),textarea,select')) revealFlow(event.target,{focus:false,block:'nearest'});
+  });
+  document.addEventListener('focusout', () => queueMicrotask(syncKeyboard));
+  new ResizeObserver(entries => {
+    const height = Math.ceil(entries[0].target.getBoundingClientRect().height);
+    if (height > 0) document.body.style.setProperty('--flow-footer-height', height + 'px');
+  }).observe($('#panelFoot'));
+  let printDetails = [];
+  window.addEventListener('beforeprint', () => {
+    printDetails = [...document.querySelectorAll('[data-flow-detail]')].map(el=>[el,el.open]);
+    printDetails.forEach(([el])=>{el.open=true;});
+  });
+  window.addEventListener('afterprint', () => {
+    printDetails.forEach(([el,open])=>{if(el.isConnected)el.open=open;});
+    printDetails = [];
   });
 
   window.addEventListener('pagehide', () => { renderToken++; pendingViewerAbort?.abort(); viewer?.dispose(); viewer = null; photoViewer?.dispose(); photoViewer = null; });
@@ -631,7 +765,7 @@
     const button = $('[data-studio-fullscreen]');
     if (button) { button.textContent = document.fullscreenElement ? 'Zavřít ×' : 'Zvětšit ↗'; button.setAttribute('aria-label', document.fullscreenElement ? 'Ukončit celou obrazovku' : 'Studio na celou obrazovku'); }
   });
-  window.addEventListener('hashchange', () => { readURL(); writeURL(); renderSteps(); renderStage(); renderPanel(); });
+  window.addEventListener('hashchange', () => { readURL(); writeURL(); renderSteps(); renderStage(); renderPanel({reset:true}); revealFlow($('#mobileFlowIntro')); });
   /* ---------- start ---------- */
   applyCarDefaults(car());
   readURL();

@@ -58,7 +58,8 @@ const base = process.env.NFW_BASE_URL || 'http://127.0.0.1:8765';
       await dialog.locator('input').fill(brand);
       await dialog.locator(`[data-brand="${brand}"]`).click();
       assert.equal(await page.locator('#vehicleBrand').inputValue(), brand);
-      assert.ok(await configTrigger.evaluate(element => element === document.activeElement));
+      await page.waitForFunction(() => document.activeElement?.id === 'vehicleModel');
+      assert.ok(await page.locator('#vehicleModel').evaluate(element => element === document.activeElement), 'Mobile brand choice guides the user to the model');
       assert.equal(await page.locator('.nfw-brand-dialog').count(), 1, 'Old dialogs are disposed when the panel rerenders');
     }
     await page.selectOption('#vehicleBrand', 'bmw');

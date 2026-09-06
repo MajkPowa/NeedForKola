@@ -72,13 +72,13 @@ const base = (process.env.NFW_BASE_URL || 'http://127.0.0.1:8765').replace(/\/$/
     await dock.click();await page.locator('#vehicleModel').waitFor();
     assert.equal(await page.locator('#vehicleModel').inputValue(),'superb');
     assert.equal(await page.locator('#vehicleYear').inputValue(),'2020');
-    // Existing demo links are still supported, but choosing another car leaves demo mode.
+    // Mobile entry links retain the chosen car and start with the wheel preview.
     await page.goto(base+'/konfigurator.html?brand=audi&model=a1&year=2020&view=showroom');
     await page.locator('#vehicleModel').waitFor();
     await page.selectOption('#vehicleModel','a3');
-    assert.equal(new URLSearchParams(new URL(page.url()).hash.slice(1)).get('view'),'car');
-    assert.match(await page.locator('#stageHead').innerText(),/Audi A3/i);
-    assert.doesNotMatch(await page.locator('#stageHead').innerText(),/ukázkový vůz|BMW X5/i);
+    assert.equal(new URLSearchParams(new URL(page.url()).hash.slice(1)).get('view'),'wheel');
+    assert.match(await page.locator('#stageHead').textContent(),/Audi A3/i);
+    assert.doesNotMatch(await page.locator('#stageHead').textContent(),/ukázkový vůz|BMW X5/i);
     assert.deepEqual(errors,[]);
     console.log('PASS mobile URL restore/click, selected year, and showroom → selected vehicle on model change; no page errors');
   } finally { await browser.close(); }

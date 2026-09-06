@@ -1,4 +1,4 @@
-/* Need For Wheels — shared navigation, reference media and product gallery. */
+/* Need For Wheels — reference media and product gallery. */
 (function () {
   'use strict';
   const O = window.NFW;
@@ -9,11 +9,6 @@
   O.escape = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   O.labelHTML = d => '<div class="shipping-label"><header><b>NEED FOR WHEELS</b><span>'+O.escape(d.order)+'</span></header><small>SPECIFIKACE KOLA · NÁHLED</small><dl>'+[['Vůz',d.model],['Design',d.design],['Pozice',d.pos],['Rozměr',d.size],['ET / PCD / CB',d.et+' / '+d.pcd+' / '+d.cb],['Barva',d.color],['Povrch',d.finish],['Hmotnost',d.weight]].map(([k,v])=>'<dt>'+k+'</dt><dd>'+O.escape(v)+'</dd>').join('')+'</dl><footer>'+O.escape(d.date)+' · CUSTOM FORGED WHEELS</footer></div>';
 
-  const nav = document.querySelector('.nav'), burger = document.querySelector('.burger');
-  const close = () => {nav?.classList.remove('open'); burger?.setAttribute('aria-expanded','false');};
-  burger?.addEventListener('click',()=>{const open=nav.classList.toggle('open');burger.setAttribute('aria-expanded',String(open));});
-  document.querySelectorAll('.nav__links a').forEach(a=>a.addEventListener('click',close));
-  document.addEventListener('keydown', e=>{if(e.key==='Escape')close();});
   document.querySelectorAll('[data-year]').forEach(el=>el.textContent=new Date().getFullYear());
   document.querySelectorAll('[data-email]').forEach(el=>{el.textContent=O.EMAIL;if(el.tagName==='A')el.href='mailto:'+O.EMAIL;});
   document.querySelectorAll('[data-phone]').forEach(el=>{el.textContent=O.PHONE;if(el.tagName==='A')el.href='tel:'+O.PHONE.replace(/\s/g,'');});

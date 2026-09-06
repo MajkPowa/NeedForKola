@@ -142,11 +142,6 @@
   renderIndex(); renderArticle();
   document.querySelectorAll('[data-blog-teasers]').forEach(container => renderTeasers(container, { limit: Number(container.dataset.blogLimit) || 2 }));
   if (document.body.classList.contains('editorial-page')) {
-    const nav = document.querySelector('.nav'), burger = document.querySelector('.burger');
-    const close = () => { nav?.classList.remove('open'); burger?.setAttribute('aria-expanded', 'false'); };
-    burger?.addEventListener('click', () => { const open = nav.classList.toggle('open'); burger.setAttribute('aria-expanded', String(open)); });
-    document.querySelectorAll('.nav__links a').forEach(link => link.addEventListener('click', close));
-    document.addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
     document.querySelectorAll('[data-year]').forEach(node => { node.textContent = String(new Date().getFullYear()); });
   }
   window.dispatchEvent(new Event('nfw:editorial-ready'));
