@@ -41,3 +41,17 @@ Representative visually verified designs and rows:
 - Page 70, `KCG-02`, order model `VW`: vacuum chrome, `18 x 8.0`, `5 x 112`, ET35, CB57.1, forged, 11.1 kg. This is the catalog's explicitly forged entry; do not describe every other catalog product as forged.
 
 The embedded catalog product images are typically approximately 140-160 pixels in each direction (e.g. page11 150 x 155, 153 x 158). These are unsuitable as high-quality hero/product renders, so no enlarged catalog thumbnails were added to the site's asset library. Supplied high-resolution JPEG photos, the video, and new raster renders are the appropriate display assets.
+
+## Oarts identity update — 2026-09-06
+
+The supplied material does not include a verified Oarts logo artwork or an Instagram profile. The PDF only contains ordinary text “Oarts katalog”. The website temporarily uses the **typographic name OARTS**, rather than claiming to reproduce an official supplied logo. The exact Instagram URL can be set in `js/oarts.js`; while it is missing, no guessed account or nonfunctional social link is shown.
+
+`assets/images/wheel-hero-oarts.png` was produced using the built-in imagegen tool, editing the existing `wheel-hero.png`. The original asset is retained. `wheel-hero-oarts.webp` is the web-optimized encoding of that result. The edit adds OARTS to the previously plain cap; the surrounding bronze wheel and composition were preserved and visually checked. This remains an illustrative product render, not a customer photograph.
+
+Final built-in edit prompt:
+
+> Use case: precise-object-edit. Asset type: existing premium automotive wheel website hero. Image 1 is the EDIT TARGET. Change ONLY the plain black circular centre cap of this existing bronze alloy wheel: add the exact readable silver-white word 'OARTS' (O A R T S), in clean bold italic sans-serif uppercase typography. This is a simple typographic brand name, no extra symbols. Keep the black cap surface and edge; the word is centred horizontally and vertically, fits comfortably inside the cap, with realistic subtle metallic printing/embossing, following the cap's camera perspective and existing soft studio illumination. Preserve absolutely everything outside the cap: all ten spokes, rim geometry, bronze finish, screw holes, valve, barrel, dark background, lighting, shadows, complete 1672 by 941 wide composition, position and scale of wheel and empty left side for website text. No additional text, no watermark, no labels, no logos elsewhere. Do not crop or redesign the wheel. Output the same wide framing.
+
+`assets/renders/silver/` contains 13 actual Three.js wheel renders at 600 × 600 pixels plus `apex10-feature.webp` at 900 × 900 pixels, with alpha transparency. They were generated with `tools/render-silver-thumbnails.cjs`, not recolored photographs. The same editable 3D geometry and OARTS text cap are used in the live studio. These are design previews, not technical drawings or a claim that every design is an exact catalog product.
+
+The “Naše realizace” gallery deliberately starts with no published projects (`NFWEditorial.projects = []`). Its initial visual is identified as a product detail. Existing generated car renders and manufacturer/reference vehicle photographs are not described as completed customer commissions. See `docs/editorial-guide.md` to add real photographs and articles.

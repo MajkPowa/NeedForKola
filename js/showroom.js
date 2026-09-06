@@ -95,7 +95,8 @@ function capTexture(carbon = false) {
     }
   }
   ctx.strokeStyle = '#a4a19b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(128, 128, 115, 0, TAU); ctx.stroke();
-  ctx.fillStyle = '#eeeae2'; ctx.textAlign = 'center'; ctx.font = 'italic 800 68px Arial'; ctx.fillText('NFW', 126, 147);
+  // A typographic brand name, not a reconstruction of an official logo asset.
+  ctx.fillStyle = '#f0f0ee'; ctx.textAlign = 'center'; ctx.font = 'italic 900 50px Arial'; ctx.fillText('OARTS', 126, 145);
   const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace; return texture;
 }
 
@@ -228,15 +229,16 @@ export async function mount(container, input = {}) {
   const registeredAsset = () => window.NFWVehicleModels.get(opts.vehicleAsset?.id || opts.vehicleAsset || window.NFWVehicleModels.defaultModel.id);
   let renderer;
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(input.background || '#151718');
-  scene.fog = new THREE.Fog(scene.background, 12, 35);
+  const transparent = input.thumbnail === true && input.transparent === true;
+  scene.background = transparent ? null : new THREE.Color(input.background || '#151718');
+  if (!transparent) scene.fog = new THREE.Fog(scene.background, 12, 35);
   const camera = new THREE.PerspectiveCamera(34, 1, .03, 70);
   const status = document.createElement('div'); status.className = 'showroom-status'; status.setAttribute('role', 'status');
   status.style.cssText = 'position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:24px;color:#c8c4bc;font:13px/1.6 Arial;pointer-events:none;z-index:2';
   status.textContent = 'Připravuji 3D studio…'; container.append(status);
   if (getComputedStyle(container).position === 'static') container.style.position = 'relative';
   try {
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: transparent, preserveDrawingBuffer: true, powerPreference: 'high-performance' });
   } catch (error) {
     status.textContent = '3D náhled není na tomto zařízení dostupný. Prohlédněte si fotografie produktu.';
     input.onError?.(error); throw error;
@@ -244,7 +246,7 @@ export async function mount(container, input = {}) {
   renderer.setPixelRatio(input.thumbnail ? 1 : Math.min(2, Math.max(opts.mode === 'car' ? 1.5 : 1, window.devicePixelRatio || 1)));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1;
-  renderer.shadowMap.enabled = !input.thumbnail; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.enabled = !input.thumbnail || input.shadows === true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.domElement.style.cssText = 'width:100%;height:100%;display:block;touch-action:pan-y';
   renderer.domElement.setAttribute('aria-label', 'Interaktivní 3D model. Tažením otáčejte, kolečkem přibližujte.');
   renderer.domElement.tabIndex = 0; container.append(renderer.domElement);
@@ -259,7 +261,7 @@ export async function mount(container, input = {}) {
   controls.autoRotate = opts.autoRotate && !reduced.matches; controls.autoRotateSpeed = .55;
   const motionChange = () => { controls.autoRotate = opts.autoRotate && !reduced.matches; };
   reduced.addEventListener('change', motionChange);
-  const key = new THREE.DirectionalLight('#fff6e8', 2.1); key.position.set(-3, 6, 5); key.castShadow = !input.thumbnail;
+  const key = new THREE.DirectionalLight('#fff6e8', 2.1); key.position.set(-3, 6, 5); key.castShadow = renderer.shadowMap.enabled;
   key.shadow.mapSize.set(2048, 2048); key.shadow.camera.left = key.shadow.camera.bottom = -4;
   key.shadow.camera.right = key.shadow.camera.top = 4; key.shadow.normalBias = .006; key.shadow.bias = -.00003;
   key.shadow.camera.near = .5; key.shadow.camera.far = 18;
@@ -270,6 +272,7 @@ export async function mount(container, input = {}) {
   floor.rotation.x = -Math.PI / 2; floor.castShadow = false; floor.position.y = -.015;
   const shadow = mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: contactShadow(), transparent: true, depthWrite: false, opacity: .85 }), scene);
   shadow.rotation.x = -Math.PI / 2; shadow.position.y = -.009; shadow.castShadow = shadow.receiveShadow = false;
+  if (transparent) floor.visible = shadow.visible = false;
   const draco = new DRACOLoader(); draco.setDecoderPath(DRACO_URL); draco.setWorkerLimit(2);
   const loader = new GLTFLoader(); loader.setDRACOLoader(draco);
   let visible = true, fitScale = 1;
@@ -457,21 +460,27 @@ export async function mount(container, input = {}) {
 
 // Thumbnail work is serialized through one shared temporary context, keeping catalogues cheap.
 let thumbnailQueue = Promise.resolve();
-let thumbnailHost, thumbnailController, thumbnailIdleTimer;
+let thumbnailHost, thumbnailController, thumbnailIdleTimer, thumbnailSettings;
 function disposeThumbnails() {
   clearTimeout(thumbnailIdleTimer); thumbnailController?.dispose(); thumbnailHost?.remove();
-  thumbnailController = null; thumbnailHost = null;
+  thumbnailController = null; thumbnailHost = null; thumbnailSettings = null;
 }
+/** Rasterize a wheel in the shared studio. Existing calls keep their opaque 400 px output. */
 export function renderThumbnail(input = {}) {
   const job = thumbnailQueue.then(async () => {
     clearTimeout(thumbnailIdleTimer);
     try {
+      const size = Math.round(clamp(input.size, 128, 1600, 400));
+      const settings = JSON.stringify([size, input.transparent === true, input.background || '#151718', input.shadows === true]);
+      if (thumbnailController && thumbnailSettings !== settings) disposeThumbnails();
       if (!thumbnailController) {
-        thumbnailHost = document.createElement('div'); thumbnailHost.style.cssText = 'position:fixed;left:-2000px;top:0;width:400px;height:400px;';
+        thumbnailHost = document.createElement('div'); thumbnailHost.style.cssText = `position:fixed;left:-4000px;top:0;width:${size}px;height:${size}px;`;
         document.body.append(thumbnailHost);
         thumbnailController = await mount(thumbnailHost, { ...input, mode: 'wheel', thumbnail: true, autoRotate: false });
+        thumbnailSettings = settings;
       } else await thumbnailController.update({ ...input, mode: 'wheel', autoRotate: false });
-      const result = thumbnailController.capture();
+      const type = input.type === 'image/png' ? 'image/png' : 'image/webp';
+      const result = thumbnailController.capture(type, clamp(input.quality, .5, 1, .92));
       thumbnailIdleTimer = setTimeout(disposeThumbnails, 2500);
       return result;
     } catch (error) { disposeThumbnails(); throw error; }

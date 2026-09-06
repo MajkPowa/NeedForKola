@@ -1,0 +1,37 @@
+/* Oarts identity and real-project chapter. */
+.logo small.brand-endorsement{display:flex;align-items:center;gap:7px;letter-spacing:.12em;font:9px var(--body);color:#a5a79f;margin-top:5px}
+.oarts-wordmark{font-family:Arial,sans-serif;font-style:italic;font-weight:900;letter-spacing:-.06em;line-height:1;color:#f6f4ed}
+.brand-endorsement .oarts-wordmark{font-size:15px;letter-spacing:-.045em}
+.oarts-signature{display:flex;align-items:center;gap:17px;margin-top:26px;padding-top:18px;border-top:1px solid #ffffff20;max-width:345px}
+.oarts-signature>.oarts-wordmark{font-size:34px}.oarts-signature>span:last-child{font-size:10px;color:#bbb7ad;line-height:1.6;border-left:1px solid #ffffff25;padding-left:17px}
+.hero-copy .oarts-signature{margin-top:22px;max-width:none;border-top:0;padding-top:0}.hero-copy .oarts-signature>.oarts-wordmark{font-size:27px}
+.featured-wheel--silver .featured-wheel__visual{background:radial-gradient(ellipse at 52% 42%,#373b39,#171d1a 65%,#111512)}
+.featured-wheel--silver .featured-wheel__visual>img{width:100%;height:100%;max-height:560px;object-fit:contain;mix-blend-mode:normal;mask-image:none;padding:18px}
+.design-carousel .wheel-thumb,.invitation-card>img{mix-blend-mode:normal;mask-image:none}
+.projects-section{background:linear-gradient(180deg,#111613,#101411 80%,#111613)}
+.projects-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.projects-grid[hidden],.projects-empty[hidden]{display:none}
+.projects-empty{display:grid;grid-template-columns:1fr 1fr;overflow:hidden;border-radius:30px;border:1px solid #ffffff16;background:#191e1a}
+.projects-empty__visual{position:relative;min-height:380px;overflow:hidden;background:#232722}
+.projects-empty__visual>img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:center}
+.projects-empty__visual>span{position:absolute;bottom:20px;left:20px;border-radius:999px;padding:9px 14px;background:#101510d9;backdrop-filter:blur(10px);color:#e4e3db;font-size:10px}
+.projects-empty__copy{padding:clamp(28px,4vw,60px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.projects-empty h3{font-size:clamp(38px,3.4vw,54px);line-height:1.05;margin:18px 0 20px}.projects-empty p{font-size:14px;line-height:1.85;color:#bcc0b6;max-width:390px;margin-bottom:24px}
+.projects-empty .text-link{margin-top:20px}
+.project-card{overflow:hidden;border:1px solid #ffffff18;border-radius:26px;background:#191e1a}
+.project-card__photo{position:relative;display:block;width:100%;border:0;padding:0;background:#202820;cursor:zoom-in;overflow:hidden;aspect-ratio:3/2}
+.project-card__photo>img{width:100%;height:100%;object-fit:cover;transition:transform .4s}.project-card__photo:hover>img{transform:scale(1.025)}
+.project-card__count{position:absolute;right:16px;bottom:16px;background:#111710dd;color:#eee9de;padding:9px 13px;border-radius:999px;font:11px var(--body)}
+.project-card__copy{padding:25px 28px 30px}.project-card h3{font-size:32px;margin:9px 0 12px}.project-card p{color:#bfc4b8;font-size:14px;line-height:1.8}.project-card small{color:#d6b58b;font-size:11px}
+.project-lightbox{width:min(1100px,calc(100% - 28px));max-width:none;max-height:calc(100svh - 32px);padding:50px 18px 16px;background:#121914;border:1px solid #ffffff28;border-radius:22px;color:#f4f0e5;margin:auto;overflow:auto}
+.project-lightbox::backdrop{background:#020504ed}.project-lightbox__close{position:absolute;right:14px;top:9px;border:0;color:#f4f0e5;background:transparent;font-size:32px;cursor:pointer;width:38px;height:38px;border-radius:50%}
+.project-lightbox__image{display:block;width:100%;max-height:calc(100svh - 175px);object-fit:contain;border-radius:12px}
+.project-lightbox__status{padding:48px 20px;text-align:center;color:#c3c7bd;font:14px/1.7 var(--body)}.project-card__unavailable{display:block;padding:24px;color:#c3c7bd;font:13px/1.7 var(--body)}
+.project-lightbox__controls{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:12px}.project-lightbox__caption{font:12px/1.6 var(--body);color:#c3c7bd;text-align:center;margin:0;flex:1}.project-lightbox__controls .round-control{flex-shrink:0}
+.project-card button:focus-visible,.project-lightbox button:focus-visible{outline:2px solid #e6bd85;outline-offset:-4px}
+.oarts-footer-brand{display:flex;align-items:center;gap:18px}.oarts-footer-brand>.oarts-wordmark{font-size:38px}.oarts-footer-brand>div{border-left:1px solid #ffffff25;padding-left:18px;font-size:11px;line-height:1.9;color:#929c8c}
+.footer>.wrap{flex-wrap:wrap;gap:25px}.footer nav{flex-wrap:wrap;gap:18px}.oarts-social{display:inline-flex;align-items:center;gap:9px}.instagram-mark{display:inline-block;width:18px;height:18px;border:1.7px solid currentColor;border-radius:5px;position:relative;flex-shrink:0}.instagram-mark:before{content:'';position:absolute;left:4px;top:4px;width:7px;height:7px;border:1.5px solid currentColor;border-radius:50%}.instagram-mark:after{content:'';position:absolute;right:2px;top:2px;width:3px;height:3px;border-radius:50%;background:currentColor}
+@media(min-width:1101px){.nav__links{gap:22px}.nav__links>a:not(.btn){font-size:12px}}
+@media(max-width:1100px) and (min-width:901px){.nav .burger{display:flex}.nav__links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;padding:24px;background:#0c110ff7;flex-direction:column;align-items:stretch}.nav.open .nav__links{display:flex}.nav__links>a{padding:12px}.nav.open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}.nav.open .burger span:nth-child(2){opacity:0}.nav.open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}}
+@media(max-width:680px){.projects-empty,.projects-grid{grid-template-columns:1fr}.projects-empty{border-radius:23px}.projects-empty__visual{min-height:260px}.projects-empty__copy{padding:30px 25px}.projects-empty h3{font-size:41px}.projects-empty p{font-size:13px}.oarts-footer-brand>.oarts-wordmark{font-size:32px}.oarts-footer-brand>div{font-size:10px}.footer nav{gap:16px}.hero-copy .oarts-signature{margin-top:16px;gap:12px}.hero-copy .oarts-signature>.oarts-wordmark{font-size:24px}.hero-copy .oarts-signature>span:last-child{font-size:8px;padding-left:12px}.project-card__copy{padding:23px}.logo small.brand-endorsement{font-size:8px}.brand-endorsement .oarts-wordmark{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.project-card__photo>img{transition:none}.project-card__photo:hover>img{transform:none}}

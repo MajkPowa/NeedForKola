@@ -24,7 +24,7 @@
 
   const grid=document.getElementById('designsGrid');
   if(grid){
-    grid.innerHTML=O.DESIGNS.map((d,i)=>'<a class="design-card reveal" href="konfigurator.html?design='+d.id+'&color=bronze&view=wheel"><span class="series">'+String(i+1).padStart(2,'0')+' / '+(d.pieces===3?'MULTI PIECE':'MONOBLOCK')+'</span>'+O.renderWheel({design:d.id})+'<div class="design-card__title"><b>'+d.name+'</b><span aria-hidden="true">↗</span></div><span>'+O.spokesLabel(d)+' · prohlédnout ve 3D</span></a>').join('');
+    grid.innerHTML=O.DESIGNS.map((d,i)=>'<a class="design-card reveal" href="konfigurator.html?design='+d.id+'&color=silver&view=wheel"><span class="series">'+String(i+1).padStart(2,'0')+' / '+(d.pieces===3?'MULTI PIECE':'MONOBLOCK')+'</span>'+O.renderWheel({design:d.id})+'<div class="design-card__title"><b>'+d.name+'</b><span aria-hidden="true">↗</span></div><span>'+O.spokesLabel(d)+' · prohlédnout ve 3D</span></a>').join('');
     observe(grid);
   }
   const label=document.getElementById('labelMock');
@@ -39,7 +39,7 @@
     const container=document.getElementById(button.dataset.launchWheel);
     button.disabled=true;
     const fallback=container.innerHTML;
-    try{await import('./showroom.js?v=20260905-360');container.replaceChildren();await window.NFWShowroom.mount(container,{mode:'wheel',design:'apex10',color:'#9a6d3a',finish:'gloss',diameter:20,width:9.5,autoRotate:!matchMedia('(prefers-reduced-motion: reduce)').matches});button.hidden=true;}
+    try{await import('./showroom.js?v=20260906-oarts');container.replaceChildren();await window.NFWShowroom.mount(container,{mode:'wheel',design:'apex10',color:'#b9bcc2',finish:'gloss',diameter:20,width:9.5,autoRotate:!matchMedia('(prefers-reduced-motion: reduce)').matches});button.hidden=true;}
     catch{container.innerHTML=fallback;button.disabled=false;button.textContent='3D se nepodařilo načíst · zkusit znovu';}
   }));
 })();

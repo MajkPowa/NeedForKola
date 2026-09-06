@@ -51,3 +51,17 @@ Testy vyžadují Playwright, Chrome a běžící HTTP server; `NFW_BASE_URL` má
 Další cílené kontroly a jejich rozsah uvádí [3D dokumentace](3d-assets.md#verification). Snímky aktuálního stavu jsou v [docs/qa](qa/), například [BMW 360°](qa/bmw-x5-g05-360.png), [Tesla 360°](qa/tesla-model-3-2018-360.png) a [detail kola Tesly](qa/tesla-model-3-2018-wheel-detail.png).
 
 Ověření se týká zobrazení a ovládání. Rozměry vizuálních modelů a zvolená objednávková specifikace nejsou potvrzením fyzické kompatibility nebo homologace kol.
+
+## Oarts, stříbrná kolekce a redakční obsah — 2026-09-06
+
+- Vygenerováno a vizuálně ověřeno 13 odlišných stříbrných 600px renderů a 900px hlavní render. Generátor `tools/render-silver-thumbnails.cjs` ověřil průhlednost, rozměry, neutrální odstín a zachování původního rozhraní pro 400px export.
+- `node tools/check-wheel-face.cjs`: PASS po změně typografického nápisu na krytce na OARTS.
+- `node tools/check-catalog-handoff.cjs`: PASS, exit 0. Skutečný klik ze hledání otevře vybraný model v konfigurátoru; zachovány ročníky, nejednoznačné generace, mobil a reset.
+- `node tools/check-ui.cjs`: PASS, exit 0. Všechny obrázky, 13 náhledů, spuštění stříbrného 3D detailu, přepínání auta/kola, pět kroků, sdílení konfigurace, mobilní menu a videa. Žádné chyby JavaScriptu.
+- Hero s nápisem OARTS a stříbrná kolekce byly zkontrolovány na desktopových a mobilních snímcích. Přidání textu na krytku je ilustrační úprava, nikoli potvrzení původu originálního loga.
+
+Galerie začíná bez zákaznických fotografií. Její úvod je označen jako připravovaná galerie a používá produktový detail. Instagram se zobrazí teprve po zadání potvrzené adresy profilu v `js/oarts.js`.
+
+Nezávislé browser QA: úvod, konfigurátor a průběh zakázky při šířkách 390, 960, 1200 a 1440 px bez chyb JavaScriptu, chybějících fotografií nebo horizontálního přesahu. Galerie byla testována s izolovanými daty mimo produkční katalog: dvě fotografie, přepínání šipkami, návrat na první snímek, Escape, zavření a návrat fokusu. HTML v textových polích zůstává textem. Odpověď 404 zobrazí hlášku a umožní přejít na další dostupný snímek. Všech 176 lokálních referencí z pěti HTML stránek existuje; navigační cíle vracejí HTTP 200.
+
+Blog QA: PASS, exit 0, bez chyb JavaScriptu. Ověřeny oba články, témata, hledání bez diakritiky, prázdné výsledky, sdílení odkazu, obsah článku, související čtení a mobilní menu. Chybějící, neplatný, nadměrně dlouhý nebo duplicitní slug zobrazí stav nenalezeného článku. HTML v obsahu zůstává textem; javascriptové URL se nevykreslí. Navigace, skripty, styly i obrázky byly ověřeny pod podsložkou `/NeedForKola/`.

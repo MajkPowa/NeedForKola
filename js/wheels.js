@@ -60,7 +60,12 @@
   const escape = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const renderWheel = (opts = {}) => {
     const d = find(DESIGNS, opts.design);
-    return `<img class="wheel-thumb" src="assets/renders/${d.id}.webp" alt="${escape(d.name)} — prostorový render disku" loading="lazy" width="384" height="384">`;
+    // Thumbnails show a known finish; the live studio renders the full configuration.
+    const requested = String(opts.color || opts.colorHex || '').toLowerCase();
+    const bronze = requested === 'bronze' || requested === '#9a6d3a';
+    const src = `assets/renders/${bronze ? '' : 'silver/'}${d.id}.webp`;
+    const colour = bronze ? 'Bronze' : 'Hyper Silver';
+    return `<img class="wheel-thumb" src="${src}" alt="${escape(d.name)} — 3D náhled designu disku v povrchu ${colour}" loading="lazy" width="${bronze ? 400 : 600}" height="${bronze ? 400 : 600}">`;
   };
   global.NFW = Object.assign(global.NFW || {}, { DESIGNS, COLORS, FINISHES, LIPS, CAPS, find, renderWheel });
 })(window);
