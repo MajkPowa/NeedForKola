@@ -8,18 +8,18 @@
   flex-shrink:0; padding:0 4px; min-height:34px;
 }
 .wheel-photo-status {
-  font:500 11px/1.5 var(--body,sans-serif); color:#d9bd97;
+  font:500 11px/1.5 var(--body,sans-serif); color:var(--accent);
 }
 .wheel-photo-compare, .wheel-photo-retry {
-  flex-shrink:0; border:1px solid #c9ab7d55; border-radius:999px;
-  padding:9px 15px; background:#20251d; color:#e7d2b3;
+  flex-shrink:0; border:1px solid var(--line2); border-radius:999px;
+  padding:9px 15px; background:var(--panel2); color:var(--accent);
   font:500 11px/1.35 var(--body,sans-serif); cursor:pointer;
   transition:background .2s, border-color .2s;
 }
-.wheel-photo-compare:hover, .wheel-photo-retry:hover { background:#303729; border-color:#c9ab7d; }
-.wheel-photo-compare[aria-pressed="true"] { background:#d7b589; color:#172015; }
+.wheel-photo-compare:hover, .wheel-photo-retry:hover { background:#29333f; border-color:var(--accent); }
+.wheel-photo-compare[aria-pressed="true"] { background:var(--accent); color:var(--on-accent); }
 .wheel-photo-compare:disabled { opacity:.4; cursor:wait; }
-.wheel-photo-compare:focus-visible, .wheel-photo-retry:focus-visible { outline:2px solid #e6bf8e; outline-offset:3px; }
+.wheel-photo-compare:focus-visible, .wheel-photo-retry:focus-visible { outline:2px solid var(--accent2); outline-offset:3px; }
 .stage-view.has-vehicle-photo { gap:12px; }
 .stage-foot .vehicle-wheel-colours { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; }
 .vehicle-wheel-colours .text-link { font-size:11px; white-space:nowrap; }
