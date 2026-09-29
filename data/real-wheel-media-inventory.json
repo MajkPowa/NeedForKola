@@ -1,0 +1,1511 @@
+{
+  "reviewedAt": "2026-09-29",
+  "sourceFolder": {
+    "id": "1Cd43LqhYpv9SBLwhPb9EE2H1X8HO9A6g",
+    "name": "Kola custom",
+    "url": "https://drive.google.com/drive/folders/1Cd43LqhYpv9SBLwhPb9EE2H1X8HO9A6g"
+  },
+  "summary": {
+    "sourceFiles": 62,
+    "collections": 25,
+    "galleryMedia": 40,
+    "productionVideos": 2
+  },
+  "files": [
+    {
+      "id": "1JP0U1_VyJ3C8AOacyODId3webwrVDBj4",
+      "number": 1,
+      "originalName": "1324.mp4",
+      "mimeType": "video/mp4",
+      "sourceBytes": 3270157,
+      "sourceUrl": "https://drive.google.com/file/d/1JP0U1_VyJ3C8AOacyODId3webwrVDBj4/view?usp=drivesdk",
+      "kind": "product-video",
+      "collectionId": "nfw-r013",
+      "publish": true,
+      "sha256": "19ab2b9a5be639c3d7b6b62de831a537a1e5a5e6a0247dffedd7c7480dacfb2b",
+      "originalDimensions": [
+        1280,
+        720
+      ],
+      "durationSeconds": 15.713333,
+      "conversion": "H.264 MP4, max 1280px, silent, metadata removed; poster from actual video frame.",
+      "web": {
+        "id": "1JP0U1_VyJ3C8AOacyODId3webwrVDBj4",
+        "type": "video",
+        "poster": "assets/real-wheels/nfw-r013/asset-001-poster.webp",
+        "src": "assets/real-wheels/nfw-r013/asset-001.mp4",
+        "thumb": "assets/real-wheels/nfw-r013/asset-001-thumb.webp",
+        "width": 1280,
+        "height": 720,
+        "alt": "Video černého disku na otočném stojanu"
+      },
+      "webBytes": 2921358
+    },
+    {
+      "id": "1YMqU3k-rYmzfP06i_uTJZcfle-eeRLBK",
+      "number": 2,
+      "originalName": "07DF43F9-BF3D-4F3A-9205-5D4026DA9A7A.png",
+      "mimeType": "image/png",
+      "sourceBytes": 1386025,
+      "sourceUrl": "https://drive.google.com/file/d/1YMqU3k-rYmzfP06i_uTJZcfle-eeRLBK/view?usp=drivesdk",
+      "kind": "catalogue-reference",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "60d7214ef353b898ffbf286d9f8536a760fd00ddf946a5143160499f1a69baf2",
+      "originalDimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "1RZciqEKR8k3Aw95G7tQ2hy-D1Y9Wc-KZ",
+      "number": 3,
+      "originalName": "IMG_4213.PNG",
+      "mimeType": "image/png",
+      "sourceBytes": 838603,
+      "sourceUrl": "https://drive.google.com/file/d/1RZciqEKR8k3Aw95G7tQ2hy-D1Y9Wc-KZ/view?usp=drivesdk",
+      "kind": "catalogue-reference",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "4ebf9a6ca67829a415b0d02593a10f0096915cae614f10ee8456660d086f2594",
+      "originalDimensions": [
+        1206,
+        2622
+      ]
+    },
+    {
+      "id": "197DjQQN9LWh1Kfu4DqdRygLT97PEr6X6",
+      "number": 4,
+      "originalName": "1325.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 272964,
+      "sourceUrl": "https://drive.google.com/file/d/197DjQQN9LWh1Kfu4DqdRygLT97PEr6X6/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r013",
+      "publish": true,
+      "sha256": "be431db0ace7bbd5168d5beba5b61ff745b105b85ce921fac132f1c5ad4cb1a1",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "197DjQQN9LWh1Kfu4DqdRygLT97PEr6X6",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r013/asset-004.webp",
+        "thumb": "assets/real-wheels/nfw-r013/asset-004-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Čelní pohled na černé dělené paprsky"
+      },
+      "webBytes": 256360
+    },
+    {
+      "id": "1ZUvttoduvU2NyKmlQIaxAJICYT7wZfe3",
+      "number": 5,
+      "originalName": "1326.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 263881,
+      "sourceUrl": "https://drive.google.com/file/d/1ZUvttoduvU2NyKmlQIaxAJICYT7wZfe3/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r013",
+      "publish": true,
+      "observedMarking": "FORGED T6061 12000T BFKHAD / ML54075-2090 MAXLOAD 850KG / PCD:5X114.3 CB:70.5 ET:28 D25492A / MADE BY OARTS",
+      "note": "Transcription of photographed marking only; not a certification or a verified fitment. Group inferred from matching 1323–1326 source sequence.",
+      "sha256": "25380acf7002fe87fa74e4d8da6149e75bc7d249119b21783439bc8232757c10",
+      "originalDimensions": [
+        1276,
+        1702
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1ZUvttoduvU2NyKmlQIaxAJICYT7wZfe3",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r013/asset-005.webp",
+        "thumb": "assets/real-wheels/nfw-r013/asset-005-thumb.webp",
+        "width": 1200,
+        "height": 1600,
+        "alt": "Fotografie značení na vnitřní straně disku; údaj není dokladem schválení pro konkrétní vůz"
+      },
+      "webBytes": 219796
+    },
+    {
+      "id": "1bmwd4nc7IDenh9kXc-knDTfXbBiZIaWg",
+      "number": 6,
+      "originalName": "1323.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 247634,
+      "sourceUrl": "https://drive.google.com/file/d/1bmwd4nc7IDenh9kXc-knDTfXbBiZIaWg/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r013",
+      "publish": true,
+      "sha256": "bf9be0ef8ebde4ae8223cfdcbe70f7058d6a5c7446c4b39f3e15dae5c69e408c",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1bmwd4nc7IDenh9kXc-knDTfXbBiZIaWg",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r013/asset-006.webp",
+        "thumb": "assets/real-wheels/nfw-r013/asset-006-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Boční pohled na černý ráfek"
+      },
+      "webBytes": 229832
+    },
+    {
+      "id": "1sU1tSWKQ-Y5tM-hECM9gL1GCFOaDppcI",
+      "number": 7,
+      "originalName": "IMG_3106.MOV",
+      "mimeType": "video/quicktime",
+      "sourceBytes": 91337260,
+      "sourceUrl": "https://drive.google.com/file/d/1sU1tSWKQ-Y5tM-hECM9gL1GCFOaDppcI/view?usp=drivesdk",
+      "kind": "product-video",
+      "collectionId": "nfw-r011",
+      "publish": true,
+      "sha256": "e1e6b6cc7fbebf60f5cd414b41b0bfa0ac851ed4a331892f1e007b42bd801cbf",
+      "originalDimensions": [
+        3840,
+        2160
+      ],
+      "durationSeconds": 13.6217,
+      "conversion": "H.264 MP4, max 1280px, silent, metadata removed; poster from actual video frame. Source HDR HLG/PQ converted to SDR BT.709 with Hable tone mapping at 30 fps for web playback.",
+      "web": {
+        "id": "1sU1tSWKQ-Y5tM-hECM9gL1GCFOaDppcI",
+        "type": "video",
+        "poster": "assets/real-wheels/nfw-r011/asset-007-poster.webp",
+        "src": "assets/real-wheels/nfw-r011/asset-007.mp4",
+        "thumb": "assets/real-wheels/nfw-r011/asset-007-thumb.webp",
+        "width": 720,
+        "height": 1280,
+        "alt": "Video bronzové sady v denním světle"
+      },
+      "webBytes": 11237811
+    },
+    {
+      "id": "1nH9CjpcYIdMgRfPbfBQUJn6TQjNbun09",
+      "number": 8,
+      "originalName": "IMG_3096.HEIC",
+      "mimeType": "image/heif",
+      "sourceBytes": 8243435,
+      "sourceUrl": "https://drive.google.com/file/d/1nH9CjpcYIdMgRfPbfBQUJn6TQjNbun09/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r011",
+      "publish": true,
+      "sha256": "6838aeb45b691d43b5dbf88f2057abd5507e7ed4207f6fb4cdcf7c96dc246d85",
+      "originalDimensions": [
+        4284,
+        5712
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed. Embedded ICC colour profile converted to sRGB before export.",
+      "web": {
+        "id": "1nH9CjpcYIdMgRfPbfBQUJn6TQjNbun09",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r011/asset-008.webp",
+        "thumb": "assets/real-wheels/nfw-r011/asset-008-thumb.webp",
+        "width": 1200,
+        "height": 1600,
+        "alt": "Bronzová sada před podložkou Oarts"
+      },
+      "webBytes": 929934
+    },
+    {
+      "id": "13WKBH4FloIZeIX_saEskiVVUgg6ffqEs",
+      "number": 9,
+      "originalName": "IMG_3104.HEIC",
+      "mimeType": "image/heif",
+      "sourceBytes": 7539443,
+      "sourceUrl": "https://drive.google.com/file/d/13WKBH4FloIZeIX_saEskiVVUgg6ffqEs/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r011",
+      "publish": true,
+      "sha256": "e097531a38f90bc809676fa3453575ce751769b0dfa9f970e9265f98edf93b02",
+      "originalDimensions": [
+        4284,
+        5712
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed. Embedded ICC colour profile converted to sRGB before export.",
+      "web": {
+        "id": "13WKBH4FloIZeIX_saEskiVVUgg6ffqEs",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r011/asset-009.webp",
+        "thumb": "assets/real-wheels/nfw-r011/asset-009-thumb.webp",
+        "width": 1200,
+        "height": 1600,
+        "alt": "Pohled shora na bronzovou sadu"
+      },
+      "webBytes": 876178
+    },
+    {
+      "id": "1-5ivgMlXB_5KGP9rF-UwuTaEM13H1_9i",
+      "number": 10,
+      "originalName": "c58f817fb27ee674ad7b89bc1b56ae39.mp4",
+      "mimeType": "video/mp4",
+      "sourceBytes": 7124051,
+      "sourceUrl": "https://drive.google.com/file/d/1-5ivgMlXB_5KGP9rF-UwuTaEM13H1_9i/view?usp=drivesdk",
+      "kind": "product-video",
+      "collectionId": "nfw-r010",
+      "publish": true,
+      "sha256": "538ff8a49c65e53a304d48d1ffcb2a76e9658b890e5b14ffd281f7dc74c04de7",
+      "originalDimensions": [
+        1280,
+        720
+      ],
+      "durationSeconds": 18.296009,
+      "conversion": "H.264 MP4, max 1280px, silent, metadata removed; poster from actual video frame.",
+      "web": {
+        "id": "1-5ivgMlXB_5KGP9rF-UwuTaEM13H1_9i",
+        "type": "video",
+        "poster": "assets/real-wheels/nfw-r010/asset-010-poster.webp",
+        "src": "assets/real-wheels/nfw-r010/asset-010.mp4",
+        "thumb": "assets/real-wheels/nfw-r010/asset-010-thumb.webp",
+        "width": 1280,
+        "height": 720,
+        "alt": "Video plného stříbrného disku na stojanu"
+      },
+      "webBytes": 2870083
+    },
+    {
+      "id": "1rt7Z0aApoO7E6bhqqxDCq9_WMqKIsgwB",
+      "number": 11,
+      "originalName": "IMG_3107.HEIC",
+      "mimeType": "image/heif",
+      "sourceBytes": 6539241,
+      "sourceUrl": "https://drive.google.com/file/d/1rt7Z0aApoO7E6bhqqxDCq9_WMqKIsgwB/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r011",
+      "publish": true,
+      "sha256": "f1bd07a2312b5bb11d36145da8f8ef8f79683f8d261e58cace3570973fc3e1fd",
+      "originalDimensions": [
+        4284,
+        5712
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed. Embedded ICC colour profile converted to sRGB before export.",
+      "web": {
+        "id": "1rt7Z0aApoO7E6bhqqxDCq9_WMqKIsgwB",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r011/asset-011.webp",
+        "thumb": "assets/real-wheels/nfw-r011/asset-011-thumb.webp",
+        "width": 1200,
+        "height": 1600,
+        "alt": "Čtyři bronzová kola v denním světle"
+      },
+      "webBytes": 852096
+    },
+    {
+      "id": "11zwQ8FY3ArwotKNlET1FpSQ9gy_GaPFR",
+      "number": 12,
+      "originalName": "1262.mp4",
+      "mimeType": "video/mp4",
+      "sourceBytes": 6360915,
+      "sourceUrl": "https://drive.google.com/file/d/11zwQ8FY3ArwotKNlET1FpSQ9gy_GaPFR/view?usp=drivesdk",
+      "kind": "manufacturing-video",
+      "collectionId": null,
+      "publish": true,
+      "note": "Real machining footage. Location, operator and relationship to a specific finished SKU not confirmed.",
+      "sha256": "9ac7320fecaad2d923f272c18d19a6699f9a0e7c7da9d058b11a3a7aa364d536",
+      "originalDimensions": [
+        720,
+        1280
+      ],
+      "durationSeconds": 29.609478,
+      "conversion": "H.264 MP4, max 1280px, silent, metadata removed; poster from actual video frame.",
+      "web": {
+        "id": "11zwQ8FY3ArwotKNlET1FpSQ9gy_GaPFR",
+        "type": "video",
+        "poster": "assets/real-wheels/production/asset-012-poster.webp",
+        "src": "assets/real-wheels/production/asset-012.mp4",
+        "thumb": "assets/real-wheels/production/asset-012-thumb.webp",
+        "width": 720,
+        "height": 1280,
+        "alt": "Obrábění disku — dodaný výrobní záběr"
+      },
+      "webBytes": 4838688
+    },
+    {
+      "id": "1TZ6ifbGRPirEsByo5qYUFdB9cT2gSWhu",
+      "number": 13,
+      "originalName": "1263.mp4",
+      "mimeType": "video/mp4",
+      "sourceBytes": 6089198,
+      "sourceUrl": "https://drive.google.com/file/d/1TZ6ifbGRPirEsByo5qYUFdB9cT2gSWhu/view?usp=drivesdk",
+      "kind": "manufacturing-video",
+      "collectionId": null,
+      "publish": true,
+      "note": "Real machining footage. Location, operator and relationship to a specific finished SKU not confirmed.",
+      "sha256": "5625996ffe8870cc199bc2c695197783fa1c8881a54681ee0c625bb976344aec",
+      "originalDimensions": [
+        960,
+        540
+      ],
+      "durationSeconds": 29.504,
+      "conversion": "H.264 MP4, max 1280px, silent, metadata removed; poster from actual video frame.",
+      "web": {
+        "id": "1TZ6ifbGRPirEsByo5qYUFdB9cT2gSWhu",
+        "type": "video",
+        "poster": "assets/real-wheels/production/asset-013-poster.webp",
+        "src": "assets/real-wheels/production/asset-013.mp4",
+        "thumb": "assets/real-wheels/production/asset-013-thumb.webp",
+        "width": 1280,
+        "height": 720,
+        "alt": "Detail obrábění paprsků — dodaný výrobní záběr"
+      },
+      "webBytes": 6052592
+    },
+    {
+      "id": "1R7bt4owoL7Cv1GYQIZmX3NUdIjgA8186",
+      "number": 14,
+      "originalName": "592.mp4",
+      "mimeType": "video/mp4",
+      "sourceBytes": 5873870,
+      "sourceUrl": "https://drive.google.com/file/d/1R7bt4owoL7Cv1GYQIZmX3NUdIjgA8186/view?usp=drivesdk",
+      "kind": "product-video",
+      "collectionId": "nfw-r012",
+      "publish": true,
+      "sha256": "f3137c872e9b927e1e637c92d61baa5cf1cd7a3e5144def1778744137a27fe1a",
+      "originalDimensions": [
+        960,
+        540
+      ],
+      "durationSeconds": 24.3,
+      "conversion": "H.264 MP4, max 1280px, silent, metadata removed; poster from actual video frame.",
+      "web": {
+        "id": "1R7bt4owoL7Cv1GYQIZmX3NUdIjgA8186",
+        "type": "video",
+        "poster": "assets/real-wheels/nfw-r012/asset-014-poster.webp",
+        "src": "assets/real-wheels/nfw-r012/asset-014.mp4",
+        "thumb": "assets/real-wheels/nfw-r012/asset-014-thumb.webp",
+        "width": 1280,
+        "height": 720,
+        "alt": "Video sady dělených paprsků v teplém kovovém odstínu"
+      },
+      "webBytes": 7144834
+    },
+    {
+      "id": "191E90148E7Mc7Gp7j5_8Biqj-TumcehR",
+      "number": 15,
+      "originalName": "872.mp4",
+      "mimeType": "video/mp4",
+      "sourceBytes": 3089427,
+      "sourceUrl": "https://drive.google.com/file/d/191E90148E7Mc7Gp7j5_8Biqj-TumcehR/view?usp=drivesdk",
+      "kind": "product-video",
+      "collectionId": "nfw-r014",
+      "publish": true,
+      "sha256": "c485767aaa092740b166136cd28515533f2dfd06fbc8da04d80b2b44754bcbb4",
+      "originalDimensions": [
+        1280,
+        720
+      ],
+      "durationSeconds": 15.08,
+      "conversion": "H.264 MP4, max 1280px, silent, metadata removed; poster from actual video frame.",
+      "web": {
+        "id": "191E90148E7Mc7Gp7j5_8Biqj-TumcehR",
+        "type": "video",
+        "poster": "assets/real-wheels/nfw-r014/asset-015-poster.webp",
+        "src": "assets/real-wheels/nfw-r014/asset-015.mp4",
+        "thumb": "assets/real-wheels/nfw-r014/asset-015-thumb.webp",
+        "width": 1280,
+        "height": 720,
+        "alt": "Video černého desetipaprsku na stojanu"
+      },
+      "webBytes": 2857952
+    },
+    {
+      "id": "1HRx72_a5FCzd3Z6ALlc4WeasAjtCDWzj",
+      "number": 16,
+      "originalName": "549.mp4",
+      "mimeType": "video/mp4",
+      "sourceBytes": 3068995,
+      "sourceUrl": "https://drive.google.com/file/d/1HRx72_a5FCzd3Z6ALlc4WeasAjtCDWzj/view?usp=drivesdk",
+      "kind": "product-video",
+      "collectionId": "nfw-r001",
+      "publish": true,
+      "sha256": "bd14267b07233458da919f62cacf3660390af26594cb626e578e05e0f1a19b37",
+      "originalDimensions": [
+        1280,
+        720
+      ],
+      "durationSeconds": 14.696009,
+      "conversion": "H.264 MP4, max 1280px, silent, metadata removed; poster from actual video frame.",
+      "web": {
+        "id": "1HRx72_a5FCzd3Z6ALlc4WeasAjtCDWzj",
+        "type": "video",
+        "poster": "assets/real-wheels/nfw-r001/asset-016-poster.webp",
+        "src": "assets/real-wheels/nfw-r001/asset-016.mp4",
+        "thumb": "assets/real-wheels/nfw-r001/asset-016-thumb.webp",
+        "width": 1280,
+        "height": 720,
+        "alt": "Video leštěného desetipaprsku bez krytky"
+      },
+      "webBytes": 3051380
+    },
+    {
+      "id": "1ovA8Iz4Qz_IJsbmKJN0_DYerlcbh9S_a",
+      "number": 17,
+      "originalName": "IMG_3529.PNG",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 316674,
+      "sourceUrl": "https://drive.google.com/file/d/1ovA8Iz4Qz_IJsbmKJN0_DYerlcbh9S_a/view?usp=drivesdk",
+      "kind": "design-sheet",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "fa6c40f40a9e360fb794257607ed754f5af89fe0162a63a82ad9e8624812fa89",
+      "originalDimensions": [
+        1206,
+        1693
+      ]
+    },
+    {
+      "id": "1QUoTuWoIdIfdenLPyi3orXUrxiFOASDg",
+      "number": 18,
+      "originalName": "A8B2E80E-3D77-4475-A3F6-B6AED0979C82.png",
+      "mimeType": "image/png",
+      "sourceBytes": 1602367,
+      "sourceUrl": "https://drive.google.com/file/d/1QUoTuWoIdIfdenLPyi3orXUrxiFOASDg/view?usp=drivesdk",
+      "kind": "catalogue-reference",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "6d4def20e9f0e81de030fdd0870fd807e5e115b0d15ce59ec98096149fa2c7c8",
+      "originalDimensions": [
+        1699,
+        926
+      ]
+    },
+    {
+      "id": "15wiY2vJrm8f3fLeaWOBxbFMc3owRSRvV",
+      "number": 19,
+      "originalName": "IMG_3527.PNG",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 312533,
+      "sourceUrl": "https://drive.google.com/file/d/15wiY2vJrm8f3fLeaWOBxbFMc3owRSRvV/view?usp=drivesdk",
+      "kind": "design-sheet",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "d84e20b5f429f54977bf7771e3c2bce8402c6eeb7cb7b4e64dbdb9fe983d1aee",
+      "originalDimensions": [
+        1206,
+        1692
+      ]
+    },
+    {
+      "id": "1jxxFCTd4YvV7qyZgy90yGXqFzWpT8hj8",
+      "number": 20,
+      "originalName": "93E9B93E-2671-4BE4-9BCC-23C1BE2DF7ED.png",
+      "mimeType": "image/png",
+      "sourceBytes": 1570291,
+      "sourceUrl": "https://drive.google.com/file/d/1jxxFCTd4YvV7qyZgy90yGXqFzWpT8hj8/view?usp=drivesdk",
+      "kind": "brand-reference",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "241a8a1f67d998dc2e7910b6a6a8e32c910925b1f803c66c894fddf285eb9517",
+      "originalDimensions": [
+        1266,
+        1243
+      ]
+    },
+    {
+      "id": "1EomFS9XAAyscA5uxq-4DYIPu6P_gHCjs",
+      "number": 21,
+      "originalName": "IMG_3530.PNG",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 276581,
+      "sourceUrl": "https://drive.google.com/file/d/1EomFS9XAAyscA5uxq-4DYIPu6P_gHCjs/view?usp=drivesdk",
+      "kind": "design-sheet",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "20f1430170de2914b4a642a81d620ec424fdc68cb7b43b13be4112a0d5552e33",
+      "originalDimensions": [
+        1206,
+        1708
+      ]
+    },
+    {
+      "id": "17ZsFDYGKqLavOm3qrdPNznfDnZUWqHoW",
+      "number": 22,
+      "originalName": "IMG_3528.PNG",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 292302,
+      "sourceUrl": "https://drive.google.com/file/d/17ZsFDYGKqLavOm3qrdPNznfDnZUWqHoW/view?usp=drivesdk",
+      "kind": "design-sheet",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "254ecce6468fc0cd6c09bf69eb1cb0c5f928d51084414888f33e223d507a0ea6",
+      "originalDimensions": [
+        1206,
+        1743
+      ]
+    },
+    {
+      "id": "1RdUY7rlV22_ZmQUP8yi9va0HkVYt3i_5",
+      "number": 23,
+      "originalName": "FAA1872A-838B-4CF8-89E7-3C50C284A141.png",
+      "mimeType": "image/png",
+      "sourceBytes": 1486186,
+      "sourceUrl": "https://drive.google.com/file/d/1RdUY7rlV22_ZmQUP8yi9va0HkVYt3i_5/view?usp=drivesdk",
+      "kind": "catalogue-reference",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "ab8d330ce83fb7d6c28de24e181e67b51f51e5bdd9c1aacc26c5774ca5ae920b",
+      "originalDimensions": [
+        1699,
+        926
+      ]
+    },
+    {
+      "id": "1NzG0FBuzJn6_Cjg2Wjn7Cv_41cLc9eUu",
+      "number": 24,
+      "originalName": "IMG_3525.PNG",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 304957,
+      "sourceUrl": "https://drive.google.com/file/d/1NzG0FBuzJn6_Cjg2Wjn7Cv_41cLc9eUu/view?usp=drivesdk",
+      "kind": "design-sheet",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "b82bc1d7bd072b4a832df28e9d8d9ffe921406808a5f4559a5499f689cb6327f",
+      "originalDimensions": [
+        1206,
+        1802
+      ]
+    },
+    {
+      "id": "1jOK5ngKGZLlc90k2byUYCRF3gGXy_5M5",
+      "number": 25,
+      "originalName": "IMG_3526.PNG",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 288908,
+      "sourceUrl": "https://drive.google.com/file/d/1jOK5ngKGZLlc90k2byUYCRF3gGXy_5M5/view?usp=drivesdk",
+      "kind": "design-sheet",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "6127f83c878e4fe2e62ff44f3182b57aa5cb0810683ceba6d879b9b4afcc3929",
+      "originalDimensions": [
+        1206,
+        1683
+      ]
+    },
+    {
+      "id": "1NEroYg1B_pDyi4HjclZ1yLIFbLhWzWJC",
+      "number": 26,
+      "originalName": "1249.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 1077361,
+      "sourceUrl": "https://drive.google.com/file/d/1NEroYg1B_pDyi4HjclZ1yLIFbLhWzWJC/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r004",
+      "publish": true,
+      "sha256": "f752600c38b98ce1b35ee2285f29d3c05874555ed3219c07d247e391f4d8554e",
+      "originalDimensions": [
+        4096,
+        3072
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1NEroYg1B_pDyi4HjclZ1yLIFbLhWzWJC",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r004/asset-026.webp",
+        "thumb": "assets/real-wheels/nfw-r004/asset-026-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Jemná leštěná síť — fotografie skutečného kola"
+      },
+      "webBytes": 433400
+    },
+    {
+      "id": "1VQzfXQLEYpThkghOJpFPWwEN26tDet6I",
+      "number": 27,
+      "originalName": "1245.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 870133,
+      "sourceUrl": "https://drive.google.com/file/d/1VQzfXQLEYpThkghOJpFPWwEN26tDet6I/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r006",
+      "publish": true,
+      "sha256": "7d6550501fe1156911d547338faed495b32ade5d0ba1ae2998118aee0872f618",
+      "originalDimensions": [
+        1706,
+        1279
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed. Embedded ICC colour profile converted to sRGB before export.",
+      "web": {
+        "id": "1VQzfXQLEYpThkghOJpFPWwEN26tDet6I",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r006/asset-027.webp",
+        "thumb": "assets/real-wheels/nfw-r006/asset-027-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Pět paprsků v grafitu — fotografie skutečného kola"
+      },
+      "webBytes": 171390
+    },
+    {
+      "id": "1rIBhiaNjRjda8WOqTYG6DbmL_EQZR57D",
+      "number": 28,
+      "originalName": "1268.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 755851,
+      "sourceUrl": "https://drive.google.com/file/d/1rIBhiaNjRjda8WOqTYG6DbmL_EQZR57D/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r023",
+      "publish": true,
+      "sha256": "04d08d6c4d0e8cc387e821918ceea597327dc77d046769a26a0f11cdcb6ffd77",
+      "originalDimensions": [
+        1706,
+        1279
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed. Embedded ICC colour profile converted to sRGB before export.",
+      "web": {
+        "id": "1rIBhiaNjRjda8WOqTYG6DbmL_EQZR57D",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r023/asset-028.webp",
+        "thumb": "assets/real-wheels/nfw-r023/asset-028-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Tmavě modrý desetipaprsek — fotografie skutečného kola"
+      },
+      "webBytes": 119926
+    },
+    {
+      "id": "1p21CIXqZVCl-kZ-vcWpgXX9dVrOAkYHp",
+      "number": 29,
+      "originalName": "336A93D9-DCD4-418C-8DDD-3CDC53CE5AAF.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 632636,
+      "sourceUrl": "https://drive.google.com/file/d/1p21CIXqZVCl-kZ-vcWpgXX9dVrOAkYHp/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r002",
+      "publish": true,
+      "sha256": "719347bfa8305a89573099ccb9e307f321295c102c94a756995e97bd96ffae62",
+      "originalDimensions": [
+        1206,
+        882
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed. Embedded ICC colour profile converted to sRGB before export.",
+      "web": {
+        "id": "1p21CIXqZVCl-kZ-vcWpgXX9dVrOAkYHp",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r002/asset-029.webp",
+        "thumb": "assets/real-wheels/nfw-r002/asset-029-thumb.webp",
+        "width": 1206,
+        "height": 882,
+        "alt": "Stříbrný detail Oarts — fotografie skutečného kola"
+      },
+      "webBytes": 382022
+    },
+    {
+      "id": "1ZG-PD94Gn6bvFMxW7-heicv33yGAZopT",
+      "number": 30,
+      "originalName": "IMG_3291.JPG",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 601797,
+      "sourceUrl": "https://drive.google.com/file/d/1ZG-PD94Gn6bvFMxW7-heicv33yGAZopT/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r003",
+      "publish": true,
+      "sha256": "fc3f90acaa9f3fde0499a00fa2b04a75e175177a70e4930dc3cc5c8f31439c61",
+      "originalDimensions": [
+        1935,
+        1451
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1ZG-PD94Gn6bvFMxW7-heicv33yGAZopT",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r003/asset-030.webp",
+        "thumb": "assets/real-wheels/nfw-r003/asset-030-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Stříbrné dělené paprsky — fotografie skutečného kola"
+      },
+      "webBytes": 198376
+    },
+    {
+      "id": "1tfjYWqEEGBB1ga3VdOplvLb96fGOT2dO",
+      "number": 31,
+      "originalName": "593.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 346356,
+      "sourceUrl": "https://drive.google.com/file/d/1tfjYWqEEGBB1ga3VdOplvLb96fGOT2dO/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r012",
+      "publish": true,
+      "sha256": "9c97d4f4572a8f9e7ecdc590e90dc4bd62d2c95a860cef1b12b69d12747ae322",
+      "originalDimensions": [
+        1706,
+        1279
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed. Embedded ICC colour profile converted to sRGB before export.",
+      "web": {
+        "id": "1tfjYWqEEGBB1ga3VdOplvLb96fGOT2dO",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r012/asset-031.webp",
+        "thumb": "assets/real-wheels/nfw-r012/asset-031-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Dělené paprsky v teplém kovu — fotografie skutečného kola"
+      },
+      "webBytes": 267416
+    },
+    {
+      "id": "1PKXDjbFowxOLuUL_HY1y7rJ0-m92yGmo",
+      "number": 32,
+      "originalName": "1243.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 301873,
+      "sourceUrl": "https://drive.google.com/file/d/1PKXDjbFowxOLuUL_HY1y7rJ0-m92yGmo/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r008",
+      "publish": true,
+      "sha256": "59cb4d5a629bfd871f85d1399a1b50650c0b0f83d64e24a9ca0d762bc955205e",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1PKXDjbFowxOLuUL_HY1y7rJ0-m92yGmo",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r008/asset-032.webp",
+        "thumb": "assets/real-wheels/nfw-r008/asset-032-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Leštěný dělený paprsek — fotografie skutečného kola"
+      },
+      "webBytes": 285152
+    },
+    {
+      "id": "1oPbBVczjVs3EM5gLNFoSaL0kP81w4yH3",
+      "number": 33,
+      "originalName": "1250.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 299840,
+      "sourceUrl": "https://drive.google.com/file/d/1oPbBVczjVs3EM5gLNFoSaL0kP81w4yH3/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r005",
+      "publish": true,
+      "sha256": "289452b4a8ff67f1c1cb2f5b0c37bd963c1c50d48199ea2e3d2e995fb4811e5d",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1oPbBVczjVs3EM5gLNFoSaL0kP81w4yH3",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r005/asset-033.webp",
+        "thumb": "assets/real-wheels/nfw-r005/asset-033-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Stříbrný vícepaprsek — fotografie skutečného kola"
+      },
+      "webBytes": 279264
+    },
+    {
+      "id": "1FGf8a6W9RCfZV-v4Oseu2ToyZEHswfxi",
+      "number": 34,
+      "originalName": "1241.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 287031,
+      "sourceUrl": "https://drive.google.com/file/d/1FGf8a6W9RCfZV-v4Oseu2ToyZEHswfxi/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r017",
+      "publish": true,
+      "sha256": "03a9b2750829cf19afef4367f6a56bfc6389379a39cff2be561972ce4885fa79",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1FGf8a6W9RCfZV-v4Oseu2ToyZEHswfxi",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r017/asset-034.webp",
+        "thumb": "assets/real-wheels/nfw-r017/asset-034-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Černá síť se světlým lemem — fotografie skutečného kola"
+      },
+      "webBytes": 273338
+    },
+    {
+      "id": "1XtSlQlnjwooPg70ixteBwTPmGZ4NbsqZ",
+      "number": 35,
+      "originalName": "1252.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 280021,
+      "sourceUrl": "https://drive.google.com/file/d/1XtSlQlnjwooPg70ixteBwTPmGZ4NbsqZ/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r018",
+      "publish": true,
+      "sha256": "b345adf73e41b15c44563ee20011d29f7ee71de014e5e93b7724943e7fcf3c86",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1XtSlQlnjwooPg70ixteBwTPmGZ4NbsqZ",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r018/asset-035.webp",
+        "thumb": "assets/real-wheels/nfw-r018/asset-035-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Tmavý vícepaprsek z profilu — fotografie skutečného kola"
+      },
+      "webBytes": 267826
+    },
+    {
+      "id": "1hbRXiGmp9Zrob4LX9wqmmDqF0NnVjKyP",
+      "number": 36,
+      "originalName": "IMG_4949.JPG",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 72980,
+      "sourceUrl": "https://drive.google.com/file/d/1hbRXiGmp9Zrob4LX9wqmmDqF0NnVjKyP/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r010",
+      "publish": true,
+      "sha256": "1cb81ddf18b87e3340cb34c7ce749f086871fc911bcfbcb7361a7058352b9596",
+      "originalDimensions": [
+        567,
+        425
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1hbRXiGmp9Zrob4LX9wqmmDqF0NnVjKyP",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r010/asset-036.webp",
+        "thumb": "assets/real-wheels/nfw-r010/asset-036-thumb.webp",
+        "width": 567,
+        "height": 425,
+        "alt": "Čelní fotografie plného stříbrného disku — nižší rozlišení originálu"
+      },
+      "webBytes": 31848
+    },
+    {
+      "id": "1mOHAdQ7O7ckSQcwrI3gWf3ew7-ZbO9LU",
+      "number": 37,
+      "originalName": "IMG_4950.JPG",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 66671,
+      "sourceUrl": "https://drive.google.com/file/d/1mOHAdQ7O7ckSQcwrI3gWf3ew7-ZbO9LU/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r010",
+      "publish": true,
+      "sha256": "fddb5c6dab45a50a73204f74fb18162cdacd0afc8d190ed720c6598c4ac863e7",
+      "originalDimensions": [
+        567,
+        425
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed. Embedded ICC colour profile converted to sRGB before export.",
+      "web": {
+        "id": "1mOHAdQ7O7ckSQcwrI3gWf3ew7-ZbO9LU",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r010/asset-037.webp",
+        "thumb": "assets/real-wheels/nfw-r010/asset-037-thumb.webp",
+        "width": 567,
+        "height": 425,
+        "alt": "Boční fotografie plného stříbrného disku — nižší rozlišení originálu"
+      },
+      "webBytes": 28938
+    },
+    {
+      "id": "1l3LkQ7iVAN4MSviPb_7YMmBaz6K5VZAH",
+      "number": 38,
+      "originalName": "1244.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 268760,
+      "sourceUrl": "https://drive.google.com/file/d/1l3LkQ7iVAN4MSviPb_7YMmBaz6K5VZAH/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r015",
+      "publish": true,
+      "sha256": "572f0f4522aacb251051739229b7de335e93146464e75e65a91f5271b5b2dd76",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1l3LkQ7iVAN4MSviPb_7YMmBaz6K5VZAH",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r015/asset-038.webp",
+        "thumb": "assets/real-wheels/nfw-r015/asset-038-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Černý členitý střed — fotografie skutečného kola"
+      },
+      "webBytes": 250892
+    },
+    {
+      "id": "1t3qI8ioL33WYNhmtmcLrbW7gjbAo9ibN",
+      "number": 39,
+      "originalName": "1239.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 267792,
+      "sourceUrl": "https://drive.google.com/file/d/1t3qI8ioL33WYNhmtmcLrbW7gjbAo9ibN/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r016",
+      "publish": true,
+      "sha256": "c134bbb2e73aced4d59992b6fddda0497d0d6b777c8ae1a1a9e8681762ff8ac7",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1t3qI8ioL33WYNhmtmcLrbW7gjbAo9ibN",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r016/asset-039.webp",
+        "thumb": "assets/real-wheels/nfw-r016/asset-039-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Pět paprsků s lemem — fotografie skutečného kola"
+      },
+      "webBytes": 253854
+    },
+    {
+      "id": "1nDCtVoylH-Y-knt2XGsYIBeu-e7E1ihX",
+      "number": 40,
+      "originalName": "1253.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 266723,
+      "sourceUrl": "https://drive.google.com/file/d/1nDCtVoylH-Y-knt2XGsYIBeu-e7E1ihX/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r022",
+      "publish": true,
+      "sha256": "04ccba22c764dba4105df6142a52ca43f1250d58c69814d7298601f28abc3278",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1nDCtVoylH-Y-knt2XGsYIBeu-e7E1ihX",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r022/asset-040.webp",
+        "thumb": "assets/real-wheels/nfw-r022/asset-040-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Zlatý výrazný vícepaprsek — fotografie skutečného kola"
+      },
+      "webBytes": 245370
+    },
+    {
+      "id": "1SRIO01EAF7kOD0hal20QjcmT6J00ixxw",
+      "number": 41,
+      "originalName": "1248.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 264476,
+      "sourceUrl": "https://drive.google.com/file/d/1SRIO01EAF7kOD0hal20QjcmT6J00ixxw/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r020",
+      "publish": true,
+      "sha256": "a9f057ca5dfefc0d2651d7fe4221d4f45c355bac935c8cb5fb59f07d37c0cdec",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1SRIO01EAF7kOD0hal20QjcmT6J00ixxw",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r020/asset-041.webp",
+        "thumb": "assets/real-wheels/nfw-r020/asset-041-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Bronzové dělené paprsky — fotografie skutečného kola"
+      },
+      "webBytes": 237830
+    },
+    {
+      "id": "1Q-Nw1Oi5z7C1i3ipYotFV7y1mAo5LccN",
+      "number": 42,
+      "originalName": "1246.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 264235,
+      "sourceUrl": "https://drive.google.com/file/d/1Q-Nw1Oi5z7C1i3ipYotFV7y1mAo5LccN/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r021",
+      "publish": true,
+      "sha256": "82eb69ccd455a1d48950d98716080abff1c1b3015e5c75f1455654486d22646c",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1Q-Nw1Oi5z7C1i3ipYotFV7y1mAo5LccN",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r021/asset-042.webp",
+        "thumb": "assets/real-wheels/nfw-r021/asset-042-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Šest paprsků v bronzu — fotografie skutečného kola"
+      },
+      "webBytes": 238418
+    },
+    {
+      "id": "1egI_t7yAqxcSkzwBPN79U0uStNSw6Ng5",
+      "number": 43,
+      "originalName": "1242.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 259287,
+      "sourceUrl": "https://drive.google.com/file/d/1egI_t7yAqxcSkzwBPN79U0uStNSw6Ng5/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r009",
+      "publish": true,
+      "sha256": "f4e55582b43024f153f632f934b008bd40ec9cad54d4671d6f19acab0cc53d04",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1egI_t7yAqxcSkzwBPN79U0uStNSw6Ng5",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r009/asset-043.webp",
+        "thumb": "assets/real-wheels/nfw-r009/asset-043-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Stříbrný střed, tmavý lem — fotografie skutečného kola"
+      },
+      "webBytes": 238116
+    },
+    {
+      "id": "14CRqbojXjDj64cztcKNIZXyFz3ptzHG8",
+      "number": 44,
+      "originalName": "1247.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 251473,
+      "sourceUrl": "https://drive.google.com/file/d/14CRqbojXjDj64cztcKNIZXyFz3ptzHG8/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r007",
+      "publish": true,
+      "sha256": "644ef6c2ab0ae7e0b8590920a7d843bf63f058bd1082331f495553873b90aa34",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "14CRqbojXjDj64cztcKNIZXyFz3ptzHG8",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r007/asset-044.webp",
+        "thumb": "assets/real-wheels/nfw-r007/asset-044-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Grafit s jasným lemem — fotografie skutečného kola"
+      },
+      "webBytes": 219814
+    },
+    {
+      "id": "11zk6AbitSvRA9YCuBGvzOXvYgjAMAdr7",
+      "number": 45,
+      "originalName": "1267.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 247070,
+      "sourceUrl": "https://drive.google.com/file/d/11zk6AbitSvRA9YCuBGvzOXvYgjAMAdr7/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r024",
+      "publish": true,
+      "sha256": "d93791d171cd01b0b3f021cd24e3df1c968c3d9ad729b18b586916b07f48e6e1",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "11zk6AbitSvRA9YCuBGvzOXvYgjAMAdr7",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r024/asset-045.webp",
+        "thumb": "assets/real-wheels/nfw-r024/asset-045-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Jasně modrý vícepaprsek — fotografie skutečného kola"
+      },
+      "webBytes": 230498
+    },
+    {
+      "id": "1YuKMkbR_tYEdjeAZQLfF0jIxO55FroD0",
+      "number": 46,
+      "originalName": "873.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 241551,
+      "sourceUrl": "https://drive.google.com/file/d/1YuKMkbR_tYEdjeAZQLfF0jIxO55FroD0/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r014",
+      "publish": true,
+      "sha256": "085ebedb9b71fba7fb4bc8e28467fbe7f6f45e520da806daf130940f2bfe8582",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1YuKMkbR_tYEdjeAZQLfF0jIxO55FroD0",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r014/asset-046.webp",
+        "thumb": "assets/real-wheels/nfw-r014/asset-046-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Čelní pohled na černý desetipaprsek"
+      },
+      "webBytes": 214638
+    },
+    {
+      "id": "1t6P2ZEgbMZYxhlBttL8tAyf3R-QR3UT9",
+      "number": 47,
+      "originalName": "875.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 238343,
+      "sourceUrl": "https://drive.google.com/file/d/1t6P2ZEgbMZYxhlBttL8tAyf3R-QR3UT9/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r014",
+      "publish": true,
+      "sha256": "5d4aa24205fc31fcc99af3da7cef20b2355a8872e7c46ae2352bd1d65a3128da",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1t6P2ZEgbMZYxhlBttL8tAyf3R-QR3UT9",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r014/asset-047.webp",
+        "thumb": "assets/real-wheels/nfw-r014/asset-047-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Černý desetipaprsek ze strany"
+      },
+      "webBytes": 214294
+    },
+    {
+      "id": "1m1a6O-9OxL8wsrobgIAE7RJ1U0vJnayQ",
+      "number": 48,
+      "originalName": "871.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 234007,
+      "sourceUrl": "https://drive.google.com/file/d/1m1a6O-9OxL8wsrobgIAE7RJ1U0vJnayQ/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r014",
+      "publish": true,
+      "sha256": "6fc72d3411d141bad94c622db25e3481cf18b60830c26888134464e662541d60",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1m1a6O-9OxL8wsrobgIAE7RJ1U0vJnayQ",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r014/asset-048.webp",
+        "thumb": "assets/real-wheels/nfw-r014/asset-048-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Černý desetipaprsek z opačné strany"
+      },
+      "webBytes": 210758
+    },
+    {
+      "id": "13DC8y4_EvPR1rhd_wlSd_oCQRSyi93pc",
+      "number": 49,
+      "originalName": "1251.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 229188,
+      "sourceUrl": "https://drive.google.com/file/d/13DC8y4_EvPR1rhd_wlSd_oCQRSyi93pc/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r019",
+      "publish": true,
+      "sha256": "498eed0b20d33ab0aeee3ad1b03dcb52b786031f6417580bf3142dd1ca3bba30",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "13DC8y4_EvPR1rhd_wlSd_oCQRSyi93pc",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r019/asset-049.webp",
+        "thumb": "assets/real-wheels/nfw-r019/asset-049-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Černý střed, zlatý ráfek — fotografie skutečného kola"
+      },
+      "webBytes": 198158
+    },
+    {
+      "id": "1i9fbY8eu1jQ6zmIqtnzBjtZH-HcHH_Nx",
+      "number": 50,
+      "originalName": "412.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 206205,
+      "sourceUrl": "https://drive.google.com/file/d/1i9fbY8eu1jQ6zmIqtnzBjtZH-HcHH_Nx/view?usp=drivesdk",
+      "kind": "catalogue-reference",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "155001b99b5d11e6395f3651382ee69ce78539502375ad49e800174ddac124a7",
+      "originalDimensions": [
+        2348,
+        1280
+      ]
+    },
+    {
+      "id": "1CjXxoS7LRhqonhxdAPt3NenI2DDWwsqA",
+      "number": 51,
+      "originalName": "413.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 204918,
+      "sourceUrl": "https://drive.google.com/file/d/1CjXxoS7LRhqonhxdAPt3NenI2DDWwsqA/view?usp=drivesdk",
+      "kind": "catalogue-reference",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "870990a990c9ee9c320e6aea2120f27061963803737c148b233496bf50c93a4b",
+      "originalDimensions": [
+        2348,
+        1280
+      ]
+    },
+    {
+      "id": "1nyYZEnU5C81utj9jOsEex8e5-NcEygls",
+      "number": 52,
+      "originalName": "1269.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 193565,
+      "sourceUrl": "https://drive.google.com/file/d/1nyYZEnU5C81utj9jOsEex8e5-NcEygls/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r025",
+      "publish": true,
+      "sha256": "b0b9611f81f44be7603fec06cc3ac225ed8decdccf87aab8aeb258ced9e5b895",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed.",
+      "web": {
+        "id": "1nyYZEnU5C81utj9jOsEex8e5-NcEygls",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r025/asset-052.webp",
+        "thumb": "assets/real-wheels/nfw-r025/asset-052-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Bílý vícepaprsek — fotografie skutečného kola"
+      },
+      "webBytes": 159320
+    },
+    {
+      "id": "1IrZxncNi7mlfylec-ex_Rcq6h3mXgT0v",
+      "number": 53,
+      "originalName": "633.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 169238,
+      "sourceUrl": "https://drive.google.com/file/d/1IrZxncNi7mlfylec-ex_Rcq6h3mXgT0v/view?usp=drivesdk",
+      "kind": "catalogue-reference",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "0ea9ec3ba2e7e00538fcf0233708092e2125a7feb28deca60f9947a3aab7eefc",
+      "originalDimensions": [
+        2348,
+        1280
+      ]
+    },
+    {
+      "id": "1GNSLY9eiN1abSdbZMEF_o4IBlx1OOU0m",
+      "number": 54,
+      "originalName": "1002.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 166753,
+      "sourceUrl": "https://drive.google.com/file/d/1GNSLY9eiN1abSdbZMEF_o4IBlx1OOU0m/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r001",
+      "publish": true,
+      "sha256": "d661e98535c0416cd162c103da5b99c2241dc997591dbf21a6520befc5b1c68d",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed. Embedded ICC colour profile converted to sRGB before export.",
+      "web": {
+        "id": "1GNSLY9eiN1abSdbZMEF_o4IBlx1OOU0m",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r001/asset-054.webp",
+        "thumb": "assets/real-wheels/nfw-r001/asset-054-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Čelní pohled na leštěný desetipaprsek"
+      },
+      "webBytes": 271656
+    },
+    {
+      "id": "16s4VPj4iht-plnOwXDfqfHdKa6iENTAd",
+      "number": 55,
+      "originalName": "1000.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 145652,
+      "sourceUrl": "https://drive.google.com/file/d/16s4VPj4iht-plnOwXDfqfHdKa6iENTAd/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r001",
+      "publish": true,
+      "sha256": "53d2beb0ac10202fd5b496c10fd4746339295061aeabd2793bd35d8ee11ea876",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed. Embedded ICC colour profile converted to sRGB before export.",
+      "web": {
+        "id": "16s4VPj4iht-plnOwXDfqfHdKa6iENTAd",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r001/asset-055.webp",
+        "thumb": "assets/real-wheels/nfw-r001/asset-055-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Leštěný desetipaprsek — detail hloubky ráfku"
+      },
+      "webBytes": 237978
+    },
+    {
+      "id": "1aIXhnIrZb2EesfMyU08VC9x4_fLtphBE",
+      "number": 56,
+      "originalName": "1000.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 145652,
+      "sourceUrl": "https://drive.google.com/file/d/1aIXhnIrZb2EesfMyU08VC9x4_fLtphBE/view?usp=drivesdk",
+      "kind": "duplicate",
+      "collectionId": "nfw-r001",
+      "publish": false,
+      "duplicateOf": "16s4VPj4iht-plnOwXDfqfHdKa6iENTAd",
+      "note": "Exact byte duplicate of source 55; source retained in evidence, not shown twice.",
+      "sha256": "53d2beb0ac10202fd5b496c10fd4746339295061aeabd2793bd35d8ee11ea876",
+      "originalDimensions": [
+        1702,
+        1276
+      ]
+    },
+    {
+      "id": "1b1U4rA-YhXJxAigDA5QhPOmmHWPpumAN",
+      "number": 57,
+      "originalName": "636.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 133464,
+      "sourceUrl": "https://drive.google.com/file/d/1b1U4rA-YhXJxAigDA5QhPOmmHWPpumAN/view?usp=drivesdk",
+      "kind": "engineering-reference",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "fbf18e1a2cdc29fd89b65a39283f5b522e43a9ba275e9f59e4098634996110e9",
+      "originalDimensions": [
+        1072,
+        809
+      ]
+    },
+    {
+      "id": "19ZP-O0puVrbucO0cLZSbC3CzTtEYeZnL",
+      "number": 58,
+      "originalName": "999.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 131847,
+      "sourceUrl": "https://drive.google.com/file/d/19ZP-O0puVrbucO0cLZSbC3CzTtEYeZnL/view?usp=drivesdk",
+      "kind": "product-photo",
+      "collectionId": "nfw-r001",
+      "publish": true,
+      "sha256": "df58865fb2febd6084bf9c8394190c83e971048b2a95998f2033359a79159294",
+      "originalDimensions": [
+        1702,
+        1276
+      ],
+      "conversion": "EXIF orientation normalized; WebP max 1600px; no crop, recolouring or upscaling; metadata removed. Embedded ICC colour profile converted to sRGB before export.",
+      "web": {
+        "id": "19ZP-O0puVrbucO0cLZSbC3CzTtEYeZnL",
+        "type": "image",
+        "src": "assets/real-wheels/nfw-r001/asset-058.webp",
+        "thumb": "assets/real-wheels/nfw-r001/asset-058-thumb.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Leštěný desetipaprsek z opačné strany"
+      },
+      "webBytes": 213992
+    },
+    {
+      "id": "1BooWca8JQaQq55oVwRoM85uoleZqSiwy",
+      "number": 59,
+      "originalName": "591.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 128462,
+      "sourceUrl": "https://drive.google.com/file/d/1BooWca8JQaQq55oVwRoM85uoleZqSiwy/view?usp=drivesdk",
+      "kind": "catalogue-reference",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "a1aaf58e17b9ea23bb72b85dbd9c5e81afd6d835d0aa877e4311be9431c56ae5",
+      "originalDimensions": [
+        1600,
+        1600
+      ]
+    },
+    {
+      "id": "1E6RZyEfmkco4UQGhWwDRqa5BUcAL3ZRT",
+      "number": 60,
+      "originalName": "417.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 125656,
+      "sourceUrl": "https://drive.google.com/file/d/1E6RZyEfmkco4UQGhWwDRqa5BUcAL3ZRT/view?usp=drivesdk",
+      "kind": "engineering-reference",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "f06ada4e3e4416fd9ec776b4c1f1d2e05c834ee47ae3893757ce0fce8cce0a13",
+      "originalDimensions": [
+        1808,
+        901
+      ]
+    },
+    {
+      "id": "11aR8GgA7tL65qswcAYW0ksdWJ1BmNR4s",
+      "number": 61,
+      "originalName": "634.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 124074,
+      "sourceUrl": "https://drive.google.com/file/d/11aR8GgA7tL65qswcAYW0ksdWJ1BmNR4s/view?usp=drivesdk",
+      "kind": "catalogue-reference",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "ca160007a522195a39ec8e76aa25ea3fe2cbbb27bfe2fe5ea69279444540213a",
+      "originalDimensions": [
+        2348,
+        1280
+      ]
+    },
+    {
+      "id": "1sjsT7MliLVDyrJU1JKOtOtH3PBRE0QN5",
+      "number": 62,
+      "originalName": "635.jpg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 118169,
+      "sourceUrl": "https://drive.google.com/file/d/1sjsT7MliLVDyrJU1JKOtOtH3PBRE0QN5/view?usp=drivesdk",
+      "kind": "engineering-reference",
+      "collectionId": null,
+      "publish": false,
+      "note": "Kept as source reference; not presented as a photograph of a finished wheel.",
+      "sha256": "b6afba62dabb22d1beb946ca9357908f905b20615b00251a6d25fea3a37ce01a",
+      "originalDimensions": [
+        962,
+        791
+      ]
+    }
+  ]
+}

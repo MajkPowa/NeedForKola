@@ -14,6 +14,7 @@ Otevřít http://127.0.0.1:8765/. Kvůli ES modulům a GLB modelu je nutné HTTP
 
 ## Co obsahuje
 
+- Galerie **25 reálných provedení kol** s 34 fotografiemi a 6 produktovými videi, filtry podle barvy a poptávkou konkrétní reference. Dvě výrobní videa jsou uvedena samostatně. Evidence všech 62 dodaných souborů, zdroje, duplicity a klasifikace jsou v `docs/real-wheels-register.md` a `data/real-wheel-media-inventory.json`. Fotografie samy nepotvrzují skladovou dostupnost.
 - Značka **Need For Wheels** na všech třech stránkách, studiový vzhled, zaoblené karty/tlačítka a responzivní rozložení.
 - Loga všech 53 automobilek v přístupném vyhledávacím dialogu katalogu i konfigurátoru; lokální PNG, zdroje v `docs/brand-logos.md`.
 - Tříscénový úvodní carousel, posuvná kolekce 13 kol, návazné odkazy mezi sekcemi a CTA do konfigurátoru. Automatika se pozastaví při hoveru/fokusu, mimo obrazovku a při omezeném pohybu; má ruční ovládání i pauzu.
