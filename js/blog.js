@@ -87,7 +87,7 @@
   function notFound(root) {
     document.title = 'Článek nebyl nalezen · Need For Wheels';
     document.querySelector('meta[name="robots"]')?.setAttribute('content', 'noindex,follow');
-    document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://majkpowa.github.io/NeedForKola/blog.html');
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', new URL('blog.html', window.NFW_SITE?.siteUrl || 'https://oarts.cz/').href);
     const box = element('section', 'editorial-not-found');
     box.append(element('span', 'eyebrow', 'Zpátky na správnou cestu'), element('h1', '', 'Tenhle článek tady není.'), element('p', '', 'Odkaz může být neúplný nebo se článek přesunul. Další čtení najdeš v našem deníku.'));
     const link = element('a', 'btn btn--primary'); link.href = 'blog.html'; link.append(element('span', '', 'Přejít na blog →')); box.append(link); root.replaceChildren(box);
@@ -100,7 +100,7 @@
     document.title = article.title + ' · Need For Wheels';
     document.querySelector('meta[name="description"]')?.setAttribute('content', text(article.excerpt));
     document.querySelector('meta[name="robots"]')?.setAttribute('content', 'index,follow');
-    document.querySelector('link[rel="canonical"]')?.setAttribute('href', new URL(articleURL(article), 'https://majkpowa.github.io/NeedForKola/').href);
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', new URL(articleURL(article), window.NFW_SITE?.siteUrl || 'https://oarts.cz/').href);
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', article.title);
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', text(article.excerpt));
     const header = element('header', 'editorial-article__header');

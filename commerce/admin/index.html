@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Správa | Need For Wheels</title>
+    <link rel="stylesheet" href="/admin/style.css" />
+    <script src="/admin/app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a href="https://oarts.cz"
+        >NEED FOR WHEELS <small>OARTS / SPRÁVA</small></a
+      ><button id="logout" hidden>Odhlásit</button>
+    </header>
+    <main>
+      <section id="login">
+        <span class="eyebrow">Pouze pro tým</span>
+        <h1>Vše pod kontrolou.</h1>
+        <p>Poptávky, zákazníci, objednávky a skutečný sklad na jednom místě.</p>
+        <form id="loginForm" method="post" action="/api/admin/login">
+          <label
+            >Přístupový klíč<input
+              name="token"
+              type="password"
+              autocomplete="current-password"
+              required
+              minlength="32"
+              maxlength="128" /></label
+          ><button id="loginSubmit" type="submit" disabled>Přihlásit →</button>
+        </form>
+        <noscript
+          ><p>
+            Pro bezpečné přihlášení zapněte JavaScript. Přístupový klíč se bez
+            něj neodesílá.
+          </p></noscript
+        >
+        <p class="muted">
+          Přístup je chráněný. Přihlášení po 8 hodinách vyprší.
+        </p>
+      </section>
+      <section id="workspace" hidden>
+        <div class="topline">
+          <div>
+            <span class="eyebrow" id="identity"></span>
+            <h1 id="pageTitle">Přehled</h1>
+          </div>
+          <button id="refresh">Obnovit ↻</button>
+        </div>
+        <nav id="tabs" aria-label="Správa"></nav>
+        <p class="notice">
+          Automatické e-maily zatím čekají na aktivaci odesílání. Požadavky a
+          objednávky se ukládají do databáze. Zprávy zákazníkům vyřizujte ručně;
+          fronta uvádí skutečný stav doručení.
+        </p>
+        <div id="content"></div>
+      </section>
+      <p id="status" role="status" aria-live="polite"></p>
+    </main>
+    <dialog id="editor">
+      <form method="dialog" class="dialog-head">
+        <h2 id="editorTitle"></h2>
+        <button aria-label="Zavřít" value="cancel">×</button>
+      </form>
+      <div id="editorBody"></div>
+    </dialog>
+  </body>
+</html>

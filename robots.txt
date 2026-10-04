@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin
+Disallow: /api/
+Disallow: /nabidka.html
+Disallow: /commerce/
+Disallow: /tools/
+Sitemap: https://oarts.cz/sitemap.xml

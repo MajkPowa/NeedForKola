@@ -3,5 +3,17 @@ Thumbs.db
 .DS_Store
 desktop.ini
 tools/__pycache__/
+__pycache__/
 tools/.cache-vehicle-visuals/
 tools/.cache-wheel-fit/
+node_modules/
+.wrangler/
+.dev.vars*
+.env*
+!.env.example
+commerce/dist/
+/dist/
+commerce/public/
+commerce/.local-secrets/
+commerce/private/
+tools/.cache-launch/

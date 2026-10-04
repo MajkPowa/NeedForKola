@@ -1,7 +1,8 @@
-"""Build reviewed, local website media from Drive originals (no network or credentials).
+"""Build reviewed, local website media from Drive and supplied photo originals.
 
 Requires Pillow, pillow-heif, ffmpeg and ffprobe. Originals are named <Drive ID>.<ext>
 under --originals. Classification is explicit in data/real-wheels-review.json.
+User-supplied photographs are named <evidence ID>.jpg under --attachments.
 This converts formats/scales images only; it never generates or recolours wheels.
 """
 import argparse
@@ -17,6 +18,7 @@ pillow_heif.register_heif_opener()
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
 parser.add_argument('--originals', type=Path, default=ROOT / 'tools/.cache-wheel-fit/drive-real-wheels/originals')
+parser.add_argument('--attachments', type=Path, default=ROOT / 'tools/.cache-wheel-fit/october-real-wheels/originals')
 parser.add_argument('--force', action='store_true')
 args = parser.parse_args()
 review = json.loads((ROOT / 'data/real-wheels-review.json').read_text(encoding='utf-8'))
@@ -60,12 +62,15 @@ records = []
 website_media = {}
 for source in review['files']:
     record = dict(source)
-    original = args.originals / (source['id'] + '.' + exts[source['mimeType']])
+    source_root = args.attachments if source.get('sourceType') == 'user-attachment' else args.originals
+    original = source_root / (source['id'] + '.' + exts[source['mimeType']])
     if not original.is_file():
         raise FileNotFoundError(f"Missing source {source['originalName']}: {original}")
     if original.stat().st_size != source['sourceBytes']:
         raise ValueError(f"Source byte count mismatch: {source['originalName']}")
     record['sha256'] = hashlib.sha256(original.read_bytes()).hexdigest()
+    if source.get('sourceSha256') and record['sha256'] != source['sourceSha256']:
+        raise ValueError(f"Source fingerprint mismatch: {source['originalName']}")
     is_video = source['mimeType'].startswith('video/')
     if not is_video:
         im, profile_converted = web_image(original)
@@ -114,7 +119,7 @@ for source in review['files']:
         write_webp(im, ROOT / thumb, 640, 82)
         c = collection_map.get(source['collectionId'])
         media.update(src=dest.as_posix(), thumb=thumb.as_posix(), width=dims[0], height=dims[1],
-                     alt=captions.get(source['number'], (c['title'] + ' — fotografie skutečného kola') if c else source['originalName']))
+                     alt=source.get('caption') or captions.get(source['number'], (c['title'] + ' — fotografie skutečného kola') if c else source['originalName']))
         website_media[source['id']] = media
         record['web'] = media
         record['webBytes'] = (ROOT / dest).stat().st_size
@@ -134,6 +139,7 @@ for c in review['collections']:
 data = {'updatedAt':review['reviewedAt'], 'collections':collections}
 (ROOT/'js/real-wheels-data.js').write_text('/* Generated from reviewed real media by tools/build-real-wheels.py. */\nwindow.NFWRealWheels = '+json.dumps(data,ensure_ascii=False,indent=2)+';\n',encoding='utf-8')
 inventory = {'reviewedAt':review['reviewedAt'], 'sourceFolder':review['sourceFolder'],
+             'sourceBatches':review.get('sourceBatches', []),
              'summary':{'sourceFiles':len(records),'collections':len(collections),'galleryMedia':sum(len(c['media']) for c in collections),
                         'productionVideos':sum(r['kind']=='manufacturing-video' for r in records)}, 'files':records}
 (ROOT/'data/real-wheel-media-inventory.json').write_text(json.dumps(inventory,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

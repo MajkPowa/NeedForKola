@@ -2,15 +2,15 @@
 (function () {
   'use strict';
   const O = window.NFW;
-  O.EMAIL = 'info@oarts.cz';
-  O.PHONE = '+420 777 000 000';
-  O.SITE_URL = 'https://majkpowa.github.io/NeedForKola/';
+  O.EMAIL = window.NFW_SITE?.email || 'info@oarts.cz';
+  O.PHONE = window.NFW_SITE?.phone || '+420 723 958 421';
+  O.SITE_URL = window.NFW_SITE?.siteUrl || 'https://oarts.cz/';
   O.spokesLabel = d => d.spokesLabel || `${d.spokes} paprsků`;
   O.escape = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   O.labelHTML = d => '<div class="shipping-label"><header><b>NEED FOR WHEELS</b><span>'+O.escape(d.order)+'</span></header><small>SPECIFIKACE KOLA · NÁHLED</small><dl>'+[['Vůz',d.model],['Design',d.design],['Pozice',d.pos],['Rozměr',d.size],['ET / PCD / CB',d.et+' / '+d.pcd+' / '+d.cb],['Barva',d.color],['Povrch',d.finish],['Hmotnost',d.weight]].map(([k,v])=>'<dt>'+k+'</dt><dd>'+O.escape(v)+'</dd>').join('')+'</dl><footer>'+O.escape(d.date)+' · CUSTOM FORGED WHEELS</footer></div>';
 
   document.querySelectorAll('[data-year]').forEach(el=>el.textContent=new Date().getFullYear());
-  document.querySelectorAll('[data-email]').forEach(el=>{el.textContent=O.EMAIL;if(el.tagName==='A')el.href='mailto:'+O.EMAIL;});
+  document.querySelectorAll('[data-email]').forEach(el=>{const ready=window.NFW_SITE?.emailEnabled===true;el.textContent=O.EMAIL+(ready?'':' · připravujeme');if(el.tagName==='A'){if(ready)el.href='mailto:'+O.EMAIL;else{el.removeAttribute('href');el.setAttribute('aria-disabled','true');}}});
   document.querySelectorAll('[data-phone]').forEach(el=>{el.textContent=O.PHONE;if(el.tagName==='A')el.href='tel:'+O.PHONE.replace(/\s/g,'');});
   const io = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.06});
   const observe = root=>(root||document).querySelectorAll('.reveal').forEach(el=>io.observe(el));
@@ -28,7 +28,7 @@
   if(count && window.NFWVehicles)count.textContent=window.NFWVehicles.brands.length;
 
   const form=document.getElementById('contactForm');
-  form?.addEventListener('submit',e=>{e.preventDefault();const f=new FormData(form);const body=['Jméno: '+(f.get('name')||''),'E-mail: '+(f.get('email')||''),'Telefon: '+(f.get('phone')||''),'Vůz: '+(f.get('car')||''),'',f.get('msg')||''].join('\r\n');location.href='mailto:'+O.EMAIL+'?subject='+encodeURIComponent('Need For Wheels — poptávka '+(f.get('car')||'kol'))+'&body='+encodeURIComponent(body);});
+  window.NFWCommerce?.bindEnquiry(form, f => ({name:f.get('name'),email:f.get('email'),phone:f.get('phone'),vehicle:f.get('car'),message:f.get('msg'),source:'contact',website:f.get('website')||''}));
 
   document.querySelectorAll('[data-launch-wheel]').forEach(button=>button.addEventListener('click',async()=>{
     const container=document.getElementById(button.dataset.launchWheel);

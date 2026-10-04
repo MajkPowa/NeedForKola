@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "reviewedAt": "2026-09-29",
+  "version": 2,
+  "reviewedAt": "2026-10-04",
   "sourceFolder": {
     "id": "1Cd43LqhYpv9SBLwhPb9EE2H1X8HO9A6g",
     "name": "Kola custom",
@@ -458,6 +458,90 @@
       ],
       "mediaIds": [
         "1nyYZEnU5C81utj9jOsEex8e5-NcEygls"
+      ],
+      "availability": "unconfirmed",
+      "specs": []
+    },
+    {
+      "id": "nfw-r026",
+      "reference": "NFW-R026",
+      "title": "Černý hladký desetipaprsek",
+      "tone": "black",
+      "finishLabel": "Černý lesk",
+      "description": "Deset štíhlých paprsků s plynulým přechodem do středu. Čelní pohled a dva boční úhly stejného provedení.",
+      "category": "wheel",
+      "sourceNumbers": [
+        63,
+        64,
+        68
+      ],
+      "mediaIds": [
+        "nfw-oct2026-001",
+        "nfw-oct2026-002",
+        "nfw-oct2026-006"
+      ],
+      "availability": "unconfirmed",
+      "specs": []
+    },
+    {
+      "id": "nfw-r027",
+      "reference": "NFW-R027",
+      "title": "Grafitový desetipaprsek se světlou hranou",
+      "tone": "silver",
+      "finishLabel": "Grafit / stříbrné čelní plochy",
+      "description": "Tmavé boky paprsků a světlé čelní plochy zvýrazňují hloubku disku. Tři fotografie stejného provedení.",
+      "category": "wheel",
+      "sourceNumbers": [
+        67,
+        65,
+        66
+      ],
+      "mediaIds": [
+        "nfw-oct2026-005",
+        "nfw-oct2026-003",
+        "nfw-oct2026-004"
+      ],
+      "availability": "unconfirmed",
+      "specs": []
+    },
+    {
+      "id": "nfw-r028",
+      "reference": "NFW-R028",
+      "title": "Černý členitý paprsek se světlou hranou",
+      "tone": "black",
+      "finishLabel": "Černá / stříbrné čelní plochy",
+      "description": "Výrazně členěné dělené paprsky v kontrastu černého lesku a světlých hran. Čelní a dva boční pohledy.",
+      "category": "wheel",
+      "sourceNumbers": [
+        71,
+        69,
+        70
+      ],
+      "mediaIds": [
+        "nfw-oct2026-009",
+        "nfw-oct2026-007",
+        "nfw-oct2026-008"
+      ],
+      "availability": "unconfirmed",
+      "specs": []
+    },
+    {
+      "id": "nfw-r029",
+      "reference": "NFW-R029",
+      "title": "Zlatý členitý paprsek se světlou hranou",
+      "tone": "bronze",
+      "finishLabel": "Světlý zlatý odstín / stříbrné čelní plochy",
+      "description": "Světlý zlatý odstín a jasné čelní hrany členitých paprsků. Tři úhly ukazují celé kolo i hloubku ráfku.",
+      "category": "wheel",
+      "sourceNumbers": [
+        74,
+        72,
+        73
+      ],
+      "mediaIds": [
+        "nfw-oct2026-012",
+        "nfw-oct2026-010",
+        "nfw-oct2026-011"
       ],
       "availability": "unconfirmed",
       "specs": []
@@ -1170,6 +1254,208 @@
       "collectionId": null,
       "publish": false,
       "note": "Kept as source reference; not presented as a photograph of a finished wheel."
+    },
+    {
+      "id": "nfw-oct2026-001",
+      "number": 63,
+      "originalName": "WhatsApp Image 2026-10-01 at 18.44.05.jpeg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 249494,
+      "sourceSha256": "a97e2c7591d2057b1b9b0e25021df9b38334bd93884c90e3376180fb289d7647",
+      "sourceType": "user-attachment",
+      "sourceBatchId": "whatsapp-20261001",
+      "sourceUrl": null,
+      "kind": "product-photo",
+      "collectionId": "nfw-r026",
+      "publish": true,
+      "caption": "Černý hladký desetipaprsek — čelní pohled",
+      "note": "Vizuálně zkontrolovaná fotografie dodaná uživatelem. Krytka na fotografii nepotvrzuje výrobce, kompatibilitu ani skladovou dostupnost."
+    },
+    {
+      "id": "nfw-oct2026-002",
+      "number": 64,
+      "originalName": "WhatsApp Image 2026-10-01 at 18.44.05 (1).jpeg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 175926,
+      "sourceSha256": "c888b32a9e2fd60cb46c277b5663c522fc3f2970d5ed90124e660c24862b4ec8",
+      "sourceType": "user-attachment",
+      "sourceBatchId": "whatsapp-20261001",
+      "sourceUrl": null,
+      "kind": "product-photo",
+      "collectionId": "nfw-r026",
+      "publish": true,
+      "caption": "Černý hladký desetipaprsek — pohled z boku",
+      "note": "Vizuálně zkontrolovaná fotografie dodaná uživatelem. Krytka na fotografii nepotvrzuje výrobce, kompatibilitu ani skladovou dostupnost."
+    },
+    {
+      "id": "nfw-oct2026-003",
+      "number": 65,
+      "originalName": "WhatsApp Image 2026-10-01 at 18.44.05 (2).jpeg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 253263,
+      "sourceSha256": "e06b3fbf5873d1119002a6dfb827f147c6aea7468adbeb56665e6d36c3ac5c8f",
+      "sourceType": "user-attachment",
+      "sourceBatchId": "whatsapp-20261001",
+      "sourceUrl": null,
+      "kind": "product-photo",
+      "collectionId": "nfw-r027",
+      "publish": true,
+      "caption": "Grafitový desetipaprsek se světlou hranou — pohled z boku",
+      "note": "Vizuálně zkontrolovaná fotografie dodaná uživatelem. Krytka na fotografii nepotvrzuje výrobce, kompatibilitu ani skladovou dostupnost."
+    },
+    {
+      "id": "nfw-oct2026-004",
+      "number": 66,
+      "originalName": "WhatsApp Image 2026-10-01 at 18.44.05 (3).jpeg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 254873,
+      "sourceSha256": "f9b5a8d9de374987e7f261b7ae554947d6ef57dfee8c84ae1b4361d37daa7977",
+      "sourceType": "user-attachment",
+      "sourceBatchId": "whatsapp-20261001",
+      "sourceUrl": null,
+      "kind": "product-photo",
+      "collectionId": "nfw-r027",
+      "publish": true,
+      "caption": "Grafitový desetipaprsek se světlou hranou — pohled z opačné strany",
+      "note": "Vizuálně zkontrolovaná fotografie dodaná uživatelem. Krytka na fotografii nepotvrzuje výrobce, kompatibilitu ani skladovou dostupnost."
+    },
+    {
+      "id": "nfw-oct2026-005",
+      "number": 67,
+      "originalName": "WhatsApp Image 2026-10-01 at 18.44.05 (4).jpeg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 272740,
+      "sourceSha256": "c65d307b5bdd6d2bfbf2ca4a5cbb1431ea87d62fc091d29f56890f24f0c69dab",
+      "sourceType": "user-attachment",
+      "sourceBatchId": "whatsapp-20261001",
+      "sourceUrl": null,
+      "kind": "product-photo",
+      "collectionId": "nfw-r027",
+      "publish": true,
+      "caption": "Grafitový desetipaprsek se světlou hranou — čelní pohled",
+      "note": "Vizuálně zkontrolovaná fotografie dodaná uživatelem. Krytka na fotografii nepotvrzuje výrobce, kompatibilitu ani skladovou dostupnost."
+    },
+    {
+      "id": "nfw-oct2026-006",
+      "number": 68,
+      "originalName": "WhatsApp Image 2026-10-01 at 18.44.05 (5).jpeg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 237043,
+      "sourceSha256": "6cd6514af26ca5cb622d3cbaae0ab05ef47f56aeada4ec0918b0ce7bac112a37",
+      "sourceType": "user-attachment",
+      "sourceBatchId": "whatsapp-20261001",
+      "sourceUrl": null,
+      "kind": "product-photo",
+      "collectionId": "nfw-r026",
+      "publish": true,
+      "caption": "Černý hladký desetipaprsek — pohled z opačné strany",
+      "note": "Vizuálně zkontrolovaná fotografie dodaná uživatelem. Krytka na fotografii nepotvrzuje výrobce, kompatibilitu ani skladovou dostupnost."
+    },
+    {
+      "id": "nfw-oct2026-007",
+      "number": 69,
+      "originalName": "WhatsApp Image 2026-10-01 at 18.44.05 (6).jpeg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 286205,
+      "sourceSha256": "1450f53b57b304756203fe542a601d872e53594b4f414e1999426c4e308dca24",
+      "sourceType": "user-attachment",
+      "sourceBatchId": "whatsapp-20261001",
+      "sourceUrl": null,
+      "kind": "product-photo",
+      "collectionId": "nfw-r028",
+      "publish": true,
+      "caption": "Černý členitý paprsek se světlou hranou — pohled z boku",
+      "note": "Vizuálně zkontrolovaná fotografie dodaná uživatelem. Krytka na fotografii nepotvrzuje výrobce, kompatibilitu ani skladovou dostupnost."
+    },
+    {
+      "id": "nfw-oct2026-008",
+      "number": 70,
+      "originalName": "WhatsApp Image 2026-10-01 at 18.44.05 (7).jpeg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 240288,
+      "sourceSha256": "b5d875f949e2e51e34cf5114d92273ada2108016ecf6ebd3ba1d3ec708f8e38c",
+      "sourceType": "user-attachment",
+      "sourceBatchId": "whatsapp-20261001",
+      "sourceUrl": null,
+      "kind": "product-photo",
+      "collectionId": "nfw-r028",
+      "publish": true,
+      "caption": "Černý členitý paprsek se světlou hranou — pohled z opačné strany",
+      "note": "Vizuálně zkontrolovaná fotografie dodaná uživatelem. Krytka na fotografii nepotvrzuje výrobce, kompatibilitu ani skladovou dostupnost."
+    },
+    {
+      "id": "nfw-oct2026-009",
+      "number": 71,
+      "originalName": "WhatsApp Image 2026-10-01 at 18.44.05 (8).jpeg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 245748,
+      "sourceSha256": "0940174b8b983cb0d612f170cc925b800278f2dee85ae92df685ee8afd9af604",
+      "sourceType": "user-attachment",
+      "sourceBatchId": "whatsapp-20261001",
+      "sourceUrl": null,
+      "kind": "product-photo",
+      "collectionId": "nfw-r028",
+      "publish": true,
+      "caption": "Černý členitý paprsek se světlou hranou — čelní pohled",
+      "note": "Vizuálně zkontrolovaná fotografie dodaná uživatelem. Krytka na fotografii nepotvrzuje výrobce, kompatibilitu ani skladovou dostupnost."
+    },
+    {
+      "id": "nfw-oct2026-010",
+      "number": 72,
+      "originalName": "WhatsApp Image 2026-10-01 at 18.44.05 (9).jpeg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 173015,
+      "sourceSha256": "744a836d9f25bff578409419ef5d77ab7f8c7904d2370d98b86a983948b48778",
+      "sourceType": "user-attachment",
+      "sourceBatchId": "whatsapp-20261001",
+      "sourceUrl": null,
+      "kind": "product-photo",
+      "collectionId": "nfw-r029",
+      "publish": true,
+      "caption": "Zlatý členitý paprsek se světlou hranou — pohled z boku",
+      "note": "Vizuálně zkontrolovaná fotografie dodaná uživatelem. Krytka na fotografii nepotvrzuje výrobce, kompatibilitu ani skladovou dostupnost."
+    },
+    {
+      "id": "nfw-oct2026-011",
+      "number": 73,
+      "originalName": "WhatsApp Image 2026-10-01 at 18.44.05 (10).jpeg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 204792,
+      "sourceSha256": "d11e3e9324034ca63abb8346cadf209ddaaa41a8b48c56e8e62f467865a423d7",
+      "sourceType": "user-attachment",
+      "sourceBatchId": "whatsapp-20261001",
+      "sourceUrl": null,
+      "kind": "product-photo",
+      "collectionId": "nfw-r029",
+      "publish": true,
+      "caption": "Zlatý členitý paprsek se světlou hranou — pohled z opačné strany",
+      "note": "Vizuálně zkontrolovaná fotografie dodaná uživatelem. Krytka na fotografii nepotvrzuje výrobce, kompatibilitu ani skladovou dostupnost."
+    },
+    {
+      "id": "nfw-oct2026-012",
+      "number": 74,
+      "originalName": "WhatsApp Image 2026-10-01 at 18.44.05 (11).jpeg",
+      "mimeType": "image/jpeg",
+      "sourceBytes": 229696,
+      "sourceSha256": "a7911ccbd1e5dbac1d729509892fc331e5a59d019435e3242b9248f1c46bb444",
+      "sourceType": "user-attachment",
+      "sourceBatchId": "whatsapp-20261001",
+      "sourceUrl": null,
+      "kind": "product-photo",
+      "collectionId": "nfw-r029",
+      "publish": true,
+      "caption": "Zlatý členitý paprsek se světlou hranou — čelní pohled",
+      "note": "Vizuálně zkontrolovaná fotografie dodaná uživatelem. Krytka na fotografii nepotvrzuje výrobce, kompatibilitu ani skladovou dostupnost."
+    }
+  ],
+  "sourceBatches": [
+    {
+      "id": "whatsapp-20261001",
+      "name": "Dodané fotografie kol z 1. 10. 2026",
+      "sourceType": "user-attachment",
+      "receivedAt": "2026-10-04",
+      "fileCount": 12,
+      "note": "Twelve product JPEG attachments only. Supplied account-login screenshot is not product media and is excluded."
     }
   ]
 }

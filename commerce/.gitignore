@@ -1,0 +1,8 @@
+node_modules/
+.wrangler/
+dist/
+public/
+.dev.vars*
+.env*
+private/
+worker-configuration.d.ts
