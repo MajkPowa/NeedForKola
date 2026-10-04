@@ -1,0 +1,13 @@
+{
+  "name": "nfw-commerce",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "wrangler deploy --dry-run --outdir dist",
+    "types": "wrangler types",
+    "test": "node --test test/*.test.js",
+    "bootstrap": "node scripts/bootstrap-admin.js"
+  },
+  "devDependencies": { "wrangler": "4.147.0" }
+}

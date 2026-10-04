@@ -1,0 +1,60 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "nfw-commerce",
+  "account_id": "50ad4dfc2e8192cd70bcd689c7985f14",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-10-04",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "triggers": {
+    "crons": ["17 2 * * *"],
+  },
+  "vars": {
+    "SITE_URL": "https://oarts.cz",
+    "ALLOWED_ORIGINS": "https://oarts.cz,https://www.oarts.cz,https://majkpowa.github.io,https://nfw-commerce.largoverse-private.workers.dev",
+    "ENVIRONMENT": "production",
+    "TRANSACTIONAL_CONFIRMATIONS_READY": "false",
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "nfw-commerce",
+      "database_id": "1a3b84c6-462c-4389-b5a9-af1dafb9ac63",
+      "migrations_dir": "migrations",
+    },
+  ],
+  "rules": [
+    {
+      "type": "Text",
+      "globs": ["**/*.html", "**/*.css", "**/*.txt"],
+      "fallthrough": true,
+    },
+  ],
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "enabled": true,
+      "invocation_logs": false,
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.01,
+    },
+  },
+  "assets": {
+    "run_worker_first": ["/", "/api/*", "/admin", "/admin/*"],
+    "binding": "ASSETS",
+    "html_handling": "none",
+    "directory": "./public",
+  },
+  "routes": [
+    {
+      "custom_domain": true,
+      "pattern": "oarts.cz",
+    },
+    {
+      "custom_domain": true,
+      "pattern": "www.oarts.cz",
+    },
+  ],
+}

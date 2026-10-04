@@ -501,7 +501,7 @@
       <div class="note note--warn" style="margin-top:10px">Cena je orientační, bez DPH a dopravy. Závaznou nabídku potvrdíme společně s technickým výkresem.</div>`)}
       <section class="flow-enquiry" id="enquiryForm" aria-labelledby="enquiryTitle">
       <h4 id="enquiryTitle" tabindex="-1">Kam se ti ozveme?</h4>
-      <p class="flow-guidance">Doplň kontakt. Připravíme e-mail s celým návrhem, který odešleš ze své pošty.</p>
+      <p class="flow-guidance">Doplň kontakt. Celou specifikaci odešleme přímo k ověření a nacenění. Jde o nezávaznou poptávku.</p>
       <div class="form">
         <label class="field"><span>Jméno</span><input type="text" data-set="name" data-type="text" maxlength="80" value="${esc(S.name)}" placeholder="Jméno a příjmení" autocomplete="name" required></label>
         <div class="form-row">
@@ -510,7 +510,7 @@
         </div>
       </div>
       <div class="actions">
-        <a class="btn btn--primary" id="sendMail" href="#"><span>Připravit poptávku e-mailem →</span></a>
+        <button class="btn btn--primary" id="sendMail" type="button"><span>Odeslat nezávaznou poptávku →</span></button><p class="commerce-small">Údaje použijeme k vyřízení poptávky. <a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a> · <a href="obchodni-podminky.html">Podmínky</a> · <a href="reklamace.html">Reklamace</a> · <a href="odstoupeni.html">Odstoupení</a> · <a href="cookies.html">Cookies</a>.</p><p data-commerce-status class="commerce-status" role="status" tabindex="-1"></p>
       </div></section>
       ${detailsHTML('sharing', 'Sdílet nebo uložit návrh', `<div class="actions">
         <button class="btn" type="button" id="copySpec"><span>Kopírovat specifikaci</span></button>
@@ -526,7 +526,7 @@
       <div class="mobile-flow-status"><button type="button" data-flow-preview aria-label="Zobrazit náhled vybraného kola ${esc(design().name)}">${O.renderWheel(wheelOpts())}<span>${esc(design().name)}<small>Náhled ↑</small></span></button><div class="price"><div><small>Orientačně · 4 kola · bez DPH</small><b>${kc(p.total)}</b></div><div class="per">${kc(p.perWheel)} / kolo<br>~${nf(weightEst())} kg / kolo</div></div></div>
       <div class="panel-nav">
         <button class="btn btn--ghost" type="button" id="prevStep" data-prev ${S.step === 1 ? 'disabled' : ''}><span>← Zpět</span></button>
-        ${S.step < 5 ? `<button class="btn btn--primary" type="button" id="nextStep" data-next><span>Pokračovat →</span></button>` : `<a class="btn btn--primary" id="sendMail2" data-flow-enquiry href="#enquiryForm"><span>${MOBILE.matches && !enquiryReady ? 'Zadat kontakt →' : 'Připravit e-mail →'}</span></a>`}
+        ${S.step < 5 ? `<button class="btn btn--primary" type="button" id="nextStep" data-next><span>Pokračovat →</span></button>` : `<a class="btn btn--primary" id="sendMail2" data-flow-enquiry href="#enquiryForm"><span>${MOBILE.matches && !enquiryReady ? 'Zadat kontakt →' : 'Odeslat poptávku →'}</span></a>`}
       </div><div class="flow-next-hint">${S.step < 5 ? `Dále: ${STEPS[S.step]}` : 'Nezávazná poptávka · návrh zůstane uložený v odkazu'}</div>`;
   }
 
@@ -554,9 +554,6 @@
       S.note ? '' : null,
       S.note ? `Poznámka: ${S.note}` : null,
     ].filter(l => l !== null).join('\r\n');
-  }
-  function mailtoHref() {
-    return `mailto:${O.EMAIL}?subject=${encodeURIComponent(`Poptávka Need For Wheels – ${vehicleName()} × ${design().name} ${S.d}"`)}&body=${encodeURIComponent(specText())}`;
   }
   function flash(msg) {
     const el = $('#copiedMsg'); if (!el) return;
@@ -602,7 +599,7 @@
   function showEnquiry() {
     enquiryReady = true;
     renderFoot();
-    announce('Doplň jméno a e-mail. Potom připravíme poptávku ve tvé poštovní aplikaci.');
+    announce('Doplň jméno a e-mail. Potom odešleme nezávaznou poptávku s celou specifikací.');
     revealFlow($('#enquiryTitle'));
   }
 
@@ -649,8 +646,12 @@
       if (mail.id === 'sendMail2' && MOBILE.matches && !enquiryReady) { e.preventDefault(); showEnquiry(); return; }
       const invalid = [...$('#enquiryForm').querySelectorAll('input[required]')].find(input=>!input.checkValidity());
       if (invalid) { e.preventDefault(); enquiryReady = true; renderFoot(); invalid.reportValidity(); revealFlow(invalid, {block:'nearest'}); return; }
-      mail.href = mailtoHref();
-      announce('Poptávka se otevře ve tvé poštovní aplikaci.');
+      e.preventDefault();
+      const container = $('#enquiryForm');
+      if (!window.NFWCommerce?.submitEnquiry) { const status = container.querySelector('[data-commerce-status]'); status.textContent = 'Online odeslání nyní není dostupné. Zavolej nám na +420 723 958 421. Vyplněné údaje zůstaly zachované.'; status.dataset.state = 'error'; status.focus({preventScroll:true}); return; }
+      if (container.dataset.enquiryReceived) { announce('Poptávka již byla přijata. ' + container.dataset.enquiryReceived); return; }
+      const configuration = {...S}; delete configuration.name; delete configuration.email; delete configuration.phone;
+      window.NFWCommerce?.submitEnquiry(container, {name:S.name,email:S.email,phone:S.phone,vehicle:vehicleName(),message:specText(),configuration,source:'configurator',website:''}, [...document.querySelectorAll('#sendMail, #sendMail2')]);
       return;
     }
 

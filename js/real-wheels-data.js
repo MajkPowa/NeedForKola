@@ -1,6 +1,6 @@
 /* Generated from reviewed real media by tools/build-real-wheels.py. */
 window.NFWRealWheels = {
-  "updatedAt": "2026-09-29",
+  "updatedAt": "2026-10-04",
   "collections": [
     {
       "id": "nfw-r001",
@@ -865,6 +865,194 @@ window.NFWRealWheels = {
           "width": 1600,
           "height": 1200,
           "alt": "Bílý vícepaprsek — fotografie skutečného kola"
+        }
+      ]
+    },
+    {
+      "id": "nfw-r026",
+      "reference": "NFW-R026",
+      "title": "Černý hladký desetipaprsek",
+      "tone": "black",
+      "finishLabel": "Černý lesk",
+      "description": "Deset štíhlých paprsků s plynulým přechodem do středu. Čelní pohled a dva boční úhly stejného provedení.",
+      "category": "wheel",
+      "availability": "unconfirmed",
+      "specs": [],
+      "cover": {
+        "thumb": "assets/real-wheels/nfw-r026/asset-063-thumb.webp",
+        "alt": "Černý hladký desetipaprsek — čelní pohled",
+        "width": 1600,
+        "height": 1200,
+        "src": "assets/real-wheels/nfw-r026/asset-063.webp"
+      },
+      "media": [
+        {
+          "id": "nfw-oct2026-001",
+          "type": "image",
+          "src": "assets/real-wheels/nfw-r026/asset-063.webp",
+          "thumb": "assets/real-wheels/nfw-r026/asset-063-thumb.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Černý hladký desetipaprsek — čelní pohled"
+        },
+        {
+          "id": "nfw-oct2026-002",
+          "type": "image",
+          "src": "assets/real-wheels/nfw-r026/asset-064.webp",
+          "thumb": "assets/real-wheels/nfw-r026/asset-064-thumb.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Černý hladký desetipaprsek — pohled z boku"
+        },
+        {
+          "id": "nfw-oct2026-006",
+          "type": "image",
+          "src": "assets/real-wheels/nfw-r026/asset-068.webp",
+          "thumb": "assets/real-wheels/nfw-r026/asset-068-thumb.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Černý hladký desetipaprsek — pohled z opačné strany"
+        }
+      ]
+    },
+    {
+      "id": "nfw-r027",
+      "reference": "NFW-R027",
+      "title": "Grafitový desetipaprsek se světlou hranou",
+      "tone": "silver",
+      "finishLabel": "Grafit / stříbrné čelní plochy",
+      "description": "Tmavé boky paprsků a světlé čelní plochy zvýrazňují hloubku disku. Tři fotografie stejného provedení.",
+      "category": "wheel",
+      "availability": "unconfirmed",
+      "specs": [],
+      "cover": {
+        "thumb": "assets/real-wheels/nfw-r027/asset-067-thumb.webp",
+        "alt": "Grafitový desetipaprsek se světlou hranou — čelní pohled",
+        "width": 1600,
+        "height": 1200,
+        "src": "assets/real-wheels/nfw-r027/asset-067.webp"
+      },
+      "media": [
+        {
+          "id": "nfw-oct2026-005",
+          "type": "image",
+          "src": "assets/real-wheels/nfw-r027/asset-067.webp",
+          "thumb": "assets/real-wheels/nfw-r027/asset-067-thumb.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Grafitový desetipaprsek se světlou hranou — čelní pohled"
+        },
+        {
+          "id": "nfw-oct2026-003",
+          "type": "image",
+          "src": "assets/real-wheels/nfw-r027/asset-065.webp",
+          "thumb": "assets/real-wheels/nfw-r027/asset-065-thumb.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Grafitový desetipaprsek se světlou hranou — pohled z boku"
+        },
+        {
+          "id": "nfw-oct2026-004",
+          "type": "image",
+          "src": "assets/real-wheels/nfw-r027/asset-066.webp",
+          "thumb": "assets/real-wheels/nfw-r027/asset-066-thumb.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Grafitový desetipaprsek se světlou hranou — pohled z opačné strany"
+        }
+      ]
+    },
+    {
+      "id": "nfw-r028",
+      "reference": "NFW-R028",
+      "title": "Černý členitý paprsek se světlou hranou",
+      "tone": "black",
+      "finishLabel": "Černá / stříbrné čelní plochy",
+      "description": "Výrazně členěné dělené paprsky v kontrastu černého lesku a světlých hran. Čelní a dva boční pohledy.",
+      "category": "wheel",
+      "availability": "unconfirmed",
+      "specs": [],
+      "cover": {
+        "thumb": "assets/real-wheels/nfw-r028/asset-071-thumb.webp",
+        "alt": "Černý členitý paprsek se světlou hranou — čelní pohled",
+        "width": 1600,
+        "height": 1200,
+        "src": "assets/real-wheels/nfw-r028/asset-071.webp"
+      },
+      "media": [
+        {
+          "id": "nfw-oct2026-009",
+          "type": "image",
+          "src": "assets/real-wheels/nfw-r028/asset-071.webp",
+          "thumb": "assets/real-wheels/nfw-r028/asset-071-thumb.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Černý členitý paprsek se světlou hranou — čelní pohled"
+        },
+        {
+          "id": "nfw-oct2026-007",
+          "type": "image",
+          "src": "assets/real-wheels/nfw-r028/asset-069.webp",
+          "thumb": "assets/real-wheels/nfw-r028/asset-069-thumb.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Černý členitý paprsek se světlou hranou — pohled z boku"
+        },
+        {
+          "id": "nfw-oct2026-008",
+          "type": "image",
+          "src": "assets/real-wheels/nfw-r028/asset-070.webp",
+          "thumb": "assets/real-wheels/nfw-r028/asset-070-thumb.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Černý členitý paprsek se světlou hranou — pohled z opačné strany"
+        }
+      ]
+    },
+    {
+      "id": "nfw-r029",
+      "reference": "NFW-R029",
+      "title": "Zlatý členitý paprsek se světlou hranou",
+      "tone": "bronze",
+      "finishLabel": "Světlý zlatý odstín / stříbrné čelní plochy",
+      "description": "Světlý zlatý odstín a jasné čelní hrany členitých paprsků. Tři úhly ukazují celé kolo i hloubku ráfku.",
+      "category": "wheel",
+      "availability": "unconfirmed",
+      "specs": [],
+      "cover": {
+        "thumb": "assets/real-wheels/nfw-r029/asset-074-thumb.webp",
+        "alt": "Zlatý členitý paprsek se světlou hranou — čelní pohled",
+        "width": 1600,
+        "height": 1200,
+        "src": "assets/real-wheels/nfw-r029/asset-074.webp"
+      },
+      "media": [
+        {
+          "id": "nfw-oct2026-012",
+          "type": "image",
+          "src": "assets/real-wheels/nfw-r029/asset-074.webp",
+          "thumb": "assets/real-wheels/nfw-r029/asset-074-thumb.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Zlatý členitý paprsek se světlou hranou — čelní pohled"
+        },
+        {
+          "id": "nfw-oct2026-010",
+          "type": "image",
+          "src": "assets/real-wheels/nfw-r029/asset-072.webp",
+          "thumb": "assets/real-wheels/nfw-r029/asset-072-thumb.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Zlatý členitý paprsek se světlou hranou — pohled z boku"
+        },
+        {
+          "id": "nfw-oct2026-011",
+          "type": "image",
+          "src": "assets/real-wheels/nfw-r029/asset-073.webp",
+          "thumb": "assets/real-wheels/nfw-r029/asset-073-thumb.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Zlatý členitý paprsek se světlou hranou — pohled z opačné strany"
         }
       ]
     }

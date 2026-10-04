@@ -30,15 +30,21 @@ function localAsset(src, video = false) {
   assert.ok(fs.statSync(resolved).size > 0, 'nonempty file exists: ' + src);
   if (!video) imagesToDecode.add(src);
 }
-assert.equal(rows.length, 62, 'all 62 supplied files are inventoried');
+assert.equal(rows.length, 74, '62 Drive sources and 12 supplied photographs are inventoried');
 assert.equal(review.files.length, rows.length, 'review and final inventory have the same source count');
-unique(rows.map(row => row.id), 'source Drive IDs are unique');
+unique(rows.map(row => row.id), 'source evidence IDs are unique');
 unique(rows.map(row => row.number), 'source evidence numbers are unique');
 assert.deepEqual(rows.map(row => row.id).sort(), review.files.map(row => row.id).sort(), 'no source file lost between review and conversion');
 const kinds = {};
 for (const row of rows) {
   kinds[row.kind] = (kinds[row.kind] || 0) + 1;
-  assert.ok(row.originalName && row.sourceUrl && row.sourceBytes > 0, 'source provenance for ' + row.id);
+  assert.ok(row.originalName && row.sourceBytes > 0, 'source provenance for ' + row.id);
+  if (row.sourceType === 'user-attachment') {
+    assert.equal(row.sourceUrl, null, 'local attachments have no invented public source URL');
+    assert.ok(inventory.sourceBatches.some(batch => batch.id === row.sourceBatchId), 'attachment references an evidenced batch');
+    assert.match(row.originalName, /^WhatsApp Image 2026-10-01 at 18\.44\.05(?: \(\d+\))?\.jpeg$/, 'only supplied product JPEGs are imported');
+    assert.equal(row.sourceSha256, row.sha256, 'attachment bytes match reviewed original');
+  } else assert.match(row.sourceUrl, /^https:\/\/drive\.google\.com\/file\/d\//, 'original Drive provenance remains intact');
   assert.match(row.sha256, /^[a-f0-9]{64}$/i, 'source fingerprint for ' + row.id);
   assert.ok(Array.isArray(row.originalDimensions) && row.originalDimensions.every(value => Number.isInteger(value) && value > 0), 'source dimensions for ' + row.id);
   if (row.publish) {
@@ -48,20 +54,22 @@ for (const row of rows) {
     if (row.web.poster) localAsset(row.web.poster);
   } else assert.ok(!row.web, 'unpublished source has no website media: ' + row.id);
 }
-assert.deepEqual(kinds, { 'product-video': 6, 'duplicate': 1, 'product-photo': 34, 'manufacturing-video': 2, 'catalogue-reference': 9, 'design-sheet': 6, 'brand-reference': 1, 'engineering-reference': 3 }, 'reviewed classification totals');
-assert.equal(rows.filter(row => row.publish).length, 42, '40 gallery media plus two manufacturing videos');
+assert.equal(rows.filter(row => row.sourceType === 'user-attachment').length, 12, 'all twelve supplied wheel photos included');
+assert.equal(rows.filter(row => row.sourceType !== 'user-attachment').length, 62, 'all original Drive sources preserved');
+assert.deepEqual(kinds, { 'product-video': 6, 'duplicate': 1, 'product-photo': 46, 'manufacturing-video': 2, 'catalogue-reference': 9, 'design-sheet': 6, 'brand-reference': 1, 'engineering-reference': 3 }, 'reviewed classification totals');
+assert.equal(rows.filter(row => row.publish).length, 54, '52 gallery media plus two manufacturing videos');
 const duplicates = rows.filter(row => row.kind === 'duplicate');
 for (const duplicate of duplicates) {
   const original = rows.find(row => row.id === duplicate.duplicateOf);
   assert.ok(original && !duplicate.publish, 'duplicate points to an inventoried original and is not published');
   assert.equal(duplicate.sha256, original.sha256, 'duplicate is confirmed by identical bytes');
 }
-assert.equal(collections.length, 25, '25 visually reviewed collections');
+assert.equal(collections.length, 29, '29 visually reviewed collections');
 unique(collections.map(item => item.id), 'collection IDs unique');
 unique(collections.map(item => item.reference), 'customer references unique');
-assert.equal(media.length, 40, '40 unique actual gallery media');
+assert.equal(media.length, 52, '52 unique actual gallery media');
 unique(media.map(item => item.id), 'a source is not repeated between collections');
-assert.equal(media.filter(item => item.type === 'image').length, 34);
+assert.equal(media.filter(item => item.type === 'image').length, 46);
 assert.equal(media.filter(item => item.type === 'video').length, 6);
 for (const item of collections) {
   assert.equal(item.availability, 'unconfirmed', 'photographs do not prove stock availability');
@@ -77,7 +85,12 @@ for (const item of collections) {
 }
 const production = rows.filter(row => row.kind === 'manufacturing-video');
 assert.ok(production.every(row => !media.some(entry => entry.id === row.id)), 'production footage stays separate from product gallery');
-console.log('PASS evidence: 62 sources; 25 collections; 34 photos + 6 product videos; 2 production videos; duplicate and reference material excluded; local assets exist');
+for (const id of ['nfw-r026', 'nfw-r027', 'nfw-r028', 'nfw-r029']) {
+  const item = collections.find(entry => entry.id === id);
+  assert.equal(item.media.length, 3, 'each October design keeps three distinct views');
+  assert.ok(item.media.every(entry => rows.find(row => row.id === entry.id).sourceBatchId === 'whatsapp-20261001'), 'October photos are not assigned to an unverified prior design');
+}
+console.log('PASS evidence: 74 sources; 29 collections; 46 photos + 6 product videos; 2 production videos; duplicate and reference material excluded; local assets exist');
 if (process.env.NFW_STATIC_ONLY === '1') process.exit(0);
 
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
@@ -189,10 +202,10 @@ async function decodeImages(page) {
       await dialog.locator('.real-wheel-viewer__media img').evaluate(img => img.decode());
       assert.equal(await dialog.locator('.real-wheel-thumb[aria-current="true"]').count(), 1);
       const href = await dialog.locator('.real-wheel-enquiry').getAttribute('href');
-      const mail = new URL(href);
-      assert.equal(mail.protocol, 'mailto:'); assert.equal(mail.pathname, 'info@oarts.cz'); assert.equal(mail.searchParams.size, 2);
-      assert.ok(mail.searchParams.get('subject').includes(sample.reference));
-      assert.ok(mail.searchParams.get('body').includes(sample.reference) && mail.searchParams.get('body').includes(sample.title), 'poptavka retains exact collection identity');
+      const enquiry = new URL(href, base + '/index.html');
+      assert.ok(enquiry.pathname.endsWith('/objednavka.html')); assert.equal(enquiry.searchParams.size, 2);
+      assert.equal(enquiry.searchParams.get('reference'), sample.reference, 'poptavka retains exact collection identity');
+      assert.equal(enquiry.searchParams.get('source'), 'gallery');
       await noOverflow(page, width + 'px dialog');
       await dialog.locator('.real-wheel-close').focus();
       await page.keyboard.press('Shift+Tab'); assert.equal(await page.evaluate(() => document.activeElement.className), 'real-wheel-enquiry', 'backwards tab stays inside dialog');

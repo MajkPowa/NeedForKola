@@ -37,14 +37,7 @@
       return [{ ...item, media, title: clean(item.title), reference: clean(item.reference) || item.id, tone: Object.hasOwn(labels, item.tone) && item.tone !== 'all' ? item.tone : 'other' }];
     });
   }
-  function mailLink(item) {
-    const configured = clean(window.NFW?.EMAIL);
-    const email = /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9.-]+\.[a-z]{2,}$/i.test(configured) ? configured : 'info@oarts.cz';
-    const lines = ['Dobrý den,', '', 'zaujalo mě provedení kol z galerie:', 'Reference: ' + item.reference, 'Provedení: ' + item.title];
-    if (clean(item.finishLabel)) lines.push('Povrch na fotografii: ' + clean(item.finishLabel));
-    lines.push('', 'Můj vůz, generace a rok:', 'Požadovaný rozměr:', 'Telefon pro konzultaci:', '', 'Prosím o ověření dostupnosti, specifikace, ceny a vhodnosti pro můj vůz.');
-    return 'mailto:' + email + '?subject=' + encodeURIComponent('Poptávka kol ' + item.reference + ' — ' + item.title) + '&body=' + encodeURIComponent(lines.join('\r\n'));
-  }
+  function enquiryLink(item) { return 'objednavka.html?reference=' + encodeURIComponent(item.reference) + '&source=gallery'; }
   function openDetail(item, opener) {
     if (activeDialog) activeDialog.close();
     const dialog = element('dialog', 'real-wheel-dialog');
@@ -88,8 +81,8 @@
     for (const spec of Array.isArray(item.specs) ? item.specs : []) if (clean(spec?.label) && clean(spec?.value)) specs.append(element('dt', '', spec.label), element('dd', '', spec.value));
     if (specs.childElementCount) info.append(specs);
     const note = element('p', 'real-wheel-dialog__note', 'Fotografie zachycují konkrétní provedení kol. Dostupnost, rozměry, cenu a vhodnost pro tvůj vůz potvrdíme v odpovědi na poptávku.'); note.id = 'realWheelDialogNote';
-    const cta = element('a', 'real-wheel-enquiry', 'Poptat tento design ↗'); cta.href = mailLink(item);
-    info.append(note, cta, element('small', 'real-wheel-mail-note', 'Otevře se e-mailová poptávka. Nejde o objednávku ani rezervaci.'));
+    const cta = element('a', 'real-wheel-enquiry', 'Poptat tento design ↗'); cta.href = enquiryLink(item);
+    info.append(note, cta, element('small', 'real-wheel-mail-note', 'Doplníš kontakt a odešleš nezávaznou poptávku přímo na webu.'));
     content.append(gallery, info); shell.append(head, content); dialog.append(shell);
     let index = 0;
     function pauseMedia() {

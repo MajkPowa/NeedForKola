@@ -1,0 +1,869 @@
+"use strict";
+let csrf = "",
+  current = "overview",
+  settingsCache = null,
+  authGeneration = 0;
+const $ = (s) => document.querySelector(s),
+  el = (tag, value, cls) => {
+    const n = document.createElement(tag);
+    if (value !== undefined) n.textContent = String(value);
+    if (cls) n.className = cls;
+    return n;
+  };
+const names = {
+  overview: "Přehled",
+  enquiries: "Poptávky a požadavky",
+  orders: "Objednávky",
+  products: "Sklad",
+  customers: "Zákazníci",
+  offers: "Nabídky",
+  movements: "Pohyby skladu",
+  outbox: "E-maily",
+  audit: "Historie",
+  settings: "Nastavení",
+};
+const states = {
+  new: "Nová",
+  contacted: "V řešení",
+  quoted: "Nabídka odeslána",
+  closed: "Uzavřeno",
+  pending: "Čeká na platbu",
+  paid: "Zaplaceno",
+  fulfilled: "Vydáno / odesláno",
+  cancelled: "Zrušeno",
+  blocked: "Čeká na odesílání",
+  open: "Platná",
+  accepted: "Přijata",
+  revoked: "Odvolána",
+  sent: "Odesláno",
+};
+const money = (n) =>
+    new Intl.NumberFormat("cs-CZ", {
+      style: "currency",
+      currency: "CZK",
+    }).format((n || 0) / 100),
+  date = (v) =>
+    v
+      ? new Date(typeof v === "number" ? v * 1000 : v).toLocaleString("cs-CZ")
+      : "";
+function status(message, error = false) {
+  $("#status").textContent = message;
+  $("#status").classList.toggle("error", error);
+}
+async function api(path, method = "GET", data) {
+  const headers = { "X-NFW-Request": "1" };
+  if (data !== undefined) headers["Content-Type"] = "application/json";
+  if (csrf) headers["X-CSRF-Token"] = csrf;
+  const r = await fetch("/api/admin/" + path, {
+    method,
+    headers,
+    credentials: "same-origin",
+    body: data === undefined ? undefined : JSON.stringify(data),
+  });
+  const json = await r.json();
+  if (!r.ok) {
+    if (r.status === 401 && path !== "login") showLogin();
+    throw new Error(json.error?.message || "Požadavek selhal.");
+  }
+  return json;
+}
+function action(label, fn, secondary = false) {
+  const b = el("button", label, secondary ? "secondary" : "");
+  b.type = "button";
+  b.addEventListener("click", () =>
+    Promise.resolve(fn()).catch((e) => status(e.message, true)),
+  );
+  return b;
+}
+function showLogin() {
+  authGeneration++;
+  if ($("#editor").open) $("#editor").close();
+  $("#editorBody").replaceChildren();
+  $("#content").replaceChildren();
+  $("#identity").textContent = "";
+  $("#workspace").hidden = true;
+  $("#login").hidden = false;
+  $("#logout").hidden = true;
+  csrf = "";
+}
+function showWorkspace(data) {
+  authGeneration++;
+  csrf = data.csrf;
+  $("#identity").textContent = data.label;
+  $("#workspace").hidden = false;
+  $("#login").hidden = true;
+  $("#logout").hidden = false;
+  $("#loginForm").reset();
+  load(current).catch((e) => status(e.message, true));
+}
+function table(columns, rows) {
+  const wrap = el("div", undefined, "table-wrap"),
+    t = el("table"),
+    head = el("tr");
+  for (const c of columns) head.append(el("th", c.label));
+  const th = el("thead");
+  th.append(head);
+  t.append(th);
+  const body = el("tbody");
+  for (const row of rows) {
+    const tr = el("tr");
+    for (const c of columns) {
+      const td = el("td"),
+        value = c.value(row);
+      if (value instanceof Node) td.append(value);
+      else td.textContent = value ?? "";
+      tr.append(td);
+    }
+    body.append(tr);
+  }
+  t.append(body);
+  wrap.append(t);
+  return wrap;
+}
+function modal(title) {
+  $("#editorTitle").textContent = title;
+  $("#editorBody").replaceChildren();
+  if (!$("#editor").open) $("#editor").showModal();
+  return $("#editorBody");
+}
+function field(
+  form,
+  label,
+  name,
+  value = "",
+  type = "text",
+  required = false,
+  wide = false,
+) {
+  const l = el("label", label, wide ? "full" : "");
+  const input = el(
+    type === "textarea" ? "textarea" : type === "select" ? "select" : "input",
+  );
+  input.name = name;
+  if (type !== "textarea" && type !== "select") input.type = type;
+  input.value = value ?? "";
+  input.required = required;
+  l.append(input);
+  form.append(l);
+  return input;
+}
+function check(form, label, name, value = false) {
+  const l = el("label", undefined, "check full"),
+    input = el("input");
+  input.type = "checkbox";
+  input.name = name;
+  input.checked = !!value;
+  l.append(input, document.createTextNode(label));
+  form.append(l);
+  return input;
+}
+function select(form, label, name, options, value) {
+  const input = field(form, label, name, "", "select", true);
+  for (const option of options) {
+    const opt = el("option", option.label);
+    opt.value = option.id;
+    input.append(opt);
+  }
+  input.value = value ?? options[0]?.id ?? "";
+  return input;
+}
+function formModal(title, build, onSave) {
+  const host = modal(title),
+    form = el("form"),
+    fields = el("div", undefined, "fields");
+  form.append(fields);
+  build(fields);
+  const actions = el("div", undefined, "actions"),
+    submit = el("button", "Uložit");
+  submit.type = "submit";
+  actions.append(submit);
+  const err = el("p", "", "error");
+  err.setAttribute("role", "alert");
+  form.append(actions, err);
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    submit.disabled = true;
+    try {
+      await onSave(new FormData(form));
+      $("#editor").close();
+      await load(current);
+      status("Uloženo.");
+    } catch (error) {
+      err.textContent = error.message;
+    } finally {
+      submit.disabled = false;
+    }
+  });
+  host.append(form);
+  return form;
+}
+function detail(row, type) {
+  const host = modal(row.reference || row.name || "Detail");
+  host.append(el("pre", JSON.stringify(row, null, 2)));
+  const notes = el("section");
+  notes.append(el("h3", "Interní poznámky"));
+  host.append(notes);
+  api("notes?type=" + type + "&id=" + encodeURIComponent(row.id))
+    .then((data) => {
+      for (const n of data.items) {
+        const p = el("p", date(n.created_at) + "\n" + n.body, "note-item");
+        notes.append(p);
+      }
+    })
+    .catch((e) => status(e.message, true));
+  const f = el("form"),
+    input = field(f, "Nová poznámka", "body", "", "textarea", true);
+  input.maxLength = 5000;
+  const submit = el("button", "Přidat poznámku");
+  f.append(submit);
+  f.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    submit.disabled = true;
+    try {
+      await api("notes", "POST", {
+        entityType: type,
+        entityId: row.id,
+        body: input.value,
+      });
+      notes.append(
+        el(
+          "p",
+          date(new Date().toISOString()) + "\n" + input.value,
+          "note-item",
+        ),
+      );
+      input.value = "";
+    } catch (err) {
+      status(err.message, true);
+    } finally {
+      submit.disabled = false;
+    }
+  });
+  host.append(f);
+}
+function changeStatus(row, type) {
+  const options =
+    type === "enquiries"
+      ? ["new", "contacted", "quoted", "closed"]
+      : {
+          pending: ["paid", "cancelled"],
+          paid: ["fulfilled", "cancelled"],
+          fulfilled: ["closed"],
+        }[row.status] || [];
+  if (!options.length) return status("Tento stav je konečný.");
+  formModal(
+    "Změna stavu " + row.reference,
+    (f) => {
+      select(
+        f,
+        "Nový stav",
+        "status",
+        options.map((id) => ({ id, label: states[id] })),
+      );
+      field(f, "Důvod / poznámka", "reason", "", "textarea", true, true);
+    },
+    (d) =>
+      api(type + "/" + row.id + "/status", "POST", {
+        status: d.get("status"),
+        reason: d.get("reason"),
+        version: row.version,
+      }),
+  );
+}
+function editProduct(row) {
+  formModal(
+    row ? "Upravit sadu" : "Nová skladová sada",
+    (f) => {
+      field(
+        f,
+        "SKU – jedinečná reference",
+        "sku",
+        row?.sku || "",
+        "text",
+        true,
+      );
+      field(f, "Název", "title", row?.title || "", "text", true);
+      field(
+        f,
+        "Cena za celou sadu v Kč (konečná)",
+        "price",
+        row?.price_cents ? row.price_cents / 100 : "",
+        "number",
+      );
+      field(
+        f,
+        "Disků v jedné sadě",
+        "wheels",
+        row?.wheels_per_set || 4,
+        "number",
+        true,
+      );
+      field(
+        f,
+        "Cesta fotografie (assets/real-wheels/... nebo assets/stock/...)",
+        "image",
+        row?.image || "",
+        "text",
+        false,
+        true,
+      );
+      field(
+        f,
+        "Popis",
+        "description",
+        row?.description || "",
+        "textarea",
+        false,
+        true,
+      );
+      field(
+        f,
+        "Parametry: jeden řádek „Název: hodnota“",
+        "specs",
+        (row?.specs || []).map((x) => x.label + ": " + x.value).join("\n"),
+        "textarea",
+        false,
+        true,
+      );
+      check(
+        f,
+        "Parametry a konečná cena za sadu jsou ověřené",
+        "confirmed",
+        row?.confirmed,
+      );
+      check(f, "Zveřejnit v nabídce", "published", row?.published);
+      f.append(
+        el(
+          "p",
+          "Počet sad měňte samostatným skladovým pohybem s důvodem. Nová sada má nulový stav.",
+          "muted full",
+        ),
+      );
+    },
+    (d) =>
+      api("products/" + (row?.id || crypto.randomUUID()), "PUT", {
+        sku: d.get("sku"),
+        title: d.get("title"),
+        priceCents: d.get("price")
+          ? Math.round(Number(d.get("price")) * 100)
+          : null,
+        wheelsPerSet: Number(d.get("wheels")),
+        image: d.get("image"),
+        description: d.get("description"),
+        specs: String(d.get("specs"))
+          .split("\n")
+          .filter((x) => x.trim())
+          .map((x) => {
+            const i = x.indexOf(":");
+            if (i < 1)
+              throw new Error(
+                "Každý parametr musí mít název a hodnotu oddělené dvojtečkou.",
+              );
+            return {
+              label: x.slice(0, i).trim(),
+              value: x.slice(i + 1).trim(),
+            };
+          }),
+        confirmed: d.get("confirmed") === "on",
+        published: d.get("published") === "on",
+        version: row?.version,
+      }),
+  );
+}
+function movement(row) {
+  formModal(
+    "Skladový pohyb · " + row.sku,
+    (f) => {
+      f.append(
+        el(
+          "p",
+          "Fyzicky " +
+            row.on_hand +
+            " sad, rezervováno " +
+            row.reserved +
+            ". Kladné číslo = příjem, záporné = úbytek.",
+          "full",
+        ),
+      );
+      field(f, "Změna počtu celých sad", "delta", "", "number", true);
+      field(f, "Důvod pohybu / doklad", "reason", "", "textarea", true, true);
+    },
+    (d) =>
+      api("products/" + row.id + "/movements", "POST", {
+        delta: Number(d.get("delta")),
+        reason: d.get("reason"),
+        version: row.version,
+      }),
+  );
+}
+async function makeOffer(row) {
+  const s = await api("settings");
+  formModal(
+    "Nabídka k " + row.reference,
+    (f) => {
+      field(f, "Název nabídky", "title", "", "text", true, true);
+      field(
+        f,
+        "Závazná specifikace včetně individualizace",
+        "specification",
+        "",
+        "textarea",
+        true,
+        true,
+      );
+      field(
+        f,
+        "Cena celé sady / zakázky v Kč (konečná)",
+        "price",
+        "",
+        "number",
+        true,
+      );
+      field(f, "Platnost nabídky ve dnech", "days", 7, "number", true);
+      select(
+        f,
+        "Doprava",
+        "shipping",
+        s.shippingMethods.map((x) => ({
+          id: x.id,
+          label: x.label + " · " + money(x.priceCents),
+        })),
+      );
+      select(f, "Platba", "payment", s.paymentMethods);
+      field(
+        f,
+        "Potvrzený termín dodání",
+        "delivery",
+        "",
+        "textarea",
+        true,
+        true,
+      );
+      f.append(
+        el(
+          "p",
+          "Nabídku po vytvoření nelze měnit. Odkaz sdílejte přímo se zákazníkem. Automatický e-mail se neposílá.",
+          "muted full",
+        ),
+      );
+    },
+    async (d) => {
+      const result = await api("offers", "POST", {
+        enquiryId: row.id,
+        title: d.get("title"),
+        specification: d.get("specification"),
+        subtotalCents: Math.round(Number(d.get("price")) * 100),
+        validDays: Number(d.get("days")),
+        shippingMethod: d.get("shipping"),
+        paymentMethod: d.get("payment"),
+        deliveryText: d.get("delivery"),
+      });
+      setTimeout(() => {
+        if (!csrf) return;
+        const host = modal("Soukromá nabídka vytvořena");
+        host.append(
+          el(
+            "p",
+            "Odkaz se z bezpečnostních důvodů zobrazuje pouze nyní. Zkopírujte ho a předejte zákazníkovi.",
+          ),
+        );
+        const input = field(host, "Odkaz", "link", result.link);
+        input.readOnly = true;
+        host.append(
+          action("Kopírovat odkaz", () =>
+            navigator.clipboard.writeText(result.link),
+          ),
+        );
+      }, 0);
+    },
+  );
+}
+function settingsForm(s) {
+  settingsCache = s;
+  const host = $("#content"),
+    form = el("form"),
+    f = el("div", undefined, "fields");
+  form.append(f);
+  select(
+    f,
+    "Daňový režim konečných cen",
+    "taxMode",
+    [
+      { id: "unconfirmed", label: "Nepotvrzeno" },
+      { id: "vat_included", label: "Plátce DPH – ceny včetně DPH" },
+      { id: "non_vat_payer", label: "Neplátce DPH" },
+    ],
+    s.taxMode,
+  );
+  field(
+    f,
+    "Verze obchodních podmínek",
+    "termsVersion",
+    s.termsVersion,
+    "text",
+    true,
+  );
+  field(
+    f,
+    "Bankovní účet pro platby",
+    "bankAccount",
+    s.bankAccount,
+    "text",
+    false,
+    true,
+  );
+  field(f, "Název dopravy", "shippingLabel", s.shippingMethods[0]?.label || "");
+  field(
+    f,
+    "Doprava – konečná cena v Kč",
+    "shippingPrice",
+    s.shippingMethods[0] ? s.shippingMethods[0].priceCents / 100 : "",
+    "number",
+  );
+  field(
+    f,
+    "Informace a termín dopravy",
+    "deliveryText",
+    s.shippingMethods[0]?.deliveryText || "",
+    "textarea",
+    false,
+    true,
+  );
+  field(
+    f,
+    "Pokyny k bankovnímu převodu",
+    "paymentInstructions",
+    s.paymentMethods[0]?.instructions || "",
+    "textarea",
+    false,
+    true,
+  );
+  check(
+    f,
+    "Právní dokumenty a obchodní proces jsou schválené pro prodej",
+    "legalReady",
+    s.legalReady,
+  );
+  check(
+    f,
+    "Povolit přímé skladové objednávky",
+    "orderingEnabled",
+    s.orderingEnabled,
+  );
+  check(
+    f,
+    "Povolit individuální nabídky s přijetím zákazníkem",
+    "offersEnabled",
+    s.offersEnabled,
+  );
+  f.append(
+    el(
+      "p",
+      "Bez potvrzených údajů zůstávají objednávky vypnuté. Skladové produkty musí mít samostatně ověřenou cenu, parametry, fotografii a fyzický počet. Tento formulář spravuje jeden způsob dopravy; API podporuje více způsobů.",
+      "notice full",
+    ),
+  );
+  const submit = el("button", "Uložit nastavení");
+  form.append(submit);
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    submit.disabled = true;
+    const d = new FormData(form);
+    try {
+      const shippingMethods = d.get("shippingLabel")
+        ? [
+            {
+              id: s.shippingMethods[0]?.id || "delivery",
+              label: d.get("shippingLabel"),
+              priceCents: Math.round(Number(d.get("shippingPrice")) * 100),
+              deliveryText: d.get("deliveryText"),
+            },
+          ]
+        : [];
+      const paymentMethods = d.get("paymentInstructions")
+        ? [
+            {
+              id: "bank_transfer",
+              label: "Bankovní převod",
+              instructions: d.get("paymentInstructions"),
+            },
+          ]
+        : [];
+      await api("settings", "PUT", {
+        version: s.version,
+        taxMode: d.get("taxMode"),
+        termsVersion: d.get("termsVersion"),
+        bankAccount: d.get("bankAccount"),
+        shippingMethods,
+        paymentMethods,
+        legalReady: d.get("legalReady") === "on",
+        orderingEnabled: d.get("orderingEnabled") === "on",
+        offersEnabled: d.get("offersEnabled") === "on",
+      });
+      status("Nastavení uloženo.");
+      await load("settings");
+    } catch (err) {
+      status(err.message, true);
+    } finally {
+      submit.disabled = false;
+    }
+  });
+  host.append(form);
+}
+async function load(tab) {
+  const generation = authGeneration;
+  current = tab;
+  status("");
+  $("#pageTitle").textContent = names[tab];
+  for (const b of $("#tabs").children)
+    b.setAttribute("aria-current", b.dataset.tab === tab ? "true" : "false");
+  const host = $("#content");
+  host.replaceChildren(el("p", "Načítám…", "muted"));
+  const data = await api(tab);
+  if (generation !== authGeneration || !csrf) return;
+  host.replaceChildren();
+  if (tab === "overview") {
+    const labels = {
+      newEnquiries: "Nové poptávky",
+      pendingOrders: "Čekají na platbu",
+      products: "Skladové položky",
+      customers: "Zákazníci",
+      blockedEmails: "Neodeslané e-maily",
+    };
+    const grid = el("div", undefined, "stats");
+    for (const [key, label] of Object.entries(labels)) {
+      const card = el("article", label, "stat");
+      card.append(el("b", data[key]));
+      grid.append(card);
+    }
+    host.append(grid);
+    host.append(
+      el(
+        "p",
+        "Správa skladu vede celé sady. Nová objednávka rezervuje zásobu, vydání ji odečte a zrušení uvolní rezervaci. Uhradu potvrzujte až po kontrole banky.",
+        "notice",
+      ),
+    );
+    return;
+  }
+  if (tab === "settings") {
+    settingsForm(data);
+    return;
+  }
+  const rows = data.items || [];
+  if (tab === "products") {
+    const bar = el("div", undefined, "toolbar");
+    bar.append(
+      el("p", "Množství je počet kompletních sad.", "muted"),
+      action("+ Přidat sadu", () => editProduct()),
+    );
+    host.append(bar);
+  }
+  if (!rows.length) {
+    host.append(el("p", "Zatím zde nejsou žádné záznamy.", "empty"));
+    return;
+  }
+  let columns = [];
+  if (tab === "enquiries")
+    columns = [
+      { label: "Reference", value: (r) => r.reference },
+      {
+        label: "Kontakt",
+        value: (r) => r.name + "\n" + r.email + "\n" + r.phone,
+      },
+      {
+        label: "Druh / vůz",
+        value: (r) =>
+          (({
+            enquiry: "Poptávka",
+            withdrawal: "Odstoupení",
+            complaint: "Reklamace",
+          })[r.kind] || r.kind) +
+          "\n" +
+          r.vehicle,
+      },
+      { label: "Provedení", value: (r) => r.product_reference },
+      { label: "Stav", value: (r) => states[r.status] },
+      { label: "Přijato", value: (r) => date(r.created_at) },
+      {
+        label: "Akce",
+        value: (r) => {
+          const x = el("div");
+          x.append(
+            action("Detail", () => detail(r, "enquiry")),
+            action("Stav", () => changeStatus(r, "enquiries"), true),
+          );
+          if (r.kind === "enquiry")
+            x.append(action("Nabídka", () => makeOffer(r), true));
+          return x;
+        },
+      },
+    ];
+  if (tab === "orders")
+    columns = [
+      { label: "Objednávka", value: (r) => r.reference },
+      {
+        label: "Zákazník",
+        value: (r) =>
+          r.customer_snapshot.name + "\n" + r.customer_snapshot.email,
+      },
+      { label: "Celkem", value: (r) => money(r.total_cents) },
+      { label: "Stav", value: (r) => states[r.status] },
+      { label: "Datum", value: (r) => date(r.created_at) },
+      {
+        label: "Akce",
+        value: (r) => {
+          const x = el("div");
+          x.append(
+            action("Detail", () => detail(r, "order")),
+            action("Stav", () => changeStatus(r, "orders"), true),
+          );
+          return x;
+        },
+      },
+    ];
+  if (tab === "products")
+    columns = [
+      { label: "SKU / sada", value: (r) => r.sku + "\n" + r.title },
+      {
+        label: "Cena za sadu",
+        value: (r) => (r.price_cents ? money(r.price_cents) : "Nepotvrzeno"),
+      },
+      {
+        label: "Fyzicky / rezervace",
+        value: (r) => r.on_hand + " / " + r.reserved,
+      },
+      { label: "Volných sad", value: (r) => r.on_hand - r.reserved },
+      { label: "Zveřejněno", value: (r) => (r.published ? "Ano" : "Ne") },
+      {
+        label: "Akce",
+        value: (r) => {
+          const x = el("div");
+          x.append(
+            action("Upravit", () => editProduct(r)),
+            action("Pohyb", () => movement(r), true),
+          );
+          return x;
+        },
+      },
+    ];
+  if (tab === "customers")
+    columns = [
+      { label: "Jméno", value: (r) => r.name },
+      { label: "E-mail", value: (r) => r.email },
+      { label: "Telefon", value: (r) => r.phone },
+      { label: "Aktualizace", value: (r) => date(r.updated_at) },
+      {
+        label: "Akce",
+        value: (r) => action("Detail / poznámky", () => detail(r, "customer")),
+      },
+    ];
+  if (tab === "offers")
+    columns = [
+      { label: "Nabídka", value: (r) => r.snapshot.title },
+      { label: "Cena", value: (r) => money(r.snapshot.totalCents) },
+      { label: "Stav", value: (r) => states[r.status] },
+      { label: "Platnost", value: (r) => date(r.expires_at) },
+      {
+        label: "Akce",
+        value: (r) => {
+          const x = el("div");
+          x.append(
+            action("Detail", () =>
+              modal(r.snapshot.title).append(
+                el("pre", JSON.stringify(r, null, 2)),
+              ),
+            ),
+          );
+          if (r.status === "open")
+            x.append(
+              action(
+                "Odvolat",
+                async () => {
+                  if (
+                    confirm(
+                      "Odvolat tuto nabídku? Zákazník ji už nebude moci přijmout.",
+                    )
+                  ) {
+                    await api("offers/" + r.id + "/revoke", "POST", {});
+                    load(current);
+                  }
+                },
+                true,
+              ),
+            );
+          return x;
+        },
+      },
+    ];
+  if (tab === "movements")
+    columns = [
+      { label: "SKU", value: (r) => r.sku },
+      { label: "Pohyb", value: (r) => r.kind },
+      { label: "Fyzický stav ±", value: (r) => r.delta_on_hand },
+      { label: "Rezervace ±", value: (r) => r.delta_reserved },
+      { label: "Důvod", value: (r) => r.reason },
+      { label: "Datum", value: (r) => date(r.created_at) },
+    ];
+  if (tab === "outbox")
+    columns = [
+      { label: "Příjemce", value: (r) => r.recipient },
+      { label: "Zpráva", value: (r) => r.template },
+      { label: "Stav", value: (r) => states[r.status] || r.status },
+      { label: "Důvod", value: (r) => r.last_error },
+      { label: "Vytvořeno", value: (r) => date(r.created_at) },
+    ];
+  if (tab === "audit")
+    columns = [
+      { label: "Akce", value: (r) => r.action },
+      { label: "Záznam", value: (r) => r.entity_type + " / " + r.entity_id },
+      { label: "Provedl", value: (r) => r.actor },
+      { label: "Detaily", value: (r) => r.details },
+      { label: "Datum", value: (r) => date(r.created_at) },
+    ];
+  host.append(table(columns, rows));
+  host.append(
+    el(
+      "p",
+      "Zobrazeny poslední záznamy. Export a účetnictví nejsou součástí této správy.",
+      "muted",
+    ),
+  );
+}
+for (const [key, label] of Object.entries(names)) {
+  const b = action(label, () => load(key), true);
+  b.dataset.tab = key;
+  $("#tabs").append(b);
+}
+$("#loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const b = $("#loginForm button");
+  b.disabled = true;
+  try {
+    const data = await api("login", "POST", {
+      token: new FormData(e.currentTarget).get("token"),
+    });
+    showWorkspace(data);
+    status("");
+  } catch (error) {
+    status(error.message, true);
+  } finally {
+    b.disabled = false;
+  }
+});
+$("#loginSubmit").disabled = false;
+$("#logout").addEventListener("click", async () => {
+  try {
+    await api("logout", "POST", {});
+    showLogin();
+    status("Odhlášeno.");
+  } catch (e) {
+    status(e.message, true);
+  }
+});
+$("#refresh").addEventListener("click", () =>
+  load(current).catch((e) => status(e.message, true)),
+);
+api("session")
+  .then(showWorkspace)
+  .catch(() => showLogin());
