@@ -437,7 +437,7 @@
       <div class="opt-grid">${[...O.DESIGNS].sort((a, b) => Number(b.sourceBrand === 'E6') - Number(a.sourceBrand === 'E6')).map(d => `<button type="button" class="opt ${S.design === d.id ? 'active' : ''}" data-set="design" data-val="${d.id}">
         ${O.renderWheel(Object.assign({}, wo, { design: d.id }), 'od' + d.id)}
         <div><b>${esc(d.name)}</b><span>Series ${d.series} · ${O.spokesLabel(d)}</span></div>
-        <span class="p">${d.pieces === 3 ? 'třídílné · ' : ''}${d.base ? '+' + kc(d.base) + ' / kolo' : 'v ceně'}</span></button>`).join('')}</div>
+        <span class="p">${d.sourceBrand === 'E6' ? 'Cena na potvrzení' : (d.pieces === 3 ? 'třídílné · ' : '') + (d.base ? '+' + kc(d.base) + ' / kolo' : 'v ceně')}</span></button>`).join('')}</div>
       <div class="note" style="margin-top:14px"><b>${esc(design().name)}</b> – ${esc(design().desc)}${directional() ? ' Levé a pravé kolo kujeme zrcadlově, přepínač je nad náhledem.' : ''}</div>`;
   }
 

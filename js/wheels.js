@@ -60,6 +60,11 @@
   const escape = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const renderWheel = (opts = {}) => {
     const d = find(DESIGNS, opts.design);
+    if (d.sourceBrand === 'E6' || d.previewMode === 'source-photo') {
+      const photo = d.productPhoto || global.NFW?.WHEEL_PRODUCTS?.[d.id]?.images?.[0]?.thumb || global.NFW?.WHEEL_PRODUCTS?.[d.id]?.images?.[0]?.src;
+      if (!photo) return `<span class="wheel-thumb" role="img" aria-label="${escape(d.name)} — fotografie není dostupná">Fotografie se připravuje.</span>`;
+      return `<img class="wheel-thumb e6-catalog-photo" src="${escape(photo)}" alt="${escape(d.name)} — původní produktová fotografie E6" loading="lazy" width="400" height="400">`;
+    }
     // Thumbnails show a known finish; the live studio renders the full configuration.
     const requested = String(opts.color || opts.colorHex || '').toLowerCase();
     const bronze = requested === 'bronze' || requested === '#9a6d3a';
