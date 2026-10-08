@@ -11,7 +11,7 @@
   const visuals = window.NFWVehicleVisuals;
   const models3D = window.NFWVehicleModels;
   const $ = s => document.querySelector(s);
-  const kc = n => Math.round(n).toLocaleString('cs-CZ') + ' Kč';
+  const kc = n => n == null ? 'Cena na potvrzení' : Math.round(n).toLocaleString('cs-CZ') + ' Kč';
   const nf = n => Number(n).toLocaleString('cs-CZ', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
   const esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   const HEX = /^#[0-9a-f]{6}$/i;
@@ -62,10 +62,10 @@
 
   /* ---------- stav ---------- */
   const S = {
-    step: 1, view: 'wheel', spin: !matchMedia('(prefers-reduced-motion: reduce)').matches, side: 'R',
+    step: 1, view: 'wheel-photo', spin: !matchMedia('(prefers-reduced-motion: reduce)').matches, side: 'R',
     brand: '', model: '', year: 0, generation: '', body: '',
     car: 'suv', bodyColor: 'white', carDetail: '',
-    design: 'apex10', color: 'silver', colorHex: '#b9bcc2', finish: 'gloss', lip: 'same', cap: 'black',
+    design: O.E6_DESIGNS?.[0]?.id || 'apex10', color: 'silver', colorHex: '#b9bcc2', finish: 'gloss', lip: 'same', cap: 'black',
     d: 21, stag: true, wf: 9, wr: 11.5, etf: 50, etr: 62, pcd: '5x130', cb: 71.6, weight: 10.5,
     extras: [], note: '', name: '', email: '', phone: '',
   };
@@ -87,6 +87,13 @@
     if (!S.body || !list.some(g => g.id === S.generation)) S.generation = autoSelect && S.body && list.length === 1 ? list[0].id : '';
   }
   const design = () => O.find(O.DESIGNS, S.design);
+  const sourcePhotoOnly = () => design().previewMode === 'source-photo';
+  const constructionLabel = d => d.constructionLabel || (d.pieces === 3 ? 'Třídílné' : d.pieces === 1 ? 'Monoblok' : 'Konstrukce k potvrzení');
+  let e6PhotoIndex = 0;
+  function normalisePreview() {
+    if (sourcePhotoOnly()) S.view = 'wheel-photo';
+    else if (S.view === 'wheel-photo') S.view = 'wheel';
+  }
   const bodyHex = () => O.find(O.BODY_COLORS, S.bodyColor).hex;
   const colorHex = () => S.color === 'custom' ? S.colorHex : O.find(O.COLORS, S.color).hex;
   const colorName = () => S.color === 'custom' ? 'Vlastní ' + S.colorHex.toUpperCase() : O.find(O.COLORS, S.color).name;
@@ -103,6 +110,7 @@
 
   /* ---------- cena a váha ---------- */
   function price() {
+    if (sourcePhotoOnly()) return { quoteOnly: true, base: null, design: null, width: null, fin: null, lip: null, cap: null, perWheel: null, set: null, extras: null, total: null };
     const dsg = design();
     const avgW = (S.wf + S.wr) / 2;
     const base = 21900 + (S.d - 18) * 1900;
@@ -116,6 +124,7 @@
     return { base, design: dsg.base, width, fin, lip, cap, perWheel, set, extras, total: set + extras };
   }
   function weightEst() {
+    if (sourcePhotoOnly()) return null;
     const avgW = (S.wf + S.wr) / 2;
     return Math.round((8.2 + (S.d - 18) * .55 + (avgW - 8) * .35 + (design().pieces === 3 ? 1.2 : 0)) * 10) / 10;
   }
@@ -148,7 +157,7 @@
     const conflict = (S.generation && !linked) || (S.body && linked && S.body !== linked.body) || (S.body && !V.getBodies(S.brand,S.model,S.year).some(b=>b.id===S.body));
     if (conflict) S.generation = '';
     syncGeneration(!conflict && !(src.has('generation') && !src.get('generation')));
-    if (['car','photo','wheel','showroom'].includes(src.get('view'))) S.view = src.get('view');
+    if (['car','photo','wheel','wheel-photo','showroom'].includes(src.get('view'))) S.view = src.get('view');
     else if (MOBILE.matches) S.view = 'wheel';
     // Old showroom links must never substitute a different car for the selection.
     if (S.view === 'showroom') S.view = 'car';
@@ -156,9 +165,11 @@
     // the wheel. Explicit shared hash states retain their chosen photo view.
     if (MOBILE.matches && src === p) S.view = 'wheel';
     if (has(O.CARS, src.get('car'))) { S.car = src.get('car'); applyCarDefaults(car()); }
+    if (!has(O.DESIGNS, src.get('design')) && ['car','photo','wheel','showroom'].includes(src.get('view'))) S.design = 'apex10';
     if (has(O.DESIGNS, src.get('design'))) { S.design = src.get('design'); if (src === p) S.step = 2; }
     if (has(O.COLORS, src.get('color'))) S.color = src.get('color');
     if (has(O.FINISHES, src.get('finish'))) S.finish = src.get('finish');
+    normalisePreview();
     if (src !== h) return;
     if (has(O.BODY_COLORS, h.get('bodyColor'))) S.bodyColor = h.get('bodyColor');
     if (has(O.LIPS, h.get('lip'))) S.lip = h.get('lip');
@@ -184,6 +195,7 @@
   }
   const KEYS = ['brand', 'model', 'year', 'generation', 'body', 'view', 'car', 'bodyColor', 'design', 'color', 'colorHex', 'finish', 'lip', 'cap', 'd', 'wf', 'wr', 'etf', 'etr', 'pcd', 'cb', 'weight', 'side', 'step'];
   function writeURL() {
+    normalisePreview();
     const h = new URLSearchParams();
     KEYS.forEach(k => h.set(k, String(S[k])));
     h.set('stag', S.stag ? '1' : '0');
@@ -211,10 +223,11 @@
   }
 
   /* ---------- render: scéna ---------- */
-  const selected3D = () => models3D?.resolve(S) || null;
+  const selected3D = () => sourcePhotoOnly() ? null : models3D?.resolve(S) || null;
   const stageAsset = () => S.view === 'car' ? selected3D() : null;
   const isPhotoView = () => S.view === 'photo' || (S.view === 'car' && !selected3D());
   function stageTitle() {
+    if (sourcePhotoOnly()) return `<small>Produktová fotografie E6</small>${esc(design().name)}`;
     const asset = stageAsset();
     const heading = vehicleName();
     const subtitle = asset ? '360° studio · tvůj vůz ve 3D' : `Konfigurátor · krok ${S.step} / 5`;
@@ -232,7 +245,7 @@
     const message = matchingColour
       ? '3D náhled se nepodařilo načíst. Zobrazuje se uložený render vybraného designu a barvy.'
       : '3D náhled se nepodařilo načíst. Náhled designu je ve stříbrné; vybraný odstín zůstává uložený v konfiguraci.';
-    container.innerHTML = `<div class="viewer-fallback" data-wheel-design="${esc(S.design)}" data-wheel-colour="${esc(selected.colour)}">${O.renderWheel(wheelOpts())}<p><b>${esc(selected.name)} · ${esc(selected.colourName)}</b><br><span data-fallback-message>${message}</span></p><button class="btn btn--ghost" type="button" data-retry-3d>Zkusit znovu</button></div>`;
+    container.innerHTML = `<div class="viewer-fallback" data-wheel-design="${esc(S.design)}" data-wheel-colour="${esc(selected.colour)}">${sourcePhotoOnly() ? `<img class="wheel-thumb e6-catalog-photo" src="${esc(design().productPhoto)}" alt="${esc(design().name)} — fotografie E6" width="96" height="96">` : O.renderWheel(wheelOpts())}<p><b>${esc(selected.name)} · ${esc(selected.colourName)}</b><br><span data-fallback-message>${message}</span></p><button class="btn btn--ghost" type="button" data-retry-3d>Zkusit znovu</button></div>`;
     // A missing car asset can still have a working GPU. Render the selected wheel
     // independently; a total WebGL failure keeps the explicitly labelled stored image.
     if (!module?.renderThumbnail) return;
@@ -246,15 +259,36 @@
       container.querySelector('[data-fallback-message]').textContent = 'Interaktivní náhled se nepodařilo načíst. Zobrazuje se render tvého vybraného kola.';
     } catch { /* Keep the usable, accurately labelled stored design preview. */ }
   }
+  function renderE6Product(v) {
+    const product = O.WHEEL_PRODUCTS?.[S.design];
+    const photos = product?.images || [];
+    e6PhotoIndex = Math.min(Math.max(0, e6PhotoIndex), Math.max(0, photos.length - 1));
+    const photo = photos[e6PhotoIndex];
+    if (!photo) { v.innerHTML = '<p class="note" role="status">Fotografii tohoto modelu připravujeme.</p>'; return; }
+    v.innerHTML = `<figure class="e6-product-photo"><img src="${esc(photo.src)}" alt="${esc(product.name)} — ${esc(photo.label || 'produktová fotografie E6')}" width="${photo.width}" height="${photo.height}"><figcaption><b>${esc(product.name)} · ${e6PhotoIndex + 1} / ${photos.length}</b><span>${esc(photo.caption || 'Původní produktová fotografie E6.')}</span><small>Fotografie zachycuje původní provedení. Požadovanou barvu, rozměry a dostupnost ověříme při konzultaci; přesný 3D podklad tohoto modelu zatím nemáme.</small><a href="${esc(product.sourceUrl)}" target="_blank" rel="noopener">Model na E6 ↗</a></figcaption></figure><div class="e6-product-gallery" aria-label="Fotografie ${esc(product.name)}">${photos.map((p, i) => `<button type="button" data-e6-photo="${i}" aria-label="Produktový pohled ${i + 1}" aria-pressed="${i === e6PhotoIndex}"><img src="${esc(p.thumb || p.src)}" alt="" width="96" height="96" loading="lazy"></button>`).join('')}</div>`;
+    v.querySelector('.e6-product-photo > img').addEventListener('error', () => {
+      v.innerHTML = '<div class="note" role="status">Fotografii se nepodařilo načíst. <button type="button" data-e6-photo="0">Načíst znovu</button></div>';
+    }, { once: true });
+  }
   function renderStage() {
-    const tabs = [['car', 'Můj vůz'], ['wheel', '3D kolo'], ...(selected3D() ? [['photo', 'Fotografie']] : [])];
+    normalisePreview();
+    const tabs = sourcePhotoOnly() ? [['wheel-photo', 'Fotografie E6 modelu']] : [['car', 'Můj vůz'], ['wheel', '3D kolo'], ...(selected3D() ? [['photo', 'Fotografie']] : [])];
     const activeTab = S.view === 'photo' && !selected3D() ? 'car' : S.view;
-    $('#stageHead').innerHTML = `<h1>${stageTitle()}</h1><div class="stage-controls"><div class="seg" aria-label="Typ náhledu">${tabs.map(([id,label])=>`<button type="button" class="${activeTab===id?'active':''}" data-view="${id}" aria-pressed="${activeTab===id}"><span>${label}</span></button>`).join('')}</div>${!isPhotoView()?`<label class="toggle"><input type="checkbox" id="spinToggle" ${S.spin?'checked':''}> Rotace</label>`:''}</div>`;
+    $('#stageHead').innerHTML = `<h1>${stageTitle()}</h1><div class="stage-controls"><div class="seg" aria-label="Typ náhledu">${tabs.map(([id,label])=>`<button type="button" class="${activeTab===id?'active':''}" data-view="${id}" aria-pressed="${activeTab===id}"><span>${label}</span></button>`).join('')}</div>${!sourcePhotoOnly() && !isPhotoView()?`<label class="toggle"><input type="checkbox" id="spinToggle" ${S.spin?'checked':''}> Rotace</label>`:''}</div>`;
     renderStageView(); renderStageFoot();
   }
   async function renderStageView() {
     const v = $('#stageView');
     const token = ++renderToken;
+    v.classList.toggle('has-e6-product', sourcePhotoOnly());
+    if (sourcePhotoOnly()) {
+      pendingViewerAbort?.abort(); pendingViewerAbort = null;
+      viewer?.dispose(); viewer = null; photoViewer?.dispose(); photoViewer = null;
+      viewerKey = 'e6-photo:' + S.design;
+      v.classList.remove('has-vehicle-3d', 'has-vehicle-photo', 'is-wheel-reference', 'is-visual-loading');
+      v.closest('.cfg-stage')?.classList.remove('has-vehicle-3d', 'has-vehicle-visual', 'has-wheel-reference');
+      renderE6Product(v); return;
+    }
     const asset = stageAsset();
     if (isPhotoView() && visuals && !visuals.isReady) {
       pendingViewerAbort?.abort(); pendingViewerAbort = null;
@@ -337,6 +371,10 @@
   }
 
   function renderStageFoot() {
+    if (sourcePhotoOnly()) {
+      $('#stageFoot').innerHTML = `<div class="e6-parameter-note">${esc(constructionLabel(design()))} · požadovaná barva ${esc(colorName())}. Rozměry a provedení ověříme při konzultaci.</div>`;
+      return;
+    }
     const sw = stageAsset() ? `<div class="studio-palette"><div><span>Kola</span><div class="swatches">${O.COLORS.map(c => `<button type="button" class="swatch ${S.color === c.id ? 'active' : ''}" style="background:${c.hex}" title="${esc(c.name)}" aria-label="Kolo ${esc(c.name)}" data-set="color" data-val="${c.id}"></button>`).join('')}</div></div><div><span>Karoserie</span><div class="swatches">${O.BODY_COLORS.map(c => `<button type="button" class="swatch ${S.bodyColor === c.id ? 'active' : ''}" style="background:${c.hex}" title="${esc(c.name)}" aria-label="Karoserie ${esc(c.name)}" data-set="bodyColor" data-val="${c.id}"></button>`).join('')}</div></div></div>` : isPhotoView()
       ? `<div class="vehicle-wheel-colours"><div class="swatches">${O.COLORS.map(c => `<button type="button" class="swatch ${S.color === c.id ? 'active' : ''}" style="background:${c.hex}" title="${esc(c.name)}" aria-label="Kolo ${esc(c.name)}" data-set="color" data-val="${c.id}"></button>`).join('')}</div><button class="text-link" type="button" data-view="wheel">Detail kola ve 3D →</button></div>`
       : `<div class="swatches">${O.COLORS.map(c => `<button type="button" class="swatch ${S.color === c.id ? 'active' : ''}" style="background:${c.hex}" title="${esc(c.name)}" aria-label="Kolo ${esc(c.name)}" data-set="color" data-val="${c.id}"></button>`).join('')}</div>`;
@@ -395,8 +433,8 @@
 
   function panelDesign() {
     const wo = wheelOpts();
-    return `<h2>02 · Vyber design</h2><p class="sub">Třináct návrhových designů v prostorovém náhledu. Finální provedení potvrdíme v technickém výkresu.</p>
-      <div class="opt-grid">${O.DESIGNS.map(d => `<button type="button" class="opt ${S.design === d.id ? 'active' : ''}" data-set="design" data-val="${d.id}">
+    return `<h2>02 · Vyber design</h2><p class="sub">Všechny modely E6 jsou první, s reálnými produktovými fotografiemi. Kolekce OARTS pokračuje níže.</p>
+      <div class="opt-grid">${[...O.DESIGNS].sort((a, b) => Number(b.sourceBrand === 'E6') - Number(a.sourceBrand === 'E6')).map(d => `<button type="button" class="opt ${S.design === d.id ? 'active' : ''}" data-set="design" data-val="${d.id}">
         ${O.renderWheel(Object.assign({}, wo, { design: d.id }), 'od' + d.id)}
         <div><b>${esc(d.name)}</b><span>Series ${d.series} · ${O.spokesLabel(d)}</span></div>
         <span class="p">${d.pieces === 3 ? 'třídílné · ' : ''}${d.base ? '+' + kc(d.base) + ' / kolo' : 'v ceně'}</span></button>`).join('')}</div>
@@ -431,25 +469,25 @@
       <div class="note" style="margin-top:10px">Návrhové výchozí hodnoty, nutno ověřit: ${esc(f.pcd)} · CB ${nf(f.cb)} mm · ${f.d} × ${nf(f.wf)}" ET${f.etf}${f.wf !== f.wr ? ' / ' + f.d + ' × ' + nf(f.wr) + '" ET' + f.etr : ''}</div>
       <h4>Cílová váha kola <em>${nf(S.weight)} kg</em></h4>
       <div class="range"><input type="range" min="7" max="16" step="0.1" value="${S.weight}" data-set="weight" data-type="num" data-live="1" aria-label="Cílová váha kola"><output>${nf(S.weight)} kg</output></div>
-      <p class="hint muted" style="font-size:12px;margin:6px 0 0">Odhad pro tuto konfiguraci: ~${nf(weightEst())} kg. Nižší cíl znamená více frézování a tenčí profily – potvrdíme ho v technickém výkresu.</p>
+      ${sourcePhotoOnly() ? '<p class="hint muted">Cílovou váhu E6 ověříme s výrobcem podle zvolených rozměrů.</p>' : `      <p class="hint muted" style="font-size:12px;margin:6px 0 0">Odhad pro tuto konfiguraci: ~${nf(weightEst())} kg. Nižší cíl znamená více frézování a tenčí profily – potvrdíme ho v technickém výkresu.</p>`}
       <h4>Poznámka k fitmentu</h4>
       <div class="field"><textarea data-set="note" data-type="text" maxlength="300" aria-label="Poznámka k fitmentu" placeholder="Brzdy (např. PCCB, šestipístové), sražení, podběhy, rozšíření, adaptéry…">${esc(S.note)}</textarea></div>`)} `;
   }
 
   function panelLook() {
-    return `<h2>04 · Vzhled</h2><p class="sub">Barva, povrch, límec, krytka. Tady se rodí charakter kola.</p>
+    return `<h2>04 · Vzhled</h2><p class="sub">${sourcePhotoOnly() ? 'Zadej požadovanou barvu a povrch. Fotografie E6 zachovává původní provedení; změny potvrdíme při konzultaci.' : 'Barva, povrch, límec, krytka. Tady se rodí charakter kola.'}</p>
       <h4>Barva <em>${esc(colorName())}</em></h4>
       <div class="swatches">${O.COLORS.map(c => `<button type="button" class="swatch ${S.color === c.id ? 'active' : ''}" style="background:${c.hex}" title="${esc(c.name)}" aria-label="${esc(c.name)}" data-set="color" data-val="${c.id}"></button>`).join('')}
         <label class="swatch swatch--custom ${S.color === 'custom' ? 'active' : ''}" title="Vlastní odstín (RAL / HEX)"><input type="color" id="customColor" value="${esc(S.colorHex)}" aria-label="Vlastní odstín"></label></div>
       <p class="hint muted" style="font-size:12px;margin:4px 0 0">Vlastní odstín? Klikni na duhový kruh nebo nám v poznámce napiš kód RAL.</p>
       <h4>Povrchová úprava</h4>
-      <div class="opt-list">${O.FINISHES.map(f => `<button type="button" class="opt ${S.finish === f.id ? 'active' : ''}" data-set="finish" data-val="${f.id}" style="grid-template-columns:1fr auto"><div><b>${f.name}</b><span>${f.desc}</span></div><span class="p">${f.price ? '+' + kc(f.price) + ' / kolo' : 'v ceně'}</span></button>`).join('')}</div>
+      <div class="opt-list">${O.FINISHES.map(f => `<button type="button" class="opt ${S.finish === f.id ? 'active' : ''}" data-set="finish" data-val="${f.id}" style="grid-template-columns:1fr auto"><div><b>${f.name}</b><span>${f.desc}</span></div><span class="p">${sourcePhotoOnly() ? 'K potvrzení' : f.price ? '+' + kc(f.price) + ' / kolo' : 'v ceně'}</span></button>`).join('')}</div>
       ${detailsHTML('finishing', 'Límec, krytka a doplňky', `<h4>Límec</h4>
-      <div class="chips">${O.LIPS.map(l => `<button type="button" class="chip ${S.lip === l.id ? 'active' : ''}" data-set="lip" data-val="${l.id}"><span>${l.name}${l.price ? ' · +' + kc(l.price) : ''}</span></button>`).join('')}</div>
+      <div class="chips">${O.LIPS.map(l => `<button type="button" class="chip ${S.lip === l.id ? 'active' : ''}" data-set="lip" data-val="${l.id}"><span>${l.name}${!sourcePhotoOnly() && l.price ? ' · +' + kc(l.price) : ''}</span></button>`).join('')}</div>
       <h4>Středová krytka</h4>
-      <div class="chips">${O.CAPS.map(c => `<button type="button" class="chip ${S.cap === c.id ? 'active' : ''}" data-set="cap" data-val="${c.id}"><span>${esc(c.name)}${c.price ? ' · +' + kc(c.price) : ''}</span></button>`).join('')}</div>
+      <div class="chips">${O.CAPS.map(c => `<button type="button" class="chip ${S.cap === c.id ? 'active' : ''}" data-set="cap" data-val="${c.id}"><span>${esc(c.name)}${!sourcePhotoOnly() && c.price ? ' · +' + kc(c.price) : ''}</span></button>`).join('')}</div>
       <h4>Individuální doplňky <em>za sadu</em></h4>
-      <div class="opt-list">${EXTRAS.map(x => `<label class="check"><input type="checkbox" data-extra="${x.id}" ${S.extras.includes(x.id) ? 'checked' : ''}><div><b>${x.name}</b><span>${x.desc}</span></div><span class="p">+${kc(x.price)}</span></label>`).join('')}</div>`)} `;
+      <div class="opt-list">${EXTRAS.map(x => `<label class="check"><input type="checkbox" data-extra="${x.id}" ${S.extras.includes(x.id) ? 'checked' : ''}><div><b>${x.name}</b><span>${x.desc}</span></div><span class="p">${sourcePhotoOnly() ? 'K potvrzení' : '+' + kc(x.price)}</span></label>`).join('')}</div>`)} `;
   }
 
   function panelSummary() {
@@ -472,21 +510,21 @@
       ${detailsHTML('summary-spec', 'Úplná specifikace a rozpis ceny', `
       <table class="spec">
         <tr><th>Vůz</th><td>${esc(vehicleName())}${S.carDetail ? '<br><span class="muted">' + esc(S.carDetail) + '</span>' : ''}</td></tr>
-        <tr><th>Design</th><td>${esc(d.name)} · Series ${d.series} · ${d.pieces === 3 ? 'třídílné' : 'monoblok'}${directional() ? ' · ' + (S.side === 'L' ? 'zrcadlová sada L/P' : 'zrcadlová sada L/P') : ''}</td></tr>
+        <tr><th>Design</th><td>${esc(d.name)} · Series ${d.series} · ${constructionLabel(d)}${directional() ? ' · ' + (S.side === 'L' ? 'zrcadlová sada L/P' : 'zrcadlová sada L/P') : ''}</td></tr>
         <tr><th>Přední</th><td>${esc(sizeF())}</td></tr>
         <tr><th>Zadní</th><td>${esc(sizeR())}</td></tr>
         <tr><th>PCD / CB</th><td>${esc(S.pcd)} / ${nf(S.cb)} mm</td></tr>
         <tr><th>Barva</th><td>${esc(colorName())} · ${O.find(O.FINISHES, S.finish).name}</td></tr>
         <tr><th>Límec</th><td>${O.find(O.LIPS, S.lip).name}</td></tr>
         <tr><th>Krytka</th><td>${O.find(O.CAPS, S.cap).name}</td></tr>
-        <tr><th>Cílová váha</th><td>${nf(S.weight)} kg <span class="muted">(odhad ~${nf(weightEst())} kg)</span></td></tr>
+        <tr><th>Cílová váha</th><td>${nf(S.weight)} kg <span class="muted">${sourcePhotoOnly() ? '(požadavek k ověření)' : '(odhad ~' + nf(weightEst()) + ' kg)'}</span></td></tr>
         <tr><th>Doplňky</th><td>${extras.length ? extras.map(e => esc(e.name)).join(', ') : '<span class="muted">žádné</span>'}</td></tr>
         ${S.note ? `<tr><th>Poznámka</th><td>${esc(S.note)}</td></tr>` : ''}
       </table>
       <h4>Need For Wheels štítek <em>náhled</em></h4>
       <div class="label-svg">${label}</div>
       <p class="hint muted" style="font-size:12px">Každá krabice dostane vlastní štítek s parametry konkrétního kola (FL / FR / RL / RR).</p>
-      <h4>Orientační cena <em>sada 4 kol</em></h4>
+      ${sourcePhotoOnly() ? '<h4>Cena na potvrzení</h4><p class="note">Závaznou cenu a provedení E6 potvrdíme při konzultaci podle požadovaných rozměrů a povrchu.</p>' : `      <h4>Orientační cena <em>sada 4 kol</em></h4>
       <table class="spec">
         <tr><th>Základ ${S.d}"</th><td class="r">${kc(p.base)} / kolo</td></tr>
         ${p.design ? `<tr><th>Design ${esc(d.name)}</th><td class="r">+${kc(p.design)} / kolo</td></tr>` : ''}
@@ -498,7 +536,7 @@
         ${p.extras ? `<tr><th>Doplňky</th><td class="r">+${kc(p.extras)}</td></tr>` : ''}
         <tr class="total"><th>Celkem</th><td class="r">${kc(p.total)}</td></tr>
       </table>
-      <div class="note note--warn" style="margin-top:10px">Cena je orientační, bez DPH a dopravy. Závaznou nabídku potvrdíme společně s technickým výkresem.</div>`)}
+      <div class="note note--warn" style="margin-top:10px">Cena je orientační, bez DPH a dopravy. Závaznou nabídku potvrdíme společně s technickým výkresem.</div>`}`)}
       <section class="flow-enquiry" id="enquiryForm" aria-labelledby="enquiryTitle">
       <h4 id="enquiryTitle" tabindex="-1">Kam se ti ozveme?</h4>
       <p class="flow-guidance">Doplň kontakt. Připravíme e-mail s celým návrhem, který odešleš ze své pošty.</p>
@@ -523,7 +561,7 @@
   function renderFoot() {
     const p = price();
     $('#panelFoot').innerHTML = `
-      <div class="mobile-flow-status"><button type="button" data-flow-preview aria-label="Zobrazit náhled vybraného kola ${esc(design().name)}">${O.renderWheel(wheelOpts())}<span>${esc(design().name)}<small>Náhled ↑</small></span></button><div class="price"><div><small>Orientačně · 4 kola · bez DPH</small><b>${kc(p.total)}</b></div><div class="per">${kc(p.perWheel)} / kolo<br>~${nf(weightEst())} kg / kolo</div></div></div>
+      <div class="mobile-flow-status"><button type="button" data-flow-preview aria-label="Zobrazit náhled vybraného kola ${esc(design().name)}">${sourcePhotoOnly() ? `<img class="wheel-thumb e6-catalog-photo" src="${esc(design().productPhoto)}" alt="${esc(design().name)} — fotografie E6" width="96" height="96">` : O.renderWheel(wheelOpts())}<span>${esc(design().name)}<small>Náhled ↑</small></span></button><div class="price"><div><small>${sourcePhotoOnly() ? 'E6 · podle požadovaného provedení' : 'Orientačně · 4 kola · bez DPH'}</small><b>${kc(p.total)}</b></div>${sourcePhotoOnly() ? '<div class="per">Potvrdíme při konzultaci.</div>' : `<div class="per">${kc(p.perWheel)} / kolo<br>~${nf(weightEst())} kg / kolo</div>`}</div></div>
       <div class="panel-nav">
         <button class="btn btn--ghost" type="button" id="prevStep" data-prev ${S.step === 1 ? 'disabled' : ''}><span>← Zpět</span></button>
         ${S.step < 5 ? `<button class="btn btn--primary" type="button" id="nextStep" data-next><span>Pokračovat →</span></button>` : `<a class="btn btn--primary" id="sendMail2" data-flow-enquiry href="#enquiryForm"><span>${MOBILE.matches && !enquiryReady ? 'Zadat kontakt →' : 'Připravit e-mail →'}</span></a>`}
@@ -541,16 +579,17 @@
       `Odkaz na konfiguraci: ${shareURL()}`,
       '',
       `Vůz: ${vehicleName()}${S.carDetail ? ' – ' + S.carDetail : ''} (barva: ${O.find(O.BODY_COLORS, S.bodyColor).name})`,
-      `Design: ${d.name} · Series ${d.series} · ${d.pieces === 3 ? 'třídílné' : 'monoblok'}${directional() ? ' · zrcadlová sada L/P' : ''}`,
+      `Design: ${d.name} · Series ${d.series} · ${constructionLabel(d)}${directional() ? ' · zrcadlová sada L/P' : ''}`,
       `Přední: ${sizeF()}`,
       `Zadní: ${sizeR()}`,
       `PCD / CB: ${S.pcd} / ${nf(S.cb)} mm`,
       `Barva: ${colorName()} · Povrch: ${O.find(O.FINISHES, S.finish).name}`,
       `Límec: ${O.find(O.LIPS, S.lip).name} · Krytka: ${O.find(O.CAPS, S.cap).name}`,
-      `Cílová váha: ${nf(S.weight)} kg (odhad ~${nf(weightEst())} kg)`,
+      `Cílová váha: ${nf(S.weight)} kg${sourcePhotoOnly() ? ' (požadavek k ověření)' : ' (odhad ~' + nf(weightEst()) + ' kg)'}`,
       `Doplňky: ${extras.length ? extras.join(', ') : 'žádné'}`,
       '',
-      `Orientační cena: ${kc(p.total)} bez DPH (${kc(p.perWheel)} / kolo)`,
+      sourcePhotoOnly() ? 'Cena E6: na potvrzení při konzultaci.' : `Orientační cena: ${kc(p.total)} bez DPH (${kc(p.perWheel)} / kolo)`,
+      sourcePhotoOnly() ? `Model E6: ${d.sourceUrl}; fotografie původního provedení, požadované parametry k potvrzení.` : null,
       S.note ? '' : null,
       S.note ? `Poznámka: ${S.note}` : null,
     ].filter(l => l !== null).join('\r\n');
@@ -609,6 +648,8 @@
 
   /* ---------- události (delegace) ---------- */
   document.addEventListener('click', e => {
+    const e6Photo = e.target.closest('[data-e6-photo]');
+    if (e6Photo) { e6PhotoIndex = Number(e6Photo.dataset.e6Photo) || 0; renderStageView(); return; }
     if (e.target.closest('[data-flow-preview]')) {
       S.view = 'wheel'; writeURL(); renderStage();
       announce(`Náhled ${design().name}. ${colorName()}.`);
@@ -617,7 +658,7 @@
     const step = e.target.closest('[data-step]');
     if (step) return goStep(Number(step.dataset.step));
     const view = e.target.closest('[data-view]');
-    if (view) { S.view = ['car', 'photo', 'wheel'].includes(view.dataset.view) ? view.dataset.view : 'car'; writeURL(); renderStage(); $('#stageHead').querySelector(`[data-view="${S.view}"]`)?.focus({preventScroll:true}); return; }
+    if (view) { S.view = ['car', 'photo', 'wheel', 'wheel-photo'].includes(view.dataset.view) ? view.dataset.view : 'car'; writeURL(); renderStage(); $('#stageHead').querySelector(`[data-view="${S.view}"]`)?.focus({preventScroll:true}); return; }
     if (e.target.closest('[data-studio-fullscreen]')) {
       if (document.fullscreenElement) document.exitFullscreen();
       else $('#stageView').requestFullscreen?.().catch(() => {});
@@ -661,10 +702,11 @@
       const val = set.dataset.type === 'num' ? Number(set.dataset.val) : set.dataset.val;
       if (S[key] === val) return;
       S[key] = val;
+      if (key === 'design') e6PhotoIndex = 0;
       if (key === 'car') applyCarDefaults(car());
       update({ head: key === 'car' || key === 'design' });
       if (key === 'design') announce(`Vybráno ${design().name}. Prohlédni si náhled nebo pokračuj k rozměrům.`);
-      else if (key === 'color' || key === 'finish') announce(`${colorName()}, ${O.find(O.FINISHES,S.finish).name}. Náhled je aktualizovaný.`);
+      else if (key === 'color' || key === 'finish') announce(`${colorName()}, ${O.find(O.FINISHES,S.finish).name}. ${sourcePhotoOnly() ? 'Požadavek uložen; fotografie je původní provedení.' : 'Náhled je aktualizovaný.'}`);
     }
   });
 
