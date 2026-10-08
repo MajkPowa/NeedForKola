@@ -31,7 +31,7 @@
       <div class="catalog-totals" aria-label="Rozsah katalogu"><span><b>${num(V.brands.length)}</b>značek</span><span><b>${num(models.length)}</b>modelů</span><span><b>${num(totalVariants)}</b>variant v katalogu</span></div>
     </div>
     <div class="catalog-filters" role="search" aria-label="Vyhledávání vozů">
-      <label class="catalog-search"><span>Hledat vůz</span><input id="catalogSearch" type="search" maxlength="80" autocomplete="off" placeholder="Např. BMW X5, Octavia, Model Y…" value="${esc(state.search)}" aria-controls="catalogResults"></label>
+      <label class="catalog-search"><span>Hledat vůz</span><input id="catalogSearch" type="search" maxlength="80" autocomplete="off" placeholder="Např. BMW řady 5, Octavia, Model Y…" value="${esc(state.search)}" aria-controls="catalogResults"></label>
       <div class="catalog-brand-field"><label for="catalogBrand">Značka</label><select id="catalogBrand" aria-controls="catalogResults"><option value="">Všechny značky</option>${V.brands.map(b => `<option value="${esc(b.id)}" ${state.brand === b.id ? 'selected' : ''}>${esc(b.name)}</option>`).join('')}</select></div>
       <label><span>Rok výroby</span><select id="catalogYear" aria-controls="catalogResults"><option value="">Všechny roky</option></select></label>
       <label class="catalog-studio-filter"><input id="catalog360" type="checkbox" ${state.only3d ? 'checked' : ''} aria-controls="catalogResults"><span><b>Jen vozy s 360° modelem</b><small>Skutečné 3D auto s výměnou kol</small></span><i aria-hidden="true">360°</i></label>

@@ -31,7 +31,7 @@
     index = (next + slides.length) % slides.length;
     slides.forEach((slide, i) => { slide.hidden = i !== index; });
     dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === index)));
-    hero.querySelector('.hero-current').innerHTML = String(index + 1).padStart(2, '0') + ' <i>/ 03</i>';
+    hero.querySelector('.hero-current').innerHTML = String(index + 1).padStart(2, '0') + ' <i>/ ' + String(slides.length).padStart(2, '0') + '</i>';
     if (manual) hero.querySelector('#heroStatus').textContent = slides[index].getAttribute('aria-label');
     schedule();
   }

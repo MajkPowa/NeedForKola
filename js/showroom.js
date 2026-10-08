@@ -308,7 +308,7 @@ export async function mount(container, input = {}) {
   let opts = options(input), disposed = false, model = null, carModel = null, generation = 0;
   let asset = null, modelMetadata = null, paintMaterials = [], installedWheels = [];
   let loadAbort = null, parsing = null;
-  const registeredAsset = () => window.NFWVehicleModels.get(opts.vehicleAsset?.id || opts.vehicleAsset || window.NFWVehicleModels.defaultModel.id);
+  const registeredAsset = () => window.NFWVehicleModels.get(opts.vehicleAsset?.id || opts.vehicleAsset || '');
   let renderer;
   const scene = new THREE.Scene();
   const transparent = input.thumbnail === true && input.transparent === true;

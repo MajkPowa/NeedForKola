@@ -62,8 +62,8 @@
 
   /* ---------- stav ---------- */
   const S = {
-    step: 1, view: 'car', spin: !matchMedia('(prefers-reduced-motion: reduce)').matches, side: 'R',
-    brand: 'bmw', model: 'x5', year: 2020, generation: 'g05', body: 'suv',
+    step: 1, view: 'wheel', spin: !matchMedia('(prefers-reduced-motion: reduce)').matches, side: 'R',
+    brand: '', model: '', year: 0, generation: '', body: '',
     car: 'suv', bodyColor: 'white', carDetail: '',
     design: 'apex10', color: 'silver', colorHex: '#b9bcc2', finish: 'gloss', lip: 'same', cap: 'black',
     d: 21, stag: true, wf: 9, wr: 11.5, etf: 50, etr: 62, pcd: '5x130', cb: 71.6, weight: 10.5,
@@ -75,7 +75,7 @@
   const selectedModel = () => V.getModel(S.brand, S.model);
   const candidates = () => V.getCandidates(S.brand, S.model, S.year, S.body);
   const generation = () => S.body ? candidates().find(g => g.id === S.generation) || null : null;
-  const vehicleName = () => `${selectedBrand()?.name || ''} ${selectedModel()?.name || ''} · ${S.year || 'rok neurčen'}${generation() ? ' · ' + generation().name + ' · ' + generation().bodyName : S.body ? ' · ' + (V.getBodies(S.brand,S.model,S.year).find(b=>b.id===S.body)?.name || '') + ' · provedení neurčeno' : ' · provedení neurčeno'}`;
+  const vehicleName = () => !selectedModel() ? 'Tvůj vůz' : `${selectedBrand()?.name || ''} ${selectedModel()?.name || ''} · ${S.year || 'rok neurčen'}${generation() ? ' · ' + generation().name + ' · ' + generation().bodyName : S.body ? ' · ' + (V.getBodies(S.brand,S.model,S.year).find(b=>b.id===S.body)?.name || '') + ' · provedení neurčeno' : ' · provedení neurčeno'}`;
   function syncGeneration(autoSelect = true) {
     const all = V.getCandidates(S.brand, S.model, S.year);
     const bodies = V.getBodies(S.brand, S.model, S.year);
@@ -136,11 +136,11 @@
     const src = h.has('car') || h.has('brand') ? h : p;
     if (V.getBrand(src.get('brand'))) S.brand = V.getBrand(src.get('brand')).id;
     if (V.getModel(S.brand, src.get('model'))) S.model = V.getModel(S.brand, src.get('model')).id;
-    else if (!V.getModel(S.brand, S.model)) S.model = selectedBrand().models[0].id;
+    else S.model = '';
     const years = V.getYears(S.brand, S.model);
     const year = Number(src.get('year'));
     if (src.has('year')) S.year = Number.isInteger(year) && year >= 1886 && year <= V.through ? year : 0;
-    else if (!years.includes(S.year)) S.year = years[0] || 0;
+    else S.year = 0;
     S.generation = src.get('generation') || '';
     S.body = src.get('body') || '';
     // Conflicting explicit body/variant links must not resolve to an image.
@@ -222,7 +222,7 @@
   }
   let showroomModule, wheelPhotoModule, viewer, photoViewer, pendingViewerAbort, viewerKey = '', renderToken = 0;
   const failedVisuals = new Set();
-  const loadShowroom = () => showroomModule || (showroomModule = import('./showroom.js?v=20260906-exact-vehicle').catch(e => { showroomModule = null; throw e; }));
+  const loadShowroom = () => showroomModule || (showroomModule = import('./showroom.js?v=20261008-no-x5').catch(e => { showroomModule = null; throw e; }));
   const loadWheelPhoto = () => wheelPhotoModule || (wheelPhotoModule = import('./wheel-fit-preview.js?v=20260906-exact-vehicle').catch(e => { wheelPhotoModule = null; throw e; }));
   const previewOptions = mode => ({ mode, vehicleAsset: stageAsset()?.id, design: S.design, color: colorHex(), colorHex: colorHex(), finish: S.finish, lip: S.lip, cap: S.cap, diameter: S.d, width: S.wf, autoRotate: S.spin, bodyColor: bodyHex(), mirror: S.side === 'L', bolts: parseInt(S.pcd,10) || 5 });
   const photoOptions = () => ({ ...previewOptions('wheel'), label: `${design().name} · ${colorName()}` });
@@ -374,21 +374,21 @@
     const g = generation(), list = candidates(), years = V.getYears(S.brand, S.model);
     const bodies = V.getBodies(S.brand, S.model, S.year);
     const model = selectedModel();
-    const sourceNote = !g ? S.year ? 'Zvol karoserii a konkrétní provedení.' : 'Doplň rok výroby a potom vyber provedení svého vozu.' : g.confidence === 'verified'
+    const sourceNote = !model ? 'Vyber značku a model svého vozu.' : !g ? S.year ? 'Zvol karoserii a konkrétní provedení.' : 'Doplň rok výroby a potom vyber provedení svého vozu.' : g.confidence === 'verified'
       ? 'Provedení doplněné z podkladů výrobce.' : 'Katalogové provedení. Kód generace a označení faceliftu nemusí být ve zdroji uvedené.';
     const endNote = !g ? '' : g.endBasis === 'inferred' ? 'Hranice období je odvozená z následujícího provedení; přechodový rok se může překrývat.' : g.endBasis === 'open' ? 'Zdroj neuvádí konec období. Katalog je omezen rokem 2026; dostupnost daného ročníku je potřeba ověřit.' : 'V přechodových letech se mohou období překrývat.';
     return `<div class="panel-kicker">01 / TVŮJ VŮZ</div><h2>Začni svým autem.</h2><p class="sub">${V.brandCount} značek · ${V.modelCount} modelů · ročníky do ${V.through}. Generace, facelifty a karoserie se ukládají s konfigurací.</p>
       <div class="vehicle-fields">
-      <div class="field nfw-brand-field"><label for="vehicleBrand">Značka</label><select id="vehicleBrand" aria-label="Značka">${V.brands.map(b=>`<option value="${esc(b.id)}" ${S.brand===b.id?'selected':''}>${esc(b.name)}</option>`).join('')}</select></div>
-      <label class="field"><span>Model</span><select id="vehicleModel" aria-label="Model">${selectedBrand().models.map(m=>`<option value="${esc(m.id)}" ${S.model===m.id?'selected':''}>${esc(m.name)}</option>`).join('')}</select></label>
-      <label class="field"><span>Rok vozu</span><select id="vehicleYear" aria-label="Rok výroby">${!years.includes(S.year)?`<option value="${S.year}" selected>${S.year ? S.year+' · mimo doložená období' : 'Vyber rok'}</option>`:''}${years.map(y=>`<option value="${y}" ${S.year===y?'selected':''}>${y}</option>`).join('')}</select></label>
-      <label class="field"><span>Karoserie</span><select id="vehicleBody" aria-label="Karoserie" ${!bodies.length?'disabled':''}>${bodies.length!==1 || !S.body?'<option value="">Vyber karoserii</option>':''}${bodies.map(b=>`<option value="${esc(b.id)}" ${S.body===b.id?'selected':''}>${esc(b.name)}</option>`).join('')}</select></label>
+      <div class="field nfw-brand-field"><label for="vehicleBrand">Značka</label><select id="vehicleBrand" aria-label="Značka"><option value="">Vyber značku</option>${V.brands.map(b=>`<option value="${esc(b.id)}" ${S.brand===b.id?'selected':''}>${esc(b.name)}</option>`).join('')}</select></div>
+      <label class="field"><span>Model</span><select id="vehicleModel" aria-label="Model" ${!S.brand?'disabled':''}><option value="">Vyber model</option>${(selectedBrand()?.models || []).map(m=>`<option value="${esc(m.id)}" ${S.model===m.id?'selected':''}>${esc(m.name)}</option>`).join('')}</select></label>
+      <label class="field"><span>Rok vozu</span><select id="vehicleYear" aria-label="Rok výroby" ${!S.model?'disabled':''}>${!years.includes(S.year)?`<option value="${S.year}" selected>${S.year ? S.year+' · mimo doložená období' : 'Vyber rok'}</option>`:''}${years.map(y=>`<option value="${y}" ${S.year===y?'selected':''}>${y}</option>`).join('')}</select></label>
+      <label class="field"><span>Karoserie</span><select id="vehicleBody" aria-label="Karoserie" ${!S.year || !bodies.length?'disabled':''}>${bodies.length!==1 || !S.body?'<option value="">Vyber karoserii</option>':''}${bodies.map(b=>`<option value="${esc(b.id)}" ${S.body===b.id?'selected':''}>${esc(b.name)}</option>`).join('')}</select></label>
       <label class="field vehicle-fields__wide"><span>Generace / provedení ${list.length>1?'· upřesni variantu':''}</span><select id="vehicleGeneration" aria-label="Generace" ${!S.body || !list.length?'disabled':''}>${list.length!==1 || !S.body || !S.generation?'<option value="">Vyber provedení</option>':''}${S.body?list.map(g=>`<option value="${esc(g.id)}" ${S.generation===g.id?'selected':''}>${esc(g.name)} · ${V.periodLabel(g)}${g.status==='announced'?' · oznámeno':''}</option>`).join(''):''}</select></label>
       </div>
-      ${!S.year?'<div class="note" role="status">Model je vybraný. Doplň rok výroby a upřesni karoserii svého vozu.</div>':!years.includes(S.year)?'<div class="note vehicle-warning" role="status">Pro tento rok nemáme doložené provedení. Vyber dostupný ročník nebo chybějící variantu uveď do poznámky.</div>':''}
+      ${!model?'<div class="note" role="status">Vyber značku a model svého vozu.</div>':!S.year?'<div class="note" role="status">Model je vybraný. Doplň rok výroby a upřesni karoserii svého vozu.</div>':!years.includes(S.year)?'<div class="note vehicle-warning" role="status">Pro tento rok nemáme doložené provedení. Vyber dostupný ročník nebo chybějící variantu uveď do poznámky.</div>':''}
       <div class="generation-info"><small>${g ? g.confidence==='verified'?'PODKLADY VÝROBCE':'KATALOGOVÝ ZÁZNAM' : 'VÝBĚR PROVEDENÍ'}</small><b>${g?esc(g.name)+' · '+esc(g.bodyName):'Upřesni svůj vůz'}</b><span>${sourceNote}</span>${g?.status==='announced'?`<span class="vehicle-warning">Oznámené provedení · ${esc(g.startBasis || 'Dodávky jsou plánované.')}</span>`:''}</div>
       ${detailsHTML('vehicle-info', 'Podrobnosti a upřesnění vozu', `${g?`<details class="vehicle-source"><summary>Období a zdroj údajů</summary><p>${V.periodLabel(g)} · ${esc(g.market)}. ${endNote}</p>${g.startBasis?`<p>${esc(g.startBasis)}</p>`:''}${g.notes?`<p>${esc(g.notes)}</p>`:''}${g.bodyVariants?.length?`<p>Další provedení řady ve zdroji: ${g.bodyVariants.map(esc).join(', ')}. Kombinaci s karoserií upřesni v poznámce.</p>`:''}<a href="${esc(g.source)}" target="_blank" rel="noopener">${esc(g.sourceTitle)} ↗</a>${g.additionalSources?.length?g.additionalSources.map(source=>`<br><a href="${esc(source.url)}" target="_blank" rel="noopener">${esc(source.title)} ↗</a>`).join(''):''}</details>`:''}
-      <a class="text-link vehicle-catalog-link" href="index.html?catalogBrand=${encodeURIComponent(S.brand)}&catalogModel=${encodeURIComponent(model.name)}#auta">Prohlédnout katalog modelu (${model.variants.length} provedení) ↗</a>
+      ${model?`<a class="text-link vehicle-catalog-link" href="index.html?catalogBrand=${encodeURIComponent(S.brand)}&catalogModel=${encodeURIComponent(model.name)}#auta">Prohlédnout katalog modelu (${model.variants.length} provedení) ↗</a>`:'<a class="text-link vehicle-catalog-link" href="index.html#vehicleCatalogue">Vybrat vůz z katalogu ↗</a>'}
       <label class="field"><span>Upřesnění vozu <em>volitelné</em></span><input type="text" data-set="carDetail" data-type="text" maxlength="80" value="${esc(S.carDetail)}" placeholder="např. kód generace, větší brzdy, chybějící varianta"></label>
       <div class="note">Katalog zahrnuje doložená provedení, historické údaje nemusí být úplné. Rozměry kol a přesnou kompatibilitu ověříme před výrobou.</div>`)} `;
   }
@@ -464,7 +464,7 @@
     const extras = S.extras.map(id => EXTRAS.find(e => e.id === id)).filter(Boolean);
     return `<h2>05 · Souhrn</h2><p class="sub">Zkontroluj konfiguraci. Po odeslání proběhne konzultace, výrobce připraví technický výkres ke schválení a teprve pak začíná výroba.</p>
       <div class="flow-summary-overview">${[
-        [1, 'Tvůj vůz', `${selectedBrand().name} ${selectedModel().name} · ${S.year || 'rok neurčen'}${generation() ? ' · ' + generation().bodyName : ''}`],
+        [1, 'Tvůj vůz', vehicleName()],
         [2, 'Design', d.name],
         [3, 'Rozměr', `${S.d}\" · ${nf(S.wf)}${S.stag ? ' / ' + nf(S.wr) : ''}\"`],
         [4, 'Vzhled', `${colorName()} · ${O.find(O.FINISHES,S.finish).name}`]
@@ -590,6 +590,7 @@
 
   function guideVehicle(id) {
     if (!MOBILE.matches) return;
+    if ((id === 'vehicleBrand' && !S.brand) || (id === 'vehicleModel' && !S.model) || (id === 'vehicleYear' && !S.year)) return;
     const next = id === 'vehicleBrand' ? $('#vehicleModel') : id === 'vehicleModel' ? $('#vehicleYear')
       : id === 'vehicleYear' && (!S.body || V.getBodies(S.brand,S.model,S.year).length > 1) ? $('#vehicleBody')
       : !S.generation && !$('#vehicleGeneration')?.disabled ? $('#vehicleGeneration') : $('#nextStep');
@@ -696,12 +697,11 @@
     const t = e.target;
     if (['vehicleBrand','vehicleModel','vehicleYear','vehicleBody','vehicleGeneration'].includes(t.id)) {
       if (S.view === 'showroom') S.view = 'car';
-      if(t.id==='vehicleBrand'){S.brand=t.value;S.model=selectedBrand().models[0].id;S.body='';S.generation='';S.carDetail='';}
-      if(t.id==='vehicleModel'){S.model=t.value;S.body='';S.generation='';S.carDetail='';}
+      if(t.id==='vehicleBrand'){S.brand=t.value;S.model='';S.year=0;S.body='';S.generation='';S.carDetail='';}
+      if(t.id==='vehicleModel'){S.model=t.value;S.year=0;S.body='';S.generation='';S.carDetail='';}
       if(t.id==='vehicleYear'){S.year=Number(t.value);S.generation='';}
       if(t.id==='vehicleBody'){S.body=t.value;S.generation='';}
       if(t.id==='vehicleGeneration')S.generation=t.value;
-      if(t.id==='vehicleBrand' || t.id==='vehicleModel'){const years=V.getYears(S.brand,S.model);if(!years.includes(S.year))S.year=years[0] || 0;}
       syncGeneration(); update({head:true});
       if (MOBILE.matches) guideVehicle(t.id);
       else if (t.id === 'vehicleBrand' && brandPicker) brandPicker.trigger.focus({preventScroll:true});

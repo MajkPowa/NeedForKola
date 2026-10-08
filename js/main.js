@@ -23,7 +23,7 @@
     observe(grid);
   }
   const label=document.getElementById('labelMock');
-  if(label)label.innerHTML=O.labelHTML({order:'NFW · 001',model:'BMW X5 · G05 · 2020',design:'FORGED 10',pos:'FL — přední levé',size:'20 × 9,0"',et:35,pcd:'5x112',cb:'66,6',color:'Hyper Silver',finish:'Gloss',weight:'Dle schváleného výkresu',date:new Date().toISOString().slice(0,10)});
+  if(label)label.innerHTML=O.labelHTML({order:'NFW · 001',model:'Tvůj vůz',design:'FORGED 10',pos:'FL — přední levé',size:'20 × 9,0"',et:35,pcd:'5x112',cb:'66,6',color:'Hyper Silver',finish:'Gloss',weight:'Dle schváleného výkresu',date:new Date().toISOString().slice(0,10)});
   const count=document.querySelector('[data-brand-count]');
   if(count && window.NFWVehicles)count.textContent=window.NFWVehicles.brands.length;
 
