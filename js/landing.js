@@ -3,6 +3,32 @@
   'use strict';
   const hero = document.querySelector('.hero-carousel');
   if (!hero) return;
+  // Retire the former X5 promotion before initializing even older hero HTML.
+  const originalSlides = [...hero.querySelectorAll('[data-hero-slide]')];
+  const originalDots = [...hero.querySelectorAll('[data-hero-to]')];
+  let retiredSlide = false;
+  originalSlides.forEach((slide, i) => {
+    const evidence = [slide.textContent, slide.getAttribute('aria-label'), ...[...slide.querySelectorAll('img')].flatMap(img => [img.getAttribute('src'), img.getAttribute('srcset'), img.getAttribute('alt')])].join(' ');
+    if (!/\bbmw[\s_-]*x5(?=[\s_\-./]|$)|\bx5\b/i.test(evidence)) return;
+    slide.remove(); originalDots.find(dot => Number(dot.dataset.heroTo) === i)?.remove(); retiredSlide = true;
+  });
+  if (retiredSlide) {
+    const remaining = [...hero.querySelectorAll('[data-hero-slide]')];
+    if (!remaining.length) return;
+    const newDots = remaining.map((slide, i) => {
+      const title = String(slide.getAttribute('aria-label') || '').replace(/^\d+ ze \d+:\s*/, '').trim() || 'Fotografie kola';
+      slide.hidden = i !== 0;
+      slide.setAttribute('aria-label', `${i + 1} ze ${remaining.length}: ${title}`);
+      const dot = document.createElement('button');
+      dot.type = 'button'; dot.dataset.heroTo = String(i);
+      dot.setAttribute('aria-label', `Snímek ${i + 1}: ${title}`);
+      dot.setAttribute('aria-current', String(i === 0));
+      return dot;
+    });
+    hero.querySelector('.hero-dots')?.replaceChildren(...newDots);
+    const counter = hero.querySelector('.hero-current');
+    if (counter) counter.innerHTML = '01 <i>/ ' + String(remaining.length).padStart(2, '0') + '</i>';
+  }
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const slides = [...hero.querySelectorAll('[data-hero-slide]')];
   const dots = [...hero.querySelectorAll('[data-hero-to]')];
