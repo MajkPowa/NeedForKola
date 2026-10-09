@@ -72,6 +72,105 @@
     // Pouze skutečné realizace s právem zveřejnit jejich fotografie.
     projects: [
       {
+        "id": "rolls-royce-ghost-2017-brushed-silver",
+        "vehicle": "Rolls-Royce Ghost 2017",
+        "title": "Broušené stříbro se šedým okrajem",
+        "description": "Realizovaný custom projekt pro Rolls-Royce Ghost 2017. Kola o průměru 24″ a šířce 10J pro obě nápravy, s rozdílným ET vpředu a vzadu. Broušený stříbrný povrch doplňuje šedý okraj.",
+        "wheel": "24×10J",
+        "finish": "Broušený stříbrný povrch se šedým okrajem",
+        "specs": [
+          {
+            "label": "Přední náprava",
+            "value": "24×10J · ET 25"
+          },
+          {
+            "label": "Zadní náprava",
+            "value": "24×10J · ET 33"
+          },
+          {
+            "label": "Rozteč (PCD)",
+            "value": "5×120"
+          },
+          {
+            "label": "Středová díra (CB)",
+            "value": "72,6 mm"
+          },
+          {
+            "label": "Povrchová úprava",
+            "value": "Broušený stříbrný povrch se šedým okrajem"
+          }
+        ],
+        "images": [
+          {
+            "src": "assets/projects/rolls-royce-ghost-2017-brushed-silver/photo-three-quarter.webp",
+            "thumb": "assets/projects/rolls-royce-ghost-2017-brushed-silver/photo-three-quarter-thumb.webp",
+            "srcset": "assets/projects/rolls-royce-ghost-2017-brushed-silver/photo-three-quarter-thumb.webp 480w, assets/projects/rolls-royce-ghost-2017-brushed-silver/photo-three-quarter.webp 567w",
+            "width": 567,
+            "height": 425,
+            "kind": "photo",
+            "title": "Vyrobené kolo z úhlu",
+            "alt": "Vyrobené kolo pro Rolls-Royce Ghost 2017 v kartáčované stříbrné s šedým okrajem, v bočním tříčtvrtečním pohledu.",
+            "caption": "Fotografie vyrobeného kola s broušeným stříbrným povrchem a šedým okrajem."
+          },
+          {
+            "src": "assets/projects/rolls-royce-ghost-2017-brushed-silver/photo-front.webp",
+            "thumb": "assets/projects/rolls-royce-ghost-2017-brushed-silver/photo-front-thumb.webp",
+            "srcset": "assets/projects/rolls-royce-ghost-2017-brushed-silver/photo-front-thumb.webp 480w, assets/projects/rolls-royce-ghost-2017-brushed-silver/photo-front.webp 567w",
+            "width": 567,
+            "height": 425,
+            "kind": "photo",
+            "title": "Čelní pohled",
+            "alt": "Čelní pohled na vyrobené kolo pro Rolls-Royce Ghost 2017 v kartáčované stříbrné s šedým okrajem.",
+            "caption": "Fotografie finálního designu pro Rolls-Royce Ghost 2017."
+          },
+          {
+            "src": "assets/projects/rolls-royce-ghost-2017-brushed-silver/supplier-technical.webp",
+            "thumb": "assets/projects/rolls-royce-ghost-2017-brushed-silver/supplier-technical-thumb.webp",
+            "srcset": "assets/projects/rolls-royce-ghost-2017-brushed-silver/supplier-technical-thumb.webp 480w, assets/projects/rolls-royce-ghost-2017-brushed-silver/supplier-technical.webp 1377w",
+            "width": 1377,
+            "height": 1142,
+            "kind": "technical",
+            "title": "Technický návrh",
+            "alt": "Dodavatelský render kola pro Rolls-Royce Ghost 2017 v kartáčované stříbrné s šedým okrajem a technickými údaji.",
+            "caption": "Technický podklad dodavatele s návrhovou vizualizací."
+          },
+          {
+            "src": "assets/projects/rolls-royce-ghost-2017-brushed-silver/supplier-three-quarter.webp",
+            "thumb": "assets/projects/rolls-royce-ghost-2017-brushed-silver/supplier-three-quarter-thumb.webp",
+            "srcset": "assets/projects/rolls-royce-ghost-2017-brushed-silver/supplier-three-quarter-thumb.webp 480w, assets/projects/rolls-royce-ghost-2017-brushed-silver/supplier-three-quarter.webp 1544w",
+            "width": 1544,
+            "height": 1280,
+            "kind": "visualization",
+            "title": "Návrh z úhlu",
+            "alt": "Dodavatelský tříčtvrteční render kola pro Rolls-Royce Ghost 2017 v kartáčované stříbrné s šedým okrajem.",
+            "caption": "Návrhová vizualizace dodavatele před výrobou."
+          },
+          {
+            "src": "assets/projects/rolls-royce-ghost-2017-brushed-silver/supplier-profile.webp",
+            "thumb": "assets/projects/rolls-royce-ghost-2017-brushed-silver/supplier-profile-thumb.webp",
+            "srcset": "assets/projects/rolls-royce-ghost-2017-brushed-silver/supplier-profile-thumb.webp 480w, assets/projects/rolls-royce-ghost-2017-brushed-silver/supplier-profile.webp 1544w",
+            "width": 1544,
+            "height": 1280,
+            "kind": "visualization",
+            "title": "Návrh profilu",
+            "alt": "Dodavatelský render bočního profilu kola pro Rolls-Royce Ghost 2017 v kartáčované stříbrné s šedým okrajem.",
+            "caption": "Návrhová vizualizace dodavatele s pohledem na šířku ráfku."
+          }
+        ],
+        "videos": [
+          {
+            "src": "assets/projects/rolls-royce-ghost-2017-brushed-silver/video-turntable.mp4",
+            "poster": "assets/projects/rolls-royce-ghost-2017-brushed-silver/video-turntable-poster.webp",
+            "thumb": "assets/projects/rolls-royce-ghost-2017-brushed-silver/video-turntable-thumb.webp",
+            "width": 848,
+            "height": 480,
+            "kind": "video",
+            "title": "Vyrobené kolo v pohybu",
+            "caption": "Video vyrobeného kola pro Rolls-Royce Ghost 2017. Broušený stříbrný povrch, šedý okraj a celý profil při otáčení na podstavci."
+          }
+        ]
+      },
+      {
         "id": "lamborghini-urus-gloss-black-machined",
         "vehicle": "Lamborghini Urus",
         "title": "Lesklá černá s frézovaným čelem",
