@@ -72,6 +72,116 @@
     // Pouze skutečné realizace s právem zveřejnit jejich fotografie.
     projects: [
       {
+        "id": "lamborghini-urus-gloss-black-machined",
+        "vehicle": "Lamborghini Urus",
+        "title": "Lesklá černá s frézovaným čelem",
+        "description": "Realizovaný custom projekt pro Lamborghini Urus. Kola o průměru 23″ s rozdílnou šířkou a ET pro přední a zadní nápravu. Lesklou černou doplňuje frézované čelo.",
+        "wheel": "23×10J / 23×11,5J",
+        "finish": "Lesklá černá s frézovaným čelem",
+        "specs": [
+          {
+            "label": "Přední náprava",
+            "value": "23×10J · ET 20"
+          },
+          {
+            "label": "Zadní náprava",
+            "value": "23×11,5J · ET 14"
+          },
+          {
+            "label": "Rozteč (PCD)",
+            "value": "5×130"
+          },
+          {
+            "label": "Středová díra (CB)",
+            "value": "71,6 mm"
+          },
+          {
+            "label": "Povrchová úprava",
+            "value": "Lesklá černá s frézovaným čelem"
+          }
+        ],
+        "images": [
+          {
+            "src": "assets/projects/lamborghini-urus-gloss-black-machined/photo-three-quarter.webp",
+            "thumb": "assets/projects/lamborghini-urus-gloss-black-machined/photo-three-quarter-thumb.webp",
+            "srcset": "assets/projects/lamborghini-urus-gloss-black-machined/photo-three-quarter-thumb.webp 480w, assets/projects/lamborghini-urus-gloss-black-machined/photo-three-quarter.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Vyrobené kolo z úhlu",
+            "alt": "Vyrobené kolo pro Lamborghini Urus v lesklé černé s frézovaným čelem, v tříčtvrtečním pohledu.",
+            "caption": "Fotografie vyrobeného kola v lesklé černé s frézovaným čelem."
+          },
+          {
+            "src": "assets/projects/lamborghini-urus-gloss-black-machined/photo-front.webp",
+            "thumb": "assets/projects/lamborghini-urus-gloss-black-machined/photo-front-thumb.webp",
+            "srcset": "assets/projects/lamborghini-urus-gloss-black-machined/photo-front-thumb.webp 480w, assets/projects/lamborghini-urus-gloss-black-machined/photo-front.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Čelní pohled",
+            "alt": "Čelní pohled na vyrobené kolo pro Lamborghini Urus v lesklé černé s frézovaným čelem.",
+            "caption": "Fotografie finálního designu s lesklým černým povrchem a frézovaným čelem."
+          },
+          {
+            "src": "assets/projects/lamborghini-urus-gloss-black-machined/photo-reverse-angle.webp",
+            "thumb": "assets/projects/lamborghini-urus-gloss-black-machined/photo-reverse-angle-thumb.webp",
+            "srcset": "assets/projects/lamborghini-urus-gloss-black-machined/photo-reverse-angle-thumb.webp 480w, assets/projects/lamborghini-urus-gloss-black-machined/photo-reverse-angle.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Opačný pohled",
+            "alt": "Opačný úhel vyrobeného kola pro Lamborghini Urus v lesklé černé s frézovaným čelem a viditelnou hloubkou ráfku.",
+            "caption": "Fotografie profilu a paprsků hotového kola."
+          },
+          {
+            "src": "assets/projects/lamborghini-urus-gloss-black-machined/supplier-technical.webp",
+            "thumb": "assets/projects/lamborghini-urus-gloss-black-machined/supplier-technical-thumb.webp",
+            "srcset": "assets/projects/lamborghini-urus-gloss-black-machined/supplier-technical-thumb.webp 480w, assets/projects/lamborghini-urus-gloss-black-machined/supplier-technical.webp 1254w",
+            "width": 1254,
+            "height": 1254,
+            "kind": "technical",
+            "title": "Technický návrh",
+            "alt": "Dodavatelský render páru kol pro Lamborghini Urus v lesklé černé s frézovaným čelem a technickými údaji.",
+            "caption": "Technický podklad dodavatele s návrhovou vizualizací."
+          },
+          {
+            "src": "assets/projects/lamborghini-urus-gloss-black-machined/supplier-three-quarter.webp",
+            "thumb": "assets/projects/lamborghini-urus-gloss-black-machined/supplier-three-quarter-thumb.webp",
+            "srcset": "assets/projects/lamborghini-urus-gloss-black-machined/supplier-three-quarter-thumb.webp 480w, assets/projects/lamborghini-urus-gloss-black-machined/supplier-three-quarter.webp 1280w",
+            "width": 1280,
+            "height": 1280,
+            "kind": "visualization",
+            "title": "Návrh z úhlu",
+            "alt": "Dodavatelský tříčtvrteční render páru kol pro Lamborghini Urus v lesklé černé s frézovaným čelem.",
+            "caption": "Návrhová vizualizace dodavatele před výrobou."
+          },
+          {
+            "src": "assets/projects/lamborghini-urus-gloss-black-machined/supplier-profile.webp",
+            "thumb": "assets/projects/lamborghini-urus-gloss-black-machined/supplier-profile-thumb.webp",
+            "srcset": "assets/projects/lamborghini-urus-gloss-black-machined/supplier-profile-thumb.webp 480w, assets/projects/lamborghini-urus-gloss-black-machined/supplier-profile.webp 1280w",
+            "width": 1280,
+            "height": 1280,
+            "kind": "visualization",
+            "title": "Návrh profilu",
+            "alt": "Dodavatelský render bočního profilu páru kol pro Lamborghini Urus v lesklé černé s frézovaným čelem.",
+            "caption": "Návrhová vizualizace dodavatele s pohledem na šířku ráfku."
+          }
+        ],
+        "videos": [
+          {
+            "src": "assets/projects/lamborghini-urus-gloss-black-machined/video-turntable.mp4",
+            "poster": "assets/projects/lamborghini-urus-gloss-black-machined/video-turntable-poster.webp",
+            "thumb": "assets/projects/lamborghini-urus-gloss-black-machined/video-turntable-thumb.webp",
+            "width": 848,
+            "height": 480,
+            "kind": "video",
+            "title": "Vyrobené kolo v pohybu",
+            "caption": "Video vyrobeného kola pro Lamborghini Urus. Celý profil, lesklá černá a frézované čelo při otáčení na podstavci."
+          }
+        ]
+      },
+      {
         "id": "ferrari-812-gunmetal-machined",
         "vehicle": "Ferrari 812",
         "title": "Gunmetal s frézovaným čelem",
