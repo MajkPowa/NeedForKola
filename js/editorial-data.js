@@ -72,6 +72,105 @@
     // Pouze skutečné realizace s právem zveřejnit jejich fotografie.
     projects: [
       {
+        "id": "mustang-gt-50-gloss-black",
+        "vehicle": "Mustang GT 5.0",
+        "title": "Lesklá černá pro Mustang GT 5.0",
+        "description": "Realizovaný custom projekt pro Mustang GT 5.0. Kola o průměru 20″ v lesklé černé, s rozdílnou šířkou a ET pro přední a zadní nápravu.",
+        "wheel": "20×9J / 20×10,5J",
+        "finish": "Lesklá černá",
+        "specs": [
+          {
+            "label": "Přední náprava",
+            "value": "20×9J · ET 28"
+          },
+          {
+            "label": "Zadní náprava",
+            "value": "20×10,5J · ET 45"
+          },
+          {
+            "label": "Rozteč (PCD)",
+            "value": "5×114,3"
+          },
+          {
+            "label": "Středová díra (CB)",
+            "value": "70,5 mm"
+          },
+          {
+            "label": "Barva a povrch",
+            "value": "Lesklá černá"
+          }
+        ],
+        "images": [
+          {
+            "src": "assets/projects/mustang-gt-50-gloss-black/photo-front.webp",
+            "thumb": "assets/projects/mustang-gt-50-gloss-black/photo-front-thumb.webp",
+            "srcset": "assets/projects/mustang-gt-50-gloss-black/photo-front-thumb.webp 480w, assets/projects/mustang-gt-50-gloss-black/photo-front.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Čelní pohled",
+            "alt": "Čelní pohled na vyrobené leskle černé kolo pro Mustang GT 5.0, s označením OARTS na ráfku.",
+            "caption": "Fotografie vyrobeného leskle černého kola pro Mustang GT 5.0 s označením OARTS na ráfku."
+          },
+          {
+            "src": "assets/projects/mustang-gt-50-gloss-black/photo-three-quarter.webp",
+            "thumb": "assets/projects/mustang-gt-50-gloss-black/photo-three-quarter-thumb.webp",
+            "srcset": "assets/projects/mustang-gt-50-gloss-black/photo-three-quarter-thumb.webp 480w, assets/projects/mustang-gt-50-gloss-black/photo-three-quarter.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Vyrobené kolo z úhlu",
+            "alt": "Boční tříčtvrteční pohled na vyrobené leskle černé kolo pro Mustang GT 5.0.",
+            "caption": "Fotografie profilu a paprsků hotového kola v lesklé černé."
+          },
+          {
+            "src": "assets/projects/mustang-gt-50-gloss-black/supplier-technical.webp",
+            "thumb": "assets/projects/mustang-gt-50-gloss-black/supplier-technical-thumb.webp",
+            "srcset": "assets/projects/mustang-gt-50-gloss-black/supplier-technical-thumb.webp 480w, assets/projects/mustang-gt-50-gloss-black/supplier-technical.webp 1254w",
+            "width": 1254,
+            "height": 1254,
+            "kind": "technical",
+            "title": "Technický návrh",
+            "alt": "Dodavatelský render leskle černého kola pro Mustang GT 5.0 s technickými údaji.",
+            "caption": "Technický podklad dodavatele s návrhovou vizualizací."
+          },
+          {
+            "src": "assets/projects/mustang-gt-50-gloss-black/supplier-three-quarter.webp",
+            "thumb": "assets/projects/mustang-gt-50-gloss-black/supplier-three-quarter-thumb.webp",
+            "srcset": "assets/projects/mustang-gt-50-gloss-black/supplier-three-quarter-thumb.webp 480w, assets/projects/mustang-gt-50-gloss-black/supplier-three-quarter.webp 942w",
+            "width": 942,
+            "height": 942,
+            "kind": "visualization",
+            "title": "Návrh z úhlu",
+            "alt": "Dodavatelský tříčtvrteční render leskle černého kola pro Mustang GT 5.0.",
+            "caption": "Návrhová vizualizace dodavatele před výrobou."
+          },
+          {
+            "src": "assets/projects/mustang-gt-50-gloss-black/supplier-profile.webp",
+            "thumb": "assets/projects/mustang-gt-50-gloss-black/supplier-profile-thumb.webp",
+            "srcset": "assets/projects/mustang-gt-50-gloss-black/supplier-profile-thumb.webp 480w, assets/projects/mustang-gt-50-gloss-black/supplier-profile.webp 1280w",
+            "width": 1280,
+            "height": 1280,
+            "kind": "visualization",
+            "title": "Návrh profilu",
+            "alt": "Dodavatelský render bočního profilu leskle černého kola pro Mustang GT 5.0.",
+            "caption": "Návrhová vizualizace dodavatele s pohledem na šířku ráfku."
+          }
+        ],
+        "videos": [
+          {
+            "src": "assets/projects/mustang-gt-50-gloss-black/video-turntable.mp4",
+            "poster": "assets/projects/mustang-gt-50-gloss-black/video-turntable-poster.webp",
+            "thumb": "assets/projects/mustang-gt-50-gloss-black/video-turntable-thumb.webp",
+            "width": 848,
+            "height": 480,
+            "kind": "video",
+            "title": "Vyrobené kolo v pohybu",
+            "caption": "Video vyrobeného leskle černého kola pro Mustang GT 5.0, otáčeného na podstavci."
+          }
+        ]
+      },
+      {
         "id": "lamborghini-urus-matte-tx-gold-machined",
         "vehicle": "Lamborghini Urus",
         "title": "Matná TX zlatá s frézovaným čelem",
