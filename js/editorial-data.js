@@ -72,6 +72,104 @@
     // Pouze skutečné realizace s právem zveřejnit jejich fotografie.
     projects: [
       {
+        "id": "ferrari-812-gunmetal-machined",
+        "vehicle": "Ferrari 812",
+        "title": "Gunmetal s frézovaným čelem",
+        "description": "Realizovaný custom projekt pro Ferrari 812. Dvacetipalcová kola s rozdílnou šířkou a ET pro přední a zadní nápravu. Tmavě šedý povrch Gunmetal doplňuje frézované čelo.",
+        "wheel": "20×10J / 20×11,5J",
+        "finish": "Gunmetal (tmavě šedá) s frézovaným čelem",
+        "specs": [
+          {
+            "label": "Přední náprava",
+            "value": "20×10J · ET 42"
+          },
+          {
+            "label": "Zadní náprava",
+            "value": "20×11,5J · ET 50"
+          },
+          {
+            "label": "Rozteč (PCD)",
+            "value": "5×114,3"
+          },
+          {
+            "label": "Středová díra (CB)",
+            "value": "67,1 mm"
+          },
+          {
+            "label": "Povrchová úprava",
+            "value": "Gunmetal (tmavě šedá) s frézovaným čelem"
+          }
+        ],
+        "images": [
+          {
+            "src": "assets/projects/ferrari-812-gunmetal-machined/photo-three-quarter.webp",
+            "thumb": "assets/projects/ferrari-812-gunmetal-machined/photo-three-quarter-thumb.webp",
+            "srcset": "assets/projects/ferrari-812-gunmetal-machined/photo-three-quarter-thumb.webp 480w, assets/projects/ferrari-812-gunmetal-machined/photo-three-quarter.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Vyrobené kolo z úhlu",
+            "alt": "Vyrobené kolo pro Ferrari 812 v provedení gunmetal s frézovaným čelem, v tříčtvrtečním pohledu.",
+            "caption": "Fotografie vyrobeného kola v provedení Gunmetal s frézovaným čelem."
+          },
+          {
+            "src": "assets/projects/ferrari-812-gunmetal-machined/photo-front.webp",
+            "thumb": "assets/projects/ferrari-812-gunmetal-machined/photo-front-thumb.webp",
+            "srcset": "assets/projects/ferrari-812-gunmetal-machined/photo-front-thumb.webp 480w, assets/projects/ferrari-812-gunmetal-machined/photo-front.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Čelní pohled",
+            "alt": "Čelní pohled na vyrobené kolo pro Ferrari 812 v provedení gunmetal s frézovaným čelem.",
+            "caption": "Fotografie finálního designu s tmavě šedým povrchem a frézovaným čelem."
+          },
+          {
+            "src": "assets/projects/ferrari-812-gunmetal-machined/photo-reverse-angle.webp",
+            "thumb": "assets/projects/ferrari-812-gunmetal-machined/photo-reverse-angle-thumb.webp",
+            "srcset": "assets/projects/ferrari-812-gunmetal-machined/photo-reverse-angle-thumb.webp 480w, assets/projects/ferrari-812-gunmetal-machined/photo-reverse-angle.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Opačný pohled",
+            "alt": "Opačný úhel vyrobeného kola pro Ferrari 812 v provedení gunmetal s frézovaným čelem a viditelnou hloubkou ráfku.",
+            "caption": "Fotografie profilu a paprsků hotového kola."
+          },
+          {
+            "src": "assets/projects/ferrari-812-gunmetal-machined/supplier-technical.webp",
+            "thumb": "assets/projects/ferrari-812-gunmetal-machined/supplier-technical-thumb.webp",
+            "srcset": "assets/projects/ferrari-812-gunmetal-machined/supplier-technical-thumb.webp 480w, assets/projects/ferrari-812-gunmetal-machined/supplier-technical.webp 1254w",
+            "width": 1254,
+            "height": 1254,
+            "kind": "technical",
+            "title": "Technický návrh",
+            "alt": "Dodavatelský render kola pro Ferrari 812 v provedení gunmetal s frézovaným čelem a technickými údaji.",
+            "caption": "Technický podklad dodavatele s návrhovou vizualizací."
+          },
+          {
+            "src": "assets/projects/ferrari-812-gunmetal-machined/supplier-three-quarter.webp",
+            "thumb": "assets/projects/ferrari-812-gunmetal-machined/supplier-three-quarter-thumb.webp",
+            "srcset": "assets/projects/ferrari-812-gunmetal-machined/supplier-three-quarter-thumb.webp 480w, assets/projects/ferrari-812-gunmetal-machined/supplier-three-quarter.webp 1280w",
+            "width": 1280,
+            "height": 1280,
+            "kind": "visualization",
+            "title": "Návrh z úhlu",
+            "alt": "Dodavatelský tříčtvrteční render kola pro Ferrari 812 v provedení gunmetal s frézovaným čelem.",
+            "caption": "Návrhová vizualizace dodavatele před výrobou."
+          },
+          {
+            "src": "assets/projects/ferrari-812-gunmetal-machined/supplier-profile.webp",
+            "thumb": "assets/projects/ferrari-812-gunmetal-machined/supplier-profile-thumb.webp",
+            "srcset": "assets/projects/ferrari-812-gunmetal-machined/supplier-profile-thumb.webp 480w, assets/projects/ferrari-812-gunmetal-machined/supplier-profile.webp 1280w",
+            "width": 1280,
+            "height": 1280,
+            "kind": "visualization",
+            "title": "Návrh profilu",
+            "alt": "Dodavatelský render bočního profilu kola pro Ferrari 812 v provedení gunmetal s frézovaným čelem.",
+            "caption": "Návrhová vizualizace dodavatele s pohledem na šířku ráfku."
+          }
+        ]
+      },
+      {
         "id": "ferrari-812-gloss-black",
         "vehicle": "Ferrari 812",
         "title": "Kola na míru v lesklé černé",
