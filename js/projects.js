@@ -66,8 +66,11 @@
       .map(project => {
         const images = (Array.isArray(project.images) ? project.images : []).map(normalizeImage).filter(Boolean);
         const videos = (Array.isArray(project.videos) ? project.videos : []).map(normalizeVideo).filter(Boolean);
-        return { ...project, title: text(project.title), vehicle: text(project.vehicle), images, videos,
-          media: [...images, ...videos].sort((a, b) => kinds[a.kind].rank - kinds[b.kind].rank),
+        const hasRealMedia = images.some(image => image.kind === 'photo') || videos.length > 0;
+        const rank = media => hasRealMedia ? kinds[media.kind].rank : media.kind === 'visualization' ? 0 : 1;
+        return { ...project, title: text(project.title), vehicle: text(project.vehicle), images, videos, hasRealMedia,
+          projectLabel: hasRealMedia ? 'Realizovaný custom projekt' : 'Custom projekt',
+          media: [...images, ...videos].sort((a, b) => rank(a) - rank(b)),
           specs: (Array.isArray(project.specs) ? project.specs : []).filter(spec => spec && text(spec.label) && text(spec.value))
             .map(spec => ({ label: text(spec.label), value: text(spec.value) }))
         };
@@ -79,6 +82,7 @@
     const on = (element, event, handler, options = {}) => element.addEventListener(event, handler, { ...options, signal: listeners.signal });
     const dialog = node('dialog', 'project-lightbox custom-project-lightbox');
     const header = node('div', 'project-gallery__header');
+    const projectLabel = node('span', 'project-gallery__eyebrow');
     const heading = node('h2', 'project-gallery__title'); heading.id = 'customProjectGalleryTitle';
     const vehicle = node('p', 'project-gallery__vehicle');
     const close = node('button', 'project-lightbox__close', '×');
@@ -90,7 +94,7 @@
     const prev = node('button', 'project-gallery__arrow', '←'), next = node('button', 'project-gallery__arrow', '→');
     prev.type = next.type = 'button'; prev.setAttribute('aria-label', 'Předchozí snímek'); next.setAttribute('aria-label', 'Další snímek');
     const thumbs = node('div', 'project-gallery__thumbnails'); thumbs.setAttribute('role', 'group'); thumbs.setAttribute('aria-label', 'Snímky projektu');
-    header.append(node('span', 'project-gallery__eyebrow', 'Realizovaný custom projekt'), heading, vehicle, close);
+    header.append(projectLabel, heading, vehicle, close);
     controls.append(prev, caption, next); dialog.append(header, frame, mediaType, controls, thumbs);
     dialog.setAttribute('aria-labelledby', heading.id); document.body.append(dialog);
     let selected = null, position = 0, opener = null, imageRequest = 0, locked = false, previousOverflow = null, activeVideo = null, swipe = null;
@@ -154,6 +158,7 @@
     };
     const openGallery = (project, trigger) => {
       selected = project; opener = trigger; position = 0;
+      projectLabel.textContent = project.projectLabel;
       heading.textContent = project.title; vehicle.textContent = project.vehicle; thumbs.replaceChildren();
       const counts = { photo: 0, video: 0, technical: 0, visualization: 0 };
       project.media.forEach((image, index) => {
@@ -221,10 +226,10 @@
       on(button, 'click', () => openGallery(project, button));
       visual.append(button, node('p', 'project-card__media-label', kinds[cover.kind].label));
       const copy = node('div', 'project-card__copy');
-      copy.append(node('span', 'project-card__eyebrow', 'Realizovaný custom projekt'), node('p', 'project-card__vehicle', project.vehicle), node('h3', '', project.title));
+      copy.append(node('span', 'project-card__eyebrow', project.projectLabel), node('p', 'project-card__vehicle', project.vehicle), node('h3', '', project.title));
       if (text(project.description)) copy.append(node('p', 'project-card__description', text(project.description)));
       if (project.specs.length) {
-        const specs = node('dl', 'project-card__specs'); specs.setAttribute('aria-label', 'Parametry realizovaných kol');
+        const specs = node('dl', 'project-card__specs'); specs.setAttribute('aria-label', project.hasRealMedia ? 'Parametry realizovaných kol' : 'Parametry kol');
         project.specs.forEach(spec => { const row = node('div', 'project-card__spec'); row.append(node('dt', '', spec.label), node('dd', '', spec.value)); specs.append(row); }); copy.append(specs);
       } else if ([text(project.wheel), text(project.finish)].some(Boolean)) {
         copy.append(node('p', 'project-card__details', [text(project.wheel), text(project.finish)].filter(Boolean).join(' / ')));

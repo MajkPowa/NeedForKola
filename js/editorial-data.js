@@ -72,6 +72,82 @@
     // Pouze skutečné realizace s právem zveřejnit jejich fotografie.
     projects: [
       {
+        "id": "audi-rs3-drag-race-gloss-black",
+        "vehicle": "Audi RS3",
+        "title": "Audi RS3 pro drag race",
+        "description": "Custom projekt pro Audi RS3 na drag race. Osmnáctipalcová kola v lesklé černé, s širším předním kolem a rozdílným ET pro přední a zadní nápravu.",
+        "wheel": "18×9,5J / 18×9J",
+        "finish": "Lesklá černá",
+        "specs": [
+          {
+            "label": "Přední náprava",
+            "value": "18×9,5J · ET 20"
+          },
+          {
+            "label": "Zadní náprava",
+            "value": "18×9J · ET 42"
+          },
+          {
+            "label": "Rozteč (PCD)",
+            "value": "5×112"
+          },
+          {
+            "label": "Středová díra (CB)",
+            "value": "57,1 mm"
+          },
+          {
+            "label": "Barva a povrch",
+            "value": "Lesklá černá"
+          }
+        ],
+        "images": [
+          {
+            "src": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-three-quarter.webp",
+            "thumb": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-three-quarter-thumb.webp",
+            "srcset": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-three-quarter-thumb.webp 480w, assets/projects/audi-rs3-drag-race-gloss-black/supplier-three-quarter.webp 1600w",
+            "width": 1600,
+            "height": 872,
+            "kind": "visualization",
+            "title": "Návrh celé sady",
+            "alt": "Dodavatelský tříčtvrteční render páru leskle černých kol pro projekt Audi RS3 pro drag race.",
+            "caption": "Dodavatelská vizualizace leskle černé sady kol pro Audi RS3."
+          },
+          {
+            "src": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-profile.webp",
+            "thumb": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-profile-thumb.webp",
+            "srcset": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-profile-thumb.webp 480w, assets/projects/audi-rs3-drag-race-gloss-black/supplier-profile.webp 1600w",
+            "width": 1600,
+            "height": 872,
+            "kind": "visualization",
+            "title": "Návrh profilu",
+            "alt": "Dodavatelský render páru leskle černých kol pro projekt Audi RS3 pro drag race, z bočního nadhledu.",
+            "caption": "Dodavatelská vizualizace profilu předního a zadního kola."
+          },
+          {
+            "src": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-technical.webp",
+            "thumb": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-technical-thumb.webp",
+            "srcset": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-technical-thumb.webp 480w, assets/projects/audi-rs3-drag-race-gloss-black/supplier-technical.webp 1600w",
+            "width": 1600,
+            "height": 872,
+            "kind": "technical",
+            "title": "Technický návrh",
+            "alt": "Dodavatelský technický list s renderem páru leskle černých kol pro Audi RS3.",
+            "caption": "Technický podklad dodavatele s návrhovou vizualizací."
+          },
+          {
+            "src": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-analysis.webp",
+            "thumb": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-analysis-thumb.webp",
+            "srcset": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-analysis-thumb.webp 480w, assets/projects/audi-rs3-drag-race-gloss-black/supplier-analysis.webp 962w",
+            "width": 962,
+            "height": 791,
+            "kind": "technical",
+            "title": "Výpočetní vizualizace",
+            "alt": "Výpočetní vizualizace dodavatele pro návrh kola Audi RS3: barevná výpočetní síť z čelního pohledu.",
+            "caption": "Výpočetní vizualizace dodavatele pro návrh kola."
+          }
+        ]
+      },
+      {
         "id": "mustang-gt-50-gloss-black",
         "vehicle": "Mustang GT 5.0",
         "title": "Lesklá černá pro Mustang GT 5.0",
