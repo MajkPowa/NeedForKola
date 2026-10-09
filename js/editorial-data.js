@@ -70,6 +70,100 @@
       }
     ],
     // Pouze skutečné realizace s právem zveřejnit jejich fotografie.
-    projects: []
+    projects: [
+      {
+        "id": "ferrari-812-gloss-black",
+        "vehicle": "Ferrari 812",
+        "title": "Kola na míru v lesklé černé",
+        "description": "Realizovaný custom projekt pro Ferrari 812. Jednadvacetipalcová kola s rozdílnou šířkou a ET pro přední a zadní nápravu, dokončená celolakovaným lesklým černým povrchem.",
+        "wheel": "21×10J / 21×11,5J",
+        "finish": "Celolakovaná lesklá černá",
+        "specs": [
+          {
+            "label": "Přední náprava",
+            "value": "21×10J · ET 32"
+          },
+          {
+            "label": "Zadní náprava",
+            "value": "21×11,5J · ET 45"
+          },
+          {
+            "label": "Rozteč (PCD)",
+            "value": "5×114,3"
+          },
+          {
+            "label": "Středová díra (CB)",
+            "value": "67,1 mm"
+          },
+          {
+            "label": "Povrchová úprava",
+            "value": "Celolakovaná lesklá černá"
+          }
+        ],
+        "images": [
+          {
+            "src": "assets/projects/ferrari-812-gloss-black/photo-three-quarter.webp",
+            "thumb": "assets/projects/ferrari-812-gloss-black/photo-three-quarter-thumb.webp",
+            "srcset": "assets/projects/ferrari-812-gloss-black/photo-three-quarter-thumb.webp 480w, assets/projects/ferrari-812-gloss-black/photo-three-quarter.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Vyrobené kolo z úhlu",
+            "alt": "Skutečně vyrobené leskle černé kolo pro Ferrari 812, s viditelnou hloubkou ráfku.",
+            "caption": "Fotografie vyrobeného kola v celolakované lesklé černé."
+          },
+          {
+            "src": "assets/projects/ferrari-812-gloss-black/photo-front.webp",
+            "thumb": "assets/projects/ferrari-812-gloss-black/photo-front-thumb.webp",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Čelní pohled",
+            "alt": "Čelní fotografie vyrobeného leskle černého kola pro Ferrari 812.",
+            "caption": "Fotografie finálního designu a lesklého černého povrchu."
+          },
+          {
+            "src": "assets/projects/ferrari-812-gloss-black/photo-reverse-angle.webp",
+            "thumb": "assets/projects/ferrari-812-gloss-black/photo-reverse-angle-thumb.webp",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Opačný pohled",
+            "alt": "Fotografie vyrobeného kola pro Ferrari 812 z opačného úhlu.",
+            "caption": "Fotografie profilu a paprsků hotového kola."
+          },
+          {
+            "src": "assets/projects/ferrari-812-gloss-black/supplier-technical.webp",
+            "thumb": "assets/projects/ferrari-812-gloss-black/supplier-technical-thumb.webp",
+            "width": 1600,
+            "height": 899,
+            "kind": "technical",
+            "title": "Technický návrh",
+            "alt": "Dodavatelský technický podklad s návrhovou vizualizací kol pro Ferrari 812.",
+            "caption": "Technický podklad dodavatele s návrhovou vizualizací."
+          },
+          {
+            "src": "assets/projects/ferrari-812-gloss-black/supplier-three-quarter.webp",
+            "thumb": "assets/projects/ferrari-812-gloss-black/supplier-three-quarter-thumb.webp",
+            "width": 1139,
+            "height": 640,
+            "kind": "visualization",
+            "title": "Návrh z úhlu",
+            "alt": "Návrhová vizualizace předního a zadního kola pro Ferrari 812 z úhlu.",
+            "caption": "Návrhová vizualizace dodavatele před výrobou."
+          },
+          {
+            "src": "assets/projects/ferrari-812-gloss-black/supplier-profile.webp",
+            "thumb": "assets/projects/ferrari-812-gloss-black/supplier-profile-thumb.webp",
+            "width": 1139,
+            "height": 640,
+            "kind": "visualization",
+            "title": "Návrh profilu",
+            "alt": "Návrhová vizualizace profilu kol pro Ferrari 812 z bočního nadhledu.",
+            "caption": "Návrhová vizualizace dodavatele s pohledem na šířku ráfku."
+          }
+        ]
+      }
+    ]
   };
 })();
