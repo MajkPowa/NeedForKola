@@ -71,6 +71,127 @@
     ],
     // Pouze skutečné realizace s právem zveřejnit jejich fotografie.
     projects: [
+        {
+          "id": "bmw-m2-competition-chrome",
+          "vehicle": "BMW M2 Competition",
+          "title": "Chromová kola pro BMW M2 Competition",
+          "description": "Realizovaný custom projekt pro BMW M2 Competition. Devatenáctipalcová kola v chromovém provedení, s rozdílnou šířkou a ET pro přední a zadní nápravu.",
+          "wheel": "19×9J / 19×10J",
+          "finish": "Chrom",
+          "specs": [
+            {
+              "label": "Přední náprava",
+              "value": "19×9J · ET 29"
+            },
+            {
+              "label": "Zadní náprava",
+              "value": "19×10J · ET 40"
+            },
+            {
+              "label": "Rozteč (PCD)",
+              "value": "5×120"
+            },
+            {
+              "label": "Středová díra (CB)",
+              "value": "72,6 mm"
+            },
+            {
+              "label": "Barva a povrch",
+              "value": "Chrom"
+            }
+          ],
+          "images": [
+            {
+              "src": "assets/projects/bmw-m2-competition-chrome/photo-front.webp",
+              "thumb": "assets/projects/bmw-m2-competition-chrome/photo-front-thumb.webp",
+              "srcset": "assets/projects/bmw-m2-competition-chrome/photo-front-thumb.webp 480w, assets/projects/bmw-m2-competition-chrome/photo-front.webp 1600w",
+              "width": 1600,
+              "height": 1200,
+              "kind": "photo",
+              "title": "Čelní pohled",
+              "alt": "Čelní pohled na vyrobené chromované kolo pro BMW M2 Competition.",
+              "caption": "Fotografie vyrobeného kola pro BMW M2 Competition v chromovém provedení."
+            },
+            {
+              "src": "assets/projects/bmw-m2-competition-chrome/photo-three-quarter.webp",
+              "thumb": "assets/projects/bmw-m2-competition-chrome/photo-three-quarter-thumb.webp",
+              "srcset": "assets/projects/bmw-m2-competition-chrome/photo-three-quarter-thumb.webp 480w, assets/projects/bmw-m2-competition-chrome/photo-three-quarter.webp 1600w",
+              "width": 1600,
+              "height": 1200,
+              "kind": "photo",
+              "title": "Vyrobené kolo z úhlu",
+              "alt": "Tříčtvrteční pohled na vyrobené chromované kolo pro BMW M2 Competition.",
+              "caption": "Fotografie chromového povrchu a profilu hotového kola."
+            },
+            {
+              "src": "assets/projects/bmw-m2-competition-chrome/photo-reverse-angle.webp",
+              "thumb": "assets/projects/bmw-m2-competition-chrome/photo-reverse-angle-thumb.webp",
+              "srcset": "assets/projects/bmw-m2-competition-chrome/photo-reverse-angle-thumb.webp 480w, assets/projects/bmw-m2-competition-chrome/photo-reverse-angle.webp 1600w",
+              "width": 1600,
+              "height": 1200,
+              "kind": "photo",
+              "title": "Opačný pohled",
+              "alt": "Opačný boční úhel vyrobeného chromovaného kola pro BMW M2 Competition.",
+              "caption": "Fotografie vyrobeného chromového kola z opačného úhlu."
+            },
+            {
+              "src": "assets/projects/bmw-m2-competition-chrome/supplier-technical.webp",
+              "thumb": "assets/projects/bmw-m2-competition-chrome/supplier-technical-thumb.webp",
+              "srcset": "assets/projects/bmw-m2-competition-chrome/supplier-technical-thumb.webp 480w, assets/projects/bmw-m2-competition-chrome/supplier-technical.webp 1600w",
+              "width": 1600,
+              "height": 872,
+              "kind": "technical",
+              "title": "Technický návrh",
+              "alt": "Technický list dodavatele s návrhem chromovaných kol pro BMW M2 Competition.",
+              "caption": "Technický podklad dodavatele s návrhovou vizualizací."
+            },
+            {
+              "src": "assets/projects/bmw-m2-competition-chrome/supplier-front.webp",
+              "thumb": "assets/projects/bmw-m2-competition-chrome/supplier-front-thumb.webp",
+              "srcset": "assets/projects/bmw-m2-competition-chrome/supplier-front-thumb.webp 480w, assets/projects/bmw-m2-competition-chrome/supplier-front.webp 1105w",
+              "width": 1105,
+              "height": 560,
+              "kind": "visualization",
+              "title": "Návrh zepředu",
+              "alt": "Čelní návrhový render dvojice chromovaných kol pro BMW M2 Competition.",
+              "caption": "Dodavatelská návrhová vizualizace chromové sady kol zepředu."
+            },
+            {
+              "src": "assets/projects/bmw-m2-competition-chrome/supplier-three-quarter.webp",
+              "thumb": "assets/projects/bmw-m2-competition-chrome/supplier-three-quarter-thumb.webp",
+              "srcset": "assets/projects/bmw-m2-competition-chrome/supplier-three-quarter-thumb.webp 480w, assets/projects/bmw-m2-competition-chrome/supplier-three-quarter.webp 1600w",
+              "width": 1600,
+              "height": 872,
+              "kind": "visualization",
+              "title": "Návrh celé sady",
+              "alt": "Tříčtvrteční návrhový render dvojice chromovaných kol pro BMW M2 Competition.",
+              "caption": "Dodavatelská návrhová vizualizace chromové sady kol pro BMW M2 Competition."
+            },
+            {
+              "src": "assets/projects/bmw-m2-competition-chrome/supplier-profile.webp",
+              "thumb": "assets/projects/bmw-m2-competition-chrome/supplier-profile-thumb.webp",
+              "srcset": "assets/projects/bmw-m2-competition-chrome/supplier-profile-thumb.webp 480w, assets/projects/bmw-m2-competition-chrome/supplier-profile.webp 1600w",
+              "width": 1600,
+              "height": 872,
+              "kind": "visualization",
+              "title": "Návrh profilu",
+              "alt": "Profilový návrhový render dvojice chromovaných kol pro BMW M2 Competition.",
+              "caption": "Dodavatelská návrhová vizualizace profilu předního a zadního kola."
+            }
+          ],
+          "videos": [
+            {
+              "src": "assets/projects/bmw-m2-competition-chrome/video-turntable.mp4",
+              "poster": "assets/projects/bmw-m2-competition-chrome/video-turntable-poster.webp",
+              "thumb": "assets/projects/bmw-m2-competition-chrome/video-turntable-thumb.webp",
+              "width": 832,
+              "height": 464,
+              "kind": "video",
+              "title": "Vyrobené kolo v pohybu",
+              "caption": "Video vyrobeného kola pro BMW M2 Competition v chromovém provedení, otáčeného na podstavci."
+            }
+          ]
+        },
       {
         "id": "mustang-track-gold",
         "vehicle": "Mustang",
