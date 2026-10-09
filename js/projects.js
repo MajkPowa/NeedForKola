@@ -235,7 +235,7 @@
         copy.append(node('p', 'project-card__details', [text(project.wheel), text(project.finish)].filter(Boolean).join(' / ')));
       }
       const action = node('button', 'project-card__open', 'Prohlédnout celý projekt ↗'); action.type = 'button';
-      on(action, 'click', () => openGallery(project, action)); copy.append(action); card.append(visual, copy); grid.append(card);
+      on(action, 'click', () => openGallery(project, action)); copy.append(action); if (window.NFWPhotoWheelModels?.[project.id]) { const modelLink = node('a', 'project-card__open', 'Prohlédnout 3D model kola ↗'); modelLink.href = '3d-kolo.html?design=' + encodeURIComponent(project.id); copy.append(modelLink); } card.append(visual, copy); grid.append(card);
     });
     cleanup = () => {
       imageRequest++; stopVideo(); restoreScroll();

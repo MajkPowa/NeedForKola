@@ -3,9 +3,43 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { buildPhotoWheel } from './wheel-reconstruction.js?v=20261009-photo-3d';
+import { PHOTO_WHEEL_MODELS } from './wheel-reconstruction-catalog.js?v=20261009-photo-3d';
 import './vehicle-models.js?v=20260905-360';
 
-// All wheel surfaces below are real, chamfered 3D geometry. No SVG or flat wheel images.
+// Photo models have individual silhouettes; their hidden depth remains an estimate.
+const photoRecords = new Map();
+const sourceSurfaces = new Map();
+export async function prepareWheelGeometry(design, signal, referenceSurface = false) {
+  const entry = PHOTO_WHEEL_MODELS[design];
+  if (!entry) return;
+  if (!photoRecords.has(design)) {
+    const response = await fetch(new URL('../' + entry.record + (entry.revision ? '?v=' + entry.revision : ''), import.meta.url), { signal });
+    if (!response.ok) throw new Error('Geometrie kola se nepodařila načíst.');
+    const record = await response.json();
+    if (record.id !== design) throw new Error('Nesouhlasí identita 3D kola.');
+    photoRecords.set(design, record);
+  }
+  const record = photoRecords.get(design);
+  if (referenceSurface && !record.provenance.rectificationApproximate && !sourceSurfaces.has(design)) {
+    const surfaceSource = record.surfaceSource || record.source;
+    const response = await fetch(new URL('../' + surfaceSource.src, import.meta.url), { signal });
+    if (!response.ok) throw new Error('Referenční povrch kola se nepodařil načíst.');
+    const bitmap = await createImageBitmap(await response.blob());
+    if (signal?.aborted) { bitmap.close(); throw new DOMException('Náhled byl zrušen.', 'AbortError'); }
+    const canvas = document.createElement('canvas'); canvas.width = canvas.height = record.surfaceTextureSize || 1024;
+    const ctx = canvas.getContext('2d'), e = surfaceSource.faceEllipse;
+    const cx = e.cx * bitmap.width, cy = e.cy * bitmap.height, rx = e.rx * bitmap.width, ry = e.ry * bitmap.height;
+    const angle = e.rotationDeg * Math.PI / 180, c = Math.cos(angle), s = Math.sin(angle);
+    const half = canvas.width / 2;
+    ctx.setTransform(half*c/rx, -half*s/ry, half*s/rx, half*c/ry, half-half*(cx*c+cy*s)/rx, half-half*(-cx*s+cy*c)/ry);
+    ctx.drawImage(bitmap, 0, 0); bitmap.close(); sourceSurfaces.set(design, canvas);
+    // Keep the authoring canvas cache bounded; textures are owned by each mesh.
+    while (sourceSurfaces.size > 8) sourceSurfaces.delete(sourceSurfaces.keys().next().value);
+  }
+  return record;
+}
+const frontPlane = design => photoRecords.get(design)?.profile.frontZ ?? (presets[design]?.bolts ? .23 : .33);
 const DRACO_URL = new URL('../assets/vendor/draco/', import.meta.url).href;
 const active = new WeakMap();
 const TAU = Math.PI * 2;
@@ -28,10 +62,29 @@ const presets = {
   mesh3pc: { count: 15, style: 'mesh', width: .025, bolts: true },
 };
 
+export function supports3DDesign(design) {
+  return typeof design === 'string' && (Object.hasOwn(PHOTO_WHEEL_MODELS, design) || Object.hasOwn(presets, design));
+}
+
+function requireWheelGeometry(input) {
+  const design = typeof input.design === 'string' ? input.design : '';
+  const catalogueDesign = window.NFW?.DESIGNS?.find(item => item.id === design);
+  const sourceBrand = String(input.sourceBrand || catalogueDesign?.sourceBrand || '').trim().toLowerCase();
+  if (design && !supports3DDesign(design)) {
+    const error = new Error('Pro tento design není registrována geometrie. Vyberte dostupný model nebo fotografii.');
+    error.name = 'UnsupportedWheelGeometryError';
+    error.code = 'NFW_WHEEL_GEOMETRY_UNAVAILABLE';
+    error.design = design;
+    error.availablePreview = 'product-photo';
+    throw error;
+  }
+}
+
 function options(input = {}) {
+  requireWheelGeometry(input);
   return {
     ...input, mode: input.mode === 'car' ? 'car' : 'wheel',
-    design: presets[input.design] ? input.design : 'apex10',
+    design: supports3DDesign(input.design) ? input.design : 'apex10',
     color: hex(input.color, hex(input.colorHex, DEFAULT_WHEEL_COLOUR)),
     bodyColor: hex(input.bodyColor, '#303f4b'),
     diameter: clamp(input.diameter, 18, 24, 20),
@@ -183,6 +236,16 @@ function capTexture(opts) {
 
 /** One 2.06-unit diameter wheel, with its face looking down +Z and its centre at the origin. */
 export function createWheel(input = {}) {
+  const photoEntry = PHOTO_WHEEL_MODELS[input.design];
+  if (photoEntry) {
+    const record = photoRecords.get(input.design);
+    if (!record) throw new Error('Nejprve načtěte individuální geometrii kola.');
+    const opts = options(input);
+    const surface = opts.referenceSurface && sourceSurfaces.get(opts.design);
+    const texture = surface ? new THREE.CanvasTexture(surface) : null;
+    if (texture) { texture.colorSpace = THREE.SRGBColorSpace; texture.anisotropy = 8; }
+    return buildPhotoWheel(THREE, record, {...opts, faceTexture: texture, preserveSourceColour: !!texture});
+  }
   const opts = options(input), preset = presets[opts.design];
   const group = new THREE.Group(); group.name = `NFW_${opts.design}`;
   const material = metalMaterial(opts);
@@ -344,8 +407,8 @@ export async function mount(container, input = {}) {
   const motionChange = () => { controls.autoRotate = opts.autoRotate && !reduced.matches; };
   reduced.addEventListener('change', motionChange);
   const key = new THREE.DirectionalLight('#fff6e8', 2.1); key.position.set(-3, 6, 5); key.castShadow = renderer.shadowMap.enabled;
-  key.shadow.mapSize.set(2048, 2048); key.shadow.camera.left = key.shadow.camera.bottom = -4;
-  key.shadow.camera.right = key.shadow.camera.top = 4; key.shadow.normalBias = .006; key.shadow.bias = -.00003;
+  key.shadow.mapSize.set(input.highQuality && container.clientWidth > 650 ? 4096 : 2048, input.highQuality && container.clientWidth > 650 ? 4096 : 2048); key.shadow.camera.left = key.shadow.camera.bottom = -4;
+  key.shadow.camera.right = key.shadow.camera.top = 4; key.shadow.normalBias = .012; key.shadow.bias = -.00003;
   key.shadow.camera.near = .5; key.shadow.camera.far = 18;
   scene.add(key);
   const fill = new THREE.DirectionalLight('#bacbdf', 1.5); fill.position.set(4, 3, -4); scene.add(fill);
@@ -411,7 +474,7 @@ export async function mount(container, input = {}) {
       const scale = binding.rimRadius / 1.032;
       const wheel = createWheel({ ...opts, width: binding.widthInches || 10, diameter: binding.diameterInches || 21,
         mirror: binding.side === 'right' ? !opts.mirror : opts.mirror });
-      wheel.scale.setScalar(scale); wheel.position.z = -(presets[opts.design].bolts ? .23 : .33) * scale;
+      wheel.scale.setScalar(scale); wheel.position.z = -frontPlane(opts.design) * scale;
       wheel.name = `NFW_mounted_${binding.id}`;
       anchor.add(wheel); installedWheels.push(wheel);
     }
@@ -421,6 +484,9 @@ export async function mount(container, input = {}) {
     const token = ++generation;
     loadAbort?.abort(); loadAbort = new AbortController();
     const signal = loadAbort.signal;
+    try {
+    await prepareWheelGeometry(opts.design, signal, opts.referenceSurface);
+    if (disposed || generation !== token) return;
     if (model) { model.removeFromParent(); disposeObject(model); model = null; carModel = null; }
     installedWheels = []; paintMaterials = [];
     status.style.display = 'grid';
@@ -473,11 +539,7 @@ export async function mount(container, input = {}) {
         shadow.scale.set(size.x * 1.18, size.z * 1.3, 1);
         container.dataset.vehicleAsset = asset.id; container.dataset.mountedWheels = installedWheels.length;
       } catch (error) {
-        if (disposed || generation !== token) return;
-        controller.dispose();
-        status.textContent = 'Model auta se nepodařilo načíst. Zvolte detail kola nebo načtení opakujte.';
-        status.style.display = 'grid'; container.append(status);
-        input.onError?.(error); throw error;
+        throw error;
       }
     } else {
       asset = null; modelMetadata = null; delete container.dataset.vehicleAsset; delete container.dataset.mountedWheels;
@@ -486,6 +548,13 @@ export async function mount(container, input = {}) {
     if (disposed || generation !== token) return;
     status.style.display = 'none'; if (modeChanged) resetCamera(); render();
     input.onReady?.(controller);
+    } catch (error) {
+      if (disposed || generation !== token || error.name === 'AbortError') return;
+      controller.dispose();
+      status.textContent = '3D model se nepodařilo načíst. Opakujte načtení nebo zvolte jiný design.';
+      status.style.display = 'grid'; container.append(status);
+      input.onError?.(error); throw error;
+    }
   }
   const controller = {
     get options() { return { ...opts }; },
@@ -494,8 +563,8 @@ export async function mount(container, input = {}) {
       if (disposed) return;
       const previous = opts; opts = options({ ...opts, ...patch }); motionChange();
       const changed = previous.mode !== opts.mode || (opts.mode === 'car' && asset?.id !== registeredAsset()?.id);
-      const wheelChanged = ['design','color','finish','lip','cap','mirror','bolts', ...(opts.mode === 'wheel' ? ['width','diameter'] : [])].some(key => previous[key] !== opts[key]);
-      if (changed || !model) await build(changed);
+      const wheelChanged = ['design','color','finish','lip','cap','mirror','bolts','referenceSurface', ...(opts.mode === 'wheel' ? ['width','diameter'] : [])].some(key => previous[key] !== opts[key]);
+      if (changed || !model || (wheelChanged && opts.mode === 'wheel') || previous.design !== opts.design) await build(changed);
       else if (opts.mode === 'car') {
         if (wheelChanged) changeWheelsOnCar();
         else paintMaterials.forEach(material => material.color.set(opts.bodyColor));
@@ -509,6 +578,12 @@ export async function mount(container, input = {}) {
       if (disposed) return;
       const views = { front: [-8, 1.6, 0], side: [0, 1.55, 8], rear: [8, 1.7, 0], detail: [-2.55, .68, 2.8] };
       if (preset === 'perspective') { resetCamera(); return; }
+      if (opts.mode === 'wheel') {
+        const wheelViews = {front:[0,1.033,5.1], side:[5.1,1.033,0], rear:[0,1.033,-5.1]};
+        if (!wheelViews[preset]) return;
+        controls.autoRotate = false; controls.target.set(0,1.033,-.08); camera.position.fromArray(wheelViews[preset]);
+        controls.update(); render(); return;
+      }
       if (opts.mode !== 'car' || !views[preset]) return;
       controls.target.fromArray(preset === 'detail' ? [-1.35, .5, .7] : asset.camera.target);
       camera.position.fromArray(views[preset]);
@@ -516,6 +591,17 @@ export async function mount(container, input = {}) {
     },
     get view() { return { assetId: asset?.id || null, mountedWheels: installedWheels.length, camera: camera.position.toArray(), target: controls.target.toArray() }; },
     capture(type = 'image/webp', quality = .92) { render(); return renderer.domElement.toDataURL(type, quality); },
+    captureHighResolution(width = 4096) {
+      const size = renderer.getSize(new THREE.Vector2()), ratio = renderer.getPixelRatio(), aspect = camera.aspect;
+      const w = Math.min(4096, Math.max(1024, width)), h = Math.round(w / aspect);
+      try {
+        renderer.setPixelRatio(1); renderer.setSize(w, Math.min(4096,h), false);
+        camera.aspect = w / Math.min(4096,h); camera.updateProjectionMatrix(); render();
+        return renderer.domElement.toDataURL('image/png');
+      } finally {
+        camera.aspect = aspect; camera.updateProjectionMatrix(); renderer.setPixelRatio(ratio); renderer.setSize(size.x,size.y,false); render();
+      }
+    },
     dispose() {
       if (disposed) return; disposed = true; generation++;
       loadAbort?.abort(); input.signal?.removeEventListener('abort', cancelMount);
@@ -673,6 +759,7 @@ export function renderWheelFace(input = {}) {
   const opts = faceOptions(input);
   const job = faceQueue.then(async () => {
     await ensureCapLogo();
+    await prepareWheelGeometry(opts.design, input.signal);
     const cacheKey = JSON.stringify([capLogoRevision, opts]);
     clearTimeout(faceIdleTimer);
     if (faceCache.has(cacheKey)) {
@@ -687,7 +774,7 @@ export function renderWheelFace(input = {}) {
       const { renderer, scene, camera } = faceStudio;
       if (renderer.getContext().isContextLost()) throw new Error('Kontext 3D náhledu kola není dostupný.');
       assembly = new THREE.Group();
-      const wheel = createWheel(opts), face = presets[opts.design].bolts ? .23 : .33;
+      const wheel = createWheel(opts), face = frontPlane(opts.design);
       // The recessed barrel receives less open-room reflection than the exposed
       // machined face. Keep it a rougher, shaded cavity instead of a bright bowl.
       const barrel = wheel.children.find(item => item.geometry?.type === 'LatheGeometry');
@@ -713,13 +800,19 @@ export function renderWheelFace(input = {}) {
         part.geometry.setAttribute('color', new THREE.BufferAttribute(colours, 3));
         // The original material also belongs to lips and seats without a colour
         // attribute. Only these extruded faces use the ambient-occlusion variant.
-        const originalMaterial = part.material;
-        if (!occludedMaterials.has(originalMaterial)) {
-          const material = originalMaterial.clone();
-          material.vertexColors = true;
-          occludedMaterials.set(originalMaterial, material);
-        }
-        part.material = occludedMaterials.get(originalMaterial);
+        const shade = originalMaterial => {
+          if (!occludedMaterials.has(originalMaterial)) {
+            const material = originalMaterial.clone(); material.vertexColors = true;
+            occludedMaterials.set(originalMaterial, material);
+          }
+          return occludedMaterials.get(originalMaterial);
+        };
+        part.material = Array.isArray(part.material) ? part.material.map(shade) : shade(part.material);
+      }
+      // A spoke-only source material may no longer be referenced after the
+      // shaded variant replaces it; texture ownership remains with the clones.
+      for (const originalMaterial of occludedMaterials.keys()) {
+        if (!wheel.children.some(part => (Array.isArray(part.material) ? part.material : [part.material]).includes(originalMaterial))) originalMaterial.dispose();
       }
       addFaceBrakes(wheel, face);
       // Pitch/yaw pivot about the rim face, preserving the centre of its ellipse.
@@ -759,5 +852,5 @@ export function renderWheelFace(input = {}) {
   faceQueue = job.catch(() => {}); return job;
 }
 
-window.NFWShowroom = { mount, createWheel, renderThumbnail, disposeThumbnails, renderWheelFace, disposeWheelFaces, ensureCapLogo, get capLogoReady() { return ensureCapLogo(); }, version: '1.3.0', threeVersion: THREE.REVISION };
+window.NFWShowroom = { mount, createWheel, prepareWheelGeometry, supports3DDesign, renderThumbnail, disposeThumbnails, renderWheelFace, disposeWheelFaces, ensureCapLogo, get capLogoReady() { return ensureCapLogo(); }, version: '1.6.0', threeVersion: THREE.REVISION };
 window.dispatchEvent(new CustomEvent('nfw:showroom-ready'));

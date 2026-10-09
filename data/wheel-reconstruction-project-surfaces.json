@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "coordinateSystem": "normalized-source-image",
+  "reviewedAt": "2026-10-09",
+  "purpose": "Actual manufactured project front-surface references, separate from geometry trace provenance.",
+  "sourceCatalogue": "docs/qa/wheel-reconstruction/catalog-baseline.json",
+  "sourceCatalogueSha256": "77988a6b2a7a7af22f5b6a0af8520b1da9b19f9870dc6fe19d245a2ce86216c1",
+  "ellipseConvention": {
+    "cx": "image width fraction",
+    "cy": "image height fraction, y-down",
+    "rx": "horizontal radius as image width fraction",
+    "ry": "vertical radius as image height fraction",
+    "rotationDeg": "clockwise source sampling phase; zero when tracing the same selected image"
+  },
+  "inspectionStatus": "all-nine-sources-and-rim-bounds-visually-reviewed",
+  "counts": {
+    "projects": 9,
+    "actualPhotographs": 8,
+    "technicalReferencesWithoutPhotograph": 1
+  },
+  "records": [
+    {
+      "id": "bmw-m2-competition-chrome",
+      "src": "assets/projects/bmw-m2-competition-chrome/photo-front.webp",
+      "width": 1600,
+      "height": 1200,
+      "kind": "photo",
+      "sha256": "c23ff25ced004be8162c216ddd9bbfaeaf0348f88aa1d6ceb7baa58d347b7fcc",
+      "sourceUID": "assets/projects/bmw-m2-competition-chrome/photo-front.webp#sha256=c23ff25ced004be8162c216ddd9bbfaeaf0348f88aa1d6ceb7baa58d347b7fcc",
+      "faceEllipse": {
+        "cx": 0.4966357,
+        "cy": 0.5592797,
+        "rx": 0.3233748,
+        "ry": 0.4237233,
+        "rotationDeg": 0
+      },
+      "sourceView": "front",
+      "actualPhotograph": true,
+      "referenceQuality": "actual-front-photograph",
+      "alignmentMethod": "same-source-and-ellipse-for-geometry-and-surface",
+      "notes": [
+        "This selects an existing source image; no source photograph was edited.",
+        "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
+        "Depth, hidden back and perspective rectification remain approximate."
+      ]
+    },
+    {
+      "id": "mustang-track-gold",
+      "src": "assets/projects/mustang-track-gold/photo-front.webp",
+      "width": 1600,
+      "height": 1200,
+      "kind": "photo",
+      "sha256": "01a6e77fedf93c0485746283a88906e7ac17b5d3b435a55f20b6239340945e84",
+      "sourceUID": "assets/projects/mustang-track-gold/photo-front.webp#sha256=01a6e77fedf93c0485746283a88906e7ac17b5d3b435a55f20b6239340945e84",
+      "faceEllipse": {
+        "cx": 0.5480711,
+        "cy": 0.4672126,
+        "rx": 0.2810213,
+        "ry": 0.4042055,
+        "rotationDeg": 0
+      },
+      "sourceView": "front",
+      "actualPhotograph": true,
+      "referenceQuality": "actual-front-photograph",
+      "alignmentMethod": "same-source-and-ellipse-for-geometry-and-surface",
+      "notes": [
+        "This selects an existing source image; no source photograph was edited.",
+        "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
+        "Depth, hidden back and perspective rectification remain approximate."
+      ]
+    },
+    {
+      "id": "audi-rs3-drag-race-gloss-black",
+      "src": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-technical.webp",
+      "width": 1600,
+      "height": 872,
+      "kind": "technical",
+      "sha256": "6f1b4d8e1354ad208008b3cc215d9251a15b08982c767549a31b34cf0ce6944b",
+      "sourceUID": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-technical.webp#sha256=6f1b4d8e1354ad208008b3cc215d9251a15b08982c767549a31b34cf0ce6944b",
+      "faceEllipse": {
+        "cx": 0.309,
+        "cy": 0.579,
+        "rx": 0.193,
+        "ry": 0.354,
+        "rotationDeg": 0
+      },
+      "sourceView": "front",
+      "actualPhotograph": false,
+      "referenceQuality": "supplier-front-technical-reference",
+      "alignmentMethod": "unchanged-existing-technical-source",
+      "notes": [
+        "No real photograph or video exists for this project. Preserve the existing valid supplier front reference and do not label it as a photograph.",
+        "Technical labels lie outside the selected wheel face."
+      ]
+    },
+    {
+      "id": "mustang-gt-50-gloss-black",
+      "src": "assets/projects/mustang-gt-50-gloss-black/photo-front.webp",
+      "width": 1600,
+      "height": 1200,
+      "kind": "photo",
+      "sha256": "78b58f01fb779e2b0d30ecd28f48366b65a217808c8898a8f63958332de18334",
+      "sourceUID": "assets/projects/mustang-gt-50-gloss-black/photo-front.webp#sha256=78b58f01fb779e2b0d30ecd28f48366b65a217808c8898a8f63958332de18334",
+      "faceEllipse": {
+        "cx": 0.5518999,
+        "cy": 0.4582495,
+        "rx": 0.2945138,
+        "ry": 0.4049943,
+        "rotationDeg": 0
+      },
+      "sourceView": "front",
+      "actualPhotograph": true,
+      "referenceQuality": "actual-front-photograph",
+      "alignmentMethod": "same-source-and-ellipse-for-geometry-and-surface",
+      "notes": [
+        "This selects an existing source image; no source photograph was edited.",
+        "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
+        "Depth, hidden back and perspective rectification remain approximate."
+      ]
+    },
+    {
+      "id": "lamborghini-urus-matte-tx-gold-machined",
+      "src": "assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-front.webp",
+      "width": 1600,
+      "height": 1200,
+      "kind": "photo",
+      "sha256": "61aee75ccabfcfe768db93489e7c0897254ecd5435e6b7906bfc833389cf536c",
+      "sourceUID": "assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-front.webp#sha256=61aee75ccabfcfe768db93489e7c0897254ecd5435e6b7906bfc833389cf536c",
+      "faceEllipse": {
+        "cx": 0.4994979,
+        "cy": 0.4891974,
+        "rx": 0.3237459,
+        "ry": 0.427893,
+        "rotationDeg": 0
+      },
+      "sourceView": "front",
+      "actualPhotograph": true,
+      "referenceQuality": "actual-front-photograph",
+      "alignmentMethod": "same-source-and-ellipse-for-geometry-and-surface",
+      "notes": [
+        "This selects an existing source image; no source photograph was edited.",
+        "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
+        "Depth, hidden back and perspective rectification remain approximate."
+      ]
+    },
+    {
+      "id": "rolls-royce-ghost-2017-brushed-silver",
+      "src": "assets/projects/rolls-royce-ghost-2017-brushed-silver/photo-front.webp",
+      "width": 567,
+      "height": 425,
+      "kind": "photo",
+      "sha256": "8920464b68284ba3be01932d8b6c188643f36b04489e65c1ba89525df0f0b4af",
+      "sourceUID": "assets/projects/rolls-royce-ghost-2017-brushed-silver/photo-front.webp#sha256=8920464b68284ba3be01932d8b6c188643f36b04489e65c1ba89525df0f0b4af",
+      "faceEllipse": {
+        "cx": 0.5320624,
+        "cy": 0.4488271,
+        "rx": 0.316305,
+        "ry": 0.4248316,
+        "rotationDeg": 0
+      },
+      "sourceView": "front",
+      "actualPhotograph": true,
+      "referenceQuality": "actual-front-photograph",
+      "alignmentMethod": "same-source-and-ellipse-for-geometry-and-surface",
+      "notes": [
+        "This selects an existing source image; no source photograph was edited.",
+        "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
+        "Depth, hidden back and perspective rectification remain approximate.",
+        "Native source is only 567 by 425 pixels. Texture detail is limited to this genuine source; do not claim increased photographic detail."
+      ]
+    },
+    {
+      "id": "lamborghini-urus-gloss-black-machined",
+      "src": "assets/projects/lamborghini-urus-gloss-black-machined/photo-front.webp",
+      "width": 1600,
+      "height": 1200,
+      "kind": "photo",
+      "sha256": "97f26d441282fc153f26d3bb468fc9637972b296fb6fd94b861966346f8e94bf",
+      "sourceUID": "assets/projects/lamborghini-urus-gloss-black-machined/photo-front.webp#sha256=97f26d441282fc153f26d3bb468fc9637972b296fb6fd94b861966346f8e94bf",
+      "faceEllipse": {
+        "cx": 0.5282408,
+        "cy": 0.4598799,
+        "rx": 0.3065208,
+        "ry": 0.4118718,
+        "rotationDeg": 0
+      },
+      "sourceView": "front",
+      "actualPhotograph": true,
+      "referenceQuality": "actual-front-photograph",
+      "alignmentMethod": "same-source-and-ellipse-for-geometry-and-surface",
+      "notes": [
+        "This selects an existing source image; no source photograph was edited.",
+        "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
+        "Depth, hidden back and perspective rectification remain approximate."
+      ]
+    },
+    {
+      "id": "ferrari-812-gunmetal-machined",
+      "src": "assets/projects/ferrari-812-gunmetal-machined/photo-front.webp",
+      "width": 1600,
+      "height": 1200,
+      "kind": "photo",
+      "sha256": "209c104a99fcd94ef836c631dbee512380eb07063b1beed54c1f57faa7aff4bf",
+      "sourceUID": "assets/projects/ferrari-812-gunmetal-machined/photo-front.webp#sha256=209c104a99fcd94ef836c631dbee512380eb07063b1beed54c1f57faa7aff4bf",
+      "faceEllipse": {
+        "cx": 0.5096446,
+        "cy": 0.4430761,
+        "rx": 0.3030895,
+        "ry": 0.4109141,
+        "rotationDeg": 0
+      },
+      "sourceView": "front",
+      "actualPhotograph": true,
+      "referenceQuality": "actual-front-photograph",
+      "alignmentMethod": "same-source-and-ellipse-for-geometry-and-surface",
+      "notes": [
+        "This selects an existing source image; no source photograph was edited.",
+        "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
+        "Depth, hidden back and perspective rectification remain approximate."
+      ]
+    },
+    {
+      "id": "ferrari-812-gloss-black",
+      "src": "assets/projects/ferrari-812-gloss-black/photo-front.webp",
+      "width": 1600,
+      "height": 1200,
+      "kind": "photo",
+      "sha256": "b3c0f7c540b36a216956f144665ab0ab49059d6603f2f1e52a1f8d7362ef000f",
+      "sourceUID": "assets/projects/ferrari-812-gloss-black/photo-front.webp#sha256=b3c0f7c540b36a216956f144665ab0ab49059d6603f2f1e52a1f8d7362ef000f",
+      "faceEllipse": {
+        "cx": 0.5267594,
+        "cy": 0.4375,
+        "rx": 0.3029746,
+        "ry": 0.406896,
+        "rotationDeg": 0
+      },
+      "sourceView": "front",
+      "actualPhotograph": true,
+      "referenceQuality": "actual-front-photograph",
+      "alignmentMethod": "same-source-and-ellipse-for-geometry-and-surface",
+      "notes": [
+        "This selects an existing source image; no source photograph was edited.",
+        "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
+        "Depth, hidden back and perspective rectification remain approximate."
+      ]
+    }
+  ]
+}

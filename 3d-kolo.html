@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#202323">
+<title>3D studio kol · OARTS</title>
+<meta name="description" content="Individuální 3D rekonstrukce designů kol podle fotografií. Otáčení, materiály, srovnání s podkladem a export renderu.">
+<link rel="canonical" href="https://majkpowa.github.io/NeedForKola/3d-kolo.html">
+<link rel="stylesheet" href="css/wheel-model-viewer.css?v=20261009-photo-3d">
+<script type="importmap">{"imports":{"three":"./assets/vendor/three/three.module.js","three/addons/":"./assets/vendor/three/addons/"}}</script>
+</head>
+<body>
+<header class="model-header"><a href="index.html" aria-label="OARTS · úvod"><img src="assets/brand/oarts-logo-256.webp" alt="oarts" width="145" height="50"></a><nav aria-label="Navigace studia"><a href="index.html#designy">Designy</a><a href="index.html#skladem">Hotová kola</a><a href="index.html#realizace">Projekty</a></nav></header>
+<main class="model-main">
+<div class="model-heading"><div><p class="model-eyebrow">OARTS / 3D STUDIO</p><h1 id="modelTitle">3D model kola</h1><p id="modelDescription">Geometrie podle předlohy, světlo a materiál v reálném čase.</p></div><label class="model-picker">Vybrat design<select id="modelDesign"></select></label></div>
+<div class="model-layout">
+<section class="model-studio" aria-label="Interaktivní 3D model"><div id="modelCanvas"><p role="status">Připravuji individuální 3D model…</p></div><div class="model-viewpoints" aria-label="Pohled"><button data-view="perspective" type="button">3/4</button><button data-view="front" type="button">Čelo</button><button data-view="side" type="button">Bok</button><button data-view="rear" type="button">Zadní část</button><button id="modelRotate" type="button" aria-pressed="false">Otáčení</button></div><p class="model-help">Tažením otáčej · kolečkem nebo dvěma prsty přibližuj</p></section>
+<aside class="model-details">
+<figure class="model-reference"><a id="modelSourceLink" target="_blank" rel="noopener"><img id="modelSource" alt="Obrazová předloha tohoto designu" width="600" height="600"></a><figcaption id="modelSourceCaption">Obrazový podklad</figcaption></figure>
+<div class="model-controls"><label>Povrch<select id="modelFinish"><option value="satin">Satén</option><option value="gloss">Lesk</option><option value="matte">Mat</option><option value="brushed">Broušený kov</option><option value="chrome">Chrom</option></select></label><label>Barva<input id="modelColour" type="color" value="#b9bcc2"></label><label class="model-reference-check"><input id="modelSurface" type="checkbox" checked>Detaily a barva z předlohy</label></div>
+<p class="model-provenance" id="modelProvenance">3D rekonstrukce podle obrazové předlohy. Hloubka, konkávnost a zadní část jsou odhad.</p>
+<div class="model-exports"><button id="modelExport" type="button">Připravit render 4K ↓</button><a id="modelRenderDownload" hidden download>Stáhnout připravený PNG ↓</a><a id="modelDownload" download>Stáhnout 3D model GLB ↓</a></div><p class="model-export-note">GLB obsahuje prostorovou geometrii a dostupný povrch z předlohy. Vizualizace neslouží jako výrobní CAD ani ověření montáže.</p>
+<p id="modelStatus" role="status" aria-live="polite"></p>
+</aside>
+</div>
+<noscript>Pro 3D studio zapni JavaScript. <a href="index.html#realizace">Fotografie projektů</a></noscript>
+</main>
+<script src="js/wheels.js?v=20261008-no-three-piece"></script><script src="js/e6-wheels-data.js?v=20261009-e6-first"></script><script src="js/editorial-data.js?v=20261009-bmw-m2-project"></script>
+<script type="module" src="js/wheel-model-viewer.js?v=20261009-photo-3d"></script>
+</body></html>

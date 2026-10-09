@@ -2,7 +2,7 @@
  * Coordinates belong to the full, uncropped local photograph, not the viewport.
  * Original photographs and tyres are preserved; only the rim faces are covered.
  */
-import { renderWheelFace } from './showroom.js?v=20260906-exact-vehicle';
+import { renderWheelFace } from './showroom.js?v=20261009-photo-3d';
 
 const manifestURL = new URL('../data/wheel-fitments.json?v=20260906-exact-vehicle', import.meta.url);
 let manifestPromise;

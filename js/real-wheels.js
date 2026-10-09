@@ -80,6 +80,7 @@
       thumbs.append(thumb); return thumb;
     });
     gallery.append(frame, controls, caption, thumbs);
+    if (window.NFWPhotoWheelModels?.[item.id]) { const modelLink = element('a', 'real-wheel-enquiry', 'Prohlédnout 3D model kola ↗'); modelLink.href = '3d-kolo.html?design=' + encodeURIComponent(item.id); gallery.append(modelLink); }
     const info = element('div', 'real-wheel-dialog__info');
     info.append(element('span', 'real-wheel-tag', categoryLabels[item.category] || categoryLabels.wheel));
     if (clean(item.finishLabel)) info.append(element('h4', 'real-wheel-dialog__finish', item.finishLabel));

@@ -88,11 +88,13 @@
   }
   const design = () => O.find(O.DESIGNS, S.design);
   const sourcePhotoOnly = () => design().previewMode === 'source-photo';
+  const hasPhoto3D = () => Boolean(window.NFWPhotoWheelModels?.[S.design]);
+  const showSourcePhoto = () => sourcePhotoOnly() && S.view === 'wheel-photo';
   const constructionLabel = d => d.constructionLabel || (d.pieces === 3 ? 'Třídílné' : d.pieces === 1 ? 'Monoblok' : 'Konstrukce k potvrzení');
   let e6PhotoIndex = 0;
   function normalisePreview() {
-    if (sourcePhotoOnly()) S.view = 'wheel-photo';
-    else if (S.view === 'wheel-photo') S.view = 'wheel';
+    if (sourcePhotoOnly() && !hasPhoto3D()) S.view = 'wheel-photo';
+    else if (!sourcePhotoOnly() && S.view === 'wheel-photo') S.view = 'wheel';
   }
   const bodyHex = () => O.find(O.BODY_COLORS, S.bodyColor).hex;
   const colorHex = () => S.color === 'custom' ? S.colorHex : O.find(O.COLORS, S.color).hex;
@@ -223,11 +225,11 @@
   }
 
   /* ---------- render: scéna ---------- */
-  const selected3D = () => sourcePhotoOnly() ? null : models3D?.resolve(S) || null;
+  const selected3D = () => sourcePhotoOnly() && !hasPhoto3D() ? null : models3D?.resolve(S) || null;
   const stageAsset = () => S.view === 'car' ? selected3D() : null;
   const isPhotoView = () => S.view === 'photo' || (S.view === 'car' && !selected3D());
   function stageTitle() {
-    if (sourcePhotoOnly()) return `<small>Produktová fotografie E6</small>${esc(design().name)}`;
+    if (showSourcePhoto()) return `<small>Produktová fotografie E6</small>${esc(design().name)}`;
     const asset = stageAsset();
     const heading = vehicleName();
     const subtitle = asset ? '360° studio · tvůj vůz ve 3D' : `Konfigurátor · krok ${S.step} / 5`;
@@ -235,14 +237,16 @@
   }
   let showroomModule, wheelPhotoModule, viewer, photoViewer, pendingViewerAbort, viewerKey = '', renderToken = 0;
   const failedVisuals = new Set();
-  const loadShowroom = () => showroomModule || (showroomModule = import('./showroom.js?v=20261008-no-x5').catch(e => { showroomModule = null; throw e; }));
-  const loadWheelPhoto = () => wheelPhotoModule || (wheelPhotoModule = import('./wheel-fit-preview.js?v=20260906-exact-vehicle').catch(e => { wheelPhotoModule = null; throw e; }));
+  const loadShowroom = () => showroomModule || (showroomModule = import('./showroom.js?v=20261009-photo-3d').catch(e => { showroomModule = null; throw e; }));
+  const loadWheelPhoto = () => wheelPhotoModule || (wheelPhotoModule = import('./wheel-fit-preview.js?v=20261009-photo-3d').catch(e => { wheelPhotoModule = null; throw e; }));
   const previewOptions = mode => ({ mode, vehicleAsset: stageAsset()?.id, design: S.design, color: colorHex(), colorHex: colorHex(), finish: S.finish, lip: S.lip, cap: S.cap, diameter: S.d, width: S.wf, autoRotate: S.spin, bodyColor: bodyHex(), mirror: S.side === 'L', bolts: parseInt(S.pcd,10) || 5 });
   const photoOptions = () => ({ ...previewOptions('wheel'), label: `${design().name} · ${colorName()}` });
   async function renderWheelFallback(container, token, module) {
     const selected = { name: design().name, colourName: colorName(), colour: colorHex(), options: previewOptions('wheel') };
     const matchingColour = ['#b9bcc2', '#9a6d3a'].includes(selected.colour.toLowerCase());
-    const message = matchingColour
+    const message = sourcePhotoOnly()
+      ? '3D náhled se nepodařilo načíst. Zobrazuje se původní produktová fotografie E6; vybraný odstín zůstává uložený v konfiguraci.'
+      : matchingColour
       ? '3D náhled se nepodařilo načíst. Zobrazuje se uložený render vybraného designu a barvy.'
       : '3D náhled se nepodařilo načíst. Náhled designu je ve stříbrné; vybraný odstín zůstává uložený v konfiguraci.';
     container.innerHTML = `<div class="viewer-fallback" data-wheel-design="${esc(S.design)}" data-wheel-colour="${esc(selected.colour)}">${sourcePhotoOnly() ? `<img class="wheel-thumb e6-catalog-photo" src="${esc(design().productPhoto)}" alt="${esc(design().name)} — fotografie E6" width="96" height="96">` : O.renderWheel(wheelOpts())}<p><b>${esc(selected.name)} · ${esc(selected.colourName)}</b><br><span data-fallback-message>${message}</span></p><button class="btn btn--ghost" type="button" data-retry-3d>Zkusit znovu</button></div>`;
@@ -265,23 +269,23 @@
     e6PhotoIndex = Math.min(Math.max(0, e6PhotoIndex), Math.max(0, photos.length - 1));
     const photo = photos[e6PhotoIndex];
     if (!photo) { v.innerHTML = '<p class="note" role="status">Fotografii tohoto modelu připravujeme.</p>'; return; }
-    v.innerHTML = `<figure class="e6-product-photo"><img src="${esc(photo.src)}" alt="${esc(product.name)} — ${esc(photo.label || 'produktová fotografie E6')}" width="${photo.width}" height="${photo.height}"><figcaption><b>${esc(product.name)} · ${e6PhotoIndex + 1} / ${photos.length}</b><span>${esc(photo.caption || 'Původní produktová fotografie E6.')}</span><small>Fotografie zachycuje původní provedení. Požadovanou barvu, rozměry a dostupnost ověříme při konzultaci; přesný 3D podklad tohoto modelu zatím nemáme.</small><a href="${esc(product.sourceUrl)}" target="_blank" rel="noopener">Model na E6 ↗</a></figcaption></figure><div class="e6-product-gallery" aria-label="Fotografie ${esc(product.name)}">${photos.map((p, i) => `<button type="button" data-e6-photo="${i}" aria-label="Produktový pohled ${i + 1}" aria-pressed="${i === e6PhotoIndex}"><img src="${esc(p.thumb || p.src)}" alt="" width="96" height="96" loading="lazy"></button>`).join('')}</div>`;
+    v.innerHTML = `<figure class="e6-product-photo"><img src="${esc(photo.src)}" alt="${esc(product.name)} — ${esc(photo.label || 'produktová fotografie E6')}" width="${photo.width}" height="${photo.height}"><figcaption><b>${esc(product.name)} · ${e6PhotoIndex + 1} / ${photos.length}</b><span>${esc(photo.caption || 'Původní produktová fotografie E6.')}</span><small>Fotografie zachycuje původní provedení. Požadovanou barvu, rozměry a dostupnost ověříme při konzultaci. 3D rekonstrukce vychází z této fotografie; hloubka a zadní část jsou odhad.</small><a href="${esc(product.sourceUrl)}" target="_blank" rel="noopener">Model na E6 ↗</a></figcaption></figure><div class="e6-product-gallery" aria-label="Fotografie ${esc(product.name)}">${photos.map((p, i) => `<button type="button" data-e6-photo="${i}" aria-label="Produktový pohled ${i + 1}" aria-pressed="${i === e6PhotoIndex}"><img src="${esc(p.thumb || p.src)}" alt="" width="96" height="96" loading="lazy"></button>`).join('')}</div>`;
     v.querySelector('.e6-product-photo > img').addEventListener('error', () => {
       v.innerHTML = '<div class="note" role="status">Fotografii se nepodařilo načíst. <button type="button" data-e6-photo="0">Načíst znovu</button></div>';
     }, { once: true });
   }
   function renderStage() {
     normalisePreview();
-    const tabs = sourcePhotoOnly() ? [['wheel-photo', 'Fotografie E6 modelu']] : [['car', 'Můj vůz'], ['wheel', '3D kolo'], ...(selected3D() ? [['photo', 'Fotografie']] : [])];
+    const tabs = sourcePhotoOnly() && !hasPhoto3D() ? [['wheel-photo', 'Fotografie E6 modelu']] : [['car', 'Můj vůz'], ['wheel', '3D kolo'], ...(sourcePhotoOnly() ? [['wheel-photo', 'Fotografie E6 modelu']] : []), ...(selected3D() ? [['photo', 'Fotografie']] : [])];
     const activeTab = S.view === 'photo' && !selected3D() ? 'car' : S.view;
-    $('#stageHead').innerHTML = `<h1>${stageTitle()}</h1><div class="stage-controls"><div class="seg" aria-label="Typ náhledu">${tabs.map(([id,label])=>`<button type="button" class="${activeTab===id?'active':''}" data-view="${id}" aria-pressed="${activeTab===id}"><span>${label}</span></button>`).join('')}</div>${!sourcePhotoOnly() && !isPhotoView()?`<label class="toggle"><input type="checkbox" id="spinToggle" ${S.spin?'checked':''}> Rotace</label>`:''}</div>`;
+    $('#stageHead').innerHTML = `<h1>${stageTitle()}</h1><div class="stage-controls"><div class="seg" aria-label="Typ náhledu">${tabs.map(([id,label])=>`<button type="button" class="${activeTab===id?'active':''}" data-view="${id}" aria-pressed="${activeTab===id}"><span>${label}</span></button>`).join('')}</div>${!showSourcePhoto() && !isPhotoView()?`<label class="toggle"><input type="checkbox" id="spinToggle" ${S.spin?'checked':''}> Rotace</label>`:''}</div>`;
     renderStageView(); renderStageFoot();
   }
   async function renderStageView() {
     const v = $('#stageView');
     const token = ++renderToken;
-    v.classList.toggle('has-e6-product', sourcePhotoOnly());
-    if (sourcePhotoOnly()) {
+    v.classList.toggle('has-e6-product', showSourcePhoto());
+    if (showSourcePhoto()) {
       pendingViewerAbort?.abort(); pendingViewerAbort = null;
       viewer?.dispose(); viewer = null; photoViewer?.dispose(); photoViewer = null;
       viewerKey = 'e6-photo:' + S.design;
@@ -367,7 +371,7 @@
       const available = visuals?.resolve(S, { allowModelFallback: false });
       const loadFailed = Boolean(available && failedVisuals.has(available.src)) || Boolean(visuals?.errors?.length);
       caption.innerHTML=`<b>${incomplete ? 'Upřesni provedení svého vozu' : loadFailed ? 'Fotografii se nepodařilo načíst' : 'Náhled tohoto provedení připravujeme'}</b><span>${incomplete ? 'Vyber rok, karoserii a generaci. Zatím si můžeš prohlédnout navržené kolo.' : loadFailed ? 'Zobrazuje se samostatný návrh kola. Zkus podklady znovu načíst; vybraný vůz zůstává uložený.' : 'Pro zvolený rok, generaci a karoserii zatím nemáme dostupný ověřený podklad. Zobrazuje se samostatné 3D kolo; tvůj vůz zůstává uložený.'}</span>${loadFailed ? '<button class="visual-retry" type="button" data-retry-visual>Obnovit vizuální podklady</button>' : ''}`;
-    } else caption.innerHTML=`<b>3D NÁVRH KOLA <span class="live-dot"></span></b><span>${MOBILE.matches ? 'Tažením otáčej · dvěma prsty přibližuj' : 'Tažením otáčej · kolečkem přibližuj · dvojklikem obnov pohled'}</span>`;
+    } else caption.innerHTML=`<b>3D NÁVRH KOLA <span class="live-dot"></span></b><span>${MOBILE.matches ? 'Tažením otáčej · dvěma prsty přibližuj' : 'Tažením otáčej · kolečkem přibližuj · dvojklikem obnov pohled'}</span>${window.NFWPhotoWheelModels?.[S.design] ? `<small>Rekonstrukce podle fotografie · hloubka a zadní část jsou odhad.</small><a href="3d-kolo.html?design=${encodeURIComponent(S.design)}">Porovnat s předlohou a stáhnout 4K render ↗</a>` : ''}`;
   }
 
   function renderStageFoot() {
@@ -706,7 +710,7 @@
       if (key === 'car') applyCarDefaults(car());
       update({ head: key === 'car' || key === 'design' });
       if (key === 'design') announce(`Vybráno ${design().name}. Prohlédni si náhled nebo pokračuj k rozměrům.`);
-      else if (key === 'color' || key === 'finish') announce(`${colorName()}, ${O.find(O.FINISHES,S.finish).name}. ${sourcePhotoOnly() ? 'Požadavek uložen; fotografie je původní provedení.' : 'Náhled je aktualizovaný.'}`);
+      else if (key === 'color' || key === 'finish') announce(`${colorName()}, ${O.find(O.FINISHES,S.finish).name}. ${showSourcePhoto() ? 'Požadavek uložen; fotografie je původní provedení.' : 'Náhled je aktualizovaný.'}`);
     }
   });
 

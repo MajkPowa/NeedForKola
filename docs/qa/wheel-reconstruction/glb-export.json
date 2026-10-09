@@ -1,0 +1,1031 @@
+[
+  {
+    "id": "apex10",
+    "triangles": 34744,
+    "bytes": 2778500,
+    "photographicSurface": true,
+    "sha256": "17c07727d36390f8503393a09329a15c3120af64804efed096492506216fc463"
+  },
+  {
+    "id": "audi-rs3-drag-race-gloss-black",
+    "triangles": 30340,
+    "bytes": 1958856,
+    "photographicSurface": true,
+    "sha256": "7773497ee91b870de535c059188417f5745e50cca7e51b83f4ef736e0852a87e"
+  },
+  {
+    "id": "bmw-m2-competition-chrome",
+    "triangles": 29094,
+    "bytes": 3349456,
+    "photographicSurface": true,
+    "sha256": "1a7fbb34862349edb4113fc4e5c7bd1fc488d22e57effc68445e806b0429ec60"
+  },
+  {
+    "id": "e6-beadlock-ad5x",
+    "triangles": 20760,
+    "bytes": 1176872,
+    "photographicSurface": true,
+    "sha256": "9ac608a8a43e3df7b700d9faf28178fda78324bfa4e189db68c3e8176d5228a8"
+  },
+  {
+    "id": "e6-beadlock-bf2x",
+    "triangles": 25866,
+    "bytes": 1521600,
+    "photographicSurface": true,
+    "sha256": "98e3a5702bf3ba81d8086d36f0a92529eb7773eb632a57edd89198c4e28381f9"
+  },
+  {
+    "id": "e6-beadlock-cf7x",
+    "triangles": 27716,
+    "bytes": 2300924,
+    "photographicSurface": true,
+    "sha256": "80541bc6971dc3774d5fa116cb7e024b69e5745131083147b370181e44f2f6d3"
+  },
+  {
+    "id": "e6-beadlock-cr5x",
+    "triangles": 22768,
+    "bytes": 1997716,
+    "photographicSurface": true,
+    "sha256": "37449cdcfc69935c353c463767f411d197fdb85ca5307f054d4705779aa1e9e0"
+  },
+  {
+    "id": "e6-beadlock-f14x-2",
+    "triangles": 26426,
+    "bytes": 1546364,
+    "photographicSurface": true,
+    "sha256": "9166d582aad75ab9d8bc3853ede22c523894021f601d0a7030a58e533ecf0398"
+  },
+  {
+    "id": "e6-beadlock-f15x",
+    "triangles": 25166,
+    "bytes": 1418552,
+    "photographicSurface": true,
+    "sha256": "07f0ad86810f99fe16c75a4c46d6c977c782258665ed2a8e906c924bfa5bc31f"
+  },
+  {
+    "id": "e6-beadlock-hr8x",
+    "triangles": 26974,
+    "bytes": 2168404,
+    "photographicSurface": true,
+    "sha256": "18463a545e6eeb9bbeaedfafffdf7222a610d9a1c03b7487b6c912c9e29fa064"
+  },
+  {
+    "id": "e6-beadlock-ks2x",
+    "triangles": 91932,
+    "bytes": 7192416,
+    "photographicSurface": false,
+    "sha256": "369f78c858bbf7901a68027fc9c7e4d6e624696b08908854102b48df780037cb"
+  },
+  {
+    "id": "e6-beadlock-r5xr",
+    "triangles": 24238,
+    "bytes": 2069008,
+    "photographicSurface": true,
+    "sha256": "3ba31c9f52f2793c8912051546a4bdd29c780d803b9c1003578ec2998c260e09"
+  },
+  {
+    "id": "e6-beadlock-ro5x",
+    "triangles": 20786,
+    "bytes": 1813564,
+    "photographicSurface": true,
+    "sha256": "621781bf30709b39cebc435b280bf9dc201ca104a4ddc53eb930c2b687e5f49b"
+  },
+  {
+    "id": "e6-beadlock-s58x",
+    "triangles": 27306,
+    "bytes": 1685292,
+    "photographicSurface": true,
+    "sha256": "b33aad13ec2d1e214fefac7b47932cb40c588cc933e39b668ffff90db493a97a"
+  },
+  {
+    "id": "e6-luxury-el01",
+    "triangles": 35766,
+    "bytes": 1754372,
+    "photographicSurface": true,
+    "sha256": "62debd140d99919d3832336165bb51346aca7556a65e5d69870c746f612c9706"
+  },
+  {
+    "id": "e6-luxury-el02",
+    "triangles": 46502,
+    "bytes": 2385536,
+    "photographicSurface": true,
+    "sha256": "89f81e4b8038a819a62415fc3f2cb2686564b46c9f76dbe8de5fe5b040e05d4c"
+  },
+  {
+    "id": "e6-luxury-el22",
+    "triangles": 30320,
+    "bytes": 2271600,
+    "photographicSurface": true,
+    "sha256": "a0eee7724a6e3035cb9e64ee59238b0b5e62a44c88ad47475748a4cf8d850cbf"
+  },
+  {
+    "id": "e6-luxury-hx5",
+    "triangles": 32176,
+    "bytes": 1756180,
+    "photographicSurface": true,
+    "sha256": "473ae06feba072de421697e067a8c918c8bccf325446acdd9c350ac3f1880e07"
+  },
+  {
+    "id": "e6-luxury-lf9",
+    "triangles": 24860,
+    "bytes": 1309464,
+    "photographicSurface": true,
+    "sha256": "26502573ae0d9089bf76a56acdf64ac2a8881b6bdfb3b237bf34a3bc81ff83a8"
+  },
+  {
+    "id": "e6-luxury-lx9",
+    "triangles": 22278,
+    "bytes": 1960292,
+    "photographicSurface": true,
+    "sha256": "cf0003b1991dbefb7fefac78e1394eb1d503172a2f4ade3d09cea3447eb57e62"
+  },
+  {
+    "id": "e6-luxury-rf20",
+    "triangles": 36486,
+    "bytes": 1758432,
+    "photographicSurface": true,
+    "sha256": "f67b2ec2c83de7fdb8e167cfea9d763ebdd57649b29a1b903860925d7f41cdbb"
+  },
+  {
+    "id": "e6-luxury-rf21",
+    "triangles": 95712,
+    "bytes": 7156384,
+    "photographicSurface": true,
+    "sha256": "5af379ab2b1ad3042b46d2c6ffbd0a43c8863d1703c8bb19c70adb3094198523"
+  },
+  {
+    "id": "e6-luxury-rf22",
+    "triangles": 126868,
+    "bytes": 10218408,
+    "photographicSurface": false,
+    "sha256": "e2de334ccc990bae3a364338f88d81f0118483c69c675d351eebec94592ce182"
+  },
+  {
+    "id": "e6-monoblock-ad02",
+    "triangles": 24720,
+    "bytes": 2061768,
+    "photographicSurface": true,
+    "sha256": "6340e7ed4085cc5d82387c9d7fa7c036002fdba8943157b8b090378940e192a6"
+  },
+  {
+    "id": "e6-monoblock-ad03",
+    "triangles": 21404,
+    "bytes": 1197384,
+    "photographicSurface": true,
+    "sha256": "d9c4491a4326579e9151af841d87cbb30eece891d4a60dbed445233da105e2b0"
+  },
+  {
+    "id": "e6-monoblock-ap10",
+    "triangles": 25058,
+    "bytes": 1365176,
+    "photographicSurface": true,
+    "sha256": "9e46b5cda0fa677455c6497c6853f0d79cb27bd937cc0044c99384bab77a1028"
+  },
+  {
+    "id": "e6-monoblock-av1",
+    "triangles": 24008,
+    "bytes": 2311044,
+    "photographicSurface": true,
+    "sha256": "44936501bdbd876d55f39819f3fe68d7e970e89ac9e3fdd8800556f73be0f6d4"
+  },
+  {
+    "id": "e6-monoblock-av2",
+    "triangles": 90504,
+    "bytes": 7258372,
+    "photographicSurface": false,
+    "sha256": "ba0418cfd6b4bd76f252bd73527ee0c8941d870ec9371c5f2f30b7537a425541"
+  },
+  {
+    "id": "e6-monoblock-av3",
+    "triangles": 24238,
+    "bytes": 2332424,
+    "photographicSurface": true,
+    "sha256": "1c03d60ac43c0dc68b200bb444bcdabda80cbaf6903ed685a0d127e6a0fab334"
+  },
+  {
+    "id": "e6-monoblock-b20m",
+    "triangles": 27608,
+    "bytes": 2402796,
+    "photographicSurface": true,
+    "sha256": "0d5cc6c7010571086f943f0f1b3af3e4ebe8fb9efe01152e436c54eeb59464fc"
+  },
+  {
+    "id": "e6-monoblock-cf7m",
+    "triangles": 28168,
+    "bytes": 2184520,
+    "photographicSurface": true,
+    "sha256": "f1776016dc3843bb856f0cd3c432d04f7226eb39b8d86a5f4a45a2683755ba88"
+  },
+  {
+    "id": "e6-monoblock-ef10",
+    "triangles": 23134,
+    "bytes": 1378580,
+    "photographicSurface": true,
+    "sha256": "9a1e43d1f749560d706aad2cf1c0a95061607ab3f2c69d7b47d20a474b6b7940"
+  },
+  {
+    "id": "e6-monoblock-gs5m",
+    "triangles": 23700,
+    "bytes": 1547096,
+    "photographicSurface": true,
+    "sha256": "e8202cf3755d9dc768da69c0ed36422b84e48f5d72ad6944c73280362741739b"
+  },
+  {
+    "id": "e6-monoblock-hs1",
+    "triangles": 22774,
+    "bytes": 1824844,
+    "photographicSurface": true,
+    "sha256": "45e1826146f4d4842bc1a02a6bb6d8d60b3b707413c25e321d1cf9e1f2238660"
+  },
+  {
+    "id": "e6-monoblock-hs2",
+    "triangles": 24242,
+    "bytes": 1359092,
+    "photographicSurface": true,
+    "sha256": "6c4207196857782245e103e3ad3cce2e7661846ea83171cab13ce68a676d4793"
+  },
+  {
+    "id": "e6-monoblock-hs3",
+    "triangles": 24480,
+    "bytes": 1212408,
+    "photographicSurface": true,
+    "sha256": "052dd85713da698712dcca1104fadda471b9708dcff359fe789c38ad38c30698"
+  },
+  {
+    "id": "e6-monoblock-ks1",
+    "triangles": 23534,
+    "bytes": 1281076,
+    "photographicSurface": true,
+    "sha256": "ba9e4ae82a904f70461e2df0af7dc4aff27fb58c458d7ef2cc180ea44c63407c"
+  },
+  {
+    "id": "e6-monoblock-ms10",
+    "triangles": 21046,
+    "bytes": 1925012,
+    "photographicSurface": true,
+    "sha256": "6b2c790c6a6b858f74418600a9e092f9a524cc8deb9f95486ee68065dc077450"
+  },
+  {
+    "id": "e6-monoblock-ms11",
+    "triangles": 21288,
+    "bytes": 1306076,
+    "photographicSurface": true,
+    "sha256": "fa0cd2d3d70ccfa74c2e1f1ded73af9d80ad3f6b688ebd797baf17623800adef"
+  },
+  {
+    "id": "e6-monoblock-ms6",
+    "triangles": 26298,
+    "bytes": 1451744,
+    "photographicSurface": true,
+    "sha256": "c4d2c5b98b9f3fd6418c1e71db4622fb3c5ae1ab95d150de0b9dc00d88b0b309"
+  },
+  {
+    "id": "e6-monoblock-ns5m",
+    "triangles": 21870,
+    "bytes": 1284696,
+    "photographicSurface": true,
+    "sha256": "abc8240616a394ec95e6acc60eb4ce9577f16f5932dbdae7d1e3424599763f86"
+  },
+  {
+    "id": "e6-monoblock-s10m",
+    "triangles": 29360,
+    "bytes": 1602288,
+    "photographicSurface": true,
+    "sha256": "7c98be0181dc2698f31be0b94f6582960da1ab1d4cbbc36066005c282ee3eb81"
+  },
+  {
+    "id": "e6-monoblock-s30m",
+    "triangles": 25278,
+    "bytes": 2135084,
+    "photographicSurface": true,
+    "sha256": "852e8c36005da9d0d3c5aa4320a9197923e11895bc69d797c9cf0337cc829b43"
+  },
+  {
+    "id": "e6-monoblock-sl10",
+    "triangles": 22438,
+    "bytes": 1336008,
+    "photographicSurface": true,
+    "sha256": "475eb0540f887f03b932e54f078eb899513a5d3ad6ee02f371f63ca090193c9d"
+  },
+  {
+    "id": "e6-monoblock-sr8",
+    "triangles": 28432,
+    "bytes": 2548160,
+    "photographicSurface": true,
+    "sha256": "f823910990cf92f6a2c572b100c2ff1a49279701a676911946f01d14abf3b078"
+  },
+  {
+    "id": "e6-monoblock-ss6m",
+    "triangles": 31060,
+    "bytes": 2488132,
+    "photographicSurface": true,
+    "sha256": "20ee0f5d85330a801358ba2b4526c13051b61cb4b8961dac529c4eded7d54bb3"
+  },
+  {
+    "id": "e6-monoblock-u57",
+    "triangles": 23350,
+    "bytes": 1899272,
+    "photographicSurface": true,
+    "sha256": "d20aef1c5303fa0fc13d0f11ca0e548d7ea73d051828fe6130f39f6903c7af63"
+  },
+  {
+    "id": "e6-monoblock-vr5",
+    "triangles": 22390,
+    "bytes": 1384744,
+    "photographicSurface": true,
+    "sha256": "664848840c95a967f47e41d902383c1ed1f00ff5b592b7d244388043b5b7a8a6"
+  },
+  {
+    "id": "e6-monoblock-ws6",
+    "triangles": 36630,
+    "bytes": 2493568,
+    "photographicSurface": true,
+    "sha256": "8181daa771fb739c754e3b0bfa05726086424195a6cf47a8d8a3e2e3e62e1d65"
+  },
+  {
+    "id": "e6-multipiece-ar01",
+    "triangles": 23030,
+    "bytes": 1536012,
+    "photographicSurface": true,
+    "sha256": "852ab852af81a703d0b6cde33ff853fa15053a15acbef22a97db64e3bfc2a1dc"
+  },
+  {
+    "id": "e6-multipiece-ar02",
+    "triangles": 21466,
+    "bytes": 1819080,
+    "photographicSurface": true,
+    "sha256": "d7c01c1c481f5b405281bbe9f5eaae660d772a92c6f4310ea7f9aa83449f79da"
+  },
+  {
+    "id": "e6-multipiece-ar03",
+    "triangles": 31820,
+    "bytes": 1931212,
+    "photographicSurface": true,
+    "sha256": "2cc7e9eb098525f16b15bc47ce583c2ef7beeea9189661349513d622f4a7446c"
+  },
+  {
+    "id": "e6-multipiece-ar04",
+    "triangles": 38872,
+    "bytes": 2622168,
+    "photographicSurface": true,
+    "sha256": "1fe964ee3cb3865ef31c31f43378e6173bd1908167e83c3b0ab13486a4acfc9d"
+  },
+  {
+    "id": "e6-multipiece-ar05",
+    "triangles": 33038,
+    "bytes": 1797668,
+    "photographicSurface": true,
+    "sha256": "a3d159f6e6ef38c03f4548a2f7e279d12bfe8567943b42cccc449c4689f96b4f"
+  },
+  {
+    "id": "e6-multipiece-ar09",
+    "triangles": 71274,
+    "bytes": 4443040,
+    "photographicSurface": false,
+    "sha256": "bfb6e6d648441989b35dbdcd3a52edf4ca38905fb630216acd96495775ac5e5c"
+  },
+  {
+    "id": "e6-multipiece-b20",
+    "triangles": 27916,
+    "bytes": 1729248,
+    "photographicSurface": true,
+    "sha256": "ce5cbce9650a51353d5ba586ecf9587fb1b02b6b2fd1c88d0057fe1302820b0d"
+  },
+  {
+    "id": "e6-multipiece-cs5",
+    "triangles": 25630,
+    "bytes": 2243324,
+    "photographicSurface": true,
+    "sha256": "abff0a46eb6a47acdcc1eded5c31dbdd4b1de118073267e3fd99f94f5ed6e190"
+  },
+  {
+    "id": "e6-multipiece-cs6",
+    "triangles": 24188,
+    "bytes": 1548860,
+    "photographicSurface": true,
+    "sha256": "8c7625e88eefd109c2f3b0928ff665b7b6b764d0213a8a44fc51c3ca9025ef8b"
+  },
+  {
+    "id": "e6-multipiece-cs7",
+    "triangles": 22012,
+    "bytes": 1276036,
+    "photographicSurface": true,
+    "sha256": "0c344557947c26e3028119e8c20071c87e26aaf66151bf3b01b1844eb2fcc3fe"
+  },
+  {
+    "id": "e6-multipiece-f20",
+    "triangles": 36586,
+    "bytes": 2037492,
+    "photographicSurface": true,
+    "sha256": "9874bc4487fb7b5165eedc4dc1ab18df12c56dd8dd34a2d6bf3db3f0da040bfe"
+  },
+  {
+    "id": "e6-multipiece-fs6",
+    "triangles": 23542,
+    "bytes": 1223008,
+    "photographicSurface": true,
+    "sha256": "eccb76037163335ac8e175e1ca10c434297ad877b8bbc769b3b133a2929ca64f"
+  },
+  {
+    "id": "e6-multipiece-gs4",
+    "triangles": 21558,
+    "bytes": 2004048,
+    "photographicSurface": true,
+    "sha256": "bf134c7f56dfb20e018e3518f81a88fa44e2b29718aca1f5f99c68ec05824aa1"
+  },
+  {
+    "id": "e6-multipiece-gs5",
+    "triangles": 23900,
+    "bytes": 1585940,
+    "photographicSurface": true,
+    "sha256": "dda1b12f1876ab68ce5a43c80ac25eed8ae60f7bd468bd4431357f2a0485fa97"
+  },
+  {
+    "id": "e6-multipiece-gs6",
+    "triangles": 26666,
+    "bytes": 2060196,
+    "photographicSurface": true,
+    "sha256": "c471040e62e70aaf1cfc31d5304d463c8754628167e936f66a3e4849334a880d"
+  },
+  {
+    "id": "e6-multipiece-jf10",
+    "triangles": 21020,
+    "bytes": 1279940,
+    "photographicSurface": true,
+    "sha256": "03e6113071e850564d12633e16595aa10d21b0ae5dc8a677233e232997f02bf3"
+  },
+  {
+    "id": "e6-multipiece-jf6",
+    "triangles": 58622,
+    "bytes": 4329176,
+    "photographicSurface": false,
+    "sha256": "99eb72141e9048f647b9d523d40c659a2848bbc271e96addd4a2d0f19f12627b"
+  },
+  {
+    "id": "e6-multipiece-ns5",
+    "triangles": 20862,
+    "bytes": 1280820,
+    "photographicSurface": true,
+    "sha256": "47bda000b6ef0608ec868a196b09f57842556fb52d74a5c220e31be29f03ff6f"
+  },
+  {
+    "id": "e6-multipiece-ns6",
+    "triangles": 24176,
+    "bytes": 2048276,
+    "photographicSurface": true,
+    "sha256": "4c9004da2c2240615618f5787f31ebd3b4af7878e5d6f2ebfb06968211a6ecdf"
+  },
+  {
+    "id": "e6-multipiece-rb10",
+    "triangles": 23372,
+    "bytes": 1498396,
+    "photographicSurface": true,
+    "sha256": "53e048fec9afff3f9179006bc192b820dbe9694399a95fd0bac9611e44ab2ad6"
+  },
+  {
+    "id": "e6-multipiece-rb11",
+    "triangles": 22892,
+    "bytes": 1441732,
+    "photographicSurface": true,
+    "sha256": "9ea35bfc4b06040a0f09b815e77978527944dc1b67ba5422aa5ad4d159d28c45"
+  },
+  {
+    "id": "e6-multipiece-s10",
+    "triangles": 25324,
+    "bytes": 1522988,
+    "photographicSurface": true,
+    "sha256": "45ab08489f89bd10ef153fcff9c3c55aaf2e7bedc6111105377fb43416f8c065"
+  },
+  {
+    "id": "e6-multipiece-s11",
+    "triangles": 23578,
+    "bytes": 2088316,
+    "photographicSurface": true,
+    "sha256": "d520be89a480ed317abe0b3a778d6a6fb5f7a030fd0270af3de41b403829a8ed"
+  },
+  {
+    "id": "e6-multipiece-s20",
+    "triangles": 25642,
+    "bytes": 1527068,
+    "photographicSurface": true,
+    "sha256": "ec6c00d1576dfc585a67ec342bd92a03e72f4edaf3ead5152df71e92f18be00d"
+  },
+  {
+    "id": "e6-multipiece-s30",
+    "triangles": 26240,
+    "bytes": 2400988,
+    "photographicSurface": true,
+    "sha256": "65cfc7c969e079d7dbdb12f9e8bce900b60cf2c3805bb68db742df1d767bcdb3"
+  },
+  {
+    "id": "e6-multipiece-sc5",
+    "triangles": 30308,
+    "bytes": 2112644,
+    "photographicSurface": true,
+    "sha256": "09af5fd8b6205861061143c05bd83df69a8dca35f63196ab6e91368cf35b10a5"
+  },
+  {
+    "id": "e6-multipiece-sc7",
+    "triangles": 25116,
+    "bytes": 1589352,
+    "photographicSurface": true,
+    "sha256": "1b091db497e40aa1af268c95f98722bf09b9105d0af98fda573ca8a91a4c7765"
+  },
+  {
+    "id": "e6-multipiece-se5",
+    "triangles": 22606,
+    "bytes": 1365700,
+    "photographicSurface": true,
+    "sha256": "d8b31dbd3e79d76e498bb2d80aa56e3ee584e16426b19ed6a81894f7d3095601"
+  },
+  {
+    "id": "e6-multipiece-sf15",
+    "triangles": 29446,
+    "bytes": 1925032,
+    "photographicSurface": true,
+    "sha256": "e3be9af34f756f2887b37b548a4f17e7b0d990d1b4ed26385deeac21e1935256"
+  },
+  {
+    "id": "e6-multipiece-sf17",
+    "triangles": 27544,
+    "bytes": 2584376,
+    "photographicSurface": true,
+    "sha256": "f0ab51465190fc40a4a57b9c1a82471dad7e226292908a15b76fcd92f5f7b628"
+  },
+  {
+    "id": "e6-multipiece-sf19",
+    "triangles": 35984,
+    "bytes": 2422528,
+    "photographicSurface": true,
+    "sha256": "693fddd92096dff7b075b31efdb6a53ff853ad6fc3787ecb2f6fcdb8a6a1a055"
+  },
+  {
+    "id": "e6-multipiece-sf20",
+    "triangles": 32252,
+    "bytes": 2492360,
+    "photographicSurface": true,
+    "sha256": "3fa7bb62e6c9a9357db8d4b9f1d099c5762c660fb91b0320563c8f580dabe73c"
+  },
+  {
+    "id": "e6-multipiece-sf5",
+    "triangles": 34268,
+    "bytes": 2016860,
+    "photographicSurface": true,
+    "sha256": "e7d78f83c268494db9d472831b45481c34486348680845807c3be958c14c189d"
+  },
+  {
+    "id": "e6-multipiece-sf7",
+    "triangles": 27678,
+    "bytes": 1787652,
+    "photographicSurface": true,
+    "sha256": "9f884deaf17e44a671ad40284e5a709eba5c5a28721ffee505e2303775fb218a"
+  },
+  {
+    "id": "e6-multipiece-sr5",
+    "triangles": 24608,
+    "bytes": 2270584,
+    "photographicSurface": true,
+    "sha256": "7af34135aacbfdc6cd5e80f05e02efe20699198085aac796efa9ecdf7b22bac3"
+  },
+  {
+    "id": "e6-multipiece-ss6",
+    "triangles": 24456,
+    "bytes": 1569788,
+    "photographicSurface": true,
+    "sha256": "86c852e25e43f059f58020a87c59f60efe2c01bfb6099683564a5ca0e6aaaaa1"
+  },
+  {
+    "id": "e6-multipiece-ss7",
+    "triangles": 28430,
+    "bytes": 2442524,
+    "photographicSurface": true,
+    "sha256": "d01cccc2a9eadba0ddefe81407daf92aab91b7d388f8f847e250ed176dab6420"
+  },
+  {
+    "id": "e6-multipiece-vl4",
+    "triangles": 22502,
+    "bytes": 1408036,
+    "photographicSurface": true,
+    "sha256": "4eb1183462358b8cb7d4cbedfe0637da7fdd4f7b24ff0be033904913266f871d"
+  },
+  {
+    "id": "e6-multipiece-vl6",
+    "triangles": 25550,
+    "bytes": 1686304,
+    "photographicSurface": true,
+    "sha256": "b0f0acc3a8012cffb5923b507f91e1acf01bffd756e80f2fb8e3e30718ca7835"
+  },
+  {
+    "id": "e6-multipiece-vr6",
+    "triangles": 29530,
+    "bytes": 1884284,
+    "photographicSurface": true,
+    "sha256": "ff6e2bd28c277683e3f4e6fada98aa9d92bd995bad854083eeb41ae1cd895a25"
+  },
+  {
+    "id": "e6-multipiece-vr7",
+    "triangles": 30888,
+    "bytes": 2140460,
+    "photographicSurface": true,
+    "sha256": "5f8e1b9d7e39b2b8ff1d3285b83404689c3d6358a0e205d8045f73d79a7938b9"
+  },
+  {
+    "id": "e6-multipiece-vr8",
+    "triangles": 22484,
+    "bytes": 1648772,
+    "photographicSurface": true,
+    "sha256": "271619585bf1c9f653c68fcef9fb46979bb36f30758ca27e1514367e6877d015"
+  },
+  {
+    "id": "ferrari-812-gloss-black",
+    "triangles": 30766,
+    "bytes": 2112908,
+    "photographicSurface": true,
+    "sha256": "f38c19e68c8676c423c0ab63a8fe712e9dc02bede46f122ba71bb40d03dffcca"
+  },
+  {
+    "id": "ferrari-812-gunmetal-machined",
+    "triangles": 29626,
+    "bytes": 2098532,
+    "photographicSurface": true,
+    "sha256": "a13056a4b2821a7e468ffc2017730649ba1d46cae8b6fe7ca831c6581b557640"
+  },
+  {
+    "id": "lamborghini-urus-gloss-black-machined",
+    "triangles": 28866,
+    "bytes": 2037824,
+    "photographicSurface": true,
+    "sha256": "6018ad1a76e7c30c0d7287728fa57ec87268f8d6c01f35d95da29570949b2eeb"
+  },
+  {
+    "id": "lamborghini-urus-matte-tx-gold-machined",
+    "triangles": 27692,
+    "bytes": 2651152,
+    "photographicSurface": true,
+    "sha256": "62c6bd1a4013d3fd327ab1ea14246932b8bbe944374d6a5cb3f0a2f4cb047d56"
+  },
+  {
+    "id": "motivo-mb-a",
+    "triangles": 43216,
+    "bytes": 3099348,
+    "photographicSurface": true,
+    "sha256": "2220d06fd144bb14997c2537068c33696648db73a21abd48ed032b55f9c2f458"
+  },
+  {
+    "id": "motivo-mb-b",
+    "triangles": 28560,
+    "bytes": 2183156,
+    "photographicSurface": true,
+    "sha256": "96c9905ea2d5a1f768248b8b21849a50ebfc74173966f7ddc356a63c0d4de2eb"
+  },
+  {
+    "id": "motivo-mb-c",
+    "triangles": 26554,
+    "bytes": 2115976,
+    "photographicSurface": true,
+    "sha256": "f29c289eb940ff3d8ddb6045050d1731482c37d68f2ba0309232bcd4325c0b90"
+  },
+  {
+    "id": "motivo-mb-d",
+    "triangles": 36610,
+    "bytes": 2915856,
+    "photographicSurface": true,
+    "sha256": "b2490ac022512b623550b883da81eefc4253bbd3d37321bd4767a941bb027548"
+  },
+  {
+    "id": "motivo-mb-e",
+    "triangles": 37922,
+    "bytes": 3186788,
+    "photographicSurface": true,
+    "sha256": "ef2f1753314fbb376317f1ebe9e630343b6f11ab9dd0817bf1eafe6d49fb2d3d"
+  },
+  {
+    "id": "motivo-mb-f",
+    "triangles": 42428,
+    "bytes": 3246412,
+    "photographicSurface": true,
+    "sha256": "7c3dccf5cb500e4ab89802b9034f5df8dcb48f9808e3f5cb5bb1627989bc6a1f"
+  },
+  {
+    "id": "motivo-mb-g",
+    "triangles": 28214,
+    "bytes": 2278712,
+    "photographicSurface": true,
+    "sha256": "a8a5873c13b775bfbc354418d223b8588710e3857d9ac16870e5b0e3ee8099ef"
+  },
+  {
+    "id": "motivo-mb-h",
+    "triangles": 37988,
+    "bytes": 2642348,
+    "photographicSurface": true,
+    "sha256": "d87447d1820b4d6e3dc52963e1b4a63404ce873db93b8bd7c7d8c66cc5cb1f66"
+  },
+  {
+    "id": "motivo-mb-j",
+    "triangles": 36512,
+    "bytes": 2356512,
+    "photographicSurface": true,
+    "sha256": "0418264ecf37a43aba12858ad48d9adb2826ff649c4754f7a252a69a24f2c9d4"
+  },
+  {
+    "id": "motivo-mb-k",
+    "triangles": 26868,
+    "bytes": 1861128,
+    "photographicSurface": true,
+    "sha256": "c8d2a71704258fd58a18451173b11075e688e85fea9683f194e48778fde3474e"
+  },
+  {
+    "id": "motivo-mb-l",
+    "triangles": 51246,
+    "bytes": 4002076,
+    "photographicSurface": true,
+    "sha256": "094e4f2b839ad08b89ec9cb688a4b347237ef4c1be07071fd32502ab29635201"
+  },
+  {
+    "id": "motivo-mb-m",
+    "triangles": 35954,
+    "bytes": 2613416,
+    "photographicSurface": true,
+    "sha256": "7e0c40523ba18ddfb7984c728a54e3487cc33e50f5ce599afdb47d78dafdce38"
+  },
+  {
+    "id": "motivo-mb-n",
+    "triangles": 45446,
+    "bytes": 3188904,
+    "photographicSurface": true,
+    "sha256": "9b4a9a00fb8f0942d6655010e24751af5a0078f1f8ade7a155892aa378ab6a1c"
+  },
+  {
+    "id": "motivo-mb-o",
+    "triangles": 27924,
+    "bytes": 1789704,
+    "photographicSurface": true,
+    "sha256": "ea4df1b51956b0c369e1a47f2576b32b51ecca0e714c9b0b3b9d023c17a1f721"
+  },
+  {
+    "id": "motivo-mb-p",
+    "triangles": 42556,
+    "bytes": 3125120,
+    "photographicSurface": true,
+    "sha256": "02da3f292a983d10efb4bda36d68f5d0b25dbbf998a1299ea649b5a4eba67617"
+  },
+  {
+    "id": "motivo-mb-q",
+    "triangles": 35970,
+    "bytes": 2406180,
+    "photographicSurface": true,
+    "sha256": "7c6e3cd072e23065ee375fc48b2fe62cb68f91418f92d75c67e7eda5f45d1319"
+  },
+  {
+    "id": "motivo-mb-r",
+    "triangles": 46056,
+    "bytes": 3916232,
+    "photographicSurface": true,
+    "sha256": "40b815815102f702f9f6e39523c09d9ac2dc161280e8e7a55bcebf1b98cfb7f7"
+  },
+  {
+    "id": "motivo-mb-s",
+    "triangles": 33242,
+    "bytes": 2046452,
+    "photographicSurface": true,
+    "sha256": "291c52ebe7fe2151eea3715f8b99862f023b152a32c9b5457a43d8d15a63d349"
+  },
+  {
+    "id": "motivo-mb-t",
+    "triangles": 31834,
+    "bytes": 2017648,
+    "photographicSurface": true,
+    "sha256": "4d335c5b209065ddfa6da422c257730d0cd5f6ff5368608f2e3d25a7f27254ac"
+  },
+  {
+    "id": "motivo-mb-z",
+    "triangles": 41592,
+    "bytes": 3588016,
+    "photographicSurface": true,
+    "sha256": "277b932c6c1d8098a18dee0cefde5f2e658ccae76a1fb38c50e22b9d7e1b012b"
+  },
+  {
+    "id": "mustang-gt-50-gloss-black",
+    "triangles": 34478,
+    "bytes": 2369160,
+    "photographicSurface": true,
+    "sha256": "042d5edf048fa9e8861bfcdcafa3671d364c3c90c9cdeedd62adb0d234b8bb34"
+  },
+  {
+    "id": "mustang-track-gold",
+    "triangles": 28058,
+    "bytes": 2084568,
+    "photographicSurface": true,
+    "sha256": "27fa0f4bafe099877ff7fcfe366e91a26f82a3b70b9bd3ffb726ea8a857e8621"
+  },
+  {
+    "id": "nfw-r001",
+    "triangles": 28152,
+    "bytes": 2009508,
+    "photographicSurface": true,
+    "sha256": "c70f6559ea1939d6b378a07330e568ac341068285ec4efe8aa7a40df7625f90f"
+  },
+  {
+    "id": "nfw-r002",
+    "triangles": 29472,
+    "bytes": 2158652,
+    "photographicSurface": true,
+    "sha256": "45948e90874ff83e8e4e759363f46f031eed1b1cc9f7aed043ef447f6e1dc1a1"
+  },
+  {
+    "id": "nfw-r003",
+    "triangles": 29390,
+    "bytes": 1525392,
+    "photographicSurface": false,
+    "sha256": "44f2823d6cd4f20942c765c6c6b68677decc6a3270a5c069989eaea34d4f0a9e"
+  },
+  {
+    "id": "nfw-r004",
+    "triangles": 29214,
+    "bytes": 1512080,
+    "photographicSurface": false,
+    "sha256": "870038910cc7c81b0ea31be737a57e957433c18eb55370fbe26cf44ad7f4d075"
+  },
+  {
+    "id": "nfw-r005",
+    "triangles": 37884,
+    "bytes": 2715564,
+    "photographicSurface": true,
+    "sha256": "2a5a209b3e1cef15ef8c4d8fc455603862b3badc2762e2e4fdec1a38ac0c21a5"
+  },
+  {
+    "id": "nfw-r006",
+    "triangles": 25214,
+    "bytes": 1738988,
+    "photographicSurface": true,
+    "sha256": "b2860e3eb98aea685c4ef4f576994587ea885c117276776d38406940650c7375"
+  },
+  {
+    "id": "nfw-r007",
+    "triangles": 26012,
+    "bytes": 1906748,
+    "photographicSurface": true,
+    "sha256": "400a26b12f9aabe990dc6af30312bd0934292e4add76343a342ed5bd8fb87afa"
+  },
+  {
+    "id": "nfw-r008",
+    "triangles": 25438,
+    "bytes": 1902796,
+    "photographicSurface": true,
+    "sha256": "3ce7f46cd6368fa9cad601e4079650889a658a84d8b08ac5fc568580890dc630"
+  },
+  {
+    "id": "nfw-r009",
+    "triangles": 31952,
+    "bytes": 2277288,
+    "photographicSurface": true,
+    "sha256": "5c0f8b6987414d84cfa7e910ba6d15efca7b8d6b6358d59580d8bb780b32ac3e"
+  },
+  {
+    "id": "nfw-r010",
+    "triangles": 42240,
+    "bytes": 2276588,
+    "photographicSurface": true,
+    "sha256": "c7b691fd873cb59cda2f6127fbcad65586d5737afb76d800e705423ac8a6d89d"
+  },
+  {
+    "id": "nfw-r011",
+    "triangles": 28998,
+    "bytes": 1513232,
+    "photographicSurface": false,
+    "sha256": "60ad32ddaaf9285683711780ce6b4b551a81a4b740e66744f11c3c9660c1c99d"
+  },
+  {
+    "id": "nfw-r012",
+    "triangles": 31534,
+    "bytes": 2292596,
+    "photographicSurface": true,
+    "sha256": "ed36173d9c255b00fcd15004b209f5161f64bc7dbbef014c62adbf2aeb7f5aaa"
+  },
+  {
+    "id": "nfw-r013",
+    "triangles": 33466,
+    "bytes": 2265320,
+    "photographicSurface": true,
+    "sha256": "37a1c34cac07964cf948a9c0fef78c42241e96b07f316aa9d37ff357aebee916"
+  },
+  {
+    "id": "nfw-r014",
+    "triangles": 27236,
+    "bytes": 1828448,
+    "photographicSurface": true,
+    "sha256": "469edad6043b7aeac5c8c1cd7120e38e52db400b065dae655d0fc3f568ab5390"
+  },
+  {
+    "id": "nfw-r015",
+    "triangles": 28002,
+    "bytes": 1886692,
+    "photographicSurface": true,
+    "sha256": "1247c0fad250e8f70040545dcb3c083beb6c062be9f4157d02d81db9c9950157"
+  },
+  {
+    "id": "nfw-r016",
+    "triangles": 23850,
+    "bytes": 1731520,
+    "photographicSurface": true,
+    "sha256": "4371967bec2b1f5a234404ce909fdaebefc8b6d248bc447b0f0e02351c866991"
+  },
+  {
+    "id": "nfw-r017",
+    "triangles": 28004,
+    "bytes": 2079012,
+    "photographicSurface": true,
+    "sha256": "6a2ed06edbdd2c5ac009b40214435b8d974c1459d12879551206256d7d543555"
+  },
+  {
+    "id": "nfw-r018",
+    "triangles": 27678,
+    "bytes": 1460980,
+    "photographicSurface": false,
+    "sha256": "1e1a82ec81e7c1ac451b75ad74b8c6cbcd0d44d1e0fd11d3902dfce52dcbbaf3"
+  },
+  {
+    "id": "nfw-r019",
+    "triangles": 26818,
+    "bytes": 1423016,
+    "photographicSurface": false,
+    "sha256": "b7be848267e630c15304dffea57a28d283fe0b407f9cef6fccbd6583eb89c0b8"
+  },
+  {
+    "id": "nfw-r020",
+    "triangles": 35582,
+    "bytes": 2443724,
+    "photographicSurface": true,
+    "sha256": "a5d0065c8d9820106dfda0b7b1d22ff0e547dc41ba8782e0103b2e54c684b84d"
+  },
+  {
+    "id": "nfw-r021",
+    "triangles": 24690,
+    "bytes": 1830692,
+    "photographicSurface": true,
+    "sha256": "73ccdfc8e66018994c8019deebb42441fb863cc7ecedd20d6760b56035a00b63"
+  },
+  {
+    "id": "nfw-r022",
+    "triangles": 32912,
+    "bytes": 2397348,
+    "photographicSurface": true,
+    "sha256": "a6846698e426090e4f20a2e205403ed34aef174a0fc128391432bb74ccfe0876"
+  },
+  {
+    "id": "nfw-r023",
+    "triangles": 28080,
+    "bytes": 1920036,
+    "photographicSurface": true,
+    "sha256": "04d4aeb05bd8302838f332ae4d6c61e5ce6a09bad8d459c673dc0a056120cbf5"
+  },
+  {
+    "id": "nfw-r024",
+    "triangles": 28912,
+    "bytes": 2037428,
+    "photographicSurface": true,
+    "sha256": "d143feba214e6767ddd225431789eaf791fe8b77f9a99e1eec3f18c53c05d1d7"
+  },
+  {
+    "id": "nfw-r025",
+    "triangles": 27872,
+    "bytes": 1462788,
+    "photographicSurface": false,
+    "sha256": "6c363efd1ee67c74c446ca219cc0a278cf32ae35413528272b5c0111622910fd"
+  },
+  {
+    "id": "nfw-r026",
+    "triangles": 28200,
+    "bytes": 1901648,
+    "photographicSurface": true,
+    "sha256": "9cf5d72a6a4bc88d69af27321c743fcf0c0262422446d820d298bda92503336d"
+  },
+  {
+    "id": "nfw-r027",
+    "triangles": 28890,
+    "bytes": 1957752,
+    "photographicSurface": true,
+    "sha256": "aaee2d58feb6915160bc8104e20e934c405746b44a45514a92ebd89625c063f6"
+  },
+  {
+    "id": "nfw-r028",
+    "triangles": 28954,
+    "bytes": 1973324,
+    "photographicSurface": true,
+    "sha256": "1d70542f3d180c491f64661f3cbf6b1af9ed617afa3f8f0de853c45c9523b9ae"
+  },
+  {
+    "id": "nfw-r029",
+    "triangles": 28798,
+    "bytes": 1975604,
+    "photographicSurface": true,
+    "sha256": "cdd5af39a3edce84069484f4d1d15e684e4dd6a35b02a7a53ab34659da4e2301"
+  },
+  {
+    "id": "rolls-royce-ghost-2017-brushed-silver",
+    "triangles": 42770,
+    "bytes": 2270832,
+    "photographicSurface": true,
+    "sha256": "3e2f91d48dde0d1d5101fc6137a9d8dd5bc5335889d5fec5f5342970dc10e6b7"
+  }
+]

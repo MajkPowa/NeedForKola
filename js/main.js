@@ -24,8 +24,8 @@
       const e6 = d.sourceBrand === 'E6';
       const construction = d.constructionLabel || (d.pieces === 3 ? 'Třídílné' : d.pieces === 1 ? 'Monoblok' : 'Konstrukce k potvrzení');
       const visual = e6 ? '<img class="wheel-thumb e6-catalog-photo" src="'+O.escape(d.productPhoto)+'" alt="'+O.escape(d.name)+' — původní produktová fotografie E6" width="400" height="400" loading="lazy">' : O.renderWheel({design:d.id});
-      const href = 'konfigurator.html?design=' + encodeURIComponent(d.id) + (e6 ? '&view=wheel-photo' : '&color=silver&view=wheel');
-      return '<a class="design-card reveal'+(e6?' design-card--e6':'')+'" href="'+href+'"><span class="series">'+String(i+1).padStart(2,'0')+' / '+O.escape(construction)+'</span>'+visual+'<div class="design-card__title"><b>'+O.escape(d.name)+'</b><span aria-hidden="true">↗</span></div><span>'+O.escape(e6?'Fotografie modelu E6 · vybrat provedení':O.spokesLabel(d)+' · prohlédnout ve 3D')+'</span></a>';
+      const href = 'konfigurator.html?design=' + encodeURIComponent(d.id) + (e6 && !window.NFWPhotoWheelModels?.[d.id] ? '&view=wheel-photo' : '&color=silver&view=wheel');
+      return '<a class="design-card reveal'+(e6?' design-card--e6':'')+'" href="'+href+'"><span class="series">'+String(i+1).padStart(2,'0')+' / '+O.escape(construction)+'</span>'+visual+'<div class="design-card__title"><b>'+O.escape(d.name)+'</b><span aria-hidden="true">↗</span></div><span>'+O.escape(e6?'Fotografie a 3D model E6 · vybrat provedení':O.spokesLabel(d)+' · prohlédnout ve 3D')+'</span></a>';
     }).join('');
     grid.setAttribute('aria-label', 'Kolekce '+designs.length+' designů kol, všechny modely E6 jako první');
     const position = document.getElementById('collectionPosition');
@@ -44,7 +44,7 @@
     const container=document.getElementById(button.dataset.launchWheel);
     button.disabled=true;
     const fallback=container.innerHTML;
-    try{await import('./showroom.js?v=20260906-exact-vehicle');container.replaceChildren();await window.NFWShowroom.mount(container,{mode:'wheel',design:'apex10',color:'#b9bcc2',finish:'gloss',diameter:20,width:9.5,autoRotate:!matchMedia('(prefers-reduced-motion: reduce)').matches});button.hidden=true;}
+    try{await import('./showroom.js?v=20261009-photo-3d');container.replaceChildren();await window.NFWShowroom.mount(container,{mode:'wheel',design:'apex10',color:'#b9bcc2',finish:'gloss',diameter:20,width:9.5,autoRotate:!matchMedia('(prefers-reduced-motion: reduce)').matches});button.hidden=true;}
     catch{container.innerHTML=fallback;button.disabled=false;button.textContent='3D se nepodařilo načíst · zkusit znovu';}
   }));
 })();

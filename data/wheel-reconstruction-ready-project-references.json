@@ -1,0 +1,1689 @@
+{
+  "schemaVersion": 1,
+  "coordinateSystem": "normalized-source-image",
+  "coordinateDefinition": {
+    "cx": "center x / source image width",
+    "cy": "center y / source image height",
+    "rx": "horizontal ellipse radius / source image width",
+    "ry": "vertical ellipse radius / source image height",
+    "rotationDeg": "clockwise rotation in source-image pixel coordinates"
+  },
+  "purpose": "Individual visual reconstruction references; no generic wheel replacements and no manufacturer CAD claim.",
+  "expectedRecords": 38,
+  "inspectionStatus": "reviewed-visible-reference-bounds",
+  "counts": {
+    "ready": 29,
+    "project": 9
+  },
+  "notes": [
+    "Existing 20 Motivo reconstructions are managed by their existing geometry data and are not duplicated here.",
+    "No standalone hero image is assigned a new product identity."
+  ],
+  "records": [
+    {
+      "id": "nfw-r001",
+      "group": "ready",
+      "title": "Leštěný desetipaprsek",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r001/asset-054.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.553571,
+        "cy": 0.457143,
+        "rx": 0.304762,
+        "ry": 0.406349,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.552381,
+        "cy": 0.453968,
+        "rx": 0.283333,
+        "ry": 0.377778,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Deset samostatných štíhlých přímých paprsků.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r001/asset-054-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r002",
+      "group": "ready",
+      "title": "Stříbrný detail Oarts",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r002/asset-029.webp",
+        "width": 1206,
+        "height": 882,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.49881,
+        "cy": 0.552117,
+        "rx": 0.322619,
+        "ry": 0.434853,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.497619,
+        "cy": 0.550489,
+        "rx": 0.3,
+        "ry": 0.410423,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Pět dělených ramen, deset konců u límce.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Spodní obvod je těsně u spodního okraje originálu; podklad není izolovaný na bílém pozadí.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r002/asset-029-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r003",
+      "group": "ready",
+      "title": "Stříbrné dělené paprsky",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r003/asset-030.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.447619,
+        "cy": 0.525397,
+        "rx": 0.22381,
+        "ry": 0.41746,
+        "rotationDeg": -3
+      },
+      "faceEllipse": {
+        "cx": 0.45,
+        "cy": 0.52381,
+        "rx": 0.204762,
+        "ry": 0.384127,
+        "rotationDeg": -3
+      },
+      "topology": {
+        "pattern": "Pět dělených ramen s deseti konci u límce.",
+        "confidence": "medium",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "angled",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Jediný dodaný pohled je šikmý; čelo je vodorovně zkrácené perspektivou.",
+        "Rim ellipse označuje přední ústí ráfku, nikoli pravý zadní okraj viditelného válce.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r003/asset-030-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r004",
+      "group": "ready",
+      "title": "Jemná leštěná síť",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r004/asset-026.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.564286,
+        "cy": 0.503175,
+        "rx": 0.240476,
+        "ry": 0.444444,
+        "rotationDeg": 4
+      },
+      "faceEllipse": {
+        "cx": 0.569048,
+        "cy": 0.504762,
+        "rx": 0.22619,
+        "ry": 0.419048,
+        "rotationDeg": 4
+      },
+      "topology": {
+        "pattern": "Jemné větvené paprsky s propojenými trojúhelníkovými okny.",
+        "confidence": "medium"
+      },
+      "sourceView": "angled",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Jediný dodaný pohled je šikmý; členité větvení není nahrazeno odhadnutým počtem paprsků.",
+        "Rim ellipse označuje přední ústí ráfku, nikoli levý zadní okraj válce.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r004/asset-026-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r005",
+      "group": "ready",
+      "title": "Stříbrný vícepaprsek",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r005/asset-033.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.535714,
+        "cy": 0.449206,
+        "rx": 0.302381,
+        "ry": 0.411111,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.535714,
+        "cy": 0.450794,
+        "rx": 0.280952,
+        "ry": 0.380952,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Dělený vícepaprsek s podélnými otvory a odlehčovacími okny u límce.",
+        "confidence": "high"
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Propojené a dělené větve nejsou redukované na nepodložený počet samostatných paprsků.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r005/asset-033-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r006",
+      "group": "ready",
+      "title": "Pět paprsků v grafitu",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r006/asset-027.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.560714,
+        "cy": 0.419048,
+        "rx": 0.30119,
+        "ry": 0.409524,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.559524,
+        "cy": 0.419048,
+        "rx": 0.27381,
+        "ry": 0.371429,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Pět širokých přímých paprsků s podélnými konturami.",
+        "confidence": "high",
+        "visibleSpokeCount": 5
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r006/asset-027-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r007",
+      "group": "ready",
+      "title": "Grafit s jasným lemem",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r007/asset-044.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.52619,
+        "cy": 0.44127,
+        "rx": 0.292857,
+        "ry": 0.4,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.52619,
+        "cy": 0.44127,
+        "rx": 0.259524,
+        "ry": 0.352381,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Pět široce rozdělených ramen, deset tenkých konců.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Face ellipse sleduje obvod paprskové části uvnitř světlého širokého límce.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r007/asset-044-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r008",
+      "group": "ready",
+      "title": "Leštěný dělený paprsek",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r008/asset-032.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.52381,
+        "cy": 0.438095,
+        "rx": 0.304762,
+        "ry": 0.406349,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.52619,
+        "cy": 0.438095,
+        "rx": 0.278571,
+        "ry": 0.371429,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Pět dělených ramen, deset konců, malé obvodové výřezy.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r008/asset-032-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r009",
+      "group": "ready",
+      "title": "Stříbrný střed, tmavý lem",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r009/asset-043.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.535714,
+        "cy": 0.460317,
+        "rx": 0.27381,
+        "ry": 0.361905,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.535714,
+        "cy": 0.460317,
+        "rx": 0.245238,
+        "ry": 0.330159,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Pět dělených ramen se zúženými konci a malými otvory.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Tmavý vnější ráfek a obvodové upevňovací prvky jsou odlišené od světlého čela.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r009/asset-043-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r010",
+      "group": "ready",
+      "title": "Plný stříbrný disk",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r010/asset-036.webp",
+        "width": 1449,
+        "height": 1085,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.529762,
+        "cy": 0.453822,
+        "rx": 0.320238,
+        "ry": 0.431529,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.529762,
+        "cy": 0.453822,
+        "rx": 0.264286,
+        "ry": 0.356688,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Plné kruhové čelo s pravidelnými podlouhlými otvory po obvodu.",
+        "confidence": "medium"
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Nízké původní rozlišení a měkké kontury neumožňují výrobní detaily.",
+        "Face ellipse označuje obvod plného čela uvnitř obvodových otvorů; tento design nemá běžné otevřené paprsky.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r010/asset-036-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r011",
+      "group": "ready",
+      "title": "Bronzová sada",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r011/asset-011.webp",
+        "width": 1086,
+        "height": 1448,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.74954,
+        "cy": 0.660912,
+        "rx": 0.224678,
+        "ry": 0.169199,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.74954,
+        "cy": 0.662293,
+        "rx": 0.206262,
+        "ry": 0.156077,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Pět dělených ramen, deset konců u límce.",
+        "confidence": "medium",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "angled",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Z fotografie čtyřkolové sady je označeno pravé spodní kolo, nikoli společný obrys celé sady.",
+        "Mírně šikmý pohled shora a malý podíl vybraného kola v originálu omezují přesnost.",
+        "Zbylá tři kola ani venkovní pozadí nepatří do elipsy reference.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r011/asset-011-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r012",
+      "group": "ready",
+      "title": "Dělené paprsky v teplém kovu",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r012/asset-031.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.50119,
+        "cy": 0.473016,
+        "rx": 0.317857,
+        "ry": 0.422222,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.502381,
+        "cy": 0.473016,
+        "rx": 0.283333,
+        "ry": 0.377778,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Pět dělených ramen s deseti konci.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Původní fotografie má světlou stěnu za většinou čela a koberec dole; nejde o izolovaný průhledný render.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r012/asset-031-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r013",
+      "group": "ready",
+      "title": "Černý dělený paprsek",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r013/asset-004.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.55,
+        "cy": 0.449206,
+        "rx": 0.292857,
+        "ry": 0.392063,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.55,
+        "cy": 0.447619,
+        "rx": 0.271429,
+        "ry": 0.361905,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Pět dělených ramen s deseti úzkými konci.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Galerie obsahuje také detail vnitřního značení; tento detail nebyl použit jako geometrická reference čela.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r013/asset-004-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r014",
+      "group": "ready",
+      "title": "Černý desetipaprsek",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r014/asset-046.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.522619,
+        "cy": 0.442857,
+        "rx": 0.286905,
+        "ry": 0.38254,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.521429,
+        "cy": 0.44127,
+        "rx": 0.264286,
+        "ry": 0.352381,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Deset samostatných přímých štíhlých paprsků.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r014/asset-046-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r015",
+      "group": "ready",
+      "title": "Černý členitý střed",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r015/asset-038.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.544048,
+        "cy": 0.439683,
+        "rx": 0.315476,
+        "ry": 0.407937,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.545238,
+        "cy": 0.44127,
+        "rx": 0.285714,
+        "ry": 0.377778,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Pět dělených ramen s deseti konci a drobnými odlehčovacími otvory.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r015/asset-038-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r016",
+      "group": "ready",
+      "title": "Pět paprsků s lemem",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r016/asset-039.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.535714,
+        "cy": 0.45873,
+        "rx": 0.27619,
+        "ry": 0.37619,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.535714,
+        "cy": 0.460317,
+        "rx": 0.233333,
+        "ry": 0.31746,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Pět širokých hladkých paprsků.",
+        "confidence": "high",
+        "visibleSpokeCount": 5
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Face ellipse odděluje paprskové čelo od širokého světlého límce s obvodovými upevňovacími prvky.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r016/asset-039-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r017",
+      "group": "ready",
+      "title": "Černá síť se světlým lemem",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r017/asset-034.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.528571,
+        "cy": 0.455556,
+        "rx": 0.278571,
+        "ry": 0.37619,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.528571,
+        "cy": 0.457143,
+        "rx": 0.245238,
+        "ry": 0.336508,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Deset štíhlých dělených skupin, dvacet viditelných konců na límci.",
+        "confidence": "high",
+        "visibleSpokeCount": 20
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Počet označuje konce na límci, nikoli počet kořenů větvení u středu.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r017/asset-034-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r018",
+      "group": "ready",
+      "title": "Tmavý vícepaprsek z profilu",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r018/asset-035.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.646409,
+        "cy": 0.414365,
+        "rx": 0.109116,
+        "ry": 0.395028,
+        "rotationDeg": 3.2
+      },
+      "faceEllipse": {
+        "cx": 0.649171,
+        "cy": 0.418969,
+        "rx": 0.095304,
+        "ry": 0.372928,
+        "rotationDeg": 3.2
+      },
+      "topology": {
+        "pattern": "Hustý dělený vícepaprsek se zapuštěným čelem.",
+        "confidence": "low"
+      },
+      "sourceView": "angled",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Dodaný snímek je téměř z profilu; velkou část plochy zabírá vnější válec a čelo je výrazně perspektivně zkrácené.",
+        "Počet paprsků není z tohoto záběru spolehlivě určen.",
+        "Obě elipsy označují čelní část vpravo, nikoli levou zadní hranu ráfku.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r018/asset-035-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r019",
+      "group": "ready",
+      "title": "Černý střed, zlatý ráfek",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r019/asset-049.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.675,
+        "cy": 0.449206,
+        "rx": 0.125,
+        "ry": 0.366667,
+        "rotationDeg": 3.5
+      },
+      "faceEllipse": {
+        "cx": 0.657143,
+        "cy": 0.457143,
+        "rx": 0.090476,
+        "ry": 0.311111,
+        "rotationDeg": 3.5
+      },
+      "topology": {
+        "pattern": "Tmavé štíhlé dělené paprsky uvnitř hlubokého zlatého límce.",
+        "confidence": "low"
+      },
+      "sourceView": "angled",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Jediný dodaný snímek je silně boční; černé zapuštěné čelo je částečně skryté límcem.",
+        "Elipsa zapuštěného čela má jiný střed než přední ústí zlatého ráfku.",
+        "Počet paprsků není z tohoto záběru spolehlivě určen.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r019/asset-049-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r020",
+      "group": "ready",
+      "title": "Bronzový desetipaprsek s výřezy",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r020/asset-041.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.546429,
+        "cy": 0.444444,
+        "rx": 0.289286,
+        "ry": 0.390476,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.547619,
+        "cy": 0.444444,
+        "rx": 0.264286,
+        "ry": 0.355556,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Deset samostatných přímých paprsků s podélnými odlehčovacími výřezy.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r020/asset-041-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r021",
+      "group": "ready",
+      "title": "Šest paprsků v bronzu",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r021/asset-042.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.547619,
+        "cy": 0.44127,
+        "rx": 0.3,
+        "ry": 0.403175,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.547619,
+        "cy": 0.44127,
+        "rx": 0.27381,
+        "ry": 0.368254,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Šest širokých přímých paprsků.",
+        "confidence": "high",
+        "visibleSpokeCount": 6
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r021/asset-042-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r022",
+      "group": "ready",
+      "title": "Zlatý výrazný vícepaprsek",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r022/asset-040.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.522619,
+        "cy": 0.452381,
+        "rx": 0.275,
+        "ry": 0.373016,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.521429,
+        "cy": 0.453968,
+        "rx": 0.245238,
+        "ry": 0.333333,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Široké členité paprsky s protáhlými otvory a drobnými obvodovými okny.",
+        "confidence": "high"
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Členité větve a výřezy nejsou redukované na nepodložený počet samostatných paprsků.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r022/asset-040-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r023",
+      "group": "ready",
+      "title": "Tmavě modrý desetipaprsek",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r023/asset-028.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.513095,
+        "cy": 0.436508,
+        "rx": 0.277381,
+        "ry": 0.369841,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.514286,
+        "cy": 0.434921,
+        "rx": 0.252381,
+        "ry": 0.336508,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Deset samostatných přímých úzkých paprsků.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Světlá původní stěna za většinou čela usnadňuje oddělení modrého disku.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r023/asset-028-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r024",
+      "group": "ready",
+      "title": "Jasně modrý vícepaprsek",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r024/asset-045.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.55,
+        "cy": 0.463492,
+        "rx": 0.278571,
+        "ry": 0.374603,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.55,
+        "cy": 0.463492,
+        "rx": 0.254762,
+        "ry": 0.342857,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Pět dělených ramen s deseti konci.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r024/asset-045-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r025",
+      "group": "ready",
+      "title": "Bílý vícepaprsek",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r025/asset-052.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.635714,
+        "cy": 0.426984,
+        "rx": 0.116667,
+        "ry": 0.353968,
+        "rotationDeg": 5
+      },
+      "faceEllipse": {
+        "cx": 0.635714,
+        "cy": 0.428571,
+        "rx": 0.102381,
+        "ry": 0.326984,
+        "rotationDeg": 5
+      },
+      "topology": {
+        "pattern": "Štíhlý vícepaprsek s konkávním čelem.",
+        "confidence": "low"
+      },
+      "sourceView": "angled",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Jediný dodaný snímek je silně boční; bílý válec skrývá část kresby čela.",
+        "Počet paprsků není z tohoto záběru spolehlivě určen.",
+        "Elipsy označují čelní ústí vpravo a jeho vnitřní paprskovou plochu.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r025/asset-052-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r026",
+      "group": "ready",
+      "title": "Černý hladký desetipaprsek",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r026/asset-063.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.527381,
+        "cy": 0.444444,
+        "rx": 0.305952,
+        "ry": 0.406349,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.528571,
+        "cy": 0.444444,
+        "rx": 0.283333,
+        "ry": 0.374603,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Deset samostatných přímých hladkých paprsků.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r026/asset-063-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r027",
+      "group": "ready",
+      "title": "Grafitový desetipaprsek se světlou hranou",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r027/asset-067.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.510714,
+        "cy": 0.434921,
+        "rx": 0.308333,
+        "ry": 0.415873,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.511905,
+        "cy": 0.434921,
+        "rx": 0.285714,
+        "ry": 0.384127,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Deset samostatných přímých paprsků se světlou čelní hranou.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r027/asset-067-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r028",
+      "group": "ready",
+      "title": "Černý členitý paprsek se světlou hranou",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r028/asset-071.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.527381,
+        "cy": 0.452381,
+        "rx": 0.308333,
+        "ry": 0.411111,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.528571,
+        "cy": 0.453968,
+        "rx": 0.285714,
+        "ry": 0.380952,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Pět úhlově větvených skupin, deset konců na límci.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Face ellipse sleduje vnitřní hranici límce; světlé větve místy vystupují až na vnější obvod.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r028/asset-071-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "nfw-r029",
+      "group": "ready",
+      "title": "Zlatý členitý paprsek se světlou hranou",
+      "referenceImage": {
+        "src": "assets/ready-wheels/oarts-r029/asset-074.webp",
+        "width": 1448,
+        "height": 1086,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.502381,
+        "cy": 0.484127,
+        "rx": 0.32619,
+        "ry": 0.436508,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.504762,
+        "cy": 0.485714,
+        "rx": 0.302381,
+        "ry": 0.403175,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Pět úhlově větvených skupin, deset konců na límci.",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
+        "Světlé větve místy vystupují až na vnější obvod zlatého límce.",
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/ready-wheels/oarts-r029/asset-074-studio-20261008.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "visualization"
+      }
+    },
+    {
+      "id": "bmw-m2-competition-chrome",
+      "group": "project",
+      "title": "Chromová kola pro BMW M2 Competition",
+      "referenceImage": {
+        "src": "assets/projects/bmw-m2-competition-chrome/supplier-technical.webp",
+        "width": 1600,
+        "height": 872,
+        "kind": "technical"
+      },
+      "rimEllipse": {
+        "cx": 0.261,
+        "cy": 0.578,
+        "rx": 0.232,
+        "ry": 0.418,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.261,
+        "cy": 0.578,
+        "rx": 0.218,
+        "ry": 0.394,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Ten tapered radial spokes with sculpted lug roots",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Trace the left wheel on the paired white supplier plate.",
+        "Chrome reflections and rim depth are corroborated by the physical front photograph; this plate is a design visualization.",
+        "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+      ],
+      "corroborationImages": [
+        {
+          "src": "assets/projects/bmw-m2-competition-chrome/photo-front.webp",
+          "width": 1600,
+          "height": 1200,
+          "kind": "photo",
+          "title": "Čelní pohled"
+        }
+      ]
+    },
+    {
+      "id": "mustang-track-gold",
+      "group": "project",
+      "title": "Zlatá kola pro Mustang na okruh",
+      "referenceImage": {
+        "src": "assets/projects/mustang-track-gold/photo-front.webp",
+        "width": 1600,
+        "height": 1200,
+        "kind": "photo"
+      },
+      "rimEllipse": {
+        "cx": 0.552,
+        "cy": 0.457,
+        "rx": 0.29,
+        "ry": 0.386,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.552,
+        "cy": 0.457,
+        "rx": 0.272,
+        "ry": 0.363,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Ten slender straight radial spokes",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "No technical frontal plate is supplied for this project; use its actual front photograph.",
+        "Gray backdrop is visible through open spokes and requires background segmentation; retain the wheel and omit the stand and floor.",
+        "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+      ],
+      "corroborationImages": [
+        {
+          "src": "assets/projects/mustang-track-gold/photo-front.webp",
+          "width": 1600,
+          "height": 1200,
+          "kind": "photo",
+          "title": "Čelní pohled"
+        }
+      ]
+    },
+    {
+      "id": "audi-rs3-drag-race-gloss-black",
+      "group": "project",
+      "title": "Audi RS3 pro drag race",
+      "referenceImage": {
+        "src": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-technical.webp",
+        "width": 1600,
+        "height": 872,
+        "kind": "technical"
+      },
+      "rimEllipse": {
+        "cx": 0.309,
+        "cy": 0.579,
+        "rx": 0.207,
+        "ry": 0.379,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.309,
+        "cy": 0.579,
+        "rx": 0.193,
+        "ry": 0.354,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Ten tapered straight radial spokes",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Trace the left frontal wheel on the paired white supplier plate.",
+        "There are no physical photographs for this project.",
+        "The additional colored computational visualization corroborates the face layout only; it is not a certification or a supplied CAD mesh.",
+        "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+      ],
+      "corroborationImages": [
+        {
+          "src": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-analysis.webp",
+          "width": 962,
+          "height": 791,
+          "kind": "technical",
+          "title": "Výpočetní vizualizace",
+          "alt": "Výpočetní vizualizace dodavatele pro návrh kola Audi RS3: barevná výpočetní síť z čelního pohledu."
+        }
+      ],
+      "fallbackReferenceImage": {
+        "src": "assets/projects/audi-rs3-drag-race-gloss-black/supplier-analysis.webp",
+        "width": 962,
+        "height": 791,
+        "kind": "technical",
+        "rimEllipse": {
+          "cx": 0.498,
+          "cy": 0.499,
+          "rx": 0.421,
+          "ry": 0.487,
+          "rotationDeg": 0
+        },
+        "faceEllipse": {
+          "cx": 0.498,
+          "cy": 0.499,
+          "rx": 0.396,
+          "ry": 0.458,
+          "rotationDeg": 0
+        },
+        "notes": [
+          "Computational colors are display evidence only; segment the surrounding gray field instead of interpreting stress colors as wheel materials."
+        ]
+      }
+    },
+    {
+      "id": "mustang-gt-50-gloss-black",
+      "group": "project",
+      "title": "Lesklá černá pro Mustang GT 5.0",
+      "referenceImage": {
+        "src": "assets/projects/mustang-gt-50-gloss-black/supplier-technical.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "technical"
+      },
+      "rimEllipse": {
+        "cx": 0.489,
+        "cy": 0.482,
+        "rx": 0.397,
+        "ry": 0.397,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.489,
+        "cy": 0.482,
+        "rx": 0.373,
+        "ry": 0.373,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Five branched spoke roots terminating in ten rim connections",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Single frontal wheel on a white supplier technical plate.",
+        "Five lug openings, spoke-root relief and branching are visible; use the physical front photo to check the glossy finish.",
+        "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+      ],
+      "corroborationImages": [
+        {
+          "src": "assets/projects/mustang-gt-50-gloss-black/photo-front.webp",
+          "width": 1600,
+          "height": 1200,
+          "kind": "photo",
+          "title": "Čelní pohled"
+        }
+      ]
+    },
+    {
+      "id": "lamborghini-urus-matte-tx-gold-machined",
+      "group": "project",
+      "title": "Matná TX zlatá s frézovaným čelem",
+      "referenceImage": {
+        "src": "assets/projects/lamborghini-urus-matte-tx-gold-machined/supplier-technical.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "technical"
+      },
+      "rimEllipse": {
+        "cx": 0.497,
+        "cy": 0.479,
+        "rx": 0.405,
+        "ry": 0.405,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.497,
+        "cy": 0.479,
+        "rx": 0.379,
+        "ry": 0.379,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Fivefold angular branched web with large pentagonal windows",
+        "confidence": "high"
+      },
+      "sourceView": "front",
+      "notes": [
+        "Single frontal figure on the white supplier technical plate.",
+        "Preserve the angular branches and pentagonal windows rather than substituting a conventional five-spoke preset.",
+        "Physical front photography corroborates the machined face and TX gold finish.",
+        "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+      ],
+      "corroborationImages": [
+        {
+          "src": "assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-front.webp",
+          "width": 1600,
+          "height": 1200,
+          "kind": "photo",
+          "title": "Čelní pohled"
+        }
+      ]
+    },
+    {
+      "id": "rolls-royce-ghost-2017-brushed-silver",
+      "group": "project",
+      "title": "Broušené stříbro se šedým okrajem",
+      "referenceImage": {
+        "src": "assets/projects/rolls-royce-ghost-2017-brushed-silver/supplier-technical.webp",
+        "width": 1377,
+        "height": 1142,
+        "kind": "technical"
+      },
+      "rimEllipse": {
+        "cx": 0.501,
+        "cy": 0.514,
+        "rx": 0.371,
+        "ry": 0.45,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.501,
+        "cy": 0.514,
+        "rx": 0.356,
+        "ry": 0.432,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Solid disc face with circumferential rectangular ventilation slots",
+        "confidence": "high"
+      },
+      "sourceView": "front",
+      "notes": [
+        "Frontal disc wheel on the white supplier plate.",
+        "There are no exposed radial spokes: preserve the solid disc and separate perimeter vent openings.",
+        "Supplied photograph is only 567 by 425 pixels; the higher-resolution supplier plate is preferred for tracing.",
+        "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+      ],
+      "corroborationImages": [
+        {
+          "src": "assets/projects/rolls-royce-ghost-2017-brushed-silver/photo-front.webp",
+          "width": 567,
+          "height": 425,
+          "kind": "photo",
+          "title": "Čelní pohled"
+        }
+      ]
+    },
+    {
+      "id": "lamborghini-urus-gloss-black-machined",
+      "group": "project",
+      "title": "Lesklá černá s frézovaným čelem",
+      "referenceImage": {
+        "src": "assets/projects/lamborghini-urus-gloss-black-machined/supplier-technical.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "technical"
+      },
+      "rimEllipse": {
+        "cx": 0.251,
+        "cy": 0.572,
+        "rx": 0.236,
+        "ry": 0.236,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.251,
+        "cy": 0.572,
+        "rx": 0.219,
+        "ry": 0.219,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Fivefold angular branched web with pentagonal windows and contrasting machined edges",
+        "confidence": "high"
+      },
+      "sourceView": "front",
+      "notes": [
+        "Trace the left wheel in the lower half of the paired white supplier plate.",
+        "The geometry has angular branches and closed intermediate web cells; do not substitute a generic straight-spoke wheel.",
+        "Use the larger physical front photograph to corroborate branch edges and finish.",
+        "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+      ],
+      "corroborationImages": [
+        {
+          "src": "assets/projects/lamborghini-urus-gloss-black-machined/photo-front.webp",
+          "width": 1600,
+          "height": 1200,
+          "kind": "photo",
+          "title": "Čelní pohled"
+        }
+      ]
+    },
+    {
+      "id": "ferrari-812-gunmetal-machined",
+      "group": "project",
+      "title": "Gunmetal s frézovaným čelem",
+      "referenceImage": {
+        "src": "assets/projects/ferrari-812-gunmetal-machined/supplier-technical.webp",
+        "width": 1254,
+        "height": 1254,
+        "kind": "technical"
+      },
+      "rimEllipse": {
+        "cx": 0.497,
+        "cy": 0.481,
+        "rx": 0.406,
+        "ry": 0.406,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.497,
+        "cy": 0.481,
+        "rx": 0.381,
+        "ry": 0.381,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Ten slender tapered straight radial spokes",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Single frontal wheel on the white supplier technical plate.",
+        "Physical front photography corroborates the slim spoke outlines and machined-face treatment.",
+        "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+      ],
+      "corroborationImages": [
+        {
+          "src": "assets/projects/ferrari-812-gunmetal-machined/photo-front.webp",
+          "width": 1600,
+          "height": 1200,
+          "kind": "photo",
+          "title": "Čelní pohled"
+        }
+      ]
+    },
+    {
+      "id": "ferrari-812-gloss-black",
+      "group": "project",
+      "title": "Kola na míru v lesklé černé",
+      "referenceImage": {
+        "src": "assets/projects/ferrari-812-gloss-black/supplier-technical.webp",
+        "width": 1600,
+        "height": 899,
+        "kind": "technical"
+      },
+      "rimEllipse": {
+        "cx": 0.292,
+        "cy": 0.601,
+        "rx": 0.219,
+        "ry": 0.39,
+        "rotationDeg": 0
+      },
+      "faceEllipse": {
+        "cx": 0.292,
+        "cy": 0.601,
+        "rx": 0.205,
+        "ry": 0.365,
+        "rotationDeg": 0
+      },
+      "topology": {
+        "pattern": "Ten slender tapered straight radial spokes",
+        "confidence": "high",
+        "visibleSpokeCount": 10
+      },
+      "sourceView": "front",
+      "notes": [
+        "Trace the left wheel on the paired white supplier plate.",
+        "The lower outer lip lies close to the image edge; the physical front photograph corroborates the complete rim outline.",
+        "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+      ],
+      "corroborationImages": [
+        {
+          "src": "assets/projects/ferrari-812-gloss-black/photo-front.webp",
+          "width": 1600,
+          "height": 1200,
+          "kind": "photo",
+          "title": "Čelní pohled"
+        }
+      ]
+    }
+  ],
+  "inspectionSummary": {
+    "method": "Manual visual selection of each supplied reference, followed by rim/face ellipse overlay review. Existing photos and technical visualizations were retained without edits.",
+    "ready": {
+      "sourceImagesViewed": 46,
+      "studioCounterpartsViewed": 46,
+      "frontReferences": 23,
+      "angledReferences": 6
+    },
+    "project": {
+      "primaryPhotoReferences": 1,
+      "primaryTechnicalReferences": 8
+    },
+    "limitations": "Bounds and visible topology describe a photograph or supplier visualization, not verified manufacturing CAD. Angled, obstructed and cropped evidence retains explicit per-record notes and confidence."
+  }
+}

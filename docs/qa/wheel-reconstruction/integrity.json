@@ -1,0 +1,1037 @@
+{
+  "result": "PASS",
+  "activeDesigns": 157,
+  "photoMeshes": 147,
+  "concepts": 10,
+  "models": [
+    {
+      "id": "apex10",
+      "triangles": 34744,
+      "bytes": 2778500,
+      "holes": 16,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "audi-rs3-drag-race-gloss-black",
+      "triangles": 30340,
+      "bytes": 1958856,
+      "holes": 16,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "bmw-m2-competition-chrome",
+      "triangles": 29094,
+      "bytes": 3349456,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-beadlock-ad5x",
+      "triangles": 20760,
+      "bytes": 1176872,
+      "holes": 11,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-beadlock-bf2x",
+      "triangles": 25866,
+      "bytes": 1521600,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-beadlock-cf7x",
+      "triangles": 27716,
+      "bytes": 2300924,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-beadlock-cr5x",
+      "triangles": 22768,
+      "bytes": 1997716,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-beadlock-f14x-2",
+      "triangles": 26426,
+      "bytes": 1546364,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-beadlock-f15x",
+      "triangles": 25166,
+      "bytes": 1418552,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-beadlock-hr8x",
+      "triangles": 26974,
+      "bytes": 2168404,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-beadlock-ks2x",
+      "triangles": 91932,
+      "bytes": 7192416,
+      "holes": 15,
+      "surfaceDetails": 74
+    },
+    {
+      "id": "e6-beadlock-r5xr",
+      "triangles": 24238,
+      "bytes": 2069008,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-beadlock-ro5x",
+      "triangles": 20786,
+      "bytes": 1813564,
+      "holes": 11,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-beadlock-s58x",
+      "triangles": 27306,
+      "bytes": 1685292,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-luxury-el01",
+      "triangles": 35766,
+      "bytes": 1754372,
+      "holes": 21,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-luxury-el02",
+      "triangles": 46502,
+      "bytes": 2385536,
+      "holes": 41,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-luxury-el22",
+      "triangles": 30320,
+      "bytes": 2271600,
+      "holes": 21,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-luxury-hx5",
+      "triangles": 32176,
+      "bytes": 1756180,
+      "holes": 30,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-luxury-lf9",
+      "triangles": 24860,
+      "bytes": 1309464,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-luxury-lx9",
+      "triangles": 22278,
+      "bytes": 1960292,
+      "holes": 23,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-luxury-rf20",
+      "triangles": 36486,
+      "bytes": 1758432,
+      "holes": 22,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-luxury-rf21",
+      "triangles": 95712,
+      "bytes": 7156384,
+      "holes": 40,
+      "surfaceDetails": 8
+    },
+    {
+      "id": "e6-luxury-rf22",
+      "triangles": 126868,
+      "bytes": 10218408,
+      "holes": 15,
+      "surfaceDetails": 37
+    },
+    {
+      "id": "e6-monoblock-ad02",
+      "triangles": 24720,
+      "bytes": 2061768,
+      "holes": 16,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-ad03",
+      "triangles": 21404,
+      "bytes": 1197384,
+      "holes": 11,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-ap10",
+      "triangles": 25058,
+      "bytes": 1365176,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-av1",
+      "triangles": 24008,
+      "bytes": 2311044,
+      "holes": 31,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-av2",
+      "triangles": 90504,
+      "bytes": 7258372,
+      "holes": 25,
+      "surfaceDetails": 24
+    },
+    {
+      "id": "e6-monoblock-av3",
+      "triangles": 24238,
+      "bytes": 2332424,
+      "holes": 21,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-b20m",
+      "triangles": 27608,
+      "bytes": 2402796,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-cf7m",
+      "triangles": 28168,
+      "bytes": 2184520,
+      "holes": 23,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-ef10",
+      "triangles": 23134,
+      "bytes": 1378580,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-gs5m",
+      "triangles": 23700,
+      "bytes": 1547096,
+      "holes": 26,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-hs1",
+      "triangles": 22774,
+      "bytes": 1824844,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-hs2",
+      "triangles": 24242,
+      "bytes": 1359092,
+      "holes": 16,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-hs3",
+      "triangles": 24480,
+      "bytes": 1212408,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-ks1",
+      "triangles": 23534,
+      "bytes": 1281076,
+      "holes": 11,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-ms10",
+      "triangles": 21046,
+      "bytes": 1925012,
+      "holes": 16,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-ms11",
+      "triangles": 21288,
+      "bytes": 1306076,
+      "holes": 16,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-ms6",
+      "triangles": 26298,
+      "bytes": 1451744,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-ns5m",
+      "triangles": 21870,
+      "bytes": 1284696,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-s10m",
+      "triangles": 29360,
+      "bytes": 1602288,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-s30m",
+      "triangles": 25278,
+      "bytes": 2135084,
+      "holes": 19,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-sl10",
+      "triangles": 22438,
+      "bytes": 1336008,
+      "holes": 16,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-sr8",
+      "triangles": 28432,
+      "bytes": 2548160,
+      "holes": 27,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-ss6m",
+      "triangles": 31060,
+      "bytes": 2488132,
+      "holes": 34,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-u57",
+      "triangles": 23350,
+      "bytes": 1899272,
+      "holes": 18,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-vr5",
+      "triangles": 22390,
+      "bytes": 1384744,
+      "holes": 16,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-monoblock-ws6",
+      "triangles": 36630,
+      "bytes": 2493568,
+      "holes": 26,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-ar01",
+      "triangles": 23030,
+      "bytes": 1536012,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-ar02",
+      "triangles": 21466,
+      "bytes": 1819080,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-ar03",
+      "triangles": 31820,
+      "bytes": 1931212,
+      "holes": 35,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-ar04",
+      "triangles": 38872,
+      "bytes": 2622168,
+      "holes": 80,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-ar05",
+      "triangles": 33038,
+      "bytes": 1797668,
+      "holes": 26,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-ar09",
+      "triangles": 71274,
+      "bytes": 4443040,
+      "holes": 20,
+      "surfaceDetails": 14
+    },
+    {
+      "id": "e6-multipiece-b20",
+      "triangles": 27916,
+      "bytes": 1729248,
+      "holes": 26,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-cs5",
+      "triangles": 25630,
+      "bytes": 2243324,
+      "holes": 18,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-cs6",
+      "triangles": 24188,
+      "bytes": 1548860,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-cs7",
+      "triangles": 22012,
+      "bytes": 1276036,
+      "holes": 11,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-f20",
+      "triangles": 36586,
+      "bytes": 2037492,
+      "holes": 45,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-fs6",
+      "triangles": 23542,
+      "bytes": 1223008,
+      "holes": 11,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-gs4",
+      "triangles": 21558,
+      "bytes": 2004048,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-gs5",
+      "triangles": 23900,
+      "bytes": 1585940,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-gs6",
+      "triangles": 26666,
+      "bytes": 2060196,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-jf10",
+      "triangles": 21020,
+      "bytes": 1279940,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-jf6",
+      "triangles": 58622,
+      "bytes": 4329176,
+      "holes": 15,
+      "surfaceDetails": 5
+    },
+    {
+      "id": "e6-multipiece-ns5",
+      "triangles": 20862,
+      "bytes": 1280820,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-ns6",
+      "triangles": 24176,
+      "bytes": 2048276,
+      "holes": 18,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-rb10",
+      "triangles": 23372,
+      "bytes": 1498396,
+      "holes": 21,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-rb11",
+      "triangles": 22892,
+      "bytes": 1441732,
+      "holes": 21,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-s10",
+      "triangles": 25324,
+      "bytes": 1522988,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-s11",
+      "triangles": 23578,
+      "bytes": 2088316,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-s20",
+      "triangles": 25642,
+      "bytes": 1527068,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-s30",
+      "triangles": 26240,
+      "bytes": 2400988,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-sc5",
+      "triangles": 30308,
+      "bytes": 2112644,
+      "holes": 30,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-sc7",
+      "triangles": 25116,
+      "bytes": 1589352,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-se5",
+      "triangles": 22606,
+      "bytes": 1365700,
+      "holes": 11,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-sf15",
+      "triangles": 29446,
+      "bytes": 1925032,
+      "holes": 30,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-sf17",
+      "triangles": 27544,
+      "bytes": 2584376,
+      "holes": 35,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-sf19",
+      "triangles": 35984,
+      "bytes": 2422528,
+      "holes": 71,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-sf20",
+      "triangles": 32252,
+      "bytes": 2492360,
+      "holes": 34,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-sf5",
+      "triangles": 34268,
+      "bytes": 2016860,
+      "holes": 30,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-sf7",
+      "triangles": 27678,
+      "bytes": 1787652,
+      "holes": 27,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-sr5",
+      "triangles": 24608,
+      "bytes": 2270584,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-ss6",
+      "triangles": 24456,
+      "bytes": 1569788,
+      "holes": 30,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-ss7",
+      "triangles": 28430,
+      "bytes": 2442524,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-vl4",
+      "triangles": 22502,
+      "bytes": 1408036,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-vl6",
+      "triangles": 25550,
+      "bytes": 1686304,
+      "holes": 26,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-vr6",
+      "triangles": 29530,
+      "bytes": 1884284,
+      "holes": 35,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-vr7",
+      "triangles": 30888,
+      "bytes": 2140460,
+      "holes": 45,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "e6-multipiece-vr8",
+      "triangles": 22484,
+      "bytes": 1648772,
+      "holes": 30,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "ferrari-812-gloss-black",
+      "triangles": 30766,
+      "bytes": 2112908,
+      "holes": 21,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "ferrari-812-gunmetal-machined",
+      "triangles": 29626,
+      "bytes": 2098532,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "lamborghini-urus-gloss-black-machined",
+      "triangles": 28866,
+      "bytes": 2037824,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "lamborghini-urus-matte-tx-gold-machined",
+      "triangles": 27692,
+      "bytes": 2651152,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-a",
+      "triangles": 43216,
+      "bytes": 3099348,
+      "holes": 35,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-b",
+      "triangles": 28560,
+      "bytes": 2183156,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-c",
+      "triangles": 26554,
+      "bytes": 2115976,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-d",
+      "triangles": 36610,
+      "bytes": 2915856,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-e",
+      "triangles": 37922,
+      "bytes": 3186788,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-f",
+      "triangles": 42428,
+      "bytes": 3246412,
+      "holes": 35,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-g",
+      "triangles": 28214,
+      "bytes": 2278712,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-h",
+      "triangles": 37988,
+      "bytes": 2642348,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-j",
+      "triangles": 36512,
+      "bytes": 2356512,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-k",
+      "triangles": 26868,
+      "bytes": 1861128,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-l",
+      "triangles": 51246,
+      "bytes": 4002076,
+      "holes": 11,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-m",
+      "triangles": 35954,
+      "bytes": 2613416,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-n",
+      "triangles": 45446,
+      "bytes": 3188904,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-o",
+      "triangles": 27924,
+      "bytes": 1789704,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-p",
+      "triangles": 42556,
+      "bytes": 3125120,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-q",
+      "triangles": 35970,
+      "bytes": 2406180,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-r",
+      "triangles": 46056,
+      "bytes": 3916232,
+      "holes": 25,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-s",
+      "triangles": 33242,
+      "bytes": 2046452,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-t",
+      "triangles": 31834,
+      "bytes": 2017648,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "motivo-mb-z",
+      "triangles": 41592,
+      "bytes": 3588016,
+      "holes": 11,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "mustang-gt-50-gloss-black",
+      "triangles": 34478,
+      "bytes": 2369160,
+      "holes": 31,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "mustang-track-gold",
+      "triangles": 28058,
+      "bytes": 2084568,
+      "holes": 15,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r001",
+      "triangles": 28152,
+      "bytes": 2009508,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r002",
+      "triangles": 29472,
+      "bytes": 2158652,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r003",
+      "triangles": 29390,
+      "bytes": 1525392,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r004",
+      "triangles": 29214,
+      "bytes": 1512080,
+      "holes": 11,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r005",
+      "triangles": 37884,
+      "bytes": 2715564,
+      "holes": 35,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r006",
+      "triangles": 25214,
+      "bytes": 1738988,
+      "holes": 5,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r007",
+      "triangles": 26012,
+      "bytes": 1906748,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r008",
+      "triangles": 25438,
+      "bytes": 1902796,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r009",
+      "triangles": 31952,
+      "bytes": 2277288,
+      "holes": 31,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r010",
+      "triangles": 42240,
+      "bytes": 2276588,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r011",
+      "triangles": 28998,
+      "bytes": 1513232,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r012",
+      "triangles": 31534,
+      "bytes": 2292596,
+      "holes": 31,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r013",
+      "triangles": 33466,
+      "bytes": 2265320,
+      "holes": 31,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r014",
+      "triangles": 27236,
+      "bytes": 1828448,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r015",
+      "triangles": 28002,
+      "bytes": 1886692,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r016",
+      "triangles": 23850,
+      "bytes": 1731520,
+      "holes": 5,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r017",
+      "triangles": 28004,
+      "bytes": 2079012,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r018",
+      "triangles": 27678,
+      "bytes": 1460980,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r019",
+      "triangles": 26818,
+      "bytes": 1423016,
+      "holes": 9,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r020",
+      "triangles": 35582,
+      "bytes": 2443724,
+      "holes": 37,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r021",
+      "triangles": 24690,
+      "bytes": 1830692,
+      "holes": 6,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r022",
+      "triangles": 32912,
+      "bytes": 2397348,
+      "holes": 20,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r023",
+      "triangles": 28080,
+      "bytes": 1920036,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r024",
+      "triangles": 28912,
+      "bytes": 2037428,
+      "holes": 11,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r025",
+      "triangles": 27872,
+      "bytes": 1462788,
+      "holes": 11,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r026",
+      "triangles": 28200,
+      "bytes": 1901648,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r027",
+      "triangles": 28890,
+      "bytes": 1957752,
+      "holes": 10,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r028",
+      "triangles": 28954,
+      "bytes": 1973324,
+      "holes": 19,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "nfw-r029",
+      "triangles": 28798,
+      "bytes": 1975604,
+      "holes": 19,
+      "surfaceDetails": 0
+    },
+    {
+      "id": "rolls-royce-ghost-2017-brushed-silver",
+      "triangles": 42770,
+      "bytes": 2270832,
+      "holes": 20,
+      "surfaceDetails": 0
+    }
+  ]
+}
