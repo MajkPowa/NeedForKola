@@ -72,6 +72,104 @@
     // Pouze skutečné realizace s právem zveřejnit jejich fotografie.
     projects: [
       {
+        "id": "lamborghini-urus-matte-tx-gold-machined",
+        "vehicle": "Lamborghini Urus",
+        "title": "Matná TX zlatá s frézovaným čelem",
+        "description": "Realizovaný custom projekt pro Lamborghini Urus. Kola o průměru 23″ s rozdílnou šířkou a ET pro přední a zadní nápravu. Matnou TX zlatou doplňuje frézované čelo.",
+        "wheel": "23×10J / 23×11,5J",
+        "finish": "Matná TX zlatá s frézovaným čelem",
+        "specs": [
+          {
+            "label": "Přední náprava",
+            "value": "23×10J · ET 20"
+          },
+          {
+            "label": "Zadní náprava",
+            "value": "23×11,5J · ET 14"
+          },
+          {
+            "label": "Rozteč (PCD)",
+            "value": "5×130"
+          },
+          {
+            "label": "Středová díra (CB)",
+            "value": "71,6 mm"
+          },
+          {
+            "label": "Barva a povrch",
+            "value": "Matná TX zlatá s frézovaným čelem"
+          }
+        ],
+        "images": [
+          {
+            "src": "assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-three-quarter.webp",
+            "thumb": "assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-three-quarter-thumb.webp",
+            "srcset": "assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-three-quarter-thumb.webp 480w, assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-three-quarter.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Vyrobené kolo z úhlu",
+            "alt": "Vyrobené kolo pro Lamborghini Urus v matné TX zlaté s frézovaným čelem, v tříčtvrtečním pohledu.",
+            "caption": "Fotografie vyrobeného kola v matné TX zlaté s frézovaným čelem."
+          },
+          {
+            "src": "assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-front.webp",
+            "thumb": "assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-front-thumb.webp",
+            "srcset": "assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-front-thumb.webp 480w, assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-front.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Čelní pohled",
+            "alt": "Čelní pohled na vyrobené kolo pro Lamborghini Urus v matné TX zlaté s frézovaným čelem.",
+            "caption": "Fotografie finálního designu a matné TX zlaté s frézovaným čelem."
+          },
+          {
+            "src": "assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-reverse-angle.webp",
+            "thumb": "assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-reverse-angle-thumb.webp",
+            "srcset": "assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-reverse-angle-thumb.webp 480w, assets/projects/lamborghini-urus-matte-tx-gold-machined/photo-reverse-angle.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Opačný pohled",
+            "alt": "Opačný boční úhel vyrobeného kola pro Lamborghini Urus v matné TX zlaté s frézovaným čelem, s viditelnou hloubkou ráfku.",
+            "caption": "Fotografie profilu a paprsků hotového kola."
+          },
+          {
+            "src": "assets/projects/lamborghini-urus-matte-tx-gold-machined/supplier-technical.webp",
+            "thumb": "assets/projects/lamborghini-urus-matte-tx-gold-machined/supplier-technical-thumb.webp",
+            "srcset": "assets/projects/lamborghini-urus-matte-tx-gold-machined/supplier-technical-thumb.webp 480w, assets/projects/lamborghini-urus-matte-tx-gold-machined/supplier-technical.webp 1254w",
+            "width": 1254,
+            "height": 1254,
+            "kind": "technical",
+            "title": "Technický návrh",
+            "alt": "Dodavatelský render kola pro Lamborghini Urus v matné TX zlaté s frézovaným čelem a technickými údaji.",
+            "caption": "Technický podklad dodavatele s návrhovou vizualizací."
+          },
+          {
+            "src": "assets/projects/lamborghini-urus-matte-tx-gold-machined/supplier-three-quarter.webp",
+            "thumb": "assets/projects/lamborghini-urus-matte-tx-gold-machined/supplier-three-quarter-thumb.webp",
+            "srcset": "assets/projects/lamborghini-urus-matte-tx-gold-machined/supplier-three-quarter-thumb.webp 480w, assets/projects/lamborghini-urus-matte-tx-gold-machined/supplier-three-quarter.webp 1280w",
+            "width": 1280,
+            "height": 1280,
+            "kind": "visualization",
+            "title": "Návrh z úhlu",
+            "alt": "Dodavatelský tříčtvrteční render kola pro Lamborghini Urus v matné TX zlaté s frézovaným čelem.",
+            "caption": "Návrhová vizualizace dodavatele před výrobou."
+          },
+          {
+            "src": "assets/projects/lamborghini-urus-matte-tx-gold-machined/supplier-profile.webp",
+            "thumb": "assets/projects/lamborghini-urus-matte-tx-gold-machined/supplier-profile-thumb.webp",
+            "srcset": "assets/projects/lamborghini-urus-matte-tx-gold-machined/supplier-profile-thumb.webp 480w, assets/projects/lamborghini-urus-matte-tx-gold-machined/supplier-profile.webp 1280w",
+            "width": 1280,
+            "height": 1280,
+            "kind": "visualization",
+            "title": "Návrh profilu",
+            "alt": "Dodavatelský render bočního profilu kola pro Lamborghini Urus v matné TX zlaté s frézovaným čelem.",
+            "caption": "Návrhová vizualizace dodavatele s pohledem na šířku ráfku."
+          }
+        ]
+      },
+      {
         "id": "rolls-royce-ghost-2017-brushed-silver",
         "vehicle": "Rolls-Royce Ghost 2017",
         "title": "Broušené stříbro se šedým okrajem",
