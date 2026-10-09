@@ -72,6 +72,116 @@
     // Pouze skutečné realizace s právem zveřejnit jejich fotografie.
     projects: [
       {
+        "id": "mustang-track-gold",
+        "vehicle": "Mustang",
+        "title": "Zlatá kola pro Mustang na okruh",
+        "description": "Realizovaný custom projekt pro Mustang na okruh. Devatenáctipalcová kola ve zlaté barvě, s rozdílnou šířkou a ET pro přední a zadní nápravu.",
+        "wheel": "19×9J / 19×10,5J",
+        "finish": "Zlatá",
+        "specs": [
+          {
+            "label": "Přední náprava",
+            "value": "19×9J · ET 28"
+          },
+          {
+            "label": "Zadní náprava",
+            "value": "19×10,5J · ET 45"
+          },
+          {
+            "label": "Rozteč (PCD)",
+            "value": "5×114,3"
+          },
+          {
+            "label": "Středová díra (CB)",
+            "value": "70,3 mm"
+          },
+          {
+            "label": "Barva a povrch",
+            "value": "Zlatá"
+          }
+        ],
+        "images": [
+          {
+            "src": "assets/projects/mustang-track-gold/photo-front.webp",
+            "thumb": "assets/projects/mustang-track-gold/photo-front-thumb.webp",
+            "srcset": "assets/projects/mustang-track-gold/photo-front-thumb.webp 480w, assets/projects/mustang-track-gold/photo-front.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Čelní pohled",
+            "alt": "Čelní pohled na vyrobené zlaté kolo pro Mustang na okruh.",
+            "caption": "Fotografie vyrobeného zlatého kola pro Mustang na okruh."
+          },
+          {
+            "src": "assets/projects/mustang-track-gold/photo-three-quarter.webp",
+            "thumb": "assets/projects/mustang-track-gold/photo-three-quarter-thumb.webp",
+            "srcset": "assets/projects/mustang-track-gold/photo-three-quarter-thumb.webp 480w, assets/projects/mustang-track-gold/photo-three-quarter.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Vyrobené kolo z úhlu",
+            "alt": "Tříčtvrteční pohled na vyrobené zlaté kolo pro Mustang na okruh.",
+            "caption": "Fotografie profilu a paprsků hotového kola ve zlaté barvě."
+          },
+          {
+            "src": "assets/projects/mustang-track-gold/photo-reverse-angle.webp",
+            "thumb": "assets/projects/mustang-track-gold/photo-reverse-angle-thumb.webp",
+            "srcset": "assets/projects/mustang-track-gold/photo-reverse-angle-thumb.webp 480w, assets/projects/mustang-track-gold/photo-reverse-angle.webp 1600w",
+            "width": 1600,
+            "height": 1200,
+            "kind": "photo",
+            "title": "Opačný pohled",
+            "alt": "Opačný boční úhel vyrobeného zlatého kola pro Mustang na okruh.",
+            "caption": "Fotografie vyrobeného kola z opačného úhlu."
+          },
+          {
+            "src": "assets/projects/mustang-track-gold/photo-set-outdoors.webp",
+            "thumb": "assets/projects/mustang-track-gold/photo-set-outdoors-thumb.webp",
+            "srcset": "assets/projects/mustang-track-gold/photo-set-outdoors-thumb.webp 360w, assets/projects/mustang-track-gold/photo-set-outdoors.webp 1200w",
+            "width": 1200,
+            "height": 1600,
+            "kind": "photo",
+            "title": "Celá vyrobená sada",
+            "alt": "Sada čtyř vyrobených zlatých kol pro Mustang na okruh, vyfotografovaná venku na trávě.",
+            "caption": "Venkovní fotografie celé vyrobené sady čtyř zlatých kol."
+          },
+          {
+            "src": "assets/projects/mustang-track-gold/supplier-three-quarter.webp",
+            "thumb": "assets/projects/mustang-track-gold/supplier-three-quarter-thumb.webp",
+            "srcset": "assets/projects/mustang-track-gold/supplier-three-quarter-thumb.webp 480w, assets/projects/mustang-track-gold/supplier-three-quarter.webp 1206w",
+            "width": 1206,
+            "height": 1182,
+            "kind": "visualization",
+            "title": "Návrh celé sady",
+            "alt": "Dodavatelský tříčtvrteční render páru zlatých kol pro Mustang na okruh.",
+            "caption": "Dodavatelská návrhová vizualizace zlaté sady kol pro Mustang na okruh."
+          },
+          {
+            "src": "assets/projects/mustang-track-gold/supplier-profile.webp",
+            "thumb": "assets/projects/mustang-track-gold/supplier-profile-thumb.webp",
+            "srcset": "assets/projects/mustang-track-gold/supplier-profile-thumb.webp 480w, assets/projects/mustang-track-gold/supplier-profile.webp 841w",
+            "width": 841,
+            "height": 820,
+            "kind": "visualization",
+            "title": "Návrh profilu",
+            "alt": "Dodavatelský render bočního profilu páru zlatých kol pro Mustang na okruh.",
+            "caption": "Dodavatelská návrhová vizualizace profilu předního a zadního kola."
+          }
+        ],
+        "videos": [
+          {
+            "src": "assets/projects/mustang-track-gold/video-turntable.mp4",
+            "poster": "assets/projects/mustang-track-gold/video-turntable-poster.webp",
+            "thumb": "assets/projects/mustang-track-gold/video-turntable-thumb.webp",
+            "width": 848,
+            "height": 480,
+            "kind": "video",
+            "title": "Vyrobené kolo v pohybu",
+            "caption": "Video vyrobeného zlatého kola pro Mustang na okruh, otáčeného na podstavci."
+          }
+        ]
+      },
+      {
         "id": "audi-rs3-drag-race-gloss-black",
         "vehicle": "Audi RS3",
         "title": "Audi RS3 pro drag race",
