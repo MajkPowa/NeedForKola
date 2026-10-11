@@ -23,9 +23,13 @@
     grid.innerHTML = designs.map((d, i) => {
       const e6 = d.sourceBrand === 'E6';
       const construction = d.constructionLabel || (d.pieces === 3 ? 'Třídílné' : d.pieces === 1 ? 'Monoblok' : 'Konstrukce k potvrzení');
+      const pricing = window.NFWPricing;
+      const family = e6 ? pricing?.customFamily(pricing.configuratorDesigns.find(item => item.id === d.id)?.family) : null;
+      const lowestPrice = family ? Math.min(...family.prices.map(row => row.singleCents)) : null;
+      const price = Number.isSafeInteger(lowestPrice) && lowestPrice > 0 ? `<strong class="design-card__price" data-design-price="${O.escape(d.id)}">Od ${(lowestPrice / 100).toLocaleString('cs-CZ')} Kč / kolo</strong>` : '';
       const visual = e6 ? '<img class="wheel-thumb e6-catalog-photo" src="'+O.escape(d.productPhoto)+'" alt="'+O.escape(d.name)+' — původní produktová fotografie E6" width="400" height="400" loading="lazy">' : O.renderWheel({design:d.id});
       const href = 'konfigurator.html?design=' + encodeURIComponent(d.id) + (e6 && !window.NFWPhotoWheelModels?.[d.id] ? '&view=wheel-photo' : '&color=silver&view=wheel');
-      return '<a class="design-card reveal'+(e6?' design-card--e6':'')+'" href="'+href+'"><span class="series">'+String(i+1).padStart(2,'0')+' / '+O.escape(construction)+'</span>'+visual+'<div class="design-card__title"><b>'+O.escape(d.name)+'</b><span aria-hidden="true">↗</span></div><span>'+O.escape(e6?'Fotografie a 3D model E6 · vybrat provedení':O.spokesLabel(d)+' · prohlédnout ve 3D')+'</span></a>';
+      return '<a class="design-card reveal'+(e6?' design-card--e6':'')+'" href="'+href+'"><span class="series">'+String(i+1).padStart(2,'0')+' / '+O.escape(construction)+'</span>'+visual+'<div class="design-card__title"><b>'+O.escape(d.name)+'</b><span aria-hidden="true">↗</span></div>'+price+'<span>'+O.escape(e6?'Fotografie a 3D model E6 · vybrat provedení':O.spokesLabel(d)+' · prohlédnout ve 3D')+'</span></a>';
     }).join('');
     grid.setAttribute('aria-label', 'Kolekce '+designs.length+' designů kol, všechny modely E6 jako první');
     const position = document.getElementById('collectionPosition');

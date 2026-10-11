@@ -1,0 +1,1139 @@
+{
+  "version": "20261006-wheel-pricing-v2",
+  "currency": "CZK",
+  "families": [
+    {
+      "id": "standard",
+      "label": "Typizovaná a skladová kola",
+      "diameters": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "prices": [
+        {
+          "diameter": 15,
+          "singleCents": 814000,
+          "setCents": 1458000
+        },
+        {
+          "diameter": 16,
+          "singleCents": 858000,
+          "setCents": 1630000
+        },
+        {
+          "diameter": 17,
+          "singleCents": 900000,
+          "setCents": 1802000
+        },
+        {
+          "diameter": 18,
+          "singleCents": 922000,
+          "setCents": 1888000
+        },
+        {
+          "diameter": 19,
+          "singleCents": 964000,
+          "setCents": 2060000
+        },
+        {
+          "diameter": 20,
+          "singleCents": 1046000,
+          "setCents": 2384000
+        }
+      ]
+    },
+    {
+      "id": "forged-monoblock",
+      "label": "Jednodílná kovaná kola",
+      "diameters": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "prices": [
+        {
+          "diameter": 17,
+          "singleCents": 1308000,
+          "setCents": 3436000
+        },
+        {
+          "diameter": 18,
+          "singleCents": 1436000,
+          "setCents": 3948000
+        },
+        {
+          "diameter": 19,
+          "singleCents": 1522000,
+          "setCents": 4290000
+        },
+        {
+          "diameter": 20,
+          "singleCents": 1652000,
+          "setCents": 4812000
+        },
+        {
+          "diameter": 21,
+          "singleCents": 1780000,
+          "setCents": 5320000
+        },
+        {
+          "diameter": 22,
+          "singleCents": 1908000,
+          "setCents": 5832000
+        },
+        {
+          "diameter": 23,
+          "singleCents": 2080000,
+          "setCents": 6516000
+        },
+        {
+          "diameter": 24,
+          "singleCents": 2252000,
+          "setCents": 7200000
+        }
+      ]
+    },
+    {
+      "id": "forged-2piece",
+      "label": "Dvoudílná kovaná kola",
+      "diameters": [
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "prices": [
+        {
+          "diameter": 18,
+          "singleCents": 2166000,
+          "setCents": 6864000
+        },
+        {
+          "diameter": 19,
+          "singleCents": 2338000,
+          "setCents": 7552000
+        },
+        {
+          "diameter": 20,
+          "singleCents": 2510000,
+          "setCents": 8238000
+        },
+        {
+          "diameter": 21,
+          "singleCents": 2680000,
+          "setCents": 8920000
+        },
+        {
+          "diameter": 22,
+          "singleCents": 2852000,
+          "setCents": 9608000
+        }
+      ]
+    }
+  ],
+  "configuratorDesigns": [
+    {
+      "id": "e6-multipiece-gs4",
+      "title": "E6 GS4",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-cs5",
+      "title": "E6 CS5",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-ar05",
+      "title": "E6 AR05",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-sf19",
+      "title": "E6 SF19",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-ar04",
+      "title": "E6 AR04",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-ar09",
+      "title": "E6 AR09",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-ss7",
+      "title": "E6 SS7",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-jf10",
+      "title": "E6 JF10",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-ar03",
+      "title": "E6 AR03",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-s11",
+      "title": "E6 S11",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-ar02",
+      "title": "E6 AR02",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-gs6",
+      "title": "E6 GS6",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-f20",
+      "title": "E6 F20",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-sf17",
+      "title": "E6 SF17",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-sf15",
+      "title": "E6 SF15",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-vr7",
+      "title": "E6 VR7",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-s30",
+      "title": "E6 S30",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-sf20",
+      "title": "E6 SF20",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-rb11",
+      "title": "E6 RB11",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-ns6",
+      "title": "E6 NS6",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-vl6",
+      "title": "E6 VL6",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-sf7",
+      "title": "E6 SF7",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-vl4",
+      "title": "E6 VL4",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-ar01",
+      "title": "E6 AR01",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-b20",
+      "title": "E6 B20",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-cs7",
+      "title": "E6 CS7",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-vr6",
+      "title": "E6 VR6",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-ss6",
+      "title": "E6 SS6",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-sr5",
+      "title": "E6 SR5",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-sf5",
+      "title": "E6 SF5",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-se5",
+      "title": "E6 SE5",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-sc7",
+      "title": "E6 SC7",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-sc5",
+      "title": "E6 SC5",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-s20",
+      "title": "E6 S20",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-s10",
+      "title": "E6 S10",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-vr8",
+      "title": "E6 VR8",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-rb10",
+      "title": "E6 RB10",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-ns5",
+      "title": "E6 NS5",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-jf6",
+      "title": "E6 JF6",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-gs5",
+      "title": "E6 GS5",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-fs6",
+      "title": "E6 FS6",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-multipiece-cs6",
+      "title": "E6 CS6",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "multipiece",
+      "family": "forged-2piece"
+    },
+    {
+      "id": "e6-monoblock-s10m",
+      "title": "E6 S10M",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-u57",
+      "title": "E6 U57",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-ss6m",
+      "title": "E6 SS6M",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-ad03",
+      "title": "E6 AD03",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-cf7m",
+      "title": "E6 CF7M",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-b20m",
+      "title": "E6 B20M",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-hs3",
+      "title": "E6 HS3",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-av2",
+      "title": "E6 AV2",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-ns5m",
+      "title": "E6 NS5M",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-s30m",
+      "title": "E6 S30M",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-av3",
+      "title": "E6 AV3",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-hs2",
+      "title": "E6 HS2",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-hs1",
+      "title": "E6 HS1",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-ms6",
+      "title": "E6 MS6",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-ms11",
+      "title": "E6 MS11",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-ms10",
+      "title": "E6 MS10",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-sr8",
+      "title": "E6 SR8",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-ws6",
+      "title": "E6 WS6",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-gs5m",
+      "title": "E6 GS5M",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-ap10",
+      "title": "E6 AP10",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-av1",
+      "title": "E6 AV1",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-vr5",
+      "title": "E6 VR5",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-ad02",
+      "title": "E6 AD02",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-ef10",
+      "title": "E6 EF10",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-ks1",
+      "title": "E6 KS1",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-monoblock-sl10",
+      "title": "E6 SL10",
+      "pieces": 1,
+      "sourceBrand": "E6",
+      "construction": "monoblock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-beadlock-ro5x",
+      "title": "E6 RO5X",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "beadlock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-beadlock-cr5x",
+      "title": "E6 CR5X",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "beadlock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-beadlock-bf2x",
+      "title": "E6 BF2X",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "beadlock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-beadlock-cf7x",
+      "title": "E6 CF7X",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "beadlock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-beadlock-ks2x",
+      "title": "E6 KS2X",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "beadlock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-beadlock-ad5x",
+      "title": "E6 AD5X",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "beadlock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-beadlock-f14x-2",
+      "title": "E6 F14X-2",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "beadlock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-beadlock-hr8x",
+      "title": "E6 HR8X",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "beadlock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-beadlock-s58x",
+      "title": "E6 S58X",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "beadlock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-beadlock-f15x",
+      "title": "E6 F15X",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "beadlock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-beadlock-r5xr",
+      "title": "E6 R5XR",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "beadlock",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-luxury-rf22",
+      "title": "E6 RF22",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "luxury",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-luxury-rf21",
+      "title": "E6 RF21",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "luxury",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-luxury-hx5",
+      "title": "E6 HX5",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "luxury",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-luxury-rf20",
+      "title": "E6 RF20",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "luxury",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-luxury-lx9",
+      "title": "E6 LX9",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "luxury",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-luxury-lf9",
+      "title": "E6 LF9",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "luxury",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-luxury-el22",
+      "title": "E6 EL22",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "luxury",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-luxury-el02",
+      "title": "E6 EL02",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "luxury",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "e6-luxury-el01",
+      "title": "E6 EL01",
+      "pieces": null,
+      "sourceBrand": "E6",
+      "construction": "luxury",
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "apex10",
+      "title": "FORGED 10",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "mono5",
+      "title": "MONO 5",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "deep7",
+      "title": "DEEP 7",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "yfork10",
+      "title": "Y-FORK 10",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "twist9",
+      "title": "TWIST 9",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "mesh30",
+      "title": "MESH 30",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "split6",
+      "title": "SPLIT 6",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "turbine8",
+      "title": "TURBINE 8",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "blade12",
+      "title": "BLADE 12",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "star5",
+      "title": "STAR 5",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "concave9",
+      "title": "CONCAVE 9",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-a",
+      "title": "OARTS MB-A",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-b",
+      "title": "OARTS MB-B",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-c",
+      "title": "OARTS MB-C Comp Spec",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-d",
+      "title": "OARTS MB-D",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-e",
+      "title": "OARTS MB-E",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-f",
+      "title": "OARTS MB-F",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-g",
+      "title": "OARTS MB-G",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-h",
+      "title": "OARTS MB-H",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-j",
+      "title": "OARTS MB-J",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-k",
+      "title": "OARTS MB-K",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-l",
+      "title": "OARTS MB-L",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-m",
+      "title": "OARTS MB-M",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-n",
+      "title": "OARTS MB-N",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-o",
+      "title": "OARTS MB-O",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-p",
+      "title": "OARTS MB-P",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-q",
+      "title": "OARTS MB-Q",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-r",
+      "title": "OARTS MB-R",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-s",
+      "title": "OARTS MB-S",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-t",
+      "title": "OARTS MB-T",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    },
+    {
+      "id": "motivo-mb-z",
+      "title": "OARTS MB-Z",
+      "pieces": 1,
+      "family": "forged-monoblock"
+    }
+  ],
+  "customVersion": "20261011-custom-pricing-e6-v2",
+  "e6PricingFamilies": {
+    "monoblock": "forged-monoblock",
+    "multipiece": "forged-2piece",
+    "beadlock": "forged-monoblock",
+    "luxury": "forged-monoblock"
+  },
+  "customFamilies": [
+    {
+      "id": "forged-monoblock",
+      "label": "Jednodílná kovaná kola",
+      "diameters": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "prices": [
+        {
+          "diameter": 17,
+          "singleCents": 1308000,
+          "setCents": 3436000
+        },
+        {
+          "diameter": 18,
+          "singleCents": 1436000,
+          "setCents": 3948000
+        },
+        {
+          "diameter": 19,
+          "singleCents": 1522000,
+          "setCents": 4290000
+        },
+        {
+          "diameter": 20,
+          "singleCents": 1652000,
+          "setCents": 4812000
+        },
+        {
+          "diameter": 21,
+          "singleCents": 1780000,
+          "setCents": 5320000
+        },
+        {
+          "diameter": 22,
+          "singleCents": 1908000,
+          "setCents": 5832000
+        },
+        {
+          "diameter": 23,
+          "singleCents": 2080000,
+          "setCents": 6516000
+        },
+        {
+          "diameter": 24,
+          "singleCents": 2252000,
+          "setCents": 7200000
+        }
+      ]
+    },
+    {
+      "id": "forged-2piece",
+      "label": "Dvoudílná kovaná kola",
+      "diameters": [
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "prices": [
+        {
+          "diameter": 18,
+          "singleCents": 2166000,
+          "setCents": 6864000
+        },
+        {
+          "diameter": 19,
+          "singleCents": 2338000,
+          "setCents": 7552000
+        },
+        {
+          "diameter": 20,
+          "singleCents": 2510000,
+          "setCents": 8238000
+        },
+        {
+          "diameter": 21,
+          "singleCents": 2680000,
+          "setCents": 8920000
+        },
+        {
+          "diameter": 22,
+          "singleCents": 2852000,
+          "setCents": 9608000
+        }
+      ]
+    }
+  ]
+}

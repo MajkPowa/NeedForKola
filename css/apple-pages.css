@@ -838,3 +838,5 @@ body.site-page .custom-project-lightbox .project-gallery__type { background: var
   body.site-page .ready-summary h3 { color: #111; }
   body.site-page.configurator-page .spec :is(th, td) { color: #111; }
 }
+
+body.site-page.page-home .design-carousel .design-card__price { display: block; color: var(--page-ink); font: 650 16px/1.5 var(--body, system-ui); margin-top: 10px; }

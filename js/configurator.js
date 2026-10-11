@@ -7,6 +7,7 @@
 (function () {
   'use strict';
   const O = window.NFW;
+  const P = window.NFWPricing;
   const V = window.NFWVehicles;
   const visuals = window.NFWVehicleVisuals;
   const models3D = window.NFWVehicleModels;
@@ -57,8 +58,8 @@
     $('#mobileFlowIntro').innerHTML = `<small class="mobile-flow-step">Krok ${S.step} z ${STEPS.length} · ${STEPS[S.step - 1]}</small><strong class="mobile-flow-title">${title}</strong><p class="mobile-flow-copy">${instruction}</p>`;
     $('#mobileFlowIntro').setAttribute('aria-label', `Krok ${S.step} z 5. ${title} ${instruction}`);
   }
-  const DIAMS = [18, 19, 20, 21, 22, 23, 24];
-  const LIMITS = { d: [18, 24], wf: [7, 13.5], wr: [7, 13.5], etf: [-15, 75], etr: [-15, 75], cb: [50, 120], weight: [7, 16] };
+  const DIAMS = P?.customFamily('forged-monoblock')?.diameters || [17, 18, 19, 20, 21, 22, 23, 24];
+  const LIMITS = { d: [17, 24], wf: [7, 13.5], wr: [7, 13.5], etf: [-15, 75], etr: [-15, 75], cb: [50, 120], weight: [7, 16] };
 
   /* ---------- stav ---------- */
   const S = {
@@ -90,6 +91,9 @@
     if (!S.body || !list.some(g => g.id === S.generation)) S.generation = autoSelect && S.body && list.length === 1 ? list[0].id : '';
   }
   const design = () => O.find(O.DESIGNS, S.design);
+  const designPriceFamily = id => P?.customFamily(P.configuratorDesigns.find(item => item.id === id)?.family);
+  const designDiameters = () => designPriceFamily(S.design)?.diameters || DIAMS;
+  const isSourceE6 = () => design().sourceBrand === 'E6';
   const sourcePhotoOnly = () => design().previewMode === 'source-photo';
   const hasPhoto3D = () => Boolean(window.NFWPhotoWheelModels?.[S.design]);
   const showSourcePhoto = () => sourcePhotoOnly() && S.view === 'wheel-photo';
@@ -122,20 +126,21 @@
   }
 
   /* ---------- cena a váha ---------- */
+  const quotedOptions = () => [
+    (O.find(O.FINISHES, S.finish).quoteOnly || O.find(O.FINISHES, S.finish).price > 0) ? O.find(O.FINISHES, S.finish).name : '',
+    (O.find(O.LIPS, S.lip).quoteOnly || O.find(O.LIPS, S.lip).price > 0) ? O.find(O.LIPS, S.lip).name : '',
+    (O.find(O.CAPS, S.cap).quoteOnly || O.find(O.CAPS, S.cap).price > 0) ? O.find(O.CAPS, S.cap).name : '',
+    ...S.extras.map(id => EXTRAS.find(extra => extra.id === id)?.name || '')
+  ].filter(Boolean);
   function price() {
-    if (sourcePhotoOnly()) return { quoteOnly: true, base: null, design: null, width: null, fin: null, lip: null, cap: null, perWheel: null, set: null, extras: null, total: null };
-    const dsg = design();
-    const avgW = (S.wf + S.wr) / 2;
-    const base = 21900 + (S.d - 18) * 1900;
-    const width = Math.max(0, avgW - 9) * 900;
-    const fin = O.find(O.FINISHES, S.finish).price;
-    const lip = O.find(O.LIPS, S.lip).price;
-    const cap = O.find(O.CAPS, S.cap).price;
-    const perWheel = base + dsg.base + width + fin + lip + cap;
-    const set = perWheel * 4;
-    const extras = S.extras.reduce((a, id) => a + ((EXTRAS.find(e => e.id === id) || {}).price || 0), 0);
-    return { base, design: dsg.base, width, fin, lip, cap, perWheel, set, extras, total: set + extras };
+    const rule = P?.configuratorDesigns.find(item => item.id === S.design);
+    const packagePrice = packageKind => {
+      const amount = rule?.family ? P.customPrice(rule.family, S.d, packageKind, 1) : null;
+      return Number.isSafeInteger(amount) && amount > 0 ? amount : null;
+    };
+    return { singleCents: packagePrice('single'), setCents: packagePrice('set4'), options: quotedOptions() };
   }
+  const priceLabel = cents => cents === null ? 'Cena na potvrzení' : 'od ' + kc(cents / 100);
   function weightEst() {
     if (sourcePhotoOnly()) return null;
     const avgW = (S.wf + S.wr) / 2;
@@ -189,6 +194,8 @@
     const linkedLoad = Number(src.get('loadKg'));
     S.loadKg = validLoad(linkedLoad) ? linkedLoad : null;
     if (S.isElectricVehicle && S.loadKg < 850) S.loadKg = null;
+    const linkedDiameter = Number(src.get('d'));
+    if (DIAMS.includes(linkedDiameter)) S.d = linkedDiameter;
     if (src !== h) return;
     if (has(O.BODY_COLORS, h.get('bodyColor'))) S.bodyColor = h.get('bodyColor');
     if (has(O.LIPS, h.get('lip'))) S.lip = h.get('lip');
@@ -214,6 +221,8 @@
   }
   const KEYS = ['brand', 'model', 'year', 'generation', 'body', 'vehicleFilter', 'view', 'car', 'bodyColor', 'design', 'color', 'colorHex', 'finish', 'lip', 'cap', 'd', 'wf', 'wr', 'etf', 'etr', 'pcd', 'cb', 'weight', 'side', 'step'];
   function writeURL() {
+    const diameters = designDiameters();
+    if (!diameters.includes(S.d)) S.d = diameters.reduce((closest, value) => Math.abs(value - S.d) < Math.abs(closest - S.d) ? value : closest);
     normalisePreview();
     const h = new URLSearchParams();
     KEYS.forEach(k => h.set(k, String(S[k])));
@@ -463,7 +472,7 @@
       <div class="opt-grid">${[...O.DESIGNS].sort((a, b) => Number(b.sourceBrand === 'E6') - Number(a.sourceBrand === 'E6')).map(d => `<button type="button" class="opt ${S.design === d.id ? 'active' : ''}" data-set="design" data-val="${d.id}">
         ${O.renderWheel(Object.assign({}, wo, { design: d.id }), 'od' + d.id)}
         <div><b>${esc(d.name)}</b><span>Series ${d.series} · ${O.spokesLabel(d)}</span></div>
-        <span class="p">${d.sourceBrand === 'E6' ? 'Cena na potvrzení' : (d.pieces === 3 ? 'třídílné · ' : '') + (d.base ? '+' + kc(d.base) + ' / kolo' : 'v ceně')}</span></button>`).join('')}</div>
+        <span class="p">${d.sourceBrand === 'E6' ? `${priceLabel(P?.customPrice(designPriceFamily(d.id)?.id, designPriceFamily(d.id)?.diameters.includes(S.d) ? S.d : designPriceFamily(d.id)?.diameters[0], 'single') ?? null)} / kolo · ${esc(constructionLabel(d))}` : `${esc(constructionLabel(d))}${d.productPhoto ? ' · krytka OARTS' : d.pieces === 3 ? ' · cena na potvrzení' : ' kované · společný ceník'}`}</span></button>`).join('')}</div>
       <div class="note" style="margin-top:14px"><b>${esc(design().name)}</b> – ${esc(design().desc)}${directional() ? ' Levé a pravé kolo kujeme zrcadlově, přepínač je nad náhledem.' : ''}</div>`;
   }
 
@@ -474,7 +483,7 @@
     return `<h2>03 · Rozměry</h2><p class="sub">Navrhni rozměry pro ${esc(vehicleName())}. Jde o zadání k ověření, nikoli potvrzenou kompatibilitu.</p>
       ${electricVehicleField()}
       <h4>Průměr <em>${S.d}"</em></h4>
-      <div class="chips">${DIAMS.map(v => chip(v, 'd', false)).join('')}</div>
+      <div class="chips">${designDiameters().map(v => chip(v, 'd', false)).join('')}</div>
       <p class="flow-guidance">Nevíš přesné rozměry? Stačí zvolit průměr a pokračovat. Šířku, ET a rozteč spolu ověříme před výrobou.</p>
       ${detailsHTML('dimensions', 'Šířka, ET a další rozměry', `
       <h4>Rozdílné šířky vpředu a vzadu <label class="toggle"><input type="checkbox" id="stagToggle" ${S.stag ? 'checked' : ''}> ${S.stag ? 'Staggered' : 'Square'}</label></h4>
@@ -508,13 +517,13 @@
         <label class="swatch swatch--custom ${S.color === 'custom' ? 'active' : ''}" title="Vlastní odstín (RAL / HEX)"><input type="color" id="customColor" value="${esc(S.colorHex)}" aria-label="Vlastní odstín"></label></div>
       <p class="hint muted" style="font-size:12px;margin:4px 0 0">Vlastní odstín? Klikni na duhový kruh nebo nám v poznámce napiš kód RAL.</p>
       <h4>Povrchová úprava</h4>
-      <div class="opt-list">${O.FINISHES.map(f => `<button type="button" class="opt ${S.finish === f.id ? 'active' : ''}" data-set="finish" data-val="${f.id}" style="grid-template-columns:1fr auto"><div><b>${f.name}</b><span>${f.desc}</span></div><span class="p">${sourcePhotoOnly() ? 'K potvrzení' : f.price ? '+' + kc(f.price) + ' / kolo' : 'v ceně'}</span></button>`).join('')}</div>
+      <div class="opt-list">${O.FINISHES.map(f => `<button type="button" class="opt ${S.finish === f.id ? 'active' : ''}" data-set="finish" data-val="${f.id}" style="grid-template-columns:1fr auto"><div><b>${f.name}</b><span>${f.desc}</span></div><span class="p">${f.quoteOnly || f.price > 0 ? 'Cena na potvrzení' : 'v ceně'}</span></button>`).join('')}</div>
       ${detailsHTML('finishing', 'Límec, krytka a doplňky', `<h4>Límec</h4>
-      <div class="chips">${O.LIPS.map(l => `<button type="button" class="chip ${S.lip === l.id ? 'active' : ''}" data-set="lip" data-val="${l.id}"><span>${l.name}${!sourcePhotoOnly() && l.price ? ' · +' + kc(l.price) : ''}</span></button>`).join('')}</div>
+      <div class="chips">${O.LIPS.map(l => `<button type="button" class="chip ${S.lip === l.id ? 'active' : ''}" data-set="lip" data-val="${l.id}"><span>${l.name}${l.quoteOnly || l.price > 0 ? ' · cena na potvrzení' : ''}</span></button>`).join('')}</div>
       <h4>Středová krytka</h4>
-      <div class="chips">${O.CAPS.map(c => `<button type="button" class="chip ${S.cap === c.id ? 'active' : ''}" data-set="cap" data-val="${c.id}"><span>${esc(c.name)}${!sourcePhotoOnly() && c.price ? ' · +' + kc(c.price) : ''}</span></button>`).join('')}</div>
+      <div class="chips">${O.CAPS.map(c => `<button type="button" class="chip ${S.cap === c.id ? 'active' : ''}" data-set="cap" data-val="${c.id}"><span>${esc(c.name)}${c.quoteOnly || c.price > 0 ? ' · cena na potvrzení' : ''}</span></button>`).join('')}</div>
       <h4>Individuální doplňky <em>za sadu</em></h4>
-      <div class="opt-list">${EXTRAS.map(x => `<label class="check"><input type="checkbox" data-extra="${x.id}" ${S.extras.includes(x.id) ? 'checked' : ''}><div><b>${x.name}</b><span>${x.desc}</span></div><span class="p">${sourcePhotoOnly() ? 'K potvrzení' : '+' + kc(x.price)}</span></label>`).join('')}</div>`)} `;
+      <div class="opt-list">${EXTRAS.map(x => `<label class="check"><input type="checkbox" data-extra="${x.id}" ${S.extras.includes(x.id) ? 'checked' : ''}><div><b>${x.name}</b><span>${x.desc}</span></div><span class="p">Cena na potvrzení</span></label>`).join('')}</div>`)} `;
   }
 
   function panelSummary() {
@@ -553,19 +562,14 @@
       <h4>Need For Wheels štítek <em>náhled</em></h4>
       <div class="label-svg">${label}</div>
       <p class="hint muted" style="font-size:12px">Každá krabice dostane vlastní štítek s parametry konkrétního kola (FL / FR / RL / RR).</p>
-      ${sourcePhotoOnly() ? '<h4>Cena na potvrzení</h4><p class="note">Závaznou cenu a provedení E6 potvrdíme při konzultaci podle požadovaných rozměrů a povrchu.</p>' : `      <h4>Orientační cena <em>sada 4 kol</em></h4>
+      <h4>Cena za 1 kolo <em>${S.d}"</em></h4>
+      ${isSourceE6() ? '<p class="flow-guidance">E6 používá stejný ceník jako custom kola. Konečnou specifikaci potvrdíme v nabídce.</p>' : ''}
       <table class="spec">
-        <tr><th>Základ ${S.d}"</th><td class="r">${kc(p.base)} / kolo</td></tr>
-        ${p.design ? `<tr><th>Design ${esc(d.name)}</th><td class="r">+${kc(p.design)} / kolo</td></tr>` : ''}
-        ${p.width ? `<tr><th>Šířka nad 9"</th><td class="r">+${kc(p.width)} / kolo</td></tr>` : ''}
-        ${p.fin ? `<tr><th>Povrch</th><td class="r">+${kc(p.fin)} / kolo</td></tr>` : ''}
-        ${p.lip ? `<tr><th>Límec</th><td class="r">+${kc(p.lip)} / kolo</td></tr>` : ''}
-        ${p.cap ? `<tr><th>Krytka</th><td class="r">+${kc(p.cap)} / kolo</td></tr>` : ''}
-        <tr><th>Sada 4 kol</th><td class="r">${kc(p.set)}</td></tr>
-        ${p.extras ? `<tr><th>Doplňky</th><td class="r">+${kc(p.extras)}</td></tr>` : ''}
-        <tr class="total"><th>Celkem</th><td class="r">${kc(p.total)}</td></tr>
+        <tr class="total" data-wheel-unit-price><th>Cena za 1 kolo · ${S.d}"</th><td class="r">${priceLabel(p.singleCents)}</td></tr>
+        <tr data-wheel-package-price><th>Sada 4 disků · ${S.d}"</th><td class="r">${priceLabel(p.setCents)}</td></tr>
+        ${p.options.length ? `<tr><th>Vybrané úpravy a doplňky</th><td class="r">Cena na potvrzení</td></tr>` : ''}
       </table>
-      <div class="note note--warn" style="margin-top:10px">Cena je orientační, bez DPH a dopravy. Závaznou nabídku potvrdíme společně s technickým výkresem.</div>`}`)}
+      <div class="note note--warn" style="margin-top:10px">Poptávka zahrnuje sadu čtyř disků. ${p.setCents === null ? 'Cenu tohoto provedení potvrdíme v individuální nabídce.' : 'Uvedené částky jsou výchozí ceny. Konečnou cenu potvrdíme podle zvolené specifikace.'}${p.options.length ? ` Cenu vybraných úprav potvrdíme zvlášť: ${p.options.map(esc).join(', ')}.` : ''} Specifikaci a závaznou nabídku potvrdíme před výrobou.</div>`)}
       <section class="flow-enquiry" id="enquiryForm" aria-labelledby="enquiryTitle">
       <h4 id="enquiryTitle" tabindex="-1">Kam se ti ozveme?</h4>
       <p class="flow-guidance">Doplň kontakt. Připravíme e-mail s celým návrhem, který odešleš ze své pošty.</p>
@@ -590,7 +594,7 @@
   function renderFoot() {
     const p = price();
     $('#panelFoot').innerHTML = `
-      <div class="mobile-flow-status"><button type="button" data-flow-preview aria-label="Zobrazit náhled vybraného kola ${esc(design().name)}">${sourcePhotoOnly() ? `<img class="wheel-thumb e6-catalog-photo" src="${esc(design().productPhoto)}" alt="${esc(design().name)} — fotografie E6" width="96" height="96">` : O.renderWheel(wheelOpts())}<span>${esc(design().name)}<small>Náhled ↑</small></span></button><div class="price"><div><small>${sourcePhotoOnly() ? 'E6 · podle požadovaného provedení' : 'Orientačně · 4 kola · bez DPH'}</small><b>${kc(p.total)}</b></div>${sourcePhotoOnly() ? '<div class="per">Potvrdíme při konzultaci.</div>' : `<div class="per">${kc(p.perWheel)} / kolo<br>~${nf(weightEst())} kg / kolo</div>`}</div></div>
+      <div class="mobile-flow-status"><button type="button" data-flow-preview aria-label="Zobrazit náhled vybraného kola ${esc(design().name)}">${sourcePhotoOnly() ? `<img class="wheel-thumb e6-catalog-photo" src="${esc(design().productPhoto)}" alt="${esc(design().name)} — fotografie E6" width="96" height="96">` : O.renderWheel(wheelOpts())}<span>${esc(design().name)}<small>Náhled ↑</small></span></button><div class="price"><div><small>Cena za 1 kolo</small><b data-wheel-unit-price>${priceLabel(p.singleCents)}</b></div><div class="per">${p.options.length ? 'Cenu úprav potvrdíme zvlášť.' : p.singleCents === null ? 'Individuální nabídka' : 'Výchozí cena jednoho kola'}</div></div></div>
       <div class="panel-nav">
         <button class="btn btn--ghost" type="button" id="prevStep" data-prev ${S.step === 1 ? 'disabled' : ''}><span>← Zpět</span></button>
         ${S.step < 5 ? `<button class="btn btn--primary" type="button" id="nextStep" data-next><span>Pokračovat →</span></button>` : `<a class="btn btn--primary" id="sendMail2" data-flow-enquiry href="#enquiryForm"><span>${MOBILE.matches && !enquiryReady ? 'Zadat kontakt →' : 'Připravit e-mail →'}</span></a>`}
@@ -619,7 +623,9 @@
       `Cílová váha: ${nf(S.weight)} kg${sourcePhotoOnly() ? ' (požadavek k ověření)' : ' (odhad ~' + nf(weightEst()) + ' kg)'}`,
       `Doplňky: ${extras.length ? extras.join(', ') : 'žádné'}`,
       '',
-      sourcePhotoOnly() ? 'Cena E6: na potvrzení při konzultaci.' : `Orientační cena: ${kc(p.total)} bez DPH (${kc(p.perWheel)} / kolo)`,
+      `Cena za 1 kolo: ${priceLabel(p.singleCents)}`,
+      `Cena kol – sada 4 disků: ${priceLabel(p.setCents)}`,
+      p.options.length ? `Cena vybraných úprav na potvrzení: ${p.options.join(', ')}` : null,
       sourcePhotoOnly() ? `Model E6: ${d.sourceUrl}; fotografie původního provedení, požadované parametry k potvrzení.` : null,
       S.note ? '' : null,
       S.note ? `Poznámka: ${S.note}` : null,
