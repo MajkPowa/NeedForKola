@@ -68,7 +68,7 @@
     car: 'suv', bodyColor: 'white', carDetail: '',
     design: O.E6_DESIGNS?.[0]?.id || 'apex10', color: 'silver', colorHex: '#b9bcc2', finish: 'gloss', lip: 'same', cap: 'black',
     d: 21, stag: true, wf: 9, wr: 11.5, etf: 50, etr: 62, pcd: '5x130', cb: 71.6, weight: 10.5,
-    extras: [], note: '', name: '', email: '', phone: '', isElectricVehicle: false, loadKg: null,
+    extras: [], note: '', name: '', email: '', phone: '', isElectricVehicle: false, loadKg: null, higherLoadConsultation: false,
   };
   const INITIAL = { ...S };
   const car = () => O.find(O.CARS, S.car);
@@ -111,13 +111,15 @@
   const sizeF = () => `${S.d} × ${nf(S.wf)}" ET${S.etf}`;
   const sizeR = () => `${S.d} × ${nf(S.wr)}" ET${S.etr}`;
   const clamp = (k, v) => Math.min(LIMITS[k][1], Math.max(LIMITS[k][0], v));
-  const validLoad = value => Number.isInteger(value) && value >= 690 && value <= 900;
-  const requiredLoadKg = () => S.isElectricVehicle ? Math.max(850, S.loadKg || 0) : S.loadKg;
-  const loadLabel = () => requiredLoadKg() ? `${requiredLoadKg()} kg / kolo` : 'Nastavíme při konzultaci (690–900 kg / kolo)';
-  const electricVehicleHint = () => S.isElectricVehicle
-    ? `Požadovaná nosnost: ${requiredLoadKg()} kg na jedno kolo. Pro návrh elektroauta volíme nejméně 850 kg; vhodnost konkrétního provedení potvrdíme podle vozu.`
-    : 'Zvol požadovanou nosnost 690–900 kg na jedno kolo nebo ji nech na konzultaci. Vhodnost konkrétního provedení potvrdíme podle vozu.';
-  const loadOptions = () => `<option value="">${S.isElectricVehicle ? 'Automaticky · 850 kg / kolo' : 'Nastavíme při konzultaci'}</option>` + [...new Set([690, 725, 750, 775, 800, 825, 850, 875, 900, S.loadKg].filter(validLoad))].sort((a, b) => a - b).map(value => `<option value="${value}" ${S.loadKg === value ? 'selected' : ''} ${S.isElectricVehicle && value < 850 ? 'disabled' : ''}>${value} kg / kolo</option>`).join('');
+  const validLoad = value => Number.isInteger(value) && value >= 690 && value <= 1100;
+  const requiredLoadKg = () => S.higherLoadConsultation ? null : S.isElectricVehicle ? Math.max(850, S.loadKg || 0) : S.loadKg;
+  const loadLabel = () => S.higherLoadConsultation ? 'Vyšší nosnost než 1100 kg / kolo – nutná konzultace' : requiredLoadKg() ? `${requiredLoadKg()} kg / kolo` : 'Nastavíme při konzultaci (690–1100 kg / kolo)';
+  const electricVehicleHint = () => S.higherLoadConsultation
+    ? 'Požaduješ nosnost vyšší než 1100 kg na jedno kolo. Konkrétní hodnotu a vhodné provedení je nutné potvrdit při konzultaci podle vozu.'
+    : S.isElectricVehicle
+      ? `Požadovaná nosnost: ${requiredLoadKg()} kg na jedno kolo. Pro elektroauto automaticky zadáváme 850 kg; individuálně lze zvolit až 1100 kg. Vyšší nosnost vyžaduje konzultaci.`
+      : 'Požadovanou nosnost lze zvolit od 690 do 1100 kg na jedno kolo. Vyšší nosnost vyžaduje konzultaci. Vhodnost konkrétního provedení potvrdíme podle vozu.';
+  const loadOptions = () => `<option value="">${S.isElectricVehicle ? 'Automaticky · 850 kg / kolo' : 'Nastavíme při konzultaci'}</option>` + [...new Set([690, 725, 750, 775, 800, 825, 850, 875, 900, 925, 950, 975, 1000, 1025, 1050, 1100, S.loadKg].filter(validLoad))].sort((a, b) => a - b).map(value => `<option value="${value}" ${S.loadKg === value ? 'selected' : ''} ${S.isElectricVehicle && value < 850 ? 'disabled' : ''}>${value} kg / kolo</option>`).join('') + `<option value="higher-consultation" ${S.higherLoadConsultation ? 'selected' : ''}>Vyšší nosnost než 1100 kg / kolo – nutná konzultace</option>`;
   const electricVehicleField = () => `<div class="cfg-electric-vehicle"><label class="check" for="electricVehicle"><input id="electricVehicle" type="checkbox" ${S.isElectricVehicle ? 'checked' : ''} ${isKnownElectricModel() ? 'disabled' : ''} aria-describedby="electricVehicleHint"><span><b>${isKnownElectricModel() ? 'Elektromobil' : 'Máte elektroauto?'}</b><span>${isKnownElectricModel() ? 'Rozpoznáno podle vybraného modelu' : 'Vyšší požadovaná nosnost kol'}</span></span></label><label class="cfg-load-label" for="wheelLoad">Požadovaná nosnost na jedno kolo</label><select id="wheelLoad" aria-describedby="electricVehicleHint">${loadOptions()}</select><p id="electricVehicleHint" role="status">${electricVehicleHint()}</p></div>`;
 
   function applyCarDefaults(c) {
@@ -191,8 +193,9 @@
     S.vehicleFilter = src.get('vehicleFilter') === 'electric' && (!S.model || isKnownElectricModel()) ? 'electric' : 'all';
     if (S.vehicleFilter === 'electric' && !visibleVehicleBrands().some(brand => brand.id === S.brand)) S.brand = '';
     S.isElectricVehicle = isKnownElectricModel() || src.get('ev') === '1';
+    S.higherLoadConsultation = src.get('higherLoadConsultation') === '1';
     const linkedLoad = Number(src.get('loadKg'));
-    S.loadKg = validLoad(linkedLoad) ? linkedLoad : null;
+    S.loadKg = !S.higherLoadConsultation && validLoad(linkedLoad) ? linkedLoad : null;
     if (S.isElectricVehicle && S.loadKg < 850) S.loadKg = null;
     const linkedDiameter = Number(src.get('d'));
     if (DIAMS.includes(linkedDiameter)) S.d = linkedDiameter;
@@ -228,6 +231,7 @@
     KEYS.forEach(k => h.set(k, String(S[k])));
     h.set('stag', S.stag ? '1' : '0');
     h.set('ev', S.isElectricVehicle ? '1' : '0');
+    if (S.higherLoadConsultation) h.set('higherLoadConsultation', '1');
     if (S.loadKg !== null) h.set('loadKg', S.loadKg);
     if (S.extras.length) h.set('x', S.extras.join(','));
     if (S.carDetail) h.set('carDetail', S.carDetail);
@@ -235,7 +239,7 @@
     const url = new URL(location.href);
     // Share one canonical vehicle state; obsolete entry-link values must not
     // keep advertising BMW in the query after selecting another vehicle.
-    [...KEYS, 'stag', 'ev', 'loadKg', 'x', 'carDetail', 'note'].forEach(key => url.searchParams.delete(key));
+    [...KEYS, 'stag', 'ev', 'loadKg', 'higherLoadConsultation', 'x', 'carDetail', 'note'].forEach(key => url.searchParams.delete(key));
     url.hash = h.toString();
     history.replaceState(null, '', url.pathname + url.search + url.hash);
   }
@@ -796,8 +800,9 @@
       return;
     }
     if (t.id === 'wheelLoad') {
+      S.higherLoadConsultation = t.value === 'higher-consultation';
       const value = Number(t.value);
-      S.loadKg = validLoad(value) && (!S.isElectricVehicle || value >= 850) ? value : null;
+      S.loadKg = !S.higherLoadConsultation && validLoad(value) && (!S.isElectricVehicle || value >= 850) ? value : null;
       $('#electricVehicleHint').textContent = electricVehicleHint();
       writeURL();
       return;
