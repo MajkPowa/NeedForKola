@@ -73,8 +73,11 @@
       id: slug(entry[0]),
       name: entry[0],
       models: entry[1].map(function (name) {
-        const variants = DATA.models[slug(entry[0]) + '/' + slug(name)] || [];
-        return { id: slug(name), name: name, generations: variants, variants: variants };
+        const key = slug(entry[0]) + '/' + slug(name);
+        const variants = DATA.models[key] || [];
+        const electricSource = DATA.electricModels?.[key] || null;
+        return { id: slug(name), name: name, generations: variants, variants: variants,
+          powertrain: electricSource?.powertrain || null, electricSource: electricSource };
       })
     };
   });
@@ -93,6 +96,12 @@
   function getGenerations(brandId, modelId) {
     const model = getModel(brandId, modelId);
     return model ? model.generations : [];
+  }
+
+  // Only explicitly reviewed, exclusively BEV model families are classified.
+  // A false result means unclassified; mixed families remain a user choice.
+  function isElectricModel(brandId, modelId) {
+    return getModel(brandId, modelId)?.powertrain === 'bev';
   }
 
   function validYear(year) {
@@ -144,6 +153,7 @@
   brands.forEach(function (brand) {
     brand.models.forEach(function (model) {
       model.generations.forEach(freezeDeep);
+      freezeDeep(model.electricSource);
       Object.freeze(model.generations);
       Object.freeze(model);
     });
@@ -152,10 +162,24 @@
   });
   Object.freeze(brands);
 
+  const electricModels = Object.freeze(brands.flatMap(brand => brand.models
+    .filter(model => model.powertrain === 'bev')
+    .map(model => Object.freeze({ brand: brand, model: model })))
+    .sort((a, b) => a.model.electricSource.order - b.model.electricSource.order));
+
+  function getElectricModels(brandId) {
+    if (brandId == null || brandId === '') return electricModels;
+    const brand = getBrand(brandId);
+    return Object.freeze(electricModels.filter(item => item.brand === brand));
+  }
+
   global.NFWVehicles = Object.freeze({
     brands: brands,
     brandCount: brands.length,
     modelCount: brands.reduce(function (sum, brand) { return sum + brand.models.length; }, 0),
+    electricModelCount: electricModels.length,
+    getElectricModels: getElectricModels,
+    isElectricModel: isElectricModel,
     unknownGenerationLabel: UNKNOWN_GENERATION,
     verifiedThrough: VERIFIED_THROUGH,
     through: VERIFIED_THROUGH,

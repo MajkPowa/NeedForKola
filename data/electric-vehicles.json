@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-11",
+  "scope": "Vybrané jednoznačně čistě elektrické modelové řady existujícího katalogu. Zařazení BEV nepotvrzuje rozměry, nosnost, homologaci kol ani úplnost katalogu elektromobilů.",
+  "models": [
+    { "brand": "Škoda", "model": "Enyaq", "powertrain": "bev", "sourceUrl": "https://www.skoda-auto.cz/modely/prehled", "sourceTitle": "Škoda Auto · přehled elektrických modelů" },
+    { "brand": "Škoda", "model": "Elroq", "powertrain": "bev", "sourceUrl": "https://www.skoda-auto.cz/modely/prehled", "sourceTitle": "Škoda Auto · přehled elektrických modelů" },
+    { "brand": "Tesla", "model": "Model 3", "powertrain": "bev", "sourceUrl": "https://www.tesla.com/cs_cz/model3", "sourceTitle": "Tesla · Model 3, elektrický sedan" },
+    { "brand": "Tesla", "model": "Model Y", "powertrain": "bev", "sourceUrl": "https://www.tesla.com/cs_cz/modely", "sourceTitle": "Tesla · Model Y, elektrické SUV" },
+    { "brand": "Tesla", "model": "Model S", "powertrain": "bev", "sourceUrl": "https://www.tesla.com/cs_cz/models", "sourceTitle": "Tesla · Model S, elektrický sedan" },
+    { "brand": "Tesla", "model": "Model X", "powertrain": "bev", "sourceUrl": "https://www.tesla.com/cs_cz/modelx", "sourceTitle": "Tesla · Model X, elektrické SUV" },
+    { "brand": "Volkswagen", "model": "ID.3", "powertrain": "bev", "sourceUrl": "https://www.volkswagen-newsroom.com/en/press-releases/double-world-premiere-of-id3-gtx-and-id7-gtx-tourer-volkswagen-provides-initial-facts-and-photos-of-the-sporty-electric-models-18286", "sourceTitle": "Volkswagen · elektrické modelové řady ID." },
+    { "brand": "Volkswagen", "model": "ID.4", "powertrain": "bev", "sourceUrl": "https://www.volkswagen-newsroom.com/en/press-releases/the-successor-to-the-id3-is-called-id3-neo-digital-product-updates-for-id4-id5-and-id7-20209", "sourceTitle": "Volkswagen · elektrické modelové řady ID." },
+    { "brand": "Volkswagen", "model": "ID.5", "powertrain": "bev", "sourceUrl": "https://www.volkswagen-newsroom.com/en/press-releases/the-successor-to-the-id3-is-called-id3-neo-digital-product-updates-for-id4-id5-and-id7-20209", "sourceTitle": "Volkswagen · elektrické modelové řady ID." },
+    { "brand": "Volkswagen", "model": "ID.7", "powertrain": "bev", "sourceUrl": "https://www.volkswagen-newsroom.com/en/press-releases/double-world-premiere-of-id3-gtx-and-id7-gtx-tourer-volkswagen-provides-initial-facts-and-photos-of-the-sporty-electric-models-18286", "sourceTitle": "Volkswagen · elektrické modelové řady ID." },
+    { "brand": "BMW", "model": "i4", "powertrain": "bev", "sourceUrl": "https://www.bmw.cz/cs/all-models/bmw-i/i4/bmw-i4-gran-coupe.html", "sourceTitle": "BMW · elektrické i4 Gran Coupé" },
+    { "brand": "BMW", "model": "i5", "powertrain": "bev", "sourceUrl": "https://www.bmw.cz/cs/elektricke-vozy.html", "sourceTitle": "BMW · přehled plně elektrických vozů" },
+    { "brand": "BMW", "model": "i7", "powertrain": "bev", "sourceUrl": "https://www.bmw.cz/cs/elektricke-vozy.html", "sourceTitle": "BMW · přehled plně elektrických vozů" },
+    { "brand": "BMW", "model": "iX", "powertrain": "bev", "sourceUrl": "https://www.bmw.cz/cs/elektricke-vozy.html", "sourceTitle": "BMW · přehled plně elektrických vozů" },
+    { "brand": "Audi", "model": "Q4 e-tron", "powertrain": "bev", "sourceUrl": "https://www.audi.cz/akcni-nabidky/audi-now/q4-e-tron", "sourceTitle": "Audi · elektrické Q4 e-tron" },
+    { "brand": "Audi", "model": "Q6 e-tron", "powertrain": "bev", "sourceUrl": "https://www.audi.cz/q6-e-tron/q6-e-tron/design-a-filozofie", "sourceTitle": "Audi · elektrické Q6 e-tron" },
+    { "brand": "Audi", "model": "e-tron GT", "powertrain": "bev", "sourceUrl": "https://www.audi.cz/e-tron-gt/e-tron-gt-quattro/technicka-data", "sourceTitle": "Audi · e-tron GT, elektrický pohon" },
+    { "brand": "Hyundai", "model": "Ioniq 5", "powertrain": "bev", "sourceUrl": "https://www.hyundai.com/sk/sk/o-znacke/nase-vozidla/sekcie-modelov/elektricke.html", "sourceTitle": "Hyundai · přehled plně elektrických vozů" },
+    { "brand": "Hyundai", "model": "Ioniq 6", "powertrain": "bev", "sourceUrl": "https://www.hyundai.com/sk/sk/o-znacke/nase-vozidla/sekcie-modelov/elektricke.html", "sourceTitle": "Hyundai · přehled plně elektrických vozů" },
+    { "brand": "Kia", "model": "EV3", "powertrain": "bev", "sourceUrl": "https://www.kia.com/de/elektromobilitaet/elektrisch-fahren/", "sourceTitle": "Kia · přehled elektrických vozů" },
+    { "brand": "Kia", "model": "EV6", "powertrain": "bev", "sourceUrl": "https://www.kia.com/de/elektromobilitaet/elektrisch-fahren/", "sourceTitle": "Kia · přehled elektrických vozů" },
+    { "brand": "Volvo", "model": "EX30", "powertrain": "bev", "sourceUrl": "https://www.volvocars.com/cz/cars/ex30-electric/", "sourceTitle": "Volvo Cars · plně elektrické EX30" },
+    { "brand": "CUPRA", "model": "Born", "powertrain": "bev", "sourceUrl": "https://www.cupraofficial.cz/cupra-born/model", "sourceTitle": "CUPRA · 100% elektrický Born" },
+    { "brand": "Polestar", "model": "Polestar 2", "powertrain": "bev", "sourceUrl": "https://www.polestar.com/uk/polestar-2/", "sourceTitle": "Polestar · elektrický Polestar 2" },
+    { "brand": "BYD", "model": "Atto 3", "powertrain": "bev", "sourceUrl": "https://www.byd.com/uk/electric-cars/atto3", "sourceTitle": "BYD · čistě elektrické ATTO 3" },
+    { "brand": "MG", "model": "MG4", "powertrain": "bev", "sourceUrl": "https://news.mgmotor.eu/press/mg4-electric-celebrates-its-european-launch/", "sourceTitle": "MG Motor Europe · čistě elektrické MG4 Electric" }
+  ]
+}

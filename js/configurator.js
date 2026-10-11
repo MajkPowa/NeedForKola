@@ -63,16 +63,19 @@
   /* ---------- stav ---------- */
   const S = {
     step: 1, view: 'wheel-photo', spin: !matchMedia('(prefers-reduced-motion: reduce)').matches, side: 'R',
-    brand: '', model: '', year: 0, generation: '', body: '',
+    brand: '', model: '', year: 0, generation: '', body: '', vehicleFilter: 'all',
     car: 'suv', bodyColor: 'white', carDetail: '',
     design: O.E6_DESIGNS?.[0]?.id || 'apex10', color: 'silver', colorHex: '#b9bcc2', finish: 'gloss', lip: 'same', cap: 'black',
     d: 21, stag: true, wf: 9, wr: 11.5, etf: 50, etr: 62, pcd: '5x130', cb: 71.6, weight: 10.5,
-    extras: [], note: '', name: '', email: '', phone: '',
+    extras: [], note: '', name: '', email: '', phone: '', isElectricVehicle: false, loadKg: null,
   };
   const INITIAL = { ...S };
   const car = () => O.find(O.CARS, S.car);
   const selectedBrand = () => V.getBrand(S.brand);
   const selectedModel = () => V.getModel(S.brand, S.model);
+  const isKnownElectricModel = () => V.isElectricModel?.(S.brand, S.model) === true;
+  const visibleVehicleBrands = () => S.vehicleFilter === 'electric' ? V.brands.filter(brand => brand.models.some(model => V.isElectricModel?.(brand.id, model.id))) : V.brands;
+  const visibleVehicleModels = () => (selectedBrand()?.models || []).filter(model => S.vehicleFilter !== 'electric' || V.isElectricModel?.(S.brand, model.id));
   const candidates = () => V.getCandidates(S.brand, S.model, S.year, S.body);
   const generation = () => S.body ? candidates().find(g => g.id === S.generation) || null : null;
   const vehicleName = () => !selectedModel() ? 'Tvůj vůz' : `${selectedBrand()?.name || ''} ${selectedModel()?.name || ''} · ${S.year || 'rok neurčen'}${generation() ? ' · ' + generation().name + ' · ' + generation().bodyName : S.body ? ' · ' + (V.getBodies(S.brand,S.model,S.year).find(b=>b.id===S.body)?.name || '') + ' · provedení neurčeno' : ' · provedení neurčeno'}`;
@@ -104,6 +107,14 @@
   const sizeF = () => `${S.d} × ${nf(S.wf)}" ET${S.etf}`;
   const sizeR = () => `${S.d} × ${nf(S.wr)}" ET${S.etr}`;
   const clamp = (k, v) => Math.min(LIMITS[k][1], Math.max(LIMITS[k][0], v));
+  const validLoad = value => Number.isInteger(value) && value >= 690 && value <= 900;
+  const requiredLoadKg = () => S.isElectricVehicle ? Math.max(850, S.loadKg || 0) : S.loadKg;
+  const loadLabel = () => requiredLoadKg() ? `${requiredLoadKg()} kg / kolo` : 'Nastavíme při konzultaci (690–900 kg / kolo)';
+  const electricVehicleHint = () => S.isElectricVehicle
+    ? `Požadovaná nosnost: ${requiredLoadKg()} kg na jedno kolo. Pro návrh elektroauta volíme nejméně 850 kg; vhodnost konkrétního provedení potvrdíme podle vozu.`
+    : 'Zvol požadovanou nosnost 690–900 kg na jedno kolo nebo ji nech na konzultaci. Vhodnost konkrétního provedení potvrdíme podle vozu.';
+  const loadOptions = () => `<option value="">${S.isElectricVehicle ? 'Automaticky · 850 kg / kolo' : 'Nastavíme při konzultaci'}</option>` + [...new Set([690, 725, 750, 775, 800, 825, 850, 875, 900, S.loadKg].filter(validLoad))].sort((a, b) => a - b).map(value => `<option value="${value}" ${S.loadKg === value ? 'selected' : ''} ${S.isElectricVehicle && value < 850 ? 'disabled' : ''}>${value} kg / kolo</option>`).join('');
+  const electricVehicleField = () => `<div class="cfg-electric-vehicle"><label class="check" for="electricVehicle"><input id="electricVehicle" type="checkbox" ${S.isElectricVehicle ? 'checked' : ''} ${isKnownElectricModel() ? 'disabled' : ''} aria-describedby="electricVehicleHint"><span><b>${isKnownElectricModel() ? 'Elektromobil' : 'Máte elektroauto?'}</b><span>${isKnownElectricModel() ? 'Rozpoznáno podle vybraného modelu' : 'Vyšší požadovaná nosnost kol'}</span></span></label><label class="cfg-load-label" for="wheelLoad">Požadovaná nosnost na jedno kolo</label><select id="wheelLoad" aria-describedby="electricVehicleHint">${loadOptions()}</select><p id="electricVehicleHint" role="status">${electricVehicleHint()}</p></div>`;
 
   function applyCarDefaults(c) {
     const f = c.fit;
@@ -172,6 +183,12 @@
     if (has(O.COLORS, src.get('color'))) S.color = src.get('color');
     if (has(O.FINISHES, src.get('finish'))) S.finish = src.get('finish');
     normalisePreview();
+    S.vehicleFilter = src.get('vehicleFilter') === 'electric' && (!S.model || isKnownElectricModel()) ? 'electric' : 'all';
+    if (S.vehicleFilter === 'electric' && !visibleVehicleBrands().some(brand => brand.id === S.brand)) S.brand = '';
+    S.isElectricVehicle = isKnownElectricModel() || src.get('ev') === '1';
+    const linkedLoad = Number(src.get('loadKg'));
+    S.loadKg = validLoad(linkedLoad) ? linkedLoad : null;
+    if (S.isElectricVehicle && S.loadKg < 850) S.loadKg = null;
     if (src !== h) return;
     if (has(O.BODY_COLORS, h.get('bodyColor'))) S.bodyColor = h.get('bodyColor');
     if (has(O.LIPS, h.get('lip'))) S.lip = h.get('lip');
@@ -195,19 +212,21 @@
     S.carDetail = (h.get('carDetail') || '').slice(0, 80);
     S.note = (h.get('note') || '').slice(0, 300);
   }
-  const KEYS = ['brand', 'model', 'year', 'generation', 'body', 'view', 'car', 'bodyColor', 'design', 'color', 'colorHex', 'finish', 'lip', 'cap', 'd', 'wf', 'wr', 'etf', 'etr', 'pcd', 'cb', 'weight', 'side', 'step'];
+  const KEYS = ['brand', 'model', 'year', 'generation', 'body', 'vehicleFilter', 'view', 'car', 'bodyColor', 'design', 'color', 'colorHex', 'finish', 'lip', 'cap', 'd', 'wf', 'wr', 'etf', 'etr', 'pcd', 'cb', 'weight', 'side', 'step'];
   function writeURL() {
     normalisePreview();
     const h = new URLSearchParams();
     KEYS.forEach(k => h.set(k, String(S[k])));
     h.set('stag', S.stag ? '1' : '0');
+    h.set('ev', S.isElectricVehicle ? '1' : '0');
+    if (S.loadKg !== null) h.set('loadKg', S.loadKg);
     if (S.extras.length) h.set('x', S.extras.join(','));
     if (S.carDetail) h.set('carDetail', S.carDetail);
     if (S.note) h.set('note', S.note);
     const url = new URL(location.href);
     // Share one canonical vehicle state; obsolete entry-link values must not
     // keep advertising BMW in the query after selecting another vehicle.
-    [...KEYS, 'stag', 'x', 'carDetail', 'note'].forEach(key => url.searchParams.delete(key));
+    [...KEYS, 'stag', 'ev', 'loadKg', 'x', 'carDetail', 'note'].forEach(key => url.searchParams.delete(key));
     url.hash = h.toString();
     history.replaceState(null, '', url.pathname + url.search + url.hash);
   }
@@ -420,13 +439,16 @@
       ? 'Provedení doplněné z podkladů výrobce.' : 'Katalogové provedení. Kód generace a označení faceliftu nemusí být ve zdroji uvedené.';
     const endNote = !g ? '' : g.endBasis === 'inferred' ? 'Hranice období je odvozená z následujícího provedení; přechodový rok se může překrývat.' : g.endBasis === 'open' ? 'Zdroj neuvádí konec období. Katalog je omezen rokem 2026; dostupnost daného ročníku je potřeba ověřit.' : 'V přechodových letech se mohou období překrývat.';
     return `<div class="panel-kicker">01 / TVŮJ VŮZ</div><h2>Začni svým autem.</h2><p class="sub">${V.brandCount} značek · ${V.modelCount} modelů · ročníky do ${V.through}. Generace, facelifty a karoserie se ukládají s konfigurací.</p>
+      <div class="cfg-vehicle-filter" role="group" aria-label="Nabídka vozů">${[['all','Všechny vozy'],['electric','Elektromobily']].map(([value,label])=>`<button type="button" data-vehicle-filter="${value}" aria-pressed="${S.vehicleFilter===value}" class="${S.vehicleFilter===value?'active':''}">${label}</button>`).join('')}</div>
+      ${S.vehicleFilter==='electric'?`<p class="cfg-vehicle-filter-note" role="status">${V.electricModelCount} modelových řad s čistě elektrickým pohonem. <a href="elektroauta.html">Prohlédnout nabídku pro elektromobily ↗</a></p>`:''}
       <div class="vehicle-fields">
-      <div class="field nfw-brand-field"><label for="vehicleBrand">Značka</label><select id="vehicleBrand" aria-label="Značka"><option value="">Vyber značku</option>${V.brands.map(b=>`<option value="${esc(b.id)}" ${S.brand===b.id?'selected':''}>${esc(b.name)}</option>`).join('')}</select></div>
-      <label class="field"><span>Model</span><select id="vehicleModel" aria-label="Model" ${!S.brand?'disabled':''}><option value="">Vyber model</option>${(selectedBrand()?.models || []).map(m=>`<option value="${esc(m.id)}" ${S.model===m.id?'selected':''}>${esc(m.name)}</option>`).join('')}</select></label>
+      <div class="field nfw-brand-field"><label for="vehicleBrand">Značka</label><select id="vehicleBrand" aria-label="Značka"><option value="">Vyber značku</option>${visibleVehicleBrands().map(b=>`<option value="${esc(b.id)}" ${S.brand===b.id?'selected':''}>${esc(b.name)}</option>`).join('')}</select></div>
+      <label class="field"><span>Model</span><select id="vehicleModel" aria-label="Model" ${!S.brand?'disabled':''}><option value="">Vyber model</option>${visibleVehicleModels().map(m=>`<option value="${esc(m.id)}" ${S.model===m.id?'selected':''}>${esc(m.name)}</option>`).join('')}</select></label>
       <label class="field"><span>Rok vozu</span><select id="vehicleYear" aria-label="Rok výroby" ${!S.model?'disabled':''}>${!years.includes(S.year)?`<option value="${S.year}" selected>${S.year ? S.year+' · mimo doložená období' : 'Vyber rok'}</option>`:''}${years.map(y=>`<option value="${y}" ${S.year===y?'selected':''}>${y}</option>`).join('')}</select></label>
       <label class="field"><span>Karoserie</span><select id="vehicleBody" aria-label="Karoserie" ${!S.year || !bodies.length?'disabled':''}>${bodies.length!==1 || !S.body?'<option value="">Vyber karoserii</option>':''}${bodies.map(b=>`<option value="${esc(b.id)}" ${S.body===b.id?'selected':''}>${esc(b.name)}</option>`).join('')}</select></label>
       <label class="field vehicle-fields__wide"><span>Generace / provedení ${list.length>1?'· upřesni variantu':''}</span><select id="vehicleGeneration" aria-label="Generace" ${!S.body || !list.length?'disabled':''}>${list.length!==1 || !S.body || !S.generation?'<option value="">Vyber provedení</option>':''}${S.body?list.map(g=>`<option value="${esc(g.id)}" ${S.generation===g.id?'selected':''}>${esc(g.name)} · ${V.periodLabel(g)}${g.status==='announced'?' · oznámeno':''}</option>`).join(''):''}</select></label>
       </div>
+      ${electricVehicleField()}
       ${!model?'<div class="note" role="status">Vyber značku a model svého vozu.</div>':!S.year?'<div class="note" role="status">Model je vybraný. Doplň rok výroby a upřesni karoserii svého vozu.</div>':!years.includes(S.year)?'<div class="note vehicle-warning" role="status">Pro tento rok nemáme doložené provedení. Vyber dostupný ročník nebo chybějící variantu uveď do poznámky.</div>':''}
       <div class="generation-info"><small>${g ? g.confidence==='verified'?'PODKLADY VÝROBCE':'KATALOGOVÝ ZÁZNAM' : 'VÝBĚR PROVEDENÍ'}</small><b>${g?esc(g.name)+' · '+esc(g.bodyName):'Upřesni svůj vůz'}</b><span>${sourceNote}</span>${g?.status==='announced'?`<span class="vehicle-warning">Oznámené provedení · ${esc(g.startBasis || 'Dodávky jsou plánované.')}</span>`:''}</div>
       ${detailsHTML('vehicle-info', 'Podrobnosti a upřesnění vozu', `${g?`<details class="vehicle-source"><summary>Období a zdroj údajů</summary><p>${V.periodLabel(g)} · ${esc(g.market)}. ${endNote}</p>${g.startBasis?`<p>${esc(g.startBasis)}</p>`:''}${g.notes?`<p>${esc(g.notes)}</p>`:''}${g.bodyVariants?.length?`<p>Další provedení řady ve zdroji: ${g.bodyVariants.map(esc).join(', ')}. Kombinaci s karoserií upřesni v poznámce.</p>`:''}<a href="${esc(g.source)}" target="_blank" rel="noopener">${esc(g.sourceTitle)} ↗</a>${g.additionalSources?.length?g.additionalSources.map(source=>`<br><a href="${esc(source.url)}" target="_blank" rel="noopener">${esc(source.title)} ↗</a>`).join(''):''}</details>`:''}
@@ -450,6 +472,7 @@
     const chip = (v, key, rec) => `<button type="button" class="chip ${S[key] === v ? 'active' : ''} ${rec ? 'rec' : ''}" data-set="${key}" data-val="${v}" data-type="num"><span>${v}"</span></button>`;
     const range = (key, label, min, max, step, out) => `<label class="field"><span>${label}</span><div class="range"><input type="range" min="${min}" max="${max}" step="${step}" value="${S[key]}" data-set="${key}" data-type="num" data-live="1"><output>${out}</output></div></label>`;
     return `<h2>03 · Rozměry</h2><p class="sub">Navrhni rozměry pro ${esc(vehicleName())}. Jde o zadání k ověření, nikoli potvrzenou kompatibilitu.</p>
+      ${electricVehicleField()}
       <h4>Průměr <em>${S.d}"</em></h4>
       <div class="chips">${DIAMS.map(v => chip(v, 'd', false)).join('')}</div>
       <p class="flow-guidance">Nevíš přesné rozměry? Stačí zvolit průměr a pokračovat. Šířku, ET a rozteč spolu ověříme před výrobou.</p>
@@ -518,6 +541,8 @@
         <tr><th>Přední</th><td>${esc(sizeF())}</td></tr>
         <tr><th>Zadní</th><td>${esc(sizeR())}</td></tr>
         <tr><th>PCD / CB</th><td>${esc(S.pcd)} / ${nf(S.cb)} mm</td></tr>
+        <tr><th>Elektroauto</th><td>${S.isElectricVehicle ? 'Ano' : 'Ne'}</td></tr>
+        <tr><th>Požadovaná nosnost</th><td>${loadLabel()} <span class="muted">· k ověření podle vozu</span></td></tr>
         <tr><th>Barva</th><td>${esc(colorName())} · ${O.find(O.FINISHES, S.finish).name}</td></tr>
         <tr><th>Límec</th><td>${O.find(O.LIPS, S.lip).name}</td></tr>
         <tr><th>Krytka</th><td>${O.find(O.CAPS, S.cap).name}</td></tr>
@@ -587,6 +612,8 @@
       `Přední: ${sizeF()}`,
       `Zadní: ${sizeR()}`,
       `PCD / CB: ${S.pcd} / ${nf(S.cb)} mm`,
+      `Elektroauto: ${S.isElectricVehicle ? 'Ano' : 'Ne'}`,
+      `Požadovaná nosnost: ${loadLabel()} · k ověření podle vozu`,
       `Barva: ${colorName()} · Povrch: ${O.find(O.FINISHES, S.finish).name}`,
       `Límec: ${O.find(O.LIPS, S.lip).name} · Krytka: ${O.find(O.CAPS, S.cap).name}`,
       `Cílová váha: ${nf(S.weight)} kg${sourcePhotoOnly() ? ' (požadavek k ověření)' : ' (odhad ~' + nf(weightEst()) + ' kg)'}`,
@@ -652,6 +679,19 @@
 
   /* ---------- události (delegace) ---------- */
   document.addEventListener('click', e => {
+    const vehicleFilter = e.target.closest('[data-vehicle-filter]');
+    if (vehicleFilter) {
+      const value = vehicleFilter.dataset.vehicleFilter;
+      if (!['all','electric'].includes(value)) return;
+      S.vehicleFilter = value;
+      if (value === 'electric' && S.model && !isKnownElectricModel()) {
+        S.model = ''; S.year = 0; S.body = ''; S.generation = ''; S.carDetail = ''; S.isElectricVehicle = false;
+      }
+      if (!visibleVehicleBrands().some(brand => brand.id === S.brand)) S.brand = '';
+      update({head:true});
+      document.querySelector(`[data-vehicle-filter="${value}"]`)?.focus({preventScroll:true});
+      return;
+    }
     const e6Photo = e.target.closest('[data-e6-photo]');
     if (e6Photo) { e6PhotoIndex = Number(e6Photo.dataset.e6Photo) || 0; renderStageView(); return; }
     if (e.target.closest('[data-flow-preview]')) {
@@ -741,6 +781,21 @@
   });
   document.addEventListener('change', e => {
     const t = e.target;
+    if (t.id === 'electricVehicle') {
+      S.isElectricVehicle = isKnownElectricModel() || t.checked;
+      if (S.isElectricVehicle && S.loadKg < 850) S.loadKg = null;
+      $('#wheelLoad').innerHTML = loadOptions();
+      $('#electricVehicleHint').textContent = electricVehicleHint();
+      writeURL();
+      return;
+    }
+    if (t.id === 'wheelLoad') {
+      const value = Number(t.value);
+      S.loadKg = validLoad(value) && (!S.isElectricVehicle || value >= 850) ? value : null;
+      $('#electricVehicleHint').textContent = electricVehicleHint();
+      writeURL();
+      return;
+    }
     if (['vehicleBrand','vehicleModel','vehicleYear','vehicleBody','vehicleGeneration'].includes(t.id)) {
       if (S.view === 'showroom') S.view = 'car';
       if(t.id==='vehicleBrand'){S.brand=t.value;S.model='';S.year=0;S.body='';S.generation='';S.carDetail='';}
@@ -748,6 +803,10 @@
       if(t.id==='vehicleYear'){S.year=Number(t.value);S.generation='';}
       if(t.id==='vehicleBody'){S.body=t.value;S.generation='';}
       if(t.id==='vehicleGeneration')S.generation=t.value;
+      if (['vehicleBrand','vehicleModel'].includes(t.id)) {
+        S.isElectricVehicle = isKnownElectricModel();
+        if (S.isElectricVehicle && S.loadKg < 850) S.loadKg = null;
+      }
       syncGeneration(); update({head:true});
       if (MOBILE.matches) guideVehicle(t.id);
       else if (t.id === 'vehicleBrand' && brandPicker) brandPicker.trigger.focus({preventScroll:true});
