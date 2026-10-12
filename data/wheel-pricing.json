@@ -1,5 +1,5 @@
 {
-  "version": "20261006-wheel-pricing-v2",
+  "version": "20261012-wheel-pricing-v3",
   "currency": "CZK",
   "families": [
     {
@@ -16,33 +16,33 @@
       "prices": [
         {
           "diameter": 15,
-          "singleCents": 814000,
-          "setCents": 1458000
+          "singleCents": 939000,
+          "setCents": 1958000
         },
         {
           "diameter": 16,
-          "singleCents": 858000,
-          "setCents": 1630000
+          "singleCents": 983000,
+          "setCents": 2130000
         },
         {
           "diameter": 17,
-          "singleCents": 900000,
-          "setCents": 1802000
+          "singleCents": 1025000,
+          "setCents": 2302000
         },
         {
           "diameter": 18,
-          "singleCents": 922000,
-          "setCents": 1888000
+          "singleCents": 1047000,
+          "setCents": 2388000
         },
         {
           "diameter": 19,
-          "singleCents": 964000,
-          "setCents": 2060000
+          "singleCents": 1089000,
+          "setCents": 2560000
         },
         {
           "diameter": 20,
-          "singleCents": 1046000,
-          "setCents": 2384000
+          "singleCents": 1171000,
+          "setCents": 2884000
         }
       ]
     },
@@ -62,43 +62,43 @@
       "prices": [
         {
           "diameter": 17,
-          "singleCents": 1308000,
-          "setCents": 3436000
+          "singleCents": 1433000,
+          "setCents": 3936000
         },
         {
           "diameter": 18,
-          "singleCents": 1436000,
-          "setCents": 3948000
+          "singleCents": 1561000,
+          "setCents": 4448000
         },
         {
           "diameter": 19,
-          "singleCents": 1522000,
-          "setCents": 4290000
+          "singleCents": 1647000,
+          "setCents": 4790000
         },
         {
           "diameter": 20,
-          "singleCents": 1652000,
-          "setCents": 4812000
+          "singleCents": 1777000,
+          "setCents": 5312000
         },
         {
           "diameter": 21,
-          "singleCents": 1780000,
-          "setCents": 5320000
+          "singleCents": 1905000,
+          "setCents": 5820000
         },
         {
           "diameter": 22,
-          "singleCents": 1908000,
-          "setCents": 5832000
+          "singleCents": 2033000,
+          "setCents": 6332000
         },
         {
           "diameter": 23,
-          "singleCents": 2080000,
-          "setCents": 6516000
+          "singleCents": 2205000,
+          "setCents": 7016000
         },
         {
           "diameter": 24,
-          "singleCents": 2252000,
-          "setCents": 7200000
+          "singleCents": 2377000,
+          "setCents": 7700000
         }
       ]
     },
@@ -115,28 +115,28 @@
       "prices": [
         {
           "diameter": 18,
-          "singleCents": 2166000,
-          "setCents": 6864000
+          "singleCents": 2291000,
+          "setCents": 7364000
         },
         {
           "diameter": 19,
-          "singleCents": 2338000,
-          "setCents": 7552000
+          "singleCents": 2463000,
+          "setCents": 8052000
         },
         {
           "diameter": 20,
-          "singleCents": 2510000,
-          "setCents": 8238000
+          "singleCents": 2635000,
+          "setCents": 8738000
         },
         {
           "diameter": 21,
-          "singleCents": 2680000,
-          "setCents": 8920000
+          "singleCents": 2805000,
+          "setCents": 9420000
         },
         {
           "diameter": 22,
-          "singleCents": 2852000,
-          "setCents": 9608000
+          "singleCents": 2977000,
+          "setCents": 10108000
         }
       ]
     }
@@ -1033,7 +1033,7 @@
       "family": "forged-monoblock"
     }
   ],
-  "customVersion": "20261011-custom-pricing-e6-v2",
+  "customVersion": "20261012-custom-pricing-e6-v3",
   "e6PricingFamilies": {
     "monoblock": "forged-monoblock",
     "multipiece": "forged-2piece",
@@ -1057,43 +1057,43 @@
       "prices": [
         {
           "diameter": 17,
-          "singleCents": 1308000,
-          "setCents": 3436000
+          "singleCents": 1433000,
+          "setCents": 3936000
         },
         {
           "diameter": 18,
-          "singleCents": 1436000,
-          "setCents": 3948000
+          "singleCents": 1561000,
+          "setCents": 4448000
         },
         {
           "diameter": 19,
-          "singleCents": 1522000,
-          "setCents": 4290000
+          "singleCents": 1647000,
+          "setCents": 4790000
         },
         {
           "diameter": 20,
-          "singleCents": 1652000,
-          "setCents": 4812000
+          "singleCents": 1777000,
+          "setCents": 5312000
         },
         {
           "diameter": 21,
-          "singleCents": 1780000,
-          "setCents": 5320000
+          "singleCents": 1905000,
+          "setCents": 5820000
         },
         {
           "diameter": 22,
-          "singleCents": 1908000,
-          "setCents": 5832000
+          "singleCents": 2033000,
+          "setCents": 6332000
         },
         {
           "diameter": 23,
-          "singleCents": 2080000,
-          "setCents": 6516000
+          "singleCents": 2205000,
+          "setCents": 7016000
         },
         {
           "diameter": 24,
-          "singleCents": 2252000,
-          "setCents": 7200000
+          "singleCents": 2377000,
+          "setCents": 7700000
         }
       ]
     },
@@ -1110,28 +1110,28 @@
       "prices": [
         {
           "diameter": 18,
-          "singleCents": 2166000,
-          "setCents": 6864000
+          "singleCents": 2291000,
+          "setCents": 7364000
         },
         {
           "diameter": 19,
-          "singleCents": 2338000,
-          "setCents": 7552000
+          "singleCents": 2463000,
+          "setCents": 8052000
         },
         {
           "diameter": 20,
-          "singleCents": 2510000,
-          "setCents": 8238000
+          "singleCents": 2635000,
+          "setCents": 8738000
         },
         {
           "diameter": 21,
-          "singleCents": 2680000,
-          "setCents": 8920000
+          "singleCents": 2805000,
+          "setCents": 9420000
         },
         {
           "diameter": 22,
-          "singleCents": 2852000,
-          "setCents": 9608000
+          "singleCents": 2977000,
+          "setCents": 10108000
         }
       ]
     }
