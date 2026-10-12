@@ -2,15 +2,19 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { buildPhotoWheel } from './wheel-reconstruction.js?v=20261009-photo-3d';
-import { PHOTO_WHEEL_MODELS } from './wheel-reconstruction-catalog.js?v=20261009-photo-3d';
-import './vehicle-models.js?v=20260905-360';
+import { MeshoptDecoder } from '../assets/vendor/meshoptimizer/meshopt_decoder.mjs?v=1.3.0';
+import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js';
+import { buildPhotoWheel } from './wheel-reconstruction.js?v=20261011-wheel-fidelity-v1';
+import { PHOTO_WHEEL_MODELS } from './wheel-reconstruction-catalog.js?v=20261011-wheel-fidelity-v1';
+import { wheelGLBURL } from './wheel-asset-url.js?v=20261011-wheel-fidelity-v1';
+import { addOartsCap } from './wheel-brand-cap.js?v=20261011-wheel-fidelity-v1';
+import './vehicle-models.js?v=20261008-no-x5';
 
 // Photo models have individual silhouettes; their hidden depth remains an estimate.
 const photoRecords = new Map();
 const sourceSurfaces = new Map();
-export async function prepareWheelGeometry(design, signal, referenceSurface = false) {
+const exportedPhotoWheels = new Map();
+export async function prepareWheelGeometry(design, signal, referenceSurface = false, preferExportedGeometry = false) {
   const entry = PHOTO_WHEEL_MODELS[design];
   if (!entry) return;
   if (!photoRecords.has(design)) {
@@ -21,6 +25,34 @@ export async function prepareWheelGeometry(design, signal, referenceSurface = fa
     photoRecords.set(design, record);
   }
   const record = photoRecords.get(design);
+  if (preferExportedGeometry && !referenceSurface) {
+    if (!exportedPhotoWheels.has(design)) {
+      const modelURL = wheelGLBURL(entry);
+      const response = await fetch(modelURL, { signal });
+      if (!response.ok) throw new Error('Detailní 3D model se nepodařil načíst.');
+      const bytes = await response.arrayBuffer();
+      if (signal?.aborted) throw new DOMException('Náhled byl zrušen.', 'AbortError');
+      const gltf = await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(bytes, new URL('.', modelURL).href);
+      if (signal?.aborted) { disposeObject(gltf.scene); throw new DOMException('Náhled byl zrušen.', 'AbortError'); }
+      gltf.scene.traverse(part => {
+        if (!part.isMesh) return;
+        for (const material of Array.isArray(part.material) ? part.material : [part.material]) {
+          const intensity = material.userData.oartsEnvMapIntensity;
+          if (Number.isFinite(intensity) && intensity >= 0 && intensity <= 3) material.envMapIntensity = intensity;
+        }
+      });
+      // Cache CPU-side source data only. Mounted instances own cloned buffers
+      // and materials, so disposing a previous view cannot invalidate this LRU.
+      if (exportedPhotoWheels.has(design)) disposeObject(gltf.scene);
+      else exportedPhotoWheels.set(design, gltf.scene);
+    }
+    const prepared = exportedPhotoWheels.get(design);
+    exportedPhotoWheels.delete(design); exportedPhotoWheels.set(design, prepared);
+    while (exportedPhotoWheels.size > 3) {
+      const oldest = exportedPhotoWheels.keys().next().value;
+      disposeObject(exportedPhotoWheels.get(oldest)); exportedPhotoWheels.delete(oldest);
+    }
+  }
   if (referenceSurface && !record.provenance.rectificationApproximate && !sourceSurfaces.has(design)) {
     const surfaceSource = record.surfaceSource || record.source;
     const response = await fetch(new URL('../' + surfaceSource.src, import.meta.url), { signal });
@@ -60,6 +92,29 @@ const presets = {
   concave9: { count: 9, style: 'straight', width: .05 },
   dish3pc: { count: 5, style: 'straight', width: .115, bolts: true },
   mesh3pc: { count: 15, style: 'mesh', width: .025, bolts: true },
+  // Motivo topology was checked against the manufacturer front photographs.
+  // Numeric proportions remain a visual interpretation, not manufacturer CAD.
+  // Keep these synchronous presets aligned with data/motivo-design-geometry.json.
+  'motivo-mb-a': {"style":"fork","count":5,"width":0.052,"centre":-0.065,"forkAt":0.48,"forkAngle":0.31,"branch":0.05,"slots":[{"from":0.3,"to":0.45,"width":0.018,"branch":-1},{"from":0.3,"to":0.45,"width":0.018,"branch":1},{"from":0.82,"to":0.91,"width":0.01,"branch":-1},{"from":0.82,"to":0.91,"width":0.01,"branch":1}],"lugRotation":0,"angular":true},
+  'motivo-mb-b': {"style":"straight","count":10,"width":0.034,"centre":-0.105,"channel":true,"rootPockets":true,"lugRotation":0,"spokeRotation":0.3141592653589793},
+  'motivo-mb-c': {"style":"straight","count":10,"width":0.031,"centre":-0.09,"endRadius":0.865,"wideLip":true,"rootPockets":true,"lugRotation":0.6283185307179586,"spokeRotation":0.3141592653589793},
+  'motivo-mb-d': {"style":"fork","count":5,"width":0.044,"centre":-0.105,"forkAt":0.34,"forkAngle":0.145,"branch":0.05,"lugRotation":0.6283185307179586},
+  'motivo-mb-e': {"style":"fork","count":10,"width":0.027,"centre":-0.07,"forkAt":0.52,"forkAngle":0.09,"branch":0.06,"channel":true,"angular":true,"lugRotation":0},
+  'motivo-mb-f': {"style":"fork","count":10,"width":0.027,"centre":-0.075,"forkAt":0.52,"forkAngle":0.09,"branch":0.06,"slots":[{"from":0.34,"to":0.44,"width":0.008,"branch":-1},{"from":0.34,"to":0.44,"width":0.008,"branch":1}],"angular":true,"lugRotation":0},
+  'motivo-mb-g': {"style":"fork","count":5,"width":0.052,"centre":-0.095,"forkAt":0.43,"forkAngle":0.31,"branch":0.05,"channel":true,"rounded":true,"lugRotation":0},
+  'motivo-mb-h': {"style":"fork","count":5,"width":0.047,"centre":-0.06,"forkAt":0.49,"forkAngle":0.31,"branch":0.05,"slots":[{"from":0.31,"to":0.43,"width":0.012,"branch":-1},{"from":0.31,"to":0.43,"width":0.012,"branch":1}],"lugRotation":0.6283185307179586},
+  'motivo-mb-j': {"style":"fork","count":5,"width":0.049,"centre":-0.065,"forkAt":0.43,"forkAngle":0.31,"branch":0.05,"channel":true,"lugRotation":0.6283185307179586},
+  'motivo-mb-k': {"style":"straight","count":10,"width":0.036,"centre":-0.075,"slots":[{"from":0.57,"to":0.62,"width":0.007},{"from":0.7,"to":0.75,"width":0.007}],"channel":true,"angular":true,"lugRotation":0,"spokeRotation":0.3141592653589793},
+  'motivo-mb-l': {"style":"fork","count":5,"width":0.052,"centre":-0.045,"forkAt":0.46,"forkAngle":0.31,"branch":0.05,"slots":[{"from":0.39,"to":0.49,"width":0.014,"branch":-1},{"from":0.39,"to":0.49,"width":0.014,"branch":1},{"from":0.55,"to":0.62,"width":0.011,"branch":-1},{"from":0.55,"to":0.62,"width":0.011,"branch":1}],"angular":true,"centerLock":true,"lugRotation":0},
+  'motivo-mb-m': {"style":"straight","count":10,"width":0.068,"centre":-0.06,"slots":[{"from":0.33,"to":0.91,"width":0.022}],"lugRotation":0.6283185307179586,"rootWidthFactor":1.5,"shoulderWidthFactor":1.35,"tipWidthFactor":0.8},
+  'motivo-mb-n': {"style":"fork","count":10,"width":0.026,"centre":-0.08,"forkAt":0.54,"forkAngle":0.09,"branch":0.06,"rounded":true,"lugRotation":0},
+  'motivo-mb-o': {"style":"straight","count":5,"width":0.155,"centre":0.12,"flatFace":true,"endRadius":0.845,"ventRing":true,"ventCount":16,"lugRotation":0},
+  'motivo-mb-p': {"style":"straight","count":10,"width":0.034,"centre":-0.1,"slots":[{"from":0.34,"to":0.43,"width":0.009}],"channel":true,"lugRotation":0,"spokeRotation":0.3141592653589793},
+  'motivo-mb-q': {"style":"fork","count":5,"width":0.06,"centre":-0.045,"forkAt":0.49,"forkAngle":0.31,"branch":0.05,"slots":[{"from":0.3,"to":0.39,"width":0.015,"shape":"rectangle"}],"channel":true,"angular":true,"lugRotation":0},
+  'motivo-mb-r': {"style":"fork","count":10,"width":0.029,"centre":-0.045,"forkAt":0.54,"forkAngle":0.21,"branch":0.06,"rounded":true,"lugRotation":0},
+  'motivo-mb-s': {"style":"straight","count":15,"width":0.03,"centre":-0.075,"channel":true,"lugRotation":0.6283185307179586},
+  'motivo-mb-t': {"style":"straight","count":5,"width":0.125,"centre":0.12,"flatFace":true,"lugRotation":0},
+  'motivo-mb-z': {"style":"straight","count":5,"width":0.105,"centre":-0.075,"slots":[{"from":0.29,"to":0.42,"width":0.026,"shape":"triangle"}],"rounded":true,"centerLock":true,"lugRotation":0,"rootWidthFactor":1.35,"shoulderWidthFactor":1.35,"tipWidthFactor":0.9},
 };
 
 export function supports3DDesign(design) {
@@ -81,13 +136,15 @@ function requireWheelGeometry(input) {
 }
 
 function options(input = {}) {
+  // Never silently turn a source-only E6 model into an unrelated generic wheel.
+  // Keep this check in the shared path used by both 3D and photo-fit renderers.
   requireWheelGeometry(input);
   return {
     ...input, mode: input.mode === 'car' ? 'car' : 'wheel',
     design: supports3DDesign(input.design) ? input.design : 'apex10',
     color: hex(input.color, hex(input.colorHex, DEFAULT_WHEEL_COLOUR)),
     bodyColor: hex(input.bodyColor, '#303f4b'),
-    diameter: clamp(input.diameter, 18, 24, 20),
+    diameter: clamp(input.diameter, 17, 24, 20),
     width: clamp(input.width, 7, 13.5, 10),
     autoRotate: input.autoRotate !== false,
     finish: ['gloss', 'satin', 'matte', 'brushed', 'chrome'].includes(input.finish) ? input.finish : 'satin',
@@ -96,26 +153,69 @@ function options(input = {}) {
   };
 }
 
-function metalMaterial(opts) {
-  const finishes = { gloss: [.2, 1, .1], satin: [.32, .48, .25], matte: [.57, .06, .45], brushed: [.37, .2, .25], chrome: [.09, .8, .05] };
-  const [roughness, clearcoat, clearcoatRoughness] = finishes[opts.finish];
-  const material = new THREE.MeshPhysicalMaterial({
-    color: opts.color, metalness: 1, roughness, clearcoat, clearcoatRoughness,
-    envMapIntensity: .92, reflectivity: .8,
-  });
-  if (opts.finish === 'brushed') {
-    // Fine machining lines in a generated normal texture, never an image of the wheel.
-    const size = 128, data = new Uint8Array(size * size * 4);
-    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
-      const i = (y * size + x) * 4;
-      data[i] = 128; data[i + 1] = 128 + Math.round(Math.sin(y * 2.34) * 26);
-      data[i + 2] = 252; data[i + 3] = 255;
-    }
-    const map = new THREE.DataTexture(data, size, size, THREE.RGBAFormat);
-    map.wrapS = map.wrapT = THREE.RepeatWrapping; map.repeat.set(2, 5); map.needsUpdate = true;
-    material.normalMap = map; material.normalScale.set(.16, .16);
+function metalSurface(finish) {
+  // A deterministic submillimetre grain catches highlights without adding a
+  // painted-on texture. The brushed finish follows the radial spoke UVs.
+  const size = 256, normal = new Uint8Array(size * size * 4), roughness = new Uint8Array(size * size * 4);
+  let seed = 173;
+  for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    const grain = (seed >>> 24) / 255, line = Math.sin(x * 1.73) * .5 + Math.sin(x * 3.17) * .22;
+    const i = (y * size + x) * 4, brushed = finish === 'brushed';
+    normal[i] = 128 + Math.round(brushed ? line * 31 : (grain - .5) * 16);
+    normal[i + 1] = 128 + Math.round((grain - .5) * (brushed ? 4 : 12));
+    normal[i + 2] = 254; normal[i + 3] = 255;
+    const value = Math.round(239 + (grain - .5) * 22 + (brushed ? line * 7 : 0));
+    roughness[i] = roughness[i + 1] = roughness[i + 2] = value; roughness[i + 3] = 255;
   }
+  const maps = [normal, roughness].map(data => {
+    const map = new THREE.DataTexture(data, size, size, THREE.RGBAFormat);
+    map.wrapS = map.wrapT = THREE.RepeatWrapping; map.repeat.set(3, 5);
+    map.generateMipmaps = true; map.minFilter = THREE.LinearMipmapLinearFilter; map.magFilter = THREE.LinearFilter;
+    map.anisotropy = 4; map.needsUpdate = true; return map;
+  });
+  return { normalMap: maps[0], roughnessMap: maps[1] };
+}
+
+function metalMaterial(opts) {
+  const finishes = { gloss: [.24, 1, .085], satin: [.34, .42, .26], matte: [.51, .08, .48], brushed: [.29, .25, .23], chrome: [.15, .8, .12] };
+  const [roughness, clearcoat, clearcoatRoughness] = finishes[opts.finish];
+  const colour = new THREE.Color(opts.color);
+  const blackPaint = Math.max(colour.r, colour.g, colour.b) < .045 && opts.finish !== 'chrome';
+  const material = new THREE.MeshPhysicalMaterial({
+    color: opts.color, metalness: blackPaint ? .24 : opts.finish === 'matte' ? .52 : .96,
+    roughness, clearcoat, clearcoatRoughness, envMapIntensity: 1.05, reflectivity: .65,
+    ...metalSurface(opts.finish),
+  });
+  material.normalScale.setScalar(opts.finish === 'brushed' ? .045 : opts.finish === 'chrome' ? .008 : .018);
+  if (opts.finish === 'brushed') { material.anisotropy = .35; material.anisotropyRotation = Math.PI / 2; }
   return material;
+}
+
+function studioEnvironment(renderer) {
+  // A product-photography studio, rather than the generic bright room with
+  // visible furniture reflections. The black gaps between real softboxes are
+  // what describe machined edges and the depth of a polished lip.
+  const room = new THREE.Scene();
+  room.background = new THREE.Color('#444951');
+  const cards = [
+    { position: [-3.4, 1.8, 3.6], size: [1.05, 5.1], colour: '#fff5e9', intensity: 6.2 },
+    { position: [3.7, .7, 2.4], size: [.72, 4.7], colour: '#edf3ff', intensity: 5.2 },
+    { position: [.2, 4.6, .9], size: [4.6, 1.35], colour: '#ffffff', intensity: 5.4 },
+    { position: [-1.7, .6, -3.8], size: [.7, 3.8], colour: '#e8edff', intensity: 3.5 },
+    { position: [0, -.9, 3.2], size: [3.4, .38], colour: '#ffffff', intensity: 1.6 },
+    // A frontal strip is visible in the actual cap's reflection from both the
+    // front view and default 3/4 view. Metallic OARTS letters need reflected
+    // light here; a diffuse lamp alone cannot make an unpainted badge legible.
+    { position: [.8, -.25, 4.7], size: [3.8, 1.1], colour: '#fffdfa', intensity: 3.6 },
+  ];
+  for (const card of cards) {
+    const panel = new THREE.Mesh(new THREE.PlaneGeometry(...card.size), new THREE.MeshBasicMaterial({ color: new THREE.Color(card.colour).multiplyScalar(card.intensity), side: THREE.DoubleSide, toneMapped: false }));
+    panel.position.fromArray(card.position); panel.lookAt(0, .45, 0); room.add(panel);
+  }
+  const pmrem = new THREE.PMREMGenerator(renderer), environment = pmrem.fromScene(room, .018, .1, 50);
+  room.traverse(item => { item.geometry?.dispose(); item.material?.dispose(); });
+  pmrem.dispose(); return environment;
 }
 
 function mesh(geometry, material, group) {
@@ -136,102 +236,185 @@ function circleShape(radius, holes = []) {
 }
 
 function beveled(shape, depth = .065, bevelSize = .009) {
-  return new THREE.ExtrudeGeometry(shape, { depth, steps: 1, bevelEnabled: true, bevelSegments: 3, bevelSize, bevelThickness: bevelSize, curveSegments: 32 });
+  return new THREE.ExtrudeGeometry(shape, { depth, steps: 1, bevelEnabled: true, bevelSegments: 5, bevelSize, bevelThickness: bevelSize, curveSegments: 32 });
 }
 
-// The logo is a raster reconstruction from the supplied cap photograph.
-// Loading is shared and optional: a missing brand image must never disable the 3D viewer.
-const CAP_LOGO_URL = new URL('../assets/brand/oarts-logo.png?v=20260906-reference', import.meta.url).href;
-const liveCapTextures = new Set();
-let capLogo = null, capLogoPromise = null, capLogoRevision = 0;
-
-export function ensureCapLogo({ retry = false } = {}) {
-  if (capLogo) return Promise.resolve(true);
-  if (capLogoPromise && !retry) return capLogoPromise;
-  capLogoPromise = new Promise(resolve => {
-    const image = new Image();
-    let settled = false;
-    const finish = (loaded, keepListening = false) => {
-      if (!keepListening) image.onload = image.onerror = null;
-      if (loaded) {
-        capLogoRevision++;
-        liveCapTextures.forEach(record => { try { record.draw(); record.texture.needsUpdate = true; } catch { /* An optional badge must not block model loading. */ } });
-      }
-      window.dispatchEvent(new CustomEvent('nfw:cap-logo-ready', { detail: { loaded } }));
-      if (!settled) { settled = true; clearTimeout(timer); resolve(loaded); }
-    };
-    // Start the wheel with a fallback on slow connections, then upgrade it in place.
-    const timer = setTimeout(() => finish(false, true), 3000);
-    image.onerror = () => finish(false);
-    image.onload = () => {
-      try {
-        const canvas = document.createElement('canvas'); canvas.width = image.naturalWidth; canvas.height = image.naturalHeight;
-        const ctx = canvas.getContext('2d'); ctx.drawImage(image, 0, 0);
-        const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-        let left = canvas.width, top = canvas.height, right = -1, bottom = -1;
-        for (let y = 0; y < canvas.height; y++) for (let x = 0; x < canvas.width; x++) {
-          if (pixels[(y * canvas.width + x) * 4 + 3] <= 12) continue;
-          left = Math.min(left, x); right = Math.max(right, x); top = Math.min(top, y); bottom = Math.max(bottom, y);
-        }
-        if (right < left || bottom < top) { finish(false); return; }
-        capLogo = { image, x: left, y: top, width: right - left + 1, height: bottom - top + 1 };
-        finish(true);
-      } catch { finish(false); }
-    };
-    image.src = CAP_LOGO_URL;
-  });
-  return capLogoPromise;
-}
-
-function waitForCapLogo(signal) {
-  if (!signal) return ensureCapLogo();
-  if (signal.aborted) return Promise.reject(new DOMException('Náhled byl zrušen.', 'AbortError'));
-  return new Promise((resolve, reject) => {
-    const cancel = () => { signal.removeEventListener('abort', cancel); reject(new DOMException('Náhled byl zrušen.', 'AbortError')); };
-    signal.addEventListener('abort', cancel, { once: true });
-    ensureCapLogo().then(loaded => { signal.removeEventListener('abort', cancel); resolve(loaded); });
-  });
-}
-
-function capTexture(opts) {
-  const canvas = document.createElement('canvas'); canvas.width = canvas.height = 512;
-  const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace; texture.anisotropy = 8;
-  const carbon = opts.cap === 'carbon', black = carbon || opts.cap === 'black';
-  const colour = parseInt(opts.color.slice(1), 16);
-  const lightBody = (((colour >> 16) & 255) * .2126 + ((colour >> 8) & 255) * .7152 + (colour & 255) * .0722) > 145;
-  const darkInk = opts.cap === 'silver' || (['same', 'body'].includes(opts.cap) && lightBody);
-  const draw = () => {
-    const ctx = canvas.getContext('2d'); ctx.setTransform(2, 0, 0, 2, 0, 0); ctx.clearRect(0, 0, 256, 256);
-    if (black) { ctx.fillStyle = '#0b0d0f'; ctx.fillRect(0, 0, 256, 256); }
-    if (carbon) {
-      for (let y = 0; y < 256; y += 16) for (let x = 0; x < 256; x += 16) {
-        const vertical = (x / 16 + y / 16) % 2 === 0;
-        for (let i = 0; i < 8; i++) { ctx.fillStyle = i % 3 === 0 ? '#41444a' : '#23262c'; ctx.fillRect(x + (vertical ? i * 2 : 0), y + (vertical ? 0 : i * 2), vertical ? 1 : 16, vertical ? 16 : 1); }
-      }
+function spokeGeometry({ width, start, end, bend, centre, face, channel = false, rootPockets = false }) {
+  // Sweep a rounded, solid forging cross-section along both original outlines.
+  // Longitudinal stations give the concave face real curvature instead of
+  // bending a few large triangles from a flat extrusion.
+  const side = sign => new THREE.CubicBezierCurve(new THREE.Vector2(sign * width * 2.15, start),
+    new THREE.Vector2(sign * width * 1.6, .32), new THREE.Vector2(bend + sign * width * .54, .55),
+    new THREE.Vector2(bend + sign * width * .49, end));
+  const left = side(-1), right = side(1), stations = 28;
+  const section = [[-1, .012], [-.96, .037], [-.83, .052], [-.28, .055], [0, .056], [.28, .055], [.83, .052], [.96, .037],
+    [1, .012], [.96, -.009], [.8, -.02], [0, -.024], [-.8, -.02], [-.96, -.009]];
+  const positions = [], uvs = [], indices = [], colours = [], ring = section.length;
+  for (let step = 0; step <= stations; step++) {
+    const t = step / stations, a = left.getPoint(t), b = right.getPoint(t);
+    const y = a.y, radius = Math.hypot((a.x + b.x) / 2, y);
+    const dish = THREE.MathUtils.smoothstep(radius, .22, .98);
+    // A restrained shoulder adds structural section to the roots of the forging.
+    const z = centre + (face - centre - .06) * dish;
+    for (let point = 0; point < ring; point++) {
+      const [cross, rawHeight] = section[point], x = THREE.MathUtils.lerp(a.x, b.x, (cross + 1) / 2);
+      const channelDepth = channel && Math.abs(cross) < .29 ? .012 * (1 - Math.abs(cross) / .29) * THREE.MathUtils.smoothstep(y, .27, .38) * (1 - THREE.MathUtils.smoothstep(y, end - .09, end - .025)) : 0;
+      const pocketDepth = rootPockets && rawHeight > .045 ? .01 * Math.max(0, 1 - Math.abs(cross) / .5) * THREE.MathUtils.smoothstep(y, .28, .32) * (1 - THREE.MathUtils.smoothstep(y, .38, .43)) : 0;
+      const height = rawHeight - channelDepth - pocketDepth;
+      positions.push(x, y, z + height);
+      uvs.push((cross + 1) / 2, t);
+      const occlusion = (.84 + dish * .16) * (height < 0 ? .8 : .94 + Math.max(0, height) * 1.07);
+      colours.push(occlusion, occlusion, occlusion);
     }
-    if (capLogo) {
-      const layer = document.createElement('canvas'); layer.width = layer.height = 512;
-      const ink = layer.getContext('2d'); ink.scale(2, 2);
-      const scale = Math.min(210 / capLogo.width, 116 / capLogo.height);
-      const w = capLogo.width * scale, h = capLogo.height * scale;
-      ink.drawImage(capLogo.image, capLogo.x, capLogo.y, capLogo.width, capLogo.height, (256 - w) / 2, (256 - h) / 2, w, h);
-      // Preserve the exact letter and star silhouette on light-coloured cap materials.
-      if (darkInk) { ink.globalCompositeOperation = 'source-in'; ink.fillStyle = '#1b1e20'; ink.fillRect(0, 0, 256, 256); }
-      ctx.drawImage(layer, 0, 0, 256, 256);
-    } else {
-      // A modest fallback, not an alternative uppercase logo.
-      ctx.fillStyle = darkInk ? '#1b1e20' : '#e7e7e3'; ctx.textAlign = 'left'; ctx.font = 'italic 500 66px Georgia, "Times New Roman", serif';
-      const word = 'oarts', width = ctx.measureText(word).width, start = (256 - width) / 2;
-      ctx.fillText(word, start, 140);
-      const x = start + ctx.measureText('o').width + ctx.measureText('a').width * .42, y = 165;
-      ctx.beginPath(); ctx.moveTo(x, y - 11); ctx.lineTo(x + 3, y - 3); ctx.lineTo(x + 10, y); ctx.lineTo(x + 3, y + 3);
-      ctx.lineTo(x, y + 11); ctx.lineTo(x - 3, y + 3); ctx.lineTo(x - 10, y); ctx.lineTo(x - 3, y - 3); ctx.closePath(); ctx.fill();
+  }
+  for (let step = 0; step < stations; step++) for (let point = 0; point < ring; point++) {
+    const a = step * ring + point, b = step * ring + (point + 1) % ring, c = a + ring, d = b + ring;
+    indices.push(a, b, c, b, d, c);
+  }
+  // End caps disappear into the hub and bead seat, but keep the forging closed.
+  for (let i = 1; i < ring - 1; i++) {
+    indices.push(0, i + 1, i);
+    const last = stations * ring; indices.push(last, last + i, last + i + 1);
+  }
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
+  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colours, 3));
+  geometry.setIndex(indices); geometry.computeVertexNormals(); geometry.userData.wheelSpoke = true;
+  return geometry;
+}
+
+function subdivideSurface(geometry) {
+  const source = geometry.index ? geometry.toNonIndexed() : geometry;
+  const attributes = ['position', 'normal', 'uv'], output = attributes.map(() => []);
+  const read = index => attributes.map(name => Array.from(source.attributes[name].array.slice(index * source.attributes[name].itemSize, (index + 1) * source.attributes[name].itemSize)));
+  const distance = (a, b) => a[0].reduce((sum, value, index) => sum + (value - b[0][index]) ** 2, 0);
+  const split = (a, b, c, level = 0) => {
+    const lengths = [distance(a, b), distance(b, c), distance(c, a)], longest = Math.max(...lengths);
+    if (longest <= .065 ** 2 || level >= 9) {
+      for (const vertex of [a, b, c]) for (let i = 0; i < attributes.length; i++) output[i].push(...vertex[i]);
+      return;
     }
-    texture.userData.logoSource = capLogo ? 'reference' : 'fallback';
+    const points = [a, b, c], edge = lengths.indexOf(longest), first = points[edge], second = points[(edge + 1) % 3], opposite = points[(edge + 2) % 3];
+    const middle = first.map((values, i) => values.map((value, j) => (value + second[i][j]) / 2));
+    split(first, middle, opposite, level + 1); split(middle, second, opposite, level + 1);
   };
-  const record = { texture, draw }; liveCapTextures.add(record);
-  texture.addEventListener('dispose', () => liveCapTextures.delete(record));
-  draw(); void ensureCapLogo(); return texture;
+  for (let index = 0; index < source.attributes.position.count; index += 3) split(read(index), read(index + 1), read(index + 2));
+  const refined = new THREE.BufferGeometry();
+  attributes.forEach((name, i) => refined.setAttribute(name, new THREE.Float32BufferAttribute(output[i], source.attributes[name].itemSize)));
+  const welded = mergeVertices(refined, .00001);
+  refined.dispose(); if (source !== geometry) source.dispose(); geometry.dispose(); return welded;
+}
+
+function perforatedSpokeGeometry({ width, start, end, bend, centre, face, slots = [], forkAt, forkAngle, branch = .05, angular = false, channel = false, rounded = false, flatFace = false, rootWidthFactor, shoulderWidthFactor, tipWidthFactor }) {
+  const rootWidth = width * (rootWidthFactor ?? (flatFace ? 1.12 : 2.15)), tipWidth = width * (tipWidthFactor ?? (flatFace ? .88 : .49));
+  const outline = new THREE.Shape(); outline.moveTo(-rootWidth, start);
+  if (forkAt) {
+    const fork = forkAt, tip = Math.sin(forkAngle) * end, tipY = Math.cos(forkAngle) * end, tipWidth = width * .49;
+    const neck = width * 1.25;
+    outline.bezierCurveTo(-width * 1.85, .29, -neck, fork - .13, -neck, fork - .025);
+    if (angular) { outline.lineTo(-tip - tipWidth, tipY); }
+    else outline.quadraticCurveTo(-tip - tipWidth * 1.3, fork + .12, -tip - tipWidth, tipY);
+    outline.lineTo(-tip + tipWidth, tipY);
+    if (angular) {
+      outline.lineTo(-.008, fork + .016); outline.quadraticCurveTo(0, fork, .008, fork + .016); outline.lineTo(tip - tipWidth, tipY);
+    } else {
+      outline.quadraticCurveTo(-tip + tipWidth * 1.3, fork + .14, 0, fork);
+      outline.quadraticCurveTo(tip - tipWidth * 1.3, fork + .14, tip - tipWidth, tipY);
+    }
+    outline.lineTo(tip + tipWidth, tipY);
+    if (angular) outline.lineTo(neck, fork - .025);
+    else outline.quadraticCurveTo(tip + tipWidth * 1.3, fork + .12, neck, fork - .025);
+    outline.bezierCurveTo(neck, fork - .13, width * 1.85, .29, width * 2.15, start);
+  } else {
+    const midWidth = width * (flatFace ? .94 : rounded ? 1.15 : .54), shoulderWidth = width * (shoulderWidthFactor ?? (flatFace ? 1.02 : 1.6));
+    outline.bezierCurveTo(-shoulderWidth, .32, bend - midWidth, .55, bend - tipWidth, end);
+    outline.lineTo(bend + tipWidth, end);
+    outline.bezierCurveTo(bend + midWidth, .55, shoulderWidth, .32, rootWidth, start);
+  }
+  outline.quadraticCurveTo(0, start - .045, -rootWidth, start);
+  const curve = new THREE.CubicBezierCurve(new THREE.Vector2(0, start), new THREE.Vector2(0, .32), new THREE.Vector2(bend, .55), new THREE.Vector2(bend, end));
+  const atY = y => {
+    let min = 0, max = 1;
+    for (let i = 0; i < 16; i++) { const middle = (min + max) / 2; if (curve.getPoint(middle).y < y) min = middle; else max = middle; }
+    return curve.getPoint((min + max) / 2);
+  };
+  const forkAxisCache = new Map();
+  const forkAxis = y => {
+    const stem = Math.min(width * .68, branch * .65);
+    if (!forkAt || y < forkAt) return stem;
+    const key = y.toFixed(5); if (forkAxisCache.has(key)) return forkAxisCache.get(key);
+    const tip = Math.sin(forkAngle) * end, tipY = Math.cos(forkAngle) * end, tipWidth = width * .49, neck = width * 1.25;
+    const inner = new THREE.QuadraticBezierCurve(new THREE.Vector2(0, forkAt),
+      new THREE.Vector2(angular ? (tip - tipWidth) / 2 : tip - tipWidth * 1.3, angular ? (forkAt + tipY) / 2 : forkAt + .14), new THREE.Vector2(tip - tipWidth, tipY));
+    const outer = new THREE.QuadraticBezierCurve(new THREE.Vector2(neck, forkAt - .025),
+      new THREE.Vector2(angular ? (neck + tip + tipWidth) / 2 : tip + tipWidth * 1.3, angular ? (forkAt - .025 + tipY) / 2 : forkAt + .12), new THREE.Vector2(tip + tipWidth, tipY));
+    const pointAtY = curve => {
+      let min = 0, max = 1;
+      for (let i = 0; i < 16; i++) { const middle = (min + max) / 2; if (curve.getPoint(middle).y < y) min = middle; else max = middle; }
+      return curve.getPoint((min + max) / 2).x;
+    };
+    const value = (pointAtY(inner) + pointAtY(outer)) / 2; forkAxisCache.set(key, value); return value;
+  };
+  for (const slot of slots) {
+    const from = Math.max(start + .075, slot.from), to = Math.min(end - .045, slot.to);
+    if (to <= from) continue;
+    if (slot.shape === 'triangle') {
+      const a = atY(from), b = atY(to), halfWidth = Math.min(slot.width || .018, width * .4), hole = new THREE.Path();
+      hole.moveTo(a.x - halfWidth, from); hole.lineTo(b.x, to); hole.lineTo(a.x + halfWidth, from); hole.closePath();
+      outline.holes.push(hole); continue;
+    }
+    const points = [], count = 20;
+    for (let i = 0; i <= count; i++) {
+      const t = i / count, point = atY(THREE.MathUtils.lerp(from, to, t));
+      if (slot.branch && forkAt) point.x = slot.branch * forkAxis(point.y);
+      point.x += slot.offset || 0;
+      const rounding = slot.shape === 'triangle' ? Math.sin(Math.PI * t) * (1 - t) * 2 : slot.shape === 'rectangle' ? Math.min(1, Math.sin(Math.PI * t) * 5) : Math.sqrt(Math.sin(Math.PI * t));
+      const halfWidth = Math.min(slot.width || .012, width * .4) * rounding;
+      points.push([point.x - halfWidth, point.y, point.x + halfWidth]);
+    }
+    const hole = new THREE.Path(); hole.moveTo(points[0][0], points[0][1]);
+    for (const [left, y] of points.slice(1)) hole.lineTo(left, y);
+    for (let i = points.length - 2; i >= 0; i--) hole.lineTo(points[i][2], points[i][1]);
+    hole.closePath(); outline.holes.push(hole);
+  }
+  const blank = new THREE.ExtrudeGeometry(outline, { depth: .055, steps: 1, bevelEnabled: true, bevelSegments: 3, bevelSize: .004, bevelThickness: .004, curveSegments: 14 });
+  const geometry = subdivideSurface(blank), positions = geometry.attributes.position, normals = geometry.attributes.normal;
+  const colours = new Float32Array(positions.count * 3);
+  const heightAt = (x, y) => {
+    const radius = Math.hypot(x, y);
+    let channelDepth = 0;
+    if (channel) {
+      const axis = forkAt && y > forkAt ? Math.sign(x) * forkAxis(y) : bend;
+      channelDepth = .009 * Math.max(0, 1 - Math.abs(x - axis) / Math.max(.012, width * .25)) * THREE.MathUtils.smoothstep(radius, .28, .4) * (1 - THREE.MathUtils.smoothstep(radius, end - .09, end));
+    }
+    return centre + (face - centre - .061) * THREE.MathUtils.smoothstep(radius, flatFace ? .2 : .22, flatFace ? .6 : .98) - channelDepth;
+  };
+  const normal = new THREE.Vector3(), epsilon = .0005;
+  for (let i = 0; i < positions.count; i++) {
+    const x = positions.getX(i), y = positions.getY(i), radius = Math.hypot(x, y), dish = THREE.MathUtils.smoothstep(radius, .22, .98);
+    positions.setZ(i, positions.getZ(i) + heightAt(x, y));
+    // Transform the original extrusion normal by the deformation Jacobian.
+    // This preserves bevel seams and continuous reflections on wide faces,
+    // rather than showing a tessellation pattern in a glossy highlight.
+    const dx = (heightAt(x + epsilon, y) - heightAt(x - epsilon, y)) / (2 * epsilon);
+    const dy = (heightAt(x, y + epsilon) - heightAt(x, y - epsilon)) / (2 * epsilon);
+    normal.set(normals.getX(i) - normals.getZ(i) * dx, normals.getY(i) - normals.getZ(i) * dy, normals.getZ(i)).normalize();
+    normals.setXYZ(i, normal.x, normal.y, normal.z);
+    colours.fill(.84 + dish * .16, i * 3, i * 3 + 3);
+  }
+  geometry.setAttribute('color', new THREE.BufferAttribute(colours, 3)); geometry.userData.wheelSpoke = true;
+  return geometry;
+}
+
+// The approved OARTS emblem is part of the solid cap geometry. No delayed
+// font/image loading can leave a wheel blank, or leak a source vehicle badge.
+const capLogoRevision = 2;
+export function ensureCapLogo() { return Promise.resolve(true); }
+function waitForCapLogo(signal) {
+  return signal?.aborted
+    ? Promise.reject(new DOMException('Náhled byl zrušen.', 'AbortError'))
+    : ensureCapLogo();
 }
 
 /** One 2.06-unit diameter wheel, with its face looking down +Z and its centre at the origin. */
@@ -241,6 +424,22 @@ export function createWheel(input = {}) {
     const record = photoRecords.get(input.design);
     if (!record) throw new Error('Nejprve načtěte individuální geometrii kola.');
     const opts = options(input);
+    if (opts.preferExportedGeometry && !opts.referenceSurface && exportedPhotoWheels.has(opts.design)) {
+      const wheel = exportedPhotoWheels.get(opts.design).clone(true), geometries = new Map(), materials = new Map();
+      const ownMaterial = material => {
+        if (!materials.has(material)) materials.set(material, material.clone());
+        return materials.get(material);
+      };
+      wheel.traverse(part => {
+        if (!part.isMesh) return;
+        if (!geometries.has(part.geometry)) geometries.set(part.geometry, part.geometry.clone());
+        part.geometry = geometries.get(part.geometry);
+        part.material = Array.isArray(part.material) ? part.material.map(ownMaterial) : ownMaterial(part.material);
+        part.castShadow = part.receiveShadow = true;
+      });
+      wheel.name = `NFW_photo_${opts.design}`; wheel.userData.options = opts;
+      return wheel;
+    }
     const surface = opts.referenceSurface && sourceSurfaces.get(opts.design);
     const texture = surface ? new THREE.CanvasTexture(surface) : null;
     if (texture) { texture.colorSpace = THREE.SRGBColorSpace; texture.anisotropy = 8; }
@@ -249,14 +448,16 @@ export function createWheel(input = {}) {
   const opts = options(input), preset = presets[opts.design];
   const group = new THREE.Group(); group.name = `NFW_${opts.design}`;
   const material = metalMaterial(opts);
-  const polished = new THREE.MeshPhysicalMaterial({ color: '#c8c8c4', metalness: 1, roughness: .14, clearcoat: .6 });
+  const polished = new THREE.MeshPhysicalMaterial({ color: '#c8c8c4', metalness: 1, roughness: .12, clearcoat: .65, clearcoatRoughness: .08, envMapIntensity: 1.05 });
   const inner = material.clone(); inner.roughness = Math.min(.65, inner.roughness + .12); inner.color.multiplyScalar(.68);
   const dark = new THREE.MeshStandardMaterial({ color: '#141619', metalness: .6, roughness: .35 });
-  const machined = polished.clone(); machined.roughness = .36;
+  const machined = polished.clone(); machined.roughness = .28; machined.normalMap = material.normalMap; machined.normalScale.setScalar(.045);
+  const spokeMaterial = material.clone(); spokeMaterial.vertexColors = true;
+  const cutMetal = material.clone(); cutMetal.color.multiplyScalar(.63); cutMetal.roughness = Math.min(.62, material.roughness + .14);
   const lipMat = opts.lip === 'polished' || opts.lip === 'chrome' ? polished : opts.lip === 'machined' ? machined : opts.lip === 'black' ? dark : material;
   const depth = opts.width / opts.diameter * 1.8;
   const face = preset.bolts ? .23 : .33;
-  const centre = ['deep7', 'concave9'].includes(opts.design) ? -.1 : -.035;
+  const centre = preset.centre ?? (['deep7', 'concave9'].includes(opts.design) ? -.12 : -.045);
 
   // A closed, turned-aluminium barrel profile includes bead seats and both rolled lips.
   lathe([[.958, -face + .046], [1.005, -face + .046], [1.025, -face + .05], [1.029, -face + .055],
@@ -267,43 +468,75 @@ export function createWheel(input = {}) {
   lathe([[.957, -face], [1.008, -face], [1.028, -face + .012], [1.024, -face + .038], [.96, -face + .04], [.957, -face]], lipMat, group);
   lathe([[.952, depth - face - .025], [1.005, depth - face - .025], [1.009, depth - face], [.954, depth - face], [.952, depth - face - .025]], material, group);
 
+  // The turned lip has narrow tooling grooves and a rounded inner shoulder.
+  // These stay inside the measured 1.032-unit rim silhouette used for photo fit.
+  for (const radius of [.969, .989, 1.015]) {
+    const groove = mesh(new THREE.TorusGeometry(radius, .00125, 6, 192), cutMetal, group);
+    groove.position.z = face + .0006; groove.castShadow = false;
+  }
+  const lipShoulder = mesh(new THREE.TorusGeometry(.953, .0055, 10, 192), lipMat, group);
+  lipShoulder.position.z = face - .035;
+  for (const distance of [.1, Math.max(.16, depth - .1)]) {
+    const rib = mesh(new THREE.TorusGeometry(.934, .007, 10, 128), inner, group);
+    rib.position.z = face - distance;
+  }
+  if (preset.wideLip) {
+    const radius = preset.endRadius - .012;
+    lathe([[radius, -face + .045], [radius, -face + .01], [radius + .025, -face], [.957, -face], [.957, -face + .045], [radius, -face + .045]], lipMat, group);
+    for (const radius of [.886, .918, .947]) {
+      const tooling = mesh(new THREE.TorusGeometry(radius, .0012, 6, 160), cutMetal, group); tooling.position.z = face + .0006; tooling.castShadow = false;
+    }
+  }
+  if (preset.ventRing) {
+    const annulus = circleShape(.976, [[0, 0, preset.endRadius - .012]]), vents = preset.ventCount || 16;
+    for (let i = 0; i < vents; i++) {
+      const angle = i * TAU / vents, hole = new THREE.Path();
+      const width = .26, bottom = preset.endRadius + .025, top = .95, rounding = .006;
+      const path = new THREE.Path();
+      path.moveTo(-width / 2 + rounding, bottom); path.lineTo(width / 2 - rounding, bottom);
+      path.quadraticCurveTo(width / 2, bottom, width / 2, bottom + rounding); path.lineTo(width / 2, top - rounding);
+      path.quadraticCurveTo(width / 2, top, width / 2 - rounding, top); path.lineTo(-width / 2 + rounding, top);
+      path.quadraticCurveTo(-width / 2, top, -width / 2, top - rounding); path.lineTo(-width / 2, bottom + rounding);
+      path.quadraticCurveTo(-width / 2, bottom, -width / 2 + rounding, bottom);
+      path.getPoints(6).forEach((point, index) => {
+        const x = point.x * Math.cos(angle) - point.y * Math.sin(angle), y = point.x * Math.sin(angle) + point.y * Math.cos(angle);
+        if (index === 0) hole.moveTo(x, y); else hole.lineTo(x, y);
+      });
+      hole.closePath(); annulus.holes.push(hole);
+    }
+    const ring = mesh(beveled(annulus, .041, .004), material, group); ring.position.z = face - .047; ring.name = 'Perforated_outer_ring';
+  }
+
+  const spokeGeometries = new Map();
   const spoke = (angle, branch = 0, style = preset.style) => {
-    const shape = new THREE.Shape();
-    const end = preset.bolts ? .84 : .969;
+    const end = preset.endRadius || (preset.bolts ? .84 : .969);
     const width = preset.width;
     const start = style === 'split' ? .21 : .18;
     const bend = ['twist', 'turbine'].includes(style) ? (opts.mirror ? -.15 : .15) : branch;
-    shape.moveTo(-width * 2.15, start);
-    shape.bezierCurveTo(-width * 1.6, .32, bend - width * .54, .55, bend - width * .49, end);
-    shape.lineTo(bend + width * .49, end);
-    shape.bezierCurveTo(bend + width * .45, .55, width * 1.6, .32, width * 2.15, start);
-    shape.quadraticCurveTo(0, start - .045, -width * 2.15, start);
-    const geometry = beveled(shape, .055, .009);
-    const positions = geometry.attributes.position;
-    for (let i = 0; i < positions.count; i++) {
-      const radius = Math.hypot(positions.getX(i), positions.getY(i));
-      const t = THREE.MathUtils.smoothstep(radius, .22, .98);
-      positions.setZ(i, positions.getZ(i) + centre + (face - centre - .07) * t);
+    const key = [start, bend].join(',');
+    if (!spokeGeometries.has(key)) {
+      const parameters = { ...preset, width, start, end, bend, centre, face };
+      spokeGeometries.set(key, preset.forkAt || preset.slots?.length || preset.rounded || preset.flatFace ? perforatedSpokeGeometry(parameters) : spokeGeometry(parameters));
     }
-    geometry.computeVertexNormals();
-    const item = mesh(geometry, material, group); item.rotation.z = angle;
+    const item = mesh(spokeGeometries.get(key), spokeMaterial, group); item.rotation.z = angle; item.name = 'Forged_spoke';
   };
 
   for (let i = 0; i < preset.count; i++) {
-    const angle = i * TAU / preset.count;
-    if (preset.style === 'fork' || preset.style === 'split') { spoke(angle - .09, -.06); spoke(angle + .09, .06); }
+    const angle = i * TAU / preset.count + (preset.spokeRotation || 0);
+    if (preset.forkAt) spoke(angle);
+    else if (preset.style === 'fork' || preset.style === 'split') { spoke(angle - .09, -.06); spoke(angle + .09, .06); }
     else if (preset.style === 'mesh') { spoke(angle, -.18, 'mesh'); spoke(angle, .18, 'mesh'); }
     else spoke(angle);
   }
 
   // Through-drilled mounting holes and machined bevels around each seat.
-  const holePositions = Array.from({ length: Math.round(opts.bolts) }, (_, i) => {
-    const a = i * TAU / opts.bolts + Math.PI / opts.bolts;
+  const holePositions = Array.from({ length: preset.centerLock ? 0 : Math.round(opts.bolts) }, (_, i) => {
+    const a = i * TAU / opts.bolts + (preset.lugRotation ?? Math.PI / opts.bolts);
     return [Math.sin(a) * .22, Math.cos(a) * .22, .051];
   });
   const hubShape = new THREE.Shape();
   const hubPoints = Array.from({ length: 100 }, (_, i) => {
-    const a = i * TAU / 100, radius = .285 - .013 * Math.cos(a * Math.round(opts.bolts));
+    const a = i * TAU / 100, radius = preset.centerLock ? .205 - .003 * Math.cos(a * 12) : .285 - .013 * Math.cos(a * Math.round(opts.bolts));
     return new THREE.Vector2(Math.sin(a) * radius, Math.cos(a) * radius);
   });
   hubShape.moveTo(hubPoints[0].x, hubPoints[0].y);
@@ -311,33 +544,58 @@ export function createWheel(input = {}) {
   for (const [x, y, r] of [[0, 0, .102], ...holePositions]) { const hole = new THREE.Path(); hole.absarc(x, y, r, 0, TAU, false); hubShape.holes.push(hole); }
   const hub = mesh(beveled(hubShape, .074, .015), material, group);
   hub.position.z = centre - .004;
+  const hubRelief = mesh(new THREE.TorusGeometry(.146, .0018, 8, 96), cutMetal, group);
+  hubRelief.position.z = centre + .084; hubRelief.castShadow = false;
+  if (preset.centerLock) {
+    const lockShape = new THREE.Shape();
+    for (let i = 0; i <= 12; i++) {
+      const angle = i * TAU / 12, x = Math.cos(angle) * .137, y = Math.sin(angle) * .137;
+      if (i === 0) lockShape.moveTo(x, y); else lockShape.lineTo(x, y);
+    }
+    const bore = new THREE.Path(); bore.absarc(0, 0, .106, 0, TAU, true); lockShape.holes.push(bore);
+    const lockNut = mesh(beveled(lockShape, .023, .004), machined, group); lockNut.position.z = centre + .083; lockNut.name = 'Centre_lock_nut';
+  }
+  const lugShape = circleShape(.033), socket = new THREE.Path();
+  for (let i = 0; i <= 6; i++) {
+    const angle = -i * TAU / 6 + Math.PI / 6, x = Math.cos(angle) * .014, y = Math.sin(angle) * .014;
+    if (i === 0) socket.moveTo(x, y); else socket.lineTo(x, y);
+  }
+  lugShape.holes.push(socket);
+  const lugGeometry = holePositions.length ? beveled(lugShape, .018, .003) : null;
   for (const [x, y] of holePositions) {
     const seat = lathe([[.046, 0], [.057, 0], [.060, -.014], [.052, -.024], [.046, -.019], [.046, 0]], lipMat, group, 48);
     seat.position.set(x, y, centre + .079);
     const recess = mesh(new THREE.CylinderGeometry(.043, .043, .018, 32), dark, group);
     recess.rotation.x = Math.PI / 2; recess.position.set(x, y, centre + .077);
+    const lug = mesh(lugGeometry, polished, group); lug.position.set(x, y, centre + .077); lug.name = 'Recessed_hex_lug';
+    const washer = mesh(new THREE.TorusGeometry(.0375, .0024, 8, 40), machined, group);
+    washer.position.set(x, y, centre + .083);
   }
-  if (opts.cap !== 'none') {
-    const capMat = ['same', 'body'].includes(opts.cap) ? material : opts.cap === 'silver' ? polished : dark;
-    const cap = mesh(new THREE.CylinderGeometry(.102, .106, .05, 96), capMat, group);
-    cap.rotation.x = Math.PI / 2; cap.position.z = centre + .073;
-    const badgeMat = new THREE.MeshStandardMaterial({ map: capTexture(opts), transparent: true, depthWrite: false, roughness: .29, metalness: .3 });
-    const badge = mesh(new THREE.CircleGeometry(.092, 96), badgeMat, group); badge.position.z = centre + .1;
-    badge.name = 'Oarts_cap_logo'; badge.castShadow = false;
-    const capRing = mesh(new THREE.TorusGeometry(.099, .003, 12, 96), polished, group); capRing.position.z = centre + .101;
-  }
+  addOartsCap(THREE, group, { ...opts, frontZ: centre + .101, radius: .111 });
 
   // Valve stem and anodised cap are separately modelled.
   const valve = mesh(new THREE.CylinderGeometry(.013, .019, .074, 20), dark, group);
   valve.rotation.x = Math.PI / 2; valve.position.set(.13, -.91, face + .01);
   const valveCap = mesh(new THREE.CylinderGeometry(.017, .017, .028, 12), polished, group);
   valveCap.rotation.x = Math.PI / 2; valveCap.position.set(.13, -.91, face + .048);
+  const valveThreads = new THREE.InstancedMesh(new THREE.TorusGeometry(.018, .0011, 6, 20), dark, 3);
+  const valveTransform = new THREE.Object3D();
+  for (let i = 0; i < 3; i++) {
+    valveTransform.position.set(.13, -.91, face + .034 + i * .006); valveTransform.updateMatrix(); valveThreads.setMatrixAt(i, valveTransform.matrix);
+  }
+  group.add(valveThreads);
   if (preset.bolts) {
     lathe([[.84, -face], [.96, -face], [.96, -face + .05], [.84, -face + .05], [.84, -face]], lipMat, group);
-    const boltGeometry = new THREE.CylinderGeometry(.019, .019, .022, 6);
+    const boltGeometry = new THREE.CylinderGeometry(.019, .019, .022, 12);
     const bolts = new THREE.InstancedMesh(boltGeometry, polished, 32), dummy = new THREE.Object3D();
     for (let i = 0; i < 32; i++) { const a = i * TAU / 32; dummy.position.set(Math.sin(a) * .896, Math.cos(a) * .896, face + .009); dummy.rotation.x = Math.PI / 2; dummy.updateMatrix(); bolts.setMatrixAt(i, dummy.matrix); }
     bolts.castShadow = true; group.add(bolts);
+    const sockets = new THREE.InstancedMesh(new THREE.CircleGeometry(.007, 6), dark, 32);
+    for (let i = 0; i < 32; i++) {
+      const a = i * TAU / 32; dummy.position.set(Math.sin(a) * .896, Math.cos(a) * .896, face + .0205);
+      dummy.rotation.set(0, 0, a); dummy.updateMatrix(); sockets.setMatrixAt(i, dummy.matrix);
+    }
+    group.add(sockets);
   }
   group.userData.options = opts; return group;
 }
@@ -365,19 +623,21 @@ function contactShadow() {
 export async function mount(container, input = {}) {
   if (!(container instanceof Element)) throw new TypeError('3D showroom potřebuje platný kontejner.');
   if (input.signal?.aborted) throw new DOMException('Náhled byl zrušen.', 'AbortError');
+  // Validate before waiting for textures or replacing an existing valid viewer.
+  const initialOptions = options(input);
   await waitForCapLogo(input.signal);
   if (input.signal?.aborted) throw new DOMException('Náhled byl zrušen.', 'AbortError');
   active.get(container)?.dispose();
-  let opts = options(input), disposed = false, model = null, carModel = null, generation = 0;
+  let opts = initialOptions, disposed = false, model = null, carModel = null, generation = 0;
   let asset = null, modelMetadata = null, paintMaterials = [], installedWheels = [];
   let loadAbort = null, parsing = null;
-  const registeredAsset = () => window.NFWVehicleModels.get(opts.vehicleAsset?.id || opts.vehicleAsset || '');
+  const registeredAsset = () => window.NFWVehicleModels.get(opts.vehicleAsset?.id || opts.vehicleAsset);
   let renderer;
   const scene = new THREE.Scene();
   const transparent = input.thumbnail === true && input.transparent === true;
-  scene.background = transparent ? null : new THREE.Color(input.background || '#151718');
-  if (!transparent) scene.fog = new THREE.Fog(scene.background, 12, 35);
-  const camera = new THREE.PerspectiveCamera(34, 1, .03, 70);
+  scene.background = transparent ? null : new THREE.Color(input.background || '#191d22');
+  if (!transparent) scene.fog = new THREE.Fog(scene.background, 7, 22);
+  const camera = new THREE.PerspectiveCamera(32, 1, .03, 70);
   const status = document.createElement('div'); status.className = 'showroom-status'; status.setAttribute('role', 'status');
   status.style.cssText = 'position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:24px;color:#c8c4bc;font:13px/1.6 Arial;pointer-events:none;z-index:2';
   status.textContent = 'Připravuji 3D studio…'; container.append(status);
@@ -388,16 +648,17 @@ export async function mount(container, input = {}) {
     status.textContent = '3D náhled není na tomto zařízení dostupný. Prohlédněte si fotografie produktu.';
     input.onError?.(error); throw error;
   }
-  renderer.setPixelRatio(input.thumbnail ? 1 : Math.min(2, Math.max(opts.mode === 'car' ? 1.5 : 1, window.devicePixelRatio || 1)));
+  const mobileStudio = container.clientWidth < 650 || matchMedia('(pointer: coarse)').matches;
+  renderer.setPixelRatio(input.thumbnail ? 1 : Math.min(mobileStudio ? 1.75 : 2, Math.max(input.highQuality && !mobileStudio ? 2 : 1, window.devicePixelRatio || 1)));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1;
-  renderer.shadowMap.enabled = !input.thumbnail || input.shadows === true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = .97;
+  renderer.shadowMap.enabled = !input.thumbnail || input.shadows === true;
+  renderer.shadowMap.type = !mobileStudio && opts.mode === 'wheel' ? THREE.VSMShadowMap : THREE.PCFSoftShadowMap;
   renderer.domElement.style.cssText = 'width:100%;height:100%;display:block;touch-action:pan-y';
   renderer.domElement.setAttribute('aria-label', 'Interaktivní 3D model. Tažením otáčejte, kolečkem přibližujte.');
   renderer.domElement.tabIndex = 0; container.append(renderer.domElement);
-  const pmrem = new THREE.PMREMGenerator(renderer), room = new RoomEnvironment();
-  const environment = pmrem.fromScene(room, .055); scene.environment = environment.texture;
-  scene.environmentIntensity = 1.05; room.dispose(); pmrem.dispose();
+  const environment = studioEnvironment(renderer); scene.environment = environment.texture;
+  scene.environmentIntensity = 1.1;
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true; controls.dampingFactor = .075; controls.enablePan = false;
   controls.minPolarAngle = .13; controls.maxPolarAngle = Math.PI * .49;
@@ -406,20 +667,25 @@ export async function mount(container, input = {}) {
   controls.autoRotate = opts.autoRotate && !reduced.matches; controls.autoRotateSpeed = .55;
   const motionChange = () => { controls.autoRotate = opts.autoRotate && !reduced.matches; };
   reduced.addEventListener('change', motionChange);
-  const key = new THREE.DirectionalLight('#fff6e8', 2.1); key.position.set(-3, 6, 5); key.castShadow = renderer.shadowMap.enabled;
-  key.shadow.mapSize.set(input.highQuality && container.clientWidth > 650 ? 4096 : 2048, input.highQuality && container.clientWidth > 650 ? 4096 : 2048); key.shadow.camera.left = key.shadow.camera.bottom = -4;
-  key.shadow.camera.right = key.shadow.camera.top = 4; key.shadow.normalBias = .012; key.shadow.bias = -.00003;
-  key.shadow.camera.near = .5; key.shadow.camera.far = 18;
-  scene.add(key);
-  const fill = new THREE.DirectionalLight('#bacbdf', 1.5); fill.position.set(4, 3, -4); scene.add(fill);
+  const key = new THREE.DirectionalLight('#fff7ed', 2.2); key.position.set(-3.8, 5.5, 5); key.castShadow = renderer.shadowMap.enabled;
+  // VSM blurs a real area-like product shadow with two bounded 2048px targets.
+  // Mobile keeps the cheaper depth-only PCF map and reduced contact shadow.
+  const shadowSize = mobileStudio ? 1024 : opts.mode === 'wheel' ? 2048 : input.highQuality ? 4096 : 2048;
+  const shadowBounds = opts.mode === 'car' ? 4.5 : 2.1;
+  key.shadow.mapSize.set(shadowSize, shadowSize); key.shadow.camera.left = key.shadow.camera.bottom = -shadowBounds;
+  key.shadow.camera.right = key.shadow.camera.top = shadowBounds; key.shadow.normalBias = .014; key.shadow.bias = .0002;
+  key.shadow.camera.near = .5; key.shadow.camera.far = 18; key.shadow.radius = mobileStudio ? 3 : 12; key.shadow.blurSamples = 8;
+  key.target.position.set(0, .75, 0); scene.add(key, key.target);
+  const fill = new THREE.DirectionalLight('#e1eaff', .58); fill.position.set(4, 2.2, 3); scene.add(fill);
+  const rimLight = new THREE.DirectionalLight('#ffffff', 1.1); rimLight.position.set(2, 4, -4); scene.add(rimLight);
   // A charcoal cyclorama and soft contact shadow keep the studio free of hard sun shadows.
-  const floor = mesh(new THREE.PlaneGeometry(80, 80), new THREE.MeshStandardMaterial({ color: '#0a0d11', roughness: .78, metalness: 0, envMapIntensity: .05 }), scene);
+  const floor = mesh(new THREE.PlaneGeometry(80, 80), new THREE.MeshStandardMaterial({ color: '#12161c', roughness: .8, metalness: .05, envMapIntensity: .15 }), scene);
   floor.rotation.x = -Math.PI / 2; floor.castShadow = false; floor.position.y = -.015;
   const shadow = mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: contactShadow(), transparent: true, depthWrite: false, opacity: .85 }), scene);
   shadow.rotation.x = -Math.PI / 2; shadow.position.y = -.009; shadow.castShadow = shadow.receiveShadow = false;
   if (transparent) floor.visible = shadow.visible = false;
   const draco = new DRACOLoader(); draco.setDecoderPath(DRACO_URL); draco.setWorkerLimit(2);
-  const loader = new GLTFLoader(); loader.setDRACOLoader(draco);
+  const loader = new GLTFLoader(); loader.setDRACOLoader(draco); loader.setMeshoptDecoder(MeshoptDecoder);
   let visible = true, fitScale = 1;
   const intersection = new IntersectionObserver(entries => { visible = entries[0]?.isIntersecting !== false; }, { rootMargin: '100px' });
   intersection.observe(container);
@@ -457,7 +723,7 @@ export async function mount(container, input = {}) {
       camera.position.fromArray(view?.position || [-5.8, 2.65, 6.1]); controls.target.fromArray(view?.target || [0, .85, 0]);
       controls.minDistance = view?.minDistance || 3; controls.maxDistance = view?.maxDistance || 12;
     }
-    else { camera.position.set(2.2, 1.6, 4.4); controls.target.set(0, 1.02, -.08); controls.minDistance = 2.6; controls.maxDistance = 7; }
+    else { camera.position.set(-2.05, 1.58, 3.8); controls.target.set(0, 1.03, -.075); controls.minDistance = 2.6; controls.maxDistance = 7; }
     fitScale = Math.max(1, (opts.mode === 'car' ? 1.25 : .85) / camera.aspect);
     camera.position.sub(controls.target).multiplyScalar(fitScale).add(controls.target);
     controls.minDistance *= fitScale; controls.maxDistance *= fitScale;
@@ -482,10 +748,25 @@ export async function mount(container, input = {}) {
   }
   async function build(modeChanged = false) {
     const token = ++generation;
+    const lightBounds = opts.mode === 'car' ? 4.5 : 2.1;
+    const shadowType = !mobileStudio && opts.mode === 'wheel' ? THREE.VSMShadowMap : THREE.PCFSoftShadowMap;
+    const desiredShadowSize = mobileStudio ? 1024 : opts.mode === 'wheel' ? 2048 : input.highQuality ? 4096 : 2048;
+    if (renderer.shadowMap.type !== shadowType || key.shadow.mapSize.x !== desiredShadowSize) {
+      renderer.shadowMap.type = shadowType;
+      key.shadow.map?.dispose(); key.shadow.map = null;
+      key.shadow.mapPass?.dispose(); key.shadow.mapPass = null;
+      key.shadow.mapSize.set(desiredShadowSize, desiredShadowSize);
+      key.shadow.needsUpdate = true;
+      floor.material.needsUpdate = true;
+    }
+    key.shadow.radius = mobileStudio || opts.mode === 'car' ? 3 : 12;
+    key.shadow.camera.left = key.shadow.camera.bottom = -lightBounds;
+    key.shadow.camera.right = key.shadow.camera.top = lightBounds;
+    key.shadow.camera.updateProjectionMatrix();
     loadAbort?.abort(); loadAbort = new AbortController();
     const signal = loadAbort.signal;
     try {
-    await prepareWheelGeometry(opts.design, signal, opts.referenceSurface);
+    await prepareWheelGeometry(opts.design, signal, opts.referenceSurface, opts.preferExportedGeometry);
     if (disposed || generation !== token) return;
     if (model) { model.removeFromParent(); disposeObject(model); model = null; carModel = null; }
     installedWheels = []; paintMaterials = [];
@@ -563,7 +844,7 @@ export async function mount(container, input = {}) {
       if (disposed) return;
       const previous = opts; opts = options({ ...opts, ...patch }); motionChange();
       const changed = previous.mode !== opts.mode || (opts.mode === 'car' && asset?.id !== registeredAsset()?.id);
-      const wheelChanged = ['design','color','finish','lip','cap','mirror','bolts','referenceSurface', ...(opts.mode === 'wheel' ? ['width','diameter'] : [])].some(key => previous[key] !== opts[key]);
+      const wheelChanged = ['design','color','finish','lip','cap','mirror','bolts','referenceSurface','preferExportedGeometry', ...(opts.mode === 'wheel' ? ['width','diameter'] : [])].some(key => previous[key] !== opts[key]);
       if (changed || !model || (wheelChanged && opts.mode === 'wheel') || previous.design !== opts.design) await build(changed);
       else if (opts.mode === 'car') {
         if (wheelChanged) changeWheelsOnCar();
@@ -579,9 +860,10 @@ export async function mount(container, input = {}) {
       const views = { front: [-8, 1.6, 0], side: [0, 1.55, 8], rear: [8, 1.7, 0], detail: [-2.55, .68, 2.8] };
       if (preset === 'perspective') { resetCamera(); return; }
       if (opts.mode === 'wheel') {
-        const wheelViews = {front:[0,1.033,5.1], side:[5.1,1.033,0], rear:[0,1.033,-5.1]};
+        const wheelViews = {front:[0,1.033,4.5], side:[4.2,1.033,0], rear:[0,1.033,-4.5]};
         if (!wheelViews[preset]) return;
-        controls.autoRotate = false; controls.target.set(0,1.033,-.08); camera.position.fromArray(wheelViews[preset]);
+        controls.autoRotate = false; controls.target.set(0,1.033,-.075); camera.position.fromArray(wheelViews[preset]);
+        camera.position.sub(controls.target).multiplyScalar(fitScale).add(controls.target);
         controls.update(); render(); return;
       }
       if (opts.mode !== 'car' || !views[preset]) return;
@@ -612,6 +894,7 @@ export async function mount(container, input = {}) {
       renderer.domElement.removeEventListener('dblclick', resetCamera);
       // Finish an in-flight CPU decode, then release workers; the WebGL context is released now.
       if (parsing) parsing.then(() => draco.dispose(), () => draco.dispose()); else draco.dispose();
+      scene.traverse(item => { item.shadow?.map?.dispose(); item.shadow?.mapPass?.dispose(); });
       disposeObject(scene); environment.dispose(); renderer.dispose(); renderer.forceContextLoss();
       renderer.domElement.remove(); status.remove(); if (active.get(container) === controller) active.delete(container);
       delete container.dataset.vehicleAsset; delete container.dataset.mountedWheels;
@@ -643,7 +926,7 @@ export function renderThumbnail(input = {}) {
     clearTimeout(thumbnailIdleTimer);
     try {
       const size = Math.round(clamp(input.size, 128, 1600, 400));
-      const settings = JSON.stringify([size, input.transparent === true, input.background || '#151718', input.shadows === true]);
+      const settings = JSON.stringify([size, input.transparent === true, input.background || '#191d22', input.shadows === true]);
       if (thumbnailController && thumbnailSettings !== settings) disposeThumbnails();
       if (!thumbnailController) {
         thumbnailHost = document.createElement('div'); thumbnailHost.style.cssText = `position:fixed;left:-4000px;top:0;width:${size}px;height:${size}px;`;
@@ -662,9 +945,26 @@ export function renderThumbnail(input = {}) {
 
 // A separate transparent renderer supplies actual wheel geometry for photo fitting.
 // Cached snapshots are independent of this GPU context and must be treated as read-only.
-const FACE_CACHE_LIMIT = 30, FACE_IDLE_MS = 10000;
+const FACE_CACHE_LIMIT = 30, FACE_CACHE_PIXELS = 8 * 1024 * 1024, FACE_IDLE_MS = 10000;
 const faceCache = new Map();
 let faceQueue = Promise.resolve(), faceStudio = null, faceIdleTimer;
+
+function photoLightOptions(input = {}) {
+  const value = (name, min, max, fallback) => Number(clamp(input[name], min, max, fallback).toFixed(3));
+  return Object.freeze({
+    exposure: value('exposure', .45, 1.5, .92),
+    environmentIntensity: value('environmentIntensity', .15, 1.4, .78),
+    keyIntensity: value('keyIntensity', .2, 5, 2.4),
+    keyAzimuth: value('keyAzimuth', -Math.PI, Math.PI, -.9),
+    keyElevation: value('keyElevation', .1, 1.4, .95),
+    warmth: value('warmth', -1, 1, 0),
+    // An optional caliper is shown only when the caller has observed one in the
+    // source photo. The default rotor intentionally makes no claim about brakes.
+    caliper: input.caliper === true,
+    brakeColor: hex(input.brakeColor, '#3b4146'),
+    brakeSide: input.brakeSide === -1 ? -1 : 1,
+  });
+}
 
 function faceOptions(input) {
   const opts = options({ ...input, color: hex(input.colorHex, hex(input.color, DEFAULT_WHEEL_COLOUR)), autoRotate: false });
@@ -673,10 +973,51 @@ function faceOptions(input) {
     lip: ['same', 'polished', 'chrome', 'machined', 'black'].includes(opts.lip) ? opts.lip : 'same',
     cap: ['none', 'same', 'body', 'silver', 'black', 'carbon'].includes(opts.cap) ? opts.cap : 'black',
     diameter: opts.diameter, width: opts.width, bolts: Math.round(opts.bolts), mirror: Boolean(input.mirror),
-    size: Math.round(clamp(input.size, 256, 512, 512)),
+    size: Math.round(clamp(input.size, 256, 1024, 512)),
     yaw: Number(clamp(input.yaw, -1.2, 1.2, 0).toFixed(4)),
-    pitch: Number(clamp(input.pitch, -.8, .8, 0).toFixed(4))
+    pitch: Number(clamp(input.pitch, -.8, .8, 0).toFixed(4)),
+    photoLight: photoLightOptions(input.photoLight && typeof input.photoLight === 'object' ? input.photoLight : {}),
   };
+}
+
+function outdoorFaceEnvironment(renderer) {
+  // A linear HDR sky hemisphere supplies broad outdoor reflections. The lower
+  // hemisphere is deliberately darker: a wheel mounted on a car sees the road
+  // and wheel well, not the surrounding white softboxes of the product studio.
+  const width = 512, height = 256, pixels = new Float32Array(width * height * 4);
+  const sky = new THREE.Color(), reflection = new THREE.Color(), ground = new THREE.Color(.17, .18, .17);
+  const direction = new THREE.Vector3(), sun = new THREE.Vector3(-.66, .71, .24).normalize();
+  for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
+    const longitude = (x + .5) / width * TAU, latitude = (y + .5) / height * Math.PI;
+    // DataTexture row zero is v=0; Three's equirectangular sampling maps that
+    // row to the lower hemisphere, so elevation increases with the row index.
+    direction.set(Math.sin(latitude) * Math.cos(longitude), -Math.cos(latitude), Math.sin(latitude) * Math.sin(longitude));
+    const elevation = direction.y, upper = THREE.MathUtils.smoothstep(elevation, -.09, .8);
+    // A metal face reflects the horizon almost directly. Keep that hemisphere
+    // bright enough to represent daylight radiance; an LDR-looking value of .1
+    // would turn silver aluminium almost black after exposure and tone mapping.
+    sky.setRGB(1.35 + upper * .45, 1.39 + upper * .48, 1.46 + upper * .54);
+    reflection.copy(sky);
+    if (elevation < .28) {
+      const landscape = .78 + .1 * Math.sin(longitude * 5.1) + .07 * Math.cos(longitude * 13.7);
+      const horizon = THREE.MathUtils.smoothstep(elevation, -.75, .28);
+      reflection.copy(ground).multiplyScalar(landscape).lerp(sky, horizon);
+    }
+    // A broad highlight represents a bright patch of sky, not a sharp studio
+    // strip. Actual light direction and strength are adjusted per photograph.
+    const brightSky = 2.3 * Math.exp((direction.dot(sun) - 1) * 24);
+    const index = (y * width + x) * 4;
+    pixels[index] = reflection.r + brightSky;
+    pixels[index + 1] = reflection.g + brightSky;
+    pixels[index + 2] = reflection.b + brightSky * .96;
+    pixels[index + 3] = 1;
+  }
+  const skyTexture = new THREE.DataTexture(pixels, width, height, THREE.RGBAFormat, THREE.FloatType);
+  skyTexture.mapping = THREE.EquirectangularReflectionMapping;
+  skyTexture.needsUpdate = true;
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  const environment = pmrem.fromEquirectangular(skyTexture);
+  skyTexture.dispose(); pmrem.dispose(); return environment;
 }
 
 function createFaceStudio() {
@@ -685,27 +1026,56 @@ function createFaceStudio() {
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = .86;
+  renderer.toneMappingExposure = .9;
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   const scene = new THREE.Scene();
   const camera = new THREE.OrthographicCamera(-1.052, 1.052, 1.052, -1.052, .01, 15);
   camera.position.set(0, 0, 5); camera.lookAt(0, 0, 0);
-  const pmrem = new THREE.PMREMGenerator(renderer), room = new RoomEnvironment();
-  const environment = pmrem.fromScene(room, .055);
-  scene.environment = environment.texture; scene.environmentIntensity = .52;
-  room.dispose(); pmrem.dispose();
+  const environment = outdoorFaceEnvironment(renderer);
+  scene.environment = environment.texture; scene.environmentIntensity = .58;
   // A side-biased key reveals the spoke dishes; restrained fill preserves depth.
-  const key = new THREE.DirectionalLight('#fffdf7', 3.5); key.position.set(-4.5, 5.5, 2.8);
+  const key = new THREE.DirectionalLight('#fffdf7', 3.1); key.position.set(-4.5, 5.5, 2.8);
   key.castShadow = true; key.shadow.mapSize.set(1024, 1024);
   Object.assign(key.shadow.camera, { left: -1.65, right: 1.65, top: 1.65, bottom: -1.65, near: .1, far: 14 });
-  key.shadow.normalBias = .002; key.shadow.bias = -.00006; scene.add(key);
-  const fill = new THREE.DirectionalLight('#e0e2e3', .2); fill.position.set(4, .5, 2.5); scene.add(fill);
-  const edge = new THREE.DirectionalLight('#ffffff', .8); edge.position.set(3, 4, -3); scene.add(edge);
-  return { renderer, scene, camera, environment };
+  key.shadow.normalBias = .01; key.shadow.bias = .00015; scene.add(key);
+  const fill = new THREE.DirectionalLight('#e0e8f1', .32); fill.position.set(4, .5, 2.5); scene.add(fill);
+  const edge = new THREE.DirectionalLight('#ffffff', 1); edge.position.set(3, 4, -3); scene.add(edge);
+  return { renderer, scene, camera, environment, key, fill, edge };
 }
 
-function addFaceBrakes(group, face) {
+function setFaceLight(studio, light) {
+  studio.renderer.toneMappingExposure = light.exposure;
+  studio.scene.environmentIntensity = light.environmentIntensity;
+  studio.scene.environmentRotation.y = light.keyAzimuth + .9;
+  const horizontal = Math.cos(light.keyElevation) * 7;
+  studio.key.position.set(Math.sin(light.keyAzimuth) * horizontal, Math.sin(light.keyElevation) * 7, Math.cos(light.keyAzimuth) * horizontal);
+  studio.key.intensity = light.keyIntensity;
+  const tint = new THREE.Color('#f7f7f4');
+  tint.lerp(new THREE.Color(light.warmth >= 0 ? '#ffe5bf' : '#d8e8ff'), Math.abs(light.warmth) * .35);
+  studio.key.color.copy(tint);
+  studio.fill.intensity = Math.min(.5, .19 + light.environmentIntensity * .16);
+  studio.edge.intensity = .32;
+}
+
+function rotorSurface() {
+  const size = 512, pixels = new Uint8Array(size * size * 4);
+  let seed = 317;
+  for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    const radius = Math.hypot((x + .5) / size - .5, (y + .5) / size - .5) * 2;
+    const turning = Math.sin(radius * 1450) * 7 + Math.sin(radius * 293) * 3;
+    const grain = ((seed >>> 24) / 255 - .5) * 8;
+    const value = Math.round(188 + turning + grain), index = (y * size + x) * 4;
+    pixels[index] = value; pixels[index + 1] = value; pixels[index + 2] = value; pixels[index + 3] = 255;
+  }
+  const texture = new THREE.DataTexture(pixels, size, size, THREE.RGBAFormat);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.generateMipmaps = true; texture.minFilter = THREE.LinearMipmapLinearFilter;
+  texture.magFilter = THREE.LinearFilter; texture.needsUpdate = true; return texture;
+}
+
+function addFaceBrakes(group, face, light) {
   // This black backing is drawn first, without writing depth. Its projection follows
   // the outer rim exactly, so the original photograph's spokes never shine through.
   // The 0.004-unit black perimeter is only a rim edge, not an added tyre.
@@ -715,9 +1085,11 @@ function addFaceBrakes(group, face) {
   backing.castShadow = backing.receiveShadow = false;
   // The brake is deliberately neutral: this is a wheel-design illustration, not a
   // claim that the photographed vehicle has these particular brake components.
-  const brake = new THREE.MeshStandardMaterial({ color: '#55544f', roughness: .68, metalness: .65, envMapIntensity: .28 });
+  const brake = new THREE.MeshStandardMaterial({ color: '#686a67', roughness: .72, metalness: .65, envMapIntensity: .42 });
   const rotor = mesh(new THREE.CylinderGeometry(.79, .79, .045, 160), brake, group);
   rotor.rotation.x = Math.PI / 2; rotor.position.z = -.2;
+  const wornFace = mesh(new THREE.CircleGeometry(.788, 160), brake.clone(), group);
+  wornFace.material.map = rotorSurface(); wornFace.position.z = -.177;
   const hat = mesh(new THREE.CylinderGeometry(.3, .3, .034, 96), new THREE.MeshStandardMaterial({ color: '#171816', metalness: .5, roughness: .6, envMapIntensity: .2 }), group);
   hat.rotation.x = Math.PI / 2; hat.position.z = -.164;
   const grooves = new THREE.MeshStandardMaterial({ color: '#242623', metalness: .55, roughness: .79, envMapIntensity: .12 });
@@ -725,14 +1097,18 @@ function addFaceBrakes(group, face) {
     const ring = mesh(new THREE.TorusGeometry(radius, .0016, 6, 160), grooves, group);
     ring.position.z = -.176; ring.castShadow = false;
   }
-  const holes = new THREE.InstancedMesh(new THREE.CircleGeometry(.013, 12), new THREE.MeshBasicMaterial({ color: '#11161a', toneMapped: false }), 48);
-  const dummy = new THREE.Object3D();
-  for (let i = 0; i < 48; i++) {
-    const angle = i * TAU / 24 + (i >= 24 ? .075 : 0), radius = i >= 24 ? .69 : .59;
-    dummy.position.set(Math.cos(angle) * radius, Math.sin(angle) * radius, -.1748);
-    dummy.updateMatrix(); holes.setMatrixAt(i, dummy.matrix);
+  if (light.caliper) {
+    const profile = new THREE.Shape();
+    profile.moveTo(-.11, -.28); profile.quadraticCurveTo(-.16, -.27, -.16, -.2);
+    profile.lineTo(-.16, .2); profile.quadraticCurveTo(-.16, .27, -.11, .28);
+    profile.lineTo(.11, .28); profile.quadraticCurveTo(.16, .27, .16, .2);
+    profile.lineTo(.16, -.2); profile.quadraticCurveTo(.16, -.27, .11, -.28); profile.closePath();
+    const caliper = mesh(beveled(profile, .105, .024), new THREE.MeshPhysicalMaterial({ color: light.brakeColor, metalness: .55, roughness: .38, clearcoat: .3, clearcoatRoughness: .24 }), group);
+    caliper.position.set(light.brakeSide * .61, .13, -.16);
+    caliper.rotation.z = light.brakeSide * -.16;
+    const bridge = mesh(new THREE.BoxGeometry(.22, .09, .11), caliper.material, group);
+    bridge.position.set(light.brakeSide * .61, .13, -.12);
   }
-  group.add(holes);
 }
 
 /** Release only the temporary face renderer; existing wheel/car showrooms are untouched. */
@@ -754,6 +1130,10 @@ export function disposeWheelFaces({ clearCache = false } = {}) {
  * radius in pixels. `rimBasis` is the projected front-plane circle basis [a,b,c,d]
  * in raster coordinates (x right, y down), with the rim-face centre as origin.
  * Fit that basis to the target ellipse to preserve parallax without foreshortening twice.
+ * Optional photoLight sets exposure, environmentIntensity, keyIntensity,
+ * keyAzimuth/keyElevation (radians) and warmth (-1 cool, +1 warm). An observed
+ * caliper can be enabled with caliper:true, brakeColor and brakeSide (-1/+1).
+ * Output is capped at 1024 px; all light values participate in the bounded cache.
  */
 export function renderWheelFace(input = {}) {
   const opts = faceOptions(input);
@@ -772,6 +1152,7 @@ export function renderWheelFace(input = {}) {
     try {
       faceStudio ||= createFaceStudio();
       const { renderer, scene, camera } = faceStudio;
+      setFaceLight(faceStudio, opts.photoLight);
       if (renderer.getContext().isContextLost()) throw new Error('Kontext 3D náhledu kola není dostupný.');
       assembly = new THREE.Group();
       const wheel = createWheel(opts), face = frontPlane(opts.design);
@@ -786,18 +1167,21 @@ export function renderWheelFace(input = {}) {
       // The exposed lip sees the sky, but recessed spoke roots and bevel sides
       // receive less light inside the wheel well. This affects only this temporary
       // photo wheel, never the editable studio or its selected material colour.
-      const occludedMaterials = new Map();
+      const occludedMaterials = new Map(), shadedGeometries = new Set();
       for (const part of wheel.children) {
-        if (part.geometry?.type !== 'ExtrudeGeometry') continue;
+        if (part.geometry?.type !== 'ExtrudeGeometry' && !part.geometry?.userData.wheelSpoke) continue;
         const positions = part.geometry.attributes.position, normals = part.geometry.attributes.normal;
-        const colours = new Float32Array(positions.count * 3);
-        for (let index = 0; index < positions.count; index++) {
-          const depth = THREE.MathUtils.smoothstep(positions.getZ(index) + part.position.z, -.08, face);
-          const front = THREE.MathUtils.smoothstep(Math.abs(normals.getZ(index)), .25, .96);
-          const ambientOcclusion = (.66 + depth * .34) * (.72 + front * .28);
-          colours.fill(ambientOcclusion, index * 3, index * 3 + 3);
+        if (!shadedGeometries.has(part.geometry)) {
+          const colours = new Float32Array(positions.count * 3), originalColours = part.geometry.attributes.color;
+          for (let index = 0; index < positions.count; index++) {
+            const depth = THREE.MathUtils.smoothstep(positions.getZ(index) + part.position.z, -.08, face);
+            const front = THREE.MathUtils.smoothstep(Math.abs(normals.getZ(index)), .25, .96);
+            const ambientOcclusion = (.7 + depth * .3) * (.78 + front * .22);
+            for (let channel = 0; channel < 3; channel++) colours[index * 3 + channel] = ambientOcclusion * (originalColours ? originalColours.array[index * 3 + channel] : 1);
+          }
+          part.geometry.setAttribute('color', new THREE.BufferAttribute(colours, 3));
+          shadedGeometries.add(part.geometry);
         }
-        part.geometry.setAttribute('color', new THREE.BufferAttribute(colours, 3));
         // The original material also belongs to lips and seats without a colour
         // attribute. Only these extruded faces use the ambient-occlusion variant.
         const shade = originalMaterial => {
@@ -814,7 +1198,7 @@ export function renderWheelFace(input = {}) {
       for (const originalMaterial of occludedMaterials.keys()) {
         if (!wheel.children.some(part => (Array.isArray(part.material) ? part.material : [part.material]).includes(originalMaterial))) originalMaterial.dispose();
       }
-      addFaceBrakes(wheel, face);
+      addFaceBrakes(wheel, face, opts.photoLight);
       // Pitch/yaw pivot about the rim face, preserving the centre of its ellipse.
       wheel.position.z = -face; assembly.add(wheel);
       assembly.rotation.set(opts.pitch, opts.yaw, 0, 'YXZ');
@@ -840,7 +1224,11 @@ export function renderWheelFace(input = {}) {
         yaw: opts.yaw, pitch: opts.pitch, options: Object.freeze({ ...opts })
       });
       faceCache.set(cacheKey, snapshot);
-      while (faceCache.size > FACE_CACHE_LIMIT) faceCache.delete(faceCache.keys().next().value);
+      let cachedPixels = [...faceCache.values()].reduce((sum, image) => sum + image.width * image.height, 0);
+      while (faceCache.size > FACE_CACHE_LIMIT || cachedPixels > FACE_CACHE_PIXELS) {
+        const oldest = faceCache.keys().next().value, removed = faceCache.get(oldest);
+        faceCache.delete(oldest); cachedPixels -= removed.width * removed.height;
+      }
       assembly.removeFromParent(); disposeObject(assembly); assembly = null;
       faceIdleTimer = setTimeout(disposeWheelFaces, FACE_IDLE_MS);
       return snapshot;
@@ -852,5 +1240,5 @@ export function renderWheelFace(input = {}) {
   faceQueue = job.catch(() => {}); return job;
 }
 
-window.NFWShowroom = { mount, createWheel, prepareWheelGeometry, supports3DDesign, renderThumbnail, disposeThumbnails, renderWheelFace, disposeWheelFaces, ensureCapLogo, get capLogoReady() { return ensureCapLogo(); }, version: '1.6.0', threeVersion: THREE.REVISION };
+window.NFWShowroom = { mount, createWheel, prepareWheelGeometry, supports3DDesign, renderThumbnail, disposeThumbnails, renderWheelFace, disposeWheelFaces, ensureCapLogo, get capLogoReady() { return ensureCapLogo(); }, version: '2.0.0', threeVersion: THREE.REVISION };
 window.dispatchEvent(new CustomEvent('nfw:showroom-ready'));

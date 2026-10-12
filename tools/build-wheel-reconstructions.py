@@ -41,6 +41,9 @@ PROJECT_OPTIONS = {
     'ferrari-812-gloss-black': {'diameter': 21, 'width': 10, 'finish': 'gloss', 'color': '#141619'},
     'apex10': {'diameter': 19, 'width': 9, 'finish': 'gloss', 'color': '#a77b3d'},
 }
+NATIVE_CONTOUR_PATH = ROOT / 'data/wheel-reconstruction-native-contours.json'
+NATIVE_CONTOURS = ({r['id']: r for r in json.loads(NATIVE_CONTOUR_PATH.read_text('utf-8')).get('records', [])}
+                   if NATIVE_CONTOUR_PATH.exists() else {})
 
 
 def digest(path):
@@ -277,6 +280,149 @@ def contours(mask, item):
     return sorted(cleaned, key=lambda s: abs(Polygon(s['outer']).area), reverse=True)
 
 
+def deproject_shape(shape, correction):
+    if not correction:
+        return shape
+    dx, dy = correction['centerOffset']
+    def point(p):
+        x, y = p
+        for _ in range(12):
+            influence = max(0, 1 - x*x - y*y)
+            x, y = p[0] - dx*influence, p[1] - dy*influence
+        return [round(x, 7), round(y, 7)]
+    return {**shape, 'outer': list(map(point, shape['outer'])),
+            'holes': [list(map(point, hole)) for hole in shape.get('holes', [])]}
+
+
+def reviewed_details(details, metal, correction, recessed=False):
+    result = []
+    for detail in details:
+        transformed = deproject_shape(detail, correction)
+        polygon = Polygon(transformed['outer'], transformed.get('holes', [])).buffer(0)
+        # Reliefs must lie on observed metal; blind pockets never open into a
+        # genuine aperture. Leave a narrow physical wall at the source boundary.
+        clipped = polygon.intersection(metal.buffer(-.002 if recessed else -.0008))
+        parts = [clipped] if clipped.geom_type == 'Polygon' else list(getattr(clipped, 'geoms', []))
+        for index, part in enumerate(parts):
+            if part.geom_type != 'Polygon' or part.area < .000025:
+                continue
+            islands=[]
+            if recessed:
+                for boundary in part.interiors:
+                    island=Polygon(boundary).intersection(metal)
+                    island_parts=[island] if island.geom_type=='Polygon' else list(getattr(island,'geoms',[]))
+                    for region in island_parts:
+                        if region.geom_type=='Polygon' and region.area>.000025:
+                            islands.append({'outer':[[round(x,7),round(y,7)] for x,y in list(region.exterior.coords)[:-1]],
+                                'holes':[[[round(x,7),round(y,7)] for x,y in list(h.coords)[:-1]] for h in region.interiors]})
+            result.append({**detail, 'id': f"{detail.get('id', 'detail')}-{index}",
+                'outer': [[round(x, 7), round(y, 7)] for x, y in list(part.exterior.coords)[:-1]],
+                'holes': [[[round(x, 7), round(y, 7)] for x, y in list(h.coords)[:-1]] for h in part.interiors],
+                **({'preservedIslands':islands} if recessed else {})})
+    return result
+
+
+def crown_field(shapes, hints):
+    size = 384
+    mask = np.zeros((size, size), np.uint8)
+    mid = (size - 1) / 2
+    def points(ring):
+        return np.array([[(x+1)*mid, (1-y)*mid] for x, y in ring], np.int32)
+    for shape in shapes:
+        cv2.fillPoly(mask, [points(shape['outer'])], 255)
+        for hole in shape['holes']:
+            cv2.fillPoly(mask, [points(hole)], 0)
+    distance = cv2.distanceTransform(mask, cv2.DIST_L2, 5) / mid
+    crown = np.sin(np.clip(distance / .035, 0, 1) * math.pi / 2)
+    yy, xx = np.mgrid[0:size, 0:size]
+    radius = np.hypot(xx-mid, yy-mid) / mid
+    inner = np.clip((radius-.32)/.09, 0, 1)
+    outer = np.clip((hints.get('lipInnerRadius', .95)-radius)/.06, 0, 1)
+    crown *= inner*inner*(3-2*inner) * outer*outer*(3-2*outer)
+    crown = cv2.GaussianBlur(crown, (0, 0), 2.5)
+    import base64
+    return {'size': size, 'encoding': 'uint8-base64', 'amplitude': min(.0035, hints.get('spokeCrown', .014)*.2),
+            'data': base64.b64encode(np.round(crown*255).astype(np.uint8).tobytes()).decode('ascii'),
+            'method': 'observed-metal-distance-field-cross-section'}
+
+
+def polygon_shapes(geometry, lip_region=None):
+    parts = [geometry] if geometry.geom_type == 'Polygon' else list(getattr(geometry, 'geoms', []))
+    return [{'outer': [[round(x, 8), round(y, 8)] for x, y in list(part.exterior.coords)[:-1]],
+             'holes': [[[round(x, 8), round(y, 8)] for x, y in list(h.coords)[:-1]] for h in part.interiors],
+             **({'lipRegion': lip_region} if lip_region is not None else {})}
+            for part in parts if part.geom_type == 'Polygon' and part.area > 1e-10]
+
+
+def robust_bevel(shape, width, lip_radius=None, curve_steps=1):
+    """Valid planar offsets keep thin apertures intact before the 3D loft.
+
+    Three's per-vertex bevel vectors can cross on dense photo contours. The
+    separately triangulated inset and edge band use Shapely's valid Boolean
+    regions instead. Lip paint is divided on an actual circular boundary.
+    """
+    if width <= 0:
+        return shape
+    metal = Polygon(shape['outer'], shape.get('holes', []))
+    # Wide, visibly rounded edges receive nested quarter-circle strips. Keep
+    # already reviewed narrow bevels within their per-face mobile mesh budget.
+    if curve_steps not in (1, 3, 6):
+        raise ValueError('Unsupported bounded bevel curve sampling')
+    fractions = [1 - math.cos(i * math.pi / (2 * curve_steps)) for i in range(curve_steps + 1)]
+    bands = []
+    previous = metal
+    for fraction in fractions[1:]:
+        inset = metal.buffer(-width * fraction, quad_segs=2, join_style='round')
+        band = previous.difference(inset)
+        if not inset.is_valid or not band.is_valid:
+            raise ValueError('Invalid robust bevel cross section')
+        bands.append(band)
+        previous = inset
+    if abs(inset.area + sum(band.area for band in bands) - metal.area) > 1e-8:
+        raise ValueError('Robust bevel changed source footprint')
+    circle = (Polygon([(lip_radius*math.cos(i*math.tau/512), lip_radius*math.sin(i*math.tau/512))
+                       for i in range(512)]) if lip_radius else None)
+    def sections(region):
+        if circle is None:
+            return polygon_shapes(region)
+        return polygon_shapes(region.intersection(circle), False) + polygon_shapes(region.difference(circle), True)
+    return {**shape, 'bevelSections': {'width': width, 'inset': sections(inset),
+                                     'bands': [part for band in bands for part in sections(band)],
+                                     'offsetFractions': fractions,
+                                     'method': 'valid-inset-and-distance-graded-edge-band'}}
+
+
+def attach_robust_bevels(record):
+    profile = record['profile']
+    radius = profile['radius']
+    width = min(profile.get('bevel', .0025), profile['faceThickness']/4, .012*radius) / radius
+    lip_radius = profile.get('lipInnerRadius', .95)
+    curve_steps = profile.get('bevelCurveSegments', 1)
+    pockets = record['recessedDetails']
+    cuts = unary_union([Polygon(p['outer']) for p in pockets]) if pockets else None
+    faces = []
+    for source in record['shapes']:
+        metal = Polygon(source['outer'], source.get('holes', []))
+        if cuts is not None:
+            metal = metal.difference(cuts)
+        if not metal.is_valid:
+            raise ValueError('Invalid pocket-cut face cross section')
+        faces.extend(robust_bevel(shape, width, lip_radius, curve_steps) for shape in polygon_shapes(metal))
+    record['faceShapes'] = faces
+    for detail in record['surfaceDetails']:
+        detail_width = min(profile.get('bevel', .0025), detail['height']/4) / radius
+        detail.update(robust_bevel(detail, detail_width, curve_steps=curve_steps))
+    for pocket in pockets:
+        depth = max(.002, min(.12, pocket.get('depth', .012)))
+        actual_depth = min(depth*radius, profile['faceThickness']*.72)
+        floor_thickness = profile['faceThickness']-actual_depth
+        pocket_width = min(profile.get('bevel', .0025), actual_depth/3, floor_thickness/4) / radius
+        pocket.update(robust_bevel(pocket, pocket_width, curve_steps=curve_steps))
+        if pocket.get('preservedIslands'):
+            pocket['preservedIslands'] = [robust_bevel(island, width, curve_steps=curve_steps) for island in pocket['preservedIslands']]
+    record['trace']['bevelMethod'] = 'valid-inset-and-distance-graded-edge-band'
+
+
 def build(item):
     source = ROOT / item['referenceImage']['src']
     rgba = np.array(Image.open(source).convert('RGBA'))
@@ -284,24 +430,66 @@ def build(item):
     ellipse = item.get('faceEllipse') or item.get('rimEllipse') or infer_ellipse(rgba)
     front = rectify(rgba, ellipse)
     mask, method = trace_mask(front, item)
-    shapes = contours(mask, item)
-    reconstruction = {'schemaVersion': 1, 'id': item['id'], 'title': item['title'],
+    correction = item.get('perspectiveCorrection')
+    shapes = [deproject_shape(s, correction) for s in contours(mask, item)]
+    for shape in shapes:
+        radii = [math.hypot(x,y) for x,y in shape['outer']]
+        if min(radii) > .95 and np.std(radii) < .012 and Polygon(shape['outer']).area > 2.8:
+            radius = min(1.0, max(radii))
+            shape['outer'] = [[radius*math.cos(i*math.tau/512),radius*math.sin(i*math.tau/512)] for i in range(512)]
+            item['circularRimRefined'] = True
+    native_fit = NATIVE_CONTOURS.get(item['id'])
+    if native_fit:
+        # Reviewed native-photo curves replace raster stairs only for the exact
+        # image/registration they were fitted to; no generic spoke substitution.
+        if (native_fit['sourceSha256'] != digest(source)
+                or native_fit['faceEllipse'] != ellipse
+                or item.get('sourceView') == 'angled'):
+            raise ValueError('Native-photo contour fit has a stale source registration')
+        fitted = native_fit['shapes']
+        if (len(fitted) != len(shapes)
+                or sorted(len(s.get('holes', [])) for s in fitted)
+                != sorted(len(s.get('holes', [])) for s in shapes)
+                or not all(Polygon(s['outer'], s.get('holes', [])).is_valid for s in fitted)):
+            raise ValueError('Native-photo contour fit changed source topology')
+        shapes = fitted
+    metal = unary_union([Polygon(s['outer'], s['holes']) for s in shapes])
+    if not metal.is_valid:
+        raise ValueError('Deprojected source contours need individual review')
+    hints = item.get('geometryHints', {})
+    profile = {'radius': 1.032, 'frontZ': .33, 'concavity': item.get('concavity', .10),
+               'faceThickness': .055, 'bevel': .005,
+               'bevelCurveSegments': 6 if native_fit else 1, **hints}
+    profile['sculptMap'] = crown_field(shapes, hints)
+    if correction and hints.get('hardwarePositions'):
+        positions = []
+        for x, y in hints['hardwarePositions']:
+            p = deproject_shape({'outer': [[x,y],[x,y],[x,y]], 'holes': []}, correction)['outer'][0]
+            positions.append(p)
+        profile['hardwarePositions'] = positions
+    reconstruction = {'schemaVersion': 2, 'id': item['id'], 'title': item['title'],
         'coordinateSystem': 'unit-radius-y-up', 'shapes': shapes,
-        'profile': {'radius': 1.032, 'frontZ': .33, 'concavity': item.get('concavity', item.get('geometryHints', {}).get('concavity', .10)),
-                    'faceThickness': .06, 'bevel': .0025},
+        'profile': profile,
         'source': {'src': item['referenceImage']['src'], 'sha256': digest(source),
                    'width': rgba.shape[1], 'height': rgba.shape[0], 'kind': item['referenceImage'].get('kind', 'product'),
                    'faceEllipse': ellipse, 'sourceView': item.get('sourceView', 'front')},
         'provenance': {'method': method, 'approximateDepth': True, 'approximateBack': True,
                       'notManufacturingCAD': True,
                       'rectificationApproximate': item.get('sourceView') == 'angled',
-                      'notes': item.get('notes', [])},
-        'surfaceDetails': item.get('surfaceDetails', []),
-        'defaultOptions': PROJECT_OPTIONS.get(item['id'], {'diameter': 20, 'width': 10, 'finish': 'satin', 'color': '#b9bcc2'}),
+                      'notes': item.get('notes', []), 'visualReview': item.get('visualReview'),
+                      'perspectiveCorrection': correction},
+        'surfaceDetails': reviewed_details(item.get('surfaceDetails', []), metal, correction),
+        'recessedDetails': reviewed_details(item.get('recessedDetails', []), metal, correction, True),
+        'defaultOptions': dict(PROJECT_OPTIONS.get(item['id'], {'diameter': 20, 'width': 10, 'finish': 'satin', 'color': '#b9bcc2'})),
         'trace': {'resolution': SIZE, 'shapeCount': len(shapes),
-                  'contourMethod': 'reviewed-source-vector' if item.get('vectorContours') else 'source-image-contour',
+                  'contourMethod': ('reviewed-native-photo-curve' if native_fit else
+                                    'reviewed-source-vector' if item.get('vectorContours') else 'source-image-contour'),
+                  **({'nativeContourFit': {k: native_fit[k] for k in
+                     ['method', 'maximumNativePixelError', 'edgeEvidence'] if k in native_fit}}
+                     if native_fit else {}),
                   'contourTolerancePixels': item.get('vectorSimplifyPixels', 1.2) if item.get('vectorContours') else item.get('simplifyPixels', 1.2),
                   'subpixelTopologyCleaned': item.get('topologyCleaned', False),
+                  'circularRimRefined': item.get('circularRimRefined', False),
                   'holeCount': sum(len(s['holes']) for s in shapes),
                   'vertices': sum(len(s['outer']) + sum(map(len, s['holes'])) for s in shapes)}}
     surface_front = front
@@ -311,13 +499,15 @@ def build(item):
         surface_rgba = np.array(Image.open(surface_path).convert('RGBA'))
         surface_front = rectify(surface_rgba, surface_ref['faceEllipse'])
         reconstruction['surfaceSource'] = {**surface_ref, 'sha256': digest(surface_path), 'width': surface_rgba.shape[1], 'height': surface_rgba.shape[0]}
-    if item['id'] not in PROJECT_OPTIONS:
+    if item['id'] not in PROJECT_OPTIONS and not item.get('defaultOptions'):
         metal_pixels = surface_front[:, :, :3][(mask > 0) & (surface_front[:, :, 3] > 180) & (np.min(surface_front[:, :, :3], axis=2) < 244)]
         if len(metal_pixels):
             colour = np.clip(np.percentile(metal_pixels, 55, axis=0), 14, 220).astype(int)
             reconstruction['defaultOptions']['color'] = '#' + ''.join(f'{v:02x}' for v in colour)
             if float(np.mean(colour)) < 65:
                 reconstruction['defaultOptions']['finish'] = 'gloss'
+    reconstruction['defaultOptions'].update(item.get('defaultOptions', {}))
+    attach_robust_bevels(reconstruction)
     texture_ref = reconstruction.get('surfaceSource', reconstruction['source'])
     native_span = 2 * max(texture_ref['faceEllipse']['rx'] * texture_ref['width'],
                           texture_ref['faceEllipse']['ry'] * texture_ref['height'])

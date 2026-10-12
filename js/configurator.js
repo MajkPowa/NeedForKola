@@ -269,8 +269,8 @@
   }
   let showroomModule, wheelPhotoModule, viewer, photoViewer, pendingViewerAbort, viewerKey = '', renderToken = 0;
   const failedVisuals = new Set();
-  const loadShowroom = () => showroomModule || (showroomModule = import('./showroom.js?v=20261009-photo-3d').catch(e => { showroomModule = null; throw e; }));
-  const loadWheelPhoto = () => wheelPhotoModule || (wheelPhotoModule = import('./wheel-fit-preview.js?v=20261009-photo-3d').catch(e => { wheelPhotoModule = null; throw e; }));
+  const loadShowroom = () => showroomModule || (showroomModule = import('./showroom.js?v=20261011-wheel-fidelity-v1').catch(e => { showroomModule = null; throw e; }));
+  const loadWheelPhoto = () => wheelPhotoModule || (wheelPhotoModule = import('./wheel-fit-preview.js?v=20261011-wheel-fidelity-v1').catch(e => { wheelPhotoModule = null; throw e; }));
   const previewOptions = mode => ({ mode, vehicleAsset: stageAsset()?.id, design: S.design, color: colorHex(), colorHex: colorHex(), finish: S.finish, lip: S.lip, cap: S.cap, diameter: S.d, width: S.wf, autoRotate: S.spin, bodyColor: bodyHex(), mirror: S.side === 'L', bolts: parseInt(S.pcd,10) || 5 });
   const photoOptions = () => ({ ...previewOptions('wheel'), label: `${design().name} · ${colorName()}` });
   async function renderWheelFallback(container, token, module) {

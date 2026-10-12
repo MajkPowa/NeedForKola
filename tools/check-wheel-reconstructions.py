@@ -1,5 +1,5 @@
 """Offline integrity checks for the individual photo meshes and portable GLBs."""
-import argparse, hashlib, io, json, struct, sys
+import argparse, hashlib, io, json, struct, subprocess, sys
 from pathlib import Path
 
 parser = argparse.ArgumentParser()
@@ -31,12 +31,31 @@ for entry in index['models']:
     for shape in record['shapes'] + record.get('surfaceDetails', []):
         assert Polygon(shape['outer'], shape.get('holes', [])).is_valid, entry['id'] + ' invalid contour'
     blob = (root / entry['glb']).read_bytes()
+    stored_blob = blob
     magic, version, length = struct.unpack_from('<III', blob)
     assert magic == 0x46546c67 and version == 2 and length == len(blob)
     assert length < 25 * 1024 * 1024
     json_size, json_kind = struct.unpack_from('<II', blob, 12)
     assert json_kind == 0x4e4f534a
     doc = json.loads(blob[20:20 + json_size])
+    compression = doc.get('extras', {}).get('oartsLosslessCompression')
+    if 'EXT_meshopt_compression' in doc.get('extensionsUsed', []):
+        assert 'EXT_meshopt_compression' in doc.get('extensionsRequired', [])
+        assert compression and compression['filter'] == 'NONE' and compression['indexMode'] == 'INDICES'
+        assert compression['package'] == 'meshoptimizer@1.3.0'
+        assert compression['attributeLevel'] == 3 and compression['codecVersion'] == 0
+        # The pinned codec verifies every decoded buffer and the complete original
+        # GLB SHA-256 before the existing numeric and texture integrity checks.
+        blob = subprocess.check_output(['node', str(root / 'tools/wheel-glb-codec.mjs'),
+                                        '--decode-to-stdout', str(root / entry['glb'])])
+        assert hashlib.sha256(blob).hexdigest() == compression['originalGlbSha256']
+        assert len(blob) == compression['originalGlbBytes']
+        assert entry['glbCompression']['byteExact']
+        assert entry['glbCompression']['originalGlbSha256'] == compression['originalGlbSha256']
+        assert entry['glbCompression']['compressedGlbSha256'] == hashlib.sha256(stored_blob).hexdigest()
+        json_size, json_kind = struct.unpack_from('<II', blob, 12)
+        assert json_kind == 0x4e4f534a
+        doc = json.loads(blob[20:20 + json_size])
     bin_size, bin_kind = struct.unpack_from('<II', blob, 20 + json_size)
     assert bin_kind == 0x004e4942
     binary = blob[28 + json_size:]
@@ -67,8 +86,10 @@ for entry in index['models']:
             expected_size = record['surfaceTextureSize']
             assert picture.size == (expected_size, expected_size)
     assert triangles == entry['trace']['glbTriangles']
-    assert hashlib.sha256(blob).hexdigest() == entry['glbSha256']
-    report.append({'id': entry['id'], 'triangles': triangles, 'bytes': length, 'holes': record['trace']['holeCount'], 'surfaceDetails': len(record.get('surfaceDetails', []))})
+    assert hashlib.sha256(stored_blob).hexdigest() == entry['glbSha256']
+    report.append({'id': entry['id'], 'triangles': triangles, 'bytes': length,
+                   'originalBytes': len(blob), 'losslessCompression': bool(compression),
+                   'holes': record['trace']['holeCount'], 'surfaceDetails': len(record.get('surfaceDetails', []))})
 result = {'result': 'PASS', 'activeDesigns': len(active), 'photoMeshes': len(report), 'concepts': len(concepts), 'models': report}
 (root / 'docs/qa/wheel-reconstruction/integrity.json').write_text(json.dumps(result, indent=2), 'utf-8')
 print(json.dumps({k: v for k, v in result.items() if k != 'models'}))

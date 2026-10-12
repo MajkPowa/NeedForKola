@@ -48,11 +48,10 @@
   ];
 
   const CAPS = [
-    { id: 'black',  name: 'Černá krytka',      price: 0 },
-    { id: 'silver', name: 'Stříbrná krytka',   price: 0 },
-    { id: 'body',   name: 'V barvě kola',      price: 600 },
-    { id: 'carbon', name: 'Karbonová krytka',  price: 3900 },
-    { id: 'none',   name: 'Bez krytky (open)', price: 0 },
+    { id: 'black',  name: 'OARTS · černá krytka',      price: 0 },
+    { id: 'silver', name: 'OARTS · stříbrná krytka',   price: 0 },
+    { id: 'body',   name: 'OARTS · v barvě kola',      price: 600 },
+    { id: 'carbon', name: 'OARTS · karbonová krytka',  price: 3900 },
   ];
 
   const find = (list, id, fallback) => list.find(x => x.id === id) || list[fallback || 0];

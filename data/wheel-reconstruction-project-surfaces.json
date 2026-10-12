@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "coordinateSystem": "normalized-source-image",
-  "reviewedAt": "2026-10-09",
+  "reviewedAt": "2026-10-11",
   "purpose": "Actual manufactured project front-surface references, separate from geometry trace provenance.",
   "sourceCatalogue": "docs/qa/wheel-reconstruction/catalog-baseline.json",
   "sourceCatalogueSha256": "77988a6b2a7a7af22f5b6a0af8520b1da9b19f9870dc6fe19d245a2ce86216c1",
@@ -12,7 +12,7 @@
     "ry": "vertical radius as image height fraction",
     "rotationDeg": "clockwise source sampling phase; zero when tracing the same selected image"
   },
-  "inspectionStatus": "all-nine-sources-and-rim-bounds-visually-reviewed",
+  "inspectionStatus": "all-nine-original-project-surfaces-rechecked-native-resolution-against-reconstructed-geometry",
   "counts": {
     "projects": 9,
     "actualPhotographs": 8,
@@ -42,7 +42,10 @@
         "This selects an existing source image; no source photograph was edited.",
         "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
         "Depth, hidden back and perspective rectification remain approximate."
-      ]
+      ],
+      "centerBrand": "OARTS",
+      "centerTreatment": "A physical OARTS medallion replaces the reference brand only in the new 3D model. The original reference photograph remains unchanged.",
+      "materialTreatment": "Reconstruction uses dynamic physically-based material; source silver machining is represented by separate same-reference face planes, avoiding baked lighting."
     },
     {
       "id": "mustang-track-gold",
@@ -53,10 +56,10 @@
       "sha256": "01a6e77fedf93c0485746283a88906e7ac17b5d3b435a55f20b6239340945e84",
       "sourceUID": "assets/projects/mustang-track-gold/photo-front.webp#sha256=01a6e77fedf93c0485746283a88906e7ac17b5d3b435a55f20b6239340945e84",
       "faceEllipse": {
-        "cx": 0.5480711,
-        "cy": 0.4672126,
-        "rx": 0.2810213,
-        "ry": 0.4042055,
+        "cx": 0.545828,
+        "cy": 0.449843,
+        "rx": 0.289659,
+        "ry": 0.38558,
         "rotationDeg": 0
       },
       "sourceView": "front",
@@ -66,8 +69,12 @@
       "notes": [
         "This selects an existing source image; no source photograph was edited.",
         "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
-        "Depth, hidden back and perspective rectification remain approximate."
-      ]
+        "Depth, hidden back and perspective rectification remain approximate.",
+        "2026-10-12: Source geometry and optional photographed surface share the approved APEX normalized registration because this is the same full photograph resized to 1600×1200. Original WebP hash is preserved; photo-derived depth and back remain estimates."
+      ],
+      "centerBrand": "OARTS",
+      "centerTreatment": "A physical OARTS medallion replaces the reference brand only in the new 3D model. The original reference photograph remains unchanged.",
+      "materialTreatment": "Reconstruction uses dynamic physically-based material; source silver machining is represented by separate same-reference face planes, avoiding baked lighting."
     },
     {
       "id": "audi-rs3-drag-race-gloss-black",
@@ -91,7 +98,10 @@
       "notes": [
         "No real photograph or video exists for this project. Preserve the existing valid supplier front reference and do not label it as a photograph.",
         "Technical labels lie outside the selected wheel face."
-      ]
+      ],
+      "centerBrand": "OARTS",
+      "centerTreatment": "A physical OARTS medallion replaces the reference brand only in the new 3D model. The original reference photograph remains unchanged.",
+      "materialTreatment": "Reconstruction uses dynamic physically-based material; source silver machining is represented by separate same-reference face planes, avoiding baked lighting."
     },
     {
       "id": "mustang-gt-50-gloss-black",
@@ -116,7 +126,10 @@
         "This selects an existing source image; no source photograph was edited.",
         "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
         "Depth, hidden back and perspective rectification remain approximate."
-      ]
+      ],
+      "centerBrand": "OARTS",
+      "centerTreatment": "A physical OARTS medallion replaces the reference brand only in the new 3D model. The original reference photograph remains unchanged.",
+      "materialTreatment": "Reconstruction uses dynamic physically-based material; source silver machining is represented by separate same-reference face planes, avoiding baked lighting."
     },
     {
       "id": "lamborghini-urus-matte-tx-gold-machined",
@@ -141,7 +154,10 @@
         "This selects an existing source image; no source photograph was edited.",
         "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
         "Depth, hidden back and perspective rectification remain approximate."
-      ]
+      ],
+      "centerBrand": "OARTS",
+      "centerTreatment": "A physical OARTS medallion replaces the reference brand only in the new 3D model. The original reference photograph remains unchanged.",
+      "materialTreatment": "Reconstruction uses dynamic physically-based material; source silver machining is represented by separate same-reference face planes, avoiding baked lighting."
     },
     {
       "id": "rolls-royce-ghost-2017-brushed-silver",
@@ -167,7 +183,10 @@
         "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
         "Depth, hidden back and perspective rectification remain approximate.",
         "Native source is only 567 by 425 pixels. Texture detail is limited to this genuine source; do not claim increased photographic detail."
-      ]
+      ],
+      "centerBrand": "OARTS",
+      "centerTreatment": "A physical OARTS medallion replaces the reference brand only in the new 3D model. The original reference photograph remains unchanged.",
+      "materialTreatment": "Reconstruction uses dynamic physically-based material; source silver machining is represented by separate same-reference face planes, avoiding baked lighting."
     },
     {
       "id": "lamborghini-urus-gloss-black-machined",
@@ -192,7 +211,10 @@
         "This selects an existing source image; no source photograph was edited.",
         "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
         "Depth, hidden back and perspective rectification remain approximate."
-      ]
+      ],
+      "centerBrand": "OARTS",
+      "centerTreatment": "A physical OARTS medallion replaces the reference brand only in the new 3D model. The original reference photograph remains unchanged.",
+      "materialTreatment": "Reconstruction uses dynamic physically-based material; source silver machining is represented by separate same-reference face planes, avoiding baked lighting."
     },
     {
       "id": "ferrari-812-gunmetal-machined",
@@ -217,7 +239,10 @@
         "This selects an existing source image; no source photograph was edited.",
         "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
         "Depth, hidden back and perspective rectification remain approximate."
-      ]
+      ],
+      "centerBrand": "OARTS",
+      "centerTreatment": "A physical OARTS medallion replaces the reference brand only in the new 3D model. The original reference photograph remains unchanged.",
+      "materialTreatment": "Reconstruction uses dynamic physically-based material; source silver machining is represented by separate same-reference face planes, avoiding baked lighting."
     },
     {
       "id": "ferrari-812-gloss-black",
@@ -242,7 +267,10 @@
         "This selects an existing source image; no source photograph was edited.",
         "Geometry and albedo must use this same ellipse and zero phase for exact front alignment; a supplier plate cannot share these contours without registration.",
         "Depth, hidden back and perspective rectification remain approximate."
-      ]
+      ],
+      "centerBrand": "OARTS",
+      "centerTreatment": "A physical OARTS medallion replaces the reference brand only in the new 3D model. The original reference photograph remains unchanged.",
+      "materialTreatment": "Reconstruction uses dynamic physically-based material; source silver machining is represented by separate same-reference face planes, avoiding baked lighting."
     }
   ]
 }

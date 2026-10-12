@@ -10,7 +10,7 @@
   },
   "purpose": "Individual visual reconstruction references; no generic wheel replacements and no manufacturer CAD claim.",
   "expectedRecords": 38,
-  "inspectionStatus": "reviewed-visible-reference-bounds",
+  "inspectionStatus": "all-38-ready-and-project-sources-reviewed-for-individual-3D-profile",
   "counts": {
     "ready": 29,
     "project": 9
@@ -52,13 +52,41 @@
       "sourceView": "front",
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r001/asset-054-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.16,
+        "faceThickness": 0.066,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.935,
+        "lipDepth": 0.046,
+        "hardwareCount": 0,
+        "capRadius": 0.112,
+        "spokeCrown": 0.015,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "chrome",
+        "color": "#c8cbd0"
+      },
+      "roughness": 0.055,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten straight slim blades, scalloped five-lug hub, bright chrome steps.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -94,13 +122,41 @@
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Spodní obvod je těsně u spodního okraje originálu; podklad není izolovaný na bílém pozadí.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r002/asset-029-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.12,
+        "faceThickness": 0.074,
+        "bevel": 0.007,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.92,
+        "lipDepth": 0.044,
+        "hardwareCount": 0,
+        "capRadius": 0.116,
+        "spokeCrown": 0.02,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "chrome",
+        "color": "#c4c8cd"
+      },
+      "roughness": 0.055,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten straight slightly tapered blades with broad sculpted mounting roots.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -137,13 +193,41 @@
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Jediný dodaný pohled je šikmý; čelo je vodorovně zkrácené perspektivou.",
         "Rim ellipse označuje přední ústí ráfku, nikoli pravý zadní okraj viditelného válce.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r003/asset-030-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.17,
+        "faceThickness": 0.075,
+        "bevel": 0.007,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.9,
+        "lipDepth": 0.072,
+        "hardwareCount": 0,
+        "capRadius": 0.125,
+        "spokeCrown": 0.02,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "chrome",
+        "color": "#c6c9cc"
+      },
+      "roughness": 0.055,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten wide straight blades and deeply sculpted rounded mounting wells; angled source.",
+        "depthConfidence": "low-angle-estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -171,21 +255,51 @@
         "rotationDeg": 4
       },
       "topology": {
-        "pattern": "Jemné větvené paprsky s propojenými trojúhelníkovými okny.",
-        "confidence": "medium"
+        "pattern": "Fine branching twenty-tip mesh with twenty observed apertures and five independent mounting bores.",
+        "visibleSpokeCount": 20,
+        "mountingBoreCount": 5,
+        "confidence": "angled-source-visual-reconstruction"
       },
       "sourceView": "angled",
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Jediný dodaný pohled je šikmý; členité větvení není nahrazeno odhadnutým počtem paprsků.",
         "Rim ellipse označuje přední ústí ráfku, nikoli levý zadní okraj válce.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r004/asset-026-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.19,
+        "faceThickness": 0.064,
+        "bevel": 0.005,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.94,
+        "lipDepth": 0.04,
+        "hardwareCount": 0,
+        "capRadius": 0.12,
+        "spokeCrown": 0.012,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "chrome",
+        "color": "#c6c9ce"
+      },
+      "roughness": 0.055,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Fine branching twenty-tip mesh with triangular main and root relief windows; angled source.",
+        "depthConfidence": "low-angle-estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -220,13 +334,41 @@
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Propojené a dělené větve nejsou redukované na nepodložený počet samostatných paprsků.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r005/asset-033-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.16,
+        "faceThickness": 0.065,
+        "bevel": 0.005,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.938,
+        "lipDepth": 0.045,
+        "hardwareCount": 0,
+        "capRadius": 0.11,
+        "spokeCrown": 0.012,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "chrome",
+        "color": "#c5c8ce"
+      },
+      "roughness": 0.055,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten slim branched blades, paired root relief slots, small perimeter slots.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -261,13 +403,41 @@
       "sourceView": "front",
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r006/asset-027-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.17,
+        "faceThickness": 0.082,
+        "bevel": 0.009,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.94,
+        "lipDepth": 0.03,
+        "hardwareCount": 0,
+        "capRadius": 0.122,
+        "spokeCrown": 0.023,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "brushed",
+        "color": "#7b8087"
+      },
+      "roughness": 0.24,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Five broad smooth blades, inset narrow channels and deep gunmetal barrel.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -303,13 +473,41 @@
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Face ellipse sleduje obvod paprskové části uvnitř světlého širokého límce.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r007/asset-044-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.16,
+        "faceThickness": 0.069,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.93,
+        "lipDepth": 0.047,
+        "hardwareCount": 0,
+        "capRadius": 0.122,
+        "spokeCrown": 0.015,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "brushed",
+        "color": "#9b9fa5"
+      },
+      "roughness": 0.24,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Five Y roots, ten tips, polished narrow perimeter and recessed gunmetal face.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -344,13 +542,41 @@
       "sourceView": "front",
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r008/asset-032-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.14,
+        "faceThickness": 0.067,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.935,
+        "lipDepth": 0.037,
+        "hardwareCount": 0,
+        "capRadius": 0.11,
+        "spokeCrown": 0.013,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "chrome",
+        "color": "#bfc4ca"
+      },
+      "roughness": 0.055,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Five split roots, ten straight blade tips, narrow paired relieved face channels.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -373,8 +599,8 @@
       "faceEllipse": {
         "cx": 0.535714,
         "cy": 0.460317,
-        "rx": 0.245238,
-        "ry": 0.330159,
+        "rx": 0.27381,
+        "ry": 0.361905,
         "rotationDeg": 0
       },
       "topology": {
@@ -386,13 +612,162 @@
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Tmavý vnější ráfek a obvodové upevňovací prvky jsou odlišené od světlého čela.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r009/asset-043-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.12,
+        "faceThickness": 0.074,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.872,
+        "lipDepth": 0.06,
+        "hardwareCount": 28,
+        "capRadius": 0.09942,
+        "spokeCrown": 0.017,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true,
+        "hardwarePositions": [
+          [
+            -0.82907,
+            -0.127749
+          ],
+          [
+            -0.794415,
+            -0.256706
+          ],
+          [
+            -0.745224,
+            -0.376424
+          ],
+          [
+            -0.623891,
+            -0.561257
+          ],
+          [
+            -0.492257,
+            -0.673636
+          ],
+          [
+            -0.345801,
+            -0.759414
+          ],
+          [
+            -0.141617,
+            -0.818225
+          ],
+          [
+            0.116168,
+            -0.815679
+          ],
+          [
+            0.320919,
+            -0.755502
+          ],
+          [
+            0.469279,
+            -0.668005
+          ],
+          [
+            0.594948,
+            -0.552509
+          ],
+          [
+            0.715364,
+            -0.373343
+          ],
+          [
+            0.763352,
+            -0.251353
+          ],
+          [
+            0.795971,
+            -0.125459
+          ],
+          [
+            0.803639,
+            0.089686
+          ],
+          [
+            0.769944,
+            0.259657
+          ],
+          [
+            0.70252,
+            0.418351
+          ],
+          [
+            0.573767,
+            0.591303
+          ],
+          [
+            0.476561,
+            0.676984
+          ],
+          [
+            0.366485,
+            0.746078
+          ],
+          [
+            0.166082,
+            0.822425
+          ],
+          [
+            -0.000769,
+            0.838891
+          ],
+          [
+            -0.181275,
+            0.819648
+          ],
+          [
+            -0.385574,
+            0.74558
+          ],
+          [
+            -0.594816,
+            0.593649
+          ],
+          [
+            -0.724942,
+            0.419064
+          ],
+          [
+            -0.801018,
+            0.260055
+          ],
+          [
+            -0.836154,
+            0.089315
+          ]
+        ],
+        "hardwareRadius": 0.84,
+        "hardwareSize": 0.0115,
+        "lipColor": "#c2c7ce",
+        "lipFinish": "chrome",
+        "barrelColor": "#15191e"
+      },
+      "defaultOptions": {
+        "finish": "brushed",
+        "color": "#818994"
+      },
+      "roughness": 0.24,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Five split roots and ten tips, long inner slots, two-tone dark lip and separate visible assembly fasteners.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS",
+        "registrationCorrection": "Front contour and hardware now use full observed outer front lip. Existing inner-face polygons transformed using the exact same-source ellipse registration.",
+        "hardware": "Each real visible fastener was individually checked against the native-resolution photo. Reflected duplicate heads and spoke-tip highlights were excluded."
       }
     },
     {
@@ -428,13 +803,84 @@
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Nízké původní rozlišení a měkké kontury neumožňují výrobní detaily.",
         "Face ellipse označuje obvod plného čela uvnitř obvodových otvorů; tento design nemá běžné otevřené paprsky.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request.",
+        "2026-10-12: Tight radial shoulder around the solid disc cap uses maxInnerFaceEdge 0.018 to resolve its curvature smoothly. This refines triangulation without changing any original aperture or the photographed silhouette."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r010/asset-036-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.018,
+        "faceThickness": 0.077,
+        "bevel": 0.007,
+        "concavityStart": 0.24,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.976,
+        "lipDepth": 0.03,
+        "hardwareCount": 0,
+        "capRadius": 0.143,
+        "spokeCrown": 0.001,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true,
+        "radialProfile": [
+          [
+            0,
+            0.012
+          ],
+          [
+            0.12,
+            0.012
+          ],
+          [
+            0.17,
+            0.025
+          ],
+          [
+            0.21,
+            0.006
+          ],
+          [
+            0.3,
+            -0.008
+          ],
+          [
+            0.72,
+            -0.012
+          ],
+          [
+            0.89,
+            -0.006
+          ],
+          [
+            0.95,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "lipColor": "#c4c9ce",
+        "lipFinish": "chrome",
+        "barrelColor": "#a5abb3",
+        "maxInnerFaceEdge": 0.018
+      },
+      "defaultOptions": {
+        "finish": "brushed",
+        "color": "#a1a6ad"
+      },
+      "roughness": 0.24,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Solid shallow dish with twenty perimeter capsule vents and a stepped circular center boss.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -472,13 +918,41 @@
         "Z fotografie čtyřkolové sady je označeno pravé spodní kolo, nikoli společný obrys celé sady.",
         "Mírně šikmý pohled shora a malý podíl vybraného kola v originálu omezují přesnost.",
         "Zbylá tři kola ani venkovní pozadí nepatří do elipsy reference.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r011/asset-011-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.17,
+        "faceThickness": 0.067,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.932,
+        "lipDepth": 0.048,
+        "hardwareCount": 0,
+        "capRadius": 0.128,
+        "spokeCrown": 0.015,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#a2793e"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten straight thin bronze blades with gently rounded roots; photographed on grass in a four-wheel set.",
+        "depthConfidence": "low-angle-estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -514,13 +988,41 @@
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Původní fotografie má světlou stěnu za většinou čela a koberec dole; nejde o izolovaný průhledný render.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r012/asset-031-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.17,
+        "faceThickness": 0.065,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.933,
+        "lipDepth": 0.046,
+        "hardwareCount": 0,
+        "capRadius": 0.12,
+        "spokeCrown": 0.014,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "brushed",
+        "color": "#ba9e66"
+      },
+      "roughness": 0.24,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Five forked angular roots, ten outer tips and small long inner relief slots.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -556,13 +1058,41 @@
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Galerie obsahuje také detail vnitřního značení; tento detail nebyl použit jako geometrická reference čela.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r013/asset-004-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.17,
+        "faceThickness": 0.066,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.94,
+        "lipDepth": 0.034,
+        "hardwareCount": 0,
+        "capRadius": 0.118,
+        "spokeCrown": 0.014,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#111315"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Five forked roots, ten thin outer tips; separate capsule root and triangular outer through windows.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -597,13 +1127,41 @@
       "sourceView": "front",
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r014/asset-046-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.16,
+        "faceThickness": 0.065,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.94,
+        "lipDepth": 0.035,
+        "hardwareCount": 0,
+        "capRadius": 0.113,
+        "spokeCrown": 0.014,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#121416"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten straight tapered blades, narrow rim grooves and five circular mounting wells.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -638,13 +1196,41 @@
       "sourceView": "front",
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r015/asset-038-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.17,
+        "faceThickness": 0.068,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.935,
+        "lipDepth": 0.04,
+        "hardwareCount": 0,
+        "capRadius": 0.119,
+        "spokeCrown": 0.015,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#121416"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Five split Y roots, ten flared narrow tips and small relieved hub slots.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -666,9 +1252,9 @@
       },
       "faceEllipse": {
         "cx": 0.535714,
-        "cy": 0.460317,
-        "rx": 0.233333,
-        "ry": 0.31746,
+        "cy": 0.45873,
+        "rx": 0.27619,
+        "ry": 0.37619,
         "rotationDeg": 0
       },
       "topology": {
@@ -680,13 +1266,186 @@
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Face ellipse odděluje paprskové čelo od širokého světlého límce s obvodovými upevňovacími prvky.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r016/asset-039-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.09,
+        "faceThickness": 0.085,
+        "bevel": 0.008,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.865,
+        "lipDepth": 0.16,
+        "hardwareCount": 34,
+        "capRadius": 0.12166,
+        "spokeCrown": 0.017,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true,
+        "hardwarePositions": [
+          [
+            -0.888826,
+            -0.07169
+          ],
+          [
+            -0.866933,
+            -0.201823
+          ],
+          [
+            -0.824008,
+            -0.326962
+          ],
+          [
+            -0.76723,
+            -0.434608
+          ],
+          [
+            -0.687943,
+            -0.544755
+          ],
+          [
+            -0.475272,
+            -0.702962
+          ],
+          [
+            -0.367427,
+            -0.773382
+          ],
+          [
+            -0.244593,
+            -0.833878
+          ],
+          [
+            0.030966,
+            -0.832561
+          ],
+          [
+            0.1643,
+            -0.813525
+          ],
+          [
+            0.282136,
+            -0.757163
+          ],
+          [
+            0.510054,
+            -0.65033
+          ],
+          [
+            0.606267,
+            -0.56084
+          ],
+          [
+            0.687608,
+            -0.432994
+          ],
+          [
+            0.747711,
+            -0.317361
+          ],
+          [
+            0.786713,
+            -0.196849
+          ],
+          [
+            0.809466,
+            -0.076127
+          ],
+          [
+            0.814584,
+            0.053049
+          ],
+          [
+            0.760709,
+            0.30556
+          ],
+          [
+            0.700775,
+            0.421079
+          ],
+          [
+            0.625569,
+            0.53145
+          ],
+          [
+            0.534418,
+            0.605507
+          ],
+          [
+            0.428651,
+            0.686791
+          ],
+          [
+            0.310881,
+            0.748777
+          ],
+          [
+            0.182728,
+            0.790015
+          ],
+          [
+            -0.084782,
+            0.814444
+          ],
+          [
+            -0.231852,
+            0.812959
+          ],
+          [
+            -0.347174,
+            0.752092
+          ],
+          [
+            -0.484298,
+            0.711803
+          ],
+          [
+            -0.594522,
+            0.633148
+          ],
+          [
+            -0.691949,
+            0.537801
+          ],
+          [
+            -0.752158,
+            0.435416
+          ],
+          [
+            -0.869109,
+            0.186506
+          ],
+          [
+            -0.890195,
+            0.057517
+          ]
+        ],
+        "hardwareRadius": 0.84,
+        "hardwareSize": 0.014,
+        "lipColor": "#c2c7ce",
+        "lipFinish": "chrome",
+        "barrelColor": "#15191e"
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#141619"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Five broad smooth black spokes, deep polished stepped lip, observed assembly fasteners between spoke tips.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS",
+        "registrationCorrection": "Front contour and hardware now use full observed outer front lip. Existing inner-face polygons transformed using the exact same-source ellipse registration.",
+        "hardware": "Each real visible fastener was individually checked against the native-resolution photo. Reflected duplicate heads and spoke-tip highlights were excluded."
       }
     },
     {
@@ -708,9 +1467,9 @@
       },
       "faceEllipse": {
         "cx": 0.528571,
-        "cy": 0.457143,
-        "rx": 0.245238,
-        "ry": 0.336508,
+        "cy": 0.455556,
+        "rx": 0.278571,
+        "ry": 0.37619,
         "rotationDeg": 0
       },
       "topology": {
@@ -722,13 +1481,170 @@
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Počet označuje konce na límci, nikoli počet kořenů větvení u středu.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r017/asset-034-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.16,
+        "faceThickness": 0.069,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.879,
+        "lipDepth": 0.107,
+        "hardwareCount": 30,
+        "capRadius": 0.10476,
+        "spokeCrown": 0.014,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true,
+        "hardwarePositions": [
+          [
+            -0.781832,
+            -0.211316
+          ],
+          [
+            -0.716689,
+            -0.365228
+          ],
+          [
+            -0.641104,
+            -0.486517
+          ],
+          [
+            -0.52717,
+            -0.600113
+          ],
+          [
+            -0.495972,
+            -0.674799
+          ],
+          [
+            -0.259141,
+            -0.747718
+          ],
+          [
+            -0.041612,
+            -0.798314
+          ],
+          [
+            0.119806,
+            -0.787839
+          ],
+          [
+            0.267605,
+            -0.752326
+          ],
+          [
+            0.417605,
+            -0.68714
+          ],
+          [
+            0.562633,
+            -0.686494
+          ],
+          [
+            0.647133,
+            -0.482613
+          ],
+          [
+            0.810179,
+            -0.285171
+          ],
+          [
+            0.793767,
+            -0.133545
+          ],
+          [
+            0.808768,
+            0.012332
+          ],
+          [
+            0.788645,
+            0.178311
+          ],
+          [
+            0.740431,
+            0.315976
+          ],
+          [
+            0.663949,
+            0.457275
+          ],
+          [
+            0.511296,
+            0.622461
+          ],
+          [
+            0.375419,
+            0.708586
+          ],
+          [
+            0.236034,
+            0.761387
+          ],
+          [
+            0.070164,
+            0.790912
+          ],
+          [
+            -0.080913,
+            0.797619
+          ],
+          [
+            -0.239675,
+            0.761967
+          ],
+          [
+            -0.441256,
+            0.671285
+          ],
+          [
+            -0.570289,
+            0.567515
+          ],
+          [
+            -0.665098,
+            0.452417
+          ],
+          [
+            -0.74647,
+            0.305408
+          ],
+          [
+            -0.788105,
+            0.164716
+          ],
+          [
+            -0.80907,
+            0.005417
+          ]
+        ],
+        "hardwareRadius": 0.84,
+        "hardwareSize": 0.0115,
+        "lipColor": "#c5bc9f",
+        "lipFinish": "chrome",
+        "barrelColor": "#babfc6"
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#111315"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten pairs of slim branching blades, twenty tips, polished deep lip and separate visible assembly bolts.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS",
+        "registrationCorrection": "Front contour and hardware now use full observed outer front lip. Existing inner-face polygons transformed using the exact same-source ellipse registration.",
+        "hardware": "Each real visible fastener was individually checked against the native-resolution photo. Reflected duplicate heads and spoke-tip highlights were excluded."
       }
     },
     {
@@ -765,13 +1681,45 @@
         "Dodaný snímek je téměř z profilu; velkou část plochy zabírá vnější válec a čelo je výrazně perspektivně zkrácené.",
         "Počet paprsků není z tohoto záběru spolehlivě určen.",
         "Obě elipsy označují čelní část vpravo, nikoli levou zadní hranu ráfku.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r018/asset-035-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.3,
+        "faceThickness": 0.071,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.84,
+        "lipDepth": 0.185,
+        "hardwareCount": 0,
+        "capRadius": 0.127,
+        "spokeCrown": 0.015,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true,
+        "lipColor": "#c2c7ce",
+        "lipFinish": "chrome",
+        "barrelColor": "#bfc6cf"
+      },
+      "defaultOptions": {
+        "finish": "chrome",
+        "color": "#bbc1c9"
+      },
+      "roughness": 0.055,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Deep chrome barrel with slender sculpted branched blades; front photographed steeply from side.",
+        "depthConfidence": "low-angle-estimate",
+        "centerBrand": "OARTS",
+        "limitedView": "A single steep-angle source cannot determine hidden rear geometry or dimensional concavity; retain the explicit estimate metadata."
       }
     },
     {
@@ -808,13 +1756,46 @@
         "Jediný dodaný snímek je silně boční; černé zapuštěné čelo je částečně skryté límcem.",
         "Elipsa zapuštěného čela má jiný střed než přední ústí zlatého ráfku.",
         "Počet paprsků není z tohoto záběru spolehlivě určen.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r019/asset-049-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.28,
+        "faceThickness": 0.071,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.78,
+        "lipDepth": 0.23,
+        "hardwareCount": 0,
+        "capRadius": 0.142,
+        "spokeCrown": 0.015,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true,
+        "lipColor": "#b08a42",
+        "lipFinish": "gloss",
+        "barrelColor": "#b08a42"
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#111315",
+        "barrelColor": "#b08a42"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Gloss-black sculpted curved blades set inside a deep gloss-gold barrel; steep angled view.",
+        "depthConfidence": "low-angle-estimate",
+        "centerBrand": "OARTS",
+        "limitedView": "A single steep-angle source cannot determine hidden rear geometry or dimensional concavity; retain the explicit estimate metadata."
       }
     },
     {
@@ -849,13 +1830,41 @@
       "sourceView": "front",
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r020/asset-041-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.16,
+        "faceThickness": 0.068,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.935,
+        "lipDepth": 0.04,
+        "hardwareCount": 0,
+        "capRadius": 0.116,
+        "spokeCrown": 0.014,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#b77f56"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten copper/bronze straight tips with long root channels and paired triangular windows.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -890,13 +1899,44 @@
       "sourceView": "front",
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request.",
+        "2026-10-12: Actual final render revealed five photographed mounting wells had been omitted; the original asset-042 photo now supplies their exact annotated positions and circular inner apertures. No source image or main-window contour was replaced."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r021/asset-042-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.11,
+        "faceThickness": 0.088,
+        "bevel": 0.009,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.928,
+        "lipDepth": 0.041,
+        "hardwareCount": 0,
+        "capRadius": 0.129,
+        "spokeCrown": 0.024,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "satin",
+        "color": "#ac8647"
+      },
+      "roughness": 0.27,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Six broad smooth golden spokes with subtle full-face crown, rounded mounting roots and five independently observed mounting wells surrounding the centre cap.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS",
+        "finalRenderCorrectionDate": "2026-10-12",
+        "observedMountingBores": 5
       }
     },
     {
@@ -924,20 +1964,52 @@
         "rotationDeg": 0
       },
       "topology": {
-        "pattern": "Široké členité paprsky s protáhlými otvory a drobnými obvodovými okny.",
-        "confidence": "high"
+        "pattern": "Ten sculpted petal blades, ten long oval through-slots and ten radial main windows. A large covered center medallion and thirty blind perimeter pockets are separate details.",
+        "visibleSpokeCount": 10,
+        "visibleMainWindowCount": 10,
+        "visibleReliefSlotCount": 10,
+        "blindPerimeterPocketCount": 30,
+        "confidence": "reviewed-native-front-photograph"
       },
       "sourceView": "front",
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Členité větve a výřezy nejsou redukované na nepodložený počet samostatných paprsků.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r022/asset-040-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.08,
+        "faceThickness": 0.085,
+        "bevel": 0.008,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.96,
+        "lipDepth": 0.045,
+        "hardwareCount": 0,
+        "capRadius": 0.205,
+        "spokeCrown": 0.015,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "chrome",
+        "color": "#bca06c"
+      },
+      "roughness": 0.055,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten sculpted petal spokes with ten long oval openings and ten radial windows; blind perimeter pockets and a large center medallion.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -973,13 +2045,41 @@
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Světlá původní stěna za většinou čela usnadňuje oddělení modrého disku.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r023/asset-028-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.16,
+        "faceThickness": 0.064,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.942,
+        "lipDepth": 0.035,
+        "hardwareCount": 0,
+        "capRadius": 0.116,
+        "spokeCrown": 0.014,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#184dc5"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten thin cobalt-blue straight blades, broad mounting root with circular bores.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -1014,13 +2114,41 @@
       "sourceView": "front",
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r024/asset-045-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.17,
+        "faceThickness": 0.068,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.94,
+        "lipDepth": 0.035,
+        "hardwareCount": 0,
+        "capRadius": 0.116,
+        "spokeCrown": 0.015,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#1d4fcf"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Five Y roots, ten tips in bright blue, narrow swept outer edges.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -1057,13 +2185,42 @@
         "Jediný dodaný snímek je silně boční; bílý válec skrývá část kresby čela.",
         "Počet paprsků není z tohoto záběru spolehlivě určen.",
         "Elipsy označují čelní ústí vpravo a jeho vnitřní paprskovou plochu.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r025/asset-052-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.27,
+        "faceThickness": 0.078,
+        "bevel": 0.007,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.932,
+        "lipDepth": 0.04,
+        "hardwareCount": 0,
+        "capRadius": 0.125,
+        "spokeCrown": 0.023,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#e7e9ec"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten broad rounded curving white blades with sculpted recessed mounting wells; steep angled source.",
+        "depthConfidence": "low-angle-estimate",
+        "centerBrand": "OARTS",
+        "limitedView": "A single steep-angle source cannot determine hidden rear geometry or dimensional concavity; retain the explicit estimate metadata."
       }
     },
     {
@@ -1098,13 +2255,41 @@
       "sourceView": "front",
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r026/asset-063-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.17,
+        "faceThickness": 0.065,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.94,
+        "lipDepth": 0.035,
+        "hardwareCount": 0,
+        "capRadius": 0.119,
+        "spokeCrown": 0.014,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#131518"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten black thin direct radial blades with a small scalloped five-bore root.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -1139,13 +2324,41 @@
       "sourceView": "front",
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r027/asset-067-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.16,
+        "faceThickness": 0.067,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.94,
+        "lipDepth": 0.035,
+        "hardwareCount": 0,
+        "capRadius": 0.114,
+        "spokeCrown": 0.014,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#171a20"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten black direct radial blades with contrasting silver machined leading planes.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -1173,21 +2386,52 @@
         "rotationDeg": 0
       },
       "topology": {
-        "pattern": "Pět úhlově větvených skupin, deset konců na límci.",
-        "confidence": "high",
-        "visibleSpokeCount": 10
+        "pattern": "Seven angular Y spokes with fourteen rim connections, seven large pentagonal main windows and seven smaller peripheral windows. Five mounting bores are independent of the spoke symmetry.",
+        "visibleSpokeCount": 14,
+        "visibleRootCount": 7,
+        "visibleMainWindowCount": 7,
+        "mountingBoreCount": 5,
+        "confidence": "reviewed-front-photograph"
       },
       "sourceView": "front",
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Face ellipse sleduje vnitřní hranici límce; světlé větve místy vystupují až na vnější obvod.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r028/asset-071-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.15,
+        "faceThickness": 0.08,
+        "bevel": 0.007,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.932,
+        "lipDepth": 0.038,
+        "hardwareCount": 0,
+        "capRadius": 0.109,
+        "spokeCrown": 0.019,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#141719"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Seven angular Y spokes with fourteen rim connections, seven large pentagonal main windows and seven smaller peripheral windows. Five mounting bores are independent of the spoke symmetry.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -1215,21 +2459,52 @@
         "rotationDeg": 0
       },
       "topology": {
-        "pattern": "Pět úhlově větvených skupin, deset konců na límci.",
-        "confidence": "high",
-        "visibleSpokeCount": 10
+        "pattern": "Seven angular Y spokes with fourteen rim connections, seven large pentagonal main windows and seven smaller peripheral windows. Five mounting bores are independent of the spoke symmetry.",
+        "visibleSpokeCount": 14,
+        "visibleRootCount": 7,
+        "visibleMainWindowCount": 7,
+        "mountingBoreCount": 5,
+        "confidence": "reviewed-front-photograph"
       },
       "sourceView": "front",
       "notes": [
         "Primární reference je původní fotografie stejného katalogového aktiva; elipsy jsou ruční vizuální anotace, nikoli výrobní CAD.",
         "Světlé větve místy vystupují až na vnější obvod zlatého límce.",
-        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS."
+        "Studiová varianta stejného aktiva je pouze podpůrná: katalog uvádí sjednocené pozadí a vizualizaci krytky OARTS.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "fallbackReferenceImage": {
         "src": "assets/ready-wheels/oarts-r029/asset-074-studio-20261008.webp",
         "width": 1254,
         "height": 1254,
         "kind": "visualization"
+      },
+      "geometryHints": {
+        "concavity": 0.14,
+        "faceThickness": 0.084,
+        "bevel": 0.007,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.932,
+        "lipDepth": 0.036,
+        "hardwareCount": 0,
+        "capRadius": 0.108,
+        "spokeCrown": 0.019,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "matte",
+        "color": "#b2a76c"
+      },
+      "roughness": 0.47,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Seven angular Y spokes with fourteen rim connections, seven large pentagonal main windows and seven smaller peripheral windows. Five mounting bores are independent of the spoke symmetry.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -1266,7 +2541,8 @@
         "Trace the left wheel on the paired white supplier plate.",
         "Chrome reflections and rim depth are corroborated by the physical front photograph; this plate is a design visualization.",
         "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
-        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "corroborationImages": [
         {
@@ -1276,7 +2552,35 @@
           "kind": "photo",
           "title": "Čelní pohled"
         }
-      ]
+      ],
+      "geometryHints": {
+        "concavity": 0.13,
+        "faceThickness": 0.074,
+        "bevel": 0.007,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.922,
+        "lipDepth": 0.046,
+        "hardwareCount": 0,
+        "capRadius": 0.112,
+        "spokeCrown": 0.02,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true,
+        "bevelCurveSegments": 6
+      },
+      "defaultOptions": {
+        "finish": "chrome",
+        "color": "#c3c8ce"
+      },
+      "roughness": 0.055,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten slim straight tips with widened sculpted circular mounting roots and chrome barrel.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
+      }
     },
     {
       "id": "mustang-track-gold",
@@ -1289,30 +2593,35 @@
         "kind": "photo"
       },
       "rimEllipse": {
-        "cx": 0.552,
-        "cy": 0.457,
-        "rx": 0.29,
-        "ry": 0.386,
+        "cx": 0.545828,
+        "cy": 0.449843,
+        "rx": 0.289659,
+        "ry": 0.38558,
         "rotationDeg": 0
       },
       "faceEllipse": {
-        "cx": 0.552,
-        "cy": 0.457,
-        "rx": 0.272,
-        "ry": 0.363,
+        "cx": 0.545828,
+        "cy": 0.449843,
+        "rx": 0.289659,
+        "ry": 0.38558,
         "rotationDeg": 0
       },
       "topology": {
-        "pattern": "Ten slender straight radial spokes",
-        "confidence": "high",
-        "visibleSpokeCount": 10
+        "pattern": "Ten slender straight spokes, ten individual source windows, five observed mounting bores and one separate valve opening.",
+        "confidence": "same-native-front-photograph-observed",
+        "visibleSpokeCount": 10,
+        "visibleWindowCount": 10,
+        "visibleMountingBoreCount": 5,
+        "visibleValveCount": 1
       },
       "sourceView": "front",
       "notes": [
         "No technical frontal plate is supplied for this project; use its actual front photograph.",
         "Gray backdrop is visible through open spokes and requires background segmentation; retain the wheel and omit the stand and floor.",
         "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
-        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request.",
+        "2026-10-12: This untouched WebP is the resized same native APEX front photograph. Its normalized full-face registration and sixteen individually observed approved native apertures supersede the older coarse project trace: ten windows, five smoothly fitted source mounting bores and the visible separate front-rim valve opening. No symmetry, generic spoke preset, new photograph or manufacturing CAD is substituted."
       ],
       "corroborationImages": [
         {
@@ -1322,7 +2631,63 @@
           "kind": "photo",
           "title": "Čelní pohled"
         }
-      ]
+      ],
+      "geometryHints": {
+        "concavity": 0.17,
+        "faceThickness": 0.064,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.935,
+        "lipDepth": 0.047,
+        "hardwareCount": 0,
+        "capRadius": 0.117,
+        "spokeCrown": 0.014,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true,
+        "bevelCurveSegments": 3,
+        "maxInnerFaceEdge": 0.032,
+        "maxOuterFaceEdge": 0.026
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#a77b3d"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-12",
+        "sourceInspected": true,
+        "observedFace": "Ten slim straight blades, golden gloss barrel, rounded hub roots and five mounting wells.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS",
+        "resizedNativeAliasOf": "apex10",
+        "sourceHashPreserved": "01a6e77fedf93c0485746283a88906e7ac17b5d3b435a55f20b6239340945e84",
+        "observedApertureCount": 16,
+        "observedMountingBores": 5,
+        "observedValveCount": 1,
+        "sourceRegistrationReviewed": true,
+        "sourceAliasEvidence": {
+          "method": "Entire decoded original photographs compared after normalized resize, then both native front images visually inspected.",
+          "comparisonSize": [
+            128,
+            128
+          ],
+          "meanAbsoluteRGBErrorOn255Scale": 0.409423828125,
+          "rmsRGBErrorOn255Scale": 0.682540110619271,
+          "sourceNativeMaximumContourErrorPixels": 8.342146638212991,
+          "sourceNativeErrorImageSize": [
+            1702,
+            1276
+          ],
+          "targetImageSize": [
+            1600,
+            1200
+          ],
+          "conservativeClaim": "Retains the original 8.342146638212991 pixel native-photo contour uncertainty; this is a source-supported visual refinement, not measured CAD."
+        },
+        "boundedSamplingReview": "The accepted three-band native contour fit uses explicit .032 inner/.026 outer sampling. Its in-memory 373,682 face-triangle check preserves every approved source boundary and finite unit normal below the 400,000 face-triangle geometry budget; final actual capture remains required."
+      }
     },
     {
       "id": "audi-rs3-drag-race-gloss-black",
@@ -1359,7 +2724,8 @@
         "There are no physical photographs for this project.",
         "The additional colored computational visualization corroborates the face layout only; it is not a certification or a supplied CAD mesh.",
         "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
-        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "corroborationImages": [
         {
@@ -1393,6 +2759,33 @@
         "notes": [
           "Computational colors are display evidence only; segment the surrounding gray field instead of interpreting stress colors as wheel materials."
         ]
+      },
+      "geometryHints": {
+        "concavity": 0.17,
+        "faceThickness": 0.065,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.944,
+        "lipDepth": 0.032,
+        "hardwareCount": 0,
+        "capRadius": 0.117,
+        "spokeCrown": 0.014,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#131518"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten thin straight tapered gloss-black spokes, open rim, round five-lug mounting hub.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
       }
     },
     {
@@ -1429,7 +2822,8 @@
         "Single frontal wheel on a white supplier technical plate.",
         "Five lug openings, spoke-root relief and branching are visible; use the physical front photo to check the glossy finish.",
         "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
-        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "corroborationImages": [
         {
@@ -1439,7 +2833,34 @@
           "kind": "photo",
           "title": "Čelní pohled"
         }
-      ]
+      ],
+      "geometryHints": {
+        "concavity": 0.19,
+        "faceThickness": 0.073,
+        "bevel": 0.007,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.935,
+        "lipDepth": 0.038,
+        "hardwareCount": 0,
+        "capRadius": 0.112,
+        "spokeCrown": 0.017,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#111315"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Five angular Y roots, ten slender tips, ten long inner pockets and five triangular relief windows.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
+      }
     },
     {
       "id": "lamborghini-urus-matte-tx-gold-machined",
@@ -1466,8 +2887,12 @@
         "rotationDeg": 0
       },
       "topology": {
-        "pattern": "Fivefold angular branched web with large pentagonal windows",
-        "confidence": "high"
+        "pattern": "Seven angular Y spokes with fourteen rim connections, seven large pentagonal main windows and seven smaller peripheral windows. Five mounting bores are independent of the spoke symmetry.",
+        "visibleSpokeCount": 14,
+        "visibleRootCount": 7,
+        "visibleMainWindowCount": 7,
+        "mountingBoreCount": 5,
+        "confidence": "reviewed-front-photograph"
       },
       "sourceView": "front",
       "notes": [
@@ -1475,7 +2900,8 @@
         "Preserve the angular branches and pentagonal windows rather than substituting a conventional five-spoke preset.",
         "Physical front photography corroborates the machined face and TX gold finish.",
         "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
-        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "corroborationImages": [
         {
@@ -1485,7 +2911,34 @@
           "kind": "photo",
           "title": "Čelní pohled"
         }
-      ]
+      ],
+      "geometryHints": {
+        "concavity": 0.16,
+        "faceThickness": 0.084,
+        "bevel": 0.007,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.938,
+        "lipDepth": 0.04,
+        "hardwareCount": 0,
+        "capRadius": 0.108,
+        "spokeCrown": 0.019,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "matte",
+        "color": "#b2a76c"
+      },
+      "roughness": 0.47,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Seven angular Y spokes with fourteen rim connections, seven large pentagonal main windows and seven smaller peripheral windows. Five mounting bores are independent of the spoke symmetry.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
+      }
     },
     {
       "id": "rolls-royce-ghost-2017-brushed-silver",
@@ -1521,7 +2974,9 @@
         "There are no exposed radial spokes: preserve the solid disc and separate perimeter vent openings.",
         "Supplied photograph is only 567 by 425 pixels; the higher-resolution supplier plate is preferred for tracing.",
         "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
-        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request.",
+        "2026-10-12: Tight radial shoulder around the solid disc cap uses maxInnerFaceEdge 0.018 to resolve its curvature smoothly. This refines triangulation without changing any original aperture or the photographed silhouette."
       ],
       "corroborationImages": [
         {
@@ -1531,7 +2986,76 @@
           "kind": "photo",
           "title": "Čelní pohled"
         }
-      ]
+      ],
+      "geometryHints": {
+        "concavity": 0.018,
+        "faceThickness": 0.079,
+        "bevel": 0.007,
+        "concavityStart": 0.24,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.976,
+        "lipDepth": 0.034,
+        "hardwareCount": 0,
+        "capRadius": 0.149,
+        "spokeCrown": 0.001,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true,
+        "radialProfile": [
+          [
+            0,
+            0.012
+          ],
+          [
+            0.12,
+            0.012
+          ],
+          [
+            0.17,
+            0.025
+          ],
+          [
+            0.21,
+            0.006
+          ],
+          [
+            0.3,
+            -0.008
+          ],
+          [
+            0.72,
+            -0.012
+          ],
+          [
+            0.89,
+            -0.006
+          ],
+          [
+            0.95,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "lipColor": "#c4c9ce",
+        "lipFinish": "chrome",
+        "barrelColor": "#a5abb3",
+        "maxInnerFaceEdge": 0.018
+      },
+      "defaultOptions": {
+        "finish": "brushed",
+        "color": "#9ea4ab"
+      },
+      "roughness": 0.24,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Smooth shallow silver disc with twenty capsule vents and concentric circular center boss; no exposed mounting bolts.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
+      }
     },
     {
       "id": "lamborghini-urus-gloss-black-machined",
@@ -1558,8 +3082,12 @@
         "rotationDeg": 0
       },
       "topology": {
-        "pattern": "Fivefold angular branched web with pentagonal windows and contrasting machined edges",
-        "confidence": "high"
+        "pattern": "Seven angular Y spokes with fourteen rim connections, seven large pentagonal main windows and seven smaller peripheral windows. Five mounting bores are independent of the spoke symmetry.",
+        "visibleSpokeCount": 14,
+        "visibleRootCount": 7,
+        "visibleMainWindowCount": 7,
+        "mountingBoreCount": 5,
+        "confidence": "reviewed-front-photograph"
       },
       "sourceView": "front",
       "notes": [
@@ -1567,7 +3095,8 @@
         "The geometry has angular branches and closed intermediate web cells; do not substitute a generic straight-spoke wheel.",
         "Use the larger physical front photograph to corroborate branch edges and finish.",
         "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
-        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "corroborationImages": [
         {
@@ -1577,7 +3106,34 @@
           "kind": "photo",
           "title": "Čelní pohled"
         }
-      ]
+      ],
+      "geometryHints": {
+        "concavity": 0.17,
+        "faceThickness": 0.08,
+        "bevel": 0.007,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.938,
+        "lipDepth": 0.037,
+        "hardwareCount": 0,
+        "capRadius": 0.109,
+        "spokeCrown": 0.019,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#131619"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Seven angular Y spokes with fourteen rim connections, seven large pentagonal main windows and seven smaller peripheral windows. Five mounting bores are independent of the spoke symmetry.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
+      }
     },
     {
       "id": "ferrari-812-gunmetal-machined",
@@ -1613,7 +3169,8 @@
         "Single frontal wheel on the white supplier technical plate.",
         "Physical front photography corroborates the slim spoke outlines and machined-face treatment.",
         "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
-        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request."
       ],
       "corroborationImages": [
         {
@@ -1623,7 +3180,34 @@
           "kind": "photo",
           "title": "Čelní pohled"
         }
-      ]
+      ],
+      "geometryHints": {
+        "concavity": 0.19,
+        "faceThickness": 0.067,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.938,
+        "lipDepth": 0.038,
+        "hardwareCount": 0,
+        "capRadius": 0.116,
+        "spokeCrown": 0.015,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "brushed",
+        "color": "#59616c"
+      },
+      "roughness": 0.24,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten thin direct radial blades with silver machined face planes and gunmetal sidewalls.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS"
+      }
     },
     {
       "id": "ferrari-812-gloss-black",
@@ -1659,7 +3243,9 @@
         "Trace the left wheel on the paired white supplier plate.",
         "The lower outer lip lies close to the image edge; the physical front photograph corroborates the complete rim outline.",
         "Ellipse bounds were manually inspected against the supplied image; they describe visible face framing, not manufacturing dimensions or a validated CAD surface.",
-        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image."
+        "Front-face holes and silhouette can be reconstructed from this reference; barrel depth and spoke cross-sections are not fully determined by this single frontal image.",
+        "2026-10-11: Source face geometry, lip, mounting wells, material and photographed details reviewed individually. Depth, rear geometry and angled-view deprojection are visual estimates. All model centers use OARTS at the user request.",
+        "2026-10-12: The physical front photograph and supplier technical plate show five lug bores. Five spurious outer bores in the earlier manual mask were removed after final-render comparison; the five observed mounting apertures remain."
       ],
       "corroborationImages": [
         {
@@ -1669,7 +3255,36 @@
           "kind": "photo",
           "title": "Čelní pohled"
         }
-      ]
+      ],
+      "geometryHints": {
+        "concavity": 0.19,
+        "faceThickness": 0.066,
+        "bevel": 0.006,
+        "concavityStart": 0.19,
+        "concavityEnd": 0.92,
+        "lipInnerRadius": 0.943,
+        "lipDepth": 0.033,
+        "hardwareCount": 0,
+        "capRadius": 0.116,
+        "spokeCrown": 0.014,
+        "centerBrand": "OARTS",
+        "reviewedAt": "2026-10-11",
+        "estimatedDepth": true
+      },
+      "defaultOptions": {
+        "finish": "gloss",
+        "color": "#131518"
+      },
+      "roughness": 0.19,
+      "visualReview": {
+        "date": "2026-10-11",
+        "sourceInspected": true,
+        "observedFace": "Ten slim tapered straight black spokes with sculpted mounting roots and narrow full-width rim.",
+        "depthConfidence": "visual estimate",
+        "centerBrand": "OARTS",
+        "finalRenderCorrectionDate": "2026-10-12",
+        "observedMountingBores": 5
+      }
     }
   ],
   "inspectionSummary": {
@@ -1685,5 +3300,6 @@
       "primaryTechnicalReferences": 8
     },
     "limitations": "Bounds and visible topology describe a photograph or supplier visualization, not verified manufacturing CAD. Angled, obstructed and cropped evidence retains explicit per-record notes and confidence."
-  }
+  },
+  "reviewedAt": "2026-10-11"
 }
