@@ -6,6 +6,9 @@
   nav.dataset.navigationReady = 'true';
   const navLinks = nav.querySelector('#navLinks');
   const more = nav.querySelector('.site-nav-more'), moreSummary = more?.querySelector('summary');
+  const headerInner = nav.querySelector('.site-header__inner');
+  const primary = nav.querySelector('.site-nav__primary');
+  const compactViewport = window.matchMedia('(max-width: 1280px)');
   let menuState = null;
   const isMobileMenu = () => getComputedStyle(burger).display !== 'none';
   const rememberStyle = (element, properties) => properties.map(property => [property, element.style.getPropertyValue(property), element.style.getPropertyPriority(property)]);
@@ -77,6 +80,22 @@
     if (more?.open && !more.contains(event.target)) closeMore();
   });
   more?.addEventListener('toggle', () => moreSummary?.setAttribute('aria-expanded', String(more.open)));
+  moreSummary?.setAttribute('aria-expanded', String(more.open));
+  moreSummary?.addEventListener('keydown', event => {
+    if (!['ArrowDown', 'ArrowUp'].includes(event.key) || isMobileMenu()) return;
+    event.preventDefault();
+    more.open = true;
+    const links = more.querySelectorAll('a[href]');
+    (event.key === 'ArrowUp' ? links[links.length - 1] : links[0])?.focus();
+  });
+  more?.addEventListener('keydown', event => {
+    if (!more.open || event.target === moreSummary || !['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
+    const links = [...more.querySelectorAll('a[href]')], current = links.indexOf(document.activeElement);
+    if (current < 0) return;
+    event.preventDefault();
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? links.length - 1 : (current + (event.key === 'ArrowDown' ? 1 : -1) + links.length) % links.length;
+    links[next]?.focus();
+  });
   more?.addEventListener('focusout', () => queueMicrotask(() => {
     if (more.open && !more.contains(document.activeElement)) closeMore();
   }));
@@ -85,10 +104,32 @@
     if (navLinks) navLinks.inert = Boolean(isMobileMenu() && !menuState);
     if (isMobileMenu()) closeMore();
   };
+  // Browser zoom changes CSS viewport width. Above the common breakpoint also
+  // check the actual content, so larger fonts never wrap a desktop item below
+  // the bar. Measure in desktop mode before choosing the compact layout.
+  const syncLayout = () => {
+    nav.dataset.navLayout = compactViewport.matches ? 'compact' : 'desktop';
+    if (!compactViewport.matches && headerInner && navLinks && primary) {
+      const brand = nav.querySelector('.site-brand'), actions = nav.querySelector('.site-header__actions');
+      const gap = parseFloat(getComputedStyle(headerInner).columnGap) || 0;
+      const required = (brand?.getBoundingClientRect().width || 0) + navLinks.scrollWidth + (actions?.getBoundingClientRect().width || 0) + gap * 2;
+      if (required > headerInner.clientWidth) nav.dataset.navLayout = 'compact';
+    }
+    syncMenu();
+  };
+  let layoutFrame = 0;
+  const queueLayout = () => {
+    cancelAnimationFrame(layoutFrame);
+    layoutFrame = requestAnimationFrame(syncLayout);
+  };
+  syncLayout();
   document.documentElement.classList.add('site-nav-ready');
-  window.addEventListener('resize', syncMenu, {passive: true});
+  window.addEventListener('resize', queueLayout, {passive: true});
+  if (headerInner && 'ResizeObserver' in window) new ResizeObserver(queueLayout).observe(headerInner);
+  document.fonts?.ready.then(queueLayout);
+  document.fonts?.addEventListener('loadingdone', queueLayout);
   window.addEventListener('pagehide', () => {closeMenu({restoreFocus: false}); closeMore();});
-  syncMenu();
+  window.addEventListener('pageshow', queueLayout);
   const syncHomeSection = () => {
     if (!document.body.classList.contains('page-home')) return;
     const selected = location.hash || '';

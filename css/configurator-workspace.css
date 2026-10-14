@@ -1,0 +1,255 @@
+/* One workspace: controls together, preview unobstructed. Loaded after the legacy theme. */
+body.site-page.configurator-page {
+  --cfg-line: #e2e2e7;
+  --cfg-muted: #66666e;
+  --cfg-ink: #202024;
+  --cfg-accent: #8c6a49;
+  padding-bottom: 0;
+  color: var(--cfg-ink);
+}
+body.site-page.configurator-page .cfg {
+  display: grid;
+  grid-template-columns: minmax(330px, 390px) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  width: 100%; max-width: none;
+  height: calc(100dvh - var(--nav-h, 72px));
+  min-height: 0; margin: 0; padding: 0;
+  border: 0; border-radius: 0; box-shadow: none;
+  background: #f3f3f5;
+}
+body.site-page.configurator-page :is(.cfg-steps, .cfg-panel, .cfg-stage, .stage-head, .stage-view, .stage-foot, .panel-body, .panel-foot) { min-width: 0; box-sizing: border-box; }
+body.site-page.configurator-page #stepsRail {
+  position: static; grid-column: 1; grid-row: 1;
+  display: grid; grid-template-columns: minmax(0, 1fr); height: auto; min-height: 0;
+  gap: 12px; padding: 18px 20px 12px;
+  background: #fff; border: 0; border-right: 1px solid var(--cfg-line);
+  border-radius: 0; z-index: 2;
+}
+body.site-page.configurator-page .cfg-flow-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 5px 12px; color: var(--cfg-ink); font-size: 14px; font-weight: 600; }
+body.site-page.configurator-page .cfg-flow-header small { color: var(--cfg-muted); font-size: 12px; font-weight: 400; }
+body.site-page.configurator-page :is(.cfg-preview-trigger, .cfg-close-preview) { display: none; }
+body.site-page.configurator-page .cfg-step-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+body.site-page.configurator-page .cfg-step { display: grid; place-items: center; gap: 5px; min-width: 0; min-height: 58px; padding: 6px 1px; color: var(--cfg-muted); border-radius: 12px; background: transparent; }
+body.site-page.configurator-page .cfg-step b { width: 27px; height: 27px; font: 600 12px/1 var(--body, system-ui); border: 1px solid #dcdce2; background: #f5f5f7; }
+body.site-page.configurator-page .cfg-step .t { font: 500 11px/1.35 var(--body, system-ui); white-space: normal; letter-spacing: 0; overflow-wrap: anywhere; }
+body.site-page.configurator-page .cfg-step.active { color: var(--cfg-ink); background: #f4eee7; }
+body.site-page.configurator-page .cfg-step.active b { color: #fff; border-color: var(--cfg-accent); background: var(--cfg-accent); }
+body.site-page.configurator-page #mobileFlowIntro { display: none; }
+body.site-page.configurator-page .cfg-panel {
+  grid-column: 1; grid-row: 2; position: relative; top: auto;
+  height: auto; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto;
+  border: 0; border-right: 1px solid var(--cfg-line); background: #fff;
+}
+body.site-page.configurator-page #panelBody { overflow: auto; overscroll-behavior-y: contain; scrollbar-gutter: stable; padding: 20px 22px 28px; scroll-padding-block: 20px; }
+body.site-page.configurator-page #panelBody h2 { margin: 0 0 8px; font: 600 25px/1.2 var(--body, system-ui); letter-spacing: -.035em; text-transform: none; }
+body.site-page.configurator-page #panelBody .sub { color: var(--cfg-muted); margin: 0 0 20px; font-size: 14px; line-height: 1.55; }
+body.site-page.configurator-page #panelBody h4 { font-size: 14px; margin-top: 22px; gap: 8px; }
+body.site-page.configurator-page #panelBody :is(input, select, textarea, button) { max-width: 100%; }
+body.site-page.configurator-page #panelBody :is(input:not([type=range]):not([type=checkbox]):not([type=color]), select, textarea) { color-scheme: light; width: 100%; min-width: 0; font: 400 16px/1.4 var(--body, system-ui); }
+body.site-page.configurator-page .vehicle-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 12px; }
+body.site-page.configurator-page .vehicle-fields .field { margin: 0 0 14px; }
+body.site-page.configurator-page .vehicle-fields .nfw-brand-field,
+body.site-page.configurator-page .vehicle-fields .field:has(#vehicleModel) { grid-column: 1 / -1; }
+body.site-page.configurator-page .cfg-vehicle-filter { margin: 0 0 18px; }
+body.site-page.configurator-page .cfg-vehicle-filter button { padding: 8px 12px; font-size: 12px; min-height: 40px; }
+body.site-page.configurator-page .generation-info { margin: 10px 0 14px; padding: 14px; gap: 5px; }
+body.site-page.configurator-page .generation-info b { font-size: 16px; }
+body.site-page.configurator-page .generation-info :is(small, span) { font-size: 12px; line-height: 1.5; }
+body.site-page.configurator-page .cfg-own-photo-link { display: block; background: none; border: 0; color: var(--cfg-accent); text-align: left; font: 500 13px/1.5 var(--body, system-ui); min-height: 44px; padding: 8px 0; }
+body.site-page.configurator-page :is(.flow-details, .cfg-help) { margin: 18px 0 0; border: 1px solid var(--cfg-line); border-radius: 14px; background: #f7f7f9; padding: 0 14px; overflow-wrap: anywhere; }
+body.site-page.configurator-page :is(.flow-details, .cfg-help) > summary { display: flex; align-items: center; justify-content: space-between; list-style: none; gap: 12px; min-height: 48px; padding: 12px 0; color: var(--cfg-ink); font: 500 13px/1.5 var(--body, system-ui); cursor: pointer; }
+body.site-page.configurator-page :is(.flow-details, .cfg-help) > summary::-webkit-details-marker { display: none; }
+body.site-page.configurator-page :is(.flow-details, .cfg-help) > summary::after { content: '+'; font-size: 20px; flex-shrink: 0; }
+body.site-page.configurator-page :is(.flow-details, .cfg-help)[open] > summary::after { content: '−'; }
+body.site-page.configurator-page .flow-details > summary > span[aria-hidden] { display: none; }
+body.site-page.configurator-page .cfg-help p { font-size: 12px; line-height: 1.6; color: var(--cfg-muted); margin: 0 0 15px; }
+body.site-page.configurator-page .flow-details__body { padding-bottom: 14px; }
+body.site-page.configurator-page .flow-guidance { margin: 14px 0; padding: 12px 14px; background: #f5f0e9; border: 1px solid #e4d9cb; border-radius: 12px; color: #6f583e; font: 400 12px/1.55 var(--body, system-ui); }
+body.site-page.configurator-page .cfg-design-search { margin: 0 0 14px; }
+body.site-page.configurator-page .wheel-construction-filters { gap: 6px; }
+body.site-page.configurator-page .wheel-construction-filters button { font-size: 12px; min-height: 38px; padding: 8px 11px; }
+body.site-page.configurator-page .wheel-construction-status { color: var(--cfg-muted); font-size: 12px; margin-block: 12px; }
+body.site-page.configurator-page .opt-grid { gap: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+body.site-page.configurator-page .opt-grid .opt { position: relative; display: flex; flex-direction: column; align-items: stretch; padding: 10px; gap: 6px; }
+body.site-page.configurator-page .opt-grid .opt b { font-size: 15px; }
+body.site-page.configurator-page .opt-grid .opt span { font-size: 11px; line-height: 1.45; }
+body.site-page.configurator-page .opt-grid .opt .p { font-size: 11px; }
+body.site-page.configurator-page .opt-grid .opt.active::after { content: '✓'; position: absolute; right: 8px; top: 8px; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--cfg-accent); color: #fff; font-size: 13px; }
+body.site-page.configurator-page .opt-grid .wheel-thumb { width: 100%; aspect-ratio: 1; height: auto; max-height: none; object-fit: contain; }
+body.site-page.configurator-page .opt-list .opt { grid-template-columns: minmax(0, 1fr) !important; gap: 6px; }
+body.site-page.configurator-page .opt-list .opt b { font-size: 15px; }
+body.site-page.configurator-page .opt-list .opt .p { text-align: left; margin: 0; }
+body.site-page.configurator-page .two,
+body.site-page.configurator-page .form-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+body.site-page.configurator-page .flow-summary-overview { display: grid; gap: 8px; margin: 18px 0; }
+body.site-page.configurator-page .flow-summary-edit { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 14px; text-align: left; }
+body.site-page.configurator-page .flow-summary-edit > span:first-child { min-width: 0; display: grid; gap: 3px; }
+body.site-page.configurator-page .flow-summary-edit > span:last-child { font-size: 11px; flex-shrink: 0; }
+body.site-page.configurator-page .flow-summary-edit b { font-size: 14px; overflow-wrap: anywhere; }
+body.site-page.configurator-page .flow-summary-edit small { font-size: 11px; }
+body.site-page.configurator-page .flow-enquiry { margin-top: 20px; scroll-margin-top: calc(var(--nav-h) + 18px); }
+body.site-page.configurator-page #enquiryTitle { scroll-margin-block: 20px; }
+body.site-page.configurator-page #enquiryForm .actions { display: grid; gap: 12px; }
+body.site-page.configurator-page #enquiryForm .btn { width: 100%; white-space: normal; font-size: 13px; }
+body.site-page.configurator-page #panelFoot {
+  position: relative; bottom: auto; padding: 16px 22px; display: grid; gap: 10px;
+  background: #fff; border-top: 1px solid var(--cfg-line); z-index: 5;
+}
+body.site-page.configurator-page .mobile-flow-status { display: block; min-width: 0; }
+body.site-page.configurator-page [data-flow-preview] { display: none; }
+body.site-page.configurator-page .price { display: grid; gap: 5px; align-items: start; justify-content: stretch; }
+body.site-page.configurator-page .price small { font-size: 11px; margin: 0 0 4px; color: var(--cfg-muted); }
+body.site-page.configurator-page .price b { display: block; color: var(--cfg-ink); font: 600 clamp(22px, 2.1vw, 28px)/1.2 var(--body, system-ui); letter-spacing: -.035em; overflow-wrap: anywhere; }
+body.site-page.configurator-page .price .per { display: flex; flex-wrap: wrap; gap: 3px 12px; text-align: left; font-size: 10px; line-height: 1.5; color: var(--cfg-muted); }
+body.site-page.configurator-page .panel-nav { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 8px; }
+body.site-page.configurator-page .panel-nav .btn { width: 100%; min-height: 46px; min-width: 0; padding: 10px 8px; font-size: 13px; white-space: normal; }
+body.site-page.configurator-page .flow-next-hint { font-size: 11px; line-height: 1.4; color: var(--cfg-muted); }
+body.site-page.configurator-page .cfg-stage {
+  grid-column: 2; grid-row: 1 / -1; position: relative; top: auto;
+  height: auto; min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr) auto;
+  overflow: hidden; background: #f3f3f5;
+}
+body.site-page.configurator-page #stageHead { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; padding: 20px 28px 14px; }
+body.site-page.configurator-page .cfg-preview-heading { display: flex; flex: 1 1 250px; align-items: start; justify-content: space-between; gap: 20px; min-width: 0; }
+body.site-page.configurator-page .cfg-preview-heading > div { min-width: 0; }
+body.site-page.configurator-page #stageHead h1 { display: block; font: 600 clamp(22px, 2.2vw, 34px)/1.15 var(--body, system-ui); letter-spacing: -.035em; margin: 0; overflow-wrap: anywhere; }
+body.site-page.configurator-page #stageHead h1 small { display: block; margin: 0 0 7px; font: 500 11px/1.4 var(--body, system-ui); letter-spacing: .04em; color: var(--cfg-muted); }
+body.site-page.configurator-page .cfg-preview-vehicle { margin: 8px 0 0; color: var(--cfg-muted); font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+body.site-page.configurator-page .cfg-expand { flex-shrink: 0; border: 1px solid #d8d8df; border-radius: 999px; background: #fff9; padding: 9px 13px; min-height: 40px; color: var(--cfg-ink); font: 500 12px/1.4 var(--body, system-ui); }
+body.site-page.configurator-page .stage-controls { display: flex; flex: 0 1 auto; flex-wrap: wrap; width: auto; max-width: 100%; gap: 8px 14px; align-items: center; justify-content: flex-start; }
+body.site-page.configurator-page .stage-controls .seg { display: flex; flex-wrap: wrap; flex: 0 1 auto; min-width: 0; max-width: 100%; padding: 3px; gap: 2px; border: 1px solid #dddde4; border-radius: 13px; background: #e9e9ee; }
+body.site-page.configurator-page .stage-controls .seg button { min-width: 0; flex: 1 1 auto; min-height: 38px; padding: 9px 15px; font-size: 12px; line-height: 1.35; white-space: normal; }
+body.site-page.configurator-page .cfg-view-select { max-width: 180px; min-width: 0; }
+body.site-page.configurator-page .cfg-view-select select { width: 100%; height: 44px; min-width: 0; font: 500 12px/1.4 var(--body, system-ui); border: 1px solid #dddde4; border-radius: 12px; color: var(--cfg-ink); background: #fff; padding: 9px; color-scheme: light; }
+body.site-page.configurator-page .stage-controls .toggle { margin-left: auto; min-height: 44px; flex: none; font-size: 12px; }
+body.site-page.configurator-page #stageView,
+body.site-page.configurator-page #stageView:is(.has-vehicle-3d, .has-vehicle-photo, .is-wheel-reference) {
+  display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start;
+  position: relative; min-height: 0; height: auto; padding: 0; gap: 0; overflow: auto;
+}
+body.site-page.configurator-page #stageView .webgl-view { position: relative; inset: auto; width: 100%; height: auto; flex: 1 0 180px; min-height: 180px; overflow: hidden; }
+body.site-page.configurator-page #stageView .preview-caption {
+  position: relative; inset: auto; width: 100%; max-width: none; padding: 12px 28px;
+  flex: 0 0 auto; min-height: 0; margin: 0; text-align: left; pointer-events: auto;
+  color: var(--cfg-muted); background: #f3f3f5; font-size: 12px; line-height: 1.5;
+}
+body.site-page.configurator-page #stageView .preview-caption > b { display: block; font-size: 12px; color: var(--cfg-ink); font-weight: 600; }
+body.site-page.configurator-page #stageView .preview-caption > :is(span, small, a) { display: block; font: 400 11px/1.5 var(--body, system-ui); color: var(--cfg-muted); }
+body.site-page.configurator-page #stageView .preview-caption > a { color: var(--cfg-accent); width: fit-content; min-height: 30px; display: inline-flex; align-items: center; }
+body.site-page.configurator-page #stageView .preview-caption > span { margin: 0; width: auto; max-width: none; }
+body.site-page.configurator-page .cfg-viewer-help { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 20px; font-size: 11px; }
+body.site-page.configurator-page .cfg-viewer-help details { flex: 0 1 auto; }
+body.site-page.configurator-page .cfg-viewer-help summary { cursor: pointer; min-height: 28px; display: flex; align-items: center; color: var(--cfg-accent); }
+body.site-page.configurator-page .cfg-viewer-help p { max-width: 580px; margin: 6px 0; line-height: 1.6; }
+body.site-page.configurator-page #stageView .studio-viewpoints { position: relative; inset: auto; padding: 8px 20px; flex: 0 0 auto; }
+body.site-page.configurator-page #stageFoot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; padding: 12px 28px; border-top: 1px solid var(--cfg-line); background: #eeeef1; }
+body.site-page.configurator-page .cfg-preview-spec { min-width: 0; font-size: 12px; }
+body.site-page.configurator-page .cfg-preview-spec > summary { cursor: pointer; min-height: 38px; line-height: 1.5; }
+body.site-page.configurator-page .cfg-preview-spec > summary span { display: block; font-size: 10px; color: var(--cfg-muted); }
+body.site-page.configurator-page .cfg-preview-spec .stage-info { padding-block: 12px 4px; }
+body.site-page.configurator-page #stageFoot .swatches { display: flex; flex-wrap: wrap; gap: 9px; padding: 3px; margin: 0; }
+body.site-page.configurator-page #stageFoot .swatch { width: 30px; height: 30px; min-width: 30px; min-height: 30px; border-radius: 50%; }
+body.site-page.configurator-page .stage-info { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 10px; }
+body.site-page.configurator-page .stage-info b { font-size: 13px; white-space: normal; }
+body.site-page.configurator-page .studio-palette { margin: 0; gap: 10px 20px; }
+body.site-page.configurator-page .studio-palette > div { flex-wrap: wrap; }
+body.site-page.configurator-page .vehicle-wheel-colours { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+body.site-page.configurator-page #stageView.has-wheel-product { padding: 12px 28px; gap: 10px; }
+body.site-page.configurator-page .wheel-product-figure { flex: 1 0 230px; min-height: 230px; }
+body.site-page.configurator-page .wheel-product-image-wrap { min-height: 180px; }
+body.site-page.configurator-page .wheel-product-figure figcaption { font-size: 11px; text-align: left; }
+body.site-page.configurator-page .wheel-product-figure figcaption small { font-size: 10px; }
+body.site-page.configurator-page .cfg-product-info > summary { cursor: pointer; min-height: 30px; display: flex; align-items: center; color: var(--cfg-accent); font-size: 11px; }
+body.site-page.configurator-page .cfg-product-info[open] { max-height: 180px; overflow: auto; }
+body.site-page.configurator-page .cfg-product-info :is(small, a, .wheel-product-source) { display: block; margin-block: 5px; }
+body.site-page.configurator-page .wheel-product-gallery { flex-shrink: 0; flex-wrap: wrap; }
+body.site-page.configurator-page .stage-vehicle-frame { position: relative; flex: 1 0 200px; min-height: 200px; margin: 0 24px; }
+body.site-page.configurator-page #stageView.has-own-car { display: block; overflow: auto; padding: 12px 24px; }
+body.site-page.configurator-page .stage-view:fullscreen { height: 100dvh !important; background: #f3f3f5; }
+body.site-page.configurator-page :is(button, a, input, select, textarea, summary):focus-visible { outline: 3px solid #aa8159; outline-offset: 3px; }
+@media (max-width: 1180px) and (min-width: 901px) {
+  body.site-page.configurator-page .cfg { grid-template-columns: 340px minmax(0, 1fr); }
+  body.site-page.configurator-page #stageHead { padding: 20px 20px 12px; }
+  body.site-page.configurator-page #stageFoot,
+  body.site-page.configurator-page #stageView .preview-caption { padding-inline: 20px; }
+  body.site-page.configurator-page .stage-controls .seg button { padding-inline: 11px; }
+}
+@media (max-height: 700px) and (min-width: 901px) {
+  body.site-page.configurator-page #stageHead { padding-top: 16px; gap: 10px; }
+  body.site-page.configurator-page #stageHead h1 { font-size: 25px; }
+  body.site-page.configurator-page #stageFoot { padding-block: 10px; }
+  body.site-page.configurator-page #stepsRail { padding-block: 10px; gap: 0; }
+  body.site-page.configurator-page .cfg-flow-header { display: none; }
+  body.site-page.configurator-page .cfg-step { min-height: 54px; }
+  body.site-page.configurator-page #panelBody { padding: 16px 22px 24px; }
+  body.site-page.configurator-page #panelBody h2 { font-size: 23px; }
+  body.site-page.configurator-page #panelBody .sub { font-size: 13px; margin-bottom: 16px; }
+  body.site-page.configurator-page .cfg-vehicle-filter { margin-bottom: 14px; }
+  body.site-page.configurator-page #panelFoot { padding-block: 12px; gap: 8px; }
+  body.site-page.configurator-page .flow-next-hint { display: none; }
+}
+@media (max-width: 900px) {
+  body.site-page.configurator-page { padding-bottom: calc(var(--flow-footer-height, 180px) + 16px); }
+  body.site-page.configurator-page .cfg { display: flex; flex-direction: column; height: auto; min-height: 0; margin: 0; width: 100%; border: 0; box-shadow: none; border-radius: 0; padding: 0; }
+  body.site-page.configurator-page #stepsRail { border-right: 0; border-bottom: 1px solid var(--cfg-line); padding: 12px 18px; gap: 8px; }
+  body.site-page.configurator-page .cfg-flow-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; row-gap: 0; }
+  body.site-page.configurator-page .cfg-flow-header > span { grid-column: 1; grid-row: 1; }
+  body.site-page.configurator-page .cfg-flow-header > small { grid-column: 1; grid-row: 2; }
+  body.site-page.configurator-page .cfg-flow-header .cfg-preview-trigger { grid-column: 2; grid-row: 1 / 3; display: inline-flex; align-items: center; width: auto; height: auto; min-height: 44px; padding: 8px 12px; border: 1px solid var(--cfg-line); border-radius: 12px; background: #f5f5f7; color: var(--cfg-ink); font-size: 12px; }
+  body.site-page.configurator-page .cfg-close-preview { display: block; flex-shrink: 0; min-height: 40px; padding: 8px 10px; border: 1px solid var(--cfg-line); border-radius: 12px; background: #fff; color: var(--cfg-ink); font-size: 11px; }
+  body.site-page.configurator-page .cfg-expand { display: none; }
+  body.site-page.configurator-page .cfg-step { min-height: 54px; }
+  body.site-page.configurator-page .cfg-stage,
+  body.site-page.configurator-page .cfg-stage:is(.has-vehicle-3d, .has-vehicle-visual, .has-wheel-reference, .has-own-car) { position: relative; top: auto; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: auto; min-height: 0; overflow: hidden; background: #f3f3f5; }
+  body.site-page.configurator-page #stageHead { padding: 16px 18px 10px; gap: 10px; }
+  body.site-page.configurator-page #stageHead h1 { font-size: 21px; }
+  body.site-page.configurator-page #stageHead h1 small { display: none; }
+  body.site-page.configurator-page .cfg-preview-vehicle { margin-top: 5px; font-size: 11px; }
+  body.site-page.configurator-page .cfg-expand { font-size: 11px; padding-inline: 10px; }
+  body.site-page.configurator-page .stage-controls { width: 100%; gap: 5px 9px; }
+  body.site-page.configurator-page .stage-controls .seg { flex: 1 1 auto; }
+  body.site-page.configurator-page .stage-controls .seg button { font-size: 11px; padding: 8px 10px; min-height: 38px; }
+  body.site-page.configurator-page .stage-controls .toggle { margin: 0; font-size: 11px; }
+  body.site-page.configurator-page .cfg-view-select { max-width: none; flex: 1 1 150px; }
+  body.site-page.configurator-page #stageView .webgl-view { height: clamp(240px, 42svh, 380px); min-height: 240px; flex: 0 0 auto; }
+  body.site-page.configurator-page #stageView .preview-caption { padding: 10px 18px; }
+  body.site-page.configurator-page #stageFoot { padding: 10px 18px; gap: 8px; }
+  body.site-page.configurator-page #stageFoot .swatches { display: none; }
+  body.site-page.configurator-page #stageFoot .stage-info { display: none; }
+  body.site-page.configurator-page #stageFoot .cfg-preview-spec { display: none; }
+  body.site-page.configurator-page #stageFoot:has(> .swatches) { display: none; }
+  body.site-page.configurator-page .cfg-panel { display: block; position: static; height: auto; border: 0; }
+  body.site-page.configurator-page #panelBody { overflow: visible; padding: 24px 22px; scrollbar-gutter: auto; }
+  body.site-page.configurator-page #panelBody h2 { font-size: 25px; }
+  body.site-page.configurator-page #panelFoot { position: fixed; left: 0; right: 0; bottom: 0; padding: 10px 18px calc(10px + env(safe-area-inset-bottom, 0px)); gap: 8px; box-shadow: 0 -8px 30px #2020240a; z-index: 40; }
+  body.site-page.configurator-page .mobile-flow-status { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: center; }
+  body.site-page.configurator-page [data-flow-preview] { display: grid; place-items: center; width: 56px; height: 56px; padding: 5px; border: 1px solid var(--cfg-line); border-radius: 13px; background: #f5f5f7; }
+  body.site-page.configurator-page [data-flow-preview] img { display: block; width: 44px; height: 44px; object-fit: contain; }
+  body.site-page.configurator-page [data-flow-preview] > span { display: none; }
+  body.site-page.configurator-page .price { gap: 3px; }
+  body.site-page.configurator-page .price b { font-size: clamp(20px, 5.8vw, 27px); }
+  body.site-page.configurator-page .price .per { font-size: 10px; gap: 2px 8px; }
+  body.site-page.configurator-page .flow-next-hint { display: none; }
+  body.site-page.configurator-page .panel-nav { grid-template-columns: 90px minmax(0, 1fr); }
+  body.site-page.configurator-page.flow-keyboard-open #panelFoot { display: none; }
+  body.site-page.configurator-page #stageView.has-wheel-product { padding: 8px 18px 16px; }
+  body.site-page.configurator-page .wheel-product-image-wrap { flex: none; height: clamp(230px, 40svh, 380px); }
+  body.site-page.configurator-page .stage-vehicle-frame { height: clamp(230px, 40svh, 380px); flex: none; margin-inline: 18px; }
+  body.site-page.configurator-page #stageView.has-own-car { padding: 8px 18px; }
+  body.site-page.configurator-page .cfg[data-preview-expanded="false"] .cfg-stage { display: none; }
+}
+@media (max-width: 360px) {
+  body.site-page.configurator-page :is(#panelBody, #stageHead, #stageFoot, #stepsRail) { padding-inline: 14px; }
+  body.site-page.configurator-page .cfg-step .t { font-size: 10px; }
+  body.site-page.configurator-page .stage-controls .toggle { width: 100%; justify-content: flex-end; min-height: 34px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  body.site-page.configurator-page :is(.cfg-step, .opt, .chip, .seg button) { transition: background-color .18s ease, border-color .18s ease, color .18s ease; }
+}
+@media print {
+  body.site-page.configurator-page { padding: 0; }
+  body.site-page.configurator-page .cfg { display: block; height: auto; }
+  body.site-page.configurator-page :is(#stepsRail, .cfg-stage, #panelFoot, .cfg-help) { display: none !important; }
+  body.site-page.configurator-page .cfg-panel { display: block; height: auto; position: static; border: 0; }
+  body.site-page.configurator-page #panelBody { overflow: visible; padding: 0; }
+}
